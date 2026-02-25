@@ -1,0 +1,11 @@
+framework module JLBugly {
+  umbrella header "JLBugly.h"
+
+  export *
+  module * { export * }
+}
+
+module JLBugly.Swift {
+  header "JLBugly-Swift.h"
+  requires objc
+}

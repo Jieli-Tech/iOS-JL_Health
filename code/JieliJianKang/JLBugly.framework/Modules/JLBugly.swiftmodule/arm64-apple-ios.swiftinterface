@@ -1,0 +1,75 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)
+// swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name JLBugly
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import Alamofire
+@_exported import JLBugly
+import Swift
+import UIKit
+import _Concurrency
+import _StringProcessing
+@objc public enum PlatformType : Swift.UInt8 {
+  case android = 0x00
+  case iOS = 0x01
+  case device = 0x02
+  public init?(rawValue: Swift.UInt8)
+  public typealias RawValue = Swift.UInt8
+  public var rawValue: Swift.UInt8 {
+    get
+  }
+}
+@objc public enum ResponseType : Swift.Int {
+  case dataIsNull = 0
+  case dataIsInt = 1
+  case dataIsFloat = 2
+  case dataIsBoolean = 3
+  case dataIsString = 4
+  case dataIsModel = 16
+  case dataIsList = 32
+  case dataIsSet = 33
+  case dataIsMap = 34
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc public class JLUserLogMgr : ObjectiveC.NSObject {
+  @objc public var uuid: Swift.String
+  @objc public var platform: JLBugly.PlatformType
+  @objc public var brand: Swift.String
+  @objc public var name: Swift.String
+  @objc public var version: Swift.String
+  @objc public var system: Swift.String
+  @objc public var appname: Swift.String
+  @objc public var appversion: Swift.String
+  @objc override dynamic public init()
+  @objc public func sendToService(result: @escaping (_ response: JLBugly.ResponseModel) -> ())
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class ResponseModel : ObjectiveC.NSObject {
+  @objc public var code: Swift.Int
+  @objc public var data: Any?
+  @objc public var type: JLBugly.ResponseType
+  @objc public var msg: Swift.String?
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class JLLogFileMgr : ObjectiveC.NSObject {
+  @objc public var filePath: Swift.String?
+  @objc public var filename: Swift.String
+  @objc public var platform: JLBugly.PlatformType
+  @objc public var brand: Swift.String
+  @objc public var name: Swift.String
+  @objc public var version: Swift.String
+  @objc public var uuid: Swift.String
+  @objc public var keycode: Swift.String
+  @objc public func sendToService(block: @escaping (JLBugly.ResponseModel) -> ())
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension JLBugly.PlatformType : Swift.Equatable {}
+extension JLBugly.PlatformType : Swift.Hashable {}
+extension JLBugly.PlatformType : Swift.RawRepresentable {}
+extension JLBugly.ResponseType : Swift.Equatable {}
+extension JLBugly.ResponseType : Swift.Hashable {}
+extension JLBugly.ResponseType : Swift.RawRepresentable {}

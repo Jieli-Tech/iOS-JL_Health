@@ -1,0 +1,6 @@
+framework module CoreDraw {
+  umbrella header "CoreDraw.h"
+
+  export *
+  module * { export * }
+}
