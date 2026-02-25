@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eZX-gQ-Aof" customClass="JLGPSView">
+            <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GPS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ea-o5-77E">
+                    <rect key="frame" x="12" y="6" width="30" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.14117647058823529" green="0.14117647058823529" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pN8-de-m6w">
+                    <rect key="frame" x="51" y="14" width="3" height="8"/>
+                    <color key="backgroundColor" systemColor="systemGreenColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="3" id="5Uq-ds-K6c"/>
+                        <constraint firstAttribute="height" constant="8" id="C6O-zv-dpO"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OoX-sk-LMj">
+                    <rect key="frame" x="58" y="10" width="3" height="12"/>
+                    <color key="backgroundColor" systemColor="systemGreenColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="3" id="9wR-oE-Wuy"/>
+                        <constraint firstAttribute="height" constant="12" id="TGO-oK-GNo"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JEL-fI-8qW">
+                    <rect key="frame" x="65" y="6" width="3" height="16"/>
+                    <color key="backgroundColor" systemColor="systemGreenColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="GaN-sj-vhv"/>
+                        <constraint firstAttribute="width" constant="3" id="mkY-PC-nH2"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="pLP-ih-2rT"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="JEL-fI-8qW" firstAttribute="bottom" secondItem="pN8-de-m6w" secondAttribute="bottom" id="68L-pc-vnu"/>
+                <constraint firstAttribute="bottom" secondItem="JEL-fI-8qW" secondAttribute="bottom" constant="8" id="9fk-ty-Qlt"/>
+                <constraint firstItem="8ea-o5-77E" firstAttribute="leading" secondItem="eZX-gQ-Aof" secondAttribute="leading" constant="12" id="DgX-25-ZG0"/>
+                <constraint firstItem="JEL-fI-8qW" firstAttribute="leading" secondItem="OoX-sk-LMj" secondAttribute="trailing" constant="4" id="FK7-CH-Z6p"/>
+                <constraint firstItem="OoX-sk-LMj" firstAttribute="bottom" secondItem="pN8-de-m6w" secondAttribute="bottom" id="GRr-LW-tQ7"/>
+                <constraint firstAttribute="height" constant="30" id="MOi-FP-cp9"/>
+                <constraint firstAttribute="bottom" secondItem="8ea-o5-77E" secondAttribute="bottom" constant="6" id="ZC0-Cf-TdW"/>
+                <constraint firstAttribute="trailing" secondItem="JEL-fI-8qW" secondAttribute="trailing" constant="12" id="heS-iv-eRm"/>
+                <constraint firstAttribute="width" constant="80" id="nD6-7y-gLW"/>
+                <constraint firstItem="OoX-sk-LMj" firstAttribute="leading" secondItem="pN8-de-m6w" secondAttribute="trailing" constant="4" id="nQi-8F-OaS"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="highSignalView" destination="JEL-fI-8qW" id="KhJ-C5-RNb"/>
+                <outlet property="lowSignalView" destination="pN8-de-m6w" id="XBY-cn-Ssb"/>
+                <outlet property="middleSignalView" destination="OoX-sk-LMj" id="m1N-1m-gfF"/>
+            </connections>
+            <point key="canvasLocation" x="-152" y="-555.02248875562225"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
