@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FunctionVC">
+            <connections>
+                <outlet property="btn_open" destination="Y1G-zu-Llp" id="GTt-1B-R3b"/>
+                <outlet property="subTableView" destination="4wV-4p-qcF" id="8jk-IY-jdA"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手表功能" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="InP-Oj-o6q">
+                    <rect key="frame" x="120" y="58" width="174" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="KyL-ei-psT"/>
+                        <constraint firstAttribute="width" constant="174" id="wiJ-cL-IcR"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y1G-zu-Llp">
+                    <rect key="frame" x="20" y="802" width="374" height="40"/>
+                    <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="ZRX-F2-RZj"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="gray" title="Initial Watch System">
+                        <fontDescription key="titleFontDescription" type="system" pointSize="23"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="openWatchFile:" destination="-1" eventType="touchUpInside" id="9hc-Zc-JvB"/>
+                    </connections>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="4wV-4p-qcF">
+                    <rect key="frame" x="0.0" y="99" width="414" height="683"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="InP-Oj-o6q" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="10" id="7Os-pk-y9d"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="Y1G-zu-Llp" secondAttribute="bottom" constant="20" id="OLd-Hd-ldz"/>
+                <constraint firstItem="4wV-4p-qcF" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="Sj9-bm-A7d"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Y1G-zu-Llp" secondAttribute="trailing" constant="20" id="VpV-Gu-Dn4"/>
+                <constraint firstItem="InP-Oj-o6q" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="hF2-ro-nnk"/>
+                <constraint firstItem="4wV-4p-qcF" firstAttribute="top" secondItem="InP-Oj-o6q" secondAttribute="bottom" constant="20" id="p8h-8A-Jw4"/>
+                <constraint firstItem="Y1G-zu-Llp" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="qZu-oq-goU"/>
+                <constraint firstItem="Y1G-zu-Llp" firstAttribute="top" secondItem="4wV-4p-qcF" secondAttribute="bottom" constant="20" id="sWE-AX-eNn"/>
+                <constraint firstItem="4wV-4p-qcF" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="xJ4-rC-dlm"/>
+            </constraints>
+            <point key="canvasLocation" x="131.8840579710145" y="99.776785714285708"/>
+        </view>
+    </objects>
+</document>

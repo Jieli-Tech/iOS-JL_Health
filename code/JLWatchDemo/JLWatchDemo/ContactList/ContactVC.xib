@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ContactVC">
+            <connections>
+                <outlet property="subTableView" destination="qIV-9h-cfO" id="huA-Dj-2gs"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r16-vE-iyn">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="105"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKb-zm-OWS">
+                            <rect key="frame" x="0.0" y="65" width="72" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="HQI-Jh-GyI"/>
+                                <constraint firstAttribute="width" constant="72" id="VeC-t2-N1P"/>
+                            </constraints>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="&lt;Back"/>
+                            <connections>
+                                <action selector="btn_back:" destination="-1" eventType="touchUpInside" id="xR5-yE-1b0"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="通讯录" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdJ-wB-OKj">
+                            <rect key="frame" x="132.5" y="74" width="149" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="149" id="MU6-5J-VqB"/>
+                                <constraint firstAttribute="height" constant="21" id="hSx-dz-XlR"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="hdJ-wB-OKj" secondAttribute="bottom" constant="10" id="0yi-2h-ZOn"/>
+                        <constraint firstAttribute="height" constant="105" id="CXj-bj-f9L"/>
+                        <constraint firstItem="hdJ-wB-OKj" firstAttribute="centerX" secondItem="r16-vE-iyn" secondAttribute="centerX" id="h8S-D6-O4X"/>
+                        <constraint firstItem="TKb-zm-OWS" firstAttribute="leading" secondItem="r16-vE-iyn" secondAttribute="leading" id="smI-fn-D58"/>
+                        <constraint firstAttribute="bottom" secondItem="TKb-zm-OWS" secondAttribute="bottom" id="tCz-Jc-qnR"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E9C-ri-OBh">
+                    <rect key="frame" x="152" y="768" width="110" height="44"/>
+                    <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="110" id="47C-Qf-IRr"/>
+                        <constraint firstAttribute="height" constant="44" id="wkU-Fp-6tt"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="增加电话">
+                        <fontDescription key="titleFontDescription" type="system" pointSize="18"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="btnAddContact:" destination="-1" eventType="touchUpInside" id="662-yu-DH4"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mBe-al-7So">
+                    <rect key="frame" x="270" y="768" width="110" height="44"/>
+                    <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="I1B-iV-W0I"/>
+                        <constraint firstAttribute="width" constant="110" id="nEf-kv-Mll"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="删除电话">
+                        <fontDescription key="titleFontDescription" type="system" pointSize="18"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="btnDelContact:" destination="-1" eventType="touchUpInside" id="IJX-n5-BAf"/>
+                    </connections>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qIV-9h-cfO">
+                    <rect key="frame" x="0.0" y="113" width="414" height="626"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wJF-O3-VAF">
+                    <rect key="frame" x="24" y="768" width="120" height="44"/>
+                    <color key="backgroundColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="120" id="WVO-DX-mTL"/>
+                        <constraint firstAttribute="height" constant="44" id="vCn-wk-Qac"/>
+                    </constraints>
+                    <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="获取通讯录">
+                        <fontDescription key="titleFontDescription" type="system" pointSize="18"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="btnGetContact:" destination="-1" eventType="touchUpInside" id="lVT-Ju-DIr"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="qIV-9h-cfO" firstAttribute="top" secondItem="r16-vE-iyn" secondAttribute="bottom" constant="8" symbolic="YES" id="5TM-t3-YFR"/>
+                <constraint firstAttribute="bottom" secondItem="wJF-O3-VAF" secondAttribute="bottom" constant="84" id="AdQ-zE-Uz7"/>
+                <constraint firstAttribute="bottom" secondItem="E9C-ri-OBh" secondAttribute="bottom" constant="84" id="EBk-CS-K7D"/>
+                <constraint firstAttribute="trailing" secondItem="r16-vE-iyn" secondAttribute="trailing" id="GdZ-P3-9s4"/>
+                <constraint firstItem="r16-vE-iyn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="K7Z-u3-YeF"/>
+                <constraint firstItem="E9C-ri-OBh" firstAttribute="leading" secondItem="wJF-O3-VAF" secondAttribute="trailing" constant="8" symbolic="YES" id="VvU-rn-JYX"/>
+                <constraint firstItem="wJF-O3-VAF" firstAttribute="top" secondItem="qIV-9h-cfO" secondAttribute="bottom" constant="29" id="edH-NJ-voY"/>
+                <constraint firstItem="E9C-ri-OBh" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="mGd-dY-sfQ"/>
+                <constraint firstAttribute="trailing" secondItem="qIV-9h-cfO" secondAttribute="trailing" id="miS-0j-1NT"/>
+                <constraint firstItem="mBe-al-7So" firstAttribute="leading" secondItem="E9C-ri-OBh" secondAttribute="trailing" constant="8" symbolic="YES" id="uTK-EE-Bc1"/>
+                <constraint firstAttribute="bottom" secondItem="mBe-al-7So" secondAttribute="bottom" constant="84" id="vZZ-80-ZjU"/>
+                <constraint firstItem="r16-vE-iyn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="xyw-cy-hiJ"/>
+                <constraint firstItem="qIV-9h-cfO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="yca-CE-3ID"/>
+            </constraints>
+            <point key="canvasLocation" x="131.8840579710145" y="125.89285714285714"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
