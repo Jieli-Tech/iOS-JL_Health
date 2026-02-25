@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OneVC">
+            <connections>
+                <outlet property="subLabel" destination="9Wv-2N-RjZ" id="W2k-xr-Phe"/>
+                <outlet property="subTitleView" destination="KW4-6d-DeY" id="Mtq-1P-3Aj"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KW4-6d-DeY">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="opus demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Wv-2N-RjZ">
+                            <rect key="frame" x="86" y="64" width="243" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.99990195039999996" green="1" blue="0.99987989659999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="88" id="NAw-dL-nH2"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zy4-PC-jSt">
+                    <rect key="frame" x="20" y="125" width="230" height="40"/>
+                    <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="MvV-ac-Rn3"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                    <state key="normal" title="Opus文件 转 PCM流 播放">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="btn_opus:" destination="-1" eventType="touchUpInside" id="8r3-jz-Z2A"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HFC-pN-12h">
+                    <rect key="frame" x="20" y="466.5" width="206" height="40"/>
+                    <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="wvN-DJ-g6S"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                    <state key="normal" title="PCM文件 转 Opus文件">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="pcmFileToOpusFileBtnFunc:" destination="-1" eventType="touchUpInside" id="63V-Oa-O2g"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ovq-EK-MLu">
+                    <rect key="frame" x="20" y="760" width="126" height="36"/>
+                    <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                    <state key="normal" title="播放PCM文件">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="playPCMFileBtnFunc:" destination="-1" eventType="touchUpInside" id="8ft-Rw-7sE"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="opus 解码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="77O-Vz-Zxv">
+                    <rect key="frame" x="20" y="96" width="77" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="opus编码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bey-xU-RjS">
+                    <rect key="frame" x="20" y="437.5" width="72.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="音频功能" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gu8-xT-kjQ">
+                    <rect key="frame" x="20" y="731" width="69.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lMb-dw-PEk">
+                    <rect key="frame" x="20" y="566.5" width="230" height="40"/>
+                    <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="sq9-fY-kAB"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                    <state key="normal" title="PCM流 转 Opus文件 保存">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="pcmStreamToOpusFileBtnFunc:" destination="-1" eventType="touchUpInside" id="ckz-zr-mod"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJx-Og-LYj">
+                    <rect key="frame" x="20" y="173" width="206" height="40"/>
+                    <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="VGR-aw-BgZ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                    <state key="normal" title="Opus文件 转 PCM文件">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="opusFileToPCMFile:" destination="-1" eventType="touchUpInside" id="DOz-7C-TeN"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="jJx-Og-LYj" firstAttribute="top" secondItem="zy4-PC-jSt" secondAttribute="bottom" constant="8" symbolic="YES" id="1Bi-ui-JKB"/>
+                <constraint firstItem="lMb-dw-PEk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" symbolic="YES" id="6ko-sx-b9j"/>
+                <constraint firstItem="HFC-pN-12h" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" symbolic="YES" id="8gq-eR-cBl"/>
+                <constraint firstItem="77O-Vz-Zxv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" symbolic="YES" id="CiM-xF-wgI"/>
+                <constraint firstItem="zy4-PC-jSt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" symbolic="YES" id="IK2-EH-M6q"/>
+                <constraint firstAttribute="bottom" secondItem="Ovq-EK-MLu" secondAttribute="bottom" constant="100" id="K53-n1-Rog"/>
+                <constraint firstItem="Ovq-EK-MLu" firstAttribute="top" secondItem="Gu8-xT-kjQ" secondAttribute="bottom" constant="8" symbolic="YES" id="Rfw-Zf-ocy"/>
+                <constraint firstItem="Ovq-EK-MLu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" symbolic="YES" id="RkZ-4S-Jmu"/>
+                <constraint firstAttribute="trailing" secondItem="KW4-6d-DeY" secondAttribute="trailing" id="SYg-At-83A"/>
+                <constraint firstItem="HFC-pN-12h" firstAttribute="top" secondItem="bey-xU-RjS" secondAttribute="bottom" constant="8" symbolic="YES" id="Syx-2V-EYQ"/>
+                <constraint firstItem="zy4-PC-jSt" firstAttribute="top" secondItem="77O-Vz-Zxv" secondAttribute="bottom" constant="8" symbolic="YES" id="T2o-bp-SMi"/>
+                <constraint firstItem="KW4-6d-DeY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Vpo-Zv-VYe"/>
+                <constraint firstItem="77O-Vz-Zxv" firstAttribute="top" secondItem="KW4-6d-DeY" secondAttribute="bottom" constant="8" symbolic="YES" id="WNa-R4-6KO"/>
+                <constraint firstItem="bey-xU-RjS" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Xa2-kT-vFP"/>
+                <constraint firstItem="jJx-Og-LYj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" symbolic="YES" id="Xf6-LH-MFW"/>
+                <constraint firstItem="lMb-dw-PEk" firstAttribute="top" secondItem="HFC-pN-12h" secondAttribute="bottom" constant="60" id="b3e-Lr-0pb"/>
+                <constraint firstItem="bey-xU-RjS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" symbolic="YES" id="dLE-lD-7sl"/>
+                <constraint firstItem="KW4-6d-DeY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="mnC-sY-tBw"/>
+                <constraint firstItem="Gu8-xT-kjQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" symbolic="YES" id="yh0-7f-tvw"/>
+            </constraints>
+            <point key="canvasLocation" x="131.8840579710145" y="133.92857142857142"/>
+        </view>
+    </objects>
+</document>
