@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="WatchCell">
+            <rect key="frame" x="0.0" y="0.0" width="115" height="145"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="115" height="145"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="watch_img_05" translatesAutoresizingMaskIntoConstraints="NO" id="gFz-P8-PZZ">
+                        <rect key="frame" x="5" y="5" width="105" height="98"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AxZ-3R-QFP">
+                        <rect key="frame" x="0.0" y="121" width="115" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="j5e-6D-e55"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <state key="normal" title="使用"/>
+                        <connections>
+                            <action selector="btn_tap:" destination="gTV-IL-0wX" eventType="touchUpInside" id="0jp-aQ-Txu"/>
+                        </connections>
+                    </button>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMF-we-Lrt">
+                        <rect key="frame" x="80" y="0.0" width="35" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="35" id="5VT-6N-rO0"/>
+                            <constraint firstAttribute="height" constant="35" id="U5V-tK-RFl"/>
+                        </constraints>
+                        <state key="normal" image="product_icon_delete_nol"/>
+                        <connections>
+                            <action selector="btn_del:" destination="gTV-IL-0wX" eventType="touchUpInside" id="pta-Ct-abd"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Watch" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSG-rG-99O">
+                        <rect key="frame" x="0.0" y="103" width="115" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="nHW-nL-bKf"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VbD-fk-IXG">
+                        <rect key="frame" x="12.5" y="77" width="90" height="30"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="Cc7-yK-i9f"/>
+                            <constraint firstAttribute="width" constant="90" id="kct-kd-Nj0"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title="编辑">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <connections>
+                            <action selector="btn_edit:" destination="gTV-IL-0wX" eventType="touchUpInside" id="DLX-Qs-s6m"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Watch1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMO-W1-ocb">
+                        <rect key="frame" x="0.0" y="116" width="115" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="Sb8-ao-GOk"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="cMO-W1-ocb" secondAttribute="bottom" constant="11" id="2gf-uR-SX1"/>
+                <constraint firstItem="gFz-P8-PZZ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="5j9-HC-PkC"/>
+                <constraint firstItem="VbD-fk-IXG" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Bl7-eC-199"/>
+                <constraint firstAttribute="trailing" secondItem="BMF-we-Lrt" secondAttribute="trailing" id="BsG-rO-wQc"/>
+                <constraint firstItem="AxZ-3R-QFP" firstAttribute="top" secondItem="bSG-rG-99O" secondAttribute="bottom" id="F2Q-iI-bAO"/>
+                <constraint firstItem="BMF-we-Lrt" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="JiS-CA-Xwq"/>
+                <constraint firstItem="bSG-rG-99O" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="MeL-WO-HX1"/>
+                <constraint firstAttribute="trailing" secondItem="gFz-P8-PZZ" secondAttribute="trailing" constant="5" id="Mv5-91-uZt"/>
+                <constraint firstItem="AxZ-3R-QFP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="RBv-Ee-gmP"/>
+                <constraint firstAttribute="bottom" secondItem="AxZ-3R-QFP" secondAttribute="bottom" id="WGE-I8-bWr"/>
+                <constraint firstAttribute="trailing" secondItem="bSG-rG-99O" secondAttribute="trailing" id="XfR-zy-DHd"/>
+                <constraint firstAttribute="trailing" secondItem="cMO-W1-ocb" secondAttribute="trailing" id="Yhj-t1-C55"/>
+                <constraint firstItem="cMO-W1-ocb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="dbG-m9-xb0"/>
+                <constraint firstItem="AxZ-3R-QFP" firstAttribute="top" secondItem="gFz-P8-PZZ" secondAttribute="bottom" constant="18" id="iSe-Ol-SMS"/>
+                <constraint firstItem="VbD-fk-IXG" firstAttribute="top" secondItem="BMF-we-Lrt" secondAttribute="bottom" constant="42" id="niT-du-2S8"/>
+                <constraint firstAttribute="trailing" secondItem="AxZ-3R-QFP" secondAttribute="trailing" id="qmP-lc-9s7"/>
+                <constraint firstItem="gFz-P8-PZZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="v07-Jr-s6W"/>
+            </constraints>
+            <size key="customSize" width="115" height="146"/>
+            <connections>
+                <outlet property="subBtn" destination="AxZ-3R-QFP" id="uLW-Yv-ooW"/>
+                <outlet property="subDeleteBtn" destination="BMF-we-Lrt" id="5Qn-rf-cw0"/>
+                <outlet property="subEditBtn" destination="VbD-fk-IXG" id="v5Z-XO-tEY"/>
+                <outlet property="subImageView" destination="gFz-P8-PZZ" id="NCY-QI-V5D"/>
+                <outlet property="subLabel" destination="bSG-rG-99O" id="RCa-SN-fnM"/>
+                <outlet property="subLabel_1" destination="cMO-W1-ocb" id="cWc-sc-sfR"/>
+            </connections>
+            <point key="canvasLocation" x="177.536231884058" y="157.70089285714286"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="product_icon_delete_nol" width="22" height="22"/>
+        <image name="watch_img_05" width="102" height="102"/>
+    </resources>
+</document>

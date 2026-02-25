@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="WATCH_CELL" id="iN0-l3-epB" customClass="DeviceCell">
+            <rect key="frame" x="0.0" y="0.0" width="371" height="113"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="odW-7J-FdF">
+                    <rect key="frame" x="10" y="8" width="351" height="97"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_watch_54_2" translatesAutoresizingMaskIntoConstraints="NO" id="JrK-RS-FxP">
+                            <rect key="frame" x="8" y="9" width="60" height="80"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="60" id="fMp-cs-kCj"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JieLi Watch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qLU-Tp-XWe">
+                            <rect key="frame" x="76" y="38" width="180" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="lV6-ff-ZxZ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mPU-7K-dNL">
+                            <rect key="frame" x="247" y="33.5" width="89" height="30"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="eNX-fa-WD9"/>
+                                <constraint firstAttribute="width" constant="89" id="pWZ-BJ-DOs"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="连接">
+                                <color key="titleColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="btnConnect:" destination="iN0-l3-epB" eventType="touchUpInside" id="M09-bU-i9V"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="mPU-7K-dNL" firstAttribute="leading" secondItem="qLU-Tp-XWe" secondAttribute="trailing" constant="-9" id="3ef-a9-U6b"/>
+                        <constraint firstItem="mPU-7K-dNL" firstAttribute="centerY" secondItem="odW-7J-FdF" secondAttribute="centerY" id="AFO-O0-UEK"/>
+                        <constraint firstItem="qLU-Tp-XWe" firstAttribute="centerY" secondItem="odW-7J-FdF" secondAttribute="centerY" id="EKA-P4-gol"/>
+                        <constraint firstItem="JrK-RS-FxP" firstAttribute="leading" secondItem="odW-7J-FdF" secondAttribute="leading" constant="8" id="HQK-no-FQB"/>
+                        <constraint firstAttribute="trailing" secondItem="mPU-7K-dNL" secondAttribute="trailing" constant="15" id="Jo9-ZN-TFp"/>
+                        <constraint firstAttribute="bottom" secondItem="JrK-RS-FxP" secondAttribute="bottom" constant="8" id="dKY-pJ-177"/>
+                        <constraint firstItem="qLU-Tp-XWe" firstAttribute="leading" secondItem="JrK-RS-FxP" secondAttribute="trailing" constant="8" symbolic="YES" id="fYz-PL-ApJ"/>
+                        <constraint firstItem="JrK-RS-FxP" firstAttribute="top" secondItem="odW-7J-FdF" secondAttribute="top" constant="9" id="xYl-vM-45e"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="odW-7J-FdF" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="FJu-m6-Js2"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="odW-7J-FdF" secondAttribute="trailing" constant="10" id="I6A-NT-c67"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="odW-7J-FdF" secondAttribute="bottom" constant="8" id="pBP-UV-Oec"/>
+                <constraint firstItem="odW-7J-FdF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="pco-In-80v"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="btnConnect" destination="mPU-7K-dNL" id="UyC-5c-FIm"/>
+                <outlet property="subBgView" destination="odW-7J-FdF" id="RWR-A5-Pdv"/>
+                <outlet property="subImageView" destination="JrK-RS-FxP" id="mTa-0k-SZc"/>
+                <outlet property="subLabel" destination="qLU-Tp-XWe" id="VVx-Ik-CGc"/>
+            </connections>
+            <point key="canvasLocation" x="110.86956521739131" y="-141.62946428571428"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="img_watch_54_2" width="54" height="54"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

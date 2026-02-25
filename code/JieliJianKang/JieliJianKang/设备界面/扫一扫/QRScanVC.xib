@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QRScanVC">
+            <connections>
+                <outlet property="backBtn" destination="og9-ob-ppC" id="odZ-bN-Sok"/>
+                <outlet property="subTitleView" destination="ivC-xc-79S" id="9ai-Gu-C90"/>
+                <outlet property="titleHeight" destination="BIG-9p-QLc" id="lJG-oX-Zhn"/>
+                <outlet property="titleName" destination="stV-Sx-W3Y" id="O7G-eC-gAI"/>
+                <outlet property="view" destination="Iv4-aS-KPM" id="Mrg-a6-IJ5"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Iv4-aS-KPM">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ivC-xc-79S">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="扫描二维码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="stV-Sx-W3Y">
+                            <rect key="frame" x="161" y="80" width="92" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="lAI-YA-Aal"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="og9-ob-ppC">
+                            <rect key="frame" x="8" y="85" width="67" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="67" id="1zr-3f-QYp"/>
+                                <constraint firstAttribute="height" constant="35" id="LVT-Zl-ObM"/>
+                            </constraints>
+                            <state key="normal" image="icon_return_nol_white"/>
+                            <connections>
+                                <action selector="backAction:" destination="-1" eventType="touchUpInside" id="b5r-VV-baa"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="og9-ob-ppC" firstAttribute="leading" secondItem="ivC-xc-79S" secondAttribute="leading" constant="8" id="6LS-z9-FgR"/>
+                        <constraint firstItem="stV-Sx-W3Y" firstAttribute="centerX" secondItem="ivC-xc-79S" secondAttribute="centerX" id="8WT-Ki-Hjf"/>
+                        <constraint firstAttribute="height" constant="130" id="BIG-9p-QLc"/>
+                        <constraint firstAttribute="bottom" secondItem="stV-Sx-W3Y" secondAttribute="bottom" constant="15" id="Utg-yx-mwe"/>
+                        <constraint firstAttribute="bottom" secondItem="og9-ob-ppC" secondAttribute="bottom" constant="10" id="oX0-S1-aY6"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="ivC-xc-79S" firstAttribute="leading" secondItem="Iv4-aS-KPM" secondAttribute="leading" id="SyF-hr-urf"/>
+                <constraint firstItem="ivC-xc-79S" firstAttribute="top" secondItem="Iv4-aS-KPM" secondAttribute="top" id="ZXy-ZH-G48"/>
+                <constraint firstAttribute="trailing" secondItem="ivC-xc-79S" secondAttribute="trailing" id="oyr-Er-rbA"/>
+            </constraints>
+            <point key="canvasLocation" x="2.8985507246376816" y="-92.410714285714278"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_return_nol_white" width="28" height="28"/>
+    </resources>
+</document>

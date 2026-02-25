@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LocalMusicVC">
+            <connections>
+                <outlet property="backBtn" destination="zGo-Xc-jI6" id="eWB-uY-Xq8"/>
+                <outlet property="cancelBtn" destination="sBY-4f-qn4" id="Xb7-Yx-5xG"/>
+                <outlet property="selectAllBtn" destination="s91-y8-IoA" id="j2W-wV-rVY"/>
+                <outlet property="subTitle" destination="e9Q-wF-Jkm" id="fWM-Dv-76a"/>
+                <outlet property="subTitleView" destination="jcN-EE-soh" id="J6r-Dc-Uoe"/>
+                <outlet property="titleHeight" destination="BPF-Ab-PbH" id="bDH-z6-6SB"/>
+                <outlet property="view" destination="Mct-tu-a8S" id="YW1-p3-jrb"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Mct-tu-a8S">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jcN-EE-soh">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="音乐管理" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9Q-wF-Jkm">
+                            <rect key="frame" x="170.5" y="58.5" width="73.5" height="21.5"/>
+                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
+                            <color key="textColor" red="0.14116021989999999" green="0.14118680359999999" blue="0.14115440849999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zGo-Xc-jI6">
+                            <rect key="frame" x="16" y="52" width="28" height="28"/>
+                            <state key="normal" image="icon_return_nol"/>
+                            <connections>
+                                <action selector="actionExitAction:" destination="-1" eventType="touchUpInside" id="BgH-lf-nac"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sBY-4f-qn4">
+                            <rect key="frame" x="374" y="56" width="24" height="24"/>
+                            <state key="normal" image="icon_choose3_nol">
+                                <color key="titleColor" systemColor="labelColor"/>
+                            </state>
+                            <connections>
+                                <action selector="cancelBtn:" destination="-1" eventType="touchUpInside" id="HPl-jp-UHi"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s91-y8-IoA">
+                            <rect key="frame" x="374" y="56" width="24" height="24"/>
+                            <state key="normal" image="icon_choose3_sel">
+                                <color key="titleColor" systemColor="labelColor"/>
+                            </state>
+                            <connections>
+                                <action selector="selectAllBtn:" destination="-1" eventType="touchUpInside" id="cz8-Vl-ScP"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="sBY-4f-qn4" secondAttribute="trailing" constant="16" id="AEF-tp-JoD"/>
+                        <constraint firstAttribute="height" constant="88" id="BPF-Ab-PbH"/>
+                        <constraint firstAttribute="bottom" secondItem="sBY-4f-qn4" secondAttribute="bottom" constant="8" id="Ne3-Yc-6eB"/>
+                        <constraint firstAttribute="bottom" secondItem="zGo-Xc-jI6" secondAttribute="bottom" constant="8" id="Uov-Ds-kYS"/>
+                        <constraint firstAttribute="bottom" secondItem="e9Q-wF-Jkm" secondAttribute="bottom" constant="8" id="mg3-pg-Q2f"/>
+                        <constraint firstAttribute="trailing" secondItem="s91-y8-IoA" secondAttribute="trailing" constant="16" id="o8x-xD-k6y"/>
+                        <constraint firstAttribute="bottom" secondItem="s91-y8-IoA" secondAttribute="bottom" constant="8" id="oKU-u6-y8u"/>
+                        <constraint firstItem="zGo-Xc-jI6" firstAttribute="leading" secondItem="jcN-EE-soh" secondAttribute="leading" constant="16" id="vLi-yj-J9c"/>
+                        <constraint firstItem="e9Q-wF-Jkm" firstAttribute="centerX" secondItem="jcN-EE-soh" secondAttribute="centerX" id="y07-yA-Vfk"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="jcN-EE-soh" firstAttribute="top" secondItem="Mct-tu-a8S" secondAttribute="top" id="4MC-aV-Cq6"/>
+                <constraint firstAttribute="trailing" secondItem="jcN-EE-soh" secondAttribute="trailing" id="Wl7-qm-ZHc"/>
+                <constraint firstItem="jcN-EE-soh" firstAttribute="leading" secondItem="Mct-tu-a8S" secondAttribute="leading" id="fBb-xQ-Ei9"/>
+            </constraints>
+            <point key="canvasLocation" x="2.8985507246376816" y="-92.410714285714278"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_choose3_nol" width="24" height="24"/>
+        <image name="icon_choose3_sel" width="24" height="24"/>
+        <image name="icon_return_nol" width="28" height="28"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

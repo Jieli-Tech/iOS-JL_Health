@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BtCallViewController">
+            <connections>
+                <outlet property="contentLab" destination="omo-nB-eYL" id="Zpu-fz-9Ij"/>
+                <outlet property="headTitleHeight" destination="R3h-Nl-fmD" id="B8a-CW-HX9"/>
+                <outlet property="secondTitleLab" destination="g4f-xr-phE" id="Qvq-KZ-u9v"/>
+                <outlet property="titleLab" destination="mn9-KN-UDc" id="7yJ-9t-tbd"/>
+                <outlet property="toSettingBtn" destination="pWb-4S-7OK" id="mA7-rj-VeZ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G4X-fa-OHd">
+                    <rect key="frame" x="0.0" y="0.0" width="390" height="100"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手表蓝牙通话" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mn9-KN-UDc">
+                            <rect key="frame" x="80" y="64" width="302" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="302" id="Fk5-hf-j1w"/>
+                                <constraint firstAttribute="height" constant="21" id="k0q-9J-fpJ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="080-HP-So4">
+                            <rect key="frame" x="8" y="51" width="60" height="46"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="46" id="Ous-b7-5Zh"/>
+                                <constraint firstAttribute="width" constant="60" id="jR9-YE-CKE"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" image="icon_return_nol" title=""/>
+                            <connections>
+                                <action selector="backBtnAction:" destination="-1" eventType="touchUpInside" id="oaM-23-fpI"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="mn9-KN-UDc" secondAttribute="bottom" constant="15" id="EKU-e1-h0r"/>
+                        <constraint firstItem="mn9-KN-UDc" firstAttribute="centerX" secondItem="G4X-fa-OHd" secondAttribute="centerX" constant="36" id="KMo-lI-TEs"/>
+                        <constraint firstAttribute="height" constant="100" id="R3h-Nl-fmD"/>
+                        <constraint firstItem="080-HP-So4" firstAttribute="leading" secondItem="G4X-fa-OHd" secondAttribute="leading" constant="8" id="Yzx-jz-EvU"/>
+                        <constraint firstAttribute="bottom" secondItem="080-HP-So4" secondAttribute="bottom" constant="3" id="bMA-gi-LSI"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手表蓝牙通话设置" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4f-xr-phE">
+                    <rect key="frame" x="16" y="125" width="358" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="358" id="Cgv-87-Ztz"/>
+                        <constraint firstAttribute="height" constant="24" id="tgG-df-BLJ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="在&quot;设置&quot;&gt;&quot;蓝牙&quot;中选择设备进行连接，连接正常后即可正常使用部分手表功能" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="omo-nB-eYL">
+                    <rect key="frame" x="40" y="157" width="310" height="36"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.56856948139999997" green="0.56866812710000003" blue="0.56855648759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pWb-4S-7OK">
+                    <rect key="frame" x="18" y="727" width="354" height="48"/>
+                    <color key="backgroundColor" red="0.50199198720000004" green="0.3555004001" blue="0.9223832488" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="7Ar-lA-wFj"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="去设置">
+                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="toSettingBtnAction:" destination="-1" eventType="touchUpInside" id="XE3-6T-54L"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="G4X-fa-OHd" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="4f7-vS-KOW"/>
+                <constraint firstItem="pWb-4S-7OK" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="18" id="8to-kh-8Qo"/>
+                <constraint firstItem="omo-nB-eYL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="9SR-wg-FZD"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="pWb-4S-7OK" secondAttribute="bottom" constant="35" id="HLD-Ac-5eV"/>
+                <constraint firstItem="omo-nB-eYL" firstAttribute="top" secondItem="g4f-xr-phE" secondAttribute="bottom" constant="8" id="hVw-RU-Wtf"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="pWb-4S-7OK" secondAttribute="trailing" constant="18" id="jcZ-Fm-Dg0"/>
+                <constraint firstItem="G4X-fa-OHd" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="lgm-wh-zzN"/>
+                <constraint firstItem="g4f-xr-phE" firstAttribute="top" secondItem="G4X-fa-OHd" secondAttribute="bottom" constant="25" id="qqi-Ie-oij"/>
+                <constraint firstItem="g4f-xr-phE" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="sT0-NJ-xf1"/>
+                <constraint firstItem="G4X-fa-OHd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="wDs-h2-YX3"/>
+                <constraint firstAttribute="trailing" secondItem="omo-nB-eYL" secondAttribute="trailing" constant="40" id="wa3-Au-jWP"/>
+            </constraints>
+            <point key="canvasLocation" x="-58.46153846153846" y="83.886255924170612"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_return_nol" width="28" height="28"/>
+    </resources>
+</document>

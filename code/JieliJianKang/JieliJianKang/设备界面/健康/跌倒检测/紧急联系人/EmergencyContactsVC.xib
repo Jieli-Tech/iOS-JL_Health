@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EmergencyContactsVC">
+            <connections>
+                <outlet property="backBtn" destination="JBH-NU-B2b" id="FGh-aH-mAB"/>
+                <outlet property="headView" destination="B2h-fQ-8Gw" id="R6u-Zg-YaC"/>
+                <outlet property="titleHeight" destination="sSA-oj-c2H" id="c6y-EE-byC"/>
+                <outlet property="titleName" destination="Q06-Jd-O9L" id="LZH-St-srt"/>
+                <outlet property="view" destination="B4a-So-4fS" id="5sP-qN-1Uh"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="B4a-So-4fS">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B2h-fQ-8Gw">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="紧急联系人" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q06-Jd-O9L">
+                            <rect key="frame" x="161" y="96.5" width="92" height="21.5"/>
+                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
+                            <color key="textColor" red="0.14116021989999999" green="0.14118680359999999" blue="0.14115440849999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JBH-NU-B2b">
+                            <rect key="frame" x="8" y="84" width="67" height="36"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="36" id="AHv-UJ-zNa"/>
+                                <constraint firstAttribute="width" constant="67" id="ll9-0w-TzQ"/>
+                            </constraints>
+                            <state key="normal" image="icon_return_nol"/>
+                            <connections>
+                                <action selector="exitAction:" destination="-1" eventType="touchUpInside" id="Qbj-M9-KHt"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Q06-Jd-O9L" secondAttribute="bottom" constant="12" id="EkG-I6-NPs"/>
+                        <constraint firstItem="Q06-Jd-O9L" firstAttribute="centerX" secondItem="B2h-fQ-8Gw" secondAttribute="centerX" id="Rzh-gZ-seJ"/>
+                        <constraint firstAttribute="bottom" secondItem="JBH-NU-B2b" secondAttribute="bottom" constant="10" id="YdU-8t-wWu"/>
+                        <constraint firstItem="JBH-NU-B2b" firstAttribute="leading" secondItem="B2h-fQ-8Gw" secondAttribute="leading" constant="8" id="eyt-Fu-V23"/>
+                        <constraint firstAttribute="height" constant="130" id="sSA-oj-c2H"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="B2h-fQ-8Gw" firstAttribute="top" secondItem="B4a-So-4fS" secondAttribute="top" id="CPG-8a-5rr"/>
+                <constraint firstAttribute="trailing" secondItem="B2h-fQ-8Gw" secondAttribute="trailing" id="SP1-Y5-rEZ"/>
+                <constraint firstItem="B2h-fQ-8Gw" firstAttribute="leading" secondItem="B4a-So-4fS" secondAttribute="leading" id="rJA-Kp-1q7"/>
+            </constraints>
+            <point key="canvasLocation" x="2.8985507246376816" y="-92.410714285714278"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_return_nol" width="28" height="28"/>
+    </resources>
+</document>

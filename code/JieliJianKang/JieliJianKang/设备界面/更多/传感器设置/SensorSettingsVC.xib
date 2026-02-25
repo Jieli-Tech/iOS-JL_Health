@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SensorSettingsVC">
+            <connections>
+                <outlet property="backBtn" destination="AVl-lO-eHc" id="Nj5-9n-DkR"/>
+                <outlet property="subTitleView" destination="rGA-gt-aqo" id="ICR-HK-fKL"/>
+                <outlet property="titleHeight" destination="TyR-SL-okg" id="TbO-MC-qRU"/>
+                <outlet property="titleName" destination="60c-zj-pt1" id="cRo-6G-4mi"/>
+                <outlet property="view" destination="5h6-ex-GkD" id="hEV-WX-IfB"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="5h6-ex-GkD">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rGA-gt-aqo">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="传感器设置" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60c-zj-pt1">
+                            <rect key="frame" x="161" y="93.5" width="92" height="21.5"/>
+                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
+                            <color key="textColor" red="0.14116021989999999" green="0.14118680359999999" blue="0.14115440849999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AVl-lO-eHc">
+                            <rect key="frame" x="8" y="85" width="67" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="fdA-5z-HBN"/>
+                                <constraint firstAttribute="width" constant="67" id="wxB-D8-lg5"/>
+                            </constraints>
+                            <state key="normal" image="icon_return_nol"/>
+                            <connections>
+                                <action selector="backExit:" destination="-1" eventType="touchUpInside" id="uTC-BP-qGW"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="60c-zj-pt1" secondAttribute="bottom" constant="15" id="21W-5v-rsT"/>
+                        <constraint firstItem="60c-zj-pt1" firstAttribute="centerX" secondItem="rGA-gt-aqo" secondAttribute="centerX" id="8G1-eJ-4Jg"/>
+                        <constraint firstAttribute="height" constant="130" id="TyR-SL-okg"/>
+                        <constraint firstItem="AVl-lO-eHc" firstAttribute="leading" secondItem="rGA-gt-aqo" secondAttribute="leading" constant="8" id="hIr-W2-nrr"/>
+                        <constraint firstAttribute="bottom" secondItem="AVl-lO-eHc" secondAttribute="bottom" constant="10" id="jbx-nL-yJQ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="rGA-gt-aqo" secondAttribute="trailing" id="JR3-oX-E36"/>
+                <constraint firstItem="rGA-gt-aqo" firstAttribute="top" secondItem="5h6-ex-GkD" secondAttribute="top" id="KTz-EG-keS"/>
+                <constraint firstItem="rGA-gt-aqo" firstAttribute="leading" secondItem="5h6-ex-GkD" secondAttribute="leading" id="SeW-k2-Lql"/>
+            </constraints>
+            <point key="canvasLocation" x="2.8985507246376816" y="-92.410714285714278"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_return_nol" width="28" height="28"/>
+    </resources>
+</document>
