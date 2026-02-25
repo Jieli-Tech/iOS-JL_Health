@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RenameVC">
+            <connections>
+                <outlet property="cancelBtn" destination="9a5-mn-neM" id="NvX-Zy-szy"/>
+                <outlet property="saveBtn" destination="tOy-GZ-oZa" id="nCj-aU-PBM"/>
+                <outlet property="subTitleView" destination="Lp3-8M-r0F" id="krT-mo-XyA"/>
+                <outlet property="titleHeight" destination="ylO-Am-ROa" id="UBZ-ve-NiQ"/>
+                <outlet property="titleName" destination="tzf-PT-Dna" id="Sgx-3Z-FbE"/>
+                <outlet property="view" destination="QfW-46-zdn" id="fdj-Gv-YvC"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="QfW-46-zdn">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lp3-8M-r0F">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵称" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzf-PT-Dna">
+                            <rect key="frame" x="188.5" y="80" width="37" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="NqN-PS-5bJ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
+                            <color key="textColor" red="0.14116021989999999" green="0.14118680359999999" blue="0.14115440849999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9a5-mn-neM">
+                            <rect key="frame" x="8" y="80" width="37" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="v0M-7G-O3l"/>
+                            </constraints>
+                            <state key="normal" title="取消">
+                                <color key="titleColor" red="0.2253666818" green="0.54563492540000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="cancelBtn:" destination="-1" eventType="touchUpInside" id="PQM-m1-DaE"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tOy-GZ-oZa">
+                            <rect key="frame" x="369" y="80" width="37" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="kT6-K6-KED"/>
+                            </constraints>
+                            <state key="normal" title="保存">
+                                <color key="titleColor" red="0.2253666818" green="0.54563492540000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="saveBtn:" destination="-1" eventType="touchUpInside" id="afl-g8-6uo"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="9a5-mn-neM" firstAttribute="leading" secondItem="Lp3-8M-r0F" secondAttribute="leading" constant="8" id="NMe-fQ-YaX"/>
+                        <constraint firstAttribute="trailing" secondItem="tOy-GZ-oZa" secondAttribute="trailing" constant="8" id="QHF-9I-9DH"/>
+                        <constraint firstAttribute="bottom" secondItem="tOy-GZ-oZa" secondAttribute="bottom" constant="15" id="TAJ-Bu-TEJ"/>
+                        <constraint firstAttribute="bottom" secondItem="9a5-mn-neM" secondAttribute="bottom" constant="15" id="iPv-44-Ive"/>
+                        <constraint firstItem="tzf-PT-Dna" firstAttribute="centerX" secondItem="Lp3-8M-r0F" secondAttribute="centerX" id="kea-td-S3b"/>
+                        <constraint firstAttribute="bottom" secondItem="tzf-PT-Dna" secondAttribute="bottom" constant="15" id="saT-nS-lea"/>
+                        <constraint firstAttribute="height" constant="130" id="ylO-Am-ROa"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Lp3-8M-r0F" firstAttribute="leading" secondItem="QfW-46-zdn" secondAttribute="leading" id="0To-WC-KwW"/>
+                <constraint firstAttribute="trailing" secondItem="Lp3-8M-r0F" secondAttribute="trailing" id="7oI-pF-iIL"/>
+                <constraint firstItem="Lp3-8M-r0F" firstAttribute="top" secondItem="QfW-46-zdn" secondAttribute="top" id="TOa-ff-xqr"/>
+            </constraints>
+            <point key="canvasLocation" x="2.8985507246376816" y="-92.410714285714278"/>
+        </view>
+    </objects>
+</document>
