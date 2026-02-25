@@ -1,0 +1,12 @@
+"CFBundleDisplayName" = "WearLink";
+"NSAppleMusicUsageDescription" = "Live updates aus schönheits-lokal erhalten musikshows und zeigen, ob es erlaubt ist？";
+"NSAppleMediaUsageDescription" = "Einen schönheitswettbewerb gibt es nur, wenn alle apps in deiner medien-bibliothek teilnehmen und die musik Laufen lassen？";
+"NSMotionUsageDescription" = "Einen APP, die nur mit ihrer erlaubnis auf uhren laden kann, ist erlaubt？";
+"NSCameraUsageDescription" = "Einen eigenen programmierten programmierungsbefehl erlauben, ohne jedoch den zugriff auf die kamera zu erlauben？";
+"NSContactsUsageDescription" = "Die App erfordert den zugriff auf die daten ihrer kontakte zu der uhr. Erlaubt ist dies？";
+"NSLocationUsageDescription" = "Ein pp benötigt den zugriff auf die informationen zum synchronisieren Von motorischen daten？";
+"NSLocationWhenInUseUsageDescription" = "Die App erlaubt den zugriff auf ihren standort während ihres betriebs zum synchronisieren Von sportsdaten？";
+"NSLocationAlwaysUsageDescription" = "Die App erfordert den ständigen zugriff auf ihren standort zum synchronisieren Von bewegungsdaten？";
+"NSPhotoLibraryUsageDescription" = "Die App erfordert den zugriff auf ihr fotoalbum und bevorzugt individuelle zifferblätter？";
+"NSBluetoothPeripheralUsageDescription" = "Die apps und geräteinteraktion erlauben den transfer Von bluetooth？";
+"NSBluetoothAlwaysUsageDescription" = "Die meisten apps sind mit bluetooth kompatibel und alleine erlaubt？";

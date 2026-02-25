@@ -1,0 +1,12 @@
+"CFBundleDisplayName" = "WearLink";
+"NSAppleMusicUsageDescription" = "Konsert setempat aplikasi mengakses maklumat muzik anda dan memaparkannya pada aplikasi. Adakah ia dibenarkan？";
+"NSAppleMediaUsageDescription" = "Konsert setempat aplikasi mengakses perpustakaan media anda dan akan memainkan muzik. Anda mahu benarkan？";
+"NSMotionUsageDescription" = "Setuju anda diperlukan untuk APP untuk mengakses sukan dan fitness dipaparkan pada jam. Adakah ia dibenarkan？";
+"NSCameraUsageDescription" = "APP hanya boleh mengakses kamera dengan persetujuan anda, dan suaikan corak panggilan suai jam. Adakah ia dibenarkan？";
+"NSContactsUsageDescription" = "Aplikasi perlu mengakses maklumat kenalan anda dan segerakkannya ke jam anda. Adakah ia dibenarkan？";
+"NSLocationUsageDescription" = "Aplikasi perlu mengakses maklumat lokasi anda untuk menyegerakkan data pergerakan. Anda mahu benarkan？";
+"NSLocationWhenInUseUsageDescription" = "Aplikasi perlu mengakses maklumat lokasi anda untuk menyegerakkan data pergerakan semasa digunakan. Anda mahu benarkan？";
+"NSLocationAlwaysUsageDescription" = "Aplikasi perlu sentiasa mengakses maklumat lokasi anda untuk menyegerakkan data pergerakan, sama ada untuk membenarkan？";
+"NSPhotoLibraryUsageDescription" = "Aplikasi perlu mengakses maklumat album foto anda dan suaikan corak dial suai jam. Adakah ia dibenarkan？";
+"NSBluetoothPeripheralUsageDescription" = "Pemindahan data Bluetooth diperlukan untuk interaksi antara APP dan peranti. Adakah ia dibenarkan？";
+"NSBluetoothAlwaysUsageDescription" = "Pemindahan data Bluetooth sentiasa diperlukan untuk interaksi antara APP dan peranti. Adakah ia dibenarkan？";

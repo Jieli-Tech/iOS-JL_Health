@@ -1,0 +1,12 @@
+"CFBundleDisplayName" = "WearLink";
+"NSAppleMusicUsageDescription" = "Lokalne koncerty aplikacji uzyskują dostęp do informacji muzycznych i są wyświetlane w aplikacji, czy jest to dozwolone？";
+"NSAppleMediaUsageDescription" = "Lokalne koncerty aplikacji uzyskują dostęp do Twojej biblioteki multimediów, będą odtwarzać muzykę, czy to jest dozwolone？";
+"NSMotionUsageDescription" = "Twoja zgoda jest wymagana, aby aplikacja mogła uzyskać dostęp do pokazów sportowych i fitness na zegarku, czy jest to dozwolone？";
+"NSCameraUsageDescription" = "Wymaga Twojej zgody, aby aplikacja mogła uzyskać dostęp do aparatu, niestandardowego wzoru tarczy zegarka, czy jest to dozwolone？";
+"NSContactsUsageDescription" = "Aplikacja musi uzyskać dostęp do informacji kontaktowych i zsynchronizować się z zegarkiem, czy to jest dozwolone？";
+"NSLocationUsageDescription" = "Aplikacja musi uzyskać dostęp do informacji o lokalizacji w celu synchronizacji danych sportowych, czy jest to dozwolone？";
+"NSLocationWhenInUseUsageDescription" = "Aplikacja musi uzyskać dostęp do informacji o lokalizacji w celu synchronizacji danych sportowych podczas użytkowania, czy jest to dozwolone？";
+"NSLocationAlwaysUsageDescription" = "Aplikacja musi zawsze uzyskiwać dostęp do informacji o lokalizacji w celu synchronizacji danych sportowych, czy to jest dozwolone？";
+"NSPhotoLibraryUsageDescription" = "Aplikacja musi uzyskać dostęp do informacji o albumie, dostosować niestandardowy wzór tarczy zegarka, czy jest to dozwolone？";
+"NSBluetoothPeripheralUsageDescription" = "Interakcja między aplikacją a urządzeniem wymaga transmisji danych Bluetooth, czy jest to dozwolone？";
+"NSBluetoothAlwaysUsageDescription" = "Interakcja między aplikacją a urządzeniem zawsze wymaga transmisji danych Bluetooth, czy jest to dozwolone？";

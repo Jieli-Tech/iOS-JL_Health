@@ -1,0 +1,12 @@
+"CFBundleDisplayName" = "WearLink";
+"NSAppleMusicUsageDescription" = "Các buổi hòa nhạc địa phương của ứng dụng truy cập thông tin âm nhạc của bạn và hiển thị trên ứng dụng, cho phép？";
+"NSAppleMediaUsageDescription" = "Các buổi hòa nhạc địa phương của ứng dụng truy cập vào thư viện phương tiện truyền thông của bạn, sẽ phát nhạc, cho phép？";
+"NSMotionUsageDescription" = "Cần sự đồng ý của bạn, APP mới có thể truy cập vào thể thao và thể dục thể thao trên đồng hồ, có cho phép hay không？";
+"NSCameraUsageDescription" = "Yêu cầu sự đồng ý của bạn, APP có thể truy cập vào máy ảnh, tùy chỉnh mẫu quay số tùy chỉnh của đồng hồ, cho dù được phép？";
+"NSContactsUsageDescription" = "Ứng dụng cần truy cập thông tin liên lạc của bạn để đồng bộ hóa với đồng hồ, cho phép？";
+"NSLocationUsageDescription" = "Ứng dụng cần truy cập thông tin vị trí của bạn để đồng bộ hóa dữ liệu chuyển động, cho phép？";
+"NSLocationWhenInUseUsageDescription" = "Ứng dụng cần truy cập thông tin vị trí của bạn trong quá trình sử dụng để đồng bộ hóa dữ liệu chuyển động, cho phép？";
+"NSLocationAlwaysUsageDescription" = "Ứng dụng cần luôn truy cập thông tin vị trí của bạn để đồng bộ hóa dữ liệu chuyển động, cho phép？";
+"NSPhotoLibraryUsageDescription" = "Ứng dụng cần truy cập thông tin album của bạn, mẫu quay số tùy chỉnh của đồng hồ tùy chỉnh, cho phép？";
+"NSBluetoothPeripheralUsageDescription" = "APP và thiết bị tương tác cần sử dụng truyền dữ liệu Bluetooth, cho phép？";
+"NSBluetoothAlwaysUsageDescription" = "Tương tác giữa APP và thiết bị luôn cần sử dụng truyền dữ liệu Bluetooth, cho phép？";

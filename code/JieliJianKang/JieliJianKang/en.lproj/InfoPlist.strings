@@ -1,0 +1,12 @@
+"CFBundleDisplayName" = "WearLink";
+"NSAppleMusicUsageDescription" = "Do you allow the App's local concerts to access your music information for showing music information?";
+"NSAppleMediaUsageDescription" = "Do you allow the App's local music to access your media library for playing music?";
+"NSMotionUsageDescription" = "The app requires your consent to access sports and fitness and display it on your watch, Do you allow it?";
+"NSCameraUsageDescription" = "App will access your Camera to create a custom dial background, Do you allow it?";
+"NSContactsUsageDescription" = "App will synchronize the address book to the watch, Do you allow it?";
+"NSLocationUsageDescription" = "App needs sync the location information to watch for Motion data, Do you allow it?";
+"NSLocationWhenInUseUsageDescription" = "App needs sync the location information to watch for Motion data, Do you allow it?";
+"NSLocationAlwaysUsageDescription" = "App needs sync the location information to watch for Motion data, Do you allow it?";
+"NSPhotoLibraryUsageDescription" = "App will access your album to create a custom dial background, Do you allow it?";
+"NSBluetoothPeripheralUsageDescription" = "Do you allow the APP always read data form watch using Bluetooth in the background?";
+"NSBluetoothAlwaysUsageDescription" = "App will use Bluetooth to read information form watch，Do you allow it?";

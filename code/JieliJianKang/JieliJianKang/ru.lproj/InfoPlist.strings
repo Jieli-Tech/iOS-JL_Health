@@ -1,0 +1,12 @@
+"CFBundleDisplayName" = "WearLink";
+"NSAppleMusicUsageDescription" = " локальный концерт App доступен для получения информации о вашей музыке и показ в APP, разрешено ли？";
+"NSAppleMediaUsageDescription" = "локальный концерт App доступен в хранилище медиа, будет воспроизвести музыку, будет ли разрешено？";
+"NSMotionUsageDescription" = "необходимо ваше согласие, APP может получить доступ к спорту и фитнес на часы？";
+"NSCameraUsageDescription" = "необходимо ваше согласие, APP может получить доступ к фотоаппарату, настраивать часы на собственные таблоиды, разрешено ли？";
+"NSContactsUsageDescription" = "App требует доступ к информации о ваших контактах для синхронизации с часами？";
+"NSLocationUsageDescription" = "App должен получить доступ к информации о вашем положении для синхронизации данных о движении？";
+"NSLocationWhenInUseUsageDescription" = "App требует доступа к информации о вашем местоположении во время использования для синхронизации данных о движении？";
+"NSLocationAlwaysUsageDescription" = "App требует постоянного доступа к информации о местоположении для синхронизации данных о движении？";
+"NSPhotoLibraryUsageDescription" = "App должен получить доступ к информации о альбоме, настраивать часы на собственные таблоиды？";
+"NSBluetoothPeripheralUsageDescription" = "взаимодействие APP с устройством требует передачи данных Bluetooth？";
+"NSBluetoothAlwaysUsageDescription" = "взаимодействие APP с устройством всегда требует передачи данных Bluetooth？";

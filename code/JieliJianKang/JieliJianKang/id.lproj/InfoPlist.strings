@@ -1,0 +1,12 @@
+"CFBundleDisplayName" = "WearLink";
+"NSAppleMusicUsageDescription" = "Konser lokal aplikasi mengakses informasi musik Anda dan menampilkannya di aplikasi. Apakah ini diizinkan？";
+"NSAppleMediaUsageDescription" = "Konser lokal aplikasi mengakses perpustakaan media Anda dan akan memainkan musik. Apakah Anda ingin mengizinkan？";
+"NSMotionUsageDescription" = "Setuju Anda diperlukan untuk APP untuk mengakses olahraga dan fitness yang dipaparkan di jam tangan.？";
+"NSCameraUsageDescription" = "APP hanya dapat mengakses kamera dengan persetujuan Anda, dan menyesuaikan pola panggilan suai jam. Apakah ini diizinkan？";
+"NSContactsUsageDescription" = "Aplikasi perlu mengakses informasi kontak Anda dan menyegerakannya ke jam tangan Anda. Apakah diperbolehkan？";
+"NSLocationUsageDescription" = "Aplikasi perlu mengakses informasi lokasi Anda untuk menyegerakan data gerakan. Apakah Anda ingin mengizinkan？";
+"NSLocationWhenInUseUsageDescription" = "Aplikasi perlu mengakses informasi lokasi Anda untuk sinkronisasi data gerakan selama penggunaan. Apakah Anda ingin mengizinkan？";
+"NSLocationAlwaysUsageDescription" = "Aplikasi perlu selalu mengakses informasi lokasi Anda untuk sinkronisasi data gerakan, apakah untuk mengizinkan？";
+"NSPhotoLibraryUsageDescription" = "Aplikasi perlu mengakses informasi album foto Anda dan menyesuaikan pola panggilan suai jam. Apakah ini diizinkan？";
+"NSBluetoothPeripheralUsageDescription" = "Transmisi data Bluetooth diperlukan untuk interaksi antara APP dan perangkat. Apakah ini diizinkan？";
+"NSBluetoothAlwaysUsageDescription" = "Transmisi data Bluetooth selalu diperlukan untuk interaksi antara APP dan perangkat. Apakah ini diizinkan？";

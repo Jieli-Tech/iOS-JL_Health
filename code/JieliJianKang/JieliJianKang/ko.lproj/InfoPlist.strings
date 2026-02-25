@@ -1,0 +1,12 @@
+"CFBundleDisplayName" = "WearLink";
+"NSAppleMusicUsageDescription" = "앱의 로컬 콘서트에 대한 음악 정보를 앱에서 볼 수 있도록 합니다. 허용 여부?";
+"NSAppleMediaUsageDescription" = "app의 로컬 콘서트는 미디어 라이브러리에 액세스할 때 음악이 재생됩니다?";
+"NSMotionUsageDescription" = "귀하의 동의가 있어야 app에서 시계에 표시되는 스포츠 및 피트니스 시계의 허용 여부에 액세스할 수 있습니다?";
+"NSCameraUsageDescription" = "app는 귀하의 동의가 있어야만 카메라, 사용자 정의 시계의 다이얼 패턴에 액세스할 수 있습니다. 허용 여부입니다?";
+"NSContactsUsageDescription" = "앱에서 연락처 정보를 시계에 동기화하기 위해 방문해야 합니다. 허용 여부?";
+"NSLocationUsageDescription" = "앱에서 동기화 모션 데이터를 위해 위치 정보에 접근해야 합니다. 허용할지 여부입니다?";
+"NSLocationWhenInUseUsageDescription" = "앱에서 동작 데이터를 동기화하기 위해 사용 중 위치 정보에 접근해야 합니다. 허용할지 여부입니다?";
+"NSLocationAlwaysUsageDescription" = "app는 모션 데이터를 동기화하기 위해 위치 정보에 항상 접근해야 합니다. 허용할지 여부입니다?";
+"NSPhotoLibraryUsageDescription" = "app는 사진첩 정보, 사용자 정의 시계의 맞춤 다이얼 패턴 등에 접근이 필요합니다?";
+"NSBluetoothPeripheralUsageDescription" = "app와 기기 간의 상호 작용을 위해서는 bluetooth 데이터 전송을 사용해야 한다?";
+"NSBluetoothAlwaysUsageDescription" = "app와 기기 간의 상호 작용을 위해서는 항상 bluetooth 데이터 전송이 필요하다?";

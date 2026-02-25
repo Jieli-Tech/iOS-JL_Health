@@ -1,0 +1,12 @@
+"CFBundleDisplayName" = "WearLink";
+"NSAppleMusicUsageDescription" = "Concert local de l’application pour accéder à vos informations de musique, et afficher sur l’application, est autorisé？";
+"NSAppleMediaUsageDescription" = "Concert local de l’application pour accéder à votre médiathèque, jouera de la musique, est autorisé？";
+"NSMotionUsageDescription" = "Votre consentement est nécessaire pour que l’application puisse accéder à l’affichage des sports et de fitness sur la montre. Oui non？";
+"NSCameraUsageDescription" = "Nécessite votre consentement, APP pour accéder à la caméra, personnaliser le modèle de cadran personnalisé de la montre, autoriser ou non？";
+"NSContactsUsageDescription" = "L’application a besoin d’accéder à vos informations de contact pour synchroniser avec la montre, est autorisé？";
+"NSLocationUsageDescription" = "L’application a besoin d’accéder à vos informations de localisation pour synchroniser les données de mouvement, permet？";
+"NSLocationWhenInUseUsageDescription" = "L’application nécessite l’accès à vos informations de localisation pendant l’utilisation pour synchroniser les données de mouvement, est autorisé？";
+"NSLocationAlwaysUsageDescription" = "L’application doit toujours accéder à vos informations de localisation pour synchroniser les données de mouvement, permet？";
+"NSPhotoLibraryUsageDescription" = "L’application a besoin d’accéder aux informations de votre album photo, personnaliser le modèle de cadran personnalisé de la montre, permettre？";
+"NSBluetoothPeripheralUsageDescription" = "L’application et le dispositif doivent interagir avec la transmission de données bluetooth, permet？";
+"NSBluetoothAlwaysUsageDescription" = "L’application doit toujours utiliser la transmission de données bluetooth pour interagir avec l’appareil, permet？";

@@ -1,0 +1,12 @@
+"CFBundleDisplayName" = "WearLink";
+"NSAppleMusicUsageDescription" = "Il concerto locale dell’app visita il tuo messaggio musicale e lo mostra sull’app, se è permesso？";
+"NSAppleMediaUsageDescription" = "Un concerto locale dell’app va al tuo medium e suona musica, è permesso o no？";
+"NSMotionUsageDescription" = "È necessario il vostro consenso perché l’app possa avere accesso agli sport e alla forma esibita sugli orologi？";
+"NSCameraUsageDescription" = "È necessario il vostro consenso perché l’app possa accedere alle fotocamere e perché siano consentiti gli schemi dei quadranti autodefiniti degli orologi？";
+"NSContactsUsageDescription" = "L’app richiede che le informazioni relative alla persona da contattare siano sincronizzati con quelle relative alla persona da contattare e siano o meno consentite？";
+"NSLocationUsageDescription" = "L’app richiede che le informazioni relative alla posizione siano utilizzate per sincronizzare i dati relativi ai movimenti, e siano o meno consentite？";
+"NSLocationWhenInUseUsageDescription" = "L’app richiede che, durante l’uso, le informazioni relative alla posizione siano utilizzate per sincronizzare i dati relativi ai movimenti e siano o meno consentite？";
+"NSLocationAlwaysUsageDescription" = "L’app richiede che le informazioni relative alla posizione siano sempre utilizzate per sincronizzare i dati relativi ai movimenti, e che siano consentite o meno？";
+"NSPhotoLibraryUsageDescription" = "L’app richiede di poter accedere alle informazioni contenute nel album di foto e di poter personalizzare i disegni dei quadranti autodefiniti degli orologi？";
+"NSBluetoothPeripheralUsageDescription" = "APP e dispositivi devono essere utilizzati per il trasferimento di dati bluoth, e sono consentiti？";
+"NSBluetoothAlwaysUsageDescription" = "APP e dispositivi devono sempre essere utilizzati per il trasferimento di dati blue tooth e sono consentiti？";

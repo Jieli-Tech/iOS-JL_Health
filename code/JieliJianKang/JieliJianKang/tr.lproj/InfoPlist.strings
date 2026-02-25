@@ -1,0 +1,12 @@
+"CFBundleDisplayName" = "WearLink";
+"NSAppleMusicUsageDescription" = "Uygulamalarının yerel konseri müzik bilgilerinize erişir ve uygulama üzerinde gösterir. İzin verildi mi？";
+"NSAppleMediaUsageDescription" = "Uygulamaların yerel konseri medya kütüphanesinize erişir ve müzik çalacak. İzin vermek ister misiniz？";
+"NSMotionUsageDescription" = "APP'nin seyrede gösterilen spor ve uyumluluk için kabul etmeniz gerekiyor. İzin verildi mi？";
+"NSCameraUsageDescription" = "APP sadece kabul ettiğiniz için kamera erişebilir ve saatin özelleştirilmiş arama örneğini özelleştirebilir. İzin verildi mi？";
+"NSContactsUsageDescription" = "Uygulama bağlantı bilgilerinize erişip saatinize eşitlenmesi gerekiyor. İzin verildi mi？";
+"NSLocationUsageDescription" = "Uygulama hareket verilerini eşitlemek için yer bilgilerinize erişime ihtiyacı var. İzin vermek ister misiniz？";
+"NSLocationWhenInUseUsageDescription" = "Uygulama kullanıldığında hareket verilerini eşitlemek için yer bilgilerinize erişmesi gerekiyor. İzin vermek ister misiniz？";
+"NSLocationAlwaysUsageDescription" = "Uygulama sürekli hareket verilerini eşitlemek için yer bilgilerinize erişmek istiyor, izin verilmeyecek mi？";
+"NSPhotoLibraryUsageDescription" = "Uygulama fotoğraf albümünüzün bilgilerine erişip saatin özelleştirilmiş arama örneğini özelleştirmesi gerekiyor. İzin verildi mi？";
+"NSBluetoothPeripheralUsageDescription" = "Bluetooth veri iletişimi APP ile aygıt arasındaki etkileşim için gerekli. İzin verildi mi？";
+"NSBluetoothAlwaysUsageDescription" = "Bluetooth veri iletişimi hep APP ile aygıt arasındaki etkileşim için gerekli. İzin verildi mi？";

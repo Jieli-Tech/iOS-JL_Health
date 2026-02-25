@@ -1,0 +1,12 @@
+"CFBundleDisplayName" = "WearLink";
+"NSAppleMusicUsageDescription" = "Appens lokala konsert får tillgång till din musikinformation och visas på appen, är det tillåtet?";
+"NSAppleMediaUsageDescription" = "Appens lokala konserter får tillgång till ditt mediebibliotek och kommer att spela musik. Är det tillåtet?";
+"NSMotionUsageDescription" = "Ditt samtycke krävs för att appen ska få tillgång till sport- och fitnessdisplayen på klockan. Är det tillåtet?";
+"NSCameraUsageDescription" = "Ditt samtycke krävs för att APP ska få tillgång till kameror, anpassade urtavla mönster för anpassade klockor, är det tillåtet?";
+"NSContactsUsageDescription" = "Appen måste komma åt din kontaktinformation för att synkronisera med klockan, är det tillåtet?";
+"NSLocationUsageDescription" = "Appen behöver åtkomst till din platsinformation för att synkronisera rörelsedata, är det tillåtet?";
+"NSLocationWhenInUseUsageDescription" = "Appen behöver komma åt din platsinformation under användningen för att synkronisera rörelsedata. Är det tillåtet?";
+"NSLocationAlwaysUsageDescription" = "App behöver alltid åtkomst till din platsinformation för att synkronisera rörelsedata, om det är tillåtet？";
+"NSPhotoLibraryUsageDescription" = "App behöver tillgång till din albuminformation, anpassade urtavla mönster för anpassade klockor, om det är tillåtet？";
+"NSBluetoothPeripheralUsageDescription" = "Appens interaktion med enheten kräver Bluetooth-dataöverföring, är det tillåtet?";
+"NSBluetoothAlwaysUsageDescription" = "Appens interaktion med enheten kräver alltid Bluetooth-dataöverföring, är det tillåtet?";

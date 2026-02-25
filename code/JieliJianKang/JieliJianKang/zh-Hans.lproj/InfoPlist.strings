@@ -1,0 +1,12 @@
+"CFBundleDisplayName" = "宜动健康";
+"NSAppleMusicUsageDescription" = "App的本地音乐会访问到你的音乐信息，并且展示在APP上，是否允许？";
+"NSAppleMediaUsageDescription" = "App的本地音乐会访问到你的媒体库，会播放音乐，是否允许？";
+"NSMotionUsageDescription" = "需要您的同意，APP才能访问运动与健身展示于手表上，是否允许？";
+"NSCameraUsageDescription" = "需要您的同意，APP才能访问相机，定制手表的自定表盘图案，是否允许？";
+"NSContactsUsageDescription" = "App需要访问您的联系人信息同步至手表，是否允许？";
+"NSLocationUsageDescription" = "App需要访问您的位置信息用于同步运动数据，是否允许？";
+"NSLocationWhenInUseUsageDescription" = "App需要在使用期间访问您的位置信息用于同步运动数据，是否允许？";
+"NSLocationAlwaysUsageDescription" = "App需要始终访问您的位置信息用于同步运动数据，是否允许？";
+"NSPhotoLibraryUsageDescription" = "App需要访问您的相册信息，定制手表的自定表盘图案，是否允许？";
+"NSBluetoothPeripheralUsageDescription" = "APP与设备交互需要用到蓝牙数据传输，是否允许？";
+"NSBluetoothAlwaysUsageDescription" = "APP与设备交互始终需要用到蓝牙数据传输，是否允许？";

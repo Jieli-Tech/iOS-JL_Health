@@ -1,0 +1,12 @@
+"CFBundleDisplayName" = "WearLink";
+"NSAppleMusicUsageDescription" = "הקונצרט המקומי של האפליקציה מגיע למידע המוזיקה שלך ומצג אותו באפליקציה. האם זה מותר？";
+"NSAppleMediaUsageDescription" = "הקונצרט המקומי של האפליקציה מגיע לספריית התקשורת שלך וישחק מוזיקה. האם אתה רוצה לאפשר？";
+"NSMotionUsageDescription" = "הסכמתך נדרשת לאפ.פי כדי לגשת לספורט והכישרון המוצג בשעון？";
+"NSCameraUsageDescription" = "APP יכול לגשת למצלמה רק עם הסכמתך, ולהתאים את דפוס החיוג המתאים של השעון. האם זה מותר？";
+"NSContactsUsageDescription" = "אפליקציה צריכה לגשת למידע הקשר שלך ולסינכרן אותו לשעון שלך. האם זה מותר？";
+"NSLocationUsageDescription" = "אפליקציה צריכה לגשת למידע המיקום שלך כדי לסנכרן נתוני תנועה. האם אתה רוצה לאפשר？";
+"NSLocationWhenInUseUsageDescription" = "אפליקציה צריכה לגשת למידע המיקום שלך כדי לסינכרוניזציה של נתוני תנועה בזמן השימוש. האם אתה רוצה לאפשר？";
+"NSLocationAlwaysUsageDescription" = "אפליקציה צריכה תמיד לגשת למידע המיקום שלך כדי לסינכרוניזם נתוני תנועה, אם לאפשר？";
+"NSPhotoLibraryUsageDescription" = "אפליקציה צריכה לגשת למידע של אלבום התמונות שלך ולהתאים את דפוס החיוג המתאים של השעון. האם זה מותר？";
+"NSBluetoothPeripheralUsageDescription" = "משדר נתונים Bluetooth נדרש לאינטראקציה בין APP למתקן. האם זה מותר？";
+"NSBluetoothAlwaysUsageDescription" = "משדר נתונים Bluetooth תמיד נדרש לאינטראקציה בין APP למתקן. האם זה מותר？";
