@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MessageNoticeVC">
+            <connections>
+                <outlet property="backBtn" destination="sgy-kW-zMm" id="xhK-fx-GLF"/>
+                <outlet property="subTitleView" destination="yxK-aA-HWg" id="lo9-hX-8Ql"/>
+                <outlet property="titleHeight" destination="N3k-ga-Bbd" id="fGd-gw-Cr6"/>
+                <outlet property="titleName" destination="yze-8b-KVr" id="pSb-Pu-B6m"/>
+                <outlet property="view" destination="bQU-xR-k7k" id="oMu-bP-1Il"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="bQU-xR-k7k">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yxK-aA-HWg">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账号与安全" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yze-8b-KVr">
+                            <rect key="frame" x="103" y="80" width="269" height="35"/>
+                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
+                            <color key="textColor" red="0.14116021989999999" green="0.14118680359999999" blue="0.14115440849999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sgy-kW-zMm">
+                            <rect key="frame" x="8" y="80" width="67" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="67" id="3af-kR-otO"/>
+                                <constraint firstAttribute="height" constant="40" id="pMW-r8-jmD"/>
+                            </constraints>
+                            <state key="normal" image="icon_return_nol"/>
+                            <connections>
+                                <action selector="backExit:" destination="-1" eventType="touchUpInside" id="vdp-9P-F2C"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="130" id="N3k-ga-Bbd"/>
+                        <constraint firstAttribute="bottom" secondItem="yze-8b-KVr" secondAttribute="bottom" constant="15" id="aEm-7z-lpD"/>
+                        <constraint firstItem="yze-8b-KVr" firstAttribute="top" secondItem="sgy-kW-zMm" secondAttribute="top" id="eD6-R5-Rz3"/>
+                        <constraint firstItem="sgy-kW-zMm" firstAttribute="leading" secondItem="yxK-aA-HWg" secondAttribute="leading" constant="8" id="iof-5d-hCe"/>
+                        <constraint firstAttribute="trailing" secondItem="yze-8b-KVr" secondAttribute="trailing" constant="42" id="ojg-kU-FEt"/>
+                        <constraint firstAttribute="bottom" secondItem="sgy-kW-zMm" secondAttribute="bottom" constant="10" id="uQ0-RA-jr7"/>
+                        <constraint firstItem="yze-8b-KVr" firstAttribute="leading" secondItem="sgy-kW-zMm" secondAttribute="trailing" constant="28" id="zLt-vI-6AV"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="yxK-aA-HWg" firstAttribute="top" secondItem="bQU-xR-k7k" secondAttribute="top" id="7BS-qZ-BZj"/>
+                <constraint firstAttribute="trailing" secondItem="yxK-aA-HWg" secondAttribute="trailing" id="OEb-i1-VGk"/>
+                <constraint firstItem="yxK-aA-HWg" firstAttribute="leading" secondItem="bQU-xR-k7k" secondAttribute="leading" id="dqb-r0-4zY"/>
+            </constraints>
+            <point key="canvasLocation" x="2.8985507246376816" y="-92.410714285714278"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_return_nol" width="28" height="28"/>
+    </resources>
+</document>

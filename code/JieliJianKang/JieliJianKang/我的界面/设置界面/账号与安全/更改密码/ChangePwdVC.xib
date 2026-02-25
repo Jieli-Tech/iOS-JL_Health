@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChangePwdVC">
+            <connections>
+                <outlet property="backBtn" destination="nQ1-RW-fpb" id="zND-ZU-mu1"/>
+                <outlet property="headView" destination="NLO-r5-b2V" id="d2A-kO-5H1"/>
+                <outlet property="titleHeight" destination="CVs-5b-4Aa" id="Djd-W6-OVt"/>
+                <outlet property="titleName" destination="TsV-Hr-AB0" id="4Cj-iF-DdA"/>
+                <outlet property="view" destination="hzC-p9-8cH" id="fut-fp-FCa"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="hzC-p9-8cH">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NLO-r5-b2V">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="更改密码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TsV-Hr-AB0">
+                            <rect key="frame" x="170.5" y="80" width="73.5" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="YVM-A8-Zty"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
+                            <color key="textColor" red="0.14116021989999999" green="0.14118680359999999" blue="0.14115440849999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQ1-RW-fpb">
+                            <rect key="frame" x="8" y="80" width="67" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="PR4-zb-gnl"/>
+                                <constraint firstAttribute="width" constant="67" id="agF-2z-ETQ"/>
+                            </constraints>
+                            <state key="normal" image="icon_return_nol"/>
+                            <connections>
+                                <action selector="backAction:" destination="-1" eventType="touchUpInside" id="smT-bL-eGw"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="130" id="CVs-5b-4Aa"/>
+                        <constraint firstItem="TsV-Hr-AB0" firstAttribute="centerX" secondItem="NLO-r5-b2V" secondAttribute="centerX" id="RaI-S6-Zf3"/>
+                        <constraint firstAttribute="bottom" secondItem="TsV-Hr-AB0" secondAttribute="bottom" constant="15" id="Rac-fA-Jcs"/>
+                        <constraint firstAttribute="bottom" secondItem="nQ1-RW-fpb" secondAttribute="bottom" constant="10" id="cR8-ac-oz1"/>
+                        <constraint firstItem="nQ1-RW-fpb" firstAttribute="leading" secondItem="NLO-r5-b2V" secondAttribute="leading" constant="8" id="seq-Rz-6dZ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="NLO-r5-b2V" secondAttribute="trailing" id="329-SQ-Dk5"/>
+                <constraint firstItem="NLO-r5-b2V" firstAttribute="top" secondItem="hzC-p9-8cH" secondAttribute="top" id="Efa-Bd-uze"/>
+                <constraint firstItem="NLO-r5-b2V" firstAttribute="leading" secondItem="hzC-p9-8cH" secondAttribute="leading" id="Qc5-Cl-oa9"/>
+            </constraints>
+            <point key="canvasLocation" x="2.8985507246376816" y="-92.410714285714278"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_return_nol" width="28" height="28"/>
+    </resources>
+</document>

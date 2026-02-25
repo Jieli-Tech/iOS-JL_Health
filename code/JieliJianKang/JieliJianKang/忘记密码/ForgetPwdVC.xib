@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ForgetPwdVC">
+            <connections>
+                <outlet property="backBtn" destination="T5s-4c-Blv" id="Fsx-hF-cfp"/>
+                <outlet property="subTitleView" destination="muW-of-aBi" id="vOZ-5U-qk5"/>
+                <outlet property="titleHeight" destination="QGw-XV-VMH" id="9cp-Ys-IRn"/>
+                <outlet property="titleName" destination="33x-J0-7L4" id="ywr-KX-AWS"/>
+                <outlet property="view" destination="qTI-vw-msD" id="HUu-X7-R3X"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="qTI-vw-msD">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="muW-of-aBi">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="找回密码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33x-J0-7L4">
+                            <rect key="frame" x="170.5" y="80" width="73.5" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="97t-5L-VO7"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
+                            <color key="textColor" red="0.14116021989999999" green="0.14118680359999999" blue="0.14115440849999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T5s-4c-Blv">
+                            <rect key="frame" x="8" y="80" width="67" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="67" id="9MX-9v-5sJ"/>
+                                <constraint firstAttribute="height" constant="40" id="kkO-bs-8rD"/>
+                            </constraints>
+                            <state key="normal" image="icon_return_nol"/>
+                            <connections>
+                                <action selector="actionExit:" destination="-1" eventType="touchUpInside" id="4Nd-dc-URj"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="130" id="QGw-XV-VMH"/>
+                        <constraint firstAttribute="bottom" secondItem="33x-J0-7L4" secondAttribute="bottom" constant="15" id="RQF-BP-uB8"/>
+                        <constraint firstItem="33x-J0-7L4" firstAttribute="centerX" secondItem="muW-of-aBi" secondAttribute="centerX" id="SDk-Px-vJv"/>
+                        <constraint firstAttribute="bottom" secondItem="T5s-4c-Blv" secondAttribute="bottom" constant="10" id="sLg-YL-L8e"/>
+                        <constraint firstItem="T5s-4c-Blv" firstAttribute="leading" secondItem="muW-of-aBi" secondAttribute="leading" constant="8" id="wFa-9S-ClS"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="muW-of-aBi" secondAttribute="trailing" id="3Yt-NG-AIH"/>
+                <constraint firstItem="muW-of-aBi" firstAttribute="leading" secondItem="qTI-vw-msD" secondAttribute="leading" id="Cx0-pW-MCX"/>
+                <constraint firstItem="muW-of-aBi" firstAttribute="top" secondItem="qTI-vw-msD" secondAttribute="top" id="Ir1-W7-iOC"/>
+            </constraints>
+            <point key="canvasLocation" x="2.8985507246376816" y="-92.410714285714278"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_return_nol" width="28" height="28"/>
+    </resources>
+</document>
