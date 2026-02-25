@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="WeightShow">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="体重" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jzJ-xn-QM6">
+                    <rect key="frame" x="30" y="21" width="249" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="249" id="dSb-fq-oby"/>
+                        <constraint firstAttribute="height" constant="18" id="qfa-fY-uNR"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="58.0-65.2kg" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yv4-v9-HHl">
+                    <rect key="frame" x="261" y="21" width="123" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="18" id="1ac-7x-Ws4"/>
+                        <constraint firstAttribute="width" constant="123" id="atG-mA-efX"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="jzJ-xn-QM6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="KDT-ey-tpy"/>
+                <constraint firstItem="jzJ-xn-QM6" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Tds-PS-Kpl"/>
+                <constraint firstAttribute="trailing" secondItem="yv4-v9-HHl" secondAttribute="trailing" constant="30" id="h6f-Sr-dCD"/>
+                <constraint firstItem="yv4-v9-HHl" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="lwL-mN-iaR"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="lb_0" destination="jzJ-xn-QM6" id="nAm-pd-afB"/>
+                <outlet property="lb_1" destination="yv4-v9-HHl" id="2KA-GN-Emf"/>
+            </connections>
+            <point key="canvasLocation" x="140.57971014492756" y="-164.0625"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
