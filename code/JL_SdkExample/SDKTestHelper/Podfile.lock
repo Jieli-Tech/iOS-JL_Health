@@ -1,0 +1,56 @@
+PODS:
+  - Colours (5.13.0):
+    - Colours/ObjC (= 5.13.0)
+  - Colours/ObjC (5.13.0)
+  - JLUsefulTools (0.0.2)
+  - MJRefresh (3.7.6)
+  - R.swift (7.3.2)
+  - RxCocoa (6.6.0):
+    - RxRelay (= 6.6.0)
+    - RxSwift (= 6.6.0)
+  - RxRelay (6.6.0):
+    - RxSwift (= 6.6.0)
+  - RxSwift (6.6.0)
+  - SnapKit (5.6.0)
+  - Toast-Swift (5.0.1)
+  - WMZDialog (1.5.0)
+
+DEPENDENCIES:
+  - Colours
+  - JLUsefulTools (= 0.0.2)
+  - MJRefresh
+  - R.swift
+  - RxCocoa
+  - RxSwift
+  - SnapKit
+  - Toast-Swift (= 5.0.1)
+  - WMZDialog
+
+SPEC REPOS:
+  trunk:
+    - Colours
+    - JLUsefulTools
+    - MJRefresh
+    - R.swift
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - SnapKit
+    - Toast-Swift
+    - WMZDialog
+
+SPEC CHECKSUMS:
+  Colours: f24220c38f13deac88612667e9b4a7fb96b871d4
+  JLUsefulTools: 96799191205f390bd83176c76ad132aa6ad35fe3
+  MJRefresh: 2fe7fb43a5167ceda20bb7e63f130c04fd1814a5
+  R.swift: 0af0d882f49f03711415cb4e5215daa977d8a480
+  RxCocoa: 44a80de90e25b739b5aeaae3c8c371a32e3343cc
+  RxRelay: 45eaa5db8ee4fb50e5ebd57deec0159e97fa51e6
+  RxSwift: a4b44f7d24599f674deebd1818eab82e58410632
+  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
+  WMZDialog: 724777637ca12b1d8078644b9f10aa264dec3a96
+
+PODFILE CHECKSUM: e1cda808a1665028c6e8f1a726a4fdce25454740
+
+COCOAPODS: 1.13.0

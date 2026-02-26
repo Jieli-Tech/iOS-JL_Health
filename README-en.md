@@ -27,8 +27,8 @@ To help developers quickly integrate <strong style="color:red">Jieli Health SDK<
 
 ```tex
  ├── code
-      ├── JieliJianKang                   --- Yi Dong Health Source Code
-      ├── JLWatchDemo                     --- Simple Function Demo Source Code
+      ├── JL_Health                   --- Yi Dong Health Source Code
+      ├── JL_SdkExample               --- Simple Function Demo Source Code
       ├── HealthAide_ALi_IOT_V0.1.2(iOS)  --- Alipay Integration Example
       ├── 杰理iOS音频编解码V1.1.0            --- Watch Audio Data Encoding/Decoding Example
  ├── docs
@@ -49,6 +49,7 @@ To help developers quickly integrate <strong style="color:red">Jieli Health SDK<
 
 | Version | Date       | Changelog                                                    |
 | ------- | ---------- | ------------------------------------------------------------ |
+| V1.11.0| 2024/03/15 | 1. New Features<br/>(1) Added 4G module OTA function<br/>(2) Added watch face extension parameters and supplemented AI watch face process; |
 |V1.10.0 | 2024/01/05 | 1. New Features<br/>(1) Added AI watch face function<br/>(2) Added extended support for Nand Flash memory information |
 | V1.9.0 | 2023/9/15  | 1.New Features<br/>(1) Added AI cloud service function        |
 | V1.8.0  | 2023/04/23 | 1. Bug Fixes<br/>(1) Fixed error in small file packet transmission<br/>(2) Fixed large file transmission timeout issue<br/>2. New Features<br/>(1) Improved device recording interface, added bidirectional control interface<br/>(2) Added time synchronization setting interface<br/>(3) Added interface to ignore header information in image transcoding<br/>3. Performance Optimization<br/>(1) Optimized RTC module shortage, extended RTC available length<br/>(2) Separated functional modules for SDK libraries:<br/>- JL_OTALib.framework: OTA Upgrade Business Library<br/>- JL_AdvParse.framework: Jieli Bluetooth Device Broadcast Packet Parsing Business Library<br/>- JL_HashPair.framework: Device Authentication Business Library<br/>- JL_BLEKit.framework: Main Business Library<br/>(3) Decoupled lighting control module, optimized watch face deletion thread callback, optimized custom command module |

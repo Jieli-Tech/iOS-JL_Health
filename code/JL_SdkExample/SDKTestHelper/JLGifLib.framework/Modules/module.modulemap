@@ -1,0 +1,6 @@
+framework module JLGifLib {
+  umbrella header "JLGifLib.h"
+  export *
+
+  module * { export * }
+}
