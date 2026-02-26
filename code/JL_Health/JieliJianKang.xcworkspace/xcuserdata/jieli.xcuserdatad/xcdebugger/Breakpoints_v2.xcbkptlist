@@ -23,32 +23,126 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FED0A0F7-1D03-467F-95DC-44E8DF17532A"
-            shouldBeEnabled = "No"
+            uuid = "0904C30D-6502-4972-8D67-6DA83BCA8B68"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "JieliJianKang/&#x8bbe;&#x5907;&#x754c;&#x9762;/&#x8bbe;&#x5907;&#x529f;&#x80fd;/FunctionView.m"
+            filePath = "JieliJianKang/&#x8bbe;&#x5907;&#x754c;&#x9762;/&#x672c;&#x5730;&#x8868;&#x76d8;/WatchCustomDial/CustomDialEditVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "-initByArray"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "-editBtnAction"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "35B706BC-B92D-4BB1-8BBF-9953CCA3E345"
-            shouldBeEnabled = "No"
+            uuid = "372F8686-1A02-49A1-A0BB-B068854E8032"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "JL_BLEKit/JL_BLEKit/JL_BLEMultiple.m"
+            filePath = "Pods/Alamofire/Source/Core/DataRequest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "347"
-            endingLineNumber = "347"
-            landmarkName = "-connectEntity_1:Result:"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
+            landmarkName = "response(queue:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "545CDE14-FFB1-4F8D-9E9B-7DE5B55E78F4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JieliJianKang/&#x8fd0;&#x52a8;&#x754c;&#x9762;/JLSportDetailViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "598"
+            endingLineNumber = "598"
+            landmarkName = "-startEndPressTimer"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "545CDE14-FFB1-4F8D-9E9B-7DE5B55E78F4 - 140c168346296957"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__49-[JLSportDetailViewController startEndPressTimer]_block_invoke_2"
+                  moduleName = "JieliJianKang.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jieli/Desktop/JieLi_Health_SDK_iOS_V1.12.0_Release/code/JL_Health/JieliJianKang/%E8%BF%90%E5%8A%A8%E7%95%8C%E9%9D%A2/JLSportDetailViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "598"
+                  endingLineNumber = "598">
+               </Location>
+               <Location
+                  uuid = "545CDE14-FFB1-4F8D-9E9B-7DE5B55E78F4 - 140c168346296ac5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__49-[JLSportDetailViewController startEndPressTimer]_block_invoke_3"
+                  moduleName = "JieliJianKang.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jieli/Desktop/JieLi_Health_SDK_iOS_V1.12.0_Release/code/JL_Health/JieliJianKang/%E8%BF%90%E5%8A%A8%E7%95%8C%E9%9D%A2/JLSportDetailViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "599"
+                  endingLineNumber = "599">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8A676A47-4C78-4F69-9AE5-A3504BBC2C7A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JieliJianKang/&#x8fd0;&#x52a8;&#x754c;&#x9762;/JLSportDetailViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "684"
+            endingLineNumber = "684"
+            landmarkName = "-noteDeviceChange:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "437A7CC5-A79C-44C5-9D1B-0DE7BAAED0CD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JieliJianKang/&#x8fd0;&#x52a8;&#x754c;&#x9762;/JLSportDetailViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "778"
+            endingLineNumber = "778"
+            landmarkName = "-jlWearSyncStopMotion:With:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A9BE9D6A-C231-4774-9BBE-75D793B3A189"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JieliJianKang/&#x8fd0;&#x52a8;&#x754c;&#x9762;/JLSportDetailViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "788"
+            endingLineNumber = "788"
+            landmarkName = "-jlWearSyncStopMotion:With:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

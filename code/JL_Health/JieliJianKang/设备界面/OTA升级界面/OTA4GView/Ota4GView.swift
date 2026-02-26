@@ -168,7 +168,7 @@ import SwiftyAttributes
                 if fileManager.fileExists(atPath: itemPath, isDirectory: &isDirectory) {
                     if isDirectory.boolValue {
                         // 处理文件夹
-                        print("文件夹：\(itemPath)")
+                        JLLogManager.logLevel(.DEBUG, content: "文件夹：\(itemPath)")
                         // 递归遍历文件夹
                         listFilesInDirectory(atPath: itemPath)
                     } else {
@@ -197,7 +197,7 @@ import SwiftyAttributes
                 }
             }
         } catch {
-            print("Error: \(error.localizedDescription)")
+            JLLogManager.logLevel(.DEBUG, content: "Error: \(error.localizedDescription)")
         }
     }
     

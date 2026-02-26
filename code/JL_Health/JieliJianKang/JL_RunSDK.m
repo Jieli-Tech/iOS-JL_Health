@@ -43,6 +43,10 @@ NSString *kUI_INSTALL_DIAL_SUCCESS      = @"UI_INSTALL_DIAL_SUCCESS";
     NSTimer         *preparateTimer;
     NSMutableArray  *preparationArr;
     NSMutableArray  *linkedUuidArr;
+    BOOL            isConnecting;
+    NSTimer         *connectTimer;
+    int             connectCount;
+    int             connectMaxCount;
 }
 @end
 
@@ -57,13 +61,14 @@ static JL_RunSDK *SDK = nil;
     });
     return SDK;
 }
-- (instancetype)init
-{
+- (instancetype)init{
     self = [super init];
     if (self) {
+        isConnecting = NO;
         preparationArr = [NSMutableArray new];
         linkedUuidArr  = [NSMutableArray new];
-        
+        connectMaxCount = 20;
+        connectCount = 0;
         /*--- 初始化JL_SDK ---*/
         self.mBleMultiple = [[JL_BLEMultiple alloc] init];
         self.mBleMultiple.BLE_FILTER_ENABLE = YES;
@@ -81,6 +86,62 @@ static JL_RunSDK *SDK = nil;
     return self;
 }
 
+
+-(void)connectDevice:(JL_EntityM*)entityM callBack:(void (^)(BOOL))callBack{
+    if (isConnecting) {
+        kJLLog(JLLOG_WARN, @"isConnecting,please wait");
+        callBack(NO);
+        return;
+    }
+    if ([linkedUuidArr containsObject:entityM.mUUID]) {
+        kJLLog(JLLOG_WARN, @"isLinked,please don't connect again! %@",entityM.mUUID);
+        callBack(YES);
+        return;
+    }
+    [self startTimer];
+    kJLLog(JLLOG_INFO, @"connectDevice:%@,item:%@", entityM.mUUID,entityM.mItem);
+    isConnecting = YES;
+    [self.mBleMultiple connectEntity:entityM Result:^(JL_EntityM_Status status) {
+        if (status == JL_EntityM_StatusPaired) {
+            [self setMBleEntityM:entityM];
+            callBack(YES);
+        }else{
+            callBack(NO);
+        }
+        self->isConnecting = NO;
+        [self stopTimer];
+    }];
+}
+
+-(void)connectDeviceMac:(NSString*)mac callBack:(void (^)(BOOL))callBack{
+    if (isConnecting) {
+        kJLLog(JLLOG_WARN, @"isConnecting,please wait");
+        callBack(NO);
+        return;
+    }
+    if ([linkedUuidArr containsObject:mac]) {
+        kJLLog(JLLOG_WARN, @"isLinked,please don't connect again! %@",mac);
+        callBack(NO);
+        return;
+    }
+    kJLLog(JLLOG_INFO, @"connectDeviceMac:%@", mac);
+    isConnecting = YES;
+    [self startTimer];
+    [self.mBleMultiple connectEntityForMac:mac Result:^(JL_EntityM_Status status) {
+        if (status == JL_EntityM_StatusPaired) {
+            callBack(YES);
+        }else{
+            callBack(NO);
+        }
+        self->isConnecting = NO;
+        [self stopTimer];
+    }];
+}
+
+-(BOOL)isConnecting{
+    return isConnecting;
+}
+
 -(void)setConfigModel:(JLDeviceConfigModel *)configModel{
     if (_configModel != configModel) {
         [self willChangeValueForKey:@"configModel"];
@@ -92,9 +153,9 @@ static JL_RunSDK *SDK = nil;
 -(void)setMBleEntityM:(JL_EntityM *)mBleEntityM{
     _mBleEntityM = mBleEntityM;
     if (mBleEntityM == nil) {
-        NSLog(@"get");
+        return;
     }
-    NSLog(@"======> mBleEntityM:%@",mBleEntityM);
+    kJLLog(JLLOG_DEBUG, @"======> mBleEntityM:%@",mBleEntityM);
 }
 
 +(void)setActiveUUID:(NSString*)uuid{
@@ -237,7 +298,8 @@ static JL_RunSDK *SDK = nil;
 
 #pragma mark 已连设备的定时处理
 -(void)startPreparation{
-    NSLog(@"---> 开始预处理...");
+    kJLLog(JLLOG_DEBUG, @"---> 开始预处理...");
+    [AlertViewOnWindows showConnectingWithTips:kJL_TXT("正在连接") timeout:10];
     if (preparateTimer) {
         [JL_Tools timingContinue:preparateTimer];
     }else{
@@ -256,19 +318,18 @@ static JL_RunSDK *SDK = nil;
         JLPreparation *pre = preparationArr[0];
         int isOk = pre.isPreparateOK;
         if (isOk == 0) {
-            NSLog(@"---> 开始处理: %@",pre.mBleEntityM.mItem);
+            kJLLog(JLLOG_DEBUG, @"---> 开始处理: %@",pre.mBleEntityM.mItem);
             [JL_Tools post:kUI_JL_DEVICE_PREPARING Object:nil];
             [pre actionPreparation];
         }
         if (isOk == 1) {
-            //NSLog(@"---> 处理中... %@",pre.mBleEntityM.mItem);
+            //kJLLog(JLLOG_DEBUG, @"---> 处理中... %@",pre.mBleEntityM.mItem);
         }
         if (isOk == 2) {
             [preparationArr removeObject:pre];
         }
     }else{
         [self stopPreparation];
-        NSLog(@"---> 停止准备工作.");
     }
 }
 
@@ -277,7 +338,7 @@ static JL_RunSDK *SDK = nil;
     
     CBPeripheral *pl = note.object;
     NSDictionary *info = note.userInfo;
-    NSLog(@"--->Note Info:%@",info);
+    kJLLog(JLLOG_DEBUG, @"--->Note Info:%@",info);
     
     NSString *uuid = pl.identifier.UUIDString;
     
@@ -330,7 +391,7 @@ static JL_RunSDK *SDK = nil;
 
 #pragma mark BLE广播接收管理
 -(void)noteBleScanOpen:(NSNotification*)note{
-    //NSLog(@"-----> Start Scan...");
+    //kJLLog(JLLOG_DEBUG, @"-----> Start Scan...");
     [self.mBleMultiple scanStart];
     
     if (scanTimer == nil) {
@@ -341,13 +402,13 @@ static JL_RunSDK *SDK = nil;
 }
 
 -(void)noteBleScanClose:(NSNotification*)note{
-    //NSLog(@"-----> Close Scan!");
+    //kJLLog(JLLOG_DEBUG, @"-----> Close Scan!");
     [JL_Tools timingPause:scanTimer];
     [self.mBleMultiple scanStop];
 }
 
 -(void)actionBleScan{
-    //NSLog(@"-----> Continue Scan...");
+    //kJLLog(JLLOG_DEBUG, @"-----> Continue Scan...");
     [self.mBleMultiple scanContinue];
 }
 
@@ -369,6 +430,28 @@ static JL_RunSDK *SDK = nil;
     [JL_Tools add:kJL_BLE_M_ENTITY_CONNECTED Action:@selector(noteEntityConnected:) Own:self];
     [JL_Tools add:kJL_BLE_M_ENTITY_DISCONNECTED Action:@selector(noteEntityDisconnected:) Own:self];
     [JL_Tools add:kJL_BLE_M_OFF Action:@selector(noteBlePoweredOFF:) Own:self];
+}
+
+-(void)startTimer{
+    [connectTimer invalidate];
+    connectCount = 0;
+    connectTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerAction) userInfo:nil repeats:true];
+    [connectTimer fire];
+}
+
+-(void)timerAction{
+    connectCount+=1;
+    if (connectCount > connectMaxCount) {
+        kJLLog(JLLOG_WARN, @"ble connect timeout,reset connect status");
+        connectCount = 0;
+        isConnecting = false;
+        [connectTimer invalidate];
+    }
+}
+
+-(void)stopTimer{
+    [connectTimer invalidate];
+    connectCount = 0;
 }
 
 @end

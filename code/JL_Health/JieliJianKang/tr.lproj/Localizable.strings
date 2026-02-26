@@ -676,3 +676,15 @@
 "是否要清除用户缓存" = "Kullanıcı önbelleğini temizlemek istiyor musunuz?";
 "AI表盘" = "AI kadranı";
 "正在传输中" = "Taşınıyor...";
+"Image Captcha" = "Resimli Captcha";
+"Can't see it? Try another." = "Göremiyor musunuz? Başka birini deneyin.";
+"Please enter the correct captcha." = "Lütfen doğru capchatı girin.";
+"There was a problem loading the image verification code, please try again later" = "Resim doğrulama kodunu yüklerken sorun oluştu, lütfen daha sonra tekrar deneyin.";
+"Custom" = "Özelleştirmek";
+"Custom Dial" = "Özel saat yüzü";
+"I have read and agree to the" = "Okudum ve kabul ediyorum";
+"User Agreement" = "Kullanıcı Sözleşmesi";
+"Privacy Policy" = "gizlilik politikası";
+"and" = "Ve";
+"Please read and agree to the Terms of Service and Privacy Policy." = "Lütfen Hizmet Koşullarını ve Gizlilik Politikasını okuyup kabul edin";
+"ICP filing information" = "ICP dosyalama bilgileri";

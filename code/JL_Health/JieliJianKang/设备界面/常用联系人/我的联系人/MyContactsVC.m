@@ -224,28 +224,28 @@ typedef NS_ENUM(NSInteger, LYFTableViewType) {
         [kJL_BLE_CmdManager.mFileManager setCurrentFileHandleType:[JLFileTransferHelper getContactTargetDev]];
         [kJL_BLE_CmdManager.mFileManager cmdFileReadContentWithName:@"CALL.txt" Result:^(JL_FileContentResult result, uint32_t size, NSData * _Nullable data,float progress) {
             if (result == JL_FileContentResultStart) {
-                NSLog(@"---> 读取【Call.txt】开始.");
+                kJLLog(JLLOG_DEBUG, @"---> 读取【Call.txt】开始.");
             } else if (result == JL_FileContentResultReading) {
-                NSLog(@"---> 读取【Call.txt】Reading");
+                kJLLog(JLLOG_DEBUG, @"---> 读取【Call.txt】Reading");
                 if (data.length > 0) {
                     [mData appendData:data];
                 }
             } else if(result == JL_FileContentResultEnd) {
-                NSLog(@"---> 读取【Call.txt】结束");
+                kJLLog(JLLOG_DEBUG, @"---> 读取【Call.txt】结束");
                 if (mData == nil || mData.length < 40) {
                     return;
                 }
                 [self outputContactsListData:mData];
                 [self displayContactsView];
             } else if (result == JL_FileContentResultCancel) {
-                NSLog(@"---> 读取【Call.txt】取消");
+                kJLLog(JLLOG_DEBUG, @"---> 读取【Call.txt】取消");
             } else if (result == JL_FileContentResultFail) {
-                NSLog(@"---> 读取【Call.txt】失败");
+                kJLLog(JLLOG_DEBUG, @"---> 读取【Call.txt】失败");
             } else if (result == JL_FileContentResultNull) {
-                NSLog(@"---> 读取【Call.txt】文件为空");
+                kJLLog(JLLOG_DEBUG, @"---> 读取【Call.txt】文件为空");
                 [self displayContactsView];
             } else if (result == JL_FileContentResultDataError) {
-                NSLog(@"---> 读取【Call.txt】数据出错");
+                kJLLog(JLLOG_DEBUG, @"---> 读取【Call.txt】数据出错");
             }
         }];
     }else{
@@ -271,16 +271,16 @@ typedef NS_ENUM(NSInteger, LYFTableViewType) {
                                                  Result:^(JL_SmallFileOperate status,
                                                           float progress, NSData * _Nullable data) {
                 if (status == JL_SmallFileOperateDoing) {
-                    NSLog(@"---> 小文件读取【Call.txt】开始：%lu",(unsigned long)data.length);
+                    kJLLog(JLLOG_DEBUG, @"---> 小文件读取【Call.txt】开始：%lu",(unsigned long)data.length);
                 }
                 if (status != JL_SmallFileOperateDoing &&
                     status != JL_SmallFileOperateSuceess) {
-                    NSLog(@"---> 小文件读取【Call.txt】失败~");
+                    kJLLog(JLLOG_DEBUG, @"---> 小文件读取【Call.txt】失败~");
                 }
                 
                 if (data.length > 0) [mData appendData:data];
                 if (status == JL_SmallFileOperateSuceess) {
-                    NSLog(@"---> 小文件读取【Call.txt】成功！");
+                    kJLLog(JLLOG_DEBUG, @"---> 小文件读取【Call.txt】成功！");
                     if (mData.length >= 40) {
                         [JL_Tools mainTask:^{
                             [self outputContactsListData:mData];

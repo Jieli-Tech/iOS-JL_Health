@@ -679,3 +679,15 @@
 "是否要清除用户缓存" = "Czy chcesz wyczyścić pamięć podręczną użytkownika?";
 "AI表盘" = "Tarcza AI";
 "正在传输中" = "Przenoszenie...";
+"Image Captcha" = "Captcha obrazkowe";
+"Can't see it? Try another." = "Nie widoczne? Spróbuj innego.";
+"Please enter the correct captcha." = "Proszę wprowadzić prawidłowy captcha.";
+"There was a problem loading the image verification code, please try again later" = "Wystąpił problem z ładowaniem kodu weryfikacji obrazu, spróbuj ponownie później.";
+"Custom" = "Dostosuj";
+"Custom Dial" = "Niestandardowa tarcza zegarka";
+"I have read and agree to the" = "Przeczytałem i zgadzam się";
+"User Agreement" = "Umowa użytkownika";
+"Privacy Policy" = "polityka prywatności";
+"and" = "I";
+"Please read and agree to the Terms of Service and Privacy Policy." = "Prosimy o zapoznanie się i akceptację Regulaminu świadczenia usług oraz Polityki prywatności";
+"ICP filing information" = "Informacje o składaniu dokumentów ICP";

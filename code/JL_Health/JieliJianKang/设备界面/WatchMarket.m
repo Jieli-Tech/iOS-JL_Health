@@ -40,7 +40,7 @@
     int pid = (int)[JL_Tools dataToInt:[JL_Tools data:pidVidData R:2 L:2]];
 //    NSString *vid_str = [NSString stringWithFormat:@"%d",vid];
 //    NSString *pid_str = [NSString stringWithFormat:@"%d",pid];
-    NSLog(@"WATCH MARKET--->【%@】Vid:%d Pid:%d",model.pidvid,vid,pid);
+    kJLLog(JLLOG_DEBUG, @"WATCH MARKET--->【%@】Vid:%d Pid:%d",model.pidvid,vid,pid);
     
     
     /*--- 审核测试 ---*/
@@ -50,7 +50,7 @@
         //Vid:2 Pid:130
         vid = 2;
         pid = 130;
-        NSLog(@"WATCH MARKET--->【TEST】Vid:%d Pid:%d",vid,pid);
+        kJLLog(JLLOG_DEBUG, @"WATCH MARKET--->【TEST】Vid:%d Pid:%d",vid,pid);
         
     }
     
@@ -67,11 +67,12 @@
             NSString *configString = info[@"data"][@"configData"];
             /*--- 检查是否支持表盘商城支付功能 ---*/
             if (![configString isEqual:[NSNull null]]) {
-                NSData *configData = [configString dataUsingEncoding:NSUTF8StringEncoding];
+                NSString *configStr = [configString stringByReplacingOccurrencesOfString:@"'" withString:@"\""];
+                NSData *configData = [configStr dataUsingEncoding:NSUTF8StringEncoding];
                 NSDictionary *configDict = [NSJSONSerialization JSONObjectWithData:configData
                                                                            options:NSJSONReadingMutableLeaves error:nil];
                 
-                NSLog(@"Config INFO ---> %@",configDict);
+                kJLLog(JLLOG_DEBUG, @"Config INFO ---> %@",configDict);
                 kJL_DIAL_CACHE.isSupportPayment = [configDict[@"support_dial_payment"] boolValue];
             }
             NSString *iconStr = info[@"data"][@"icon"];
@@ -90,12 +91,12 @@
                 /*--- 8-2. 根据pid、vid获取手表产品信息(免费表盘) ---*/
                 [JLWatchHttp requestDialsID:id_str IsFree:YES Page:1 Size:2000 Result:^(NSArray * _Nonnull info) {
                     self.watchListFree = [NSMutableArray arrayWithArray:info];
-                    NSLog(@"--->Watch for free：%lu",(unsigned long)self.watchListFree.count);
+                    kJLLog(JLLOG_DEBUG, @"--->Watch for free：%lu",(unsigned long)self.watchListFree.count);
                     
                     /*--- 8-2. 根据pid、vid获取手表产品信息(付费表盘) ---*/
                     [JLWatchHttp requestDialsID:id_str IsFree:NO Page:1 Size:2000 Result:^(NSArray * _Nonnull info) {
                         self.watchListPay = [NSMutableArray arrayWithArray:info];
-                        NSLog(@"--->Watch for pay：%lu",(unsigned long)self.watchListPay.count);
+                        kJLLog(JLLOG_DEBUG, @"--->Watch for pay：%lu",(unsigned long)self.watchListPay.count);
 
                         
                         /*--- 加载表盘图标 ---*/
@@ -110,7 +111,7 @@
                                 NSString *iconUrl = dict[@"icon"];
                                 
                                 NSString *fileName = [NSString stringWithFormat:@"%@_%@",[name uppercaseString],version];
-                                NSLog(@"Server watch --->%@ isPay:%@",fileName,dict[@"status"]);
+                                kJLLog(JLLOG_DEBUG, @"Server watch --->%@ isPay:%@",fileName,dict[@"status"]);
                                 NSString *middlePath = [NSString stringWithFormat:@"%@/%@",[EcTools appUserDevFolder],kJL_WATCH_FACE];
                                 NSString *filePath = [JL_Tools findPath:NSLibraryDirectory MiddlePath:middlePath File:fileName];
                                 NSData *dt = [NSData dataWithContentsOfFile:filePath];
@@ -118,7 +119,7 @@
                                     filePath = [JL_Tools createOn:NSLibraryDirectory MiddlePath:middlePath File:fileName];
                                     NSData *data = [[JLHttpHelper share] dataTaskSync:[NSURL URLWithString:iconUrl]];
                                     [JL_Tools writeData:data fillFile:filePath];
-                                    NSLog(@"0 --->Download watch icon:%@",fileName);
+                                    kJLLog(JLLOG_DEBUG, @"0 --->Download watch icon:%@",fileName);
                                 }
                             }
                             
@@ -141,7 +142,7 @@
                                                WithVersions:versionArray
                                                      Result:^(NSArray * _Nonnull info) {
                     self.watchList = [NSMutableArray arrayWithArray:info];
-                    NSLog(@"--->Watch number：%lu",(unsigned long)self.watchList.count);
+                    kJLLog(JLLOG_DEBUG, @"--->Watch number：%lu",(unsigned long)self.watchList.count);
 
                     [JL_Tools subTask:^{
                         for (NSDictionary *dict in self.watchList) {
@@ -157,7 +158,7 @@
                                 filePath = [JL_Tools createOn:NSLibraryDirectory MiddlePath:middlePath File:fileName];
                                 NSData *data = [[JLHttpHelper share] dataTaskSync:[NSURL URLWithString:iconUrl]];
                                 [JL_Tools writeData:data fillFile:filePath];
-                                NSLog(@"1 --->Download watch icon:%@",fileName);
+                                kJLLog(JLLOG_DEBUG, @"1 --->Download watch icon:%@",fileName);
                             }
                         }
                         [JL_Tools mainTask:^{
@@ -168,7 +169,7 @@
             }
             
         }else{
-            NSLog(@"Err: Watch info null 0.");
+            kJLLog(JLLOG_DEBUG, @"Err: Watch info null 0.");
             kJL_DIAL_CACHE.isSupportPayment = NO;
             if (result) result();
         }

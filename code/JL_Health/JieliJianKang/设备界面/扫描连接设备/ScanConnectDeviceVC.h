@@ -11,9 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ScanConnectDeviceVC : UIViewController
-@property(nonatomic,strong)NSDictionary *mScanDict;
--(void)setScanDict:(NSDictionary*)dict;
--(void)setConnectDevice:(JL_EntityM*)entity;
+@property(nonatomic,strong)NSDictionary *_Nullable mScanDict;
+@property(nonatomic,strong)JL_EntityM  *_Nullable connectEntity;
 @end
 
 NS_ASSUME_NONNULL_END

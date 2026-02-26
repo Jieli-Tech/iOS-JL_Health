@@ -177,7 +177,7 @@
     _foregroundView.frame = CGRectMake(0, 0, point.x, kSliderH);
     CGFloat startPointx = point.x - kTouchViewW;
     if (startPointx < 0) startPointx = 0;
-    NSLog(@"point.x : %f, _foregroundView.width : %f", point.x, _foregroundView.width);
+    kJLLog(JLLOG_DEBUG, @"point.x : %f, _foregroundView.width : %f", point.x, _foregroundView.width);
     if (_foregroundView.frame.size.width <= 0) {
         _thumbImageViewBgView.frame = CGRectMake(0, 0, kTouchViewW, self.height);
     } else if (_foregroundView.frame.size.width >= kSliderW) {

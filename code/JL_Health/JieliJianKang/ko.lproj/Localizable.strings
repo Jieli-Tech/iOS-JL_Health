@@ -678,3 +678,15 @@
 "是否要清除用户缓存" = "사용자 캐시를 지우시겠습니까?";
 "AI表盘" = "AI 다이얼";
 "正在传输中" = "전송 중...";
+"Image Captcha" = "이미지 캡챠";
+"Can't see it? Try another." = "잘 안 보여요? 다른 것을 시도해보세요. ";
+"Please enter the correct captcha." = "올바른 캡챠를 입력해주세요.";
+"There was a problem loading the image verification code, please try again later" = "이미지 인증 코드가 로드되지 않았습니다. 잠시 후에 다시 시도해 주세요.";
+"Custom" = "사용자 정의";
+"Custom Dial" = "맞춤 시계 모드";
+"I have read and agree to the" = "읽었으며 이에 동의합니다.";
+"User Agreement" = "사용자 계약";
+"Privacy Policy" = "개인 정보 보호 정책";
+"and" = "그리고";
+"Please read and agree to the Terms of Service and Privacy Policy." = "서비스 약관 및 개인 정보 보호 정책을 읽고 동의하십시오.";
+"ICP filing information" = "ICP 제출 정보";

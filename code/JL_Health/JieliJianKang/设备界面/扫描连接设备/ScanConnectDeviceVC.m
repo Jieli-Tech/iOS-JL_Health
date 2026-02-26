@@ -10,9 +10,7 @@
 @interface ScanConnectDeviceVC (){
     float sw;
     float sh;
-    
     __weak IBOutlet NSLayoutConstraint *titleView_H;
-    
     __weak IBOutlet UILabel *titleText;
     __weak IBOutlet UILabel *label_0;
     __weak IBOutlet UILabel *label_1;
@@ -24,7 +22,6 @@
 }
 @property (weak,nonatomic) NSMutableArray *foundArray;
 @property (weak,nonatomic) JL_EntityM  *scanEntity;
-@property (weak,nonatomic) JL_EntityM  *setEntity;
 
 @end
 
@@ -32,10 +29,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     self.foundArray = kJL_BLE_Multiple.blePeripheralArr;
     [self addNote];
     [self initUI];
+    [self beginConnect];
 }
 
 -(void)initUI{
@@ -55,16 +52,36 @@
     subImage_0.image = [UIImage imageNamed:@"img_connect"];;
 }
 
--(void)setScanDict:(NSDictionary*)dict{
-    [JL_Tools delay:1.0 Task:^{
-        self.mScanDict = dict;
-        self->edrText    = dict[@"edrAddr"];
-        self->nameText   = dict[@"name"];
+
+-(void)beginConnect{
+    if (self.mScanDict){
+        self->edrText    = self.mScanDict[@"edrAddr"];
+        self->nameText   = self.mScanDict[@"name"];
         self->label_2.text= [NSString stringWithFormat:@"%@%@",kJL_TXT("当前配对设备"),self->nameText];
         [JL_Tools post:kUI_JL_BLE_SCAN_OPEN Object:nil];
-    }];
-
+    }
+    if (self.connectEntity){
+        [JL_Tools post:kUI_JL_BLE_SCAN_CLOSE Object:nil];
+        
+        self->label_2.text= [NSString stringWithFormat:@"%@%@",kJL_TXT("当前配对设备"),self.connectEntity.mItem];
+        
+        [[JL_RunSDK sharedMe] connectDevice:self.connectEntity callBack:^(BOOL status) {
+            [JL_Tools mainTask:^{
+                if (status) {
+                    [self showUIConnectOK];
+                }else{
+                    [self showUIConnectFail];
+                }
+                [JL_Tools delay:1.0 Task:^{
+                    [self.navigationController popToRootViewControllerAnimated:YES];
+                    [JLApplicationDelegate.tabBarController setSelectedIndex:2];
+                }];
+            }];
+        }];
+    }
 }
+
+
 
 //搜索edr连接
 -(void)noteBleFoundDevice:(NSNotification*)note{
@@ -73,7 +90,7 @@
     for (JL_EntityM *entity in self.foundArray) {
         NSString *edr =  [[edrText lowercaseString] stringByReplacingOccurrencesOfString:@":" withString:@""];
         if ([entity.mEdr isEqual:edr]) {
-            NSLog(@"QR Scan To ---> %@",entity.mItem);
+            kJLLog(JLLOG_DEBUG, @"QR Scan To ---> %@",entity.mItem);
             mEntity = entity;
             break;
         }
@@ -85,12 +102,11 @@
     /*--- 判断经典蓝牙是否连接 ---*/
     if ([JL_RunSDK isConnectEdr:mEntity.mEdr]) {
         self.scanEntity = mEntity;
-        NSLog(@"QR Scan Conecting ---> %@",self.scanEntity.mItem);
+        kJLLog(JLLOG_DEBUG, @"QR Scan Conecting ---> %@",self.scanEntity.mItem);
         
-        [kJL_BLE_Multiple connectEntity:self.scanEntity Result:^(JL_EntityM_Status status) {
+        [[JL_RunSDK sharedMe] connectDevice:self.scanEntity callBack:^(BOOL status) {
             [JL_Tools mainTask:^{
-                if (status == JL_EntityM_StatusPaired) {
-                    [[JL_RunSDK sharedMe] setMBleEntityM:self.scanEntity];
+                if (status) {
                     [self showUIConnectOK];
                 }else{
                     [self showUIConnectFail];
@@ -109,12 +125,12 @@
             }
             if (mEntity.mProtocolType == 1) {
                 self.scanEntity = mEntity;
-                NSLog(@"QR Scan Conecting ---> %@",self.scanEntity.mItem);
+                kJLLog(JLLOG_DEBUG, @"QR Scan Conecting ---> %@",self.scanEntity.mItem);
                 
-                [kJL_BLE_Multiple connectEntity:self.scanEntity Result:^(JL_EntityM_Status status) {
+                
+                [[JL_RunSDK sharedMe] connectDevice:self.scanEntity callBack:^(BOOL status) {
                     [JL_Tools mainTask:^{
-                        if (status == JL_EntityM_StatusPaired) {
-                            [[JL_RunSDK sharedMe] setMBleEntityM:self.scanEntity];
+                        if (status) {
                             [self showUIConnectOK];
                         }else{
                             [self showUIConnectFail];
@@ -135,12 +151,11 @@
             //            }else {
             //if(mEntity.mProtocolType == 0x01)
             self.scanEntity = mEntity;
-            NSLog(@"QR Scan Conecting ---> %@",self.scanEntity.mItem);
+            kJLLog(JLLOG_DEBUG, @"QR Scan Conecting ---> %@",self.scanEntity.mItem);
             
-            [kJL_BLE_Multiple connectEntity:self.scanEntity Result:^(JL_EntityM_Status status) {
+            [[JL_RunSDK sharedMe] connectDevice:self.scanEntity callBack:^(BOOL status) {
                 [JL_Tools mainTask:^{
-                    if (status == JL_EntityM_StatusPaired) {
-                        [[JL_RunSDK sharedMe] setMBleEntityM:self.scanEntity];
+                    if (status) {
                         [self showUIConnectOK];
                     }else{
                         [self showUIConnectFail];
@@ -161,32 +176,6 @@
     }
 }
 
-//指定设备连接
--(void)setConnectDevice:(JL_EntityM*)entity{
-    [JL_Tools post:kUI_JL_BLE_SCAN_CLOSE Object:nil];
-    
-    [JL_Tools delay:1.0 Task:^{
-        self.setEntity = entity;
-        self->label_2.text= [NSString stringWithFormat:@"%@%@",kJL_TXT("当前配对设备"),self.setEntity.mItem];
-        
-        [kJL_BLE_Multiple connectEntity:self.setEntity Result:^(JL_EntityM_Status status) {
-            [JL_Tools mainTask:^{
-                if (status == JL_EntityM_StatusPaired) {
-                    [[JL_RunSDK sharedMe] setMBleEntityM:self.scanEntity];
-                    [self showUIConnectOK];
-                }else{
-                    [self showUIConnectFail];
-                }
-                [JL_Tools delay:1.0 Task:^{
-                    [self.navigationController popToRootViewControllerAnimated:YES];
-                    [JLApplicationDelegate.tabBarController setSelectedIndex:2];
-                }];
-            }];
-        }];
-    }];
-}
-
-
 -(void)showUIConnectOK{
     subImage_0.image = [UIImage imageNamed:@"img_connect_success"];
     label_0.text = kJL_TXT("设备配对成功");
@@ -202,12 +191,6 @@
 - (IBAction)backBtn:(UIButton *)sender {
     JL_EntityM *cutEntity = nil;
     if (self.scanEntity) cutEntity = self.scanEntity;
-    if (self.setEntity ) cutEntity = self.setEntity;
-    
-    if (cutEntity && kJL_BLE_Multiple.BLE_IS_CONNECTING) {
-        NSLog(@"--->Cut connecting scan device:%@",cutEntity.mItem);
-        [kJL_BLE_Multiple disconnectEntity:cutEntity Result:^(JL_EntityM_Status status) {}];
-    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 

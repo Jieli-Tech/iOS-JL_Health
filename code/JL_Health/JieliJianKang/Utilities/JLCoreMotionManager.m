@@ -38,20 +38,20 @@
 - (void)startPedometerUpdatesFromNow {
     if ([CMPedometer isStepCountingAvailable] && _isUpdating == false) {
         _isUpdating = true;
-        NSLog(@"startPedometerUpdatesFromNow start!");
+        kJLLog(JLLOG_DEBUG, @"startPedometerUpdatesFromNow start!");
         [self.pedometer startPedometerUpdatesFromDate:[NSDate date] withHandler:^(CMPedometerData * _Nullable pedometerData, NSError * _Nullable error) {
             if (error) {
-                NSLog(@"startPedometerUpdatesFromNow error ===%@", error);
+                kJLLog(JLLOG_DEBUG, @"startPedometerUpdatesFromNow error ===%@", error);
             } else {
-                NSLog(@"步数====%@", pedometerData.numberOfSteps);
-                NSLog(@"距离====%@", pedometerData.distance);
+                kJLLog(JLLOG_DEBUG, @"步数====%@", pedometerData.numberOfSteps);
+                kJLLog(JLLOG_DEBUG, @"距离====%@", pedometerData.distance);
                 if ([self.delegate respondsToSelector:@selector(numberOfSteps:distance:)]) {
                     [self.delegate numberOfSteps:pedometerData.numberOfSteps distance:pedometerData.distance];
                 }
             }
         }];
     } else {
-        NSLog(@"startPedometerUpdatesFromNow is not available or is already update!");
+        kJLLog(JLLOG_DEBUG, @"startPedometerUpdatesFromNow is not available or is already update!");
     }
 }
 

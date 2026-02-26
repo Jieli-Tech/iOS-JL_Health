@@ -23,9 +23,12 @@
 #import "PrivacyPolicyVC.h"
 #import "JLSportDetailViewController.h"
 #import "FindPhoneView.h"
-//#import "IFlyAIUI/IFlyAIUI.h"
 #import "IFlyMSC/IFlyMSC.h"
 #import "AIClound.h"
+#import <JLLogHelper/JLLogHelper.h>
+#import <Bugly/Bugly.h>
+#import <JL_BLEKit/JL_BLEKit.h>
+#import <DFUnits/DFUnits.h>
 
 @interface AppDelegate () <LoginDelegate, JLStatementViewControllerDelegate,LanguagePtl> {
     LoginVC             *loginVC;
@@ -54,14 +57,15 @@
     [UIView appearance].semanticContentAttribute = UISemanticContentAttributeForceLeftToRight;
     
     /*--- 记录NSLOG ---*/
-    //[JL_Tools openLogTextFile];
-    [JL_Tools setLog:YES IsMore:NO Level:JLLOG_DEBUG];
-    [JL_OTAManager setLog:YES IsMore:NO Level:OTA_DEBUG];
-    [JLAdvParse setLog:YES IsMore:NO Level:ADV_INFO];
-    [DialManager setLog:YES IsMore:NO Level:DAIL_DEBUG];
+    [JLLogManager clearLog];
+    [JLLogManager saveLogAsFile:true];
+    [JLLogManager setLog:true IsMore:false Level:JLLOG_DEBUG];
+    [JLLogManager logWithTimestamp:true];
+    
+    [Bugly startWithAppId:@"7a7c17c3ee"];
     
 
-    NSLog(@"当前的语言:%@",[LanguageCls checkLanguage]);
+    kJLLog(JLLOG_DEBUG, @"当前的语言:%@",[LanguageCls checkLanguage]);
     /*--- 检测当前语言 ---*/
     if ([kJL_GET hasPrefix:@"en-GB"]) {
         kJL_SET("en-GB");
@@ -135,14 +139,11 @@
     [[SDImageCache sharedImageCache]clearMemory];
     [[SDImageCache sharedImageCache]clearDisk];
  
-        
-   
-    
     return YES;
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    NSLog(@"程序进入后台");
+    kJLLog(JLLOG_DEBUG, @"程序进入后台");
     AVAudioSession * session = [AVAudioSession sharedInstance];
     if (!session) printf("ERROR INITIALIZING AUDIO SESSION! \n");
     else{
@@ -153,7 +154,7 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    NSLog(@"程序进入前台");
+    kJLLog(JLLOG_DEBUG, @"程序进入前台");
     if(!kJL_BLE_EntityM){
         [self reconnectToDevice];
     }
@@ -162,7 +163,7 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    NSLog(@"程序即将销毁");
+    kJLLog(JLLOG_DEBUG, @"程序即将销毁");
 }
 
 #pragma mark - 运动功能
@@ -264,7 +265,7 @@
 
 - (void)noteNetworkStatus:(NSNotification*)note {
     AFNetworkReachabilityManager *net = note.object;
-    NSLog(@"---> Network Status: %ld",(long)net.networkReachabilityStatus);
+    kJLLog(JLLOG_DEBUG, @"---> Network Status: %ld",(long)net.networkReachabilityStatus);
     [self actionNetStatus:net.networkReachabilityStatus];
 }
 
@@ -306,7 +307,7 @@
 
 -(void)loginAction:(NSString*)mobile {
     [self initData];
-    NSLog(@"登录后回连设备...");
+    kJLLog(JLLOG_DEBUG, @"登录后回连设备...");
     [self reconnectToDevice];
     /*--- 审核测试 ---*/
     [JL_Tools delay:1.0 Task:^{
@@ -315,15 +316,15 @@
 }
 
 -(void)reconnectToDevice{
-    
+    kJLLog(JLLOG_DEBUG, @"已登录回连设备...");
+    if (kJL_BLE_Multiple.bleManagerState == CBManagerStatePoweredOn){
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [[DeviceSubViewModel shared] reconnectLast];
+        });
+    }
     NSString *accessToken = [JL_Tools getUserByKey:kUI_ACCESS_TOKEN];
     if (accessToken.length > 0) {
-        NSLog(@"已登录回连设备...");
-        [JL_Tools delay:0.2 Task:^{
-            if (kJL_BLE_Multiple.bleManagerState == CBManagerStatePoweredOn){
-                [JL_Tools post:kUI_RECONNECT_TO_DEVICE Object:nil];
-            }
-        }];
+        kJLLog(JLLOG_DEBUG, @"已存在 token");
     }
 }
 
@@ -337,7 +338,6 @@
     
     [RTCAlertSingle sharedInstance];
     
-    [AIClound sharedMe];
     // 获取用户信息
     [[User_Http shareInstance] requestGetUserConfigInfo:nil];
 
@@ -463,6 +463,7 @@
 #pragma mark - JLStatementViewControllerDelegate
 
 - (void)confirmCancelBtnAction {
+    [JL_Tools removeUserByKey:@"statement"];
     exit(0);
 }
 
@@ -509,11 +510,10 @@
     NSDictionary *dict = note.object;
     NSString *edr = dict[@"ADDRESS"];
     if (dict == nil || ![edr isEqual:bleSDK.mBleEntityM.mEdr]) {
-        NSLog(@"---> 经典蓝牙没有对应当前设备.");
+        kJLLog(JLLOG_DEBUG, @"---> 经典蓝牙没有对应当前设备.");
     }
 }
 
-#pragma - jingdian
 
 #pragma - 经典蓝牙提示
 -(void)showConnectEdrView{

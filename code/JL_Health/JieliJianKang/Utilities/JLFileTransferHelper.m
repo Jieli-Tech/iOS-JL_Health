@@ -29,7 +29,7 @@
             m_flag = flag;
         }];
         if (m_flag != 0) {
-            NSLog(@"--->insertFileNameForFlashWithFilePath Insert Fail.");
+            kJLLog(JLLOG_DEBUG, @"--->insertFileNameForFlashWithFilePath Insert Fail.");
             [JL_Tools mainTask:^{
                 if (result) { result(JLFileTransferOperateTypeFail, 0.0); }
             }];
@@ -68,7 +68,7 @@
                                 if (result_bk) { result_bk(JLFileTransferOperateTypeStart, 0.0); }
                             }
                             if (result == JL_BigFileTransferDownload) {
-                                NSLog(@"---> Progress: %.2f【%d】",progress,result);
+                                kJLLog(JLLOG_DEBUG, @"---> Progress: %.2f【%d】",progress,result);
                                 if (result_bk) { result_bk(JLFileTransferOperateTypeDoing, progress); }
                             }
                             if (result == JL_BigFileTransferEnd) {

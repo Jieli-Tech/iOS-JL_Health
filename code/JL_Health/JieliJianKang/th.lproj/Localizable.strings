@@ -678,3 +678,15 @@
 "是否要清除用户缓存" = "คุณต้องการล้างแคชของผู้ใช้หรือไม่?";
 "AI表盘" = "เอไอ ไดอัล";
 "正在传输中" = "กำลังถ่ายโอนข้อมูล...";
+"Image Captcha" = "ภาพยืนยัน";
+"Can't see it? Try another." = "ไม่เห็นชัดเจน? ลองอีกที";
+"Please enter the correct captcha." = "กรุณากรอกค่า CAPTCHA ที่ถูกต้อง";
+"There was a problem loading the image verification code, please try again later" = "เกิดปัญหาในการโหลดรหัสยืนยันภาพ กรุณາลองอีกครั้งในពេល๊๋นี้";
+"Custom" = "ปรับแต่ง";
+"Custom Dial" = "หน้าปัดนาฬิกาแบบกำหนดเอง";
+"I have read and agree to the" = "ฉันได้อ่านและเห็นด้วย";
+"User Agreement" = "ข้อตกลงผู้ใช้";
+"Privacy Policy" = "นโยบายความเป็นส่วนตัว";
+"and" = "และ";
+"Please read and agree to the Terms of Service and Privacy Policy." = "โปรดอ่านและยอมรับข้อกำหนดในการให้บริการและนโยบายความเป็นส่วนตัว";
+"ICP filing information" = "ข้อมูลการยื่น ICP";

@@ -189,7 +189,7 @@
     
     blueImage.center = CGPointMake(x, (sH-gap_T-gap_B)/2.0);
     AudioServicesPlaySystemSound(1519);
-    NSLog(@"----> YaLi_2 Index : %ld",(long)subIndex+1);
+    kJLLog(JLLOG_DEBUG, @"----> YaLi_2 Index : %ld",(long)subIndex+1);
     
     if([_delegate respondsToSelector:@selector(YaLiView2ClickIndex:)]){
         [_delegate YaLiView2ClickIndex:(long)subIndex+1];

@@ -95,7 +95,7 @@
             if ([_titleArray[i] isKindOfClass:[NSString class]]) {
                 buttonTitle = _titleArray[i];
             } else {
-                NSLog(@"您所提供的标题%li格式不正确。 Your title%li not fit for topTab,please correct it to NSString!",(long)i + 1,(long)i + 1);
+                kJLLog(JLLOG_DEBUG, @"您所提供的标题%li格式不正确。 Your title%li not fit for topTab,please correct it to NSString!",(long)i + 1,(long)i + 1);
             }
             CGRect buttonFrame = CGRectMake(0, 0, 40, PageBtn);
             if (_titleArray.count > 5) {

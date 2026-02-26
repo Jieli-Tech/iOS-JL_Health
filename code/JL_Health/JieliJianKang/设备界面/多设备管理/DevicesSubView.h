@@ -22,8 +22,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic,strong)UICollectionView *colView;
 @property(nonatomic,weak)id<DevSubViewDelegate> delegate;
--(void)refreshUI;
--(void)reconnecLastDevice;
 -(void)cutEntityConnecting;
 @end
 

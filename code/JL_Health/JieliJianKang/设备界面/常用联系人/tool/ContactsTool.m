@@ -186,7 +186,7 @@
                 
                 if (status_del != JL_SmallFileOperateSuceess) {
                     [JL_Tools mainTask:^{
-                        NSLog(@"--->小文件 CALL.TXT 传输失败 %s,%d",__func__,__LINE__);
+                        kJLLog(JLLOG_DEBUG, @"--->小文件 CALL.TXT 传输失败 %s,%d",__func__,__LINE__);
                         [JLUI_Effect setLoadingText:kJL_TXT("同步失败！") Delay:0.5f];
                     }];
                     return;
@@ -200,7 +200,7 @@
                                                                     uint16_t fileID) {
                 [JL_Tools mainTask:^{
                     if (status == JL_SmallFileOperateSuceess) {
-                        NSLog(@"--->小文件 CALL.TXT 传输成功 %s,%d",__func__,__LINE__);
+                        kJLLog(JLLOG_DEBUG, @"--->小文件 CALL.TXT 传输成功 %s,%d",__func__,__LINE__);
                         [JLUI_Effect setLoadingText:kJL_TXT("同步完成！") Delay:0.5f];
                         
                         block(true);
@@ -208,7 +208,7 @@
                     }
                     if (status != JL_SmallFileOperateSuceess &&
                         status != JL_SmallFileOperateDoing){
-                        NSLog(@"--->小文件 CALL.TXT 传输失败 %s,%d",__func__,__LINE__);
+                        kJLLog(JLLOG_DEBUG, @"--->小文件 CALL.TXT 传输失败 %s,%d",__func__,__LINE__);
                         [JLUI_Effect setLoadingText:kJL_TXT("同步失败！") Delay:0.5f];
                         block(false);
                     }

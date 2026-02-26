@@ -79,7 +79,7 @@
         
         vid_str = [NSString stringWithFormat:@"%d",vid];
         pid_str = [NSString stringWithFormat:@"%d",pid];
-        NSLog(@"OTA_0--->Vid:%@ Pid:%@",vid_str,pid_str);
+        kJLLog(JLLOG_DEBUG, @"OTA_0--->Vid:%@ Pid:%@",vid_str,pid_str);
         
         [self addNote];
     }
@@ -187,7 +187,7 @@
 
         
         if (_isOtaRelink == NO) {
-            NSLog(@"当前设备已断开，下载任务取消。");
+            kJLLog(JLLOG_DEBUG, @"当前设备已断开，下载任务取消。");
             [[User_Http shareInstance] cancelDownloadTask];
         }
         
@@ -195,7 +195,7 @@
 }
 
 -(void)noteForceOta:(NSNotification*)note{
-    NSLog(@"---> Note Force Ota.");
+    kJLLog(JLLOG_DEBUG, @"---> Note Force Ota.");
     [JL_Tools post:kUI_JL_BLE_SCAN_CLOSE Object:nil];
     [self onUpdateOTA];
 }
@@ -290,7 +290,7 @@
     
     NSArray *nowList = [kJL_DIAL_CACHE getWatchList];
     [DialManager updateResourcePath:updatePath List:nowList
-                             Result:^(DialUpdateResult updateResult, NSArray * _Nullable array,
+                             Result:^(DialUpdateResult updateResult, NSArray * _Nullable array,NSString * _Nullable filePath,
                                       NSInteger index, float progress){
         [JL_Tools mainTask:^{
             if (updateResult == DialUpdateResultReplace) {
@@ -320,7 +320,7 @@
             if (updateResult == DialUpdateResultNoSpace)  self.updateTxt.text = @"等待升级";
             if (updateResult == DialUpdateResultCompareFail)  self.updateTxt.text = @"等待升级";
             [JL_Tools delay:1.0 Task:^{
-                NSLog(@"---->Update result：%@ ",self.updateTxt.text);
+                kJLLog(JLLOG_DEBUG, @"---->Update result：%@ ",self.updateTxt.text);
 //                if (result) result();
                 [self onUpdateOTA];
             }];
@@ -357,7 +357,7 @@
         if ([itemPath hasSuffix:@".ufw"]) {
             otaPath = [zipFolderPath stringByAppendingPathComponent:itemPath];
             otaData = [NSData dataWithContentsOfFile:otaPath];
-            NSLog(@"--->OTA升级路径：%@",otaPath);
+            kJLLog(JLLOG_DEBUG, @"--->OTA升级路径：%@",otaPath);
             break;
         }
     }
@@ -420,21 +420,18 @@
                 [self otaTimeCheck];//增加超时检测
                 self->_isOtaRelink = YES;
                 
-                NSLog(@"---> OTA回连设备... %@",self.otaUUID);
+                kJLLog(JLLOG_DEBUG, @"---> OTA回连设备... %@",self.otaUUID);
                 
                 JL_BLEMultiple *mp = [[JL_RunSDK sharedMe] mBleMultiple];
                 JL_EntityM * otaEntity = [mp makeEntityWithUUID:self.otaUUID];
                 
-
-                [kJL_BLE_Multiple connectEntity:otaEntity Result:^(JL_EntityM_Status status) {
+                [[JL_RunSDK sharedMe] connectDevice:otaEntity callBack:^(BOOL status) {
                     self->_isOtaRelink = NO;
-                    if (status != JL_EntityM_StatusPaired) {
+                    if (!status){
                         [self setupUIErrorText:kJL_TXT("OTA升级失败")];
                     }
-                    if (status == JL_EntityM_StatusPaired){
-                        [[JL_RunSDK sharedMe] setMBleEntityM:otaEntity];
-                    }
                 }];
+                
             }break;
             case JL_OTAResultUpgrading:
             case JL_OTAResultPreparing:{
@@ -506,7 +503,7 @@
                 [[JL_RunSDK sharedMe] setIsOTAFailRelink:NO];
                 [self otaTimeCheck];//增加超时检测
                 self->_isOtaRelink = YES;
-                NSLog(@"---> OTA 设备当前UUID... %@",self.otaUUID);
+                kJLLog(JLLOG_DEBUG, @"---> OTA 设备当前UUID... %@",self.otaUUID);
                 //[[JL_RunSDK sharedMe] setAncsUUID:self.otaUUID];
                 [JL_Tools post:kUI_JL_BLE_SCAN_OPEN Object:nil];
             }break;
@@ -556,7 +553,7 @@ static int      otaTimeout= 0;
     if (otaTimeout == 30) {
         [self otaTimeClose];
         [self setupUIErrorText:kJL_TXT("OTA升级超时")];
-        NSLog(@"OTA ---> 超时了！！！");
+        kJLLog(JLLOG_DEBUG, @"OTA ---> 超时了！！！");
     }
 }
 
@@ -580,7 +577,7 @@ static int      otaTimeout= 0;
 
 -(void)endUpdateUI{
     [JL_Tools subTask:^{
-        NSLog(@"--->Fats Update UI END.1");
+        kJLLog(JLLOG_DEBUG, @"--->Fats Update UI END.1");
         [kJL_BLE_CmdManager.mFlashManager cmdUpdateResourceFlashFlag:JL_FlashOperateFlagFinish Result:nil];
     }];
 }

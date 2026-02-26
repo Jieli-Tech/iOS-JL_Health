@@ -69,7 +69,7 @@
 
       [self.dictionary setObject:image forKey:key];
     }else{
-      //NSLog(@"Error: unable to find %@", [self imagePathForKey:key]);
+      //kJLLog(JLLOG_DEBUG, @"Error: unable to find %@", [self imagePathForKey:key]);
     }
   }
   return image;
@@ -84,7 +84,7 @@
 
 -(void)clearCaches:(NSNotification *)n{
 
-  NSLog(@"Flushing %ld images out of the cache", (unsigned long)[self.dictionary count]);
+  kJLLog(JLLOG_DEBUG, @"Flushing %ld images out of the cache", (unsigned long)[self.dictionary count]);
   [self.dictionary removeAllObjects];
 }
 

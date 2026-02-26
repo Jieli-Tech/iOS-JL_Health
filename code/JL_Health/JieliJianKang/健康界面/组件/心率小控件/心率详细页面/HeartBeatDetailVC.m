@@ -461,7 +461,7 @@ typedef NS_ENUM(NSUInteger, HeartRateType) {
     }
     titleBarView.alpha = k;
     
-//    NSLog(@"scrollViewDidScroll:%f",scrollView.contentOffset.y);
+//    kJLLog(JLLOG_DEBUG, @"scrollViewDidScroll:%f",scrollView.contentOffset.y);
 }
 
 
@@ -481,7 +481,7 @@ typedef NS_ENUM(NSUInteger, HeartRateType) {
 //
 //        NSValue *v = [NSValue valueWithCGPoint:CGPointMake(i, k)];
 //        [tmp addObject:v];
-////        NSLog(@"x:%d,y:%d",i,k);
+////        kJLLog(JLLOG_DEBUG, @"x:%d,y:%d",i,k);
 //    }
 //    brokenlineView.timeLabArray = @[@"00:00",@"06:00",@"12:00",@"18:00",@"00:00"];
 //    brokenlineView.dtNumber = 24*2;

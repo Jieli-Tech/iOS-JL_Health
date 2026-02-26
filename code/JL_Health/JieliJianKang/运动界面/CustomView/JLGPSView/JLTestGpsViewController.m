@@ -43,7 +43,7 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
     CLLocation *location = locations.lastObject;
     if (location) {
-//        NSLog(@"horizontalAccuracy: %f======verticalAccuracy: %f======speedAccuracy: %f", location.horizontalAccuracy, location.verticalAccuracy, location.speedAccuracy);
+//        kJLLog(JLLOG_DEBUG, @"horizontalAccuracy: %f======verticalAccuracy: %f======speedAccuracy: %f", location.horizontalAccuracy, location.verticalAccuracy, location.speedAccuracy);
         NSString *result = [NSString stringWithFormat:@"%@horizontalAccuracy: %f======verticalAccuracy: %f======speedAccuracy: %f\n", self.textView.text, location.horizontalAccuracy, location.verticalAccuracy, location.speedAccuracy];
         self.textView.text = result;
     }

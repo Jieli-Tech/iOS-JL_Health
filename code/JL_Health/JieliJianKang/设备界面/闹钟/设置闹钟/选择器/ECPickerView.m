@@ -136,7 +136,7 @@
 }
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-    NSLog(@"%s",__func__);
+    kJLLog(JLLOG_DEBUG, @"%s",__func__);
 }
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{

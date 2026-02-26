@@ -6,8 +6,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <JL_BLEKit/JL_BLEKit.h>
-#import <DFUnits/DFUnits.h>
 #import "JLTabBarController.h"
 
 typedef enum : NSUInteger {

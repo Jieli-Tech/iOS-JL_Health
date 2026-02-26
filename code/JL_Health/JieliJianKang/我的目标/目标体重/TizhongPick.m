@@ -91,7 +91,7 @@ static BOOL isSpeed = NO;
     if (isSpeed == NO) {
         float s_x = scrollView.contentOffset.x + view_W/2.0-kTizhongPickGAP/2.0;
         [self fixedOffset:s_x];
-        //NSLog(@"无速度：%.2f",s_x);
+        //kJLLog(JLLOG_DEBUG, @"无速度：%.2f",s_x);
     }
 }
 
@@ -99,7 +99,7 @@ static BOOL isSpeed = NO;
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     float s_x = scrollView.contentOffset.x + view_W/2.0-kTizhongPickGAP/2.0;
     [self fixedOffset:s_x];
-    //NSLog(@"有速度：%.2f",s_x);
+    //kJLLog(JLLOG_DEBUG, @"有速度：%.2f",s_x);
 }
 
 
@@ -120,7 +120,7 @@ static BOOL isSpeed = NO;
     if (fm_point < 100.f || fm_point > 3400.0f) return;
     
     //NSString *text_num = [NSString stringWithFormat:@"%.1f",fm_point];
-    //NSLog(@"0 ==> fmLabel.text:%@",text_num);
+    //kJLLog(JLLOG_DEBUG, @"0 ==> fmLabel.text:%@",text_num);
 
     if([_delegate respondsToSelector:@selector(onTizhongPick:didSelect:)]){
         NSInteger outPoint = (NSInteger)fm_point;
@@ -144,7 +144,7 @@ static BOOL isSpeed = NO;
     if (fm_point < 100.f || fm_point > 3400.0f) return;
     
     //NSString *text_num = [NSString stringWithFormat:@"%.1f",fm_point];
-    //NSLog(@"1 ==> fmLabel.text:%@",text_num);
+    //kJLLog(JLLOG_DEBUG, @"1 ==> fmLabel.text:%@",text_num);
 
     if([_delegate respondsToSelector:@selector(onTizhongPick:didChange:)]){
         NSInteger outPoint = (NSInteger)fm_point;

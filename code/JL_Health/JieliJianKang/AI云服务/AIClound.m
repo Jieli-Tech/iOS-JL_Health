@@ -21,9 +21,6 @@
 IFlySpeechSynthesizerDelegate,AIKITSparkDelegate,JLAIManagerDelegate>{
     UIButton *contentView;
     
-    DFAudio         *myAudio;
-    DFAudioFormat   *myFormat;
-    
     int aiuiState;
     int offset;
     
@@ -93,15 +90,6 @@ IFlySpeechSynthesizerDelegate,AIKITSparkDelegate,JLAIManagerDelegate>{
         offset = 0;
         index = 0;
         chatIndex = 0;
-        myFormat = [DFAudioFormat new];
-        myFormat.mSampleRate = 16000;
-        myFormat.mBitsPerChannel = 16;
-        myFormat.mChannelsPerFrame = 1;
-        myFormat.mFormatID = kAudioFormatLinearPCM;
-        
-        myAudio = [[DFAudio alloc] init];
-        [myAudio setPlayerBufferSize:10*1024*1024 Format:myFormat];
-        [myAudio didPlayerStart];
         
         [self initSynthesizer];
         
@@ -312,7 +300,7 @@ IFlySpeechSynthesizerDelegate,AIKITSparkDelegate,JLAIManagerDelegate>{
 ///   - originator: 状态变更发起端
 ///   当发起者是Device时，才会具备params的参数，其中结束录音时，params的属性仅有mVadWay为可使用内容
 ///   - params: 录音参数
--(void)speexManagerStatus:(JL_SpeakType)status By:(JLCMDOriginator)originator With:(JLRecordParams *_Nullable) params{
+-(void)speexManager:(JL_SpeexManager *)manager Status:(JL_SpeakType)status By:(JLCMDOriginator)originator With:(JLRecordParams *_Nullable) params{
     audioState = status;
     
     if(status == JL_SpeakTypeDo){
@@ -373,7 +361,7 @@ IFlySpeechSynthesizerDelegate,AIKITSparkDelegate,JLAIManagerDelegate>{
                 return;
             }];
         }
-        NSLog(@"\n\nspeex 语音对话结束\n\n");
+        kJLLog(JLLOG_DEBUG, @"\n\nspeex 语音对话结束\n\n");
         [speexHandleTimer invalidate];
         speexHandleTimer = nil;
         speexisHandle = false;
@@ -389,8 +377,8 @@ IFlySpeechSynthesizerDelegate,AIKITSparkDelegate,JLAIManagerDelegate>{
 
 /// 录音数据回调
 /// - Parameter data: 数据
--(void)speexManagerAudio:(NSData *)data{
-    NSLog(@"speexManagerAudio:%@",data);
+-(void)speexManager:(JL_SpeexManager *)manager Audio:(NSData *)data{
+    kJLLog(JLLOG_DEBUG, @"speexManagerAudio:%@",data);
     [OpusUnit opusWriteData:data];
 }
 
@@ -409,7 +397,7 @@ IFlySpeechSynthesizerDelegate,AIKITSparkDelegate,JLAIManagerDelegate>{
 
 - (void)notePCMData:(NSNotification*)note {
     NSData *data = [note object];
-    NSLog(@"notePCMData:%@",data);
+    kJLLog(JLLOG_DEBUG, @"notePCMData:%@",data);
 
     
     dispatch_queue_t queue = dispatch_queue_create("queue", DISPATCH_QUEUE_CONCURRENT);
@@ -506,7 +494,7 @@ IFlySpeechSynthesizerDelegate,AIKITSparkDelegate,JLAIManagerDelegate>{
  **/
 - (void) onBeginOfSpeech
 {
-    NSLog(@"onBeginOfSpeech");
+    kJLLog(JLLOG_DEBUG, @"onBeginOfSpeech");
 }
 
 /**
@@ -514,7 +502,7 @@ IFlySpeechSynthesizerDelegate,AIKITSparkDelegate,JLAIManagerDelegate>{
  **/
 - (void) onEndOfSpeech
 {
-    NSLog(@"onEndOfSpeech");
+    kJLLog(JLLOG_DEBUG, @"onEndOfSpeech");
 }
 
 /**
@@ -546,7 +534,7 @@ IFlySpeechSynthesizerDelegate,AIKITSparkDelegate,JLAIManagerDelegate>{
         [iFlySpeechRecognizer startListening];
     }
     if (isLast){
-        NSLog(@"\n\nspeex科大讯飞语音识别的内容是：%@\n\n",result);
+        kJLLog(JLLOG_DEBUG, @"\n\nspeex科大讯飞语音识别的内容是：%@\n\n",result);
         speexisHandle = true;
         nowSpeexTime = 0;
         [speexHandleTimer invalidate];
@@ -941,7 +929,7 @@ IFlySpeechSynthesizerDelegate,AIKITSparkDelegate,JLAIManagerDelegate>{
     [iFlySpeechSynthesizer setParameter:@"0" forKey:@"rcn"];
     
     
-    NSLog(@"iFlySpeechSynthesizer:%@",iFlySpeechSynthesizer);
+    kJLLog(JLLOG_DEBUG, @"iFlySpeechSynthesizer:%@",iFlySpeechSynthesizer);
     //set engine type
     [iFlySpeechSynthesizer setParameter:instance.engineType forKey:[IFlySpeechConstant ENGINE_TYPE]];
 }
@@ -1058,10 +1046,10 @@ IFlySpeechSynthesizerDelegate,AIKITSparkDelegate,JLAIManagerDelegate>{
         }
     }
     if (mgr.status == 1) {
-        NSLog(@"进入AI 对讲");
+        kJLLog(JLLOG_DEBUG, @"进入AI 对讲");
         isCharting = true;
     }else if (mgr.status == 2){
-        NSLog(@"退出AI 对讲");
+        kJLLog(JLLOG_DEBUG, @"退出AI 对讲");
         isCharting = false;
     }
 }

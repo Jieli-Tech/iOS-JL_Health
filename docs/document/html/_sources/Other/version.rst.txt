@@ -1,0 +1,218 @@
+发布记录
+********
+
+.. important::
+   请根据SDK版本来确认修改内容
+
+=============== ================== =============================================== ======================
+     版本           更新日期                           描述                              修改人
+=============== ================== =============================================== ======================
+  V1.12.0            2024/12/02        :ref:`publish_record_1_12_0` 发布记录               陈冠杰
+=============== ================== =============================================== ======================
+
+
+
+1. 等级说明
+===========
+
+- A类: 问题修复，客户必须修复
+- B类: 性能优化，客户可选择修复
+- C类: 功能增加，客户可选择修复
+
+
+2. 发布记录
+===========
+
+.. _publish_record_1_12_0:
+
+杰理健康SDK_iOS_V1.12.0
+--------------------------
+
+● 补丁描述
+^^^^^^^^^^
+
+| **日期: 2024/12/02**
+| **SDK版本: V1.12.0**
+| **该SDK在RCSP协议基础上实现, 需要配合JL_BLEKit.framework库使用**
+| **适用芯片范围: AC695-WATCH-SDK/JL701N-WATCH-SDK/AC707N-WATCH-SDK**
+| **应对固件SDK版本：**
+
+
++--------+------------------------+----------------------------------+
+| 芯片   |          版本          |            备注                  |
++========+========================+==================================+
+| AC707N |        v1.0.0          |                                  |
++--------+------------------------+----------------------------------+
+| JL701N |       V3.0.0           |          4G 版本                 |
++--------+------------------------+----------------------------------+
+| JL701N |        v2.2.1          | Nand Flash 版本必 须强制更新 SDK |
++--------+------------------------+----------------------------------+
+| JL701N | V2.2.0、v2.0.1、v1.0.5 |        Nor Flash                 |
++--------+------------------------+----------------------------------+
+
+
+● 补丁等级：``C``
+^^^^^^^^^^^^^^^^^^^^
+
+● 修改内容
+^^^^^^^^^^^^^^^^^
+
+| 1. 新增功能
+| (1)兼容AC707N系列芯片
+| (2)抽离表盘背景图片压缩相关方法为独立类 
+| (3)分离日志打印库为独立库
+
+● 注意事项
+^^^^^^^^^^^^^^^^^
+
+.. warning::
+   
+   1. `JL_BLEKit.framework`依赖 `JLBmpConvertKit.framework`和 `JLLogHelper.framework`，需要在导入 `JL_BLEKit.framework` 的时候需要同时导入这两个库。
+   2. 其他的SDK库诸如： `JL_OTALib.framework`、 `JL_HashPair.framework`等等，需要在导入的时候需要同时导入 `JLLogHelper.framework`。
+
+
+
+- `JLLogHelper.framework` 是默认开启了日志打印和存储的，如果开发者不需要记录，可以通过对应的接口关闭日志打印和存储。具体操作可以参考以下：
+
+.. code:: objectivec
+
+    [JLLogManager clearLog]; // 清空日志
+    [JLLogManager setLog:false IsMore:false Level:JLLOG_COMPLETE]; // 关闭日志打印
+    [JLLogManager saveLogAsFile:false]; // 关闭日志存储
+    [JLLogManager logWithTimestamp:false]; // 关闭日志打印时间
+
+
+
+- 由于对 `JL_BLEKit.framework` 进行了抽离，以前旧的图像转换算法使用，需要修改成新的调用方式。具体的操作可以参考以下：
+
+.. code:: objectivec
+
+   /* 旧的使用方法 
+   +(NSString *)makeDialwithName:(NSString *)watchBinName withSize:(CGSize)size image:(UIImage *)basicImage{
+      //    NSData *imageData0 = UIImageJPEGRepresentation(basicImage, 1.0f);
+      //    UIImage *img = [UIImage imageWithData:imageData0];
+      NSData *imageData = [BitmapTool resizeImage:basicImage andResizeTo:CGSizeMake(size.width, size.height)];
+      
+      
+      NSString *bmpPath = [JL_Tools listPath:NSLibraryDirectory MiddlePath:@"" File:@"ios_test.bmp"];
+      NSString *binPath = [JL_Tools listPath:NSLibraryDirectory MiddlePath:@"" File:watchBinName];
+      
+      [JL_Tools removePath:bmpPath];
+      [JL_Tools removePath:binPath];
+      
+      [JL_Tools createOn:NSLibraryDirectory MiddlePath:@"" File:@"ios_test.bmp"];
+      [JL_Tools createOn:NSLibraryDirectory MiddlePath:@"" File:watchBinName];
+      
+      UIImage *image = [UIImage imageWithData:imageData];
+      int width = size.width;
+      int height = size.height;
+      NSLog(@"压缩分辨率 ---> w:%df h:%df",width,height);
+      
+      NSData *bitmap = [BitmapTool convert_B_G_R_A_BytesFromImage:image];
+      [JL_Tools writeData:bitmap fillFile:bmpPath];
+      
+      
+      //带有alpha的图片转换
+      br28_btm_to_res_path_with_alpha((char*)[bmpPath UTF8String], width, height, (char*)[binPath UTF8String]);
+      NSLog(@"--->Br28 BIN【%@】is OK!", watchBinName);
+      
+      /*--- BR23压缩算法 ---*/
+      //    br23_btm_to_res_path((char*)[bmpPath UTF8String], width, height, (char*)[binPath UTF8String]);
+      //    NSLog(@"--->Br23 BIN【%@】is OK!", watchBinName);
+
+         return [JL_Tools listPath:NSLibraryDirectory MiddlePath:@"" File:watchBinName];
+      }
+      */
+
+      //新的使用方法
+      +(void)makeDialwithName:(NSString *)watchBinName withSize:(CGSize)size image:(UIImage *)basicImage{
+         
+         NSData *imageData = [JLBmpConvert resizeImage:basicImage andResizeTo:CGSizeMake(size.width, size.height)];
+         UIImage *image = [UIImage imageWithData:imageData];
+         
+         NSString *imagePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, true) firstObject];
+         imagePath = [imagePath stringByAppendingPathComponent:@"basic.png"];
+         [JL_Tools writeData:imageData fillFile:imagePath];
+         
+         //带有alpha的图片转换，方式一
+         [JLBmpConvert covert:JLBmpConvertType701N_ARBG Image:image completion:^(NSData * _Nullable outFileData, NSError * _Nullable error) {
+            if (error) {
+                  NSLog(@"--->PNG BIN【%@】is Error!", watchBinName);
+                  return;
+            }
+            NSLog(@"--->PNG BIN【%@】is OK!", watchBinName);
+         }];
+         
+         //带有有alpha的图片转换，方式二
+         //这里的 outFilePath 是可选项，如果需要指定输出路径可以设置
+         [JLBmpConvert covert:JLBmpConvertType701N_ARBG inFilePath:imagePath outFilePath:nil completion:^(NSString * _Nonnull inFilePath, NSString * _Nullable outFilePath, NSError * _Nullable error) {
+            if (error) {
+               NSLog(@"--->PNG BIN【%@】is Error!", watchBinName);
+               return;
+            }
+            NSLog(@"--->PNG BIN【%@】is OK!", watchBinName);
+         }];  
+      }
+    
+
+
+1. 手表功能
+^^^^^^^^^^^
+
+1. 表盘操作
+
+   * 表盘文件浏览
+   * 插入表盘文件
+   * 删除表盘文件
+   * 自定义表盘背景
+   * 切换表盘
+
+2. 大文件传输
+
+   * 音乐文件传输 
+
+3. 常用联系人 
+4. 健康数据同步
+
+   * 心率
+   * 运动步数
+   * 睡眠质量
+   * 其他
+   
+5. 运动数据同步
+
+   * 室内运动 
+   * 室外运动
+
+6. 天气信息同步
+7. 消息同步
+8. 健康设置
+
+   * 跌倒提醒
+   * 久坐提醒
+   * 心率测试
+   * 其他
+   
+9. 更多功能
+
+
+2. 其他功能支持
+^^^^^^^^^^^^^^^^
+
+1. 设备文件浏览
+2. 闹钟功能
+
+   * 添加闹钟 
+   * 删除闹钟
+   * 修改闹钟
+   
+3. 设备查找功能
+4. 更多功能
+5. AI云功能
+6. AI表盘
+7. Nand Flash存储器信息拓展支持
+8. 4G 模块 OTA 升级
+
+
+
+

@@ -72,7 +72,7 @@
     [locationManager requestLocationWithReGeocode:YES completionBlock:^(CLLocation *location, AMapLocationReGeocode *regeocode, NSError *error) {
         
         if (error){
-            NSLog(@"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
+            kJLLog(JLLOG_DEBUG, @"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
             
             if (error.code == AMapLocationErrorLocateFailed)
             {
@@ -80,11 +80,11 @@
             }
         }
         
-        NSLog(@"get location:%@", location);
+        kJLLog(JLLOG_DEBUG, @"get location:%@", location);
         
         if (regeocode)
         {
-            NSLog(@"reGeocode:%@", regeocode);
+            kJLLog(JLLOG_DEBUG, @"reGeocode:%@", regeocode);
             self->watchWeather.province = regeocode.province;
             self->watchWeather.city = regeocode.city;
             AMapWeatherSearchRequest *request = [[AMapWeatherSearchRequest alloc] init];
@@ -103,7 +103,7 @@
 }
 
 - (void)onWeatherSearchDone:(AMapWeatherSearchRequest *)request response:(AMapWeatherSearchResponse *)response{
-    NSLog(@"AMapWeatherSearchResponse:%@",response);
+    kJLLog(JLLOG_DEBUG, @"AMapWeatherSearchResponse:%@",response);
     if(response.lives.count>0){
         AMapLocalWeatherLive *weather = response.lives[0];
         watchWeather.temperature = [weather.temperature intValue];
@@ -119,7 +119,7 @@
         BOOL value = [[[NSUserDefaults standardUserDefaults] valueForKey:@"BT_WEATHER"] boolValue];
         if(value){
             [[JLWearable sharedInstance] w_syncWeather:watchWeather withEntity:entity result:^(BOOL succeed) {
-                NSLog(@"执行同步天气结果：%d",succeed);
+                kJLLog(JLLOG_DEBUG, @"执行同步天气结果：%d",succeed);
             }];
         }
     }
@@ -127,7 +127,7 @@
 
 - (void)AMapSearchRequest:(id)request didFailWithError:(NSError *)error
 {
-    NSLog(@"Error: %@", error);
+    kJLLog(JLLOG_DEBUG, @"Error: %@", error);
 }
 
 

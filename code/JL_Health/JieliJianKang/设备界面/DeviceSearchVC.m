@@ -10,9 +10,7 @@
 #import "JLUI_Effect.h"
 
 #import "AddDeviceVC.h"
-#import "WatchLocalVC.h"
 #import "CustomWatchVC.h"
-#import "WatchLocalView.h"
 #import "FunctionView.h"
 #import "MyHealthVC.h"
 #import "OtaUpdateVC.h"
@@ -32,23 +30,19 @@
 #import "BtCallViewController.h"
 
 @interface DeviceSearchVC ()<DevSubViewDelegate,
-                             LanguagePtl,WatchLocalViewDelegate>
+LanguagePtl>
 {
     __weak IBOutlet NSLayoutConstraint *lb_0_H;
     __weak IBOutlet NSLayoutConstraint *btn_0_H;
     __weak IBOutlet NSLayoutConstraint *bottom_H;
-
+    
     __weak IBOutlet UIScrollView *subScrollView;
     __weak IBOutlet UILabel *titleName;
     
-    WatchLocalView  *watchLocalView;
-
-//    JL_RunSDK       *mBleSDK;
-//    JL_ManagerM     *mCmdManager;
-//    DialUICache     *mDialUICache;
+    DialSubView                 *dialSubView;
+    
     NSString        *bleUUID;
     uint32_t        mRealFreeSize;
-    NSArray<NSString *>         *mWatchArray;
     DevicesSubView              *devcSubView;
     FunctionView                *functionView;
     JLPopMenuView               *popMenuView;
@@ -64,31 +58,28 @@
     [[LanguageCls share] add:self];
     deviceLogMgr = [[JLLogFileMgr alloc] init];
     
-
+    
     [self setupUI];
     [self addNote];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [devcSubView refreshUI];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    NSLog(@"---> 设备界面");
+    kJLLog(JLLOG_DEBUG, @"---> 设备界面");
     self.linkedArray = kJL_BLE_Multiple.bleConnectedArr;
     if (kJL_BLE_EntityM) {
         [self isConnectUI:YES];
     }
-    self->mWatchArray = [kJL_DIAL_CACHE getWatchList];
-    [self->watchLocalView setDataArray:self->mWatchArray];
+    [[dialSubView vm] updateCurrentWatch];
 }
 
 - (void)isConnectUI:(BOOL)is {
-    watchLocalView.hidden = !is;
+    dialSubView.hidden = !is;
     functionView.hidden = !is;
     subScrollView.scrollEnabled = is;
-    [devcSubView refreshUI];
 }
 
 - (void)scrollToTop {
@@ -107,33 +98,48 @@
     
     devcSubView.delegate = self;
     [subScrollView addSubview:devcSubView];
-
+    
     
     float gap = 52.0;
     float wacthView_H = 230.0;
     float sW = [UIScreen mainScreen].bounds.size.width;
     float sH = wacthView_H+20.0+gap*7+20+subHeight;
     subScrollView.contentSize = CGSizeMake(sW, sH);
-
-    CGRect rect = CGRectMake(0, 0, sW, wacthView_H);
-    watchLocalView = [[WatchLocalView alloc] initByFrame:rect];
-    watchLocalView.superVC = self;
-    watchLocalView.delegate = self;
-    [watchLocalView setIsEdit:YES];
-    [watchLocalView setIsOperate:YES];
-    [watchLocalView setIsShowLbSmall:YES];
-    [watchLocalView setIsShowLbBig:NO];
     
-    [subScrollView addSubview:watchLocalView];
-    
-    [JL_Tools delay:0.01 Task:^{
-        self->watchLocalView.frame = CGRectMake(0, subHeight, sW, wacthView_H);
-    }];
+    dialSubView = [[DialSubView alloc] initWithFrame:CGRectMake(0, subHeight, sW, wacthView_H)];
+    dialSubView.hidden = true;
+    __weak DeviceSearchVC *weakSelf = self;
+    dialSubView.gotoMore = ^{
+        __strong DeviceSearchVC *strongSelf = weakSelf;
+        JLModel_Device *dev = [[BridgeHelper getCurrentCmdManager] outputDeviceModel];
+        NSData *dt = [JL_Tools HexToData:dev.pidvid];
+        NSString *vid = [NSString stringWithFormat:@"%d",(int)[JL_Tools dataToInt:[dt subf:0 t:2]]];
+        NSString *pid = [NSString stringWithFormat:@"%d",(int)[JL_Tools dataToInt:[dt subf:2 t:2]]];
+        [[DialBaseViewModel shared] getProductInfoWithPid:pid vid:vid completion:^(ProductInfoModel * _Nullable info) {
+            if (!info) {
+                [DFUITools showText:kJL_TXT("未找到该表盘") onView:strongSelf.view delay:1.0];
+                return ;
+            }
+            if (info.configData.supportDialPayment){
+                DialMarketViewController *vc = [[DialMarketViewController alloc] init];
+                [JLApplicationDelegate.navigationController pushViewController:vc animated:YES];
+            }else{
+                DialViewController *vc = [[DialViewController alloc] init];
+                [JLApplicationDelegate.navigationController pushViewController:vc animated:YES];
+            }
+        }];
+    };
+    dialSubView.gotoEdit = ^(NSString * _Nonnull watchName) {
+        CustomWatchVC *vc = [[CustomWatchVC alloc] init];
+        vc.watchName = watchName;
+        vc.modalPresentationStyle = UIModalPresentationFullScreen;
+        [weakSelf presentViewController:vc animated:YES completion:nil];
+    };
+    [subScrollView addSubview:dialSubView];
     
     functionView = [[FunctionView alloc] initWithFrame:CGRectMake(0, wacthView_H+10+subHeight, sW, 7*52)];
     functionView.subView = devcSubView;
     [functionView addObserver:self forKeyPath:@"viewHeight" options:NSKeyValueObservingOptionNew context:nil];
-    
     [subScrollView addSubview:functionView];
     
     
@@ -147,7 +153,7 @@
                 [self isConnectUI:YES];
             }];
         }else{
-            self->watchLocalView.hidden = true;
+            self->dialSubView.hidden = true;
         }
     }];
     
@@ -157,7 +163,7 @@
 }
 
 - (IBAction)btn_addMenu:(UIButton *)sender {
-
+    
     NSArray<JLPopMenuViewItemObject *> *arr = @[
         [[JLPopMenuViewItemObject alloc] initWithName:kJL_TXT("扫一扫") withImageName:@"icon_scan_nol" withTapBlock:^{
             [self->devcSubView cutEntityConnecting];//关闭正在连接的设备
@@ -168,7 +174,7 @@
         }],
         [[JLPopMenuViewItemObject alloc] initWithName:kJL_TXT("添加设备") withImageName:@"icon_add_nol-1" withTapBlock:^{
             [self->devcSubView cutEntityConnecting];//关闭正在连接的设备
-
+            
             AddDeviceVC *vc = [[AddDeviceVC alloc] init];
             [JLApplicationDelegate.navigationController pushViewController:vc animated:YES];
         }],
@@ -178,13 +184,6 @@
     popMenuView.hidden = NO;
 }
 
-
--(void)onWatchLocalViewDidMoreBtn{
-    
-    WatchLocalVC *vc = [[WatchLocalVC alloc] init];
-    [JLApplicationDelegate.navigationController pushViewController:vc animated:YES];
-  
-}
 
 -(void)noteForIosReview:(NSNotification*)note{
     
@@ -197,7 +196,7 @@
 
 
 - (void)noteDeviceChange:(NSNotification*)note {
-    JLDeviceChangeType type = [[note object] integerValue];
+    JLDeviceChangeType type = [[note object] intValue];
     if (type == JLDeviceChangeTypeSomethingConnected) {
         [self isConnectUI:YES];
         [self scrollToTop];
@@ -205,7 +204,7 @@
         
         /*--- 检查是否处于强制升级 ---*/
         if (kJL_BLE_EntityM.mBLE_NEED_OTA == YES)
-        {
+            {
             if ([[JL_RunSDK sharedMe] isOtaUpgrading] == NO) {
                 /*--- OTA界面需要弹出来 ---*/
                 [JL_Tools delay:0.5 Task:^{
@@ -216,11 +215,10 @@
                 [JL_Tools post:kUI_JL_DEVICE_OTA Object:nil];
             }
             return;
-        }
-
-        /*--- 获取Flash信息 ---*/
-        [JLUI_Effect startLoadingView:kJL_TXT("读取表盘") OnView:self.view Delay:10.0];
+            }
         
+        /*--- 获取Flash信息 ---*/
+        [AlertViewOnWindows showConnectingWithTips:kJL_TXT("读取表盘") timeout:10];
         /*--- 读取设备的表盘 ---*/
         [self connectedWatchAction];
         
@@ -229,19 +227,15 @@
         [self isConnectUI:NO];
         [self scrollToTop];
         [[JLWearSync share] removeProtocol:JLApplicationDelegate.tabBarController];
-        [JLUI_Effect removeLoadingView];
         
         /*--- 升级失败也要回连设备 ---*/
         NSString *ancsUuid = [[JL_RunSDK sharedMe] ancsUUID];
         if (ancsUuid.length > 0 && [[JL_RunSDK sharedMe] isOTAFailRelink]) {
             JL_EntityM * otaEntity = [kJL_BLE_Multiple makeEntityWithUUID:ancsUuid];
-            NSLog(@"OTA fail will reconnect device --> %@",otaEntity);
-
+            kJLLog(JLLOG_DEBUG, @"OTA fail will reconnect device --> %@",otaEntity);
+            
             //[[JL_RunSDK sharedMe] setAncsUUID:otaEntity.mPeripheral.identifier.UUIDString];
-            [kJL_BLE_Multiple connectEntity:otaEntity Result:^(JL_EntityM_Status status) {
-                if (status == JL_EntityM_StatusPaired) {
-                    [[JL_RunSDK sharedMe] setMBleEntityM:otaEntity];
-                }
+            [[JL_RunSDK sharedMe] connectDevice:otaEntity callBack:^(BOOL status) {
                 [[JL_RunSDK sharedMe] setIsOTAFailRelink:NO];
             }];
         }
@@ -250,74 +244,72 @@
         [self isConnectUI:NO];
         [self scrollToTop];
         [[JLWearSync share] removeProtocol:JLApplicationDelegate.tabBarController];
-        [JLUI_Effect removeLoadingView];
     }
     [[SDImageCache sharedImageCache] clearMemory];
     [[SDImageCache sharedImageCache] clearDisk];
-   
+    
 }
 
 -(void)connectedWatchAction{
-
     /*--- 设置命令处理中心 ---*/
     [DialManager openDialFileSystemWithCmdManager:kJL_BLE_CmdManager withResult:^(DialOperateType type, float progress) {
         if (type == DialOperateTypeUnnecessary) {
-            NSLog(@"无需重复打开表盘文件系统");
+            kJLLog(JLLOG_DEBUG, @"无需重复打开表盘文件系统");
             return;
         } else if (type == DialOperateTypeFail) {
-            NSLog(@"--->打开表盘文件系统失败!");
+            kJLLog(JLLOG_DEBUG, @"--->打开表盘文件系统失败!");
             [JLUI_Effect setLoadingText:@"打开表盘文件系统失败!" Delay:1.0];
             return;
         }
-        /*--- 读取服务器的表盘 ---*/
-        [[WatchMarket sharedMe] searchAllWatchResult:^{
-            NSLog(@"--->服务器表盘信息已更新...");
-            [DialManager listFile:^(DialOperateType type, NSArray * _Nullable array) {
-                /*--- 重置表盘缓存 ---*/
-                [kJL_DIAL_CACHE newWatchList];
-                [kJL_DIAL_CACHE newWatchCustomList];
+        
+        [DialManager listFile:^(DialOperateType type, NSArray * _Nullable array) {
+            /*--- 重置表盘缓存 ---*/
+            [kJL_DIAL_CACHE newWatchList];
+            [kJL_DIAL_CACHE newWatchCustomList];
+            
+            /*--- 保留WATCH文件 ---*/
+            for (NSString *name in array) {
+                if ([name hasPrefix:@"WATCH"]) [kJL_DIAL_CACHE addWatchListObject:name];
+                if ([name hasPrefix:@"BGP_W"]) [kJL_DIAL_CACHE addWatchCustomListObject:name];
+            }
+            
+            
+            NSArray *watchArray = [kJL_DIAL_CACHE getWatchList];
+            kJLLog(JLLOG_DEBUG, @"--->设备表盘信息已获取...WATCH:%ld",(unsigned long)watchArray.count);
+            
+            [[WatchMarket sharedMe] searchAllWatchResult:^{
+            }];
+            
+            [JL_Tools subTask:^{
+                /*--- 全部表盘的版本 ---*/
+                [kJL_DIAL_CACHE getWatchVersion:watchArray];
                 
-                /*--- 保留WATCH文件 ---*/
-                for (NSString *name in array) {
-                    if ([name hasPrefix:@"WATCH"]) [kJL_DIAL_CACHE addWatchListObject:name];
-                    if ([name hasPrefix:@"BGP_W"]) [kJL_DIAL_CACHE addWatchCustomListObject:name];
-                }
-                
-                
-                self->mWatchArray = [kJL_DIAL_CACHE getWatchList];
-                NSLog(@"--->设备表盘信息已获取...WATCH:%ld",(unsigned long)self->mWatchArray.count);
-                
-                [JL_Tools subTask:^{
-                    /*--- 全部表盘的版本 ---*/
-                    [kJL_DIAL_CACHE getWatchVersion:self->mWatchArray];
+                [JL_Tools mainTask:^{
+                    [AlertViewOnWindows removeConnecting];
+                    kJLLog(JLLOG_DEBUG, @"--->设备表盘信息已获取,开始准备显示表盘图片...");
+                    [[self->dialSubView vm] requireDialsInfo];
+                    [self btn_GetFace:nil];
                     
-                    [JL_Tools delay:0.1 Task:^{
-                        [JLUI_Effect removeLoadingView];//关闭UI转圈
-                        [self->watchLocalView setDataArray:self->mWatchArray];
-                        [self btn_GetFace:nil];
-                        
-                        /*--- 读取设备运动 ---*/
-                        [JLApplicationDelegate checkCurrentSport];
-                        [[JLWearSync share] addProtocol:JLApplicationDelegate.tabBarController];
-                        
-                        /*--- 同步天气信息 ---*/
-                        int v0 = [[[NSUserDefaults standardUserDefaults] valueForKey:@"BT_WEATHER"] intValue];
-                        if (v0 == 1) {
-                            [JLWeatherHttp syncCurrentLocationWeatherToDevice];
-                        }
-//                        //读取设备日志
-                        [self checkoutDeviceLog];
-                        // 读取设备配置
-                        [self checkoutDeviceConfigInfo];
-                        
-                        
-
-                    }];
                 }];
-               
+                
+                // 读取设备运动
+                [JLApplicationDelegate checkCurrentSport];
+                [[JLWearSync share] addProtocol:JLApplicationDelegate.tabBarController];
+                
+                // 同步天气信息
+                int v0 = [[[NSUserDefaults standardUserDefaults] valueForKey:@"BT_WEATHER"] intValue];
+                if (v0 == 1) {
+                    [JLWeatherHttp syncCurrentLocationWeatherToDevice];
+                }
+                //读取设备日志
+                [self checkoutDeviceLog];
+                // 读取设备配置
+                [self checkoutDeviceConfigInfo];
+                
             }];
         }];
     }];
+    
 }
 
 -(void)checkoutDeviceLog{
@@ -336,12 +328,12 @@
                 [self->deviceLogMgr sendToServiceWithBlock:^(ResponseModel * _Nonnull model) {
                     if (model.code == 0) {
                         [DFFile removePath:tempSavePath];
-                        NSLog(@"Device log is upload to service");
+                        kJLLog(JLLOG_DEBUG, @"Device log is upload to service");
                     }
                 }];
             }break;
             case LogTypeFailed:{
-                NSLog(@"get log failed");
+                kJLLog(JLLOG_DEBUG, @"get log failed");
             }break;
             default:
                 break;
@@ -353,7 +345,7 @@
     
     [[JLDeviceConfig share] deviceGetConfig:kJL_BLE_CmdManager result:^(JL_CMDStatus status, uint8_t sn, JLDeviceConfigModel * _Nullable config) {
         
-        NSLog(@"checkoutDeviceConfigInfo:%d,%@",status,config);
+        kJLLog(JLLOG_DEBUG, @"checkoutDeviceConfigInfo:%d,%@",status,config);
         
     }];
     // 同步天气
@@ -363,32 +355,28 @@
 }
 
 - (void)btn_GetFace:(id)sender {
-
+    
     [kJL_BLE_CmdManager.mFlashManager cmdWatchFlashPath:nil Flag:JL_DialSettingReadCurrentDial
-                            Result:^(uint8_t flag, uint32_t size,
-                                     NSString * _Nullable path,
-                                     NSString * _Nullable describe) {
+                                                 Result:^(uint8_t flag, uint32_t size,
+                                                          NSString * _Nullable path,
+                                                          NSString * _Nullable describe) {
         [JL_Tools mainTask:^{
             if (flag == 0) {
                 NSString *mCurrentWacth = [path stringByReplacingOccurrencesOfString:@"/" withString:@""];
                 [kJL_DIAL_CACHE setCurrrentWatchName:mCurrentWacth];
-                [self->watchLocalView reloadViewData];
+                [[self->dialSubView vm] updateCurrentWatch];
                 
                 /*--- 判断是否需要【更新资源】或者【OTA升级】 ---*/
                 JLModel_Device *devModel = [kJL_BLE_CmdManager outputDeviceModel];
                 if (devModel.otaWatch == JL_OtaWatchYES &&
                     [[JL_RunSDK sharedMe] isOtaUpgrading] == NO) {
-                    NSLog(@"---> 需要更新资源.");
+                    kJLLog(JLLOG_DEBUG, @"---> 需要更新资源.");
                     [self pushUpdateVC];
                 }
             }
-
+            
         }];
     }];
-}
-
--(void)noteReconnectToDevice:(NSNotification*)note{
-    [devcSubView reconnecLastDevice];//重连上次的设备
 }
 
 -(void)pushUpdateVC{
@@ -402,35 +390,28 @@
 
 
 
--(void)noteWatchFace:(NSNotification*)note{
-    NSDictionary *dict = [note object];
-    NSString *text = dict[kJL_MANAGER_KEY_OBJECT];
-    NSString *devTxt = [text stringByReplacingOccurrencesOfString:@"/" withString:@""];
-    [kJL_DIAL_CACHE setCurrrentWatchName:devTxt];
-    [self->watchLocalView reloadViewData];
-}
-
 -(void)addNote{
     [JL_Tools add:kUI_FOR_IOS_REVIEW Action:@selector(noteForIosReview:) Own:self];
-    [JL_Tools add:kUI_RECONNECT_TO_DEVICE Action:@selector(noteReconnectToDevice:) Own:self];
-    //[JL_Tools add:@"kUI_WATCH_LOCAL" Action:@selector(notePresentWatchVC:) Own:self];
-//    [JL_Tools add:@"kUI_WATCH_LOCAL_EDIT" Action:@selector(notePresentCustomWatchVC:) Own:self];
     [JL_Tools add:kUI_JL_DEVICE_CHANGE Action:@selector(noteDeviceChange:) Own:self];
-    [JL_Tools add:kJL_MANAGER_WATCH_FACE Action:@selector(noteWatchFace:) Own:self];
+}
+
+-(void)removeNote{
+    [JL_Tools remove:kUI_FOR_IOS_REVIEW Own:self];
+    [JL_Tools remove:kUI_RECONNECT_TO_DEVICE Own:self];
+    [JL_Tools remove:kUI_JL_DEVICE_CHANGE Own:self];
 }
 
 #pragma mark - DMHandlerDelegate
 
 -(void)dmHandleWithItemModelArray:(NSArray<JLModel_File *> *)modelB {
-    NSLog(@"更新表盘数据，%@", [NSThread currentThread]);
+    kJLLog(JLLOG_DEBUG, @"更新表盘数据，%@", [NSThread currentThread]);
     NSMutableArray *finalArray = [NSMutableArray array];
     for (JLModel_File *fileModel in modelB) {
         if ([fileModel.fileName hasPrefix:@"WATCH"]) {
             [finalArray addObject:fileModel];
         }
     }
-    [self->watchLocalView setDataArray:self->mWatchArray];
-    [JLUI_Effect removeLoadingView];//关闭UI转圈
+    [[dialSubView vm] requireDialsInfo];
 }
 
 //MARK: - handel funcviewHeight
@@ -448,20 +429,18 @@
 
 //MARK:- delegate devSubView
 -(void)devSubViewAddBtnAction{
-
+    
     if (kJL_BLE_Multiple.bleManagerState == CBManagerStatePoweredOff) {
         [DFUITools showText:kJL_TXT("蓝牙没有打开") onView:self.view delay:1.0];
         return;
     }
     [self->devcSubView cutEntityConnecting];//关闭正在连接的设备
-
+    
     AddDeviceVC *vc = [[AddDeviceVC alloc] init];
     [JLApplicationDelegate.navigationController pushViewController:vc animated:YES];
-
+    
 }
 - (void)devSubViewscrollToSomeModel:(UserDeviceModel *)model{
-//    [self->devcSubView cutEntityConnecting];//关闭正在连接的设备
-
     DeviceDetailViewController *vc = [[DeviceDetailViewController alloc] init];
     vc.mainModel = model;
     [JLApplicationDelegate.navigationController pushViewController:vc animated:true];

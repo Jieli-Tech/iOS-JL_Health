@@ -679,3 +679,15 @@
 "是否要清除用户缓存" = "Apakah Anda ingin menghapus cache pengguna?";
 "AI表盘" = "panggilan AI";
 "正在传输中" = "Memindahkan...";
+"Image Captcha" = "CAPTCHA gambar";
+"Can't see it? Try another." = "Tidak jelas? Coba yang lain.";
+"Please enter the correct captcha." = "Silakan masukkan captcha yang benar.";
+"There was a problem loading the image verification code, please try again later" = "Ada masalah saat memuat kode verifikasi gambar, silakan coba lagi nanti";
+"Custom" = "Sesuaikan";
+"Custom Dial" = "Tampilan jam khusus";
+"I have read and agree to the" = "Saya telah membaca dan setuju";
+"User Agreement" = "Perjanjian Pengguna";
+"Privacy Policy" = "kebijakan privasi";
+"and" = "Dan";
+"Please read and agree to the Terms of Service and Privacy Policy." = "Harap membaca dan menyetujui Ketentuan Layanan dan Kebijakan Privasi";
+"ICP filing information" = "informasi pengajuan ICP";

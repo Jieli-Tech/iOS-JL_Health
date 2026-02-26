@@ -329,42 +329,42 @@
 }
 
 - (id)waldo{
-    NSLog(@"waldo debugging view: %@", self);
+    kJLLog(JLLOG_DEBUG, @"waldo debugging view: %@", self);
 
     if(self.superview == nil){
-        NSLog(@"\thas no superview");
+        kJLLog(JLLOG_DEBUG, @"\thas no superview");
     }
    
     if(self.hidden){
-        NSLog(@"\tis hidden -- setting hidden = YES ");
+        kJLLog(JLLOG_DEBUG, @"\tis hidden -- setting hidden = YES ");
         self.hidden = NO;
     }
 
     if(self.alpha == 0){
-        NSLog(@"\alpha is 0 --  setting alpha to 1");
+        kJLLog(JLLOG_DEBUG, @"\alpha is 0 --  setting alpha to 1");
         self.alpha = 1;
     }
 
     if(self.frame.size.width == 0 || self.frame.size.height == 0){
-        NSLog(@"\tframe size was 0/0! fuck that! setting frame to 1000/1000");
+        kJLLog(JLLOG_DEBUG, @"\tframe size was 0/0! fuck that! setting frame to 1000/1000");
         [self setW:1000 andH:1000];
     }
     
     if(![self isInside:self.superview]){
-        NSLog(@"\tpositioned outside my parent's frame! he/she clips to bounds? %d", self.superview.clipsToBounds);
+        kJLLog(JLLOG_DEBUG, @"\tpositioned outside my parent's frame! he/she clips to bounds? %d", self.superview.clipsToBounds);
     }
     
     if(!self.window){
-        NSLog(@"\tdoes not have a window (try calling waldo after all animations and transitions have completed to make sure this isn't about to happen)");
+        kJLLog(JLLOG_DEBUG, @"\tdoes not have a window (try calling waldo after all animations and transitions have completed to make sure this isn't about to happen)");
     } else if(![self isInside:self.window]){
-        NSLog(@"\tis outside window");
+        kJLLog(JLLOG_DEBUG, @"\tis outside window");
     }
 
     CGPoint point = [self.superview convertPoint:self.frame.origin toView:self.window];
     UIView *obscurringView = [self.window hitTest:point
                                         withEvent:nil];
     if(obscurringView != self && obscurringView != nil){
-        NSLog(@"\tpossibly obscurred by: %@", obscurringView);
+        kJLLog(JLLOG_DEBUG, @"\tpossibly obscurred by: %@", obscurringView);
     }
 
     self.backgroundColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.5];

@@ -150,7 +150,7 @@
 
 //MARK: 日期选择回调
 -(void)barDidSelectIndex:(NSInteger)index{
-    NSLog(@"日期选择回调 ---> %ld",(long)index);
+    kJLLog(JLLOG_DEBUG, @"日期选择回调 ---> %ld",(long)index);
     
     if(index == 0 || index == 2){
         yaliView.hidden = YES;

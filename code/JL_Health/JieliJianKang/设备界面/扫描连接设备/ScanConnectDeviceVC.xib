@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -27,9 +27,8 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="连接设备" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t8A-Cy-0Xn">
-                            <rect key="frame" x="75" y="46" width="313" height="40"/>
+                            <rect key="frame" x="170.5" y="46" width="73.5" height="40"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="313" id="Euk-8q-irR"/>
                                 <constraint firstAttribute="height" constant="40" id="ORV-lY-OYt"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
@@ -50,7 +49,7 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="t8A-Cy-0Xn" firstAttribute="centerX" secondItem="2ar-BD-hL8" secondAttribute="centerX" constant="24.5" id="GBr-iU-hA5"/>
+                        <constraint firstItem="t8A-Cy-0Xn" firstAttribute="centerX" secondItem="2ar-BD-hL8" secondAttribute="centerX" id="GBr-iU-hA5"/>
                         <constraint firstAttribute="height" constant="88" id="Jsa-lU-fJo"/>
                         <constraint firstAttribute="bottom" secondItem="U27-J4-gxz" secondAttribute="bottom" id="OEK-tr-8tP"/>
                         <constraint firstAttribute="bottom" secondItem="t8A-Cy-0Xn" secondAttribute="bottom" constant="2" id="VnT-Qu-i7V"/>

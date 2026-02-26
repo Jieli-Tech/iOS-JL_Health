@@ -101,7 +101,7 @@ static DMusicHandler *_dmh;
 - (void)removeNowEntityCache:(JL_EntityM *)nowEntity {
     NSString *uuidString = [nowEntity.mPeripheral.identifier UUIDString];
     if (saveDict[uuidString]) {
-        NSLog(@"removeNowEntityCache。。。");
+        kJLLog(JLLOG_DEBUG, @"removeNowEntityCache。。。");
         NSMutableDictionary *dict = saveDict[uuidString];
         [dict removeAllObjects];
     }

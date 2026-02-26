@@ -20,7 +20,7 @@
     //获取当前触摸点位置
     CGPoint curPoint = [touch locationInView:self];
 
-    //NSLog(@"---> X:%.2f Y:%.2f",curPoint.x,curPoint.y);
+    //kJLLog(JLLOG_DEBUG, @"---> X:%.2f Y:%.2f",curPoint.x,curPoint.y);
     if ([_delegate respondsToSelector:@selector(onYaliSubViewMovePoint:Type:)]) {
         [_delegate onYaliSubViewMovePoint:curPoint Type:0];
     }
@@ -32,7 +32,7 @@
 
     //获取当前触摸点位置
     CGPoint curPoint = [touch locationInView:self];
-    //NSLog(@"END---> X:%.2f Y:%.2f",curPoint.x,curPoint.y);
+    //kJLLog(JLLOG_DEBUG, @"END---> X:%.2f Y:%.2f",curPoint.x,curPoint.y);
     
     if ([_delegate respondsToSelector:@selector(onYaliSubViewMovePoint:Type:)]) {
         [_delegate onYaliSubViewMovePoint:curPoint Type:1];

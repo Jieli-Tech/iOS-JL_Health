@@ -279,7 +279,7 @@
                 esd = [ECSleepDuration make:(float)monthModel.deep/(float)monthModel.all shallow:(float)monthModel.shallow/(float)monthModel.all awake:(float)monthModel.awake/(float)monthModel.all rem:(float)monthModel.rem/(float)monthModel.all Duration:monthModel.all*60 Date:month];
             }
             [esdArray addObject:esd];
-//            NSLog(@"esd.date:%@",esd.date.toYYYYMMdd);
+//            kJLLog(JLLOG_DEBUG, @"esd.date:%@",esd.date.toYYYYMMdd);
         }
         targetModel.durationArray = esdArray;
         targetModel.detail.deep = targetModel.detail.deep/allCount;

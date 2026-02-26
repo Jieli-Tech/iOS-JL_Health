@@ -64,7 +64,7 @@
         NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ (sport_id, speed, distance, startTimestamp, endTimestamp) VALUES (?, ?, ?, ?, ?)", tb_sport_speed_per_km];
         BOOL res = [db executeUpdate:sql, sport_id, [NSNumber numberWithDouble:speed], distance, [NSNumber numberWithDouble:startTimestamp], [NSNumber numberWithDouble:endTimestamp]];
         if (!res) {
-            NSLog(@"insert failed");
+            kJLLog(JLLOG_DEBUG, @"insert failed");
         }
     }];
 }
@@ -78,7 +78,7 @@
     [queue inDatabase:^(FMDatabase * _Nonnull db) {
         BOOL ret = [db executeUpdate:@"delete from ? where sport_id = ?", tb_sport_speed_per_km, sport_id];
         if (!ret) {
-            NSLog(@"delete failed");
+            kJLLog(JLLOG_DEBUG, @"delete failed");
         }
     }];
 }

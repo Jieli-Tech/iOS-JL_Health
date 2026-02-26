@@ -76,7 +76,7 @@
         NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ (sport_id, type, longitude, latitude, speed, timestamp) VALUES (?, ?, ?, ?, ?, ?)", tb_sport_location];
         BOOL res = [db executeUpdate:sql, sport_id, type, longitude, latitude, speed, [NSNumber numberWithDouble:timestamp]];
         if (!res) {
-            NSLog(@"insert failed");
+            kJLLog(JLLOG_DEBUG, @"insert failed");
         }
     }];
 }
@@ -91,7 +91,7 @@
         NSString *sql = [NSString stringWithFormat:@"delete from %@ where sport_id = ?", tb_sport_location];
         BOOL ret = [db executeUpdate:sql, [NSNumber numberWithDouble:sport_id]];
         if (!ret) {
-            NSLog(@"delete failed");
+            kJLLog(JLLOG_DEBUG, @"delete failed");
         }
     }];
 }

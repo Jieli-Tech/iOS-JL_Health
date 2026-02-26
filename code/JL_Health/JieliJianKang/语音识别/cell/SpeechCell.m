@@ -23,10 +23,10 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 //    if(selected){
-//        NSLog(@"select 2");
+//        kJLLog(JLLOG_DEBUG, @"select 2");
 //        _chooseImv.image = [UIImage imageNamed:@"icon_chat_choose_sel"];
 //    }else {
-//        NSLog(@"unselect 2");
+//        kJLLog(JLLOG_DEBUG, @"unselect 2");
 //        _chooseImv.image = [UIImage imageNamed:@"icon_chat_choose_nol"];
 //    }
 }
@@ -86,7 +86,7 @@
         timeLabel.textColor = kDF_RGBA(145, 145, 145, 1.0);
         [self.contentView addSubview:timeLabel];
         [timeLabel sizeToFit];
-        NSLog(@"isFirstPage:%d",aiCloundMessageModel.isFirstPage);
+        kJLLog(JLLOG_DEBUG, @"isFirstPage:%d",aiCloundMessageModel.isFirstPage);
         
         UIView *view_1 = [[UIView alloc] init];
         //if(aiCloundMessageModel.isFirstPage || index ==0){
@@ -201,7 +201,7 @@
         aiImv.image = image;
         [self.contentView addSubview:aiImv];
         
-        //NSLog(@"mulSelect:%d",mulSelect);
+        //kJLLog(JLLOG_DEBUG, @"mulSelect:%d",mulSelect);
         
         view_2 = [[UIView alloc] init];
         view_2.frame = CGRectMake(68,16,lb_w+20.0,lb_h);

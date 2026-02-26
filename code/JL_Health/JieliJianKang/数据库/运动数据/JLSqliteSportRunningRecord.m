@@ -179,13 +179,13 @@
             NSString *sql = [NSString stringWithFormat:@"update %@ set type = ?, startTimestamp = ?, data = ? where sport_id = ?", tb_sport_running];
             BOOL res = [db executeUpdate:sql, [NSNumber numberWithInt:type], [NSNumber numberWithDouble:timestamp], data, [NSNumber numberWithDouble:timestamp]];
             if (!res) {
-                NSLog(@"update failed");
+                kJLLog(JLLOG_DEBUG, @"update failed");
             }
         } else {
             NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ (sport_id, type, startTimestamp, data) VALUES (?, ?, ?, ?)", tb_sport_running];
             BOOL res = [db executeUpdate:sql, [NSNumber numberWithDouble:timestamp], [NSNumber numberWithInt:type], [NSNumber numberWithDouble:timestamp], data];
             if (!res) {
-                NSLog(@"insert failed");
+                kJLLog(JLLOG_DEBUG, @"insert failed");
             }
         }
     }];
@@ -201,7 +201,7 @@
     [queue inDatabase:^(FMDatabase * _Nonnull db) {
         BOOL ret = [db executeUpdate:@"delete from ? where sport_id = ?", tb_sport_running, [NSNumber numberWithDouble:sportId]];
         if (!ret) {
-            NSLog(@"delete failed");
+            kJLLog(JLLOG_DEBUG, @"delete failed");
         }
     }];
 }

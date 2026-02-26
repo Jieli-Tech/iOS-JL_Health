@@ -242,12 +242,12 @@
 - (void)setupLayers {
     
     if (self.parentView == nil) {
-        NSLog(@"父视图不存在");
+        kJLLog(JLLOG_DEBUG, @"父视图不存在");
         return;
     }
     
     if (session == nil) {
-        NSLog(@"拍摄会话不存在");
+        kJLLog(JLLOG_DEBUG, @"拍摄会话不存在");
         return;
     }
     
@@ -275,7 +275,7 @@
     AVCaptureDeviceInput *videoInput = [AVCaptureDeviceInput deviceInputWithDevice:device error:nil];
     
     if (videoInput == nil) {
-        NSLog(@"创建输入设备失败");
+        kJLLog(JLLOG_DEBUG, @"创建输入设备失败");
         return;
     }
     
@@ -285,13 +285,13 @@
     // 3> 拍摄会话 - 判断能够添加设备
     session = [[AVCaptureSession alloc] init];
     if (![session canAddInput:videoInput]) {
-        NSLog(@"无法添加输入设备");
+        kJLLog(JLLOG_DEBUG, @"无法添加输入设备");
         session = nil;
         
         return;
     }
     if (![session canAddOutput:dataOutput]) {
-        NSLog(@"无法添加输入设备");
+        kJLLog(JLLOG_DEBUG, @"无法添加输入设备");
         session = nil;
         
         return;

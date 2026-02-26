@@ -678,3 +678,15 @@
 "是否要清除用户缓存" = "Вы хотите очистить кэш пользователя?";
 "AI表盘" = "AI-набор";
 "正在传输中" = "Передается...";
+"Image Captcha" = "Капча изображения";
+"Can't see it? Try another." = "Не видно? Попробуйте другую.";
+"Please enter the correct captcha." = "Пожалуйста, введите правильный капчу.";
+"There was a problem loading the image verification code, please try again later" = "При загрузке изображения проверочного кода возникла проблема, попробуйте еще раз позже.";
+"Custom" = "Настроить";
+"Custom Dial" = "Пользовательский циферблат";
+"I have read and agree to the" = "Я прочитал и согласен";
+"User Agreement" = "Пользовательское соглашение";
+"Privacy Policy" = "политика конфиденциальности";
+"and" = "и";
+"Please read and agree to the Terms of Service and Privacy Policy." = "Пожалуйста, прочитайте и согласитесь с Условиями обслуживания и Политикой конфиденциальности.";
+"ICP filing information" = "Информация о регистрации ICP";

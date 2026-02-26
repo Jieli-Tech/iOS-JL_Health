@@ -92,7 +92,7 @@ static BOOL isSpeed = NO;
     if (isSpeed == NO) {
         float s_x = scrollView.contentOffset.x + view_W/2.0-kBushuPickGAP/2.0;
         [self fixedOffset:s_x];
-        //NSLog(@"无速度：%.2f",s_x);
+        //kJLLog(JLLOG_DEBUG, @"无速度：%.2f",s_x);
     }
 }
 
@@ -100,7 +100,7 @@ static BOOL isSpeed = NO;
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     float s_x = scrollView.contentOffset.x + view_W/2.0-kBushuPickGAP/2.0;
     [self fixedOffset:s_x];
-    //NSLog(@"有速度：%.2f",s_x);
+    //kJLLog(JLLOG_DEBUG, @"有速度：%.2f",s_x);
 }
 
 
@@ -119,7 +119,7 @@ static BOOL isSpeed = NO;
     
     /*--- 描述刻度LB ---*/
     //NSString *text_num = [NSString stringWithFormat:@"%.1f",fm_point];
-    //NSLog(@"0 ==> fmLabel.text:%@",text_num);
+    //kJLLog(JLLOG_DEBUG, @"0 ==> fmLabel.text:%@",text_num);
     
     if (fm_point < 0.0f || fm_point > 20.0f) return;
 
@@ -141,7 +141,7 @@ static BOOL isSpeed = NO;
     }
     float fm_point = mPoint/kBushu_GAP + fm_sPoint_1;
     //NSString *text_num = [NSString stringWithFormat:@"%.1f",fm_point];
-    //NSLog(@"1 ==> fmLabel.text:%@",text_num);
+    //kJLLog(JLLOG_DEBUG, @"1 ==> fmLabel.text:%@",text_num);
     
     /*--- 描述刻度LB ---*/
     if (fm_point < 0.0f || fm_point > 20.0f) return;

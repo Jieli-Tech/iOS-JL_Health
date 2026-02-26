@@ -336,7 +336,7 @@
     }
     titleBarView.alpha = k;
     
-//    NSLog(@"scrollViewDidScroll:%f",scrollView.contentOffset.y);
+//    kJLLog(JLLOG_DEBUG, @"scrollViewDidScroll:%f",scrollView.contentOffset.y);
 }
 
 

@@ -60,7 +60,7 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
     CLLocation *location = locations.lastObject;
     if (location) {
-//        NSLog(@"JLGPSIntensityManager--->\n horizontalAccuracy: %f======verticalAccuracy: %f======speedAccuracy: %f", location.horizontalAccuracy, location.verticalAccuracy, location.speedAccuracy);
+//        kJLLog(JLLOG_DEBUG, @"JLGPSIntensityManager--->\n horizontalAccuracy: %f======verticalAccuracy: %f======speedAccuracy: %f", location.horizontalAccuracy, location.verticalAccuracy, location.speedAccuracy);
         _currentLocation = location;
         if (0.0f <= location.horizontalAccuracy && location.horizontalAccuracy <= 30.0f) {
             self.gpsSignalStrength = JLPSSignalStrengthStrong;

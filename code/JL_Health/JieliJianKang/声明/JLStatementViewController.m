@@ -53,12 +53,14 @@
 - (IBAction)confirmBtnFunc:(id)sender {
     if ([_delegate respondsToSelector:@selector(confirmConfirmBtnAction)]) {
         [_delegate confirmConfirmBtnAction];
+        [[NSNotificationCenter defaultCenter] postNotificationName:AgreementView.kAgreeMent object:@"ok" userInfo:nil];
     }
 }
 
 - (IBAction)cancelBtnFunc:(id)sender {
     if ([_delegate respondsToSelector:@selector(confirmCancelBtnAction)]) {
         [_delegate confirmCancelBtnAction];
+        [[NSNotificationCenter defaultCenter] postNotificationName:AgreementView.kAgreeMent object:@"no" userInfo:nil];
     }
 }
 

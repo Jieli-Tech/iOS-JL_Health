@@ -68,7 +68,7 @@ NSString *const advData     = @"advData";
             if (![db columnExists:advData inTableWithName:tableName]) {
                 NSString *alertStr = [NSString stringWithFormat:@"ALTER TABLE %@ ADD %@ BLOB",tableName,advData];
                 BOOL res1 = [db executeUpdate:alertStr];
-                NSLog(@"ADD:%d",res1);
+                kJLLog(JLLOG_DEBUG, @"ADD:%d",res1);
             }
         }];
     }
@@ -93,19 +93,19 @@ NSString *const advData     = @"advData";
             NSString *insert = [NSString stringWithFormat:@"insert into %@ (%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@) values (?,?,?,?,?,?,?,?,?,?,%f,?)",tableName,devName,pid,vid,type,mac,uuidStr,userID,deviceID,androidCfg,explain,timestamp,advData,dateDb];
             BOOL res1 = [db executeUpdate:insert,model.devName,model.pid,model.vid,model.type,model.mac,model.uuidStr,model.userID,model.deviceID,model.androidConfig,model.explain,model.advData];
             if (!res1) {
-                NSLog(@"user device insert failed");
+                kJLLog(JLLOG_DEBUG, @"user device insert failed");
             }
-            NSLog(@"insert user device：\ndevName:%@，\npid:%@，\nvid:%@，\ntype:%@，\nmac:%@，\nuserID:%@，\nuuidStr:%@,\nDeviceID:%@",model.devName,model.pid,model.vid,model.type,model.mac,model.userID,model.uuidStr,model.deviceID);
+            kJLLog(JLLOG_DEBUG, @"insert user device：\ndevName:%@，\npid:%@，\nvid:%@，\ntype:%@，\nmac:%@，\nuserID:%@，\nuuidStr:%@,\nDeviceID:%@",model.devName,model.pid,model.vid,model.type,model.mac,model.userID,model.uuidStr,model.deviceID);
         }else{
             
             NSString *update = [NSString stringWithFormat:@"update %@ set %@ = ?,%@ = ?,%@ = ?,%@ = ?,%@ = ?,%@ = ?,%@ = ?,%@ = ?,%@ = ?, %@ = %f ,%@ = ? where %@ = ? and %@ = ?",tableName,devName,pid,vid,type,mac,userID,deviceID,androidCfg,explain,timestamp,dateDb,advData,mac,uuidStr];
             BOOL result = [db executeUpdate:update,model.devName,model.pid,model.vid,model.type,model.mac,model.userID,model.deviceID,model.androidConfig,model.explain,model.advData,model.mac,model.uuidStr];
             
             if (result) {
-                //NSLog(@"update ok");
-                //NSLog(@"update user device：\ndevName:%@，\npid:%@，\nvid:%@，\ntype:%@，\nmac:%@，\nuserID:%@，\nuuidStr:%@ \nDeviceID:%@,\n advData:%@",model.devName,model.pid,model.vid,model.type,model.mac,model.userID,model.uuidStr,model.deviceID,model.advData);
+                //kJLLog(JLLOG_DEBUG, @"update ok");
+                //kJLLog(JLLOG_DEBUG, @"update user device：\ndevName:%@，\npid:%@，\nvid:%@，\ntype:%@，\nmac:%@，\nuserID:%@，\nuuidStr:%@ \nDeviceID:%@,\n advData:%@",model.devName,model.pid,model.vid,model.type,model.mac,model.userID,model.uuidStr,model.deviceID,model.advData);
             }else{
-                NSLog(@"user device update failed!");
+                kJLLog(JLLOG_DEBUG, @"user device update failed!");
             }
         }
     }];
@@ -117,14 +117,14 @@ NSString *const advData     = @"advData";
         NSString *str = [NSString stringWithFormat:@"delete from %@ where %@ = ?",tableName,uuidStr];
         BOOL result = [db executeUpdate:str,model.uuidStr];
         if (result) {
-            NSLog(@"delete user device：\ndevName:%@，\npid:%@，\nvid:%@，\ntype:%@，\nmac:%@，\nuserID:%@，\nuuidStr:%@",model.devName,model.pid,model.vid,model.type,model.mac,model.userID,model.uuidStr);
+            kJLLog(JLLOG_DEBUG, @"delete user device：\ndevName:%@，\npid:%@，\nvid:%@，\ntype:%@，\nmac:%@，\nuserID:%@，\nuuidStr:%@",model.devName,model.pid,model.vid,model.type,model.mac,model.userID,model.uuidStr);
         }
     }];
 }
 
 -(void)checkoutBy:(NSString *)checkUserID result:(void(^)(NSArray<UserDeviceModel *> * resultArray))result{
     NSMutableArray *array = [NSMutableArray new];
-    //NSLog(@"checkoutByUUID:%@",checkUserID);
+    //kJLLog(JLLOG_DEBUG, @"checkoutByUUID:%@",checkUserID);
     if(checkUserID == nil){
         if (result) {
             result(@[]);
@@ -151,14 +151,16 @@ NSString *const advData     = @"advData";
             model.advData = [res dataForColumn:advData];
             [array addObject:model];
         }
+        
         [array sortUsingComparator:^NSComparisonResult(UserDeviceModel*  _Nonnull obj1, UserDeviceModel*  _Nonnull obj2) {
             return obj1.timestamp < obj2.timestamp;
         }];
-        
+        kJLLog(JLLOG_DEBUG, @"checkout user device start\n");
         for (UserDeviceModel *model in array) {
-            //NSLog(@"EC %@",[EcTools properties_apsClass:[UserDeviceModel class] object:model]);
-            NSLog(@"advData:%@",model.advData);
+            [model logProperties];
         }
+        kJLLog(JLLOG_DEBUG, @"checkout user device end\n");
+        
         if (result) {
             result(array);
         }
@@ -187,7 +189,7 @@ NSString *const advData     = @"advData";
             model.identifier = [res intForColumn:identifier];
             model.timestamp = [res doubleForColumn:timestamp];
             model.advData = [res dataForColumn:advData];
-            NSLog(@"%@",[EcTools properties_apsClass:[UserDeviceModel class] object:model]);
+            [model logProperties];
             [array addObject:model];
         }
         [array sortUsingComparator:^NSComparisonResult(UserDeviceModel*  _Nonnull obj1, UserDeviceModel*  _Nonnull obj2) {

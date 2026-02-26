@@ -679,3 +679,15 @@
 "是否要清除用户缓存" = "Vuoi svuotare la cache dell'utente?";
 "AI表盘" = "quadrante AI";
 "正在传输中" = "Trasferimento...";
+"Image Captcha" = "Captcha immagine";
+"Can't see it? Try another." = "Non è chiaro? Prova un altro.";
+"Please enter the correct captcha." = "Inserisci il captcha corretto, per favore.";
+"There was a problem loading the image verification code, please try again later" = "Si è verificato un problema durante il caricamento del codice di verifica dell'immagine, riprova più tardi.";
+"Custom" = "Personalizza";
+"Custom Dial" = "Quadrante personalizzato";
+"I have read and agree to the" = "Ho letto e sono d'accordo";
+"User Agreement" = "Contratto d'uso";
+"Privacy Policy" = "politica sulla riservatezza";
+"and" = "E";
+"Please read and agree to the Terms of Service and Privacy Policy." = "Si prega di leggere e accettare i Termini di servizio e l'Informativa sulla privacy";
+"ICP filing information" = "Informazioni sull'archiviazione ICP";

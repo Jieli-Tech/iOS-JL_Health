@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "JLSqliteManager.h"
+#import "JLWearSyncHealthHeartRateChart.h"
 
 
 NS_ASSUME_NONNULL_BEGIN

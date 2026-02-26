@@ -56,7 +56,7 @@
         
 //        NSInteger month = [comp month];
         
-//        NSLog(@"weekDay:%ld   day:%ld  month : %ld",weekDay,day, month);
+//        kJLLog(JLLOG_DEBUG, @"weekDay:%ld   day:%ld  month : %ld",weekDay,day, month);
         
         // 计算当前日期和这周的星期一和星期天差的天数
         long firstDiff,lastDiff;
@@ -68,7 +68,7 @@
             lastDiff = 8 - weekDay;
         }
         
-//        NSLog(@"firstDiff:%ld   lastDiff:%ld",firstDiff,lastDiff);
+//        kJLLog(JLLOG_DEBUG, @"firstDiff:%ld   lastDiff:%ld",firstDiff,lastDiff);
         
         // 在当前日期(去掉了时分秒)基础上加上差的天数
         NSDateComponents *firstDayComp = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:_date];

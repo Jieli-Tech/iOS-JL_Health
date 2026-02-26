@@ -678,3 +678,15 @@
 "是否要清除用户缓存" = "¿Quieres borrar el caché del usuario?";
 "AI表盘" = "dial AI";
 "正在传输中" = "Se está transmitiendo...";
+"Image Captcha" = "Captcha de imagen";
+"Can't see it? Try another." = "No es claro? Prueba otro.";
+"Please enter the correct captcha." = "Por favor, introduce el captcha correcto.";
+"There was a problem loading the image verification code, please try again later" = "Ha habido un problema al cargar el código de verificación de imagen, por favor inténtelo de nuevo más tarde.";
+"Custom" = "Personalizar";
+"Custom Dial" = "Esfera de reloj personalizada";
+"I have read and agree to the" = "He leído y acepto";
+"User Agreement" = "Acuerdo de usuario";
+"Privacy Policy" = "política de privacidad";
+"and" = "y";
+"Please read and agree to the Terms of Service and Privacy Policy." = "Lea y acepte los Términos de servicio y la Política de privacidad";
+"ICP filing information" = "Información de presentación del ICP";

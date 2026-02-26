@@ -35,7 +35,7 @@
     NSTimeZone *zone = [NSTimeZone systemTimeZone];
     NSInteger interval = [zone secondsFromGMTForDate:date];
     NSDate *localeDate = [date dateByAddingTimeInterval:interval];
-//    NSLog(@"enddate=%@", localeDate);
+//    kJLLog(JLLOG_DEBUG, @"enddate=%@", localeDate);
     return localeDate;
 }
 

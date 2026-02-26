@@ -163,7 +163,7 @@
     mRtcSettingModel = rtcSettingModel;
     
     selectTime = mRtcSettingModel.time;
-    NSLog(@"RingTime:%d",selectTime);
+    kJLLog(JLLOG_DEBUG, @"RingTime:%d",selectTime);
     [mTableView reloadData];
 }
 

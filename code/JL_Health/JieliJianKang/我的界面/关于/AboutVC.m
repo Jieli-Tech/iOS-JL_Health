@@ -16,6 +16,8 @@
     UIImageView *topImv;
     UITableView *aboutTableView;
     UILabel *bottomLab;
+    UIButton *bottomLabBtn;
+    UIImageView *bottomLabImv;
     NSArray     *tmpArray;
     float       sw;
     __weak IBOutlet UIView   *subTitleView;
@@ -93,21 +95,56 @@
     [aboutTableView setSeparatorColor:[UIColor colorWithRed:238/255.0 green:238/255.0 blue:238/255.0 alpha:1.0]];
     [self.view addSubview:aboutTableView];
     
+
+    
+    
     tmpArray = @[kJL_TXT("用户协议"),kJL_TXT("隐私政策")];
     [aboutTableView reloadData];
     
+    
+    bottomLabBtn = [UIButton new];
+    NSString *bottomLabBtnName = [NSString stringWithFormat:@"%@:%@",kJL_TXT("ICP filing information"),@"粤ICP备18069041号-3A"];
+    [bottomLabBtn setTitle:bottomLabBtnName forState:UIControlStateNormal];
+    bottomLabBtn.titleLabel.font = [UIFont systemFontOfSize:12 weight:UIFontWeightMedium];
+    [bottomLabBtn setTitleColor:kDF_RGBA(0, 0, 0, 0.3) forState:UIControlStateNormal];
+    [bottomLabBtn addTarget:self action:@selector(bottomLabBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:bottomLabBtn];
+    
+    bottomLabImv = [UIImageView new];
+    bottomLabImv.image = [UIImage imageNamed:@"icon_next_10"];
+    bottomLabImv.contentMode = UIViewContentModeScaleAspectFit;
+    [self.view addSubview:bottomLabImv];
+   
+    
     bottomLab = [[UILabel alloc] init];
-    bottomLab.font = [UIFont systemFontOfSize:13];
-    bottomLab.text = [NSString stringWithFormat:@"Copyright©2010-%@\n%@",[NSDate new].toYYYY,kJL_TXT("珠海市杰理科技股份有限公司")];
-    bottomLab.textColor = kDF_RGBA(145, 145, 145, 1);
+    bottomLab.font = [UIFont systemFontOfSize:12 weight:UIFontWeightMedium];
+    bottomLab.text = [NSString stringWithFormat:@"Copyright©2010-%@ %@",[NSDate new].toYYYY,kJL_TXT("珠海市杰理科技股份有限公司")];
+    bottomLab.textColor = kDF_RGBA(0, 0, 0, 0.3);
     bottomLab.textAlignment = NSTextAlignmentCenter;
     bottomLab.numberOfLines = 0;
+    bottomLab.adjustsFontSizeToFitWidth = true;
     [self.view addSubview:bottomLab];
     [bottomLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(self.view);
+        make.left.right.equalTo(self.view).inset(20);
         make.bottom.equalTo(self.view.mas_bottom).offset(-30);
     }];
     
+    [bottomLabBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(bottomLab.mas_top);
+        make.centerX.equalTo(self.view);
+    }];
+    
+    [bottomLabImv mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(bottomLabBtn.mas_right);
+        make.width.height.equalTo(@12);
+        make.centerY.equalTo(bottomLabBtn);
+    }];
+}
+
+-(void)bottomLabBtnClick {
+    ICPViewController *vc = [[ICPViewController alloc] init];
+    vc.urlStr = @"https://beian.miit.gov.cn/";
+    [[JLApplicationDelegate navigationController] pushViewController:vc animated:true];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

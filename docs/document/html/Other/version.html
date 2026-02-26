@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>发布记录 &mdash; 杰理健康开发文档(iOS) v1.11.0 文档</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="https://doc.zh-jieli.com/Apps/static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+        <script src="https://doc.zh-jieli.com/Apps/static/js/custom.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="prev" title="1. 前言" href="jl_health_sdk_qa.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> 杰理健康开发文档(iOS)
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">开发框架</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Framework/framework.html">SDK架构</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">开发说明</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Development/Content/import.html">1.接入流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Development/Content/function_desc.html">2.功能说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Development/Content/api_desc.html">3.接口说明</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">工程介绍</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../resource/index.html">1. SDK开发包介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resource/index.html#id1">2. 功能实现参考</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其他</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="online.html">线上视频教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debug.html">测试调试</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contactUs.html">常见问题答疑</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">发布记录</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">1. 等级说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">2. 发布记录</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sdk-ios-v1-12-0">杰理健康SDK_iOS_V1.12.0</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">● 补丁描述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c">● 补丁等级：<code class="docutils literal notranslate"><span class="pre">C</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">● 修改内容</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">● 注意事项</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">1. 手表功能</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">2. 其他功能支持</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">杰理健康开发文档(iOS)</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>发布记录</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>发布记录<a class="headerlink" href="#id1" title="永久链接至标题"></a></h1>
+<div class="admonition important">
+<p class="admonition-title">重要</p>
+<p>请根据SDK版本来确认修改内容</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 18%" />
+<col style="width: 46%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>版本</p></th>
+<th class="head"><p>更新日期</p></th>
+<th class="head"><p>描述</p></th>
+<th class="head"><p>修改人</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>V1.12.0</p></td>
+<td><p>2024/12/02</p></td>
+<td><p><a class="reference internal" href="#publish-record-1-12-0"><span class="std std-ref">杰理健康SDK_iOS_V1.12.0</span></a> 发布记录</p></td>
+<td><p>陈冠杰</p></td>
+</tr>
+</tbody>
+</table>
+<section id="id2">
+<h2>1. 等级说明<a class="headerlink" href="#id2" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>A类: 问题修复，客户必须修复</p></li>
+<li><p>B类: 性能优化，客户可选择修复</p></li>
+<li><p>C类: 功能增加，客户可选择修复</p></li>
+</ul>
+</section>
+<section id="id3">
+<h2>2. 发布记录<a class="headerlink" href="#id3" title="永久链接至标题"></a></h2>
+<section id="sdk-ios-v1-12-0">
+<span id="publish-record-1-12-0"></span><h3>杰理健康SDK_iOS_V1.12.0<a class="headerlink" href="#sdk-ios-v1-12-0" title="永久链接至标题"></a></h3>
+<section id="id4">
+<h4>● 补丁描述<a class="headerlink" href="#id4" title="永久链接至标题"></a></h4>
+<div class="line-block">
+<div class="line"><strong>日期: 2024/12/02</strong></div>
+<div class="line"><strong>SDK版本: V1.12.0</strong></div>
+<div class="line"><strong>该SDK在RCSP协议基础上实现, 需要配合JL_BLEKit.framework库使用</strong></div>
+<div class="line"><strong>适用芯片范围: AC695-WATCH-SDK/JL701N-WATCH-SDK/AC707N-WATCH-SDK</strong></div>
+<div class="line"><strong>应对固件SDK版本：</strong></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 36%" />
+<col style="width: 52%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>芯片</p></th>
+<th class="head"><p>版本</p></th>
+<th class="head"><p>备注</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>AC707N</p></td>
+<td><p>v1.0.0</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>JL701N</p></td>
+<td><p>V3.0.0</p></td>
+<td><p>4G 版本</p></td>
+</tr>
+<tr class="row-even"><td><p>JL701N</p></td>
+<td><p>v2.2.1</p></td>
+<td><p>Nand Flash 版本必 须强制更新 SDK</p></td>
+</tr>
+<tr class="row-odd"><td><p>JL701N</p></td>
+<td><p>V2.2.0、v2.0.1、v1.0.5</p></td>
+<td><p>Nor Flash</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="c">
+<h4>● 补丁等级：<code class="docutils literal notranslate"><span class="pre">C</span></code><a class="headerlink" href="#c" title="永久链接至标题"></a></h4>
+</section>
+<section id="id5">
+<h4>● 修改内容<a class="headerlink" href="#id5" title="永久链接至标题"></a></h4>
+<div class="line-block">
+<div class="line">1. 新增功能</div>
+<div class="line">(1)兼容AC707N系列芯片</div>
+<div class="line">(2)抽离表盘背景图片压缩相关方法为独立类</div>
+<div class="line">(3)分离日志打印库为独立库</div>
+</div>
+</section>
+<section id="id6">
+<h4>● 注意事项<a class="headerlink" href="#id6" title="永久链接至标题"></a></h4>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<ol class="arabic simple">
+<li><p><cite>JL_BLEKit.framework`依赖 `JLBmpConvertKit.framework`和 `JLLogHelper.framework</cite>，需要在导入 <cite>JL_BLEKit.framework</cite> 的时候需要同时导入这两个库。</p></li>
+<li><p>其他的SDK库诸如： <cite>JL_OTALib.framework</cite>、 <cite>JL_HashPair.framework`等等，需要在导入的时候需要同时导入 `JLLogHelper.framework</cite>。</p></li>
+</ol>
+</div>
+<ul class="simple">
+<li><p><cite>JLLogHelper.framework</cite> 是默认开启了日志打印和存储的，如果开发者不需要记录，可以通过对应的接口关闭日志打印和存储。具体操作可以参考以下：</p></li>
+</ul>
+<div class="highlight-objectivec notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">JLLogManager</span><span class="w"> </span><span class="n">clearLog</span><span class="p">];</span><span class="w"> </span><span class="c1">// 清空日志</span>
+<span class="p">[</span><span class="n">JLLogManager</span><span class="w"> </span><span class="n">setLog</span><span class="o">:</span><span class="nb">false</span><span class="w"> </span><span class="n">IsMore</span><span class="o">:</span><span class="nb">false</span><span class="w"> </span><span class="n">Level</span><span class="o">:</span><span class="n">JLLOG_COMPLETE</span><span class="p">];</span><span class="w"> </span><span class="c1">// 关闭日志打印</span>
+<span class="p">[</span><span class="n">JLLogManager</span><span class="w"> </span><span class="n">saveLogAsFile</span><span class="o">:</span><span class="nb">false</span><span class="p">];</span><span class="w"> </span><span class="c1">// 关闭日志存储</span>
+<span class="p">[</span><span class="n">JLLogManager</span><span class="w"> </span><span class="n">logWithTimestamp</span><span class="o">:</span><span class="nb">false</span><span class="p">];</span><span class="w"> </span><span class="c1">// 关闭日志打印时间</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>由于对 <cite>JL_BLEKit.framework</cite> 进行了抽离，以前旧的图像转换算法使用，需要修改成新的调用方式。具体的操作可以参考以下：</p></li>
+</ul>
+<div class="highlight-objectivec notranslate"><div class="highlight"><pre><span></span><span class="cm">/* 旧的使用方法</span>
+<span class="cm">+(NSString *)makeDialwithName:(NSString *)watchBinName withSize:(CGSize)size image:(UIImage *)basicImage{</span>
+<span class="cm">   //    NSData *imageData0 = UIImageJPEGRepresentation(basicImage, 1.0f);</span>
+<span class="cm">   //    UIImage *img = [UIImage imageWithData:imageData0];</span>
+<span class="cm">   NSData *imageData = [BitmapTool resizeImage:basicImage andResizeTo:CGSizeMake(size.width, size.height)];</span>
+
+
+<span class="cm">   NSString *bmpPath = [JL_Tools listPath:NSLibraryDirectory MiddlePath:@&quot;&quot; File:@&quot;ios_test.bmp&quot;];</span>
+<span class="cm">   NSString *binPath = [JL_Tools listPath:NSLibraryDirectory MiddlePath:@&quot;&quot; File:watchBinName];</span>
+
+<span class="cm">   [JL_Tools removePath:bmpPath];</span>
+<span class="cm">   [JL_Tools removePath:binPath];</span>
+
+<span class="cm">   [JL_Tools createOn:NSLibraryDirectory MiddlePath:@&quot;&quot; File:@&quot;ios_test.bmp&quot;];</span>
+<span class="cm">   [JL_Tools createOn:NSLibraryDirectory MiddlePath:@&quot;&quot; File:watchBinName];</span>
+
+<span class="cm">   UIImage *image = [UIImage imageWithData:imageData];</span>
+<span class="cm">   int width = size.width;</span>
+<span class="cm">   int height = size.height;</span>
+<span class="cm">   NSLog(@&quot;压缩分辨率 ---&gt; w:%df h:%df&quot;,width,height);</span>
+
+<span class="cm">   NSData *bitmap = [BitmapTool convert_B_G_R_A_BytesFromImage:image];</span>
+<span class="cm">   [JL_Tools writeData:bitmap fillFile:bmpPath];</span>
+
+
+<span class="cm">   //带有alpha的图片转换</span>
+<span class="cm">   br28_btm_to_res_path_with_alpha((char*)[bmpPath UTF8String], width, height, (char*)[binPath UTF8String]);</span>
+<span class="cm">   NSLog(@&quot;---&gt;Br28 BIN【%@】is OK!&quot;, watchBinName);</span>
+
+<span class="cm">   /*--- BR23压缩算法 ---*/</span><span class="w"></span>
+<span class="w">   </span><span class="c1">//    br23_btm_to_res_path((char*)[bmpPath UTF8String], width, height, (char*)[binPath UTF8String]);</span>
+<span class="w">   </span><span class="c1">//    NSLog(@&quot;---&gt;Br23 BIN【%@】is OK!&quot;, watchBinName);</span>
+
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">[</span><span class="n">JL_Tools</span><span class="w"> </span><span class="n">listPath</span><span class="o">:</span><span class="n">NSLibraryDirectory</span><span class="w"> </span><span class="n">MiddlePath</span><span class="o">:</span><span class="s">@&quot;&quot;</span><span class="w"> </span><span class="n">File</span><span class="o">:</span><span class="n">watchBinName</span><span class="p">];</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="o">*/</span><span class="w"></span>
+
+<span class="w">   </span><span class="c1">//新的使用方法</span>
+<span class="w">   </span><span class="o">+</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">makeDialwithName</span><span class="o">:</span><span class="p">(</span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">watchBinName</span><span class="w"> </span><span class="n">withSize</span><span class="o">:</span><span class="p">(</span><span class="n">CGSize</span><span class="p">)</span><span class="n">size</span><span class="w"> </span><span class="n">image</span><span class="o">:</span><span class="p">(</span><span class="bp">UIImage</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">basicImage</span><span class="p">{</span><span class="w"></span>
+
+<span class="w">      </span><span class="bp">NSData</span><span class="w"> </span><span class="o">*</span><span class="n">imageData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">JLBmpConvert</span><span class="w"> </span><span class="n">resizeImage</span><span class="o">:</span><span class="n">basicImage</span><span class="w"> </span><span class="n">andResizeTo</span><span class="o">:</span><span class="n">CGSizeMake</span><span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">.</span><span class="n">height</span><span class="p">)];</span><span class="w"></span>
+<span class="w">      </span><span class="bp">UIImage</span><span class="w"> </span><span class="o">*</span><span class="n">image</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="bp">UIImage</span><span class="w"> </span><span class="n">imageWithData</span><span class="o">:</span><span class="n">imageData</span><span class="p">];</span><span class="w"></span>
+
+<span class="w">      </span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="n">imagePath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">NSSearchPathForDirectoriesInDomains</span><span class="p">(</span><span class="n">NSDocumentDirectory</span><span class="p">,</span><span class="w"> </span><span class="n">NSUserDomainMask</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="n">firstObject</span><span class="p">];</span><span class="w"></span>
+<span class="w">      </span><span class="n">imagePath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">imagePath</span><span class="w"> </span><span class="n">stringByAppendingPathComponent</span><span class="o">:</span><span class="s">@&quot;basic.png&quot;</span><span class="p">];</span><span class="w"></span>
+<span class="w">      </span><span class="p">[</span><span class="n">JL_Tools</span><span class="w"> </span><span class="n">writeData</span><span class="o">:</span><span class="n">imageData</span><span class="w"> </span><span class="n">fillFile</span><span class="o">:</span><span class="n">imagePath</span><span class="p">];</span><span class="w"></span>
+
+<span class="w">      </span><span class="c1">//带有alpha的图片转换，方式一</span>
+<span class="w">      </span><span class="p">[</span><span class="n">JLBmpConvert</span><span class="w"> </span><span class="n">covert</span><span class="o">:</span><span class="n">JLBmpConvertType701N_ARBG</span><span class="w"> </span><span class="n">Image</span><span class="o">:</span><span class="n">image</span><span class="w"> </span><span class="n">completion</span><span class="o">:^</span><span class="p">(</span><span class="bp">NSData</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">_Nullable</span><span class="w"> </span><span class="n">outFileData</span><span class="p">,</span><span class="w"> </span><span class="bp">NSError</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">_Nullable</span><span class="w"> </span><span class="n">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">               </span><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;---&gt;PNG BIN【%@】is Error!&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">watchBinName</span><span class="p">);</span><span class="w"></span>
+<span class="w">               </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="w">         </span><span class="p">}</span><span class="w"></span>
+<span class="w">         </span><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;---&gt;PNG BIN【%@】is OK!&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">watchBinName</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="p">}];</span><span class="w"></span>
+
+<span class="w">      </span><span class="c1">//带有有alpha的图片转换，方式二</span>
+<span class="w">      </span><span class="c1">//这里的 outFilePath 是可选项，如果需要指定输出路径可以设置</span>
+<span class="w">      </span><span class="p">[</span><span class="n">JLBmpConvert</span><span class="w"> </span><span class="n">covert</span><span class="o">:</span><span class="n">JLBmpConvertType701N_ARBG</span><span class="w"> </span><span class="n">inFilePath</span><span class="o">:</span><span class="n">imagePath</span><span class="w"> </span><span class="n">outFilePath</span><span class="o">:</span><span class="nb">nil</span><span class="w"> </span><span class="n">completion</span><span class="o">:^</span><span class="p">(</span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">_Nonnull</span><span class="w"> </span><span class="n">inFilePath</span><span class="p">,</span><span class="w"> </span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">_Nullable</span><span class="w"> </span><span class="n">outFilePath</span><span class="p">,</span><span class="w"> </span><span class="bp">NSError</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">_Nullable</span><span class="w"> </span><span class="n">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;---&gt;PNG BIN【%@】is Error!&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">watchBinName</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="w">         </span><span class="p">}</span><span class="w"></span>
+<span class="w">         </span><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;---&gt;PNG BIN【%@】is OK!&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">watchBinName</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="p">}];</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h4>1. 手表功能<a class="headerlink" href="#id7" title="永久链接至标题"></a></h4>
+<ol class="arabic simple">
+<li><p>表盘操作</p>
+<ul class="simple">
+<li><p>表盘文件浏览</p></li>
+<li><p>插入表盘文件</p></li>
+<li><p>删除表盘文件</p></li>
+<li><p>自定义表盘背景</p></li>
+<li><p>切换表盘</p></li>
+</ul>
+</li>
+<li><p>大文件传输</p>
+<ul class="simple">
+<li><p>音乐文件传输</p></li>
+</ul>
+</li>
+<li><p>常用联系人</p></li>
+<li><p>健康数据同步</p>
+<ul class="simple">
+<li><p>心率</p></li>
+<li><p>运动步数</p></li>
+<li><p>睡眠质量</p></li>
+<li><p>其他</p></li>
+</ul>
+</li>
+<li><p>运动数据同步</p>
+<ul class="simple">
+<li><p>室内运动</p></li>
+<li><p>室外运动</p></li>
+</ul>
+</li>
+<li><p>天气信息同步</p></li>
+<li><p>消息同步</p></li>
+<li><p>健康设置</p>
+<ul class="simple">
+<li><p>跌倒提醒</p></li>
+<li><p>久坐提醒</p></li>
+<li><p>心率测试</p></li>
+<li><p>其他</p></li>
+</ul>
+</li>
+<li><p>更多功能</p></li>
+</ol>
+</section>
+<section id="id8">
+<h4>2. 其他功能支持<a class="headerlink" href="#id8" title="永久链接至标题"></a></h4>
+<ol class="arabic simple">
+<li><p>设备文件浏览</p></li>
+<li><p>闹钟功能</p>
+<ul class="simple">
+<li><p>添加闹钟</p></li>
+<li><p>删除闹钟</p></li>
+<li><p>修改闹钟</p></li>
+</ul>
+</li>
+<li><p>设备查找功能</p></li>
+<li><p>更多功能</p></li>
+<li><p>AI云功能</p></li>
+<li><p>AI表盘</p></li>
+<li><p>Nand Flash存储器信息拓展支持</p></li>
+<li><p>4G 模块 OTA 升级</p></li>
+</ol>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="jl_health_sdk_qa.html" class="btn btn-neutral float-left" title="1. 前言" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2024, Zhuhai Jieli Technology.,Ltd.
+      <span class="lastupdated">最后更新于 12月 02, 2024.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

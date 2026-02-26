@@ -82,12 +82,12 @@ NSString * const JHPersonsDidChangeNotification = @"JHPersonsDidChangeNotificati
     CNAuthorizationStatus status = [CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts];
     // 如果是未授权，则请求授权  这里是并行的，回调
     if (status == CNAuthorizationStatusNotDetermined) {
-//        NSLog(@"in");
+//        kJLLog(JLLOG_DEBUG, @"in");
         [_store requestAccessForEntityType:CNEntityTypeContacts completionHandler:^(BOOL granted, NSError *error) {
             if (granted) {
-                //NSLog(@"授权成功");
+                //kJLLog(JLLOG_DEBUG, @"授权成功");
                 completion();  // 回调刷新
-//                NSLog(@"回调时 %@", [NSThread currentThread]);
+//                kJLLog(JLLOG_DEBUG, @"回调时 %@", [NSThread currentThread]);
             } else
                 ///(@"授权失败");
 //            result = granted;

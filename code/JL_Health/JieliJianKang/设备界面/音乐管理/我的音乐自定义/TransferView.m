@@ -150,7 +150,7 @@
     _selectArray = selectArray;
     [mSelectArray setArray:selectArray];
     [self setTotalCount:(int)selectArray.count];
-    label1.text = [NSString stringWithFormat:@"%@ %@%d%@%d%@", kJL_TXT("正在传输"), @"(", (int)(mTotalCount - mSelectArray.count + 1), @"/", mTotalCount, @")"];
+    label1.text = [NSString stringWithFormat:@"%@ (%d/%d)", kJL_TXT("正在传输"), mTransferIndex, mTotalCount];
     label1.hidden = NO;
     label2.hidden = NO;
     label3.hidden = NO;
@@ -163,7 +163,9 @@
 
 
 -(void)startTransport{
- 
+    mTransferIndex += 1;
+    label1.text = [NSString stringWithFormat:@"%@ (%d/%d)", kJL_TXT("正在传输"), mTransferIndex, mTotalCount];
+    
     NSString *path = [DFFile listPath:NSDocumentDirectory MiddlePath:@"music"
                               File:mSelectArray.firstObject];
     NSString *name = mSelectArray.firstObject;
@@ -192,10 +194,11 @@
                     
                     [strongSelf->mSelectArray removeObjectAtIndex:0];
                     if(strongSelf->mSelectArray.count>0){
-                        
-                        [strongSelf startTransport];
-
-                        [strongSelf->mBtn setTitle:kJL_TXT("取消") forState:UIControlStateNormal];
+                        //继续传输，此处因为接口在 block 之后还需要进行闭合流程，无法直接做到递归传输，这里需要延迟 100ms 去等待闭合流程结束，闭合的方法是一条不回复的命令，这里需要等命令下发
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                            [strongSelf startTransport];
+                            [strongSelf->mBtn setTitle:kJL_TXT("取消") forState:UIControlStateNormal];
+                        });
                     }else{
                         strongSelf->label1.hidden = YES;
                         strongSelf->label2.hidden = YES;

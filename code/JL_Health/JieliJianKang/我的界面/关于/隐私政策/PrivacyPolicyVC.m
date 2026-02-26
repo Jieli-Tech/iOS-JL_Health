@@ -7,6 +7,9 @@
 //
 
 #import "PrivacyPolicyVC.h"
+#import <WebKit/WebKit.h>
+#import "JL_RunSDK.h"
+
 
 #define PRIVACY_POLICY_URL  @"https://cam.jieliapp.com/app/healthaide_app_privacy_policy.html"//@"http://cam.jieliapp.com:28111/app/health_app_privacy_policy.html"
 
@@ -142,21 +145,21 @@
 #pragma mark - 网络监测
 -(void)actionNetStatus:(AFNetworkReachabilityStatus)status{
     if (status == AFNetworkReachabilityStatusNotReachable) {
-        //NSLog(@"---> AFNetworkReachabilityStatusNotReachable");
+        //kJLLog(JLLOG_DEBUG, @"---> AFNetworkReachabilityStatusNotReachable");
         if(webView) [webView removeFromSuperview];
         noneImv.hidden = NO;
         noneLab_1.hidden = NO;
         noneLab_2.hidden = NO;
     }
     if (status == AFNetworkReachabilityStatusUnknown) {
-        //NSLog(@"---> AFNetworkReachabilityStatusUnknown");
+        //kJLLog(JLLOG_DEBUG, @"---> AFNetworkReachabilityStatusUnknown");
         if(webView) [webView removeFromSuperview];
         noneImv.hidden = NO;
         noneLab_1.hidden = NO;
         noneLab_2.hidden = NO;
     }
     if (status == AFNetworkReachabilityStatusReachableViaWWAN) {
-        //NSLog(@"---> AFNetworkReachabilityStatusReachableViaWWAN");
+        //kJLLog(JLLOG_DEBUG, @"---> AFNetworkReachabilityStatusReachableViaWWAN");
         if(self->webView) [self->webView removeFromSuperview];
         privateStr = PRIVACY_POLICY_URL;
         NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:privateStr]];
@@ -174,7 +177,7 @@
         noneLab_2.hidden = YES;
     }
     if (status == AFNetworkReachabilityStatusReachableViaWiFi) {
-        //NSLog(@"---> AFNetworkReachabilityStatusReachableViaWiFi");
+        //kJLLog(JLLOG_DEBUG, @"---> AFNetworkReachabilityStatusReachableViaWiFi");
         if(self->webView) [self->webView removeFromSuperview];
         privateStr = PRIVACY_POLICY_URL;
         NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:privateStr]];

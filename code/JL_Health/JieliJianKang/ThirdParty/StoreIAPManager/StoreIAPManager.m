@@ -59,31 +59,31 @@
 - (void)handleActionWithType:(SIAPPurchType)type data:(NSString *)data{
     switch (type) {
         case SIAPPurchSuccess:
-            NSLog(@"购买成功");
+            kJLLog(JLLOG_DEBUG, @"购买成功");
             break;
         case SIAPPurchFailed:
-            NSLog(@"购买失败");
+            kJLLog(JLLOG_DEBUG, @"购买失败");
             break;
         case SIAPPurchCancell:
-            NSLog(@"用户取消购买");
+            kJLLog(JLLOG_DEBUG, @"用户取消购买");
             break;
         case SIAPPurchVerFailed:
-            NSLog(@"订单校验失败");
+            kJLLog(JLLOG_DEBUG, @"订单校验失败");
             break;
         case SIAPPurchVerSuccess:
-            NSLog(@"订单校验成功");
+            kJLLog(JLLOG_DEBUG, @"订单校验成功");
             break;
         case SIAPPurchNotArrow:
-            NSLog(@"不允许程序内付费");
+            kJLLog(JLLOG_DEBUG, @"不允许程序内付费");
             break;
         case SIAPPurchVerFailedNoReply:
-            NSLog(@"订单校验失败,连接失败.");
+            kJLLog(JLLOG_DEBUG, @"订单校验失败,连接失败.");
             break;
         case SIAPPurchSellOut:
-            NSLog(@"商品已售罄.");
+            kJLLog(JLLOG_DEBUG, @"商品已售罄.");
             break;
         case SIAPPurchasing:
-            NSLog(@"正在购买中.");
+            kJLLog(JLLOG_DEBUG, @"正在购买中.");
             break;
         default:
             break;
@@ -107,7 +107,7 @@
 
 // 交易失败
 - (void)failedTransaction:(SKPaymentTransaction *)transaction{
-    NSLog(@"Failed--->交易失败： %ld", (long)transaction.error.code);
+    kJLLog(JLLOG_DEBUG, @"Failed--->交易失败： %ld", (long)transaction.error.code);
     if (transaction.error.code != SKErrorPaymentCancelled) {
         [self handleActionWithType:SIAPPurchFailed data:nil];
     }else{
@@ -124,7 +124,7 @@
     NSData *transactionReceiptData = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] appStoreReceiptURL]];
     NSString *receiptStr = [transactionReceiptData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     receiptStr = [receiptStr stringByReplacingOccurrencesOfString:@"\r\n" withString:@""];
-    NSLog(@"---> Receipt:%@",[receiptStr substringToIndex:64]);
+    kJLLog(JLLOG_DEBUG, @"---> Receipt:%@",[receiptStr substringToIndex:64]);
     
     [self handleActionWithType:SIAPPurchVerSuccess data:receiptStr];
 
@@ -175,7 +175,7 @@
 //            if (status && [status isEqualToString:@"21007"]) {
 //                [self verifyPurchaseWithPaymentTransaction:transaction isTestServer:YES];
 //            }else if(status && [status isEqualToString:@"0"]){
-//                NSLog(@"----验证结果 %@",jsonResponse);
+//                kJLLog(JLLOG_DEBUG, @"----验证结果 %@",jsonResponse);
 //                [self handleActionWithType:SIAPPurchVerSuccess data:receiptStr];
 //            }
 //        }
@@ -188,7 +188,7 @@
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response{
     NSArray *product = response.products;
     if([product count] <= 0){
-        NSLog(@"--------------没有商品------------------");
+        kJLLog(JLLOG_DEBUG, @"--------------没有商品------------------");
         [self handleActionWithType:SIAPPurchSellOut data:nil];
         return;
     }
@@ -200,14 +200,14 @@
             break;
         }
     }
-    NSLog(@"productID:%@", response.invalidProductIdentifiers);
-    NSLog(@"产品付费数量:%lu",(unsigned long)[product count]);
-    NSLog(@"%@",[p description]);
-    NSLog(@"%@",[p localizedTitle]);
-    NSLog(@"%@",[p localizedDescription]);
-    NSLog(@"%@",[p price]);
-    NSLog(@"%@",[p productIdentifier]);
-    NSLog(@"发送购买请求");
+    kJLLog(JLLOG_DEBUG, @"productID:%@", response.invalidProductIdentifiers);
+    kJLLog(JLLOG_DEBUG, @"产品付费数量:%lu",(unsigned long)[product count]);
+    kJLLog(JLLOG_DEBUG, @"%@",[p description]);
+    kJLLog(JLLOG_DEBUG, @"%@",[p localizedTitle]);
+    kJLLog(JLLOG_DEBUG, @"%@",[p localizedDescription]);
+    kJLLog(JLLOG_DEBUG, @"%@",[p price]);
+    kJLLog(JLLOG_DEBUG, @"%@",[p productIdentifier]);
+    kJLLog(JLLOG_DEBUG, @"发送购买请求");
 
     SKPayment *payment = [SKPayment paymentWithProduct:p];
     [[SKPaymentQueue defaultQueue] addPayment:payment];
@@ -215,11 +215,11 @@
 
 //请求失败
 - (void)request:(SKRequest *)request didFailWithError:(NSError *)error{
-    NSLog(@"------------------错误-----------------:%@", error);
+    kJLLog(JLLOG_DEBUG, @"------------------错误-----------------:%@", error);
 }
 
 - (void)requestDidFinish:(SKRequest *)request{
-    NSLog(@"------------反馈信息结束-----------------");
+    kJLLog(JLLOG_DEBUG, @"------------反馈信息结束-----------------");
 }
 
 #pragma mark - SKPaymentTransactionObserver
@@ -227,16 +227,16 @@
     for (SKPaymentTransaction *tran in transactions) {
         switch (tran.transactionState) {
             case SKPaymentTransactionStatePurchased:{
-                NSLog(@"购买商品 --- %@",tran.payment.productIdentifier);
+                kJLLog(JLLOG_DEBUG, @"购买商品 --- %@",tran.payment.productIdentifier);
                 [self completeTransaction:tran];
                 //[self handleActionWithType:SIAPPurchSuccess data:nil];
                 //[[SKPaymentQueue defaultQueue] finishTransaction:tran];
             }break;
             case SKPaymentTransactionStatePurchasing:{
-                NSLog(@"商品添加进列表");
+                kJLLog(JLLOG_DEBUG, @"商品添加进列表");
             }break;
             case SKPaymentTransactionStateRestored:{
-                NSLog(@"已经购买过商品 --- %@",tran.payment.productIdentifier);
+                kJLLog(JLLOG_DEBUG, @"已经购买过商品 --- %@",tran.payment.productIdentifier);
                 
                 // 消耗型不支持恢复购买
                 [[SKPaymentQueue defaultQueue] finishTransaction:tran];
@@ -245,13 +245,13 @@
                 [self failedTransaction:tran];
             }break;
             case SKPaymentTransactionStateDeferred:{
-                NSLog(@"Deferred等待确认，儿童模式需要询问家长同意");
+                kJLLog(JLLOG_DEBUG, @"Deferred等待确认，儿童模式需要询问家长同意");
             }break;
                 
             default: break;
         }
     }
-    NSLog(@"===>updatedTransactions:%lu",(unsigned long)transactions.count);
+    kJLLog(JLLOG_DEBUG, @"===>updatedTransactions:%lu",(unsigned long)transactions.count);
 }
 
 @end

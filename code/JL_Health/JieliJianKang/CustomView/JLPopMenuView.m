@@ -128,7 +128,7 @@
 }
 
 - (void)dealloc {
-    NSLog(@"JLPopMenuView - dealloc");
+    kJLLog(JLLOG_DEBUG, @"JLPopMenuView - dealloc");
     [JL_Tools remove:kUI_JL_DEVICE_CHANGE Own:self];
 }
 

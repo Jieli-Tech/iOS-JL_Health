@@ -328,7 +328,7 @@
         goalLine.backgroundColor = self.bottomLineColor;
         if (self.goalNum < realMaxValue) {
             CGFloat y = bottomLineY - ((float)self.goalNum / realMaxValue) * (bottomLineY - 3) - self.barWidth/2;
-//            NSLog(@"y==========self.goalNum :%d, realMaxValue:%f, bottomLineY:%f, barHeight:%f, y:%f", self.goalNum, realMaxValue, bottomLineY, barHeight, y);
+//            kJLLog(JLLOG_DEBUG, @"y==========self.goalNum :%d, realMaxValue:%f, bottomLineY:%f, barHeight:%f, y:%f", self.goalNum, realMaxValue, bottomLineY, barHeight, y);
             goalLine.frame = CGRectMake(verticalLinePoX, y, self.frame.size.width - verticalLinePoX * 2, 1.0f);
         }
         PGBarChartLabel *barChartLabel = [[PGBarChartLabel alloc]initWithFrame:CGRectMake(self.frame.size.width - verticalLinePoX * 2 - 50, goalLine.frame.origin.y - 16, 60, 14)];

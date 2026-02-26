@@ -683,3 +683,15 @@
 "是否要清除用户缓存" = "آیا می خواهید کش کاربر را پاک کنید؟";
 "AI表盘" = "شماره گیری هوش مصنوعی";
 "正在传输中" = "انتقال...";
+"Image Captcha" = "کپچای تصویری";
+"Can't see it? Try another." = "مشخص نیست؟ یکی دیگر را امتحان کنید";
+"Please enter the correct captcha." = "لطفا کپچای صحیح را وارد کنید";
+"There was a problem loading the image verification code, please try again later" = "در بارگذاری کد تصویری تأیید مشکلی پیش آمد، لطفا بعدا دوباره امتحان کنید.";
+"Custom" = "سفارشی کنید";
+"Custom Dial" = "صفحه ساعت سفارشی";
+"I have read and agree to the" = "خوانده ام و موافقم";
+"User Agreement" = "قرارداد کاربر";
+"Privacy Policy" = "سیاست حفظ حریم خصوصی";
+"and" = "و";
+"Please read and agree to the Terms of Service and Privacy Policy." = "لطفا شرایط خدمات و سیاست حفظ حریم خصوصی را بخوانید و با آن موافقت کنید";
+"ICP filing information" = "اطلاعات بایگانی ICP";

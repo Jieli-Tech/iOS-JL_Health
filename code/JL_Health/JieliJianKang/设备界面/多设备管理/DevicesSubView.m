@@ -7,36 +7,17 @@
 
 #import "DevicesSubView.h"
 #import "DevicesViewCell.h"
-#import "JLUI_Effect.h"
 #import "JLColor.h"
-#import "JLDeviceSqliteManager.h"
 #import "UserDeviceModel.h"
-#import "DeviceHttp.h"
-#import "DeviceHttpModel.h"
-#import "User_Http.h"
-#import "SyncDataManager.h"
-#import "JLSqliteHeartRate.h"
-#import "JLSqliteOxyhemoglobinSaturation.h"
-#import "JLSqliteSleep.h"
-#import "JLSqliteStep.h"
 
 
 @interface DevicesSubView ()<devCellDelegate,LanguagePtl>{
     UIView *noOneView;
     NSMutableArray *locateArray;
-    UserDeviceModel *saveModel;
-    DFTips *tipsView;
-    NSTimer *connectTimer;
-    NSInteger timerCount;
-    
-    NSInteger connectTimeOut;
     JL_EntityM *cutEntity;
-
     UILabel *noDevicelab;
     UIButton *addBtn;
     
-    BOOL     isReconnecting;
-    int      reconnectCount;
 }
 @end
 
@@ -47,9 +28,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        isReconnecting = NO;
-        connectTimeOut = 10;
-
         [[LanguageCls share] add:self];
         
         locateArray = [NSMutableArray new];
@@ -72,65 +50,23 @@
         
         [self addNoneView];
         noOneView.hidden = true;
-        [DeviceHttp checkList:^(NSArray<DeviceHttpResp *> * _Nullable array) {
-            for (DeviceHttpResp *item in array) {
-                [[JLDeviceSqliteManager share] update:[item beUdm] Time:item.updateTime];
-                //NSLogEx(@"Devices service:%@ idStr:%@",item.mac,item.idStr);
+        
+        [DeviceSubViewModel shared].updateListCallBack = ^(NSArray<UserDeviceModel *> * _Nonnull list) {
+            if (list){
+                self->locateArray = [NSMutableArray arrayWithArray:list];
+            }else{
+                self->locateArray = [NSMutableArray new];
             }
-            [self refreshUI];
-        }];
-        [self addNote];
-        tipsView = [DFUITools showHUDOnWindowWithLabel:kJL_TXT("正在连接")];
-        [tipsView hide:false];
-        
-        
-    }
-    return self;
-}
-
-
-
--(void)shouldUpdateBattery{
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.colView reloadData];
-    });
-}
-
--(void)refreshUI{
-    NSLog(@"-------------> refreshUI 0 ");
-
-    NSString *identify = User_Http.shareInstance.userPfInfo.identify;
-    if (identify.length == 0) {
-        [[User_Http shareInstance] requestGetUserConfigInfo:^(JLUser * _Nonnull userInfo) {
-            NSString *identify_1 = User_Http.shareInstance.userPfInfo.identify;
-            NSLog(@"-------------> refreshUI 1 ");
-            [self checkoutBy:identify_1];
-        }];
-    }else{
-        NSLog(@"-------------> refreshUI 2 ");
-        [self checkoutBy:identify];
-    }
-}
-
--(void)checkoutBy:(NSString*)identify{
-    [[JLDeviceSqliteManager share] checkoutBy:identify result:^(NSArray<UserDeviceModel *> * _Nonnull resultArray) {
-        //[self->locateArray removeAllObjects];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (resultArray.count==0 && self->locateArray.count == 0) {
+            if (self->locateArray.count == 0) {
                 self->noOneView.hidden = false;
             }else{
                 self->noOneView.hidden = true;
-                for (UserDeviceModel *item in resultArray){
-                    [self updateLocateArray:item];
-                    //NSLog(@"Devices service:%ld name:%@",(long)item.identifier,item.devName);
-                }
             }
-            [self sortLocateArray];
-            [self.colView reloadData];
-            [self.colView setContentOffset:CGPointMake(0, 0) animated:YES];
-        });
-    }];
+            [self->_colView reloadData];
+            [self->_colView setContentOffset:CGPointMake(0, 0) animated:YES];
+        };
+    }
+    return self;
 }
 
 
@@ -139,11 +75,10 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         self->noOneView.hidden = true;
         [self updateLocateArray:model];
-        [self sortLocateArray];
         [self.colView reloadData];
         [self.colView setContentOffset:CGPointMake(0, 0) animated:YES];
     });
-    //NSLog(@"Devices service:OTA name:%@",model.devName);
+    //kJLLog(JLLOG_DEBUG, @"Devices service:OTA name:%@",model.devName);
 }
 
 
@@ -156,32 +91,10 @@
             return;
         }
     }
-    NSLog(@"--->Take Other Device：%@",model.devName);
+    kJLLog(JLLOG_DEBUG, @"--->Take Other Device：%@",model.devName);
     [locateArray addObject:model];
     
 }
-
--(void)sortLocateArray{
-    NSInteger index = -1;
-    if (locateArray.count == 0) {
-        return;
-    }
-    UserDeviceModel *model = locateArray[0];
-    for (UserDeviceModel *item in locateArray) {
-        if ([item.uuidStr isEqualToString:kJL_BLE_EntityM.mPeripheral.identifier.UUIDString]) {
-            model = [item copy];
-            index = [locateArray indexOfObject:item];
-            break;
-        }
-    }
-    if (index != -1) {
-        [locateArray removeObjectAtIndex:index];
-        [locateArray insertObject:model atIndex:0];
-    }
-}
-
-
-
 
 -(void)addNoneView{
     noOneView = [[UIView alloc] initWithFrame:CGRectMake(20, 10, self.frame.size.width-40, self.frame.size.height-20)];
@@ -242,8 +155,8 @@
     cell.itemIndex = indexPath.row;
     cell.statusLab.textColor = [UIColor blackColor];
     //JL_EntityM *entity = kJL_BLE_EntityM;
-    //NSLog(@"--->EDR %@ %@",entity.mEdr,model.mac);
-    //NSLog(@"--->BLEADDR %@ %@",entity.mBleAddr,model.bleAddr);
+    //kJLLog(JLLOG_DEBUG, @"--->EDR %@ %@",entity.mEdr,model.mac);
+    //kJLLog(JLLOG_DEBUG, @"--->BLEADDR %@ %@",entity.mBleAddr,model.bleAddr);
 
     JLModel_Device *deviceModel = [kJL_BLE_CmdManager outputDeviceModel];
     cell.deviceUUID = deviceModel.mBLE_UUID;
@@ -280,371 +193,62 @@
     }
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-//    int contentOffsetX = scrollView.contentOffset.x;
-//    int w = self.frame.size.width;
-//    int index = contentOffsetX / w;
-//    NSLog(@"scrollView.contentOffset:%f index:%d",scrollView.contentOffset.x,index);
-}
-
-#pragma mark 监听通知
--(void)addNote{
-    [JL_Tools add:kUI_JL_DEVICE_CHANGE Action:@selector(noteDeviceChange:) Own:self];
-    [JL_Tools add:kUI_DELETE_DEVICE_MODEL Action:@selector(noteDeleteModel:) Own:self];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shouldUpdateBattery) name:@"JL_BATTERY" object:nil];
-}
-
-- (void)noteDeviceChange:(NSNotification*)note {
-    JLDeviceChangeType type = [[note object] integerValue];
-    if (type == JLDeviceChangeTypeSomethingConnected) {
-        
-        JLModel_Device *deviceModel = [kJL_BLE_CmdManager outputDeviceModel];
-        NSString *strPid = nil;
-        NSString *strVid = nil;
-        if (deviceModel.pidvid.length >0) {
-            strPid = [deviceModel.pidvid substringWithRange:NSMakeRange(0, 4)];
-            strVid = [deviceModel.pidvid substringWithRange:NSMakeRange(4, 4)];
-        }
-        
-        UserDeviceModel *model  = [[UserDeviceModel alloc] init];
-        model.devName           = kJL_BLE_EntityM.mItem;
-        model.pid               = strPid?:kJL_BLE_EntityM.mPID;
-        model.vid               = strVid?:kJL_BLE_EntityM.mVID;
-        model.uuidStr           = kJL_BLE_EntityM.mPeripheral.identifier.UUIDString;
-        model.mac               = deviceModel.btAddr?:kJL_BLE_EntityM.mEdr;
-        model.userID            = [[User_Http shareInstance] userPfInfo].identify;
-        model.advData           = kJL_BLE_EntityM.mAdvData;
-        model.type              = @"手表";
-        model.deviceID          = @"";
-        model.androidConfig     = @"";
-        model.explain           = @"";
-        if (!model.uuidStr) {
-            NSLog(@"缺乏基础信息，不能进行设备信息数据存储/备份操作");
-            return;
-        }
-        
-        /*--- OTA通过广播包回连的方式，会生成零时UUID和ble地址用于iphone回连，
-              所以不用存储处于OTA的设备model，因为升级完成后会使用原来的UUID连接。 ---*/
-        if (kJL_BLE_EntityM.mSpecialType == JLDevSpecialType_Reconnect) {
-            model.bleAddr = kJL_BLE_EntityM.mBleAddr;
-            model.mac     = kJL_BLE_EntityM.mBleAddr;
-            model.isTemporary = YES;
-            [self refreshUIWithOTADevice:model];
-            return;
-        }
-       
-        
-        //备份/同步数据到服务器
-        NSLog(@"-------------> checkoutBy000");
-        [[JLDeviceSqliteManager share] checkoutBy:model.userID result:^(NSArray<UserDeviceModel *> * _Nonnull resultArray) {
-            NSLog(@"-------------> checkoutBy:%@",model.userID);
-            if (![self comePare:model WithList:resultArray]) {
-                NSLog(@"-------------> 11111111");
-                [DeviceHttp bind:^(JLHttpResponse * _Nonnull response) {
-                    if (response.code == 0) {
-                        NSLog(@"服务器绑定设备成功");
-                        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:response.data options:NSJSONReadingMutableLeaves error:nil];
-                        model.deviceID = dict[@"id"];
-                        model.androidConfig = dict[@"androidCoinfgiData"];
-                        model.explain = dict[@"explain"];
-                        [[JLDeviceSqliteManager share] update:model];
-                    }else{
-                        NSLog(@"服务器绑定失败，设备已被其他人绑定");
-                        [[JLDeviceSqliteManager share] update:model];
-                        [[JLDeviceSqliteManager share] checkoutAll:^(NSArray<UserDeviceModel *> * _Nonnull resultArray) {
-                            
-                        }];
-                    }
-                    NSLog(@"-------------> 2222222");
-
-                    [self refreshUI];
-                }];
-            }else{
-                UserDeviceModel *md = resultArray.firstObject;
-                md.devName = kJL_BLE_EntityM.mItem;
-                md.pid = strPid?:kJL_BLE_EntityM.mPID;
-                md.vid = strVid?:kJL_BLE_EntityM.mVID;
-                md.uuidStr = kJL_BLE_EntityM.mPeripheral.identifier.UUIDString;
-                md.mac = deviceModel.btAddr?:kJL_BLE_EntityM.mEdr;
-                if (kJL_BLE_EntityM.mAdvData) {
-                    md.advData = kJL_BLE_EntityM.mAdvData;
-                }
-                md.userID = [[User_Http shareInstance] userPfInfo].identify;
-                
-                NSLog(@"-------------> update 0:%@",model);
-                [DeviceHttp updateConfig:[md beDeviceHttpBody] Result:^(JLHttpResponse * _Nonnull response) {
-                    if (response.code == 0) {
-                        NSLog(@"服务器更新设备成功");
-                        [[JLDeviceSqliteManager share] update:md];
-                        [[JLDeviceSqliteManager share] checkoutAll:^(NSArray<UserDeviceModel *> * _Nonnull resultArray) {
-                        }];
-                        
-                    }else{
-                        NSLog(@"服务器更新设备信息时错误");
-                    }
-                    [self refreshUI];
-                }];
-            }
-        }];
-        NSLog(@"-------------> update 1:%@",model);
-        [[JLDeviceSqliteManager share] update:model];
-        [self refreshUI];
-    }
-    if (type == JLDeviceChangeTypeInUseOffline) {
-        
-    }
-    if (type == JLDeviceChangeTypeBleOFF) {
-        
-    }
-}
-
--(void)noteDeleteModel:(NSNotification*)note{
-    UserDeviceModel *mac = note.object;
-    for (UserDeviceModel *md in locateArray) {
-        if ([md.mac isEqual:mac]) {
-            [locateArray removeObject:md];
-            break;
-        }
-    }
-    [self.colView reloadData];
-    [self.colView setContentOffset:CGPointMake(0, 0) animated:YES];
-}
 
 
--(BOOL)comePare:(UserDeviceModel*)model WithList:(NSArray<UserDeviceModel*> *)models{
-    
-    for (UserDeviceModel *item in models) {
-        //根据是不是相同的mac地址以及UserID，以及判断deviceID是否为空，因为deviceIID只有在绑定成功之后才不会为空
-        //所以这里会每次连接上了之后都判断是否已经绑定了，不然就去绑定服务器。
-        if ([item.mac isEqualToString:model.mac] && [item.userID isEqualToString:model.userID] && ![item.deviceID isEqualToString:@""]) {
-            return YES;
-        }
-    }
-    return NO;
-}
+
 
 //MARK: - cell delegate
 -(void)cellDidSelect:(NSInteger)itemIndex{
-   
 
     if (kJL_BLE_Multiple.bleManagerState == CBManagerStatePoweredOff) {
         [DFUITools showText:kJL_TXT("蓝牙没有打开") onView:self delay:1.0];
         return;
     }
-    NSLog(@"--->手动回连设备.");
-    
+    if ([BridgeHelper isConnecting]) {
+        return;
+    }
+    kJLLog(JLLOG_DEBUG, @"--->手动回连设备.");
+    [AlertViewOnWindows showConnectingWithTips:kJL_TXT("正在连接") timeout:10];
     if (locateArray.count > itemIndex) {
-        saveModel = locateArray[itemIndex];
-        
-        [self showConnectUI];
+        UserDeviceModel *saveModel = locateArray[itemIndex];
         if (kJL_BLE_EntityM){
             [kJL_BLE_Multiple disconnectEntity:kJL_BLE_EntityM Result:^(JL_EntityM_Status status) {
                 if (status == JL_EntityM_StatusDisconnectOk) {
                     //执行一个延时函数，目的是为了能让 block 回调执行完之后（清理 Block），再去执行下一个语句
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                        [self reconnectDeviceUuidOfModel:self->saveModel];
+                        [self connectDevice:saveModel];
                     });
                 }
             }];
         }else{
-            [self reconnectDeviceUuidOfModel:self->saveModel];
+           [self connectDevice:saveModel];
         }
-        
-
     }
 }
 
-
-
--(void)reconnecLastDevice{
+-(void)connectDevice:(UserDeviceModel *)model{
     
-    if (kJL_BLE_Multiple.bleManagerState == CBManagerStatePoweredOff) {
-        [DFUITools showText:kJL_TXT("蓝牙没有打开") onView:self delay:1.0];
+    if([JL_RunSDK getStatusUUID:model.uuidStr] != JLUuidTypeDisconnected){
+        kJLLog(JLLOG_WARN, @"尝试去连接一个已连接的对象");
         return;
     }
-    //NSLog(@"--->无感回连设备.");
-    
-    if (locateArray.count > 0) {
-        /*--- 避免回连临时变地址OTA设备 ---*/
-        NSMutableArray *newLocateArray = [NSMutableArray new];
-        for (UserDeviceModel *md in locateArray) {
-            if (md.isTemporary == NO) {
-                [newLocateArray addObject:md];
-            }
-        }
-        locateArray = newLocateArray;
-        [self.colView reloadData];
-        [self.colView setContentOffset:CGPointMake(0, 0) animated:YES];
-        
-        if (locateArray.count > 0) {
-            self->saveModel = locateArray.firstObject;
-            [self reconnectDeviceUuidOfModel:self->saveModel];
-        }else{
-            NSLog(@"No device to connect.");
-        }
-
-    }
-}
-
--(void)timerAction{
-    
-    if (timerCount>connectTimeOut) {
-        tipsView.labelText = kJL_TXT("连接超时");
-        self->isReconnecting = NO;
-        [self cancelSearch];
-        [self closeConnectTimer];
-        [self dismissConnectUI];
-        NSLog(@"---> Search Close Scan!");
-        return;
-    }
-    timerCount+=1;
-}
-
--(void)startConnectTimer{
-    timerCount = 0;
-    if (connectTimer == nil) {
-        connectTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self
-                                                      selector:@selector(timerAction)
-                                                      userInfo:nil repeats:true];
-    }
-    [JL_Tools timingContinue:connectTimer];
-}
-
--(void)closeConnectTimer{
-    [JL_Tools timingPause:connectTimer];
-    timerCount = 0;
-}
-
-
--(void)showConnectUI{
-    tipsView.labelText = kJL_TXT("正在连接");
-    [tipsView show:true];
-}
-
--(void)dismissConnectUI{
-    [tipsView hide:false];
-}
-
-
--(void)searchConnect{
-    NSLog(@"--->开始搜索设备...");
-    [JL_Tools add:kJL_BLE_M_FOUND_SINGLE Action:@selector(searchEntity:) Own:self];
-    [JL_Tools post:kUI_JL_BLE_SCAN_OPEN Object:nil];
-}
-
--(void)cancelSearch{
-    //NSLog(@"--->停止搜索设备...");
-    [JL_Tools remove:kJL_BLE_M_FOUND_SINGLE Own:self];
-    [JL_Tools post:kUI_JL_BLE_SCAN_CLOSE Object:nil];
-}
-
-
-
--(void)reconnectDeviceUuidOfModel:(UserDeviceModel*)model{
-    if (isReconnecting == YES) {
-        NSLog(@"UI拒绝重复回连设备...");
-        [self startConnectTimer];
-        return;
-    }
-    isReconnecting = YES;
-    reconnectCount = 0;
-    
-    if ([model.uuidStr isEqualToString:@""]) {
-        [self cancelSearch];
-        [self closeConnectTimer];
-
-        [kJL_BLE_Multiple connectEntityForMac:model.mac Result:^(JL_EntityM_Status status) {
-            [JL_Tools mainTask:^{
-                if (status == JL_EntityM_StatusPaired) {
-                    NSLog(@"----> MAC回连设备成功.");
-                    [JL_Tools delay:2.0 Task:^{
-                        self->isReconnecting = NO;
-                        [self dismissConnectUI];
-                        [self refreshUI];
-                        self->reconnectCount = 0;
-                    }];
-                }else{
-                    /*--- 2、UUID连接失败，用BLE搜索连接方式 ---*/
-                    NSLog(@"----> 正在搜索BLE回连...0");
-                    self->reconnectCount+=1;
-                    if (self->reconnectCount > 2) {
-                        self->isReconnecting = NO;
-                        [self dismissConnectUI];
-                        [DFUITools showText:kJL_TXT("连接超时") onView:self delay:2.0];
-                    }else{
-                        [self searchConnect];
-                        [self startConnectTimer];
-                    }
-                }
-            }];
+    JL_EntityM * entity = [kJL_BLE_Multiple makeEntityWithUUID:model.uuidStr];
+    if (entity){
+        kJLLog(JLLOG_DEBUG, @"本地存在已连接的对象");
+        [[JL_RunSDK sharedMe] connectDevice:entity callBack:^(BOOL status) {
         }];
-        return;
-    }
-    cutEntity = [kJL_BLE_Multiple makeEntityWithUUID:model.uuidStr];
-    
-    [self cancelSearch];
-    [self closeConnectTimer];
-
-    /*--- 1、直接UUID连接设备 ---*/
-    //[[JL_RunSDK sharedMe] setAncsUUID:cutEntity.mPeripheral.identifier.UUIDString];
-    [kJL_BLE_Multiple connectEntity:cutEntity Result:^(JL_EntityM_Status status) {
-        [JL_Tools mainTask:^{
-            if (status == JL_EntityM_StatusPaired) {
-                NSLog(@"----> UUID回连设备成功.");
-                [[JL_RunSDK sharedMe] setMBleEntityM:self->cutEntity];
-                self->isReconnecting = NO;
-                [self dismissConnectUI];
-                [self refreshUI];
-            }else{
-                /*--- 2、UUID连接失败，用BLE搜索连接方式 ---*/
-                NSLog(@"----> 正在搜索BLE回连...1");
-                self->reconnectCount+=1;
-                if (self->reconnectCount > 2) {
-                    self->isReconnecting = NO;
-                    [self dismissConnectUI];
-                    [DFUITools showText:kJL_TXT("连接超时") onView:self delay:2.0];
-                }else{
-                    [self searchConnect];
-                    [self startConnectTimer];
-                }
-            }
-        }];
-    }];
-}
-
-
-//ce7c44df9b8a
--(void)searchEntity:(NSNotification *)note{
-    JL_EntityM *entity = note.object;
-    if ([entity.mEdr isEqualToString:saveModel.mac]) {
-        [self cancelSearch];
-        [self closeConnectTimer];
-        
-        cutEntity = entity;
-        
-        //[[JL_RunSDK sharedMe] setAncsUUID:cutEntity.mPeripheral.identifier.UUIDString];
-        [kJL_BLE_Multiple connectEntity:entity Result:^(JL_EntityM_Status status) {
-            if (status == JL_EntityM_StatusPaired) {
-                NSLog(@"----> 搜索回连成功.");
-                [[JL_RunSDK sharedMe] setMBleEntityM:entity];
-                self->isReconnecting = NO;
-                [self dismissConnectUI];
-                [self refreshUI];
-                
-            }
+    }else{
+        kJLLog(JLLOG_DEBUG, @"本地不存在已连接的对象");
+        [[JL_RunSDK sharedMe] connectDeviceMac:model.mac callBack:^(BOOL callback) {
         }];
     }
 }
+
 
 -(void)cutEntityConnecting{
-    self->isReconnecting = NO;
-    [self cancelSearch];
-    [self closeConnectTimer];
-    [self dismissConnectUI];
-    
     /*--- 是否有设备正在连接中，但是又没有连接上 ---*/
     if (cutEntity && kJL_BLE_Multiple.BLE_IS_CONNECTING) {
-        NSLog(@"--->Cut connecting device:%@",cutEntity.mItem);
+        kJLLog(JLLOG_DEBUG, @"--->Cut connecting device:%@",cutEntity.mItem);
         [kJL_BLE_Multiple disconnectEntity:cutEntity Result:^(JL_EntityM_Status status) {}];
     }
 }
@@ -652,6 +256,7 @@
 - (void)languageChange {
     [addBtn setTitle:kJL_TXT("添加") forState:UIControlStateNormal];
     noDevicelab.text = kJL_TXT("您还未添加任何设备");
+    [self->_colView reloadData];
 }
 
 @end

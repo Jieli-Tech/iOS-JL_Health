@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.接口说明 &mdash; 杰理健康开发文档(iOS) v1.11.0 文档</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="https://doc.zh-jieli.com/Apps/static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+        <script src="https://doc.zh-jieli.com/Apps/static/js/custom.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="1. SDK开发包介绍" href="../../resource/index.html" />
+    <link rel="prev" title="2.功能说明" href="function_desc.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> 杰理健康开发文档(iOS)
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">开发框架</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Framework/framework.html">SDK架构</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">开发说明</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="import.html">1.接入流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="function_desc.html">2.功能说明</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3.接口说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">3.1 表盘操作接口</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3.1.1 接口声明与使用示例</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">3.2 表盘事件回调监听器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">3.3 设备事件推送监听器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ota">3.4 OTA升级</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">3.4.1 功能描述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">3.4.2 OTA接口流程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">3.4.3 获取设备信息</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">3.4.4 执行OTA升级</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#opus">3.5 Opus 解码库使用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id10">3.5.1 功能描述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">3.5.2 使用接口</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">3.5.3 使用案例</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">工程介绍</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../resource/index.html">1. SDK开发包介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resource/index.html#id1">2. 功能实现参考</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其他</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Other/online.html">线上视频教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Other/debug.html">测试调试</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Other/contactUs.html">常见问题答疑</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Other/version.html">发布记录</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">杰理健康开发文档(iOS)</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>3.接口说明</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>3.接口说明<a class="headerlink" href="#id1" title="永久链接至标题"></a></h1>
+<section id="id2">
+<h2>3.1 表盘操作接口<a class="headerlink" href="#id2" title="永久链接至标题"></a></h2>
+<section id="id3">
+<h3>3.1.1 接口声明与使用示例<a class="headerlink" href="#id3" title="永久链接至标题"></a></h3>
+<div class="highlight-objectivec notranslate"><div class="highlight"><pre><span></span><span class="c1">//以下使用到的mBleEntityM。在文档1.3.1里有介绍。</span>
+<span class="cm">/**</span>
+<span class="cm"> 表盘操作</span>
+<span class="cm"> @param path    路径</span>
+<span class="cm"> @param flag    0x00:读取</span>
+<span class="cm">                0x01:设置</span>
+<span class="cm">                0x03:版本</span>
+<span class="cm">                0x04:激活自定义表盘</span>
+<span class="cm">                0x05:获取对应的自定义表盘名字</span>
+<span class="cm"> @param result  回复</span>
+<span class="cm"> */</span><span class="w"></span>
+<span class="p">-(</span><span class="kt">void</span><span class="p">)</span><span class="nf">cmdWatchFlashPath:</span><span class="p">(</span><span class="bp">NSString</span><span class="o">*</span><span class="n">__nullable</span><span class="p">)</span><span class="nv">path</span><span class="w"></span>
+<span class="w">                    </span><span class="nl">Flag</span><span class="p">:(</span><span class="n">JL_DialSetting</span><span class="p">)</span><span class="nv">flag</span><span class="w"></span>
+<span class="w">                  </span><span class="nl">Result</span><span class="p">:(</span><span class="n">JL_FlashWatch_BK</span><span class="w"> </span><span class="n">__nullable</span><span class="p">)</span><span class="nv">result</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">//1、读取当前表盘名字</span>
+<span class="p">[</span><span class="n">mBleEntityM</span><span class="p">.</span><span class="n">mCmdManager</span><span class="p">.</span><span class="n">mFlashManager</span><span class="w"> </span><span class="n">cmdWatchFlashPath</span><span class="o">:</span><span class="n">path</span><span class="w"> </span><span class="n">Flag</span><span class="o">:</span><span class="n">JL_DialSettingReadCurrentDial</span><span class="w"></span>
+<span class="w">                            </span><span class="nl">Result</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">flag</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                     </span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">_Nullable</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                     </span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">_Nullable</span><span class="w"> </span><span class="n">describe</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">     </span><span class="p">[</span><span class="n">JL_Tools</span><span class="w"> </span><span class="n">mainTask</span><span class="o">:^</span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;---&gt;当前表盘名字：%@&quot;</span><span class="p">,</span><span class="n">path</span><span class="p">);</span><span class="w"></span>
+<span class="w">     </span><span class="p">}];</span><span class="w"></span>
+<span class="p">}];</span><span class="w"></span>
+
+<span class="c1">//2、切换表盘，所有表盘操作名字都需要加&quot;/&quot;斜杠前缀，例如@&quot;/WATCH2&quot;,如下所示就是切换至WATCH2表盘。</span>
+<span class="p">[</span><span class="n">mBleEntityM</span><span class="p">.</span><span class="n">mCmdManager</span><span class="p">.</span><span class="n">mFlashManager</span><span class="w"> </span><span class="n">cmdWatchFlashPath</span><span class="o">:</span><span class="s">@&quot;/WATCH2&quot;</span><span class="w"> </span><span class="n">Flag</span><span class="o">:</span><span class="n">JL_DialSettingSetDial</span><span class="w"></span>
+<span class="w">                            </span><span class="nl">Result</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">flag</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                     </span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">_Nullable</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                     </span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">_Nullable</span><span class="w"> </span><span class="n">describe</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="n">JL_Tools</span><span class="w"> </span><span class="n">mainTask</span><span class="o">:^</span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">flag</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;切换表盘成功~&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="k">else</span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;切换表盘失败~&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">           </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">}];</span><span class="w"></span>
+<span class="p">}];</span><span class="w"></span>
+
+<span class="c1">//3、获取表盘版本号，所有表盘操作名字都需要加&quot;/&quot;斜杠前缀，例如@&quot;/WATCH2&quot;,如下所示就是获取WATCH2表盘版本号。</span>
+<span class="p">[</span><span class="n">mBleEntityM</span><span class="p">.</span><span class="n">mCmdManager</span><span class="p">.</span><span class="n">mFlashManager</span><span class="w"> </span><span class="n">cmdWatchFlashPath</span><span class="o">:</span><span class="s">@&quot;/WATCH2&quot;</span><span class="w"> </span><span class="n">Flag</span><span class="o">:</span><span class="n">JL_DialSettingVersion</span><span class="w"></span>
+<span class="w">                            </span><span class="nl">Result</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">flag</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                     </span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">_Nullable</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                     </span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">_Nullable</span><span class="w"> </span><span class="n">describe</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="p">[</span><span class="n">JL_Tools</span><span class="w"> </span><span class="n">mainTask</span><span class="o">:^</span><span class="p">{</span><span class="w"></span>
+<span class="w">               </span><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;---&gt;当前表盘版本：%@&quot;</span><span class="p">,</span><span class="n">path</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}];</span><span class="w"></span>
+<span class="p">}];</span><span class="w"></span>
+
+<span class="c1">//4、激活自定义表盘背景，所有表盘操作名字都需要加&quot;/&quot;斜杠前缀，例如@&quot;/BGP_W001&quot;,如下所示就是将当前表盘的背景切换成BGP_W001。</span>
+<span class="c1">//假如path赋值@&quot;/null&quot;,解除当前复原当前表盘背景，解绑自定义背景。</span>
+<span class="p">[</span><span class="n">mBleEntityM</span><span class="p">.</span><span class="n">mCmdManager</span><span class="p">.</span><span class="n">mFlashManager</span><span class="w"> </span><span class="n">cmdWatchFlashPath</span><span class="o">:</span><span class="s">@&quot;/BGP_W001&quot;</span><span class="w"> </span><span class="n">Flag</span><span class="o">:</span><span class="n">JL_DialSettingActivateCustomDial</span><span class="w"></span>
+<span class="w">                            </span><span class="nl">Result</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">flag</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                     </span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">_Nullable</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                     </span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">_Nullable</span><span class="w"> </span><span class="n">describe</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="n">JL_Tools</span><span class="w"> </span><span class="n">mainTask</span><span class="o">:^</span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">flag</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;激活成功~&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="k">else</span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;激活失败~&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}];</span><span class="w"></span>
+<span class="p">}];</span><span class="w"></span>
+
+<span class="c1">//5、获取表盘的自定义背景名字，所有表盘操作名字都需要加&quot;/&quot;斜杠前缀，例如@&quot;/WATCH2&quot;,如下所示则获取WATCH2表盘对应的自定义背景名字。</span>
+<span class="p">[</span><span class="n">mBleEntityM</span><span class="p">.</span><span class="n">mCmdManager</span><span class="p">.</span><span class="n">mFlashManager</span><span class="w"> </span><span class="n">cmdWatchFlashPath</span><span class="o">:</span><span class="s">@&quot;BGP_W001&quot;</span><span class="w"> </span><span class="n">Flag</span><span class="o">:</span><span class="n">JL_DialSettingGetDialName</span><span class="w"></span>
+<span class="w">                            </span><span class="nl">Result</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">flag</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                     </span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">_Nullable</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                     </span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">_Nullable</span><span class="w"> </span><span class="n">describe</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="p">[</span><span class="n">JL_Tools</span><span class="w"> </span><span class="n">mainTask</span><span class="o">:^</span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">flag</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                  </span><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;操作成功~&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">                  </span><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;对应的自定义背景：%@&quot;</span><span class="p">,</span><span class="n">path</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="k">else</span><span class="p">{</span><span class="w"></span>
+<span class="w">                  </span><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;操作失败~&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}];</span><span class="w"></span>
+<span class="w"> </span><span class="p">}];</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id4">
+<h2>3.2 表盘事件回调监听器<a class="headerlink" href="#id4" title="永久链接至标题"></a></h2>
+<div class="highlight-objectivec notranslate"><div class="highlight"><pre><span></span><span class="c1">//设备更新表盘，监听以下通知返回当前设备切换的表盘名字，例如@&quot;WATCH2&quot;。</span>
+<span class="k">extern</span><span class="w"> </span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="n">kJL_MANAGER_WATCH_FACE</span><span class="p">;</span><span class="w"></span>
+<span class="c1">//监听的方法例子：</span>
+<span class="p">-(</span><span class="kt">void</span><span class="p">)</span><span class="nf">noteWatchFace:</span><span class="p">(</span><span class="bp">NSNotification</span><span class="o">*</span><span class="p">)</span><span class="nv">note</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="bp">NSDictionary</span><span class="w"> </span><span class="o">*</span><span class="n">dict</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">note</span><span class="w"> </span><span class="n">object</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dict</span><span class="p">[</span><span class="n">kJL_MANAGER_KEY_OBJECT</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;---&gt;设备更新表盘：%@&quot;</span><span class="p">,</span><span class="n">text</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h2>3.3 设备事件推送监听器<a class="headerlink" href="#id5" title="永久链接至标题"></a></h2>
+<p>无</p>
+</section>
+<section id="ota">
+<h2>3.4 OTA升级<a class="headerlink" href="#ota" title="永久链接至标题"></a></h2>
+<section id="id6">
+<h3>3.4.1 功能描述<a class="headerlink" href="#id6" title="永久链接至标题"></a></h3>
+<p>​ 解决固件升级问题，时刻优化固件性能。 ​ OTA升级的两种情况： ​
+1、【单备份】连接设备成功–&gt;获取设备信息–&gt;执行升级–&gt;检验完后断开重连设备–&gt;连接设备成功–&gt;获取设备信息–&gt;需要强制升级–&gt;跳到升级界面，执行OTA级，否则设备如法使用；
+​ 2、【双备份】连接设备成功–&gt;获取设备信息–&gt;执行升级–&gt;升级成功；</p>
+</section>
+<section id="id7">
+<h3>3.4.2 OTA接口流程<a class="headerlink" href="#id7" title="永久链接至标题"></a></h3>
+<p><strong>接口使用分为两种情况：</strong></p>
+<ul class="simple">
+<li><p>1、连接设备成功–&gt;获取设备信息–&gt;需要强制升级–&gt;跳到升级界面，执行OTA升级，否则设备如法使用；</p></li>
+<li><p>2、连接设备成功–&gt;获取设备信息–&gt;无需强制升级–&gt;正常使用APP；</p></li>
+</ul>
+</section>
+<section id="id8">
+<h3>3.4.3 获取设备信息<a class="headerlink" href="#id8" title="永久链接至标题"></a></h3>
+<div class="highlight-objectivec notranslate"><div class="highlight"><pre><span></span><span class="c1">//1、以下操作都是在连接设备成功后执行的。</span>
+<span class="c1">//2、以下使用到的mBleEntityM。在文档1.3.1里有介绍。</span>
+
+<span class="p">[</span><span class="n">mBleEntityM</span><span class="p">.</span><span class="n">mCmdManager</span><span class="w"> </span><span class="n">cmdTargetFeatureResult</span><span class="o">:^</span><span class="p">(</span><span class="bp">NSArray</span><span class="w"> </span><span class="o">*</span><span class="n">array</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">JL_CMDStatus</span><span class="w"> </span><span class="n">st</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="n">intValue</span><span class="p">];</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">st</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">JL_CMDStatusSuccess</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">JLModel_Device</span><span class="w"> </span><span class="o">*</span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">wSelf</span><span class="p">.</span><span class="n">mBleEntityM</span><span class="p">.</span><span class="n">mCmdManager</span><span class="w"> </span><span class="n">outputDeviceModel</span><span class="p">];</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">JL_OtaStatus</span><span class="w"> </span><span class="n">upSt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="n">otaStatus</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">upSt</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">JL_OtaStatusForce</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;---&gt; 进入强制升级,跳至升级界面，执行OTA升级&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">                </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="k">else</span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">otaHeadset</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">JL_OtaHeadsetYES</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;---&gt; 进入强制升级,跳至升级界面，执行OTA升级&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">                    </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">                </span><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;设备正常使用&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}];</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="id9">
+<h3>3.4.4 执行OTA升级<a class="headerlink" href="#id9" title="永久链接至标题"></a></h3>
+<div class="highlight-objectivec notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="bp">NSData</span><span class="w"> </span><span class="o">*</span><span class="n">otaData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="bp">NSData</span><span class="w"> </span><span class="n">dataWithContentsOfFile</span><span class="o">:</span><span class="s">@&quot;OTA升级文件路径&quot;</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/*--- 开始OTA升级 ---*/</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="n">mBleEntityM</span><span class="p">.</span><span class="n">mCmdManager</span><span class="p">.</span><span class="n">mOTAManager</span><span class="w"> </span><span class="n">cmdOTAData</span><span class="o">:</span><span class="n">otaData</span><span class="w"> </span><span class="n">Result</span><span class="o">:^</span><span class="p">(</span><span class="n">JL_OTAResult</span><span class="w"> </span><span class="n">result</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">progress</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="p">[</span><span class="n">JL_Tools</span><span class="w"> </span><span class="n">mainTask</span><span class="o">:^</span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">JL_OTAResultPreparing</span><span class="w"> </span><span class="o">||</span><span class="w"></span>
+<span class="w">                </span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">JL_OTAResultUpgrading</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="p">[</span><span class="nb">self</span><span class="w"> </span><span class="n">otaTimeCheck</span><span class="p">];</span><span class="c1">//增加超时检测</span>
+
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">JL_OTAResultUpgrading</span><span class="p">)</span><span class="w"> </span><span class="nb">self</span><span class="p">.</span><span class="n">updateTxt</span><span class="p">.</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kJL_TXT</span><span class="p">(</span><span class="s">&quot;正在升级&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">JL_OTAResultPreparing</span><span class="p">)</span><span class="w"> </span><span class="nb">self</span><span class="p">.</span><span class="n">updateTxt</span><span class="p">.</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kJL_TXT</span><span class="p">(</span><span class="s">&quot;检验文件&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">                </span><span class="nb">self</span><span class="p">.</span><span class="n">progressTxt</span><span class="p">.</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="bp">NSString</span><span class="w"> </span><span class="n">stringWithFormat</span><span class="o">:</span><span class="s">@&quot;%.1f%%&quot;</span><span class="p">,</span><span class="n">progress</span><span class="o">*</span><span class="mf">100.0</span><span class="p">];</span><span class="w"></span>
+<span class="w">                </span><span class="nb">self</span><span class="p">.</span><span class="n">progressView</span><span class="p">.</span><span class="n">progress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">progress</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">JL_OTAResultPrepared</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="p">[</span><span class="nb">self</span><span class="w"> </span><span class="n">otaTimeCheck</span><span class="p">];</span><span class="c1">//增加超时检测</span>
+
+<span class="w">                </span><span class="nb">self</span><span class="p">.</span><span class="n">updateTxt</span><span class="p">.</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kJL_TXT</span><span class="p">(</span><span class="s">&quot;等待升级&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">                </span><span class="nb">self</span><span class="p">.</span><span class="n">progressView</span><span class="p">.</span><span class="n">progress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">JL_OTAResultReconnect</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="p">[</span><span class="nb">self</span><span class="w"> </span><span class="n">otaTimeCheck</span><span class="p">];</span><span class="c1">//增加超时检测</span>
+<span class="w">                </span><span class="nb">self</span><span class="o">-&gt;</span><span class="n">_isOtaRelink</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">YES</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">                </span><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;---&gt; OTA正在回连设备... %@&quot;</span><span class="p">,</span><span class="nb">self</span><span class="p">.</span><span class="n">otaEntity</span><span class="p">.</span><span class="n">mItem</span><span class="p">);</span><span class="w"></span>
+<span class="w">                </span><span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">mBleMultiple</span><span class="w"> </span><span class="n">connectEntity</span><span class="o">:</span><span class="nb">self</span><span class="p">.</span><span class="n">otaEntity</span><span class="w"> </span><span class="n">Result</span><span class="o">:^</span><span class="p">(</span><span class="n">JL_EntityM_Status</span><span class="w"> </span><span class="n">status</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nb">self</span><span class="o">-&gt;</span><span class="n">_isOtaRelink</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NO</span><span class="p">;</span><span class="w"></span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">JL_EntityM_StatusPaired</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                        </span><span class="p">[</span><span class="nb">self</span><span class="w"> </span><span class="n">setupUIErrorText</span><span class="o">:</span><span class="n">kJL_TXT</span><span class="p">(</span><span class="s">&quot;OTA升级超时&quot;</span><span class="p">)];</span><span class="w"></span>
+<span class="w">                    </span><span class="p">}</span><span class="w"></span>
+<span class="w">                </span><span class="p">}];</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">JL_OTAResultSuccess</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">JL_OTAResultReboot</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nb">self</span><span class="p">.</span><span class="n">progressView</span><span class="p">.</span><span class="n">progress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0f</span><span class="p">;</span><span class="w"></span>
+<span class="w">                </span><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;升级成功&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">JL_OTAResultFail</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="p">[</span><span class="nb">self</span><span class="w"> </span><span class="n">setupUIErrorText</span><span class="o">:</span><span class="n">kJL_TXT</span><span class="p">(</span><span class="s">&quot;OTA升级失败&quot;</span><span class="p">)];</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">JL_OTAResultDataIsNull</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="p">[</span><span class="nb">self</span><span class="w"> </span><span class="n">setupUIErrorText</span><span class="o">:</span><span class="n">kJL_TXT</span><span class="p">(</span><span class="s">&quot;OTA升级数据为空!&quot;</span><span class="p">)];</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">JL_OTAResultCommandFail</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="p">[</span><span class="nb">self</span><span class="w"> </span><span class="n">setupUIErrorText</span><span class="o">:</span><span class="n">kJL_TXT</span><span class="p">(</span><span class="s">&quot;OTA指令失败!&quot;</span><span class="p">)];</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">JL_OTAResultSeekFail</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="p">[</span><span class="nb">self</span><span class="w"> </span><span class="n">setupUIErrorText</span><span class="o">:</span><span class="n">kJL_TXT</span><span class="p">(</span><span class="s">&quot;OTA标示偏移查找失败!&quot;</span><span class="p">)];</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">JL_OTAResultInfoFail</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="p">[</span><span class="nb">self</span><span class="w"> </span><span class="n">setupUIErrorText</span><span class="o">:</span><span class="n">kJL_TXT</span><span class="p">(</span><span class="s">&quot;OTA升级固件信息错误!&quot;</span><span class="p">)];</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">JL_OTAResultLowPower</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="p">[</span><span class="nb">self</span><span class="w"> </span><span class="n">setupUIErrorText</span><span class="o">:</span><span class="n">kJL_TXT</span><span class="p">(</span><span class="s">&quot;OTA升级设备电压低!&quot;</span><span class="p">)];</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">JL_OTAResultEnterFail</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="p">[</span><span class="nb">self</span><span class="w"> </span><span class="n">setupUIErrorText</span><span class="o">:</span><span class="n">kJL_TXT</span><span class="p">(</span><span class="s">&quot;未能进入OTA升级模式!&quot;</span><span class="p">)];</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">JL_OTAResultUnknown</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="p">[</span><span class="nb">self</span><span class="w"> </span><span class="n">setupUIErrorText</span><span class="o">:</span><span class="n">kJL_TXT</span><span class="p">(</span><span class="s">&quot;OTA未知错误!&quot;</span><span class="p">)];</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">JL_OTAResultFailSameVersion</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="p">[</span><span class="nb">self</span><span class="w"> </span><span class="n">setupUIErrorText</span><span class="o">:</span><span class="n">kJL_TXT</span><span class="p">(</span><span class="s">&quot;相同版本!&quot;</span><span class="p">)];</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">JL_OTAResultFailTWSDisconnect</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="p">[</span><span class="nb">self</span><span class="w"> </span><span class="n">setupUIErrorText</span><span class="o">:</span><span class="n">kJL_TXT</span><span class="p">(</span><span class="s">&quot;TWS耳机未连接&quot;</span><span class="p">)];</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">JL_OTAResultFailNotInBin</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="p">[</span><span class="nb">self</span><span class="w"> </span><span class="n">setupUIErrorText</span><span class="o">:</span><span class="n">kJL_TXT</span><span class="p">(</span><span class="s">&quot;耳机未在充电仓&quot;</span><span class="p">)];</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}];</span><span class="w"></span>
+<span class="w">    </span><span class="p">}];</span><span class="w"></span>
+
+
+<span class="k">static</span><span class="w"> </span><span class="bp">NSTimer</span><span class="w">  </span><span class="o">*</span><span class="n">otaTimer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">nil</span><span class="p">;</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w">      </span><span class="n">otaTimeout</span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">-(</span><span class="kt">void</span><span class="p">)</span><span class="nf">otaTimeCheck</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">otaTimeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">otaTimer</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">nil</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">otaTimer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">JL_Tools</span><span class="w"> </span><span class="n">timingStart</span><span class="o">:</span><span class="k">@selector</span><span class="p">(</span><span class="n">otaTimeAdd</span><span class="p">)</span><span class="w"></span>
+<span class="w">                                  </span><span class="nl">target</span><span class="p">:</span><span class="nb">self</span><span class="w"> </span><span class="n">Time</span><span class="o">:</span><span class="mf">1.0</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="p">-(</span><span class="kt">void</span><span class="p">)</span><span class="nf">otaTimeClose</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="n">JL_Tools</span><span class="w"> </span><span class="n">timingStop</span><span class="o">:</span><span class="n">otaTimer</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="n">otaTimeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">otaTimer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">nil</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="p">-(</span><span class="kt">void</span><span class="p">)</span><span class="nf">otaTimeAdd</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">otaTimeout</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">otaTimeout</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="p">[</span><span class="nb">self</span><span class="w"> </span><span class="n">otaTimeClose</span><span class="p">];</span><span class="w"></span>
+<span class="w">        </span><span class="p">[</span><span class="nb">self</span><span class="w"> </span><span class="n">setupUIErrorText</span><span class="o">:</span><span class="n">kJL_TXT</span><span class="p">(</span><span class="s">&quot;OTA升级超时&quot;</span><span class="p">)];</span><span class="w"></span>
+<span class="w">        </span><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;OTA ---&gt; 超时了！！！&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w"> </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="opus">
+<h2>3.5 Opus 解码库使用<a class="headerlink" href="#opus" title="永久链接至标题"></a></h2>
+<section id="id10">
+<h3>3.5.1 功能描述<a class="headerlink" href="#id10" title="永久链接至标题"></a></h3>
+<p>杰理音频编解码库已支持功能:</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>Opus编解码使用说明</dt><dd><ol class="arabic simple">
+<li><p>Opus文件 解码成 PCM文件</p></li>
+<li><p>Opus数据流 解码成 PCM数据流</p></li>
+<li><p>PCM文件 编码成 Opus文件</p></li>
+<li><p>PCM数据流 编码成 Opus数据流</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Speex编解码</dt><dd><ol class="arabic simple">
+<li><p>Speex解码文件</p></li>
+<li><p>Speex解码数据流</p></li>
+<li><p>Speex编码文件</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+</ol>
+</section>
+<section id="id11">
+<h3>3.5.2 使用接口<a class="headerlink" href="#id11" title="永久链接至标题"></a></h3>
+<ul class="simple">
+<li><p>OpusUnit</p></li>
+</ul>
+<div class="highlight-objectivec notranslate"><div class="highlight"><pre><span></span><span class="cp">#import &lt;Foundation/Foundation.h&gt;</span>
+
+<span class="n">NS_ASSUME_NONNULL_BEGIN</span><span class="w"></span>
+<span class="cm">/**</span>
+<span class="cm">* 通知:流式编码回调Opus数据</span>
+<span class="cm">* 通知数据类型:NSData(Opus) */</span><span class="w"></span>
+<span class="k">extern</span><span class="w"> </span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="n">kOPUS_ENCODE_DATA</span><span class="p">;</span><span class="w"></span>
+<span class="cm">/**</span>
+<span class="cm">* 通知:流式解码回调PCM数据</span>
+<span class="cm">* 通知数据类型:NSData(PCM) */</span><span class="w"></span>
+<span class="k">extern</span><span class="w"> </span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="n">kOPUS_DECODE_DATA</span><span class="p">;</span><span class="w"></span>
+<span class="k">@interface</span> <span class="nc">OpusUnit</span> : <span class="bp">NSObject</span><span class="w"></span>
+<span class="p">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">opusIsLog:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nv">log</span><span class="p">;</span><span class="w"></span>
+
+<span class="cp">#pragma mark - Opus参数 </span><span class="cm">/**</span>
+<span class="cm">* 设置参数</span>
+<span class="cm">* @param rate 16000)</span>
+<span class="cm">采样率 例如:48000、24000、16000、12000、8000(默认 比特率 例如:16000、32000、64000(默认 16000)</span>
+<span class="cm">声道 例如:1、2 (默认 1)</span>
+<span class="cm">+(void)opusSetSampleRate:(int)rate Kbps:(int)kbps Channels:(int)channel;</span>
+
+
+<span class="cm">#pragma mark - Opus解码</span>
+<span class="cm">/**</span>
+<span class="cm">* 直接【opus文件】转换成【pcm文件】</span>
+<span class="cm">* @param path_opus opus文件路径</span>
+<span class="cm">* @param path_pcm pcm文件路径 */</span><span class="cp"></span>
+<span class="p">+</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="nf">opusDecodeOPUS:</span><span class="p">(</span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="nv">path_opus</span><span class="w"> </span><span class="nf">PCM:</span><span class="p">(</span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="nv">path_pcm</span><span class="p">;</span><span class="w"></span>
+
+<span class="cm">/**</span>
+<span class="cm">* 流式解码【开启】 */</span><span class="w"></span>
+<span class="p">+</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="nf">opusDecoderRun</span><span class="p">;</span><span class="w"></span>
+
+<span class="cm">/**</span>
+<span class="cm">* 输入Opus的数据</span>
+<span class="cm">* 通知监听“kOPUS_DECODE_DATA”获得解码后数据</span>
+<span class="cm">* 通知数据类型:NSNotification.object =&gt; NSData(PCM格式)</span>
+<span class="cm">* @param data opus数据流(⻓度:1024) */</span><span class="w"></span>
+<span class="p">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">opusWriteData:</span><span class="p">(</span><span class="bp">NSData</span><span class="o">*</span><span class="p">)</span><span class="nv">data</span><span class="p">;</span><span class="w"></span>
+
+<span class="cm">/**</span>
+<span class="cm">* 流式解码【关闭】 */</span><span class="w"></span>
+<span class="p">+</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="nf">opusDecoderStop</span><span class="p">;</span><span class="w"></span>
+
+<span class="cp">#pragma mark - Opus编码</span>
+<span class="cm">/**</span>
+<span class="cm">* 【pcm文件】转换成【opus文件】</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="p">+</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="nf">opusEncodePCM:</span><span class="p">(</span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="nv">path_pcm</span><span class="w"> </span><span class="nf">OPUS:</span><span class="p">(</span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="nv">path_opus</span><span class="p">;</span><span class="w"></span>
+
+<span class="cm">/**</span>
+<span class="cm"> *流式编码【开启】</span>
+<span class="cm"> */</span><span class="w"></span>
+<span class="p">+</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="nf">opusEecoderRun</span><span class="p">;</span><span class="w"></span>
+
+<span class="cm">/**</span>
+<span class="cm">* 输入pcm的数据</span>
+<span class="cm">* 通知监听“kOPUS_DECODE_DATA”获得解码后数据</span>
+<span class="cm">* 通知数据类型:NSNotification.object =&gt; NSData(opus格式)</span>
+<span class="cm">* @param data opus数据流(⻓度:1024) */</span><span class="w"></span>
+<span class="p">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">pcmWriteData:</span><span class="p">(</span><span class="bp">NSData</span><span class="o">*</span><span class="p">)</span><span class="nv">data</span><span class="p">;</span><span class="w"></span>
+
+<span class="cm">/**</span>
+<span class="cm">* 流式编码【关闭】 */</span><span class="w"></span>
+<span class="p">+</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="nf">opusEncoderStop</span><span class="p">;</span><span class="w"></span>
+<span class="k">@end</span><span class="w"></span>
+<span class="n">NS_ASSUME_NONNULL_END</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>SpeexUnit</p></li>
+</ul>
+<p>Speex 编解码接口说明</p>
+<div class="highlight-objectivec notranslate"><div class="highlight"><pre><span></span><span class="cp">#import &lt;Foundation/Foundation.h&gt;</span>
+<span class="cm">/**</span>
+<span class="cm">* 流式解码回调PCM数据 */</span><span class="w"></span>
+<span class="k">extern</span><span class="w"> </span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="n">kSPEEX_DECODE_DATA</span><span class="p">;</span><span class="w"> </span><span class="c1">//speex decode</span>
+<span class="k">@interface</span> <span class="nc">SpeexUnit</span> : <span class="bp">NSObject</span><span class="w"></span>
+
+<span class="p">+(</span><span class="kt">void</span><span class="p">)</span><span class="nf">speexIsLog:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nv">log</span><span class="p">;</span><span class="w"></span>
+<span class="cm">/**</span>
+<span class="cm">* 直接【speex文件】转换成【pcm文件】 */</span><span class="w"></span>
+<span class="p">+(</span><span class="kt">int</span><span class="p">)</span><span class="nf">speexDecodeSPX:</span><span class="p">(</span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="nv">path_spx</span><span class="w"> </span><span class="nf">PCM:</span><span class="p">(</span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="nv">path_pcm</span><span class="p">;</span><span class="w"></span>
+<span class="cm">/**</span>
+<span class="cm">* 流式解码【开启】 */</span><span class="w"></span>
+<span class="p">+(</span><span class="kt">int</span><span class="p">)</span><span class="nf">speexDecoderRun</span><span class="p">;</span><span class="w"></span>
+<span class="cm">/**</span>
+<span class="cm">* 输入Speex的数据 */</span><span class="w"></span>
+<span class="p">+(</span><span class="kt">void</span><span class="p">)</span><span class="nf">speexWriteData:</span><span class="p">(</span><span class="bp">NSData</span><span class="o">*</span><span class="p">)</span><span class="nv">data</span><span class="p">;</span><span class="w"></span>
+<span class="cm">/**</span>
+<span class="cm">* 流式解码【关闭】 */</span><span class="w"></span>
+<span class="p">+(</span><span class="kt">int</span><span class="p">)</span><span class="nf">speexDecoderStop</span><span class="p">;</span><span class="w"></span>
+<span class="k">@end</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="id12">
+<h3>3.5.3 使用案例<a class="headerlink" href="#id12" title="永久链接至标题"></a></h3>
+<ol class="arabic simple">
+<li><p>Opus编解码使用说明</p></li>
+</ol>
+<p>Opus文件 解码成 PCM文件</p>
+<div class="highlight-objectivec notranslate"><div class="highlight"><pre><span></span><span class="c1">// 创建PCM文件</span>
+<span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="n">docsdir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">NSSearchPathForDirectoriesInDomains</span><span class="p">(</span><span class="n">NSDocumentDirectory</span><span class="p">,</span><span class="n">NSUserDomainMask</span><span class="p">,</span><span class="w"> </span><span class="nb">YES</span><span class="p">)</span><span class="w"> </span><span class="n">firstObject</span><span class="p">];</span><span class="w"></span>
+<span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="n">dataFilePath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">docsdir</span><span class="w"> </span><span class="n">stringByAppendingPathComponent</span><span class="o">:</span><span class="s">@&quot;pcm&quot;</span><span class="p">];</span><span class="w"></span>
+<span class="kt">BOOL</span><span class="w"> </span><span class="n">isDirExist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NO</span><span class="p">;</span><span class="w"></span>
+<span class="p">[[</span><span class="bp">NSFileManager</span><span class="w"> </span><span class="n">defaultManager</span><span class="p">]</span><span class="w"> </span><span class="n">fileExistsAtPath</span><span class="o">:</span><span class="n">dataFilePath</span><span class="w"> </span><span class="n">isDirectory</span><span class="o">:&amp;</span><span class="n">isDirExist</span><span class="p">];</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">isDirExist</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">[[</span><span class="bp">NSFileManager</span><span class="w"> </span><span class="n">defaultManager</span><span class="p">]</span><span class="w"> </span><span class="n">createDirectoryAtPath</span><span class="o">:</span><span class="n">dataFilePath</span><span class="w"> </span><span class="n">withIntermediateDirectories</span><span class="o">:</span><span class="nb">YES</span><span class="w"> </span><span class="n">attributes</span><span class="o">:</span><span class="nb">nil</span><span class="w"> </span><span class="n">error</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="n">filePath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">dataFilePath</span><span class="w"> </span><span class="n">stringByAppendingPathComponent</span><span class="o">:</span><span class="s">@&quot;1.pcm&quot;</span><span class="p">];</span><span class="w"></span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">([[</span><span class="bp">NSFileManager</span><span class="w"> </span><span class="n">defaultManager</span><span class="p">]</span><span class="w"> </span><span class="n">fileExistsAtPath</span><span class="o">:</span><span class="n">filePath</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">[[</span><span class="bp">NSFileManager</span><span class="w"> </span><span class="n">defaultManager</span><span class="p">]</span><span class="w"> </span><span class="n">removeItemAtPath</span><span class="o">:</span><span class="n">filePath</span><span class="w"> </span><span class="n">error</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;remove file : %@&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">filePath</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="n">txt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">@&quot;&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">[</span><span class="n">txt</span><span class="w"> </span><span class="n">writeToFile</span><span class="o">:</span><span class="n">filePath</span><span class="w"> </span><span class="n">atomically</span><span class="o">:</span><span class="nb">YES</span><span class="w"> </span><span class="n">encoding</span><span class="o">:</span><span class="n">NSUTF8StringEncoding</span><span class="w"> </span><span class="n">error</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span><span class="w"></span>
+
+<span class="c1">// 调用解码方法，输入 Opus文件路径 与 PCM文件路径</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">OpusUnit</span><span class="w"> </span><span class="n">opusDecodeOPUS</span><span class="o">:</span><span class="p">[[</span><span class="bp">NSBundle</span><span class="w"> </span><span class="n">mainBundle</span><span class="p">]</span><span class="w"> </span><span class="n">pathForResource</span><span class="o">:</span><span class="s">@&quot;o3o&quot;</span><span class="w"> </span><span class="n">ofType</span><span class="o">:</span><span class="s">@&quot;opus&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">PCM</span><span class="o">:</span><span class="n">filePath</span><span class="p">];</span><span class="w"></span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// 解码成功</span>
+<span class="w">    </span><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;opusFileToPCMFile OK 了&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// 解码失败</span>
+<span class="w">    </span><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;opusFileToPCMFile 失败了&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Opus数据流 解码成 PCM数据流</p></li>
+</ol>
+<div class="highlight-objectivec notranslate"><div class="highlight"><pre><span></span><span class="c1">//Step0.运行Opus解码库，必须异步调用</span>
+<span class="c1">// 注意:运行编码库与解码库必须使用gcd分包调用</span>
+
+<span class="n">dispatch_async</span><span class="p">(</span><span class="n">dispatch_get_global_queue</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="o">^</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="n">OpusUnit</span><span class="w"> </span><span class="n">opusIsLog</span><span class="o">:</span><span class="nb">YES</span><span class="p">];</span><span class="c1">//Opus解码库的LOG</span>
+<span class="w">    </span><span class="p">[</span><span class="n">OpusUnit</span><span class="w"> </span><span class="n">opusDecoderRun</span><span class="p">];</span><span class="w">    </span><span class="c1">//运行Opus解码库</span>
+<span class="p">});</span><span class="w"></span>
+
+<span class="c1">//Step1.监听解码后PCM数据回调</span>
+<span class="p">[[</span><span class="bp">NSNotificationCenter</span><span class="w"> </span><span class="n">defaultCenter</span><span class="p">]</span><span class="w"> </span><span class="n">addObserver</span><span class="o">:</span><span class="nb">self</span><span class="w"> </span><span class="n">selector</span><span class="o">:</span><span class="k">@selector</span><span class="p">(</span><span class="n">notePCMData</span><span class="o">:</span><span class="p">)</span><span class="w"> </span><span class="n">name</span><span class="o">:</span><span class="n">kOPUS_DECODE_DATA</span><span class="w"> </span><span class="n">object</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span><span class="w"></span>
+
+<span class="c1">//Step2.实现解码后PCM数据回调通知监听</span>
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">notePCMData:</span><span class="p">(</span><span class="bp">NSNotification</span><span class="o">*</span><span class="p">)</span><span class="nv">note</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="bp">NSData</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">note</span><span class="w"> </span><span class="n">object</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;---&gt;pcm buffer : %lu&quot;</span><span class="p">,(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="p">)</span><span class="n">data</span><span class="p">.</span><span class="n">length</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="c1">//Step3.当不需要解码时，可以停止解码并释放资源</span>
+
+<span class="n">dispatch_async</span><span class="p">(</span><span class="n">dispatch_get_global_queue</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="o">^</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="n">OpusUnit</span><span class="w"> </span><span class="n">opusDecoderStop</span><span class="p">];</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+
+<span class="c1">//StepN.传入OPUS数据到OpusUnit</span>
+<span class="n">dispatch_async</span><span class="p">(</span><span class="n">dispatch_get_global_queue</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="o">^</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="n">opusPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">DFFile</span><span class="w"> </span><span class="n">find</span><span class="o">:</span><span class="s">@&quot;MyAuido.pcm&quot;</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="bp">NSData</span><span class="w"> </span><span class="o">*</span><span class="n">opusBuffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="bp">NSData</span><span class="w"> </span><span class="n">dataWithContentsOfFile</span><span class="o">:</span><span class="n">opusPath</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">seek</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nb">self</span><span class="p">.</span><span class="n">isPlayPCM</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">         </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="bp">NSData</span><span class="w"> </span><span class="o">*</span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">DFTools</span><span class="w"> </span><span class="n">data</span><span class="o">:</span><span class="n">opusBuffer</span><span class="w"> </span><span class="n">R</span><span class="o">:</span><span class="n">seek</span><span class="w"> </span><span class="n">L</span><span class="o">:</span><span class="mi">1</span><span class="o">*</span><span class="mi">1024</span><span class="p">];</span><span class="w"></span>
+<span class="w">        </span><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;---&gt; pcm input data: %lu&quot;</span><span class="p">,(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="p">)</span><span class="n">tmp</span><span class="p">.</span><span class="n">length</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tmp</span><span class="p">.</span><span class="n">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="cm">/*---- 传入PCM数据 ----*/</span><span class="w"></span>
+<span class="w">            </span><span class="p">[</span><span class="n">OpusUnit</span><span class="w"> </span><span class="n">pcmWriteData</span><span class="o">:</span><span class="n">tmp</span><span class="p">];</span><span class="w"></span>
+<span class="w">            </span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">seek</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">seek</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tmp</span><span class="p">.</span><span class="n">length</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nb">self</span><span class="p">.</span><span class="n">isPlayPCM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NO</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>PCM文件 编码成 Opus文件</p></li>
+</ol>
+<div class="highlight-objectivec notranslate"><div class="highlight"><pre><span></span><span class="c1">// 创建Opus文件</span>
+<span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="n">docsdir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">NSSearchPathForDirectoriesInDomains</span><span class="p">(</span><span class="n">NSDocumentDirectory</span><span class="p">,</span><span class="n">NSUserDomainMask</span><span class="p">,</span><span class="w"> </span><span class="nb">YES</span><span class="p">)</span><span class="w"> </span><span class="n">firstObject</span><span class="p">];</span><span class="w"></span>
+<span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="n">dataFilePath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">docsdir</span><span class="w"> </span><span class="n">stringByAppendingPathComponent</span><span class="o">:</span><span class="s">@&quot;opus&quot;</span><span class="p">];</span><span class="w"></span>
+<span class="kt">BOOL</span><span class="w"> </span><span class="n">isDirExist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NO</span><span class="p">;</span><span class="w"></span>
+<span class="p">[[</span><span class="bp">NSFileManager</span><span class="w"> </span><span class="n">defaultManager</span><span class="p">]</span><span class="w"> </span><span class="n">fileExistsAtPath</span><span class="o">:</span><span class="n">dataFilePath</span><span class="w"> </span><span class="n">isDirectory</span><span class="o">:&amp;</span><span class="n">isDirExist</span><span class="p">];</span><span class="w"></span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">isDirExist</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">[[</span><span class="bp">NSFileManager</span><span class="w"> </span><span class="n">defaultManager</span><span class="p">]</span><span class="w"> </span><span class="n">createDirectoryAtPath</span><span class="o">:</span><span class="n">dataFilePath</span><span class="w"> </span><span class="n">withIntermediateDirectories</span><span class="o">:</span><span class="nb">YES</span><span class="w"> </span><span class="n">attributes</span><span class="o">:</span><span class="nb">nil</span><span class="w"> </span><span class="n">error</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="n">filePath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">dataFilePath</span><span class="w"> </span><span class="n">stringByAppendingPathComponent</span><span class="o">:</span><span class="s">@&quot;1.opus&quot;</span><span class="p">];</span><span class="w"></span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">([[</span><span class="bp">NSFileManager</span><span class="w"> </span><span class="n">defaultManager</span><span class="p">]</span><span class="w"> </span><span class="n">fileExistsAtPath</span><span class="o">:</span><span class="n">filePath</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">[[</span><span class="bp">NSFileManager</span><span class="w"> </span><span class="n">defaultManager</span><span class="p">]</span><span class="w"> </span><span class="n">removeItemAtPath</span><span class="o">:</span><span class="n">filePath</span><span class="w"> </span><span class="n">error</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;remove file : %@&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">filePath</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="n">txt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">@&quot;&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">[</span><span class="n">txt</span><span class="w"> </span><span class="n">writeToFile</span><span class="o">:</span><span class="n">filePath</span><span class="w"> </span><span class="n">atomically</span><span class="o">:</span><span class="nb">YES</span><span class="w"> </span><span class="n">encoding</span><span class="o">:</span><span class="n">NSUTF8StringEncoding</span><span class="w"> </span><span class="n">error</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span><span class="w"></span>
+<span class="c1">// 调用编码方法，输入 PCM文件路径 与 Opus文件路径</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">OpusUnit</span><span class="w"> </span><span class="n">opusEncodePCM</span><span class="o">:</span><span class="p">[[</span><span class="bp">NSBundle</span><span class="w"> </span><span class="n">mainBundle</span><span class="p">]</span><span class="w"> </span><span class="n">pathForResource</span><span class="o">:</span><span class="s">@&quot;MyAuido&quot;</span><span class="w"> </span><span class="n">ofType</span><span class="o">:</span><span class="s">@&quot;pcm&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">OPUS</span><span class="o">:</span><span class="n">filePath</span><span class="p">];</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// 编码成功</span>
+<span class="w">    </span><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;pcmFileToOpusBtnFunc OK 了&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Pcm数据流 编码成 Opus数据流</p></li>
+</ol>
+<div class="highlight-objectivec notranslate"><div class="highlight"><pre><span></span><span class="c1">//Step0.运行Opus编码库，必须异步调用</span>
+<span class="c1">// 注意:运行编码库与解码库必须使用gcd分包调用</span>
+<span class="n">dispatch_async</span><span class="p">(</span><span class="n">dispatch_get_global_queue</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="o">^</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="n">OpusUnit</span><span class="w"> </span><span class="n">opusIsLog</span><span class="o">:</span><span class="nb">YES</span><span class="p">];</span><span class="c1">//Opus解码库的LOG</span>
+<span class="w">    </span><span class="p">[</span><span class="n">OpusUnit</span><span class="w"> </span><span class="n">opusEecoderRun</span><span class="p">];</span><span class="c1">//运行Opus编码库</span>
+<span class="p">});</span><span class="w"></span>
+<span class="c1">//Step1.监听编码后Opus数据回调</span>
+<span class="p">[[</span><span class="bp">NSNotificationCenter</span><span class="w"> </span><span class="n">defaultCenter</span><span class="p">]</span><span class="w"> </span><span class="n">addObserver</span><span class="o">:</span><span class="nb">self</span><span class="w"> </span><span class="n">selector</span><span class="o">:</span><span class="k">@selector</span><span class="p">(</span><span class="n">noteOpusData</span><span class="o">:</span><span class="p">)</span><span class="w"> </span><span class="n">name</span><span class="o">:</span><span class="n">kOPUS_ENCODE_DATA</span><span class="w"> </span><span class="n">object</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span><span class="w"></span>
+
+<span class="c1">//Step2.实现编码后Opus数据回调通知监听</span>
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">noteOpusData:</span><span class="p">(</span><span class="bp">NSNotification</span><span class="o">*</span><span class="p">)</span><span class="nv">note</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="bp">NSData</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">note</span><span class="w"> </span><span class="n">object</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;---&gt;opus buffer : %lu&quot;</span><span class="p">,(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="p">)</span><span class="n">data</span><span class="p">.</span><span class="n">length</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="c1">//Step3.当不需要编码时，可以停止编码并释放资源</span>
+<span class="n">dispatch_async</span><span class="p">(</span><span class="n">dispatch_get_global_queue</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="o">^</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="n">OpusUnit</span><span class="w"> </span><span class="n">opusEncoderStop</span><span class="p">];</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+<span class="c1">//StepN.传入PCM数据到OpusUnit中进行编码</span>
+<span class="n">dispatch_async</span><span class="p">(</span><span class="n">dispatch_get_global_queue</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="o">^</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="bp">NSString</span><span class="w"> </span><span class="o">*</span><span class="n">opusPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">DFFile</span><span class="w"> </span><span class="n">find</span><span class="o">:</span><span class="s">@&quot;MyAuido.pcm&quot;</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="bp">NSData</span><span class="w"> </span><span class="o">*</span><span class="n">opusBuffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="bp">NSData</span><span class="w"> </span><span class="n">dataWithContentsOfFile</span><span class="o">:</span><span class="n">opusPath</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">seek</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nb">self</span><span class="p">.</span><span class="n">isPlayPCM</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="bp">NSData</span><span class="w"> </span><span class="o">*</span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">DFTools</span><span class="w"> </span><span class="n">data</span><span class="o">:</span><span class="n">opusBuffer</span><span class="w"> </span><span class="n">R</span><span class="o">:</span><span class="n">seek</span><span class="w"> </span><span class="n">L</span><span class="o">:</span><span class="mi">1</span><span class="o">*</span><span class="mi">1024</span><span class="p">];</span><span class="w"></span>
+<span class="w">        </span><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;---&gt; pcm input data: %lu&quot;</span><span class="p">,(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="p">)</span><span class="n">tmp</span><span class="p">.</span><span class="n">length</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tmp</span><span class="p">.</span><span class="n">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="cm">/*---- 传入PCM数据 ----*/</span><span class="w"></span>
+<span class="w">            </span><span class="p">[</span><span class="n">OpusUnit</span><span class="w"> </span><span class="n">pcmWriteData</span><span class="o">:</span><span class="n">tmp</span><span class="p">];</span><span class="w"></span>
+<span class="w">            </span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">seek</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">seek</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tmp</span><span class="p">.</span><span class="n">length</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nb">self</span><span class="p">.</span><span class="n">isPlayPCM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NO</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="function_desc.html" class="btn btn-neutral float-left" title="2.功能说明" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../../resource/index.html" class="btn btn-neutral float-right" title="1. SDK开发包介绍" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2024, Zhuhai Jieli Technology.,Ltd.
+      <span class="lastupdated">最后更新于 11月 11, 2024.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

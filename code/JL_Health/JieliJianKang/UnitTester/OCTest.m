@@ -9,40 +9,42 @@
 
 @implementation OCTest
 
-+(NSString *)makeDialwithName:(NSString *)watchBinName withSize:(CGSize)size image:(UIImage *)basicImage{
++(void)makeDialwithName:(NSString *)watchBinName withSize:(CGSize)size image:(UIImage *)basicImage{
     
-//    NSData *imageData0 = UIImageJPEGRepresentation(basicImage, 1.0f);
-//    UIImage *img = [UIImage imageWithData:imageData0];
-    NSData *imageData = [BitmapTool resizeImage:basicImage andResizeTo:CGSizeMake(size.width, size.height)];
-    
-    
-    NSString *bmpPath = [JL_Tools listPath:NSLibraryDirectory MiddlePath:@"" File:@"ios_test.bmp"];
-    NSString *binPath = [JL_Tools listPath:NSLibraryDirectory MiddlePath:@"" File:watchBinName];
-    
-    [JL_Tools removePath:bmpPath];
-    [JL_Tools removePath:binPath];
-    
-    [JL_Tools createOn:NSLibraryDirectory MiddlePath:@"" File:@"ios_test.bmp"];
-    [JL_Tools createOn:NSLibraryDirectory MiddlePath:@"" File:watchBinName];
-    
+    NSData *imageData = [JLBmpConvert resizeImage:basicImage andResizeTo:CGSizeMake(size.width, size.height)];
     UIImage *image = [UIImage imageWithData:imageData];
-    int width = size.width;
-    int height = size.height;
-    NSLog(@"压缩分辨率 ---> w:%df h:%df",width,height);
     
-    NSData *bitmap = [BitmapTool convert_B_G_R_A_BytesFromImage:image];
-    [JL_Tools writeData:bitmap fillFile:bmpPath];
+    NSString *imagePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, true) firstObject];
+    imagePath = [imagePath stringByAppendingPathComponent:@"basic.png"];
+    [JL_Tools writeData:imageData fillFile:imagePath];
     
+    //带有alpha的图片转换，方式一
+    [JLBmpConvert covert:JLBmpConvertType701N_ARBG Image:image completion:^(NSData * _Nullable outFileData, NSError * _Nullable error) {
+        if (error) {
+            kJLLog(JLLOG_DEBUG, @"--->PNG BIN【%@】is Error!", watchBinName);
+            return;
+        }
+        kJLLog(JLLOG_DEBUG, @"--->PNG BIN【%@】is OK!", watchBinName);
+    }];
     
-    //带有alpha的图片转换
-    br28_btm_to_res_path_with_alpha((char*)[bmpPath UTF8String], width, height, (char*)[binPath UTF8String]);
-    NSLog(@"--->Br28 BIN【%@】is OK!", watchBinName);
+    //带有有alpha的图片转换，方式二
+    //这里的 outFilePath 是可选项，如果需要指定输出路径可以设置
+    [JLBmpConvert covert:JLBmpConvertType701N_ARBG inFilePath:imagePath outFilePath:nil completion:^(NSString * _Nonnull inFilePath, NSString * _Nullable outFilePath, NSError * _Nullable error) {
+       if (error) {
+           kJLLog(JLLOG_DEBUG, @"--->PNG BIN【%@】is Error!", watchBinName);
+           return;
+       }
+       kJLLog(JLLOG_DEBUG, @"--->PNG BIN【%@】is OK!", watchBinName);
+    }];
     
-    /*--- BR23压缩算法 ---*/
-//    br23_btm_to_res_path((char*)[bmpPath UTF8String], width, height, (char*)[binPath UTF8String]);
-//    NSLog(@"--->Br23 BIN【%@】is OK!", watchBinName);
+}
 
-    return [JL_Tools listPath:NSLibraryDirectory MiddlePath:@"" File:watchBinName];
+-(void)getSize{
+    JL_ManagerM *mCmdManager = [[JL_RunSDK sharedMe] mBleEntityM].mCmdManager;
+    [mCmdManager.mFlashManager cmdFlashLeftSizeResult:^(uint32_t leftSize) {
+        long long freeSize = (long long)leftSize*1024;
+    }];
+    
 }
 
 @end

@@ -685,3 +685,15 @@
 "是否要清除用户缓存" = "هل تريد مسح ذاكرة التخزين المؤقت للمستخدم؟";
 "AI表盘" = "الاتصال الهاتفي بالذكاء الاصطناعي";
 "正在传输中" = "نقل...";
+"Image Captcha" = "كابتشا الصورة";
+"Can't see it? Try another." = "غير واضح؟ حاول واحدة أخرى";
+"Please enter the correct captcha." = "من فضلك أدخل الكابتشا الصحيح";
+"There was a problem loading the image verification code, please try again later" = "حدث مشكلة في تحميل رمز التحقق من الصورة ، يرجى المحاولة مرة أخرى بعد قليل";
+"Custom" = "تخصيص";
+"Custom Dial" = "وجه الساعة المخصص";
+"I have read and agree to the" = "لقد قرأت ووافقت";
+"User Agreement" = "اتفاقية المستخدم";
+"Privacy Policy" = "سياسة الخصوصية";
+"and" = "و";
+"Please read and agree to the Terms of Service and Privacy Policy." = "يرجى قراءة شروط الخدمة وسياسة الخصوصية والموافقة عليها";
+"ICP filing information" = "معلومات الايداع ICP";

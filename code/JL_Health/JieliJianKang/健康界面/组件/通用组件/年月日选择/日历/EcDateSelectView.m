@@ -182,7 +182,7 @@
         
         if (datesSelected.firstObject && [calendarManager.dateHelper date:datesSelected.firstObject isTheSameDayThan:dayView.date]) {
             superWeekView = (JTCalendarWeekView *)dayView.fatherView;
-//            NSLog(@"%@,%@",superWeekView,dayView.date);
+//            kJLLog(JLLOG_DEBUG, @"%@,%@",superWeekView,dayView.date);
         }
        
         NSDateFormatter *formatter = [EcTools cachedFm];
@@ -316,15 +316,15 @@
 //    formatter.dateFormat = @"yyyy-MM-dd";
 //    NSMutableString *tmpStr = [NSMutableString new];
     for(NSDate *dateSelected in datesSelected){
-//        NSLog(@"isInDatesSelected:%@",date);
+//        kJLLog(JLLOG_DEBUG, @"isInDatesSelected:%@",date);
 //        [tmpStr appendString:@","];
 //        [tmpStr appendString:[formatter stringFromDate:dateSelected]];
         if([calendarManager.dateHelper date:dateSelected isTheSameDayThan:date]){
-//            NSLog(@"%@",tmpStr);
+//            kJLLog(JLLOG_DEBUG, @"%@",tmpStr);
             return YES;
         }
     }
-//    NSLog(@"not match %@",[formatter stringFromDate:date]);
+//    kJLLog(JLLOG_DEBUG, @"not match %@",[formatter stringFromDate:date]);
     return NO;
 }
 

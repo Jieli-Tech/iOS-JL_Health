@@ -46,19 +46,19 @@
             self.py = @"";
             self.pinyin = @"";
         }
-//        NSLog(@"%@:%@:%@", _fullName, _py, _pinyin);
+//        kJLLog(JLLOG_DEBUG, @"%@:%@:%@", _fullName, _py, _pinyin);
 
         // 生日
         self.birthday = [contact.birthday date];
 
-//        NSLog(@"%@ : %@ : %@", self.fullName, self.givenNameLabel, self.familyNameLabel);
+//        kJLLog(JLLOG_DEBUG, @"%@ : %@ : %@", self.fullName, self.givenNameLabel, self.familyNameLabel);
 
         // 获取电话号码
         NSArray *phones = contact.phoneNumbers;
         NSMutableArray *phonesValue = [[NSMutableArray alloc] init];
         for (CNLabeledValue *labelValue in phones) {
             CNPhoneNumber *phoneNumber = labelValue.value;
-//            NSLog(@"%@ %@ ", phoneNumber.stringValue, labelValue.label);
+//            kJLLog(JLLOG_DEBUG, @"%@ %@ ", phoneNumber.stringValue, labelValue.label);
             JHValue *value = [JHValue valueWithValue:phoneNumber.stringValue type:[self getTypes:labelValue.label]];
             [phonesValue addObject:value];
         }
@@ -73,7 +73,7 @@
         NSArray *email = contact.emailAddresses;
         NSMutableArray *emailValue = [[NSMutableArray alloc] init];
         for (CNLabeledValue *labelValue in email) {
-//            NSLog(@"%@ %@ ", labelValue.value, labelValue.label);
+//            kJLLog(JLLOG_DEBUG, @"%@ %@ ", labelValue.value, labelValue.label);
             JHValue *value = [JHValue valueWithValue:labelValue.value type:[self getTypes:labelValue.label]];
             [emailValue addObject:value];
         }
@@ -82,12 +82,12 @@
         // 图片
         if (contact.imageData) {
             self.image = [UIImage imageWithData:contact.imageData];
-//            NSLog(@"有图  %@", self.fullName);
+//            kJLLog(JLLOG_DEBUG, @"有图  %@", self.fullName);
         }
 
         if (contact.imageData) {
             self.smallImage = [UIImage imageWithData:contact.thumbnailImageData];
-//            NSLog(@"小图  %@", self.fullName);
+//            kJLLog(JLLOG_DEBUG, @"小图  %@", self.fullName);
         }
 
         // 将当前 contact 加入

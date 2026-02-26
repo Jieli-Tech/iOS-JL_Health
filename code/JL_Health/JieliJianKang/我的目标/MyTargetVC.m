@@ -183,7 +183,7 @@
 
 static long bushuPoint_last = 0;
 -(void)onBushuPick:(BushuPick *)view didChange:(NSInteger)point{
-    NSLog(@"Bushu ---> %ld",(long)point);
+    kJLLog(JLLOG_DEBUG, @"Bushu ---> %ld",(long)point);
     int stepRate = 90;//步/min
     int duration = (int)point/stepRate; //min
     int consume = (int)(0.43*[self->mHeight intValue]+0.57*[self->mWeight intValue]+0.26*stepRate+0.92*duration-108.44);
@@ -201,7 +201,7 @@ static long bushuPoint_last = 0;
 }
 
 //-(void)onTizhongPick:(TizhongPick *)view didChange:(NSInteger)point{
-//    NSLog(@"Tizhong ---> %ld",(long)point);
+//    kJLLog(JLLOG_DEBUG, @"Tizhong ---> %ld",(long)point);
 //       float vl = (float)point;
 //       NSString *txt = [NSString stringWithFormat:@"%.1f",vl/10.0f];
 //       lb_1.text = txt;

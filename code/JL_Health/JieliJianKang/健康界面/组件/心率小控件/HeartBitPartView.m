@@ -135,7 +135,7 @@
 
 
 -(void)jlWatchHeartRate:(JL_SDM_HeartRate *)heartRate{
-   // NSLog(@"%lu",(unsigned long)heartRate.chartModel.dataArray.count);
+   // kJLLog(JLLOG_DEBUG, @"%lu",(unsigned long)heartRate.chartModel.dataArray.count);
 }
 
 

@@ -100,14 +100,10 @@
 }
 
 - (IBAction)btnRecovery:(id)sender {
-    [kJL_BLE_CmdManager.mFlashManager cmdWatchFlashPath:@"/null" Flag:JL_DialSettingActivateCustomDial
-                            Result:^(uint8_t flag, uint32_t size,
-                                     NSString * _Nullable path,
-                                     NSString * _Nullable describe)
-    {
+    [[DialBaseViewModel shared] resetDialBackgroud:self.watchName :^(BOOL status) {
         [JL_Tools mainTask:^{
             NSString *txt = kJL_TXT("已恢复默认");
-            if (flag != 0) txt = kJL_TXT("恢复失败");
+            if (!status) txt = kJL_TXT("恢复失败");
             [DFUITools showText:txt onView:self.view delay:1.0];
         }];
     }];

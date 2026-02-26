@@ -43,7 +43,7 @@
                 runtimer+=chart.interval*60;
                 for (HeartRateData *hdt in chart.heartRatelist) {
                     NSTimeInterval hdts = [hdt.startDate timeIntervalSince1970];
-                    //                    NSLog(@"%f - %f \n %f",(runtimer-chart.interval*60),(runtimer+chart.interval*60),hdts);
+                    //                    kJLLog(JLLOG_DEBUG, @"%f - %f \n %f",(runtimer-chart.interval*60),(runtimer+chart.interval*60),hdts);
                     if ((runtimer-chart.interval*60) <= hdts && hdts < (runtimer+chart.interval*60)) {
                         for (NSNumber *number in hdt.heartRates){
                             runtimer+=chart.interval*60;
@@ -86,7 +86,7 @@
                 runtimer+=chart.interval*60;
                 for (HeartRateData *hdt in chart.heartRatelist) {
                     NSTimeInterval hdts = [hdt.startDate timeIntervalSince1970];
-//                    NSLog(@"%f - %f \n %f",(runtimer-chart.interval*60),(runtimer+chart.interval*60),hdts);
+//                    kJLLog(JLLOG_DEBUG, @"%f - %f \n %f",(runtimer-chart.interval*60),(runtimer+chart.interval*60),hdts);
                     if ((runtimer-chart.interval*60) <= hdts && hdts < (runtimer+chart.interval*60)) {
                         for (NSNumber *number in hdt.heartRates){
                             runtimer+=chart.interval*60;

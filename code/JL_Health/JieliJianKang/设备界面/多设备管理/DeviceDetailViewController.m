@@ -16,7 +16,6 @@ static NSInteger TimeOut = 10;
 @interface DeviceDetailViewController (){
     NSTimer *connectTimer;
     NSInteger timerCount;
-    DFTips *tipsView;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *bgImageView;
 @property (weak, nonatomic) IBOutlet UIButton *reConnectBtn;
@@ -48,8 +47,6 @@ static NSInteger TimeOut = 10;
         [_reConnectBtn setTitle:kJL_TXT("断开连接") forState:UIControlStateNormal];
         self.reConnectBtn.hidden = true;
     }
-    tipsView = [DFUITools showHUDOnWindowWithLabel:kJL_TXT("正在连接")];
-    [tipsView hide:false];
     
     NSString *string = [[AutoProductIcon share] checkImgUrl:_mainModel.vid :_mainModel.pid];
     [_bgImageView sd_setImageWithURL:[NSURL URLWithString:string] placeholderImage:[UIImage imageNamed:@"img_watch_128_2"]];
@@ -69,48 +66,53 @@ static NSInteger TimeOut = 10;
         [DFUITools showText:kJL_TXT("蓝牙没有打开") onView:self.view delay:1.0];
         return;
     }
-    
-    if ([[JL_RunSDK getLinkedArray] containsObject:self.mainModel.uuidStr]) {
-        
+    [self removeNote];
+    [AlertViewOnWindows showConnectingWithTips:kJL_TXT("正在连接") timeout:10];
+    if (kJL_BLE_EntityM){
         [kJL_BLE_Multiple disconnectEntity:kJL_BLE_EntityM Result:^(JL_EntityM_Status status) {
-            NSLog(@"%s:status:%ld",__func__,(long)status);
+            kJLLog(JLLOG_DEBUG, @"%s:status:%ld",__func__,(long)status);
             if (status == JL_EntityM_StatusDisconnectOk) {
-                [DFUITools showText:kJL_TXT("连接已断开") onView:self.view delay:1.5];
-                [DFAction delay:1.5 Task:^{
-                    [self.navigationController popViewControllerAnimated:true];
+                [DFAction delay:1 Task:^{
+                    [AlertViewOnWindows removeConnecting];
+                    [self connectWithEntity];
                 }];
             }
         }];
     }else{
-        
-        JL_EntityM * cutEntity = [kJL_BLE_Multiple makeEntityWithUUID:self.mainModel.uuidStr];
-        [self connectWithEntity:cutEntity];
+        [self connectWithEntity];
     }
 }
 
--(void)connectWithEntity:(JL_EntityM *)cutEntity{
+-(void)connectWithEntity{
     /*--- 1、直接UUID连接设备 ---*/
-    tipsView.labelText = kJL_TXT("正在连接");
-    [tipsView show:true];
-
-    //[[JL_RunSDK sharedMe] setAncsUUID:cutEntity.mPeripheral.identifier.UUIDString];
-    [kJL_BLE_Multiple connectEntity:cutEntity Result:^(JL_EntityM_Status status) {
-        [JL_Tools mainTask:^{
-            if (status == JL_EntityM_StatusPaired) {
-                NSLog(@"----> UUID回连设备成功.");
-                [[JL_RunSDK sharedMe] setMBleEntityM:cutEntity];
-                self->tipsView.labelText = kJL_TXT("连接成功");
-                [JL_Tools delay:2.0 Task:^{
-                    [self->tipsView hide:true];
-                    [self.navigationController popViewControllerAnimated:true];
-                }];
-            }else{
-                /*--- 2、UUID连接失败，用BLE搜索连接方式 ---*/
-                NSLog(@"----> 正在搜索BLE回连...1");
-                [self searchConnect];
-            }
+    if ([JL_RunSDK getStatusUUID:self.mainModel.uuidStr] != JLUuidTypeDisconnected ){
+        //已经连接
+        [JL_Tools delay:2.0 Task:^{
+            [self.navigationController popViewControllerAnimated:true];
         }];
-    }];
+        return;
+    }
+    JL_EntityM * cutEntity = [kJL_BLE_Multiple makeEntityWithUUID:self.mainModel.uuidStr];
+    if (cutEntity) {
+        [[JL_RunSDK sharedMe] connectDevice:cutEntity callBack:^(BOOL status) {
+            [JL_Tools mainTask:^{
+                if (status) {
+                    kJLLog(JLLOG_DEBUG, @"----> UUID回连设备成功.");
+                    [JL_Tools delay:2.0 Task:^{
+                        [self.navigationController popViewControllerAnimated:true];
+                    }];
+                }else{
+                    /*--- 2、UUID连接失败，用BLE搜索连接方式 ---*/
+                    kJLLog(JLLOG_DEBUG, @"----> 正在搜索BLE回连...1");
+                    [self searchConnect];
+                }
+            }];
+        }];
+    }else{
+        [[JL_RunSDK sharedMe] connectDeviceMac:self.mainModel.mac callBack:^(BOOL status) {
+            
+        }];
+    }
 }
 
 
@@ -124,41 +126,20 @@ static NSInteger TimeOut = 10;
         
     }];
     UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:kJL_TXT("确定") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
-        [JL_Tools post:kUI_DELETE_DEVICE_MODEL Object:self.mainModel.mac];
-        
+
         NSString *middlePath = [NSString stringWithFormat:@"%@/%@",[EcTools appUserDevFolder],kJL_WATCH_FACE];
         NSString *watchFacePath = [DFFile findPath:NSLibraryDirectory MiddlePath:middlePath File:nil];
         [DFFile removePath:watchFacePath];
-        
         if ([kJL_BLE_EntityM.mEdr isEqualToString:self.mainModel.mac]) {
-            //NSLog(@"unbindId：%@",self.mainModel.deviceID);
-            [DeviceHttp unBinding:self.mainModel.deviceID result:^(JLHttpResponse *response) {
-                if (response.code == 0) {
-                   
-                }else{
-                    NSLog(@"删除设备失败：%@",response.msg);
-//                    [DFUITools showText:response.msg onView:self.view delay:2];
-                }
-            }];
-            [[AutoProductIcon share] saveToLocal:self.mainModel.vid :self.mainModel.pid :nil];
-            [[JLDeviceSqliteManager share] deleteBy:self.mainModel];
+            //kJLLog(JLLOG_DEBUG, @"unbindId：%@",self.mainModel.deviceID);
+            [self unBindAndRemoveDevice];
             [kJL_BLE_Multiple disconnectEntity:kJL_BLE_EntityM Result:^(JL_EntityM_Status status) {
                 if (status == JL_EntityM_StatusDisconnectOk) {
                     [self.navigationController popViewControllerAnimated:true];
                 }
             }];
-            
         }else{
-            [DeviceHttp unBinding:self.mainModel.deviceID result:^(JLHttpResponse *response) {
-                if (response.code == 0) {
-                }else{
-                    NSLog(@"删除设备失败：%@",response.msg);
-//                    [DFUITools showText:response.msg onView:self.view delay:2];
-                }
-            }];
-            [[JLDeviceSqliteManager share] deleteBy:self.mainModel];
-            [[AutoProductIcon share] saveToLocal:self.mainModel.vid :self.mainModel.pid :nil];
+            [self unBindAndRemoveDevice];
             [self.navigationController popViewControllerAnimated:true];
         }
     }];
@@ -168,10 +149,23 @@ static NSInteger TimeOut = 10;
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+-(void)unBindAndRemoveDevice{
+    [DeviceHttp unBinding:self.mainModel.deviceID result:^(JLHttpResponse *response) {
+        if (response.code == 0) {
+           kJLLog(JLLOG_DEBUG, @"删除成功");
+        }else{
+            kJLLog(JLLOG_DEBUG, @"删除设备失败：%@",response.msg);
+        }
+    }];
+    [[AutoProductIcon share] saveToLocal:self.mainModel.vid :self.mainModel.pid :nil];
+    [[JLDeviceSqliteManager share] deleteBy:self.mainModel];
+    [JL_Tools post:kUI_DELETE_DEVICE_MODEL Object:self.mainModel.mac];
+    [[DeviceSubViewModel shared] queryDbDevices];
+}
+
 -(void)timerAction{
     timerCount+=1;
     if (timerCount>TimeOut) {
-        tipsView.labelText = kJL_TXT("连接超时");
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self cancelSearch];
         });
@@ -179,8 +173,6 @@ static NSInteger TimeOut = 10;
 }
 -(void)searchConnect{
     timerCount = 0;
-    tipsView.labelText = kJL_TXT("正在连接");
-    [tipsView show:true];
     connectTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerAction) userInfo:nil repeats:true];
     [connectTimer fire];
     [JL_Tools post:kUI_JL_BLE_SCAN_OPEN Object:nil];
@@ -188,7 +180,6 @@ static NSInteger TimeOut = 10;
 }
 
 -(void)cancelSearch{
-    [tipsView hide:true];
     [connectTimer invalidate];
     [JL_Tools post:kUI_JL_BLE_SCAN_CLOSE Object:nil];
 
@@ -223,9 +214,8 @@ static NSInteger TimeOut = 10;
         [JL_Tools post:kUI_JL_BLE_SCAN_CLOSE Object:nil];
 
         //[[JL_RunSDK sharedMe] setAncsUUID:entity.mPeripheral.identifier.UUIDString];
-        [kJL_BLE_Multiple connectEntity:entity Result:^(JL_EntityM_Status status) {
-            if (status == JL_EntityM_StatusPaired) {
-                [[JL_RunSDK sharedMe] setMBleEntityM:entity];
+        [[JL_RunSDK sharedMe] connectDevice:entity callBack:^(BOOL status) {
+            if (status) {
                 [self cancelSearch];
                 [DFUITools showText:kJL_TXT("连接成功") onView:self.view delay:1.5];
                 [DFAction delay:1.5 Task:^{

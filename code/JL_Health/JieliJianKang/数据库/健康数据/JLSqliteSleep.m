@@ -97,13 +97,13 @@
             NSString *sql = [NSString stringWithFormat:@"update %@ set timestamp = ?, data = ? where date = ?", tb_sleep];
             BOOL res = [db executeUpdate:sql, [NSNumber numberWithDouble:timestamp], data,dt];
             if (!res) {
-                NSLog(@"update failed");
+                kJLLog(JLLOG_DEBUG, @"update failed");
             }
         }else{
             NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ (date, data,timestamp) VALUES ( ?, ?, ?)", tb_sleep];
             BOOL res = [db executeUpdate:sql,dt,data,[NSNumber numberWithDouble:timestamp]];
             if (!res) {
-                NSLog(@"insert failed");
+                kJLLog(JLLOG_DEBUG, @"insert failed");
             }
         }
     }];

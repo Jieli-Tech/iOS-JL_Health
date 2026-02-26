@@ -134,7 +134,7 @@
 }
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    NSLog(@"scrollView.w:%f",scrollView.contentOffset.x);
+    kJLLog(JLLOG_DEBUG, @"scrollView.w:%f",scrollView.contentOffset.x);
     CGFloat width = [UIScreen mainScreen].bounds.size.width;
     int index = scrollView.contentOffset.x/width;
     RingSelectView *view = _pageArray[index];

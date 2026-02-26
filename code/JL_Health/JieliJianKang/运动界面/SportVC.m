@@ -114,7 +114,7 @@
 //MARK: - Config ptl
 - (void)deviceConfigWith:(JLDeviceConfigModel *)configModel{
     
-    NSLog(@"%s:%@",__func__,kJL_BLE_EntityM.mPeripheral.identifier.UUIDString);
+    kJLLog(JLLOG_DEBUG, @"%s:%@",__func__,kJL_BLE_EntityM.mPeripheral.identifier.UUIDString);
     
     if(![configModel.mbleIdentifyStr isEqualToString:kJL_BLE_EntityM.mPeripheral.identifier.UUIDString] && kJL_BLE_EntityM.mPeripheral.identifier.UUIDString != nil){
         return;

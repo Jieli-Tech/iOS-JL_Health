@@ -679,3 +679,15 @@
 "是否要清除用户缓存" = "Bạn có muốn xóa bộ nhớ đệm của người dùng không?";
 "AI表盘" = "Quay số AI";
 "正在传输中" = "Đang truyền...";
+"Image Captcha" = "CAPTCHA hình ảnh";
+"Can't see it? Try another." = "Không nhìn rõ? Thử cái khác.";
+"Please enter the correct captcha." = "Hãy nhập đúng mã captcha.";
+"There was a problem loading the image verification code, please try again later" = "Có vấn đề xảy ra khi tải mã xác thực hình ảnh, vui lòng thử lại sau.";
+"Custom" = "Tùy chỉnh";
+"Custom Dial" = "Mặt đồng hồ tùy chỉnh";
+"I have read and agree to the" = "Tôi đã đọc và đồng ý";
+"User Agreement" = "Thỏa thuận người dùng";
+"Privacy Policy" = "chính sách bảo mật";
+"and" = "Và";
+"Please read and agree to the Terms of Service and Privacy Policy." = "Vui lòng đọc và đồng ý với Điều khoản dịch vụ và Chính sách quyền riêng tư";
+"ICP filing information" = "Thông tin nộp hồ sơ ICP";

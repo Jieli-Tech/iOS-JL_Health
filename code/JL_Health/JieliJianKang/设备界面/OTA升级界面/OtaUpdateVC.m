@@ -54,7 +54,7 @@
         if (config.exportFunc.sp4GModel){
             [[User_Http shareInstance] getNew4GOtaFile:entity.mPID withVid:entity.mVID G4Vendor:[[JL_RunSDK sharedMe] g4ModelVendor] result:^(NSDictionary * _Nonnull info) {
                 JLPublic4GModel *model = [[JL_RunSDK sharedMe] g4Model];
-                NSLog(@"%@\n current version:%@",info,model.version);
+                kJLLog(JLLOG_DEBUG, @"%@\n current version:%@",info,model.version);
                 NSDictionary *targetDict = info[@"data"];
                 if ([targetDict isEqual:[NSNull null]]) {
                     [self checkSDKUpdate];
@@ -119,7 +119,7 @@
     NSData *pidVidData = [JL_Tools HexToData:model.pidvid];
     int vid = [pidVidData subf:0 t:2].beBigendUint16;
     int pid = [pidVidData subf:2 t:2].beBigendUint16;
-    NSLog(@"OTA_1--->Vid:%d Pid:%d line:%d data：%@",vid,pid,__LINE__,model.pidvid);
+    kJLLog(JLLOG_DEBUG, @"OTA_1--->Vid:%d Pid:%d line:%d data：%@",vid,pid,__LINE__,model.pidvid);
     
     vid_str = [NSString stringWithFormat:@"%d",vid];
     pid_str = [NSString stringWithFormat:@"%d",pid];
@@ -184,7 +184,7 @@
 -(void)checkSDKUpdate{
 #if IS_OTA_NET
     [[User_Http shareInstance] getNewOTAFile:pid_str WithVid:vid_str Result:^(NSDictionary * _Nonnull info) {
-        NSLog(@"%@",info);
+        kJLLog(JLLOG_DEBUG, @"%@",info);
         if (info != nil) {
             NSDictionary *otaDict = info[@"data"];
             [JL_Tools mainTask:^{
@@ -269,15 +269,15 @@
 
 -(BOOL)shouldUpdate:(NSString *)version0 local:(NSString *)version1{
     if ([version0 isEqual:@"0.0.0.0"]) {
-        NSLog(@"服务器测试升级");
+        kJLLog(JLLOG_DEBUG, @"服务器测试升级");
         return YES;
     }
     if (version0.length==0) {
-         NSLog(@"服务器获取到的版本号为空");
+         kJLLog(JLLOG_DEBUG, @"服务器获取到的版本号为空");
          return YES;
      }
     if (version1.length==0 || [version1 isEqual:@""]) {
-        NSLog(@"本地升级信息为空：%@",version1);
+        kJLLog(JLLOG_DEBUG, @"本地升级信息为空：%@",version1);
         return YES;
     }
     NSArray *arr0 = [version0 componentsSeparatedByString:@"."];
@@ -325,7 +325,7 @@
 -(void)noteOtaIsOk:(NSNotification*)note{
     [JL_Tools delay:2.0 Task:^{
         [self btn_back:nil];
-        NSLog(@"OTA升级回连设备1");
+        kJLLog(JLLOG_DEBUG, @"OTA升级回连设备1");
         [JL_Tools post:kUI_RECONNECT_TO_DEVICE Object:nil];
     }];
 }

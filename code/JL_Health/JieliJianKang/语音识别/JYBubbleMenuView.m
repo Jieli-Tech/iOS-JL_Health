@@ -255,7 +255,7 @@
 - (void)onButtonTouched:(UIButton *)button {
     if (_myNewContentArray.count > button.tag - 100) {
         JYBubbleButtonModel *model = (JYBubbleButtonModel *)_myNewContentArray[button.tag - 100];
-        NSLog(@"点击了%@",model.name);
+        kJLLog(JLLOG_DEBUG, @"点击了%@",model.name);
         if (self.selectBlock != nil) {
             self.selectBlock(model.name);
         }

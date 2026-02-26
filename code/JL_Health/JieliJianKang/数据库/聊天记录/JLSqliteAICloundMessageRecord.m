@@ -56,16 +56,16 @@
             NSString *sql = [NSString stringWithFormat:@"update %@ set role = ?, date = ?, text = ?, aiCloudState = ? where timestamp = ?", tb_chat_record];
             BOOL res = [db executeUpdate:sql, role, dt,text,aiCloudState, [NSNumber numberWithInteger:(NSInteger)timestamp]];
             if (!res) {
-                NSLog(@"update failed");
+                kJLLog(JLLOG_DEBUG, @"update failed");
             }
         } else {
-            NSLog(@"db:%@",db);
+            kJLLog(JLLOG_DEBUG, @"db:%@",db);
             NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ (role,timestamp,date,text,aiCloudState) VALUES (?,?,?,?,?)", tb_chat_record];
             BOOL res = [db executeUpdate:sql, role, [NSNumber numberWithInteger:(NSInteger)timestamp],dt,text,aiCloudState];
             if (!res) {
-                NSLog(@"insert failed");
+                kJLLog(JLLOG_DEBUG, @"insert failed");
             }else{
-                NSLog(@"insert success");
+                kJLLog(JLLOG_DEBUG, @"insert success");
             }
         }
     }];

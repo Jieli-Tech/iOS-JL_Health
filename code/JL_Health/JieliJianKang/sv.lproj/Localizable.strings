@@ -680,3 +680,15 @@
 "是否要清除用户缓存" = "Vill du rensa användarcache?";
 "AI表盘" = "AI-ratt";
 "正在传输中" = "Överföring...";
+"Image Captcha" = "Kontrollkod";
+"Can't see it? Try another." = "Inte klart? Försök med en annan.";
+"Please enter the correct captcha." = "Ange det korrekta captcha, tack.";
+"There was a problem loading the image verification code, please try again later" = "Det uppstod ett problem med att ladda in bildverifieringskoden, försök igen senare.";
+"Custom" = "Anpassa";
+"Custom Dial" = "Anpassad urtavla";
+"I have read and agree to the" = "Jag har läst och håller med";
+"User Agreement" = "Användaravtal";
+"Privacy Policy" = "sekretesspolicy";
+"and" = "och";
+"Please read and agree to the Terms of Service and Privacy Policy." = "Vänligen läs och godkänn användarvillkoren och sekretesspolicyn";
+"ICP filing information" = "ICP-arkiveringsinformation";

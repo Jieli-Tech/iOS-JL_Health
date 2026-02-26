@@ -313,7 +313,7 @@
     for (int i = 0; i < mutableTitles.count; ++i) {
         [mutablePersons addObject:[NSMutableArray array]];
     }
-//    NSLog(@"%@", mutableTitles);
+//    kJLLog(JLLOG_DEBUG, @"%@", mutableTitles);
     // 开始用框架排序
     for (JHPersonModel *person in persons) {
         person.select = NO;
@@ -323,7 +323,7 @@
 
     // 移除为 0 的数组
     for (NSInteger j = [indexedCollation sectionTitles].count - 1; j >= 0; j--) {
-//        NSLog(@"%d", j);
+//        kJLLog(JLLOG_DEBUG, @"%d", j);
         if (mutablePersons[j].count == 0) {
             [mutablePersons removeObjectAtIndex:j];
             [mutableTitles removeObjectAtIndex:j];

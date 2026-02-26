@@ -258,7 +258,7 @@
         
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:kJL_TXT("确认") style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-        
+        [[DialMarketHttp shared] clearCache];
     }]];
     [self presentViewController:alert animated:true completion:nil];
 

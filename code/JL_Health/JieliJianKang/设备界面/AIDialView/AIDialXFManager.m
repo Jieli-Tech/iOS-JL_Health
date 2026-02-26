@@ -30,6 +30,9 @@
     TransferringView *aiStyleTransferringView; //进入AI表盘选择风格界面
     UIImage *originSizeImage;
     int mType;
+    NSTimer *transferringTimer;
+    int currentTime;
+    int maxTime;
 }
 @end
 
@@ -48,9 +51,12 @@
     self = [super init];
     if (self) {
         hostPath = @"https://spark-api.cn-huabei-1.xf-yun.com/v2.1/tti";
-        ApiSecret = APISERECT;
-        ApiKey = APIKEY;
-        appId = APPID_VALUE;
+        ApiSecret = @"ZjMzNTM0ZGJiMDQ2ODI2NTQyNWVjOTcy";
+        ApiKey = @"65dbf2af3c95900e31024e6d2e3b99da";
+        appId = @"94df387f";
+        
+        maxTime = 20;
+        currentTime = 0;
         
         Afmanager = [AFHTTPSessionManager manager];
         
@@ -77,7 +83,7 @@
 }
 
 - (void)noteDeviceChange:(NSNotification*)note {
-    JLDeviceChangeType type = [[note object] integerValue];
+    JLDeviceChangeType type = [[note object] intValue];
     if (type == JLDeviceChangeTypeInUseOffline || type == JLDeviceChangeTypeBleOFF) {
         if(aiStyleTransferringView!=NULL) [aiStyleTransferringView removeFromSuperview];
     }
@@ -102,19 +108,19 @@
     printf("\n\n\n\n");
     
     NSString *dt = [dateFm stringFromDate:[NSDate new]];
-    NSLog(@"date:%@",dt);
+    kJLLog(JLLOG_DEBUG, @"date:%@",dt);
     NSString *authorization = [self makeAuthorization:dt];
-    NSLog(@"Author:%@",authorization);
+    kJLLog(JLLOG_DEBUG, @"Author:%@",authorization);
     
     NSString *signature = [self hmacSHA256WithSecret:authorization key:ApiSecret];
-    NSLog(@"signature:%@",signature);
+    kJLLog(JLLOG_DEBUG, @"signature:%@",signature);
     
     NSString *authorization_origin = [NSString stringWithFormat:@"api_key=\"%@\", algorithm=\"%@\", headers=\"%@\", signature=\"%@\"",ApiKey,@"hmac-sha256",@"host date request-line",signature];
-    NSLog(@"authorization_origin:%@",authorization_origin);
+    kJLLog(JLLOG_DEBUG, @"authorization_origin:%@",authorization_origin);
     
     NSData *tmpDt = [authorization_origin dataUsingEncoding:NSUTF8StringEncoding];
     NSString *authorizationTarget = [tmpDt base64EncodedStringWithOptions:0];
-    NSLog(@"authorization:%@",authorizationTarget);
+    kJLLog(JLLOG_DEBUG, @"authorization:%@",authorizationTarget);
     
     
     NSDictionary *dict = @{
@@ -124,7 +130,7 @@
     };
     
     NSString *localPath = [NSString stringWithFormat:@"%@?authorization=%@&date=%@&host=%@",hostPath,dict[@"authorization"],dict[@"date"],dict[@"host"]];
-    NSLog(@"the request url:%@",localPath);
+    kJLLog(JLLOG_DEBUG, @"the request url:%@",localPath);
     
     printf("\n\n\n\n");
     return localPath;
@@ -211,9 +217,9 @@
 
 //MARK: - 请求科大讯飞生成内容
 -(void)requestToKdxf:(NSString *)content{
-
-
-    [WindowsTipsViews showAIServiceTips];
+    
+    
+    [AlertViewOnWindows showAIServiceTips];
     requestContent = content;
     
     NSURL *url = [NSURL URLWithString:[self createUrl]];
@@ -228,12 +234,12 @@
     NSURLSession *session = [NSURLSession sharedSession];
     
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        [WindowsTipsViews removeAIServiceTips];
+        [AlertViewOnWindows removeAIServiceTips];
         if (error) {
-            NSLog(@"请求错误：%@",error);
+            kJLLog(JLLOG_DEBUG, @"请求错误：%@",error);
         }  else {
             NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-            NSLog(@"返回内容%@",dict);
+            kJLLog(JLLOG_DEBUG, @"返回内容%@",dict);
             int code = [dict[@"header"][@"code"] intValue];
             if(code!=0){
                 [JL_Tools mainTask:^{
@@ -247,7 +253,7 @@
                 NSString *content = txtDict[@"content"];
                 NSData *dt = [[NSData alloc] initWithBase64EncodedString:content options:NSDataBase64DecodingIgnoreUnknownCharacters];
                 self->basicImage = [UIImage imageWithData:dt];
-                NSLog(@"basicImage:%@",self->basicImage);
+                kJLLog(JLLOG_DEBUG, @"basicImage:%@",self->basicImage);
                 self->originSizeImage = [UIImage imageWithData:dt];
                 [self makeCustomBgImgv:self->basicImage];
             }
@@ -266,45 +272,31 @@
 
 //MARK: - 图像处理
 
--(NSString *)makeDialwithName:(NSString *)watchBinName withSize:(CGSize)size{
+-(void)makeDialwithSize:(CGSize)size Result:(void (^)(NSData *_Nullable data))result{
     
     JL_ManagerM *mgr = [[JL_RunSDK sharedMe] mBleEntityM].mCmdManager;
     JLModel_Device *model = [mgr outputDeviceModel];
-    
     UIImage *radiusImage = [AIDialXFManager machRadius:basicImage withBg:true];
-    NSData *imageData = [BitmapTool resizeImage:radiusImage andResizeTo:CGSizeMake(size.width, size.height)];
-    
-    NSString *bmpPath = [JL_Tools listPath:NSLibraryDirectory MiddlePath:@"" File:@"ios_test.bmp"];
-    NSString *binPath = [JL_Tools listPath:NSLibraryDirectory MiddlePath:@"" File:watchBinName];
-    
-    [JL_Tools removePath:bmpPath];
-    [JL_Tools removePath:binPath];
-    
-    [JL_Tools createOn:NSLibraryDirectory MiddlePath:@"" File:@"ios_test.bmp"];
-    [JL_Tools createOn:NSLibraryDirectory MiddlePath:@"" File:watchBinName];
-    
+    NSData *imageData = [JLBmpConvert resizeImage:radiusImage andResizeTo:CGSizeMake(size.width, size.height)];
     UIImage *image = [UIImage imageWithData:imageData];
-    int width = image.size.width;
-    int height = image.size.height;
-    NSLog(@"压缩分辨率 ---> w:%df h:%df",width,height);
     
-    NSData *bitmap = [BitmapTool convert_B_G_R_A_BytesFromImage:image];
-    [JL_Tools writeData:bitmap fillFile:bmpPath];
-    
+    JLBmpConvertType type = JLBmpConvertType701N_ARBG;
     if (model.sdkType == JL_SDKType701xWATCH) {
-        /*--- BR28压缩算法 ---*/
-        //br28_btm_to_res_path((char*)[bmpPath UTF8String], width, height, (char*)[binPath UTF8String]);
-        
-        //带有alpha的图片转换
-        br28_btm_to_res_path_with_alpha((char*)[bmpPath UTF8String], width, height, (char*)[binPath UTF8String]);
-        NSLog(@"--->Br28 BIN【%@】is OK!", watchBinName);
-    }else{
-        /*--- BR23压缩算法 ---*/
-        br23_btm_to_res_path((char*)[bmpPath UTF8String], width, height, (char*)[binPath UTF8String]);
-        NSLog(@"--->Br23 BIN【%@】is OK!", watchBinName);
+        type = JLBmpConvertType701N_ARBG;
+    }else if (model.sdkType == JL_SDKType695xWATCH){
+        type = JLBmpConvertType695N_RBG;
+    }else if (model.sdkType == JL_SDKType707nWATCH){
+        type = JLBmpConvertType707N_ARGB;
     }
-    self->binPath = [JL_Tools listPath:NSLibraryDirectory MiddlePath:@"" File:watchBinName];
-    return bmpPath;
+    [JLBmpConvert covert:type Image:image completion:^(NSData * _Nullable outFileData, NSError * _Nullable error) {
+        if (error) {
+            kJLLog(JLLOG_DEBUG, @"图片转换失败");
+            return ;
+        }
+        if (outFileData) {
+            result(outFileData);
+        }
+    }];
 }
 
 
@@ -316,91 +308,83 @@
     
     __block NSString *watchBinName = @"";
     [mgr.mFlashManager cmdWatchFlashPath:nil Flag:JL_DialSettingReadCurrentDial Result:^(uint8_t flag, uint32_t size, NSString * _Nullable path, NSString * _Nullable describe) {
-        NSLog(@"获取表盘成功!\n当前表盘 ---> %@",path);
+        kJLLog(JLLOG_DEBUG, @"获取表盘成功!\n当前表盘 ---> %@",path);
         NSString *wName = [path lastPathComponent];
         if ([wName isEqual:@"WATCH"]) {
-            watchBinName = @"BGP_W000";
+            watchBinName = @"/BGP_W000";
         } else {
             NSString *txt = [wName stringByReplacingOccurrencesOfString:@"WATCH" withString:@""];
             NSInteger strLen = txt.length;
-            if (strLen == 1) watchBinName = [NSString stringWithFormat:@"BGP_W00%@", txt];
-            if (strLen == 2) watchBinName = [NSString stringWithFormat:@"BGP_W0%@", txt];
-            if (strLen == 3) watchBinName = [NSString stringWithFormat:@"BGP_W%@", txt];
+            if (strLen == 1) watchBinName = [NSString stringWithFormat:@"/BGP_W00%@", txt];
+            if (strLen == 2) watchBinName = [NSString stringWithFormat:@"/BGP_W0%@", txt];
+            if (strLen == 3) watchBinName = [NSString stringWithFormat:@"/BGP_W%@", txt];
         }
         
         if (flag == 0) {
             CGSize scaleZoomSize = self->_dialManager.scaleZoomSize;
-            [self makeDialwithName:watchBinName withSize:scaleZoomSize];
-
-            NSData *pathData = [NSData dataWithContentsOfFile:self->binPath];
-            NSLog(@"-->添加AI 表盘缩略图的大小:%lld",(long long)pathData.length);
-            
-            [JL_Tools mainTask:^{
-                self->aiStyleTransferringView.hidden = NO;
-            }];
-            
-            [DialManager addFile:@"/AITHUMB" Content:pathData Result:^(DialOperateType type, float progress) {
-                if (type == DialOperateTypeSuccess){
-                    [self.dialManager aiDialSendThumbAiImageTo:mgr withPath:@"/AITHUMB" Result:^(JL_CMDStatus status, uint8_t sn, NSData * _Nullable data) {
-//                        [JL_Tools mainTask:^{
-//                            if(self->mTransferringView!=NULL) self->mTransferringView.hidden = YES;
-//                        }];
+            [self makeDialwithSize:scaleZoomSize Result:^(NSData * _Nullable data) {
+                if (data) {
+                    [JL_Tools mainTask:^{
+                        self->aiStyleTransferringView.hidden = NO;
+                    }];
+                    kJLLog(JLLOG_DEBUG, @"-->添加AI 表盘缩略图的大小:%lld",(long long)data.length);
+                    [DialManager addFile:@"/AITHUMB" Content:data Result:^(DialOperateType type, float progress) {
+                        if (type == DialOperateTypeSuccess){
+                            [self.dialManager aiDialSendThumbAiImageTo:mgr withPath:@"/AITHUMB" Result:^(JL_CMDStatus status, uint8_t sn, NSData * _Nullable data) {
+                            }];
+                        }
                     }];
                 }
             }];
-            
         }
     }];
 }
 
--(void)addDial{
-    NSString *wName = [NSString stringWithFormat:@"/%@",[binPath lastPathComponent]];
-    NSData *pathData = [NSData dataWithContentsOfFile:binPath];
-    NSLog(@"-->添加自定义表盘的大小:%lld",(long long)pathData.length);
+-(void)addDial:(NSString *)wName Data:(NSData *)pathData{
+    kJLLog(JLLOG_DEBUG, @"-->添加自定义表盘的大小:%lld",(long long)pathData.length);
     JL_ManagerM *mgr = [[JL_RunSDK sharedMe] mBleEntityM].mCmdManager;
     __block typeof(self) wself = self;
     [DialManager addFile:wName Content:pathData Result:^(DialOperateType type, float progress) {
-                
+        [self continueTimer];
         if(wself->installResult){
             wself->installResult(progress*100,type);
         }
-        
         if (type == DialOperateTypeNoSpace) {
-            NSLog(@"空间不足");
+            kJLLog(JLLOG_DEBUG, @"空间不足");
             [JL_Tools mainTask:^{
-                 self->aiStyleTransferringView.hidden = YES;
+                self->aiStyleTransferringView.hidden = YES;
             }];
+            [self removeTimer];
         }
         if (type == DialOperateTypeFail) {
-            NSLog(@"添加失败");
+            kJLLog(JLLOG_DEBUG, @"添加失败");
             [JL_Tools mainTask:^{
                 UIWindow *win = [UIApplication sharedApplication].keyWindow;
                 [DFUITools showText:@"表盘添加失败..." onView:win delay:1.5];
-                 self->aiStyleTransferringView.hidden = YES;
+                self->aiStyleTransferringView.hidden = YES;
             }];
+            [self removeTimer];
         }
         if (type == DialOperateTypeDoing) {
-            NSLog(@"添加中...%.2f",progress*100);
+            kJLLog(JLLOG_DEBUG, @"添加中...%.2f",progress*100);
         }
         if (type == DialOperateTypeSuccess) {
-            NSLog(@"添加成功");
+            kJLLog(JLLOG_DEBUG, @"添加成功");
+            [self removeTimer];
             wself->installResult = nil;
             [JL_Tools mainTask:^{
-                 self->aiStyleTransferringView.hidden = YES;
+                self->aiStyleTransferringView.hidden = YES;
             }];
-            
-            /*--- 更新缓存 ---*/
-            [kJL_DIAL_CACHE addWatchCustomListObject:wName];
             [mgr.mFlashManager cmdWatchFlashPath:wName Flag:JL_DialSettingActivateCustomDial
                                           Result:^(uint8_t flag, uint32_t size,
                                                    NSString * _Nullable path,
                                                    NSString * _Nullable describe) {
                 [JL_Tools mainTask:^{
                     if (flag == 0){
-                        NSLog(@"设置成功");
+                        kJLLog(JLLOG_DEBUG, @"设置成功");
                         [wself saveImageToPath];
                     }else{
-                        NSLog(@"设置失败");
+                        kJLLog(JLLOG_DEBUG, @"设置失败");
                     }
                 }];
             }];
@@ -408,63 +392,64 @@
     }];
 }
 
--(void)replaceDialFile{
+-(void)replaceDialFile:(NSString *)wName Data:(NSData *)pathData{
     
-    NSString *wName = [NSString stringWithFormat:@"/%@",[binPath lastPathComponent]];
-    NSData *pathData = [NSData dataWithContentsOfFile:binPath];
-    NSLog(@"-->添加自定义表盘的大小:%lld",(long long)pathData.length);
     JL_ManagerM *mgr = [[JL_RunSDK sharedMe] mBleEntityM].mCmdManager;
     __block typeof(self) wself = self;
     //若设备端存在同名表盘背景时，替换表盘背景
-    NSLog(@"-->跟新自定义表盘的大小:%lld",(long long)pathData.length);
+    kJLLog(JLLOG_DEBUG, @"-->跟新自定义表盘的大小:%lld",(long long)pathData.length);
     [DialManager repaceFile:wName Content:pathData
                      Result:^(DialOperateType type, float progress)
      {
-        if(wself->installResult){
-            wself->installResult(progress*100,type);
-        }
+    [self continueTimer];
+    if(wself->installResult){
+        wself->installResult(progress*100,type);
+    }
+    
+    if (type == DialOperateTypeNoSpace) {
+        kJLLog(JLLOG_DEBUG, @"空间不足");
+        [JL_Tools mainTask:^{
+            self->aiStyleTransferringView.hidden = YES;
+        }];
+        [self removeTimer];
+    }
+    
+    if (type == DialOperateTypeDoing) {
+        kJLLog(JLLOG_DEBUG, @"更新中...%.2f",progress*100);
+    }
+    
+    if (type == DialOperateTypeFail) {
+        kJLLog(JLLOG_DEBUG, @"更新失败");
+        [JL_Tools mainTask:^{
+            UIWindow *win = [UIApplication sharedApplication].keyWindow;
+            [DFUITools showText:@"表盘添加失败..." onView:win delay:1.5];
+            self->aiStyleTransferringView.hidden = YES;
+        }];
+        [self removeTimer];
+    }
+    
+    if (type == DialOperateTypeSuccess) {
+        kJLLog(JLLOG_DEBUG, @"更新成功:%@",wName);
+        [self removeTimer];
+        wself->installResult = nil;
+        [JL_Tools mainTask:^{
+            self->aiStyleTransferringView.hidden = YES;
+        }];
         
-        if (type == DialOperateTypeNoSpace) {
-            NSLog(@"空间不足");
+        [mgr.mFlashManager cmdWatchFlashPath:wName Flag:JL_DialSettingActivateCustomDial
+                                      Result:^(uint8_t flag, uint32_t size,
+                                               NSString * _Nullable path,
+                                               NSString * _Nullable describe) {
             [JL_Tools mainTask:^{
-                 self->aiStyleTransferringView.hidden = YES;
+                if (flag == 0){
+                    kJLLog(JLLOG_DEBUG, @"设置成功");
+                    [wself saveImageToPath];
+                }else{
+                    kJLLog(JLLOG_DEBUG, @"设置失败");
+                }
             }];
-        }
-        
-        if (type == DialOperateTypeDoing) {
-            NSLog(@"更新中...%.2f",progress*100);
-        }
-        
-        if (type == DialOperateTypeFail) {
-            NSLog(@"更新失败");
-            [JL_Tools mainTask:^{
-                UIWindow *win = [UIApplication sharedApplication].keyWindow;
-                [DFUITools showText:@"表盘添加失败..." onView:win delay:1.5];
-                 self->aiStyleTransferringView.hidden = YES;
-            }];
-        }
-        
-        if (type == DialOperateTypeSuccess) {
-            NSLog(@"更新成功");
-            wself->installResult = nil;
-            [JL_Tools mainTask:^{
-                 self->aiStyleTransferringView.hidden = YES;
-            }];
-            
-            [mgr.mFlashManager cmdWatchFlashPath:wName Flag:JL_DialSettingActivateCustomDial
-                                          Result:^(uint8_t flag, uint32_t size,
-                                                   NSString * _Nullable path,
-                                                   NSString * _Nullable describe) {
-                [JL_Tools mainTask:^{
-                    if (flag == 0){
-                        NSLog(@"设置成功");
-                        [wself saveImageToPath];
-                    }else{
-                        NSLog(@"设置失败");
-                    }
-                }];
-            }];
-        }
+        }];
+    }
     }];
 }
 
@@ -499,18 +484,20 @@
     JL_ManagerM *mgr = [[JL_RunSDK sharedMe] mBleEntityM].mCmdManager;
     self->originSizeImage = originSizeImage;
     
+    [self timerAction];
+    
     __block NSString *watchBinName = @"";
     [mgr.mFlashManager cmdWatchFlashPath:nil Flag:JL_DialSettingReadCurrentDial Result:^(uint8_t flag, uint32_t size, NSString * _Nullable path, NSString * _Nullable describe) {
-        NSLog(@"获取表盘成功!\n当前表盘 ---> %@",path);
+        kJLLog(JLLOG_DEBUG, @"获取表盘成功!\n当前表盘 ---> %@",path);
         NSString *wName = [path lastPathComponent];
         if ([wName isEqual:@"WATCH"]) {
-            watchBinName = @"BGP_W000";
+            watchBinName = @"/BGP_W000";
         } else {
             NSString *txt = [wName stringByReplacingOccurrencesOfString:@"WATCH" withString:@""];
             NSInteger strLen = txt.length;
-            if (strLen == 1) watchBinName = [NSString stringWithFormat:@"BGP_W00%@", txt];
-            if (strLen == 2) watchBinName = [NSString stringWithFormat:@"BGP_W0%@", txt];
-            if (strLen == 3) watchBinName = [NSString stringWithFormat:@"BGP_W%@", txt];
+            if (strLen == 1) watchBinName = [NSString stringWithFormat:@"/BGP_W00%@", txt];
+            if (strLen == 2) watchBinName = [NSString stringWithFormat:@"/BGP_W0%@", txt];
+            if (strLen == 3) watchBinName = [NSString stringWithFormat:@"/BGP_W%@", txt];
         }
         
         if (flag == 0) {
@@ -523,13 +510,19 @@
             if (dev_W == 0) dev_W = 240;
             if (dev_H == 0) dev_H = 240;
             CGSize tmpSize = CGSizeMake(dev_W, dev_H);
-            [self makeDialwithName:watchBinName withSize:tmpSize];
             NSMutableArray *customList = [kJL_DIAL_CACHE getWatchCustomList];
-            if ([customList containsObject:watchBinName]) {
-                [self replaceDialFile];//更新自定义图片
-            } else {
-                [self addDial];//增加自定义图片
-            }
+            [self makeDialwithSize:tmpSize Result:^(NSData * _Nullable data) {
+                if (data == nil){
+                    kJLLog(JLLOG_DEBUG, @"convert 的数据为空不更新表盘");
+                    return;
+                }
+                if ([customList containsObject:watchBinName]) {
+                    [self replaceDialFile:watchBinName Data:data];//更新自定义图片
+                } else {
+                    [self addDial:watchBinName Data:data];//增加自定义图片
+                }
+            }];
+            
         }
     }];
     
@@ -538,37 +531,37 @@
 //MARK: - AI 表盘代理
 - (void)aiDialManager:(nonnull JLAIDialManager *)manager didAiDialStatusChange:(uint8_t)status {
     if(status == 0){
-        NSLog(@"退出AI表盘");
-         [aiStyleTransferringView setHidden:true];
+        kJLLog(JLLOG_DEBUG, @"退出AI表盘");
+        [aiStyleTransferringView setHidden:true];
     }
     if (status == 1){
-        NSLog(@"进入AI表盘");
+        kJLLog(JLLOG_DEBUG, @"进入AI表盘");
         [aiStyleTransferringView setHidden:NO];
     }
 }
 
 - (void)aiDialdidReCreateManager:(nonnull JLAIDialManager *)manager {
     //重新创建
-    NSLog(@"重新创建");
+    kJLLog(JLLOG_DEBUG, @"重新创建");
     [self requestToKdxf:requestContent];
     [aiStyleTransferringView setHidden:true];
 }
 
 - (void)aiDialdidRestartRecordManager:(nonnull JLAIDialManager *)manager {
     //    重新录音
-    NSLog(@"重新录音");
+    kJLLog(JLLOG_DEBUG, @"重新录音");
     [aiStyleTransferringView setHidden:true];
 }
 
 - (void)aiDialdidStartCreateManager:(nonnull JLAIDialManager *)manager {
     //开始创建
-    NSLog(@"开始创建");
+    kJLLog(JLLOG_DEBUG, @"开始创建");
     [self requestToKdxf:requestContent];
 }
 
 - (void)aiDialdidStartInstallManager:(nonnull JLAIDialManager *)manager {
     //开始安装
-    NSLog(@"开始安装");
+    kJLLog(JLLOG_DEBUG, @"开始安装");
     [self installDialToDevice:basicImage WithType:1 originSizeImage:originSizeImage completion:^(float progress, DialOperateType success) {
         
     }];
@@ -610,5 +603,37 @@
     UIGraphicsEndImageContext();
     return targetImg;
 }
+
+//MARK: - 计时器
+- (void)timerAction {
+    [transferringTimer invalidate];
+    currentTime = 0;
+    transferringTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countTimerAction) userInfo:nil repeats:true];
+    [transferringTimer fire];
+}
+
+-(void)countTimerAction{
+    currentTime++;
+    if (currentTime > maxTime) {
+        [transferringTimer invalidate];
+        currentTime = 0;
+        if(installResult){
+            kJLLog(JLLOG_DEBUG, @"安装失败timeout");
+            installResult(0,DialOperateTypeFail);
+        }
+    }
+}
+
+-(void)continueTimer{
+    currentTime = 0;
+}
+
+-(void)removeTimer{
+    [transferringTimer invalidate];
+    transferringTimer = nil;
+    currentTime = 0;
+}
+
+
 
 @end

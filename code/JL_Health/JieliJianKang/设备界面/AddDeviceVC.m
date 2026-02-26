@@ -55,7 +55,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self addNote];
     [self setupUI];
     [self setDeviceSearchTimer];
     [self searchAllDevice];
@@ -121,14 +120,14 @@
 
 
 - (IBAction)btn_saoYiSao:(id)sender {
-    NSLog(@"---> 扫一扫.");
+    kJLLog(JLLOG_DEBUG, @"---> 扫一扫.");
     QRScanVC *vc = [[QRScanVC alloc] init];
     vc.formRoot = 1;
     [JLApplicationDelegate.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)btn_Reflash:(id)sender {
-    NSLog(@"---> 重新搜索.");
+    kJLLog(JLLOG_DEBUG, @"---> 重新搜索.");
     [self searchAllDevice];
 }
 
@@ -157,11 +156,11 @@
 }
 
 -(void)searchAllDevice{
-    NSLog(@"Search Device...");
+    kJLLog(JLLOG_DEBUG, @"Search Device...");
     searchSeek = 0;
     [DFAction timingPause:searchTimer];
     
-    //NSLog(@"---> to close 3");
+    //kJLLog(JLLOG_DEBUG, @"---> to close 3");
     [JL_Tools post:kUI_JL_BLE_SCAN_CLOSE Object:nil];
     
     subTableView.hidden = YES;
@@ -179,7 +178,7 @@
     {
         [DFAction timingPause:searchTimer];
         
-        NSLog(@"---> to close 2");
+        kJLLog(JLLOG_DEBUG, @"---> to close 2");
         [JL_Tools post:kUI_JL_BLE_SCAN_CLOSE Object:nil];
 
         [self timerEndUI];
@@ -191,7 +190,7 @@
 }
 
 -(void)timerRunningUI{
-//    NSLog(@"---> timerRunningUI.");
+//    kJLLog(JLLOG_DEBUG, @"---> timerRunningUI.");
     NSInteger count = self.linkedArray.count + self.foundArray.count;
     if (count > 0) {
         [self showSaoYiSao:0.0 Reflash:1.0];
@@ -208,9 +207,9 @@
 }
 
 -(void)timerEndUI{
-    NSLog(@"---> timerEndUI.");
+    kJLLog(JLLOG_DEBUG, @"---> timerEndUI.");
     NSInteger ct = self.foundArray.count + self.linkedArray.count;
-    NSLog(@"Loading END~ %ld",(long)ct);
+    kJLLog(JLLOG_DEBUG, @"Loading END~ %ld",(long)ct);
     if (ct == 0) {
         self->deleteView.hidden = NO;
         [self showSaoYiSao:1.0 Reflash:0];
@@ -223,7 +222,7 @@
 
 
 - (IBAction)btn_back:(id)sender {
-    NSLog(@"---> back");
+    kJLLog(JLLOG_DEBUG, @"---> back");
     [self closeAll];
     [self removeNote];
     [self.navigationController popViewControllerAnimated:YES];
@@ -244,11 +243,11 @@
     NSInteger row = indexPath.row;
     if (row < self.linkedArray.count) {
         entity = self.linkedArray[row];
-        NSLog(@"Linked Edr ---> %@(%@)",entity.mEdr,entity.mItem);
+        kJLLog(JLLOG_DEBUG, @"Linked Edr ---> %@(%@)",entity.mEdr,entity.mItem);
     }else{
         if (self.foundArray.count > 0) {
             entity = self.foundArray[row - self.linkedArray.count];
-            //NSLog(@"Found Edr ---> %@(%@)",entity.mEdr,entity.mItem);
+            //kJLLog(JLLOG_DEBUG, @"Found Edr ---> %@(%@)",entity.mEdr,entity.mItem);
         }
     }
     
@@ -287,16 +286,16 @@
         [self disconnectDevice:bleEntity];
     }else{
         
-        NSLog(@"---> 搜索界面，连接设备：%@",bleEntity.mItem);
+        kJLLog(JLLOG_DEBUG, @"---> 搜索界面，连接设备：%@",bleEntity.mItem);
         [JL_Tools setUser:bleEntity.mUUID forKey:@"Entity"];
         
         [DFAction timingPause:searchTimer];
-        NSLog(@"---> to close 1");
+        kJLLog(JLLOG_DEBUG, @"---> to close 1");
         [JL_Tools post:kUI_JL_BLE_SCAN_CLOSE Object:nil];
         
         //先断开上一个连接
         if (kJL_BLE_EntityM) {
-            NSLog(@"---> 断开上一个连接:%@",kJL_BLE_EntityM.mItem);
+            kJLLog(JLLOG_DEBUG, @"---> 断开上一个连接:%@",kJL_BLE_EntityM.mItem);
             [kJL_BLE_Multiple disconnectEntity:kJL_BLE_EntityM
                                            Result:^(JL_EntityM_Status status) {
                 if (status == JL_EntityM_StatusDisconnectOk) {
@@ -350,7 +349,7 @@
 
 -(void)connectToDevice:(JL_EntityM*)bleEntity{
     ScanConnectDeviceVC *vc = [[ScanConnectDeviceVC alloc] init];
-    [vc setConnectDevice:bleEntity];
+    vc.connectEntity = bleEntity;
     [JLApplicationDelegate.navigationController pushViewController:vc animated:YES];
 
 }
@@ -362,10 +361,10 @@
     UIAlertAction *btnCancel = [UIAlertAction actionWithTitle:kJL_TXT("取消") style:UIAlertActionStyleCancel handler:nil];
     UIAlertAction *btnConfirm = [UIAlertAction actionWithTitle:kJL_TXT("断开设备") style:UIAlertActionStyleDefault
                                                        handler:^(UIAlertAction * _Nonnull action) {
-        NSLog(@"---> 断开连接:%@",entity.mItem);
+        kJLLog(JLLOG_DEBUG, @"---> 断开连接:%@",entity.mItem);
         [kJL_BLE_Multiple disconnectEntity:entity Result:^(JL_EntityM_Status status) {
             if (status == JL_EntityM_StatusDisconnectOk) {
-                NSLog(@"点击了取消");
+                kJLLog(JLLOG_DEBUG, @"点击了取消");
                 [JL_Tools mainTask:^{
                     [self->subTableView reloadData];
                 }];
@@ -380,31 +379,38 @@
 
 
 
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self addNote];
+}
 
 -(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     [JL_Tools remove:kJL_BLE_M_FOUND Own:self];
+    [JL_Tools remove:@"kUI_RELOAD_ADD_VC" Own:self];
+    [JL_Tools remove:kUI_JL_DEVICE_CHANGE Own:self];
+    [JL_Tools remove:@"AutoProductImgv" Own:self];
 }
 
 -(void)addNote{
-    NSLog(@"AddNote");
+    kJLLog(JLLOG_DEBUG, @"AddNote");
     [JL_Tools add:@"kUI_RELOAD_ADD_VC" Action:@selector(noteCloseAddVC:) Own:self];
     [JL_Tools add:kUI_JL_DEVICE_CHANGE Action:@selector(noteDeviceChange:) Own:self];
     [JL_Tools add:@"AutoProductImgv" Action:@selector(noteRefreshData) Own:self];
 }
 
 -(void)noteDeviceChange:(NSNotification*)note{
-    NSLog(@"---> Device change.");
+    kJLLog(JLLOG_DEBUG, @"---> Device change.");
     [subTableView reloadData];
     
-    JLDeviceChangeType type = [[note object] integerValue];
+    JLDeviceChangeType type = [[note object] intValue];
     if (type == JLDeviceChangeTypeInUseOffline || type == JLDeviceChangeTypeBleOFF) {
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
 -(void)noteCloseAddVC:(NSNotification*)note{
-    NSLog(@"---> noteCloseAddVC.");
+    kJLLog(JLLOG_DEBUG, @"---> noteCloseAddVC.");
     [subTableView reloadData];
 }
 
@@ -420,7 +426,7 @@
 
 //重试
 -(void)didCancelAction:(UIButton *)btn{
-    NSLog(@"Reloading Start...");
+    kJLLog(JLLOG_DEBUG, @"Reloading Start...");
     [self searchAllDevice];
 }
 
@@ -435,7 +441,7 @@
     [DFAction timingStop:searchTimer];
     searchTimer = nil;
     
-    NSLog(@"---> to close 0");
+    kJLLog(JLLOG_DEBUG, @"---> to close 0");
     [JL_Tools post:kUI_JL_BLE_SCAN_CLOSE Object:nil];
 }
 

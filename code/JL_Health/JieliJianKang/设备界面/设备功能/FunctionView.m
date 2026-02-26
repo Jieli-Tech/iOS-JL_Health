@@ -17,6 +17,7 @@
 #import "JLUI_Effect.h"
 #import "AiDialStyleVC.h"
 #import "AIDialXFManager.h"
+#import "AIClound.h"
 
 @interface FunctionView(){
     NSMutableArray *btnArray;
@@ -36,6 +37,10 @@
         [[JL_RunSDK sharedMe] addObserver:self forKeyPath:@"configModel" options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;
+}
+
+-(void)dealloc{
+    [[JL_RunSDK sharedMe] removeObserver:self forKeyPath:@"configModel"];
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
@@ -90,6 +95,7 @@
     }
         
     if(model.exportFunc.spAiCloud){
+        [AIClound sharedMe];//初始化 AI 云服务
         [btnArray addObject:@{@"ITEM_0":@"icon_ai_nol",@"ITEM_1":kJL_TXT("AI云服务")}];
         SpeechRecognitionVC *vc =  [[SpeechRecognitionVC alloc] init];
         [viewControllers addObject:vc];
@@ -167,7 +173,7 @@
         
         [JLApplicationDelegate.navigationController pushViewController:viewControllers[btn.tag] animated:YES];
     }else{
-        NSLog(@"__ Error for out of array");
+        kJLLog(JLLOG_DEBUG, @"__ Error for out of array");
     }
 }
 

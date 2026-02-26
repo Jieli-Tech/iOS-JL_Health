@@ -93,7 +93,7 @@ static BOOL isSpeed = NO;
     if (isSpeed == NO) {
         float s_x = scrollView.contentOffset.x + view_W/2.0-kWeightPickViewGAP/2.0;
         [self fixedOffset:s_x];
-        //NSLog(@"无速度：%.2f",s_x);
+        //kJLLog(JLLOG_DEBUG, @"无速度：%.2f",s_x);
     }
 }
 
@@ -101,7 +101,7 @@ static BOOL isSpeed = NO;
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     float s_x = scrollView.contentOffset.x + view_W/2.0-kWeightPickViewGAP/2.0;
     [self fixedOffset:s_x];
-    //NSLog(@"有速度：%.2f",s_x);
+    //kJLLog(JLLOG_DEBUG, @"有速度：%.2f",s_x);
 }
 
 
@@ -124,7 +124,7 @@ static BOOL isSpeed = NO;
     m_weight_point = m_weight_point/10;
     //NSString *text_num = [NSString stringWithFormat:@"%.1f",f_fm_point];
     //fmLabel.text = text_num;
-    //NSLog(@"==> fmLabel.text:%@",text_num);
+    //kJLLog(JLLOG_DEBUG, @"==> fmLabel.text:%@",text_num);
     
     if([_delegate respondsToSelector:@selector(onWeightPickView:didSelect:)]){
         [_delegate onWeightPickView:self didSelect:weight_point];

@@ -1,0 +1,26 @@
+1. SDK开发包介绍
+================
+
+**开发资料文件结构** 
+
+- code  --- 参考Demo源码存 
+- doc   --- 开发文档 
+- libs  --- 相关库 
+
+ - **JL_BLEKit.framework** : 蓝牙功能库
+
+ - **JLDialUnit.framework** : 手表操作  
+
+ - **JL_OTALib.framework** : OTA升级业务库
+
+ - **JL_AdvParse.framework** : 杰理蓝牙设备广播包解析业务库
+
+ - **JL_HashPair.framework** ： 设备认证业务库
+
+ - **JLBmpConvertKit.framework** : 图片格式转换库
+
+ - **JLLogHelper.framework** : 日志库
+
+2. 功能实现参考
+================
+请查看当前文档。

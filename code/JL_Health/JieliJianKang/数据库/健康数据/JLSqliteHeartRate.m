@@ -171,13 +171,13 @@
             NSString *sql = [NSString stringWithFormat:@"update %@ set timestamp = ?, time = ?, data = ?, interval = ? ,maxValue = ?, minValue = ? where date = ?", tb_heart_rate];
             BOOL res = [db executeUpdate:sql, [NSNumber numberWithDouble:timestamp], ds, data, num, maxHeartRate, minHeartRate, dt];
             if (!res) {
-                NSLog(@"update failed");
+                kJLLog(JLLOG_DEBUG, @"update failed");
             }
         } else {
             NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ (timestamp, date, time, interval, data, maxValue, minValue) VALUES ( ?,?, ?, ?, ?, ?, ?)", tb_heart_rate];
             BOOL res = [db executeUpdate:sql, [NSNumber numberWithDouble:timestamp], dt, ds, num, data, maxHeartRate, minHeartRate];
             if (!res) {
-                NSLog(@"insert failed");
+                kJLLog(JLLOG_DEBUG, @"insert failed");
             }
         }
     }];
@@ -211,7 +211,7 @@
             NSString *sql = [NSString stringWithFormat:@"update %@ set restingHeartRate = ?  where date = ?", tb_heart_rate];
             BOOL res = [db executeUpdate:sql, allNum, dt];
             if (!res) {
-                NSLog(@"update failed");
+                kJLLog(JLLOG_DEBUG, @"update failed");
             }
         }
     }];

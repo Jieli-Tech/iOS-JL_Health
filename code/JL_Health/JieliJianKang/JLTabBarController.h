@@ -6,6 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <JL_BLEKit/JL_BLEKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

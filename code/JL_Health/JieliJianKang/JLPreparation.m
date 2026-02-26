@@ -47,13 +47,66 @@ NSString *kUI_JL_UUID_PREPARATE_OK = @"UI_JL_UUID_PREPARATE_OK";
     
     self.isPreparateOK = 1;
     [self startTimeout];
- 
-    /*--- 关闭耳机信息推送 ---*/
-    NSLog(@"--->(1) TURN OFF headset push.");
-    [self.mBleEntityM.mCmdManager.mTwsManager cmdHeadsetAdvEnable:NO];
     
+    /*--- 清除设备音乐缓存 ---*/
+    [self.mBleEntityM.mCmdManager.mFileManager cmdCleanCacheType:JL_CardTypeUSB];
+    [self.mBleEntityM.mCmdManager.mFileManager cmdCleanCacheType:JL_CardTypeSD_0];
+    [self.mBleEntityM.mCmdManager.mFileManager cmdCleanCacheType:JL_CardTypeSD_1];
+    
+    /*--- 获取设备信息 ---*/
+    kJLLog(JLLOG_DEBUG, @"--->GET Device infomation.");
+    [self.mBleEntityM.mCmdManager cmdTargetFeatureResult:^(JL_CMDStatus status, uint8_t sn, NSData * _Nullable data) {
+        JL_CMDStatus st = status;
+        if (st == JL_CMDStatusSuccess) {
+            [wSelf startTimeout];//超时续费
+            
+            JLModel_Device *model = [wSelf.mBleEntityM.mCmdManager outputDeviceModel];
+            
+            JL_OtaStatus upSt = model.otaStatus;
+            if (upSt == JL_OtaStatusForce) {
+                kJLLog(JLLOG_DEBUG, @"---> 进入强制升级.");
+                [self actionFinishedForOTA];
+  
+                return;
+            }else{
+                if (model.otaHeadset == JL_OtaHeadsetYES) {
+                    kJLLog(JLLOG_DEBUG, @"---> 进入强制升级: OTA另一只耳机.");
+                    [self actionFinishedForOTA];
+                    
+                    return;
+                }
+            }
+            wSelf.mBleEntityM.mBLE_NEED_OTA = NO;
+
+            ///同步设备时间
+            [self syncDeviceTime];
+            
+            /*---- 共有信息 ---*/
+            kJLLog(JLLOG_DEBUG, @"---> 获取共有信息");
+            [wSelf.mBleEntityM.mCmdManager cmdGetSystemInfo:JL_FunctionCodeCOMMON
+                                                     Result:^(JL_CMDStatus status, uint8_t sn, NSData * _Nullable data) {
+                [wSelf startTimeout];//超时续费
+                /*---- 蓝牙信息 ---*/
+                kJLLog(JLLOG_DEBUG, @"---> 获取蓝牙信息");
+                [wSelf.mBleEntityM.mCmdManager cmdGetSystemInfo:JL_FunctionCodeBT
+                                                         Result:^(JL_CMDStatus status, uint8_t sn, NSData * _Nullable data) {
+                    [wSelf startTimeout];//超时续费
+                                        
+                    kJLLog(JLLOG_DEBUG, @"---> Preparation finished (xxxx).");
+                    
+                    [wSelf checkDeviceInfo:wSelf.mBleEntityM];
+                    
+                    [wSelf actionFinished];
+                }];
+            }];
+        }
+    }];
+}
+
+/// 同步设备时间
+-(void)syncDeviceTime{
     /*--- 同步时间戳 ----*/
-    NSLog(@"--->(2) SET Device time.");
+    kJLLog(JLLOG_DEBUG, @"--->SET Device time.");
     NSDate *date = [NSDate new];
     JL_SystemTime *systemTime = self.mBleEntityM.mCmdManager.mSystemTime;
     
@@ -69,62 +122,6 @@ NSString *kUI_JL_UUID_PREPARATE_OK = @"UI_JL_UUID_PREPARATE_OK";
     uint8_t  min  = (uint8_t)[time_Set[4] intValue];
     uint8_t  sec  = (uint8_t)[time_Set[5] intValue];
     [systemTime cmdSetSystemYear:year Month:month Day:day Hour:hour Minute:min Second:sec];
-
-    /*--- 清除设备音乐缓存 ---*/
-    [self.mBleEntityM.mCmdManager.mFileManager cmdCleanCacheType:JL_CardTypeUSB];
-    [self.mBleEntityM.mCmdManager.mFileManager cmdCleanCacheType:JL_CardTypeSD_0];
-    [self.mBleEntityM.mCmdManager.mFileManager cmdCleanCacheType:JL_CardTypeSD_1];
-    
-    /*--- 获取设备信息 ---*/
-    NSLog(@"--->(3) GET Device infomation.");
-    [self.mBleEntityM.mCmdManager cmdTargetFeatureResult:^(JL_CMDStatus status, uint8_t sn, NSData * _Nullable data) {
-        JL_CMDStatus st = status;
-        if (st == JL_CMDStatusSuccess) {
-            [wSelf startTimeout];//超时续费
-            
-            JLModel_Device *model = [wSelf.mBleEntityM.mCmdManager outputDeviceModel];
-            
-            JL_OtaStatus upSt = model.otaStatus;
-            if (upSt == JL_OtaStatusForce) {
-                NSLog(@"---> 进入强制升级.");
-                [self actionFinishedForOTA];
-  
-                return;
-            }else{
-                if (model.otaHeadset == JL_OtaHeadsetYES) {
-                    NSLog(@"---> 进入强制升级: OTA另一只耳机.");
-                    [self actionFinishedForOTA];
-                    
-                    return;
-                }
-            }
-            wSelf.mBleEntityM.mBLE_NEED_OTA = NO;
-            
-        
-            /*---- 共有信息 ---*/
-            NSLog(@"---> run task 1");
-            [wSelf.mBleEntityM.mCmdManager cmdGetSystemInfo:JL_FunctionCodeCOMMON
-                                                     Result:^(JL_CMDStatus status, uint8_t sn, NSData * _Nullable data) {
-                [wSelf startTimeout];//超时续费
-            
-                NSLog(@"complete task 1");
-                                    
-                /*---- 蓝牙信息 ---*/
-                NSLog(@"---> run task 2");
-                //[[JLCacheBox cacheUuid:wSelf.mBleUUID] setIsID3_FIRST:NO];
-                [wSelf.mBleEntityM.mCmdManager cmdGetSystemInfo:JL_FunctionCodeBT
-                                                         Result:^(JL_CMDStatus status, uint8_t sn, NSData * _Nullable data) {
-                    [wSelf startTimeout];//超时续费
-                                        
-                    NSLog(@"---> Preparation finished (xxxx).");
-                    
-                    [wSelf checkDeviceInfo:wSelf.mBleEntityM];
-                    
-                    [wSelf actionFinished];
-                }];
-            }];
-        }
-    }];
 }
 
 //MARK: - 扩展信息检查更新
@@ -160,7 +157,7 @@ NSString *kUI_JL_UUID_PREPARATE_OK = @"UI_JL_UUID_PREPARATE_OK";
                 if (status == JL_CMDStatusSuccess) {
                     [[JL_RunSDK sharedMe] setDialInfoExtentedModel:op];
                 }else{
-                    NSLog(@"getDialInfoExtented fail :%d",status);
+                    kJLLog(JLLOG_DEBUG, @"getDialInfoExtented fail :%d",status);
                 }
             }];
         }
@@ -171,7 +168,7 @@ NSString *kUI_JL_UUID_PREPARATE_OK = @"UI_JL_UUID_PREPARATE_OK";
 -(void)actionFinished{
     [self stopTimeout];//停止超时
     
-    NSLog(@"-----> 处理完成:%@",self.mBleEntityM.mItem);
+    kJLLog(JLLOG_DEBUG, @"-----> 处理完成:%@",self.mBleEntityM.mItem);
     self.mBleEntityM.isCMD_PREPARED= YES;
     self.isPreparateOK = 2;
 
@@ -182,7 +179,7 @@ NSString *kUI_JL_UUID_PREPARATE_OK = @"UI_JL_UUID_PREPARATE_OK";
 -(void)actionFinishedForOTA{
     [self stopTimeout];
     
-    NSLog(@"-----> 处理完成:%@",self.mBleEntityM.mItem);
+    kJLLog(JLLOG_DEBUG, @"-----> 处理完成:%@",self.mBleEntityM.mItem);
     self.mBleEntityM.isCMD_PREPARED= YES;
     self.mBleEntityM.mBLE_NEED_OTA = YES;
     self.isPreparateOK = 2;
@@ -195,7 +192,7 @@ NSString *kUI_JL_UUID_PREPARATE_OK = @"UI_JL_UUID_PREPARATE_OK";
 
 #pragma mark - 连接超时管理
 -(void)startTimeout{
-    //NSLog(@"--->【%@】Preparation Timeout【Start】",self.mBleEntityM.mItem);
+    //kJLLog(JLLOG_DEBUG, @"--->【%@】Preparation Timeout【Start】",self.mBleEntityM.mItem);
     timeout = 0;
     if (actionTimer) {
         [JL_Tools timingContinue:actionTimer];
@@ -206,18 +203,18 @@ NSString *kUI_JL_UUID_PREPARATE_OK = @"UI_JL_UUID_PREPARATE_OK";
 }
 
 -(void)stopTimeout{
-    //NSLog(@"--->【%@】Preparation Timeout【Stop】",self.mBleEntityM.mItem);
+    //kJLLog(JLLOG_DEBUG, @"--->【%@】Preparation Timeout【Stop】",self.mBleEntityM.mItem);
     timeout = 0;
     [JL_Tools timingPause:actionTimer];
 }
 
 -(void)timeoutAction{
-    //NSLog(@"--->【%@】Preparation Timeout:%d",self.mBleEntityM.mItem,timeout);
+    //kJLLog(JLLOG_DEBUG, @"--->【%@】Preparation Timeout:%d",self.mBleEntityM.mItem,timeout);
     if (timeout == 8) {
         [self stopTimeout];
 
         if (preparateTimce == 2) {
-            NSLog(@"-----> 处理失败，断开吧~【%@】",self.mBleEntityM.mItem);
+            kJLLog(JLLOG_DEBUG, @"-----> 处理失败，断开吧~【%@】",self.mBleEntityM.mItem);
 
             self.isPreparateOK = 1;
             [kJL_BLE_Multiple disconnectEntity:self.mBleEntityM Result:^(JL_EntityM_Status status) {
@@ -227,7 +224,7 @@ NSString *kUI_JL_UUID_PREPARATE_OK = @"UI_JL_UUID_PREPARATE_OK";
             }];
         }else{
             self.isPreparateOK = 0;
-            NSLog(@"-----> 重新处理:%@",self.mBleEntityM.mItem);
+            kJLLog(JLLOG_DEBUG, @"-----> 重新处理:%@",self.mBleEntityM.mItem);
         }
         preparateTimce++;
     }
@@ -235,7 +232,7 @@ NSString *kUI_JL_UUID_PREPARATE_OK = @"UI_JL_UUID_PREPARATE_OK";
 }
 
 -(void)actionDismiss{
-    NSLog(@"---> Preparation Action Dismiss.");
+    kJLLog(JLLOG_DEBUG, @"---> Preparation Action Dismiss.");
     
     [self stopTimeout];
     [JL_Tools timingStop:actionTimer];

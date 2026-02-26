@@ -79,7 +79,7 @@
     
     // 实例化扫描器
     scanner = [HMScanner scanerWithView:self.view scanFrame:scannerBorder.frame completion:^(NSString *stringValue) {
-        NSLog(@"QR Scan ---> %@",stringValue);
+        kJLLog(JLLOG_DEBUG, @"QR Scan ---> %@",stringValue);
      
         /*--- 已连接，则不触发扫描 ---*/
         if (kJL_BLE_EntityM) {
@@ -101,7 +101,7 @@
             
             ScanConnectDeviceVC *vc = [[ScanConnectDeviceVC alloc] init];
             vc.modalPresentationStyle = UIModalPresentationFullScreen;
-            [vc setScanDict:scanDict];
+            vc.mScanDict = scanDict;
             [JLApplicationDelegate.navigationController pushViewController:vc animated:YES];
             
         }else{
@@ -242,7 +242,7 @@
             
             [self dismissViewControllerAnimated:NO completion:^{
                 ScanConnectDeviceVC *vc = [[ScanConnectDeviceVC alloc] init];
-                [vc setScanDict:scanDict];
+                vc.mScanDict = scanDict;
                 [JLApplicationDelegate.navigationController pushViewController:vc animated:YES];
             }];
         } else {

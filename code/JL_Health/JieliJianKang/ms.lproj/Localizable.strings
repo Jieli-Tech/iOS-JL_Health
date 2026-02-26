@@ -679,3 +679,15 @@
 "是否要清除用户缓存" = "Adakah anda mahu mengosongkan cache pengguna?";
 "AI表盘" = "Dail AI";
 "正在传输中" = "Memindahkan...";
+"Image Captcha" = "CAPTCHA imej";
+"Can't see it? Try another." = "Tidak jelas? Cuba satu lagi.";
+"Please enter the correct captcha." = "Sila masukkan captcha yang betul.";
+"There was a problem loading the image verification code, please try again later" = "Ada masalah semasa memuat kod pengesahan imej, sila cuba lagi selepas ini";
+"Custom" = "Sesuaikan";
+"Custom Dial" = "Muka jam tersuai";
+"I have read and agree to the" = "Saya telah membaca dan bersetuju";
+"User Agreement" = "Perjanjian Pengguna";
+"Privacy Policy" = "dasar privasi";
+"and" = "dan";
+"Please read and agree to the Terms of Service and Privacy Policy." = "Sila baca dan bersetuju menerima Syarat Perkhidmatan dan Dasar Privasi";
+"ICP filing information" = "Maklumat pemfailan ICP";

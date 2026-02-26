@@ -7,7 +7,8 @@
 //
 
 #import "UserProfileVC.h"
-
+#import "JL_RunSDK.h"
+#import <WebKit/WebKit.h>
 
 //用户服务协议的URL
 #define USER_PROFILE_URL  @"https://cam.jieliapp.com/app/app.user.service.protocol.html"//@"http://cam.jieliapp.com:28111/app/app.user.service.protocol.html"
@@ -142,21 +143,21 @@
 #pragma mark - 网络监测
 -(void)actionNetStatus:(AFNetworkReachabilityStatus)status{
     if (status == AFNetworkReachabilityStatusNotReachable) {
-        //NSLog(@"---> AFNetworkReachabilityStatusNotReachable");
+        //kJLLog(JLLOG_DEBUG, @"---> AFNetworkReachabilityStatusNotReachable");
         if(webView) [webView removeFromSuperview];
         noneImv.hidden = NO;
         noneLab_1.hidden = NO;
         noneLab_2.hidden = NO;
     }
     if (status == AFNetworkReachabilityStatusUnknown) {
-        //NSLog(@"---> AFNetworkReachabilityStatusUnknown");
+        //kJLLog(JLLOG_DEBUG, @"---> AFNetworkReachabilityStatusUnknown");
         if(webView) [webView removeFromSuperview];
         noneImv.hidden = NO;
         noneLab_1.hidden = NO;
         noneLab_2.hidden = NO;
     }
     if (status == AFNetworkReachabilityStatusReachableViaWWAN) {
-        //NSLog(@"---> AFNetworkReachabilityStatusReachableViaWWAN");
+        //kJLLog(JLLOG_DEBUG, @"---> AFNetworkReachabilityStatusReachableViaWWAN");
         if(self->webView)[self->webView removeFromSuperview];
         NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:USER_PROFILE_URL]];
         self->webView.scrollView.bounces=NO;
@@ -173,7 +174,7 @@
         noneLab_2.hidden = YES;
     }
     if (status == AFNetworkReachabilityStatusReachableViaWiFi) {
-        //NSLog(@"---> AFNetworkReachabilityStatusReachableViaWiFi");
+        //kJLLog(JLLOG_DEBUG, @"---> AFNetworkReachabilityStatusReachableViaWiFi");
         if(self->webView)[self->webView removeFromSuperview];
         NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:USER_PROFILE_URL]];
         self->webView.scrollView.bounces=NO;

@@ -226,13 +226,13 @@
             NSString *sql = [NSString stringWithFormat:@"update %@ set timestamp = ?, time = ?, data = ?, interval = ?, allStep = ?, totalMileage = ?, totalConsumption = ? where date = ?", tb_step];
            BOOL res = [db executeUpdate:sql, [NSNumber numberWithDouble:timestamp], ds, data, num, allStep, totalMileage, totalConsumption, dt];
             if (!res) {
-                NSLog(@"update failed");
+                kJLLog(JLLOG_DEBUG, @"update failed");
             }
         } else {
             NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ (timestamp, date, time, interval, data, allStep, totalMileage, totalConsumption) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", tb_step];
             BOOL res = [db executeUpdate:sql, [NSNumber numberWithDouble:timestamp], dt, ds, num, data, allStep, totalMileage, totalConsumption];
             if (!res) {
-                NSLog(@"insert failed");
+                kJLLog(JLLOG_DEBUG, @"insert failed");
             }
         }
     }];
@@ -253,7 +253,7 @@
 //            NSString *sql = [NSString stringWithFormat:@"update %@ set allStep = ?  where date = ?",tb_step];
 //           BOOL res = [db executeUpdate:sql,allNum,dt];
 //            if (!res) {
-//                NSLog(@"update failed");
+//                kJLLog(JLLOG_DEBUG, @"update failed");
 //            }
 //        }
 //    }];

@@ -11,6 +11,13 @@
 #import "NSString+Path.h"
 #import <FMDB/FMDB.h>
 #import <JL_BLEKit/JL_BLEKit.h>
+#import "JLWearSyncHealthChart.h"
+#import "JLWearSyncHealthWeightChart.h"
+#import "JLWearSyncHealthStepChart.h"
+#import "JLWearSyncHealthBloodOxyganChart.h"
+#import "JLWearSyncHealthHeartRateChart.h"
+#import "JLWearSyncHealthSleepChart.h"
+#import "JLSportRecordModel.h"
 #import "JLSqliteWeight.h"
 NS_ASSUME_NONNULL_BEGIN
 

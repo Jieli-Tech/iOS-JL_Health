@@ -198,7 +198,7 @@
         }break;
         case     DateType_Year:{
             nowDate = nowDate.beforeYear;
-            NSLog(@"%@",nowDate.toYYYYMMdd);
+            kJLLog(JLLOG_DEBUG, @"%@",nowDate.toYYYYMMdd);
         }break;
         default:
             break;
@@ -408,7 +408,7 @@
     }
     titleBarView.alpha = k;
     
-//    NSLog(@"scrollViewDidScroll:%f",scrollView.contentOffset.y);
+//    kJLLog(JLLOG_DEBUG, @"scrollViewDidScroll:%f",scrollView.contentOffset.y);
 }
 
 

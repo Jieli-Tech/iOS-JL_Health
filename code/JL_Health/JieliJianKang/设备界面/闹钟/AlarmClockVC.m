@@ -55,7 +55,7 @@
     
     [alarmManager cmdRtcGetAlarms:^(NSArray<JLModel_RTC *> * _Nullable alarms, NSError * _Nullable error) {
         if(error){
-            NSLog(@"rtc get error:%@",error);
+            kJLLog(JLLOG_DEBUG, @"rtc get error:%@",error);
             return;
         }
         [self initUIStatus:alarms];
@@ -130,7 +130,7 @@
         if (mArr.count > 0) {
             index = (uint8_t)[mArr[0] intValue];
         }
-        NSLog(@"----> Add RTC Index: %d",index);
+        kJLLog(JLLOG_DEBUG, @"----> Add RTC Index: %d",index);
         
         JLModel_AlarmSetting *setting = [JLModel_AlarmSetting new];
         setting.index = index;

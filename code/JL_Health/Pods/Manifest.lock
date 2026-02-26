@@ -1,4 +1,10 @@
 PODS:
+  - FMDB (2.7.12):
+    - FMDB/standard (= 2.7.12)
+  - FMDB/Core (2.7.12)
+  - FMDB/standard (2.7.12):
+    - FMDB/Core
+  - Kingfisher (7.12.0)
   - RxCocoa (6.6.0):
     - RxRelay (= 6.6.0)
     - RxSwift (= 6.6.0)
@@ -10,14 +16,18 @@ PODS:
   - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
-  - RxCocoa
-  - RxSwift
-  - SnapKit
+  - FMDB
+  - Kingfisher (= 7.12.0)
+  - RxCocoa (= 6.6.0)
+  - RxSwift (= 6.6.0)
+  - SnapKit (= 5.6.0)
   - SwiftyAttributes (= 5.3.0)
   - Toast-Swift (= 5.0.1)
 
 SPEC REPOS:
   trunk:
+    - FMDB
+    - Kingfisher
     - RxCocoa
     - RxRelay
     - RxSwift
@@ -26,6 +36,8 @@ SPEC REPOS:
     - Toast-Swift
 
 SPEC CHECKSUMS:
+  FMDB: 728731dd336af3936ce00f91d9d8495f5718a0e6
+  Kingfisher: 53a10ea35051a436b5fb626ca2dd8f3144d755e9
   RxCocoa: 44a80de90e25b739b5aeaae3c8c371a32e3343cc
   RxRelay: 45eaa5db8ee4fb50e5ebd57deec0159e97fa51e6
   RxSwift: a4b44f7d24599f674deebd1818eab82e58410632
@@ -33,6 +45,6 @@ SPEC CHECKSUMS:
   SwiftyAttributes: 6d7386e90ac611b6acac8b59e38f34bfa4621c80
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 7d8f67f39e09fd734b5e7de2878bc291d935cfae
+PODFILE CHECKSUM: 3e98c4a9e896a96180180a8c4aa928d910988697
 
 COCOAPODS: 1.13.0

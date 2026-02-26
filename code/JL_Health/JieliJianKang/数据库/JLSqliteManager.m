@@ -8,7 +8,7 @@
 
 #import "JLSqliteManager.h"
 
-#define ECMethod(...) NSLog(@"%s%@", __func__,__VA_ARGS__)
+#define ECMethod(...) kJLLog(JLLOG_DEBUG, @"%s%@", __func__,__VA_ARGS__)
 
 @interface JLSqliteManager()
 
@@ -82,7 +82,7 @@
     // 聊天数据表
     [self creatTable:tb_chat_record withTableSql:[NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (ID INTEGER PRIMARY KEY AUTOINCREMENT, role TEXT, timestamp double, date TEXT, text TEXT, aiCloudState TEXT);", tb_chat_record]];
     
-    NSLog(@"initializeDatabaseWithUserIdentify");
+    kJLLog(JLLOG_DEBUG, @"initializeDatabaseWithUserIdentify");
 }
 
 - (void)creatTable:(NSString *)tbName withTableSql:(NSString *)sqlStr {

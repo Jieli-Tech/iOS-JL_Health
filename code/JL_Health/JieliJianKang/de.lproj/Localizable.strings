@@ -677,3 +677,15 @@
 "是否要清除用户缓存" = "Möchten Sie den Benutzercache leeren?";
 "AI表盘" = "KI-Zifferblatt";
 "正在传输中" = "Übertragung...";
+"Image Captcha" = "Bild-Captcha";
+"Can't see it? Try another." = "Nicht klar? Probieren Sie eine andere.";
+"Please enter the correct captcha." = "Bitte geben Sie das richtige Captcha ein.";
+"There was a problem loading the image verification code, please try again later" = "Beim Laden des Bild-Verifizierungscodes ist ein Problem aufgetreten. Bitte versuchen Sie es später erneut.";
+"Custom" = "Anpassen";
+"Custom Dial" = "Benutzerdefiniertes Zifferblatt";
+"I have read and agree to the" = "Ich habe es gelesen und stimme zu";
+"User Agreement" = "Benutzervereinbarung";
+"Privacy Policy" = "Datenschutzrichtlinie";
+"and" = "Und";
+"Please read and agree to the Terms of Service and Privacy Policy." = "Bitte lesen Sie die Nutzungsbedingungen und Datenschutzbestimmungen und stimmen Sie ihnen zu";
+"ICP filing information" = "Informationen zur ICP-Einreichung";

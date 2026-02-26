@@ -13,15 +13,17 @@
 #import <JL_BLEKit/JL_BLEKit.h>
 #import <JL_HashPair/JL_HashPair.h>
 #import <JLDialUnit/JLDialUnit.h>
+#import <JLBmpConvertKit/JLBmpConvertKit.h>
 #import <JLBugly/JLBugly-Swift.h>
+#import <NSObjectSafe/NSObjectSafe.h>
 
 #import "JLPhoneUISetting.h"
 #import "DialUICache.h"
 
-#define kStoreIAP_MOBILE    @"00000000000"
+#define kStoreIAP_MOBILE    @"15315274007"
 #define BaseURL             @"http://health.jieliapp.com"           //【杰理服务器】测试域名test03.jieliapp.com  上架域名health.jieliapp.com
-#define MapApiKey           @"00000000000000000000000000000000"     //【杰理之家】地图SDK的Key
-#define PiLinkMapApiKey     @"00000000000000000000000000000000"     //【PiLink】地图SDK的Key
+#define MapApiKey           @"0733d73d9ca8476dc29442f3d22fc4d9"     //【杰理之家】地图SDK的Key
+#define PiLinkMapApiKey     @"7dc05b2a0e2fe8b2bdec91acb04d3a6c"     //【PiLink】地图SDK的Key
 
 #define kJL_BLE_Multiple    [[JL_RunSDK sharedMe] mBleMultiple]     //蓝牙控制中心
 #define kJL_BLE_EntityM     [[JL_RunSDK sharedMe] mBleEntityM]      //当前蓝牙设备
@@ -30,8 +32,8 @@
 #define kJL_DIAL_CACHE      [[JL_RunSDK sharedMe] mDialUICache]     //表盘的UI缓存
 
 #define APPID_VALUE         @"94df387f"
-#define APIKEY @"00000000000000000000000000000000"
-#define APISERECT @"00000000000000000000000000000000"
+#define APIKEY @"65dbf2af3c95900e31024e6d2e3b99da"
+#define APISERECT @"ZjMzNTM0ZGJiMDQ2ODI2NTQyNWVjOTcy"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -43,7 +45,7 @@ typedef NS_ENUM(UInt8, JLUuidType) {
     JLUuidTypeNeedOTA                   = 3,    //UUID需要OTA
     JLUuidTypePreparing                 = 4,    //正在准备的UUID
 };
-typedef NS_ENUM(UInt8, JLDeviceChangeType) {
+typedef NS_ENUM(int, JLDeviceChangeType) {
     JLDeviceChangeTypeConnectedOffline  = 0,    //断开已连接的设备
     JLDeviceChangeTypeInUseOffline      = 1,    //断开正在使用的设备
     JLDeviceChangeTypeSomethingConnected= 2,    //有设备连接上
@@ -80,7 +82,7 @@ extern NSString *kUI_INSTALL_DIAL_SUCCESS;
 
 @interface JL_RunSDK : NSObject
 @property(strong,nonatomic)JL_BLEMultiple *mBleMultiple;
-@property(weak  ,nonatomic)JL_EntityM     *__nullable mBleEntityM;
+@property(strong,nonatomic)JL_EntityM     *__nullable mBleEntityM;
 @property(strong,nonatomic)NSString       *__nullable mBleUUID;
 @property(strong,nonatomic)DialUICache    *__nullable mDialUICache;
 @property(strong,nonatomic)NSString       *__nullable ancsUUID;
@@ -98,6 +100,20 @@ extern NSString *kUI_INSTALL_DIAL_SUCCESS;
 @property(assign,nonatomic)int g4ModelVendor;
 
 +(id)sharedMe;
+
+/// 连接设备
+/// - Parameters:
+///   - entityM: entity
+///   - callBack: 回调
+-(void)connectDevice:(JL_EntityM*)entityM callBack:(void (^)(BOOL))callBack;
+
+/// 连接设备(mac)
+/// - Parameters:
+///   - mac: mac
+///   - callBack: 回调
+-(void)connectDeviceMac:(NSString*)mac callBack:(void (^)(BOOL))callBack;
+
+-(BOOL)isConnecting;
 
 /**
   使用UUID切换设备

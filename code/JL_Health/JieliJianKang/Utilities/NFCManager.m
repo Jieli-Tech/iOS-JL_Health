@@ -43,32 +43,32 @@
 //+(NFCSupportsStatus)isSupportsNFCReading{
 //    if (@available(iOS 11.0,*)) {
 //        if (NFCNDEFReaderSession.readingAvailable == YES) {
-//            NSLog(@"%@",@"该机型支持NFC读功能!");
+//            kJLLog(JLLOG_DEBUG, @"%@",@"该机型支持NFC读功能!");
 //            return NFCSupportStatusYes;
 //        }
 //        else{
-//            NSLog(@"%@",@"该机型不支持NFC功能!");
+//            kJLLog(JLLOG_DEBUG, @"%@",@"该机型不支持NFC功能!");
 //            return NFCSupportStatusDeviceNo;
 //        }
 //    }
 //    else {
-//        NSLog(@"%@",@"当前系统不支持NFC功能!");
+//        kJLLog(JLLOG_DEBUG, @"%@",@"当前系统不支持NFC功能!");
 //        return NFCSupportStatusnSystemNo;
 //    }
 //}
 //+(NFCSupportsStatus)isSupportsNFCWrite{
 //    if (@available(iOS 13.0,*)) {
 //        if (NFCNDEFReaderSession.readingAvailable == YES) {
-//            NSLog(@"%@",@"该机型支持NFC写功能!");
+//            kJLLog(JLLOG_DEBUG, @"%@",@"该机型支持NFC写功能!");
 //            return NFCSupportStatusYes;
 //        }
 //        else{
-//            NSLog(@"%@",@"该机型不支持NFC功能!");
+//            kJLLog(JLLOG_DEBUG, @"%@",@"该机型不支持NFC功能!");
 //            return NFCSupportStatusDeviceNo;
 //        }
 //    }
 //    else {
-//        NSLog(@"%@",@"当前系统不支持NFC功能!");
+//        kJLLog(JLLOG_DEBUG, @"%@",@"当前系统不支持NFC功能!");
 //        return NFCSupportStatusnSystemNo;
 //    }
 //}
@@ -157,12 +157,12 @@
 //#pragma mark - NFCNDEFReaderSessionDelegate
 ////读取失败回调-读取成功后还是会回调这个方法
 //- (void)readerSession:(NFCNDEFReaderSession *)session didInvalidateWithError:(NSError *)error API_AVAILABLE(ios(11.0)){
-//    NSLog(@"%@",error);
+//    kJLLog(JLLOG_DEBUG, @"%@",error);
 //    if (error.code == 201) {
-//        NSLog(@"扫描超时");
+//        kJLLog(JLLOG_DEBUG, @"扫描超时");
 //    }
 //    if (error.code == 200) {
-//        NSLog(@"取消扫描");
+//        kJLLog(JLLOG_DEBUG, @"取消扫描");
 //    }
 //}
 ////读取成功回调iOS11-iOS12

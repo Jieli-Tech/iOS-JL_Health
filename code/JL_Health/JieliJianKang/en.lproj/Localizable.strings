@@ -680,3 +680,15 @@
 "是否要清除用户缓存" = "Do you want to clear user cache?";
 "AI表盘" = "AI Dial";
 "正在传输中" = "Transferring...";
+"Image Captcha" = "Image Captcha";
+"Can't see it? Try another." = "Can't see it? Try another.";
+"Please enter the correct captcha." = "Please enter the correct captcha.";
+"There was a problem loading the image verification code, please try again later" = "There was a problem loading the image verification code, please try again later";
+"Custom" = "Custom";
+"Custom Dial" = "Custom Dial";
+"I have read and agree to the" = "I have read and agree to the";
+"User Agreement" = "User Agreement";
+"Privacy Policy" = "Privacy Policy";
+"and" = "and";
+"Please read and agree to the Terms of Service and Privacy Policy." = "Please read and agree to the Terms of Service and Privacy Policy.";
+"ICP filing information" = "ICP filing information";

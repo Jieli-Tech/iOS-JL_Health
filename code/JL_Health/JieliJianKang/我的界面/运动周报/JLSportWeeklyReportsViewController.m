@@ -69,7 +69,7 @@
     StartAndEndDate *model = [_currentDate thisWeek];
     _currentWeekStartDate = model.start;
     _currentWeekEndDate = model.end;
-//    NSLog(@"_currentDate:%@, start:%@, end:%@, %d", _currentDate, _currentWeekStartDate, _currentWeekEndDate, [User_Http shareInstance].userInfo.step);
+//    kJLLog(JLLOG_DEBUG, @"_currentDate:%@, start:%@, end:%@, %d", _currentDate, _currentWeekStartDate, _currentWeekEndDate, [User_Http shareInstance].userInfo.step);
     
     _index = 0;
     _barChartDataModelArray = [NSMutableArray array];
@@ -204,7 +204,7 @@
     StartAndEndDate *model = [_currentDate thisWeek];
     _currentWeekStartDate = model.start;
     _currentWeekEndDate = model.end;
-//    NSLog(@"_currentDate:%@, start:%@, end:%@", _currentDate, _currentWeekStartDate, _currentWeekEndDate);
+//    kJLLog(JLLOG_DEBUG, @"_currentDate:%@, start:%@, end:%@", _currentDate, _currentWeekStartDate, _currentWeekEndDate);
     
     _index--;
     [self setNextButtonStatus];
@@ -217,7 +217,7 @@
     StartAndEndDate *model = [_currentDate thisWeek];
     _currentWeekStartDate = model.start;
     _currentWeekEndDate = model.end;
-//    NSLog(@"_currentDate:%@, start:%@, end:%@", _currentDate, _currentWeekStartDate, _currentWeekEndDate);
+//    kJLLog(JLLOG_DEBUG, @"_currentDate:%@, start:%@, end:%@", _currentDate, _currentWeekStartDate, _currentWeekEndDate);
     
     _index++;
     [self setNextButtonStatus];

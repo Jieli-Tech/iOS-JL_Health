@@ -193,10 +193,10 @@
             // 通知固件开始室外运动
             if (kJL_BLE_EntityM) {
                 [[JLWearSync share] addProtocol:self];
-                NSLog(@"[JLWearSync share] w_SportStart:");
+                kJLLog(JLLOG_DEBUG, @"[JLWearSync share] w_SportStart:");
                 [[JLWearSync share] w_SportStart:self.sportType With:kJL_BLE_EntityM Block:^(BOOL succeed) {
                     if (succeed) {
-                        NSLog(@"[JLWearSync share] w_SportStart: succeed");
+                        kJLLog(JLLOG_DEBUG, @"[JLWearSync share] w_SportStart: succeed");
                         // 固件开始运动
                         [[JLWearSync share] w_requireSportInfoWith:kJL_BLE_EntityM Block:^(JLWearSyncInfoModel *infoModel) {
                             if ((infoModel.sportID > 0) && (infoModel.status == WatchSportStatus_Motion)) {
@@ -219,7 +219,7 @@
         }];
     } else {
         // 获取当前运动实时信息
-        NSLog(@"viewDidAppear needStartAnimation no!");
+        kJLLog(JLLOG_DEBUG, @"viewDidAppear needStartAnimation no!");
         if (self.wearSyncInfoModel.status == WatchSportStatus_Pause) {
             [self continueUI];
         }
@@ -231,7 +231,7 @@
 }
 
 - (void)dealloc {
-    NSLog(@"JLSportDetailViewController dealloc");
+    kJLLog(JLLOG_DEBUG, @"JLSportDetailViewController dealloc");
     [self timerInvalidate];
     [self realTimeSportInfoTimerInvalidate];
     self.navigationController.interactivePopGestureRecognizer.enabled = YES;
@@ -346,7 +346,7 @@
 
 - (IBAction)pauseBtnFunc:(id)sender {
     [[JLWearSync share] w_SportPauseWith:kJL_BLE_EntityM Block:^(BOOL succeed) {
-        NSLog(@"w_SportPauseWith: %d", succeed);
+        kJLLog(JLLOG_DEBUG, @"w_SportPauseWith: %d", succeed);
     }];
 }
 
@@ -387,7 +387,7 @@
 
 - (IBAction)continueBtnFunc:(id)sender {
     [[JLWearSync share] w_SportContinueWith:kJL_BLE_EntityM Block:^(BOOL succeed) {
-        NSLog(@"w_SportContinueWith: %d", succeed);
+        kJLLog(JLLOG_DEBUG, @"w_SportContinueWith: %d", succeed);
     }];
 }
 
@@ -434,14 +434,14 @@
     if (wearSyncInfoModel == nil) return;
     _wearSyncInfoModel = wearSyncInfoModel;
     self.sportType = wearSyncInfoModel.sportType;
-    NSLog(@"wearSyncInfoModel.sportID : %f", wearSyncInfoModel.sportID);
+    kJLLog(JLLOG_DEBUG, @"wearSyncInfoModel.sportID : %f", wearSyncInfoModel.sportID);
     self.sportID = wearSyncInfoModel.sportID;
     self.heartRateType = wearSyncInfoModel.heartRateType;
     self.requireRealTimeSportInfoInterval = (double)wearSyncInfoModel.interval / 1000;
     if (self.requireRealTimeSportInfoInterval <= 0 || self.requireRealTimeSportInfoInterval > 5) {
         self.requireRealTimeSportInfoInterval = 5.0f;
     }
-    NSLog(@"requireRealTimeSportInfoInterval:%f", self.requireRealTimeSportInfoInterval);
+    kJLLog(JLLOG_DEBUG, @"requireRealTimeSportInfoInterval:%f", self.requireRealTimeSportInfoInterval);
     [self initializeDoingSportMapViewController];
     [self realTimeSportInfoTimerInvalidate];
     self.realTimeSportInfoTimer = [NSTimer timerWithTimeInterval:self.requireRealTimeSportInfoInterval repeats:YES block:^(NSTimer * _Nonnull timer) {
@@ -484,7 +484,7 @@
 - (void)initializeDoingSportMapViewController {
     if ((self.sportType != 0x02) && (self.doingSportMapViewController == nil) && self.sportID) {
         self.doingSportMapViewController = [[JLSportMapViewController alloc] init];
-        NSLog(@"doingSportMapViewController.sportID : %f", self.sportID);
+        kJLLog(JLLOG_DEBUG, @"doingSportMapViewController.sportID : %f", self.sportID);
         self.doingSportMapViewController.sportID = self.sportID;
         [self.doingSportMapViewController initMapView];
     }
@@ -594,7 +594,7 @@
                 if (kJL_BLE_EntityM == nil) {
                     [weakSelf finishLocalSport];
                 } else {
-//                    NSLog(@"[JLWearSync share] w_SportFinishWith");
+//                    kJLLog(JLLOG_DEBUG, @"[JLWearSync share] w_SportFinishWith");
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         if ([weakSelf.navigationController.topViewController isKindOfClass:[JLSportDetailViewController class]]) {
                             [weakSelf.navigationController popToRootViewControllerAnimated:YES];
@@ -635,11 +635,11 @@
     self.animateImageView.image = [UIImage imageNamed:@"nub_3"];
     [self.animateImageView setHidden:NO];
     [[JLAudioToolBox sharedInstance] playAudioWithFileUrlString:[[NSBundle mainBundle] pathForResource:@"num_3" ofType:@"wav"]];
-    NSLog(@"startAnimationWithCompletion3");
+    kJLLog(JLLOG_DEBUG, @"startAnimationWithCompletion3");
     [UIView animateWithDuration:1.0f animations:^{
         self.animateImageView.transform = CGAffineTransformMakeScale(1, 1);
     } completion:^(BOOL finished) {
-        NSLog(@"startAnimationWithCompletion2");
+        kJLLog(JLLOG_DEBUG, @"startAnimationWithCompletion2");
         [self.animateImageView setHidden:YES];
         self.animateImageView.transform = CGAffineTransformMakeScale(0.1, 0.1);
         self.animateImageView.image = [UIImage imageNamed:@"nub_2"];
@@ -648,7 +648,7 @@
         [UIView animateWithDuration:1.0f animations:^{
             self.animateImageView.transform = CGAffineTransformMakeScale(1, 1);
         } completion:^(BOOL finished) {
-            NSLog(@"startAnimationWithCompletion1");
+            kJLLog(JLLOG_DEBUG, @"startAnimationWithCompletion1");
             [self.animateImageView setHidden:YES];
             self.animateImageView.transform = CGAffineTransformMakeScale(0.1, 0.1);
             self.animateImageView.image = [UIImage imageNamed:@"nub_1"];
@@ -657,7 +657,7 @@
             [UIView animateWithDuration:1.0f animations:^{
                 self.animateImageView.transform = CGAffineTransformMakeScale(1, 1);
             } completion:^(BOOL finished) {
-                NSLog(@"startAnimationWithCompletion0");
+                kJLLog(JLLOG_DEBUG, @"startAnimationWithCompletion0");
                 [self.animateImageView setHidden:YES];
                 self.animateImageView.transform = CGAffineTransformMakeScale(0.1, 0.1);
                 self.animateImageView.image = [UIImage imageNamed:@"nub_0"];
@@ -666,7 +666,7 @@
                 [UIView animateWithDuration:1.0f animations:^{
                     self.animateImageView.transform = CGAffineTransformMakeScale(1, 1);
                 } completion:^(BOOL finished) {
-                    NSLog(@"startAnimationWithCompletiongo");
+                    kJLLog(JLLOG_DEBUG, @"startAnimationWithCompletiongo");
                     [self.animateImageView setHidden:YES];
                     [[JLAudioToolBox sharedInstance] playAudioWithFileUrlString:[[NSBundle mainBundle] pathForResource:@"begin" ofType:@"wav"]];
                     completion();
@@ -724,7 +724,7 @@
     self.heartRateLabel.text = [NSString stringWithFormat:@"%d", model.heartRate];
     self.doingSportMapViewController.calories = model.calories;
     self.doingSportMapViewController.speed = model.speed;
-//    NSLog(@"实时运动：\n步幅,单位:厘米 : %d", model.stride);
+//    kJLLog(JLLOG_DEBUG, @"实时运动：\n步幅,单位:厘米 : %d", model.stride);
     switch (model.statusType) {
         case WatchExercise_Level1:
             self.sportStatusView.backgroundColor = [JLColor colorWithString:@"#87C1EF"];
@@ -772,7 +772,7 @@
 - (void)jlWearSyncStopMotion:(JLWearSyncFinishModel * _Nonnull)model With:(JL_EntityM * _Nonnull)entity {
     [self timerInvalidate];
     __weak typeof(self) weakSelf = self;
-    NSLog(@"jlWearSyncStopMotion sportid:%d", model.sportId);
+    kJLLog(JLLOG_DEBUG, @"jlWearSyncStopMotion sportid:%d", model.sportId);
     if (model.fileSize == 0) {
         [weakSelf.navigationController popToRootViewControllerAnimated:YES];
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:kJL_TXT("提示") message:kJL_TXT("运动距离过短，将不保存记录备份") preferredStyle:UIAlertControllerStyleAlert];
@@ -791,12 +791,12 @@
     [[SyncDataManager share] syncSportRecordData:kJL_BLE_EntityM BySportId:model.sportId with:^(JLSportRecordModel * _Nullable model) {
         JL_SRM_DataFormat *firstData = model.dataArray.firstObject;
         NSTimeInterval startTimeInterval = [firstData.startDate timeIntervalSince1970];
-        NSLog(@"[SyncDataManager share] syncSportRecordData, sportid:%f", startTimeInterval);
+        kJLLog(JLLOG_DEBUG, @"[SyncDataManager share] syncSportRecordData, sportid:%f", startTimeInterval);
         if (startTimeInterval == self.sportID) {
             // 保存到数据表
             [JLSqliteSportRunningRecord s_checkoutWithSportID:startTimeInterval Result:^(JL_SportRecord_Chart * _Nullable chart) {
                 if (chart) {
-                    NSLog(@"JLSqliteSportRunningRecord s_checkoutWithSportID chart");
+                    kJLLog(JLLOG_DEBUG, @"JLSqliteSportRunningRecord s_checkoutWithSportID chart");
                     if  (weakSelf.sportHistoryDetailViewController && [weakSelf.navigationController.viewControllers containsObject:self.sportHistoryDetailViewController]) {
                         return;
                     }

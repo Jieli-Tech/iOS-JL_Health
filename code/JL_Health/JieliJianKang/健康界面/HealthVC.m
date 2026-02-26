@@ -102,7 +102,7 @@
         //如果支持睡眠检测
         if(configModel.healthFunc.spComprehensive.spSleepMonitor){
             [[SyncDataManager share] syncSleepData:kJL_BLE_EntityM with:^(JLWearSyncHealthSleepChart * _Nullable chart) {
-                NSLog(@"同步睡眠数据");
+                kJLLog(JLLOG_DEBUG, @"同步睡眠数据");
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [weakSelf.scrollView.mj_header endRefreshing];
                     [weakSelf refreshView];
@@ -112,7 +112,7 @@
         //如果支持心率功能
         if(configModel.healthFunc.spHeartRate.spExist){
             [[SyncDataManager share] syncHeartRateData:kJL_BLE_EntityM with:^(JLWearSyncHealthHeartRateChart * _Nullable chart) {
-                NSLog(@"同步心率数据");
+                kJLLog(JLLOG_DEBUG, @"同步心率数据");
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [weakSelf.scrollView.mj_header endRefreshing];
                     [weakSelf refreshView];
@@ -122,7 +122,7 @@
         //如果支持计步Gsensor
         if(configModel.healthFunc.spGSensor.spExist){
             [[SyncDataManager share] syncStepCountData:kJL_BLE_EntityM with:^(JLWearSyncHealthStepChart * _Nullable model) {
-                NSLog(@"同步设备步数");
+                kJLLog(JLLOG_DEBUG, @"同步设备步数");
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [weakSelf.scrollView.mj_header endRefreshing];
                     [weakSelf refreshView];
@@ -132,7 +132,7 @@
         //如果支持血氧
         if(configModel.healthFunc.spBloodOxygen.spExist){
             [[SyncDataManager share] syncBloodOxyganData:kJL_BLE_EntityM with:^(JLWearSyncHealthBloodOxyganChart * _Nullable chart) {
-                NSLog(@"同步设备血氧记录");
+                kJLLog(JLLOG_DEBUG, @"同步设备血氧记录");
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [weakSelf.scrollView.mj_header endRefreshing];
                     [weakSelf refreshView];
@@ -142,7 +142,7 @@
         //如果支持运动记录
         if(configModel.healthFunc.spSportModel.spRecord){
             [[SyncDataManager share] syncSportRecordData:kJL_BLE_EntityM with:^(JLSportRecordModel * _Nullable model) {
-                NSLog(@"运动记录");
+                kJLLog(JLLOG_DEBUG, @"运动记录");
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [weakSelf.scrollView.mj_header endRefreshing];
                     [weakSelf refreshView];
@@ -150,7 +150,7 @@
             }];
         }
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            NSLog(@"a同步强制结束");
+//            kJLLog(JLLOG_DEBUG, @"a同步强制结束");
             [weakSelf.scrollView.mj_header endRefreshing];
         });
         [weakSelf refreshMoveStep];
@@ -378,9 +378,9 @@
 //        [[JLPopMenuViewItemObject alloc] initWithName:@"NFC读卡操作" withImageName:@"icon_scan_nol" withTapBlock:^{
 //            if (@available(iOS 11.0, *)) {
 //                [[NFCManager sharedInstance] scanTagWithSuccessBlock:^(NFCNDEFMessage * _Nonnull message) {
-//                    NSLog(@"scanTag success: %@", message);
+//                    kJLLog(JLLOG_DEBUG, @"scanTag success: %@", message);
 //                } andErrorBlock:^(NSError * _Nonnull error) {
-//                    NSLog(@"scanTag error: %@", error);
+//                    kJLLog(JLLOG_DEBUG, @"scanTag error: %@", error);
 //                }];
 //            }
 //        }],

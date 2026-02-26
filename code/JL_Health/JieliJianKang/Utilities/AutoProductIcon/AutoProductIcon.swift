@@ -47,7 +47,7 @@ import UIKit
     
     
     func saveToLocal(_ pid:String,_ vid:String,_ url:String?){
-        debugPrint("save local path pid:\(pid)+vid:\(vid) \npath:\(String(describing: url))")
+        debugPrint("save local path pid:\(pid) + vid:\(vid) \n path:\(String(describing: url))")
         if let u = url {
             UserDefaults.standard.set(u, forKey: pid+"_"+vid)
         }else{

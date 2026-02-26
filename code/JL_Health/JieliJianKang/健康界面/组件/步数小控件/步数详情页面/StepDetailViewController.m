@@ -321,7 +321,7 @@
 //            k = 0;
 //        }
 //        CGPoint p = CGPointMake(i, k);
-//        NSLog(@"%f,%f",p.x,p.y);
+//        kJLLog(JLLOG_DEBUG, @"%f,%f",p.x,p.y);
 //        [stepDayArray addObject:[NSValue valueWithCGPoint:p]];
 //    }
 //    hisView.dataArray = stepDayArray;
@@ -339,7 +339,7 @@
 //        int k = random()%10000;
 //
 //        CGPoint p = CGPointMake(i, k);
-////        NSLog(@"%f,%f",p.x,p.y);
+////        kJLLog(JLLOG_DEBUG, @"%f,%f",p.x,p.y);
 //        [ps addObject:[NSValue valueWithCGPoint:p]];
 //    }
 //    hisView.dataArray = ps;
@@ -359,7 +359,7 @@
 //            k = 0;
 //        }
 //        CGPoint p = CGPointMake(i, k);
-////        NSLog(@"%f,%f",p.x,p.y);
+////        kJLLog(JLLOG_DEBUG, @"%f,%f",p.x,p.y);
 //        [ps addObject:[NSValue valueWithCGPoint:p]];
 //    }
 //    hisView.dataArray = ps;
@@ -379,7 +379,7 @@
 //            k = 0;
 //        }
 //        CGPoint p = CGPointMake(i, k);
-////        NSLog(@"%f,%f",p.x,p.y);
+////        kJLLog(JLLOG_DEBUG, @"%f,%f",p.x,p.y);
 //        [ps addObject:[NSValue valueWithCGPoint:p]];
 //    }
 //    hisView.dataArray = ps;
@@ -751,7 +751,7 @@
     }
     titleBarView.alpha = k;
     
-//    NSLog(@"scrollViewDidScroll:%f",scrollView.contentOffset.y);
+//    kJLLog(JLLOG_DEBUG, @"scrollViewDidScroll:%f",scrollView.contentOffset.y);
 }
 
 //MARK: - 默认数据

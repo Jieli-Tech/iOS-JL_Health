@@ -61,7 +61,6 @@
 -(void)requireDataFromDevice{
     JLWearable *w = [JLWearable sharedInstance];
     [w w_addDelegate:self];
-    
     [w w_InquireDeviceFuncWith:JL_WATCH_SETTING_LIFTWRIST_DETECTION|JL_WATCH_SETTING_BLUETOOTH_DISCONECTED_REMINDER withEntity:kJL_BLE_EntityM];
 }
 

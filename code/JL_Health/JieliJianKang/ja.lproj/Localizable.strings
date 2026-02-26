@@ -679,3 +679,15 @@
 "是否要清除用户缓存" = "ユーザーキャッシュをクリアしますか?";
 "AI表盘" = "AI ダイヤル";
 "正在传输中" = "転送中...";
+"Image Captcha" = "画像CAPTCHA";
+"Can't see it? Try another." = "見えにくい？別のものに変える";
+"Please enter the correct captcha." = "正しいCAPTCHAを入力してください";
+"There was a problem loading the image verification code, please try again later" = "画像確認コードの読み込み中に問題が発生しました。後でもう一度お試しください。";
+"Custom" = "カスタマイズ";
+"Custom Dial" = "カスタム文字盤";
+"I have read and agree to the" = "読んで同意します";
+"User Agreement" = "ユーザー同意書";
+"Privacy Policy" = "プライバシーポリシー";
+"and" = "そして";
+"Please read and agree to the Terms of Service and Privacy Policy." = "利用規約とプライバシーポリシーを読んで同意してください";
+"ICP filing information" = "ICP出願情報";

@@ -1,0 +1,548 @@
+3.接口说明
+==========
+
+3.1 表盘操作接口
+----------------
+
+3.1.1 接口声明与使用示例
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: objectivec
+
+   //以下使用到的mBleEntityM。在文档1.3.1里有介绍。
+   /**
+    表盘操作
+    @param path    路径
+    @param flag    0x00:读取
+                   0x01:设置
+                   0x03:版本
+                   0x04:激活自定义表盘
+                   0x05:获取对应的自定义表盘名字
+    @param result  回复
+    */
+   -(void)cmdWatchFlashPath:(NSString*__nullable)path
+                       Flag:(JL_DialSetting)flag
+                     Result:(JL_FlashWatch_BK __nullable)result;
+
+   //1、读取当前表盘名字
+   [mBleEntityM.mCmdManager.mFlashManager cmdWatchFlashPath:path Flag:JL_DialSettingReadCurrentDial
+                               Result:^(uint8_t flag, uint32_t size,
+                                        NSString * _Nullable path,
+                                        NSString * _Nullable describe) {
+        [JL_Tools mainTask:^{
+            NSLog(@"--->当前表盘名字：%@",path);
+        }];
+   }];
+
+   //2、切换表盘，所有表盘操作名字都需要加"/"斜杠前缀，例如@"/WATCH2",如下所示就是切换至WATCH2表盘。
+   [mBleEntityM.mCmdManager.mFlashManager cmdWatchFlashPath:@"/WATCH2" Flag:JL_DialSettingSetDial
+                               Result:^(uint8_t flag, uint32_t size,
+                                        NSString * _Nullable path,
+                                        NSString * _Nullable describe) {
+       [JL_Tools mainTask:^{
+         if (flag == 0) {
+               NSLog(@"切换表盘成功~");
+         }else{
+               NSLog(@"切换表盘失败~");
+              }
+         }];
+   }];
+
+   //3、获取表盘版本号，所有表盘操作名字都需要加"/"斜杠前缀，例如@"/WATCH2",如下所示就是获取WATCH2表盘版本号。
+   [mBleEntityM.mCmdManager.mFlashManager cmdWatchFlashPath:@"/WATCH2" Flag:JL_DialSettingVersion
+                               Result:^(uint8_t flag, uint32_t size,
+                                        NSString * _Nullable path,
+                                        NSString * _Nullable describe) {
+           [JL_Tools mainTask:^{
+                  NSLog(@"--->当前表盘版本：%@",path);
+           }];
+   }];
+
+   //4、激活自定义表盘背景，所有表盘操作名字都需要加"/"斜杠前缀，例如@"/BGP_W001",如下所示就是将当前表盘的背景切换成BGP_W001。
+   //假如path赋值@"/null",解除当前复原当前表盘背景，解绑自定义背景。
+   [mBleEntityM.mCmdManager.mFlashManager cmdWatchFlashPath:@"/BGP_W001" Flag:JL_DialSettingActivateCustomDial
+                               Result:^(uint8_t flag, uint32_t size,
+                                        NSString * _Nullable path,
+                                        NSString * _Nullable describe) {
+       [JL_Tools mainTask:^{
+           if (flag == 0) {
+               NSLog(@"激活成功~");
+           }else{
+               NSLog(@"激活失败~");
+           }
+       }];
+   }];
+
+   //5、获取表盘的自定义背景名字，所有表盘操作名字都需要加"/"斜杠前缀，例如@"/WATCH2",如下所示则获取WATCH2表盘对应的自定义背景名字。
+   [mBleEntityM.mCmdManager.mFlashManager cmdWatchFlashPath:@"BGP_W001" Flag:JL_DialSettingGetDialName
+                               Result:^(uint8_t flag, uint32_t size,
+                                        NSString * _Nullable path,
+                                        NSString * _Nullable describe) {
+           [JL_Tools mainTask:^{
+               if (flag == 0) {
+                     NSLog(@"操作成功~");
+                     NSLog(@"对应的自定义背景：%@",path);
+               else{
+                     NSLog(@"操作失败~");
+               }
+           }];
+    }];                         
+
+3.2 表盘事件回调监听器
+----------------------
+
+.. code:: objectivec
+
+   //设备更新表盘，监听以下通知返回当前设备切换的表盘名字，例如@"WATCH2"。
+   extern NSString *kJL_MANAGER_WATCH_FACE;
+   //监听的方法例子：                              
+   -(void)noteWatchFace:(NSNotification*)note{
+       NSDictionary *dict = [note object];
+       NSString *text = dict[kJL_MANAGER_KEY_OBJECT];
+       NSLog(@"--->设备更新表盘：%@",text);    
+   }     
+
+3.3 设备事件推送监听器
+----------------------
+
+无
+
+3.4 OTA升级
+-----------
+
+
+3.4.1 功能描述
+~~~~~~~~~~~~~~
+
+​ 解决固件升级问题，时刻优化固件性能。 ​ OTA升级的两种情况： ​
+1、【单备份】连接设备成功–>获取设备信息–>执行升级–>检验完后断开重连设备–>连接设备成功–>获取设备信息–>需要强制升级–>跳到升级界面，执行OTA级，否则设备如法使用；
+​ 2、【双备份】连接设备成功–>获取设备信息–>执行升级–>升级成功；
+
+3.4.2 OTA接口流程
+~~~~~~~~~~~~~~~~~
+
+**接口使用分为两种情况：**
+
+- 1、连接设备成功-->获取设备信息-->需要强制升级-->跳到升级界面，执行OTA升级，否则设备如法使用；
+- 2、连接设备成功-->获取设备信息-->无需强制升级-->正常使用APP；
+
+3.4.3 获取设备信息
+~~~~~~~~~~~~~~~~~~
+
+.. code:: objectivec
+
+   //1、以下操作都是在连接设备成功后执行的。
+   //2、以下使用到的mBleEntityM。在文档1.3.1里有介绍。
+
+   [mBleEntityM.mCmdManager cmdTargetFeatureResult:^(NSArray *array) {
+           JL_CMDStatus st = [array[0] intValue];
+           if (st == JL_CMDStatusSuccess) {
+               JLModel_Device *model = [wSelf.mBleEntityM.mCmdManager outputDeviceModel];
+               
+               JL_OtaStatus upSt = model.otaStatus;
+               if (upSt == JL_OtaStatusForce) {
+                   NSLog(@"---> 进入强制升级,跳至升级界面，执行OTA升级");
+                   return;
+               }else{
+                   if (model.otaHeadset == JL_OtaHeadsetYES) {
+                       NSLog(@"---> 进入强制升级,跳至升级界面，执行OTA升级");
+                       return;
+                   }
+                   NSLog(@"设备正常使用");
+               }
+           }
+       }];
+
+3.4.4 执行OTA升级
+~~~~~~~~~~~~~~~~~
+
+.. code:: objectivec
+
+       NSData *otaData = [NSData dataWithContentsOfFile:@"OTA升级文件路径"];
+       /*--- 开始OTA升级 ---*/
+       [mBleEntityM.mCmdManager.mOTAManager cmdOTAData:otaData Result:^(JL_OTAResult result, float progress) {
+           [JL_Tools mainTask:^{
+               if (result == JL_OTAResultPreparing ||
+                   result == JL_OTAResultUpgrading)
+               {
+                   [self otaTimeCheck];//增加超时检测
+                   
+                   if (result == JL_OTAResultUpgrading) self.updateTxt.text = kJL_TXT("正在升级");
+                   if (result == JL_OTAResultPreparing) self.updateTxt.text = kJL_TXT("检验文件");
+                   self.progressTxt.text = [NSString stringWithFormat:@"%.1f%%",progress*100.0];
+                   self.progressView.progress = progress;
+               }
+               
+               if (result == JL_OTAResultPrepared) {
+                   [self otaTimeCheck];//增加超时检测
+                   
+                   self.updateTxt.text = kJL_TXT("等待升级");
+                   self.progressView.progress = 0.0f;
+               }
+               if (result == JL_OTAResultReconnect) {
+                   [self otaTimeCheck];//增加超时检测
+                   self->_isOtaRelink = YES;
+                   
+                   NSLog(@"---> OTA正在回连设备... %@",self.otaEntity.mItem);
+                   [self.mBleMultiple connectEntity:self.otaEntity Result:^(JL_EntityM_Status status) {
+                       self->_isOtaRelink = NO;
+                       if (status != JL_EntityM_StatusPaired) {
+                           [self setupUIErrorText:kJL_TXT("OTA升级超时")];
+                       }
+                   }];
+               }
+               
+               if (result == JL_OTAResultSuccess || result == JL_OTAResultReboot) {
+                   self.progressView.progress = 1.0f;
+                   NSLog(@"升级成功");
+               }
+               
+               if (result == JL_OTAResultFail) {
+                   [self setupUIErrorText:kJL_TXT("OTA升级失败")];
+               }
+               if (result == JL_OTAResultDataIsNull) {
+                   [self setupUIErrorText:kJL_TXT("OTA升级数据为空!")];
+               }
+               if (result == JL_OTAResultCommandFail) {
+                   [self setupUIErrorText:kJL_TXT("OTA指令失败!")];
+               }
+               if (result == JL_OTAResultSeekFail) {
+                   [self setupUIErrorText:kJL_TXT("OTA标示偏移查找失败!")];
+               }
+               if (result == JL_OTAResultInfoFail) {
+                   [self setupUIErrorText:kJL_TXT("OTA升级固件信息错误!")];
+               }
+               if (result == JL_OTAResultLowPower) {
+                   [self setupUIErrorText:kJL_TXT("OTA升级设备电压低!")];
+               }
+               if (result == JL_OTAResultEnterFail) {
+                   [self setupUIErrorText:kJL_TXT("未能进入OTA升级模式!")];
+               }
+               if (result == JL_OTAResultUnknown) {
+                   [self setupUIErrorText:kJL_TXT("OTA未知错误!")];
+               }
+               if (result == JL_OTAResultFailSameVersion) {
+                   [self setupUIErrorText:kJL_TXT("相同版本!")];
+               }
+               if (result == JL_OTAResultFailTWSDisconnect) {
+                   [self setupUIErrorText:kJL_TXT("TWS耳机未连接")];
+               }
+               if (result == JL_OTAResultFailNotInBin) {
+                   [self setupUIErrorText:kJL_TXT("耳机未在充电仓")];
+               }
+           }];
+       }];
+
+
+   static NSTimer  *otaTimer = nil;
+   static int      otaTimeout= 0;
+   -(void)otaTimeCheck{
+       otaTimeout = 0;
+       if (otaTimer == nil) {
+           otaTimer = [JL_Tools timingStart:@selector(otaTimeAdd)
+                                     target:self Time:1.0];
+       }
+   }
+
+   -(void)otaTimeClose{
+       [JL_Tools timingStop:otaTimer];
+       otaTimeout = 0;
+       otaTimer = nil;
+   }
+
+   -(void)otaTimeAdd{
+       otaTimeout++;
+       if (otaTimeout == 10) {
+           [self otaTimeClose];
+           [self setupUIErrorText:kJL_TXT("OTA升级超时")];
+           NSLog(@"OTA ---> 超时了！！！");
+       }
+    }
+
+
+3.5 Opus 解码库使用
+----------------------
+
+3.5.1 功能描述
+~~~~~~~~~~~~~~~~~
+
+杰理音频编解码库已支持功能:
+
+1. Opus编解码使用说明
+    1. Opus文件 解码成 PCM文件 
+    2. Opus数据流 解码成 PCM数据流 
+    3. PCM文件 编码成 Opus文件 
+    4. PCM数据流 编码成 Opus数据流
+
+2. Speex编解码
+    1. Speex解码文件 
+    2. Speex解码数据流 
+    3. Speex编码文件
+
+
+3.5.2 使用接口
+~~~~~~~~~~~~~~~~~~~
+
+- OpusUnit
+
+.. code:: objectivec
+
+    #import <Foundation/Foundation.h>
+
+    NS_ASSUME_NONNULL_BEGIN
+    /**
+    * 通知:流式编码回调Opus数据
+    * 通知数据类型:NSData(Opus) */
+    extern NSString *kOPUS_ENCODE_DATA;
+    /**
+    * 通知:流式解码回调PCM数据
+    * 通知数据类型:NSData(PCM) */
+    extern NSString *kOPUS_DECODE_DATA;
+    @interface OpusUnit : NSObject
+    + (void)opusIsLog:(BOOL)log;
+
+    #pragma mark - Opus参数 /**
+    * 设置参数
+    * @param rate 16000)
+    采样率 例如:48000、24000、16000、12000、8000(默认 比特率 例如:16000、32000、64000(默认 16000)
+    声道 例如:1、2 (默认 1) 
+    +(void)opusSetSampleRate:(int)rate Kbps:(int)kbps Channels:(int)channel;
+
+
+    #pragma mark - Opus解码
+    /**
+    * 直接【opus文件】转换成【pcm文件】
+    * @param path_opus opus文件路径
+    * @param path_pcm pcm文件路径 */
+    + (int)opusDecodeOPUS:(NSString *)path_opus PCM:(NSString *)path_pcm;
+
+    /**
+    * 流式解码【开启】 */
+    + (int)opusDecoderRun;
+
+    /**
+    * 输入Opus的数据
+    * 通知监听“kOPUS_DECODE_DATA”获得解码后数据
+    * 通知数据类型:NSNotification.object => NSData(PCM格式)
+    * @param data opus数据流(⻓度:1024) */
+    + (void)opusWriteData:(NSData*)data;
+
+    /**
+    * 流式解码【关闭】 */
+    + (int)opusDecoderStop;
+
+    #pragma mark - Opus编码
+    /**
+    * 【pcm文件】转换成【opus文件】 
+    */
+    + (int)opusEncodePCM:(NSString *)path_pcm OPUS:(NSString *)path_opus;
+
+    /** 
+     *流式编码【开启】
+     */
+    + (int)opusEecoderRun;
+
+    /**
+    * 输入pcm的数据
+    * 通知监听“kOPUS_DECODE_DATA”获得解码后数据
+    * 通知数据类型:NSNotification.object => NSData(opus格式)
+    * @param data opus数据流(⻓度:1024) */
+    + (void)pcmWriteData:(NSData*)data;
+
+    /**
+    * 流式编码【关闭】 */
+    + (int)opusEncoderStop;
+    @end
+    NS_ASSUME_NONNULL_END
+
+
+- SpeexUnit
+
+Speex 编解码接口说明
+
+.. code:: objectivec
+
+    #import <Foundation/Foundation.h>
+    /**
+    * 流式解码回调PCM数据 */
+    extern NSString *kSPEEX_DECODE_DATA; //speex decode
+    @interface SpeexUnit : NSObject
+
+    +(void)speexIsLog:(BOOL)log;
+    /**
+    * 直接【speex文件】转换成【pcm文件】 */
+    +(int)speexDecodeSPX:(NSString *)path_spx PCM:(NSString *)path_pcm;
+    /**
+    * 流式解码【开启】 */
+    +(int)speexDecoderRun;
+    /**
+    * 输入Speex的数据 */
+    +(void)speexWriteData:(NSData*)data;
+    /**
+    * 流式解码【关闭】 */
+    +(int)speexDecoderStop;
+    @end
+
+
+3.5.3 使用案例
+~~~~~~~~~~~~~~~~~~~
+
+1. Opus编解码使用说明 
+    
+Opus文件 解码成 PCM文件
+
+.. code:: objectivec
+
+    // 创建PCM文件
+    NSString *docsdir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES) firstObject];
+    NSString *dataFilePath = [docsdir stringByAppendingPathComponent:@"pcm"];
+    BOOL isDirExist = NO;
+    [[NSFileManager defaultManager] fileExistsAtPath:dataFilePath isDirectory:&isDirExist];
+    if (!isDirExist) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:dataFilePath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    NSString *filePath = [dataFilePath stringByAppendingPathComponent:@"1.pcm"];
+
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+        [[NSFileManager defaultManager] removeItemAtPath:filePath error:nil];
+        NSLog(@"remove file : %@", filePath);
+    }
+    NSString *txt = @"";
+    [txt writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+
+    // 调用解码方法，输入 Opus文件路径 与 PCM文件路径
+    int result = [OpusUnit opusDecodeOPUS:[[NSBundle mainBundle] pathForResource:@"o3o" ofType:@"opus"] PCM:filePath];
+
+    if (result == 0) { // 解码成功
+        NSLog(@"opusFileToPCMFile OK 了");
+    } else { // 解码失败
+        NSLog(@"opusFileToPCMFile 失败了");
+    }
+
+
+2. Opus数据流 解码成 PCM数据流
+
+.. code:: objectivec
+
+    //Step0.运行Opus解码库，必须异步调用
+    // 注意:运行编码库与解码库必须使用gcd分包调用 
+
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [OpusUnit opusIsLog:YES];//Opus解码库的LOG
+        [OpusUnit opusDecoderRun];    //运行Opus解码库 
+    });
+
+    //Step1.监听解码后PCM数据回调
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notePCMData:) name:kOPUS_DECODE_DATA object:nil];
+
+    //Step2.实现解码后PCM数据回调通知监听
+    - (void)notePCMData:(NSNotification*)note {
+        NSData *data = [note object];
+        NSLog(@"--->pcm buffer : %lu",(unsigned long)data.length);
+    }
+
+    //Step3.当不需要解码时，可以停止解码并释放资源 
+
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [OpusUnit opusDecoderStop];
+    });
+
+    //StepN.传入OPUS数据到OpusUnit 
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        NSString *opusPath = [DFFile find:@"MyAuido.pcm"];
+        NSData *opusBuffer = [NSData dataWithContentsOfFile:opusPath];
+        unsigned long seek = 0;
+        while (1) {
+            if (!self.isPlayPCM) {
+                break;
+             }
+            NSData *tmp = [DFTools data:opusBuffer R:seek L:1*1024];
+            NSLog(@"---> pcm input data: %lu",(unsigned long)tmp.length);
+            if (tmp.length > 0) {
+                /*---- 传入PCM数据 ----*/
+                [OpusUnit pcmWriteData:tmp]; 
+                sleep(0.1);
+                seek = seek + tmp.length;
+            } else {
+                self.isPlayPCM = NO;
+                break;
+            } 
+        }
+    });
+
+
+3. PCM文件 编码成 Opus文件
+
+.. code:: objectivec 
+
+    // 创建Opus文件
+    NSString *docsdir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES) firstObject];
+    NSString *dataFilePath = [docsdir stringByAppendingPathComponent:@"opus"];
+    BOOL isDirExist = NO;
+    [[NSFileManager defaultManager] fileExistsAtPath:dataFilePath isDirectory:&isDirExist];
+
+    if (!isDirExist) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:dataFilePath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    NSString *filePath = [dataFilePath stringByAppendingPathComponent:@"1.opus"];
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+        [[NSFileManager defaultManager] removeItemAtPath:filePath error:nil];
+        NSLog(@"remove file : %@", filePath);
+    }
+    NSString *txt = @"";
+    [txt writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    // 调用编码方法，输入 PCM文件路径 与 Opus文件路径
+    int result = [OpusUnit opusEncodePCM:[[NSBundle mainBundle] pathForResource:@"MyAuido" ofType:@"pcm"] OPUS:filePath];
+    if (result == 0) { // 编码成功
+        NSLog(@"pcmFileToOpusBtnFunc OK 了"); 
+    }
+
+
+4. Pcm数据流 编码成 Opus数据流
+
+.. code:: objectivec
+
+    //Step0.运行Opus编码库，必须异步调用
+    // 注意:运行编码库与解码库必须使用gcd分包调用 
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [OpusUnit opusIsLog:YES];//Opus解码库的LOG
+        [OpusUnit opusEecoderRun];//运行Opus编码库 
+    });
+    //Step1.监听编码后Opus数据回调
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noteOpusData:) name:kOPUS_ENCODE_DATA object:nil];
+
+    //Step2.实现编码后Opus数据回调通知监听
+    - (void)noteOpusData:(NSNotification*)note {
+        NSData *data = [note object];
+        NSLog(@"--->opus buffer : %lu",(unsigned long)data.length);
+        ... 
+    }
+    //Step3.当不需要编码时，可以停止编码并释放资源 
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [OpusUnit opusEncoderStop];
+    });
+    //StepN.传入PCM数据到OpusUnit中进行编码 
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        NSString *opusPath = [DFFile find:@"MyAuido.pcm"];
+        NSData *opusBuffer = [NSData dataWithContentsOfFile:opusPath];
+        unsigned long seek = 0;
+        while (1) {
+            if (!self.isPlayPCM) {
+                break;
+            }
+            NSData *tmp = [DFTools data:opusBuffer R:seek L:1*1024];
+            NSLog(@"---> pcm input data: %lu",(unsigned long)tmp.length);
+            if (tmp.length > 0) {
+                /*---- 传入PCM数据 ----*/ 
+                [OpusUnit pcmWriteData:tmp]; 
+                sleep(0.1);
+                seek = seek + tmp.length;
+            } else {
+                self.isPlayPCM = NO;
+                break;
+            } 
+        }
+    });
+
+

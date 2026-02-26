@@ -11,8 +11,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+static NSString *JL_WATCH_FACE_LIST = @"JL_WATCH_FACE_LIST";
+
+typedef void(^DialCacheVersionBlock)(NSDictionary * _Nullable dic);
+
 @interface DialUICache : NSObject
+
 @property(nonatomic,assign)BOOL isSupportPayment;
+
+/// 当前选中的手表表盘
+@property(nonatomic,strong)NSString *currentWatch;
 
 -(void)setJLCmdManager:(JL_ManagerM * __nullable)cmdManeger;
 
@@ -22,6 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(NSMutableArray*)getWatchList;
 -(NSMutableArray*)newWatchList;
+-(NSArray <NSString *>*) getVersionList;
 -(void)addWatchListObject:(NSString*)watch;
 -(void)removeWatchListObject:(NSString*)watch;
 -(void)clearWatchList;
@@ -34,6 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSMutableDictionary*)getWatchVersion:(NSArray*)array;
 -(NSString*)getVersionOfWatch:(NSString*)watch;
 -(NSString*)getUuidOfWatch:(NSString*)watch;
+-(void)setUuidOfWatch:(NSString*)watch uuid:(NSString *)uuid;
 -(void)addVersion:(NSString*)version toWatch:(NSString*)watch;
 -(void)removeVersionOfWatch:(NSString*)watch;
 

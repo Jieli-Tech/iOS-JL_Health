@@ -130,7 +130,7 @@
 
     self.rtcmodel.rtcEnable = YES;
     
-//    NSLog(@"--->%d %d %d %d %d %d (Enable:%d) (Mode:%d) Index:%d Name:%@ ",
+//    kJLLog(JLLOG_DEBUG, @"--->%d %d %d %d %d %d (Enable:%d) (Mode:%d) Index:%d Name:%@ ",
 //          self.rtcmodel.rtcYear,
 //          self.rtcmodel.rtcMonth,
 //          self.rtcmodel.rtcDay,
@@ -976,11 +976,11 @@
     setting.interval = mInterval;
     setting.isTime = 1;
     setting.time = mTime;
-    NSLog(@"闹钟Index ---> %d count:%d interval:%d time:%d",index,mCount,mInterval,mTime);
+    kJLLog(JLLOG_DEBUG, @"闹钟Index ---> %d count:%d interval:%d time:%d",index,mCount,mInterval,mTime);
     [kJL_BLE_CmdManager.mAlarmClockManager cmdRtcOperate:0x01 Index:index Setting:setting
                                Result:^(NSArray<JLModel_AlarmSetting *> * _Nullable array, uint8_t flag)
     {
-        if (flag == 0) NSLog(@"响铃时长设置闹钟成功");
+        if (flag == 0) kJLLog(JLLOG_DEBUG, @"响铃时长设置闹钟成功");
     }];
 }
 

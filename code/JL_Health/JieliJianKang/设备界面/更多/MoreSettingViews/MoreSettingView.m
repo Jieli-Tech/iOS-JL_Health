@@ -45,7 +45,7 @@
     
     NSMutableArray *syncArray = [NSMutableArray new];
     if(model.exportFunc.spSyncInfo){
-        NSLog(@"与设备通讯交互策略未完善，需要另外定制");
+        kJLLog(JLLOG_DEBUG, @"与设备通讯交互策略未完善，需要另外定制");
         MoreSettingObjc *objc = [MoreSettingObjc initBasic:kJL_TXT("消息通知") Sec:@""];
         objc.hasSwView = NO;
         //[syncArray addObject:objc];
@@ -67,6 +67,7 @@
     if(model.systemFunc.spDisconnectReminder){
         MoreSettingObjc *objc = [MoreSettingObjc initBasic:kJL_TXT("蓝牙断开提醒") Sec:@""];
         objc.hasSwView = YES;
+        objc.swStatus = disRemindStatus;
         [bleCtlArray addObject:objc];
     }
     
@@ -74,7 +75,6 @@
     if(model.systemFunc.spScreenSetting){
         MoreSettingObjc *objc = [MoreSettingObjc initBasic:kJL_TXT("抬腕亮屏") Sec:kJL_TXT("抬起手腕将屏幕转向自己即可点亮屏幕")];
         objc.hasSwView = NO;
-        objc.swStatus = disRemindStatus;
         objc.vc = [[TaiWanVC alloc] init];
         [bleCtlArray addObject:objc];
     }

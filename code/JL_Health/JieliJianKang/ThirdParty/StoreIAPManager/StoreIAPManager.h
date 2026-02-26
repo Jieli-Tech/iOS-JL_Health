@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef enum {
+typedef NS_ENUM(NSUInteger, SIAPPurchType) {
     SIAPPurchSuccess = 0,               // 购买成功
     SIAPPurchFailed = 1,                // 购买失败
     SIAPPurchCancell = 2,               // 取消购买
@@ -21,7 +21,7 @@ typedef enum {
     SIAPPurchSellOut  =6,               // 商品已售罄
     SIAPPurchasing    =7,               // 正在购买
     SIAPPurchVerFailedNoReply = 8,      // 订单校验失败
-}SIAPPurchType;
+};
 
 typedef void (^IAPCompletionHandle)(SIAPPurchType type,NSString *data);
 

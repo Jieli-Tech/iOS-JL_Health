@@ -388,7 +388,7 @@
 }
 
 - (void)dealloc {
-    NSLog(@"%@ dealloc", NSStringFromClass([self class]));
+    kJLLog(JLLOG_DEBUG, @"%@ dealloc", NSStringFromClass([self class]));
 }
 
 @end

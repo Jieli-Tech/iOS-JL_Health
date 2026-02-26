@@ -71,11 +71,11 @@
 }
 
 - (void)selectionWillChange:(id<UITextInput>)textInput {
-    NSLog(@"选择区域 _start_ 变化。。。隐藏");
+    kJLLog(JLLOG_DEBUG, @"选择区域 _start_ 变化。。。隐藏");
 }
 
 - (void)selectionDidChange:(id<UITextInput>)textInput {
-    NSLog(@"选择区域 _end_ 变化。。。显示");
+    kJLLog(JLLOG_DEBUG, @"选择区域 _end_ 变化。。。显示");
 }
 
 -(void)setDirectionPriority:(JYTextViewJYBubbleMenuViewDirectionPriorityType) directionType{
@@ -83,12 +83,12 @@
 }
 
 - (void)textViewDidChangeSelection:(UITextView *)textView {
-    NSLog(@"光标位置%ld——%ld",textView.selectedRange.location,textView.selectedRange.length);
+    kJLLog(JLLOG_DEBUG, @"光标位置%ld——%ld",textView.selectedRange.location,textView.selectedRange.length);
         
     CGRect startRect = [textView caretRectForPosition:[textView selectedTextRange].start];
     CGRect endRect = [textView caretRectForPosition:[textView selectedTextRange].end];
-//    NSLog(@"__👂👂👂👂%.1f,%.1f,%.1f,%.1f",startRect.origin.x, startRect.origin.y, startRect.size.width, startRect.size.height);
-//    NSLog(@"__👂👂👂👂%.1f,%.1f,%.1f,%.1f",endRect.origin.x, endRect.origin.y, endRect.size.width, endRect.size.height);
+//    kJLLog(JLLOG_DEBUG, @"__👂👂👂👂%.1f,%.1f,%.1f,%.1f",startRect.origin.x, startRect.origin.y, startRect.size.width, startRect.size.height);
+//    kJLLog(JLLOG_DEBUG, @"__👂👂👂👂%.1f,%.1f,%.1f,%.1f",endRect.origin.x, endRect.origin.y, endRect.size.width, endRect.size.height);
     
     CGRect resultRect = CGRectZero;
     if (startRect.origin.y == endRect.origin.y) {

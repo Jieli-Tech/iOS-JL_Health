@@ -679,4 +679,17 @@
 "珠海市杰理科技股份有限公司" = "珠海市杰理科技股份有限公司";
 "是否要清除用户缓存" = "是否要清除用户缓存?";
 "AI表盘" = "AI表盘";
+
 "正在传输中" = "正在传输中...";
+"Image Captcha" = "图像验证码";
+"Can't see it? Try another." = "看不清？换一张";
+"Please enter the correct captcha." = "请输入正确的验证码";
+"There was a problem loading the image verification code, please try again later" = "加载图像验证码出现问题，请稍后重试";
+"Custom" = "自定义";
+"Custom Dial" = "自定义表盘";
+"I have read and agree to the" = "我已阅读并同意";
+"User Agreement" = "用户协议";
+"Privacy Policy" = "隐私政策";
+"and" = "与";
+"Please read and agree to the Terms of Service and Privacy Policy." = "请阅读并同意服务条款和隐私政策";
+"ICP filing information" = "ICP备案信息";

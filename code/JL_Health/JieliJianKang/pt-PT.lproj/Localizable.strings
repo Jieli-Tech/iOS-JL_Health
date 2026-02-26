@@ -679,3 +679,15 @@
 "是否要清除用户缓存" = "Törölni szeretné a felhasználói gyorsítótárat?";
 "AI表盘" = "Discagem IA";
 "正在传输中" = "Transferência...";
+"Image Captcha" = "Captcha de imagem";
+"Can't see it? Try another." = "Não está claro? Tente outro.";
+"Please enter the correct captcha." = "Por favor, insira o captcha correto.";
+"There was a problem loading the image verification code, please try again later" = "Ocorreu um problema ao carregar o código de verificação de imagem, tente novamente mais tarde.";
+"Custom" = "Personalizar";
+"Custom Dial" = "Mostrador de relógio personalizado";
+"I have read and agree to the" = "eu li e concordo";
+"User Agreement" = "Contrato do utilizador";
+"Privacy Policy" = "política de Privacidade";
+"and" = "e";
+"Please read and agree to the Terms of Service and Privacy Policy." = "Por favor, leia e concorde com os Termos de Serviço e Política de Privacidade";
+"ICP filing information" = "Informações de arquivamento do ICP";

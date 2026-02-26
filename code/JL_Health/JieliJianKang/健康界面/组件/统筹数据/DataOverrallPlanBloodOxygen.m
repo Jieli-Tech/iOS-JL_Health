@@ -32,7 +32,7 @@
                 runtimer+=chart.interval*60;
                 for (BloodOxyganData *bod in chart.bloodOxyganlist) {
                     NSTimeInterval hdts = [bod.startDate timeIntervalSince1970];
-//                    NSLog(@"%f - %f \n %f",(runtimer-chart.interval*60),(runtimer+chart.interval*60),hdts);
+//                    kJLLog(JLLOG_DEBUG, @"%f - %f \n %f",(runtimer-chart.interval*60),(runtimer+chart.interval*60),hdts);
                     if ((runtimer-chart.interval*60) <= hdts && hdts < (runtimer+chart.interval*60)) {
                         for (NSNumber *number in bod.bloodOxygans){
                             runtimer+=chart.interval*60;

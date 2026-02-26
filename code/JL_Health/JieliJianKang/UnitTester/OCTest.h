@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface OCTest : NSObject
 
-+(NSString *)makeDialwithName:(NSString *)watchBinName withSize:(CGSize)size image:(UIImage *)basicImage;
++(void)makeDialwithName:(NSString *)watchBinName withSize:(CGSize)size image:(UIImage *)basicImage;
 
 @end
 

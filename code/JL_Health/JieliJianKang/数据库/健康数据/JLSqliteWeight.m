@@ -94,13 +94,13 @@
             NSString *sql = [NSString stringWithFormat:@"update %@ set weight = ?, date = ? where timestamp = ?", tb_weight];
             BOOL res = [db executeUpdate:sql, weight, dt, [NSNumber numberWithInteger:(NSInteger)timestamp]];
             if (!res) {
-                NSLog(@"update failed");
+                kJLLog(JLLOG_DEBUG, @"update failed");
             }
         } else {
             NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ (timestamp, weight, date) VALUES (?, ?, ?)", tb_weight];
             BOOL res = [db executeUpdate:sql, [NSNumber numberWithInteger:(NSInteger)timestamp], weight, dt];
             if (!res) {
-                NSLog(@"insert failed");
+                kJLLog(JLLOG_DEBUG, @"insert failed");
             }
         }
     }];

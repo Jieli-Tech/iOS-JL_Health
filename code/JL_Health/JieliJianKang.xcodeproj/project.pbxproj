@@ -12,17 +12,35 @@
 		1D03113E2B85A4C500056215 /* HQEditImageActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0311372B85A4C400056215 /* HQEditImageActionView.m */; };
 		1D03113F2B85A4C500056215 /* HQEditImageEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0311382B85A4C400056215 /* HQEditImageEditView.m */; };
 		1D0311402B85A4C500056215 /* HQEditImageCaptureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0311392B85A4C400056215 /* HQEditImageCaptureView.m */; };
+		1D0E99DC2C9A78FD009FA68A /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0E99DB2C9A78FD009FA68A /* AudioManager.swift */; };
+		1D0E99DF2C9AC1B5009FA68A /* PayDialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0E99DE2C9AC1B5009FA68A /* PayDialView.swift */; };
+		1D0E99E32C9AC9FE009FA68A /* DialPayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0E99E22C9AC9FE009FA68A /* DialPayViewModel.swift */; };
+		1D0E99E62C9B01F4009FA68A /* DialLocalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0E99E52C9B01F4009FA68A /* DialLocalView.swift */; };
+		1D0E99E92C9C1C20009FA68A /* AlertDeleteingTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0E99E82C9C1C20009FA68A /* AlertDeleteingTipsView.swift */; };
+		1D0E99EB2C9D0507009FA68A /* DialPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0E99EA2C9D0507009FA68A /* DialPayViewController.swift */; };
+		1D0E99F22C9D2297009FA68A /* DialPayBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0E99F12C9D2297009FA68A /* DialPayBottomView.swift */; };
 		1D159F3726098D3A00D5966C /* TransJump.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D159F3626098D3A00D5966C /* TransJump.m */; };
 		1D159F3B260997F800D5966C /* SelectTitleBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D159F3A260997F800D5966C /* SelectTitleBar.m */; };
 		1D159F3F2609D62400D5966C /* DateLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D159F3E2609D62400D5966C /* DateLabelView.m */; };
+		1D1A26742C93D8EF00001636 /* DialMarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A26732C93D8EF00001636 /* DialMarketViewController.swift */; };
+		1D1A26762C93DA0D00001636 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A26752C93DA0D00001636 /* BaseViewController.swift */; };
+		1D1A26842C93EC4500001636 /* DialMallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A26832C93EC4500001636 /* DialMallView.swift */; };
+		1D1A26862C93EC8600001636 /* FreeDialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A26852C93EC8600001636 /* FreeDialView.swift */; };
+		1D1A268A2C94100800001636 /* DialFreeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A26892C94100800001636 /* DialFreeViewModel.swift */; };
+		1D1A268C2C94188E00001636 /* DialBaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A268B2C94188E00001636 /* DialBaseViewModel.swift */; };
+		1D1A268E2C94620700001636 /* AlertViewDialTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A268D2C94620700001636 /* AlertViewDialTransport.swift */; };
 		1D27965E283F69A2005A65C5 /* DataTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D27965D283F69A2005A65C5 /* DataTester.swift */; };
-		1D2E4D632BA43278000956FE /* JLDialUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D2E4D5E2BA43278000956FE /* JLDialUnit.framework */; };
-		1D2E4D642BA43278000956FE /* JL_OTALib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D2E4D5F2BA43278000956FE /* JL_OTALib.framework */; };
-		1D2E4D652BA43278000956FE /* JL_BLEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D2E4D602BA43278000956FE /* JL_BLEKit.framework */; };
-		1D2E4D662BA43278000956FE /* JL_AdvParse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D2E4D612BA43278000956FE /* JL_AdvParse.framework */; };
-		1D2E4D672BA43278000956FE /* JL_HashPair.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D2E4D622BA43278000956FE /* JL_HashPair.framework */; };
+		1D29AD4A2CB907A700726E0C /* Bugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D29AD492CB907A700726E0C /* Bugly.framework */; };
 		1D2FF3172AE2828800E53C87 /* CustomDialView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FF3162AE2828800E53C87 /* CustomDialView.m */; };
 		1D2FF31B2AE2845500E53C87 /* CustomDialCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FF3192AE2845500E53C87 /* CustomDialCell.m */; };
+		1D3042F02C89A79C0024A826 /* AlertVerifyCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3042EF2C89A79C0024A826 /* AlertVerifyCodeView.swift */; };
+		1D3042F32C89A8CD0024A826 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3042F22C89A8CD0024A826 /* BaseView.swift */; };
+		1D3044222C8FD8D70024A826 /* DialSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3044212C8FD8D60024A826 /* DialSubView.swift */; };
+		1D3044252C8FE22D0024A826 /* DialSubCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3044242C8FE22D0024A826 /* DialSubCollectionViewCell.swift */; };
+		1D3044282C901C990024A826 /* DialSubViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3044272C901C990024A826 /* DialSubViewModel.swift */; };
+		1D3044342C902BCC0024A826 /* DialMarketHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3044332C902BCC0024A826 /* DialMarketHttp.swift */; };
+		1D3044362C9032460024A826 /* ProductInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3044352C9032460024A826 /* ProductInfoModel.swift */; };
+		1D3044622C9068570024A826 /* BridgeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3044612C9068560024A826 /* BridgeHelper.m */; };
 		1D3E030926AAC19E00CDB02B /* UserDeviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3E030426AAC19E00CDB02B /* UserDeviceModel.m */; };
 		1D3E030A26AAC19E00CDB02B /* JLDeviceSqliteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3E030726AAC19E00CDB02B /* JLDeviceSqliteManager.m */; };
 		1D3E031126AAC1B200CDB02B /* DevicesViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3E030C26AAC1B200CDB02B /* DevicesViewCell.m */; };
@@ -30,6 +48,8 @@
 		1D3E031326AAC1B200CDB02B /* DevicesSubView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3E031026AAC1B200CDB02B /* DevicesSubView.m */; };
 		1D40DDC326A1263700A70D1B /* DeviceHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D40DDC226A1263700A70D1B /* DeviceHttp.m */; };
 		1D40DDC626A12F3000A70D1B /* DeviceHttpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D40DDC526A12F3000A70D1B /* DeviceHttpModel.m */; };
+		1D4F96B12CC744A000D6F068 /* NSObjectSafe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4F96AF2CC7443500D6F068 /* NSObjectSafe.framework */; };
+		1D4F96B22CC744A000D6F068 /* NSObjectSafe.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4F96AF2CC7443500D6F068 /* NSObjectSafe.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1D57C39B2AE261420073E5B4 /* WatchDialTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D57C39A2AE261420073E5B4 /* WatchDialTitleView.m */; };
 		1D5B0BF8282CD6A400C590FD /* BtCallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5B0BF6282CD6A400C590FD /* BtCallViewController.m */; };
 		1D5B0BF9282CD6A400C590FD /* BtCallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D5B0BF7282CD6A400C590FD /* BtCallViewController.xib */; };
@@ -41,9 +61,22 @@
 		1D668731264A59340054880F /* NSDate+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D668729264A59340054880F /* NSDate+Tools.m */; };
 		1D668733264A59340054880F /* NSString+Path.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D66872E264A59340054880F /* NSString+Path.m */; };
 		1D668737264A59BB0054880F /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D668736264A59960054880F /* libsqlite3.tbd */; };
-		1D668738264A5E2B0054880F /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D668734264A595D0054880F /* FMDB.framework */; };
-		1D668739264A5E2B0054880F /* FMDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D668734264A595D0054880F /* FMDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1D6CC8312C58B90A00FAE447 /* JLWearSyncHealthBloodOxyganChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CC8232C58B90700FAE447 /* JLWearSyncHealthBloodOxyganChart.m */; };
+		1D6CC8332C58B90A00FAE447 /* JLWearSyncHealthStepChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CC8252C58B90700FAE447 /* JLWearSyncHealthStepChart.m */; };
+		1D6CC8342C58B90A00FAE447 /* JLWearSyncHealthSleepChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CC8262C58B90800FAE447 /* JLWearSyncHealthSleepChart.m */; };
+		1D6CC8352C58B90A00FAE447 /* JLWearSyncHealthChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CC8272C58B90800FAE447 /* JLWearSyncHealthChart.m */; };
+		1D6CC8362C58B90A00FAE447 /* JLWearSyncHealthWeightChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CC82B2C58B90900FAE447 /* JLWearSyncHealthWeightChart.m */; };
+		1D6CC8372C58B90A00FAE447 /* JLWearSyncHealthHeartRateChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CC82C2C58B90900FAE447 /* JLWearSyncHealthHeartRateChart.m */; };
+		1D6CC83B2C58BBC400FAE447 /* JLSportRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CC83A2C58BBC300FAE447 /* JLSportRecordModel.m */; };
 		1D8046312ABD347C00FBA6AC /* DottedLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8046302ABD347C00FBA6AC /* DottedLineView.m */; };
+		1D8171482CFE92E6002543FE /* JLLogHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8171472CFE92E6002543FE /* JLLogHelper.framework */; };
+		1D81714A2CFE92E6002543FE /* JL_BLEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8171422CFE92E6002543FE /* JL_BLEKit.framework */; };
+		1D81714B2CFE92E6002543FE /* JL_AdvParse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8171412CFE92E6002543FE /* JL_AdvParse.framework */; };
+		1D81714C2CFE92E6002543FE /* JL_HashPair.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8171432CFE92E6002543FE /* JL_HashPair.framework */; };
+		1D81714D2CFE92E6002543FE /* JL_OTALib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8171442CFE92E6002543FE /* JL_OTALib.framework */; };
+		1D81714E2CFE92E6002543FE /* JLDialUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8171462CFE92E6002543FE /* JLDialUnit.framework */; };
+		1D81714F2CFE9309002543FE /* JLBmpConvertKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8171452CFE92E6002543FE /* JLBmpConvertKit.framework */; };
+		1D8171502CFE9309002543FE /* JLBmpConvertKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8171452CFE92E6002543FE /* JLBmpConvertKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1D831C1426AEDAA300EA5C42 /* DeviceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D831C1226AEDAA200EA5C42 /* DeviceDetailViewController.m */; };
 		1D831C1526AEDAA300EA5C42 /* DeviceDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D831C1326AEDAA200EA5C42 /* DeviceDetailViewController.xib */; };
 		1D86A772260D693B005D5391 /* HeartBeatDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D86A771260D693B005D5391 /* HeartBeatDetailVC.m */; };
@@ -72,6 +105,13 @@
 		1DB0C7FA262835800093A98F /* EcDateSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB0C7F8262835800093A98F /* EcDateSelectView.m */; };
 		1DB1101E260ADAD500E36D65 /* StepDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB1101D260ADAD500E36D65 /* StepDetailViewController.m */; };
 		1DB11021260ADB3200E36D65 /* StepDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB11020260ADB3200E36D65 /* StepDataView.m */; };
+		1DB1A7292C9D7A8400216369 /* DialHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB1A7282C9D7A8400216369 /* DialHistoryViewController.swift */; };
+		1DB1A72B2C9D7C9100216369 /* DialHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB1A72A2C9D7C9100216369 /* DialHistoryViewModel.swift */; };
+		1DB1A7352C9FF3ED00216369 /* DialMallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB1A7342C9FF3ED00216369 /* DialMallViewController.swift */; };
+		1DB1A7372CA00EA600216369 /* DialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB1A7362CA00EA600216369 /* DialViewController.swift */; };
+		1DB1A7392CA00FF000216369 /* DialVcViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB1A7382CA00FF000216369 /* DialVcViewModel.swift */; };
+		1DB1A7432CA43AAB00216369 /* AlertConnectingTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB1A7422CA43AAB00216369 /* AlertConnectingTipsView.swift */; };
+		1DB1A7462CA5873C00216369 /* DeviceSubViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB1A7452CA5873C00216369 /* DeviceSubViewModel.swift */; };
 		1DB1E02427327B0B00036448 /* SyncThreadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB1E02027327B0B00036448 /* SyncThreadManager.m */; };
 		1DB1E02527327B0B00036448 /* SyncDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB1E02127327B0B00036448 /* SyncDataManager.m */; };
 		1DB1E02627327B0B00036448 /* EcTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB1E02227327B0B00036448 /* EcTools.m */; };
@@ -114,9 +154,6 @@
 		1DCD0620292238C40071B2F9 /* DebugBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DCD061E292238C40071B2F9 /* DebugBasicViewController.m */; };
 		1DCD0623292239400071B2F9 /* DebugFuncsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DCD0621292239400071B2F9 /* DebugFuncsViewController.m */; };
 		1DCD062629223A020071B2F9 /* NavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DCD062429223A010071B2F9 /* NavViewController.m */; };
-		1DD2FEB329233D2600804803 /* WatchLocalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD2FEAE29233D2600804803 /* WatchLocalModel.m */; };
-		1DD2FEB429233D2600804803 /* WatchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD2FEAF29233D2600804803 /* WatchCell.m */; };
-		1DD2FEB529233D2600804803 /* WatchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DD2FEB229233D2600804803 /* WatchCell.xib */; };
 		1DD40E0B2911FC67004C1555 /* HealthFuncView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD40E0A2911FC67004C1555 /* HealthFuncView.m */; };
 		1DD40E0E291201CE004C1555 /* HealthFuncCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD40E0D291201CE004C1555 /* HealthFuncCell.m */; };
 		1DD40E1229125008004C1555 /* MoreSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD40E1129125008004C1555 /* MoreSettingCell.m */; };
@@ -132,9 +169,12 @@
 		1DDA6D9D2775A151006A2518 /* LanguageCls.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDA6D9C2775A151006A2518 /* LanguageCls.m */; };
 		1DDDA27C2B59488B00104609 /* JLBugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D70A7C92832716300164E93 /* JLBugly.framework */; platformFilter = ios; };
 		1DDDA27D2B59488C00104609 /* JLBugly.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D70A7C92832716300164E93 /* JLBugly.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1DF1021D2CEC6DA5003CFE84 /* AgreementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF1021C2CEC6DA5003CFE84 /* AgreementView.swift */; };
+		1DF102292CECC1CF003CFE84 /* UILabel+YBAttributeTextTapAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF102272CECC1CF003CFE84 /* UILabel+YBAttributeTextTapAction.m */; };
+		1DF1026D2CEECABD003CFE84 /* ICPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF1026C2CEECABD003CFE84 /* ICPViewController.swift */; };
 		1DF18EB12BA2E7FC00BF6DD4 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1DF18EB02BA2E7FC00BF6DD4 /* PrivacyInfo.xcprivacy */; };
 		1DF277AF26B13C6900081F8B /* BasicHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF277AE26B13C6900081F8B /* BasicHttp.m */; };
-		1DFAA6F02B8ED7310087B9B4 /* WindowsTipsViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFAA6EF2B8ED7310087B9B4 /* WindowsTipsViews.swift */; };
+		1DFAA6F02B8ED7310087B9B4 /* AlertViewOnWindows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFAA6EF2B8ED7310087B9B4 /* AlertViewOnWindows.swift */; };
 		1DFAA6F32B8EDA870087B9B4 /* AIServiceTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFAA6F22B8EDA870087B9B4 /* AIServiceTipsView.swift */; };
 		22131E6025DF8C1500590C4A /* BodyDataVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 22131E5E25DF8C1500590C4A /* BodyDataVC.m */; };
 		22131E6125DF8C1500590C4A /* BodyDataVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22131E5F25DF8C1500590C4A /* BodyDataVC.xib */; };
@@ -151,7 +191,6 @@
 		221F48CE2609AE0600F3237E /* ContactsTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F48CD2609AE0000F3237E /* ContactsTool.m */; };
 		226234AF26034D3E003BF684 /* DeleteRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 226234AD26034D3D003BF684 /* DeleteRecordView.m */; };
 		226234B026034D3E003BF684 /* DeleteRecordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 226234AE26034D3D003BF684 /* DeleteRecordView.xib */; };
-		22645D0A25EE1A4500C8AB69 /* UILabel+YBAttributeTextTapAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 22645D0925EE1A4500C8AB69 /* UILabel+YBAttributeTextTapAction.m */; };
 		22645D1125EE299000C8AB69 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 22645D0F25EE299000C8AB69 /* LoginVC.m */; };
 		22645D1225EE299000C8AB69 /* LoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22645D1025EE299000C8AB69 /* LoginVC.xib */; };
 		22645D1D25EE38A600C8AB69 /* SmallEye.m in Sources */ = {isa = PBXBuildFile; fileRef = 22645D1C25EE38A600C8AB69 /* SmallEye.m */; };
@@ -246,15 +285,6 @@
 		22E8E99825FEE92200FDC942 /* OpenShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E8E99525FEE92200FDC942 /* OpenShowView.m */; };
 		22E8E99925FEE92200FDC942 /* OpenShowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22E8E99625FEE92200FDC942 /* OpenShowView.xib */; };
 		486E09672861AE900076FBC8 /* JLWatchHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = 486E09652861AE900076FBC8 /* JLWatchHttp.m */; };
-		486E09842861B19A0076FBC8 /* WatchMoreVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 486E09732861B19A0076FBC8 /* WatchMoreVC.xib */; };
-		486E09852861B19A0076FBC8 /* WatchMoreVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 486E09742861B19A0076FBC8 /* WatchMoreVC.m */; };
-		486E09862861B19A0076FBC8 /* WatchOwn.m in Sources */ = {isa = PBXBuildFile; fileRef = 486E09762861B19A0076FBC8 /* WatchOwn.m */; };
-		486E09872861B19A0076FBC8 /* WatchHistoryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 486E09792861B19A0076FBC8 /* WatchHistoryVC.xib */; };
-		486E09882861B19A0076FBC8 /* WatchHistoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 486E097B2861B19A0076FBC8 /* WatchHistoryVC.m */; };
-		486E09892861B19A0076FBC8 /* DialShopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 486E097F2861B19A0076FBC8 /* DialShopView.m */; };
-		486E098A2861B19A0076FBC8 /* DialDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 486E09802861B19A0076FBC8 /* DialDetailVC.xib */; };
-		486E098B2861B19A0076FBC8 /* DialModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 486E09822861B19A0076FBC8 /* DialModel.m */; };
-		486E098C2861B19A0076FBC8 /* DialDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 486E09832861B19A0076FBC8 /* DialDetailVC.m */; };
 		486E09B42861B2CF0076FBC8 /* StoreIAPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 486E09902861B2CF0076FBC8 /* StoreIAPManager.m */; };
 		486E09B52861B2CF0076FBC8 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 486E09912861B2CF0076FBC8 /* NSData+Base64.m */; };
 		486E09B62861B2CF0076FBC8 /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = 486E09932861B2CF0076FBC8 /* UIImage+WebP.m */; };
@@ -308,8 +338,6 @@
 		4A75077325DE041800990508 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A75077225DE041800990508 /* main.m */; };
 		4A963E432623EEEF00771B2A /* CustomWatchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A963E412623EEEF00771B2A /* CustomWatchVC.m */; };
 		4A963E442623EEEF00771B2A /* CustomWatchVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A963E422623EEEF00771B2A /* CustomWatchVC.xib */; };
-		4AA625D125E39D1600D174A7 /* WatchLocalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA625D025E39D1600D174A7 /* WatchLocalView.m */; };
-		4AA625D525E39D3500D174A7 /* WatchLocalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AA625D425E39D3500D174A7 /* WatchLocalView.xib */; };
 		4ABC0BEE25F5C85E003FE559 /* MyTargetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABC0BE325F5C85E003FE559 /* MyTargetVC.m */; };
 		4ABC0BF025F5C85E003FE559 /* BushuPick.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABC0BE825F5C85E003FE559 /* BushuPick.m */; };
 		4ABC0BF125F5C85E003FE559 /* BushuPlate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABC0BEA25F5C85E003FE559 /* BushuPlate.m */; };
@@ -333,8 +361,6 @@
 		4ABD75C82612C3240068D4F9 /* YaLiView2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABD75C72612C3240068D4F9 /* YaLiView2.m */; };
 		4ACB254725F859D000C66654 /* ZipZap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ACB254625F859D000C66654 /* ZipZap.framework */; };
 		4ACB254825F85C6F00C66654 /* ZipZap.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4ACB254625F859D000C66654 /* ZipZap.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4AD8DF0525ECE294007D6D29 /* WatchLocalVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AD8DF0325ECE294007D6D29 /* WatchLocalVC.xib */; };
-		4AD8DF0625ECE294007D6D29 /* WatchLocalVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8DF0425ECE294007D6D29 /* WatchLocalVC.m */; };
 		4ADA19FB26145B9E000DAEF6 /* search_12.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA19BD26145B9D000DAEF6 /* search_12.png */; };
 		4ADA19FC26145B9E000DAEF6 /* search_06.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA19BE26145B9D000DAEF6 /* search_06.png */; };
 		4ADA19FD26145B9E000DAEF6 /* search_07.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA19BF26145B9D000DAEF6 /* search_07.png */; };
@@ -629,13 +655,14 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				1D4F96B22CC744A000D6F068 /* NSObjectSafe.framework in Embed Frameworks */,
 				48B933842A8092B3009CB52C /* DFUnits.framework in Embed Frameworks */,
 				C2B395C52A8221E9001EEB9D /* AIKIT.framework in Embed Frameworks */,
 				48B9337F2A809252009CB52C /* SpeexKit.framework in Embed Frameworks */,
 				4ACB254825F85C6F00C66654 /* ZipZap.framework in Embed Frameworks */,
 				1DB3675325FF09F800A03491 /* TYCoreText.framework in Embed Frameworks */,
-				1D668739264A5E2B0054880F /* FMDB.framework in Embed Frameworks */,
 				1DC585F929B1D2FD0045AB01 /* JTCalendar.framework in Embed Frameworks */,
+				1D8171502CFE9309002543FE /* JLBmpConvertKit.framework in Embed Frameworks */,
 				1DB367A425FF476800A03491 /* CoreDraw.framework in Embed Frameworks */,
 				1DDDA27D2B59488C00104609 /* JLBugly.framework in Embed Frameworks */,
 			);
@@ -653,22 +680,41 @@
 		1D03113A2B85A4C400056215 /* HQEditImageCaptureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HQEditImageCaptureView.h; sourceTree = "<group>"; };
 		1D03113B2B85A4C500056215 /* HQEditImageEditView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HQEditImageEditView.h; sourceTree = "<group>"; };
 		1D03113C2B85A4C500056215 /* HQImageEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HQImageEditViewController.h; sourceTree = "<group>"; };
+		1D0E99DB2C9A78FD009FA68A /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		1D0E99DE2C9AC1B5009FA68A /* PayDialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayDialView.swift; sourceTree = "<group>"; };
+		1D0E99E22C9AC9FE009FA68A /* DialPayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialPayViewModel.swift; sourceTree = "<group>"; };
+		1D0E99E52C9B01F4009FA68A /* DialLocalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialLocalView.swift; sourceTree = "<group>"; };
+		1D0E99E82C9C1C20009FA68A /* AlertDeleteingTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDeleteingTipsView.swift; sourceTree = "<group>"; };
+		1D0E99EA2C9D0507009FA68A /* DialPayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialPayViewController.swift; sourceTree = "<group>"; };
+		1D0E99F12C9D2297009FA68A /* DialPayBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialPayBottomView.swift; sourceTree = "<group>"; };
 		1D159F3526098D3A00D5966C /* TransJump.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransJump.h; sourceTree = "<group>"; };
 		1D159F3626098D3A00D5966C /* TransJump.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransJump.m; sourceTree = "<group>"; };
 		1D159F39260997F800D5966C /* SelectTitleBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectTitleBar.h; sourceTree = "<group>"; };
 		1D159F3A260997F800D5966C /* SelectTitleBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectTitleBar.m; sourceTree = "<group>"; };
 		1D159F3D2609D62400D5966C /* DateLabelView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DateLabelView.h; sourceTree = "<group>"; };
 		1D159F3E2609D62400D5966C /* DateLabelView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DateLabelView.m; sourceTree = "<group>"; };
+		1D1A26732C93D8EF00001636 /* DialMarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialMarketViewController.swift; sourceTree = "<group>"; };
+		1D1A26752C93DA0D00001636 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		1D1A26832C93EC4500001636 /* DialMallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialMallView.swift; sourceTree = "<group>"; };
+		1D1A26852C93EC8600001636 /* FreeDialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeDialView.swift; sourceTree = "<group>"; };
+		1D1A26892C94100800001636 /* DialFreeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialFreeViewModel.swift; sourceTree = "<group>"; };
+		1D1A268B2C94188E00001636 /* DialBaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialBaseViewModel.swift; sourceTree = "<group>"; };
+		1D1A268D2C94620700001636 /* AlertViewDialTransport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewDialTransport.swift; sourceTree = "<group>"; };
 		1D27965D283F69A2005A65C5 /* DataTester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTester.swift; sourceTree = "<group>"; };
-		1D2E4D5E2BA43278000956FE /* JLDialUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JLDialUnit.framework; sourceTree = "<group>"; };
-		1D2E4D5F2BA43278000956FE /* JL_OTALib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_OTALib.framework; sourceTree = "<group>"; };
-		1D2E4D602BA43278000956FE /* JL_BLEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_BLEKit.framework; sourceTree = "<group>"; };
-		1D2E4D612BA43278000956FE /* JL_AdvParse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_AdvParse.framework; sourceTree = "<group>"; };
-		1D2E4D622BA43278000956FE /* JL_HashPair.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_HashPair.framework; sourceTree = "<group>"; };
+		1D29AD492CB907A700726E0C /* Bugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bugly.framework; sourceTree = "<group>"; };
 		1D2FF3152AE2828800E53C87 /* CustomDialView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomDialView.h; sourceTree = "<group>"; };
 		1D2FF3162AE2828800E53C87 /* CustomDialView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomDialView.m; sourceTree = "<group>"; };
 		1D2FF3182AE2845500E53C87 /* CustomDialCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomDialCell.h; sourceTree = "<group>"; };
 		1D2FF3192AE2845500E53C87 /* CustomDialCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomDialCell.m; sourceTree = "<group>"; };
+		1D3042EF2C89A79C0024A826 /* AlertVerifyCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertVerifyCodeView.swift; sourceTree = "<group>"; };
+		1D3042F22C89A8CD0024A826 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		1D3044212C8FD8D60024A826 /* DialSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialSubView.swift; sourceTree = "<group>"; };
+		1D3044242C8FE22D0024A826 /* DialSubCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialSubCollectionViewCell.swift; sourceTree = "<group>"; };
+		1D3044272C901C990024A826 /* DialSubViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialSubViewModel.swift; sourceTree = "<group>"; };
+		1D3044332C902BCC0024A826 /* DialMarketHttp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialMarketHttp.swift; sourceTree = "<group>"; };
+		1D3044352C9032460024A826 /* ProductInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoModel.swift; sourceTree = "<group>"; };
+		1D3044602C9068560024A826 /* BridgeHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgeHelper.h; sourceTree = "<group>"; };
+		1D3044612C9068560024A826 /* BridgeHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BridgeHelper.m; sourceTree = "<group>"; };
 		1D3E030326AAC19E00CDB02B /* UserDeviceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDeviceModel.h; sourceTree = "<group>"; };
 		1D3E030426AAC19E00CDB02B /* UserDeviceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDeviceModel.m; sourceTree = "<group>"; };
 		1D3E030626AAC19E00CDB02B /* JLDeviceSqliteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLDeviceSqliteManager.h; sourceTree = "<group>"; };
@@ -682,6 +728,7 @@
 		1D40DDC226A1263700A70D1B /* DeviceHttp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceHttp.m; sourceTree = "<group>"; };
 		1D40DDC426A12F3000A70D1B /* DeviceHttpModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceHttpModel.h; sourceTree = "<group>"; };
 		1D40DDC526A12F3000A70D1B /* DeviceHttpModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceHttpModel.m; sourceTree = "<group>"; };
+		1D4F96AF2CC7443500D6F068 /* NSObjectSafe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NSObjectSafe.framework; sourceTree = "<group>"; };
 		1D57C3992AE261420073E5B4 /* WatchDialTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WatchDialTitleView.h; sourceTree = "<group>"; };
 		1D57C39A2AE261420073E5B4 /* WatchDialTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WatchDialTitleView.m; sourceTree = "<group>"; };
 		1D5B0BF5282CD6A400C590FD /* BtCallViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BtCallViewController.h; sourceTree = "<group>"; };
@@ -700,11 +747,31 @@
 		1D668729264A59340054880F /* NSDate+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Tools.m"; sourceTree = "<group>"; };
 		1D66872D264A59340054880F /* JLSqliteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLSqliteManager.h; sourceTree = "<group>"; };
 		1D66872E264A59340054880F /* NSString+Path.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Path.m"; sourceTree = "<group>"; };
-		1D668734264A595D0054880F /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FMDB.framework; sourceTree = "<group>"; };
 		1D668736264A59960054880F /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		1D6CC8232C58B90700FAE447 /* JLWearSyncHealthBloodOxyganChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLWearSyncHealthBloodOxyganChart.m; sourceTree = "<group>"; };
+		1D6CC8252C58B90700FAE447 /* JLWearSyncHealthStepChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLWearSyncHealthStepChart.m; sourceTree = "<group>"; };
+		1D6CC8262C58B90800FAE447 /* JLWearSyncHealthSleepChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLWearSyncHealthSleepChart.m; sourceTree = "<group>"; };
+		1D6CC8272C58B90800FAE447 /* JLWearSyncHealthChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLWearSyncHealthChart.m; sourceTree = "<group>"; };
+		1D6CC8282C58B90800FAE447 /* JLWearSyncHealthSleepChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLWearSyncHealthSleepChart.h; sourceTree = "<group>"; };
+		1D6CC8292C58B90800FAE447 /* JLWearSyncHealthChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLWearSyncHealthChart.h; sourceTree = "<group>"; };
+		1D6CC82A2C58B90800FAE447 /* JLWearSyncHealthWeightChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLWearSyncHealthWeightChart.h; sourceTree = "<group>"; };
+		1D6CC82B2C58B90900FAE447 /* JLWearSyncHealthWeightChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLWearSyncHealthWeightChart.m; sourceTree = "<group>"; };
+		1D6CC82C2C58B90900FAE447 /* JLWearSyncHealthHeartRateChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLWearSyncHealthHeartRateChart.m; sourceTree = "<group>"; };
+		1D6CC82D2C58B90900FAE447 /* JLWearSyncHealthHeartRateChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLWearSyncHealthHeartRateChart.h; sourceTree = "<group>"; };
+		1D6CC82F2C58B90A00FAE447 /* JLWearSyncHealthStepChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLWearSyncHealthStepChart.h; sourceTree = "<group>"; };
+		1D6CC8302C58B90A00FAE447 /* JLWearSyncHealthBloodOxyganChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLWearSyncHealthBloodOxyganChart.h; sourceTree = "<group>"; };
+		1D6CC8392C58BBC300FAE447 /* JLSportRecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLSportRecordModel.h; sourceTree = "<group>"; };
+		1D6CC83A2C58BBC300FAE447 /* JLSportRecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLSportRecordModel.m; sourceTree = "<group>"; };
 		1D70A7C92832716300164E93 /* JLBugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JLBugly.framework; sourceTree = "<group>"; };
 		1D80462F2ABD347C00FBA6AC /* DottedLineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DottedLineView.h; sourceTree = "<group>"; };
 		1D8046302ABD347C00FBA6AC /* DottedLineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DottedLineView.m; sourceTree = "<group>"; };
+		1D8171412CFE92E6002543FE /* JL_AdvParse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_AdvParse.framework; sourceTree = "<group>"; };
+		1D8171422CFE92E6002543FE /* JL_BLEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_BLEKit.framework; sourceTree = "<group>"; };
+		1D8171432CFE92E6002543FE /* JL_HashPair.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_HashPair.framework; sourceTree = "<group>"; };
+		1D8171442CFE92E6002543FE /* JL_OTALib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_OTALib.framework; sourceTree = "<group>"; };
+		1D8171452CFE92E6002543FE /* JLBmpConvertKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JLBmpConvertKit.framework; sourceTree = "<group>"; };
+		1D8171462CFE92E6002543FE /* JLDialUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JLDialUnit.framework; sourceTree = "<group>"; };
+		1D8171472CFE92E6002543FE /* JLLogHelper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JLLogHelper.framework; sourceTree = "<group>"; };
 		1D831C1126AEDAA200EA5C42 /* DeviceDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceDetailViewController.h; sourceTree = "<group>"; };
 		1D831C1226AEDAA200EA5C42 /* DeviceDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceDetailViewController.m; sourceTree = "<group>"; };
 		1D831C1326AEDAA200EA5C42 /* DeviceDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceDetailViewController.xib; sourceTree = "<group>"; };
@@ -755,6 +822,13 @@
 		1DB1101D260ADAD500E36D65 /* StepDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StepDetailViewController.m; sourceTree = "<group>"; };
 		1DB1101F260ADB3200E36D65 /* StepDataView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StepDataView.h; sourceTree = "<group>"; };
 		1DB11020260ADB3200E36D65 /* StepDataView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StepDataView.m; sourceTree = "<group>"; };
+		1DB1A7282C9D7A8400216369 /* DialHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialHistoryViewController.swift; sourceTree = "<group>"; };
+		1DB1A72A2C9D7C9100216369 /* DialHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialHistoryViewModel.swift; sourceTree = "<group>"; };
+		1DB1A7342C9FF3ED00216369 /* DialMallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialMallViewController.swift; sourceTree = "<group>"; };
+		1DB1A7362CA00EA600216369 /* DialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialViewController.swift; sourceTree = "<group>"; };
+		1DB1A7382CA00FF000216369 /* DialVcViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialVcViewModel.swift; sourceTree = "<group>"; };
+		1DB1A7422CA43AAB00216369 /* AlertConnectingTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertConnectingTipsView.swift; sourceTree = "<group>"; };
+		1DB1A7452CA5873C00216369 /* DeviceSubViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSubViewModel.swift; sourceTree = "<group>"; };
 		1DB1E01D27327B0B00036448 /* SyncThreadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncThreadManager.h; sourceTree = "<group>"; };
 		1DB1E01E27327B0B00036448 /* SyncDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncDataManager.h; sourceTree = "<group>"; };
 		1DB1E01F27327B0B00036448 /* EcTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EcTools.h; sourceTree = "<group>"; };
@@ -825,11 +899,6 @@
 		1DCD0622292239400071B2F9 /* DebugFuncsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugFuncsViewController.h; sourceTree = "<group>"; };
 		1DCD062429223A010071B2F9 /* NavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavViewController.m; sourceTree = "<group>"; };
 		1DCD062529223A020071B2F9 /* NavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavViewController.h; sourceTree = "<group>"; };
-		1DD2FEAE29233D2600804803 /* WatchLocalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchLocalModel.m; sourceTree = "<group>"; };
-		1DD2FEAF29233D2600804803 /* WatchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchCell.m; sourceTree = "<group>"; };
-		1DD2FEB029233D2600804803 /* WatchLocalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchLocalModel.h; sourceTree = "<group>"; };
-		1DD2FEB129233D2600804803 /* WatchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchCell.h; sourceTree = "<group>"; };
-		1DD2FEB229233D2600804803 /* WatchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WatchCell.xib; sourceTree = "<group>"; };
 		1DD40E092911FC67004C1555 /* HealthFuncView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HealthFuncView.h; sourceTree = "<group>"; };
 		1DD40E0A2911FC67004C1555 /* HealthFuncView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HealthFuncView.m; sourceTree = "<group>"; };
 		1DD40E0C291201CE004C1555 /* HealthFuncCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HealthFuncCell.h; sourceTree = "<group>"; };
@@ -852,10 +921,14 @@
 		1DDA6D9B2775A151006A2518 /* LanguageCls.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LanguageCls.h; sourceTree = "<group>"; };
 		1DDA6D9C2775A151006A2518 /* LanguageCls.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LanguageCls.m; sourceTree = "<group>"; };
 		1DDBD55529C699A80059E200 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1DF1021C2CEC6DA5003CFE84 /* AgreementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementView.swift; sourceTree = "<group>"; };
+		1DF102272CECC1CF003CFE84 /* UILabel+YBAttributeTextTapAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+YBAttributeTextTapAction.m"; sourceTree = "<group>"; };
+		1DF102282CECC1CF003CFE84 /* UILabel+YBAttributeTextTapAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+YBAttributeTextTapAction.h"; sourceTree = "<group>"; };
+		1DF1026C2CEECABD003CFE84 /* ICPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICPViewController.swift; sourceTree = "<group>"; };
 		1DF18EB02BA2E7FC00BF6DD4 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		1DF277AD26B13C6900081F8B /* BasicHttp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicHttp.h; sourceTree = "<group>"; };
 		1DF277AE26B13C6900081F8B /* BasicHttp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicHttp.m; sourceTree = "<group>"; };
-		1DFAA6EF2B8ED7310087B9B4 /* WindowsTipsViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowsTipsViews.swift; sourceTree = "<group>"; };
+		1DFAA6EF2B8ED7310087B9B4 /* AlertViewOnWindows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewOnWindows.swift; sourceTree = "<group>"; };
 		1DFAA6F22B8EDA870087B9B4 /* AIServiceTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIServiceTipsView.swift; sourceTree = "<group>"; };
 		22131E5D25DF8C1500590C4A /* BodyDataVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BodyDataVC.h; sourceTree = "<group>"; };
 		22131E5E25DF8C1500590C4A /* BodyDataVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BodyDataVC.m; sourceTree = "<group>"; };
@@ -883,8 +956,6 @@
 		226234AC26034D3D003BF684 /* DeleteRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteRecordView.h; sourceTree = "<group>"; };
 		226234AD26034D3D003BF684 /* DeleteRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteRecordView.m; sourceTree = "<group>"; };
 		226234AE26034D3D003BF684 /* DeleteRecordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeleteRecordView.xib; sourceTree = "<group>"; };
-		22645D0825EE1A4500C8AB69 /* UILabel+YBAttributeTextTapAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+YBAttributeTextTapAction.h"; sourceTree = "<group>"; };
-		22645D0925EE1A4500C8AB69 /* UILabel+YBAttributeTextTapAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+YBAttributeTextTapAction.m"; sourceTree = "<group>"; };
 		22645D0E25EE299000C8AB69 /* LoginVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
 		22645D0F25EE299000C8AB69 /* LoginVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
 		22645D1025EE299000C8AB69 /* LoginVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginVC.xib; sourceTree = "<group>"; };
@@ -1055,21 +1126,6 @@
 		22E8E99725FEE92200FDC942 /* OpenShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenShowView.h; sourceTree = "<group>"; };
 		486E09652861AE900076FBC8 /* JLWatchHttp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLWatchHttp.m; sourceTree = "<group>"; };
 		486E09662861AE900076FBC8 /* JLWatchHttp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLWatchHttp.h; sourceTree = "<group>"; };
-		486E09722861B19A0076FBC8 /* WatchMoreVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchMoreVC.h; sourceTree = "<group>"; };
-		486E09732861B19A0076FBC8 /* WatchMoreVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WatchMoreVC.xib; sourceTree = "<group>"; };
-		486E09742861B19A0076FBC8 /* WatchMoreVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchMoreVC.m; sourceTree = "<group>"; };
-		486E09762861B19A0076FBC8 /* WatchOwn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchOwn.m; sourceTree = "<group>"; };
-		486E09772861B19A0076FBC8 /* WatchOwn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchOwn.h; sourceTree = "<group>"; };
-		486E09792861B19A0076FBC8 /* WatchHistoryVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WatchHistoryVC.xib; sourceTree = "<group>"; };
-		486E097A2861B19A0076FBC8 /* WatchHistoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchHistoryVC.h; sourceTree = "<group>"; };
-		486E097B2861B19A0076FBC8 /* WatchHistoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchHistoryVC.m; sourceTree = "<group>"; };
-		486E097D2861B19A0076FBC8 /* DialDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialDetailVC.h; sourceTree = "<group>"; };
-		486E097E2861B19A0076FBC8 /* DialModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialModel.h; sourceTree = "<group>"; };
-		486E097F2861B19A0076FBC8 /* DialShopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialShopView.m; sourceTree = "<group>"; };
-		486E09802861B19A0076FBC8 /* DialDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DialDetailVC.xib; sourceTree = "<group>"; };
-		486E09812861B19A0076FBC8 /* DialShopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialShopView.h; sourceTree = "<group>"; };
-		486E09822861B19A0076FBC8 /* DialModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialModel.m; sourceTree = "<group>"; };
-		486E09832861B19A0076FBC8 /* DialDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialDetailVC.m; sourceTree = "<group>"; };
 		486E098E2861B2CF0076FBC8 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		486E098F2861B2CF0076FBC8 /* StoreIAPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreIAPManager.h; sourceTree = "<group>"; };
 		486E09902861B2CF0076FBC8 /* StoreIAPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreIAPManager.m; sourceTree = "<group>"; };
@@ -1159,9 +1215,6 @@
 		4A963E402623EEEF00771B2A /* CustomWatchVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomWatchVC.h; sourceTree = "<group>"; };
 		4A963E412623EEEF00771B2A /* CustomWatchVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomWatchVC.m; sourceTree = "<group>"; };
 		4A963E422623EEEF00771B2A /* CustomWatchVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomWatchVC.xib; sourceTree = "<group>"; };
-		4AA625CF25E39D1600D174A7 /* WatchLocalView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WatchLocalView.h; sourceTree = "<group>"; };
-		4AA625D025E39D1600D174A7 /* WatchLocalView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WatchLocalView.m; sourceTree = "<group>"; };
-		4AA625D425E39D3500D174A7 /* WatchLocalView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WatchLocalView.xib; sourceTree = "<group>"; };
 		4ABC0BE325F5C85E003FE559 /* MyTargetVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTargetVC.m; sourceTree = "<group>"; };
 		4ABC0BE525F5C85E003FE559 /* BushuPick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BushuPick.h; sourceTree = "<group>"; };
 		4ABC0BE725F5C85E003FE559 /* BushuPlate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BushuPlate.h; sourceTree = "<group>"; };
@@ -1198,9 +1251,6 @@
 		4ABD75C62612C3240068D4F9 /* YaLiView2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YaLiView2.h; sourceTree = "<group>"; };
 		4ABD75C72612C3240068D4F9 /* YaLiView2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YaLiView2.m; sourceTree = "<group>"; };
 		4ACB254625F859D000C66654 /* ZipZap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ZipZap.framework; sourceTree = "<group>"; };
-		4AD8DF0225ECE294007D6D29 /* WatchLocalVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchLocalVC.h; sourceTree = "<group>"; };
-		4AD8DF0325ECE294007D6D29 /* WatchLocalVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WatchLocalVC.xib; sourceTree = "<group>"; };
-		4AD8DF0425ECE294007D6D29 /* WatchLocalVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchLocalVC.m; sourceTree = "<group>"; };
 		4ADA19BD26145B9D000DAEF6 /* search_12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_12.png; sourceTree = "<group>"; };
 		4ADA19BE26145B9D000DAEF6 /* search_06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_06.png; sourceTree = "<group>"; };
 		4ADA19BF26145B9D000DAEF6 /* search_07.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_07.png; sourceTree = "<group>"; };
@@ -1699,8 +1749,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A2B125D25DE3F110089AFBA /* libc++.tbd in Frameworks */,
+				BE844645261EAFDB00A5D474 /* libz.tbd in Frameworks */,
 				BE844647261EAFE700A5D474 /* Security.framework in Frameworks */,
-				1D2E4D642BA43278000956FE /* JL_OTALib.framework in Frameworks */,
+				1D81714F2CFE9309002543FE /* JLBmpConvertKit.framework in Frameworks */,
 				BE844649261EAFF000A5D474 /* SystemConfiguration.framework in Frameworks */,
 				48B9337E2A80922E009CB52C /* SpeexKit.framework in Frameworks */,
 				1DC585F829B1D2FD0045AB01 /* JTCalendar.framework in Frameworks */,
@@ -1708,8 +1760,6 @@
 				1DAADEFD2AD92D3900CDD509 /* Security.framework in Frameworks */,
 				1DD40E2F29136C02004C1555 /* ExternalAccessory.framework in Frameworks */,
 				C2B5E8D22A81CA0E001DDB24 /* Foundation.framework in Frameworks */,
-				BE844645261EAFDB00A5D474 /* libz.tbd in Frameworks */,
-				4A2B125D25DE3F110089AFBA /* libc++.tbd in Frameworks */,
 				BE844641261EAFAA00A5D474 /* CoreTelephony.framework in Frameworks */,
 				1DDDA27C2B59488B00104609 /* JLBugly.framework in Frameworks */,
 				C2B5E8D52A81CA3D001DDB24 /* UIKit.framework in Frameworks */,
@@ -1726,20 +1776,23 @@
 				C2B5E8D72A81CA5D001DDB24 /* Contacts.framework in Frameworks */,
 				C2B5E8DB2A81CA70001DDB24 /* QuartzCore.framework in Frameworks */,
 				48ECE6FE28B485990097289D /* StoreKit.framework in Frameworks */,
-				1D2E4D652BA43278000956FE /* JL_BLEKit.framework in Frameworks */,
-				1D2E4D662BA43278000956FE /* JL_AdvParse.framework in Frameworks */,
 				C2B5E8DD2A81CA7E001DDB24 /* CoreGraphics.framework in Frameworks */,
+				1D4F96B12CC744A000D6F068 /* NSObjectSafe.framework in Frameworks */,
 				BEECBA5526A67235008EBE94 /* AudioToolbox.framework in Frameworks */,
 				C2B5E8D32A81CA1E001DDB24 /* CoreTelephony.framework in Frameworks */,
 				1DB3675225FF09F800A03491 /* TYCoreText.framework in Frameworks */,
-				1D2E4D632BA43278000956FE /* JLDialUnit.framework in Frameworks */,
 				1DD40E2B2913683B004C1555 /* AMapFoundationKit.framework in Frameworks */,
+				1D8171482CFE92E6002543FE /* JLLogHelper.framework in Frameworks */,
+				1D81714A2CFE92E6002543FE /* JL_BLEKit.framework in Frameworks */,
+				1D81714B2CFE92E6002543FE /* JL_AdvParse.framework in Frameworks */,
+				1D81714C2CFE92E6002543FE /* JL_HashPair.framework in Frameworks */,
+				1D81714D2CFE92E6002543FE /* JL_OTALib.framework in Frameworks */,
+				1D81714E2CFE92E6002543FE /* JLDialUnit.framework in Frameworks */,
 				1DD40E2829136837004C1555 /* MAMapKit.framework in Frameworks */,
-				1D668738264A5E2B0054880F /* FMDB.framework in Frameworks */,
+				1D29AD4A2CB907A700726E0C /* Bugly.framework in Frameworks */,
 				1DD40E2929136838004C1555 /* AMapSearchKit.framework in Frameworks */,
 				1DD40E2D29136914004C1555 /* AMapLocationKit.framework in Frameworks */,
 				17F9E3375FFE28422E382812 /* Pods_JieliJianKang.framework in Frameworks */,
-				1D2E4D672BA43278000956FE /* JL_HashPair.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1749,7 +1802,12 @@
 		1D0311412B85A86A00056215 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1DF1021B2CEC6D5D003CFE84 /* AgreeMentView */,
+				1D3042F12C89A8880024A826 /* BaseView */,
+				1D3044232C8FE2100024A826 /* CellsView */,
 				1D0311422B85A87800056215 /* CutImageViews */,
+				1D3044202C8FD3040024A826 /* DialMarketViews */,
+				1D3042EE2C89A74D0024A826 /* VerifyCodeView */,
 				1DFAA6F12B8ED73B0087B9B4 /* WindowTipsViews */,
 			);
 			path = Views;
@@ -1768,6 +1826,22 @@
 				1D0311352B85A4C300056215 /* HQImageEditViewController.m */,
 			);
 			path = CutImageViews;
+			sourceTree = "<group>";
+		};
+		1D0E99E42C9B019F009FA68A /* DialLocalViews */ = {
+			isa = PBXGroup;
+			children = (
+				1D0E99E52C9B01F4009FA68A /* DialLocalView.swift */,
+			);
+			path = DialLocalViews;
+			sourceTree = "<group>";
+		};
+		1D0E99F02C9D2270009FA68A /* DialPayView */ = {
+			isa = PBXGroup;
+			children = (
+				1D0E99F12C9D2297009FA68A /* DialPayBottomView.swift */,
+			);
+			path = DialPayView;
 			sourceTree = "<group>";
 		};
 		1D159F382609956400D5966C /* 步数详情页面 */ = {
@@ -1791,6 +1865,31 @@
 			path = "年月日选择";
 			sourceTree = "<group>";
 		};
+		1D1A26722C93D8A500001636 /* DialMarket */ = {
+			isa = PBXGroup;
+			children = (
+				1D1A26732C93D8EF00001636 /* DialMarketViewController.swift */,
+				1DB6E53A2AE76BA1003DF63C /* CustomDialEditVC.h */,
+				1DB6E53B2AE76BA1003DF63C /* CustomDialEditVC.m */,
+				1D0E99EA2C9D0507009FA68A /* DialPayViewController.swift */,
+				1DB1A7282C9D7A8400216369 /* DialHistoryViewController.swift */,
+				1DB1A7342C9FF3ED00216369 /* DialMallViewController.swift */,
+				1DB1A7362CA00EA600216369 /* DialViewController.swift */,
+			);
+			path = DialMarket;
+			sourceTree = "<group>";
+		};
+		1D1A26822C93EC2800001636 /* DialMallViews */ = {
+			isa = PBXGroup;
+			children = (
+				1D0E99F02C9D2270009FA68A /* DialPayView */,
+				1D1A26832C93EC4500001636 /* DialMallView.swift */,
+				1D1A26852C93EC8600001636 /* FreeDialView.swift */,
+				1D0E99DE2C9AC1B5009FA68A /* PayDialView.swift */,
+			);
+			path = DialMallViews;
+			sourceTree = "<group>";
+		};
 		1D27965C283F6978005A65C5 /* UnitTester */ = {
 			isa = PBXGroup;
 			children = (
@@ -1802,17 +1901,123 @@
 			path = UnitTester;
 			sourceTree = "<group>";
 		};
-		1D2FF3142AE2815D00E53C87 /* WatchCustomDial */ = {
+		1D2FF3142AE2815D00E53C87 /* DialCustomViews */ = {
 			isa = PBXGroup;
 			children = (
 				1D2FF3152AE2828800E53C87 /* CustomDialView.h */,
 				1D2FF3162AE2828800E53C87 /* CustomDialView.m */,
+			);
+			path = DialCustomViews;
+			sourceTree = "<group>";
+		};
+		1D3042EC2C89A4E70024A826 /* LoginRegister */ = {
+			isa = PBXGroup;
+			children = (
+				22645D2025EE5B5600C8AB69 /* RegisterViewController */,
+				1D3042ED2C89A5430024A826 /* LoginViewController */,
+				22645D3325EF8E1400C8AB69 /* ForgetPassword */,
+			);
+			path = LoginRegister;
+			sourceTree = "<group>";
+		};
+		1D3042ED2C89A5430024A826 /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				22645D0E25EE299000C8AB69 /* LoginVC.h */,
+				22645D0F25EE299000C8AB69 /* LoginVC.m */,
+				22645D1025EE299000C8AB69 /* LoginVC.xib */,
+				22645D3225EF8DD300C8AB69 /* VereifyCodeLogin */,
+			);
+			path = LoginViewController;
+			sourceTree = "<group>";
+		};
+		1D3042EE2C89A74D0024A826 /* VerifyCodeView */ = {
+			isa = PBXGroup;
+			children = (
+				1D3042EF2C89A79C0024A826 /* AlertVerifyCodeView.swift */,
+			);
+			path = VerifyCodeView;
+			sourceTree = "<group>";
+		};
+		1D3042F12C89A8880024A826 /* BaseView */ = {
+			isa = PBXGroup;
+			children = (
+				1D3042F22C89A8CD0024A826 /* BaseView.swift */,
+			);
+			path = BaseView;
+			sourceTree = "<group>";
+		};
+		1D3043352C8AF9000024A826 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C285D7C0274F6FED00342485 /* UnsubscribeView */,
+				C279851A261EE56C0022D29A /* ModifyMobileView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1D30441F2C8FD2D20024A826 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				1DF1026B2CEECA96003CFE84 /* WebViewControllers */,
+				1D1A26722C93D8A500001636 /* DialMarket */,
+				1D3042EC2C89A4E70024A826 /* LoginRegister */,
+				1D1A26752C93DA0D00001636 /* BaseViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		1D3044202C8FD3040024A826 /* DialMarketViews */ = {
+			isa = PBXGroup;
+			children = (
+				1D2FF3142AE2815D00E53C87 /* DialCustomViews */,
+				1D0E99E42C9B019F009FA68A /* DialLocalViews */,
+				1D1A26822C93EC2800001636 /* DialMallViews */,
+				1D57C3982AE2611A0073E5B4 /* WatchDailTitleView */,
+				1D3044212C8FD8D60024A826 /* DialSubView.swift */,
+			);
+			path = DialMarketViews;
+			sourceTree = "<group>";
+		};
+		1D3044232C8FE2100024A826 /* CellsView */ = {
+			isa = PBXGroup;
+			children = (
 				1D2FF3182AE2845500E53C87 /* CustomDialCell.h */,
 				1D2FF3192AE2845500E53C87 /* CustomDialCell.m */,
-				1DB6E53A2AE76BA1003DF63C /* CustomDialEditVC.h */,
-				1DB6E53B2AE76BA1003DF63C /* CustomDialEditVC.m */,
+				1D3044242C8FE22D0024A826 /* DialSubCollectionViewCell.swift */,
 			);
-			path = WatchCustomDial;
+			path = CellsView;
+			sourceTree = "<group>";
+		};
+		1D3044262C901BCC0024A826 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				1D3044292C901EE50024A826 /* DialViewModel */,
+				1DB1A7452CA5873C00216369 /* DeviceSubViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		1D3044292C901EE50024A826 /* DialViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1D3044272C901C990024A826 /* DialSubViewModel.swift */,
+				1D1A26892C94100800001636 /* DialFreeViewModel.swift */,
+				1D1A268B2C94188E00001636 /* DialBaseViewModel.swift */,
+				1D0E99E22C9AC9FE009FA68A /* DialPayViewModel.swift */,
+				1DB1A72A2C9D7C9100216369 /* DialHistoryViewModel.swift */,
+				1DB1A7382CA00FF000216369 /* DialVcViewModel.swift */,
+			);
+			path = DialViewModel;
+			sourceTree = "<group>";
+		};
+		1D3044632C9130990024A826 /* Bridge */ = {
+			isa = PBXGroup;
+			children = (
+				1D3044602C9068560024A826 /* BridgeHelper.h */,
+				1D3044612C9068560024A826 /* BridgeHelper.m */,
+			);
+			path = Bridge;
 			sourceTree = "<group>";
 		};
 		1D3E030126AAC19E00CDB02B /* 用户设备数据 */ = {
@@ -1882,7 +2087,6 @@
 				1D5B0BF6282CD6A400C590FD /* BtCallViewController.m */,
 				1D5B0BF7282CD6A400C590FD /* BtCallViewController.xib */,
 				1D6435BE2AD64F430032072D /* settingConfig.gif */,
-				1D5B0BFA282CE15C00C590FD /* JieliJianKang-Bridging-Header.h */,
 			);
 			path = "手表蓝牙通话";
 			sourceTree = "<group>";
@@ -1926,6 +2130,34 @@
 				1D66872E264A59340054880F /* NSString+Path.m */,
 			);
 			path = "数据库";
+			sourceTree = "<group>";
+		};
+		1D6CC8222C58B8EB00FAE447 /* HealthDataFormat */ = {
+			isa = PBXGroup;
+			children = (
+				1D6CC8302C58B90A00FAE447 /* JLWearSyncHealthBloodOxyganChart.h */,
+				1D6CC8232C58B90700FAE447 /* JLWearSyncHealthBloodOxyganChart.m */,
+				1D6CC8292C58B90800FAE447 /* JLWearSyncHealthChart.h */,
+				1D6CC8272C58B90800FAE447 /* JLWearSyncHealthChart.m */,
+				1D6CC82D2C58B90900FAE447 /* JLWearSyncHealthHeartRateChart.h */,
+				1D6CC82C2C58B90900FAE447 /* JLWearSyncHealthHeartRateChart.m */,
+				1D6CC8282C58B90800FAE447 /* JLWearSyncHealthSleepChart.h */,
+				1D6CC8262C58B90800FAE447 /* JLWearSyncHealthSleepChart.m */,
+				1D6CC82F2C58B90A00FAE447 /* JLWearSyncHealthStepChart.h */,
+				1D6CC8252C58B90700FAE447 /* JLWearSyncHealthStepChart.m */,
+				1D6CC82A2C58B90800FAE447 /* JLWearSyncHealthWeightChart.h */,
+				1D6CC82B2C58B90900FAE447 /* JLWearSyncHealthWeightChart.m */,
+			);
+			path = HealthDataFormat;
+			sourceTree = "<group>";
+		};
+		1D6CC8382C58BBB200FAE447 /* SportRecordFormat */ = {
+			isa = PBXGroup;
+			children = (
+				1D6CC8392C58BBC300FAE447 /* JLSportRecordModel.h */,
+				1D6CC83A2C58BBC300FAE447 /* JLSportRecordModel.m */,
+			);
+			path = SportRecordFormat;
 			sourceTree = "<group>";
 		};
 		1D9887AD25FB83F800C41C4F /* 组件 */ = {
@@ -2050,9 +2282,11 @@
 			path = "日历";
 			sourceTree = "<group>";
 		};
-		1DB1E01C27327B0B00036448 /* 同步设备数据 */ = {
+		1DB1E01C27327B0B00036448 /* SyncDeviceData */ = {
 			isa = PBXGroup;
 			children = (
+				1D6CC8382C58BBB200FAE447 /* SportRecordFormat */,
+				1D6CC8222C58B8EB00FAE447 /* HealthDataFormat */,
 				1DB1E01F27327B0B00036448 /* EcTools.h */,
 				1DB1E02227327B0B00036448 /* EcTools.m */,
 				1DB1E01E27327B0B00036448 /* SyncDataManager.h */,
@@ -2060,7 +2294,7 @@
 				1DB1E01D27327B0B00036448 /* SyncThreadManager.h */,
 				1DB1E02027327B0B00036448 /* SyncThreadManager.m */,
 			);
-			path = "同步设备数据";
+			path = SyncDeviceData;
 			sourceTree = "<group>";
 		};
 		1DB367AC25FF7C6200A03491 /* 运动记录控件 */ = {
@@ -2199,18 +2433,6 @@
 			path = ShareLog;
 			sourceTree = "<group>";
 		};
-		1DD2FEAD29233D2600804803 /* WatchCell */ = {
-			isa = PBXGroup;
-			children = (
-				1DD2FEB129233D2600804803 /* WatchCell.h */,
-				1DD2FEAF29233D2600804803 /* WatchCell.m */,
-				1DD2FEB229233D2600804803 /* WatchCell.xib */,
-				1DD2FEB029233D2600804803 /* WatchLocalModel.h */,
-				1DD2FEAE29233D2600804803 /* WatchLocalModel.m */,
-			);
-			path = WatchCell;
-			sourceTree = "<group>";
-		};
 		1DD40E082911FC46004C1555 /* HealthViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -2252,11 +2474,30 @@
 			path = LanguageProtocol;
 			sourceTree = "<group>";
 		};
+		1DF1021B2CEC6D5D003CFE84 /* AgreeMentView */ = {
+			isa = PBXGroup;
+			children = (
+				1DF1021C2CEC6DA5003CFE84 /* AgreementView.swift */,
+			);
+			path = AgreeMentView;
+			sourceTree = "<group>";
+		};
+		1DF1026B2CEECA96003CFE84 /* WebViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				1DF1026C2CEECABD003CFE84 /* ICPViewController.swift */,
+			);
+			path = WebViewControllers;
+			sourceTree = "<group>";
+		};
 		1DFAA6F12B8ED73B0087B9B4 /* WindowTipsViews */ = {
 			isa = PBXGroup;
 			children = (
-				1DFAA6EF2B8ED7310087B9B4 /* WindowsTipsViews.swift */,
+				1DFAA6EF2B8ED7310087B9B4 /* AlertViewOnWindows.swift */,
 				1DFAA6F22B8EDA870087B9B4 /* AIServiceTipsView.swift */,
+				1D1A268D2C94620700001636 /* AlertViewDialTransport.swift */,
+				1D0E99E82C9C1C20009FA68A /* AlertDeleteingTipsView.swift */,
+				1DB1A7422CA43AAB00216369 /* AlertConnectingTipsView.swift */,
 			);
 			path = WindowTipsViews;
 			sourceTree = "<group>";
@@ -2353,16 +2594,6 @@
 			path = "弹出框";
 			sourceTree = "<group>";
 		};
-		22645D0D25EE296400C8AB69 /* 登录 */ = {
-			isa = PBXGroup;
-			children = (
-				22645D0E25EE299000C8AB69 /* LoginVC.h */,
-				22645D0F25EE299000C8AB69 /* LoginVC.m */,
-				22645D1025EE299000C8AB69 /* LoginVC.xib */,
-			);
-			path = "登录";
-			sourceTree = "<group>";
-		};
 		22645D1525EE382C00C8AB69 /* 封装小眼睛 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2372,14 +2603,14 @@
 			path = "封装小眼睛";
 			sourceTree = "<group>";
 		};
-		22645D2025EE5B5600C8AB69 /* 注册 */ = {
+		22645D2025EE5B5600C8AB69 /* RegisterViewController */ = {
 			isa = PBXGroup;
 			children = (
 				22645D2125EE5B8300C8AB69 /* RegisterVC.h */,
 				22645D2225EE5B8300C8AB69 /* RegisterVC.m */,
 				22645D2325EE5B8300C8AB69 /* RegisterVC.xib */,
 			);
-			path = "注册";
+			path = RegisterViewController;
 			sourceTree = "<group>";
 		};
 		22645D2925EF76C600C8AB69 /* 完善个人信息 */ = {
@@ -2392,35 +2623,35 @@
 			path = "完善个人信息";
 			sourceTree = "<group>";
 		};
-		22645D3225EF8DD300C8AB69 /* 验证码登录 */ = {
+		22645D3225EF8DD300C8AB69 /* VereifyCodeLogin */ = {
 			isa = PBXGroup;
 			children = (
 				22645D3425EF8E5700C8AB69 /* VerificationCodeLoginVC.h */,
 				22645D3525EF8E5700C8AB69 /* VerificationCodeLoginVC.m */,
 				22645D3625EF8E5700C8AB69 /* VerificationCodeLoginVC.xib */,
 			);
-			path = "验证码登录";
+			path = VereifyCodeLogin;
 			sourceTree = "<group>";
 		};
-		22645D3325EF8E1400C8AB69 /* 忘记密码 */ = {
+		22645D3325EF8E1400C8AB69 /* ForgetPassword */ = {
 			isa = PBXGroup;
 			children = (
-				22645D4725EF8E9900C8AB69 /* 设置密码 */,
+				22645D4725EF8E9900C8AB69 /* ResetPassword */,
 				22645D3B25EF8E7400C8AB69 /* ForgetPwdVC.h */,
 				22645D3C25EF8E7400C8AB69 /* ForgetPwdVC.m */,
 				22645D3D25EF8E7400C8AB69 /* ForgetPwdVC.xib */,
 			);
-			path = "忘记密码";
+			path = ForgetPassword;
 			sourceTree = "<group>";
 		};
-		22645D4725EF8E9900C8AB69 /* 设置密码 */ = {
+		22645D4725EF8E9900C8AB69 /* ResetPassword */ = {
 			isa = PBXGroup;
 			children = (
 				22645D4125EF8E9400C8AB69 /* ForgetSetPwdVC.h */,
 				22645D4225EF8E9400C8AB69 /* ForgetSetPwdVC.m */,
 				22645D4325EF8E9400C8AB69 /* ForgetSetPwdVC.xib */,
 			);
-			path = "设置密码";
+			path = ResetPassword;
 			sourceTree = "<group>";
 		};
 		22645D4925F0844C00C8AB69 /* 拍照和读取相册 */ = {
@@ -2713,9 +2944,10 @@
 			path = "运动目标";
 			sourceTree = "<group>";
 		};
-		22AA82A825F749910012F3A3 /* Http接口 */ = {
+		22AA82A825F749910012F3A3 /* httpClient */ = {
 			isa = PBXGroup;
 			children = (
+				1D40DDC026A1260500A70D1B /* DeviceHTTP */,
 				BE8774DB2626DD7D004E2CED /* Model */,
 				1DF277AD26B13C6900081F8B /* BasicHttp.h */,
 				1DF277AE26B13C6900081F8B /* BasicHttp.m */,
@@ -2727,9 +2959,9 @@
 				BE7278DA2744A10100A3F3D0 /* JLWeatherHttp.m */,
 				486E09662861AE900076FBC8 /* JLWatchHttp.h */,
 				486E09652861AE900076FBC8 /* JLWatchHttp.m */,
-				1D40DDC026A1260500A70D1B /* DeviceHTTP */,
+				1D3044332C902BCC0024A826 /* DialMarketHttp.swift */,
 			);
-			path = "Http接口";
+			path = httpClient;
 			sourceTree = "<group>";
 		};
 		22AA82AC25F9E7900012F3A3 /* 闹钟 */ = {
@@ -2873,11 +3105,11 @@
 		22AB9C3B25EE099E006C800F /* 声明 */ = {
 			isa = PBXGroup;
 			children = (
+				1DF102282CECC1CF003CFE84 /* UILabel+YBAttributeTextTapAction.h */,
+				1DF102272CECC1CF003CFE84 /* UILabel+YBAttributeTextTapAction.m */,
 				BE886865269D419B0027C47C /* JLStatementViewController.h */,
 				BE886866269D419B0027C47C /* JLStatementViewController.m */,
 				BE886867269D419B0027C47C /* JLStatementViewController.xib */,
-				22645D0825EE1A4500C8AB69 /* UILabel+YBAttributeTextTapAction.h */,
-				22645D0925EE1A4500C8AB69 /* UILabel+YBAttributeTextTapAction.m */,
 			);
 			path = "声明";
 			sourceTree = "<group>";
@@ -2912,49 +3144,6 @@
 				22E8E99625FEE92200FDC942 /* OpenShowView.xib */,
 			);
 			path = "开启页动画";
-			sourceTree = "<group>";
-		};
-		486E09712861B19A0076FBC8 /* WatchMoreVC */ = {
-			isa = PBXGroup;
-			children = (
-				486E09722861B19A0076FBC8 /* WatchMoreVC.h */,
-				486E09742861B19A0076FBC8 /* WatchMoreVC.m */,
-				486E09732861B19A0076FBC8 /* WatchMoreVC.xib */,
-			);
-			path = WatchMoreVC;
-			sourceTree = "<group>";
-		};
-		486E09752861B19A0076FBC8 /* WatchOwn */ = {
-			isa = PBXGroup;
-			children = (
-				486E09772861B19A0076FBC8 /* WatchOwn.h */,
-				486E09762861B19A0076FBC8 /* WatchOwn.m */,
-			);
-			path = WatchOwn;
-			sourceTree = "<group>";
-		};
-		486E09782861B19A0076FBC8 /* WatchHistory */ = {
-			isa = PBXGroup;
-			children = (
-				486E097A2861B19A0076FBC8 /* WatchHistoryVC.h */,
-				486E097B2861B19A0076FBC8 /* WatchHistoryVC.m */,
-				486E09792861B19A0076FBC8 /* WatchHistoryVC.xib */,
-			);
-			path = WatchHistory;
-			sourceTree = "<group>";
-		};
-		486E097C2861B19A0076FBC8 /* WatchShop */ = {
-			isa = PBXGroup;
-			children = (
-				486E097E2861B19A0076FBC8 /* DialModel.h */,
-				486E09822861B19A0076FBC8 /* DialModel.m */,
-				486E097D2861B19A0076FBC8 /* DialDetailVC.h */,
-				486E09832861B19A0076FBC8 /* DialDetailVC.m */,
-				486E09802861B19A0076FBC8 /* DialDetailVC.xib */,
-				486E09812861B19A0076FBC8 /* DialShopView.h */,
-				486E097F2861B19A0076FBC8 /* DialShopView.m */,
-			);
-			path = WatchShop;
 			sourceTree = "<group>";
 		};
 		486E098D2861B2CF0076FBC8 /* StoreIAPManager */ = {
@@ -3021,11 +3210,15 @@
 		4A2B125B25DE3F100089AFBA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1D2E4D612BA43278000956FE /* JL_AdvParse.framework */,
-				1D2E4D602BA43278000956FE /* JL_BLEKit.framework */,
-				1D2E4D622BA43278000956FE /* JL_HashPair.framework */,
-				1D2E4D5F2BA43278000956FE /* JL_OTALib.framework */,
-				1D2E4D5E2BA43278000956FE /* JLDialUnit.framework */,
+				1D8171412CFE92E6002543FE /* JL_AdvParse.framework */,
+				1D8171422CFE92E6002543FE /* JL_BLEKit.framework */,
+				1D8171432CFE92E6002543FE /* JL_HashPair.framework */,
+				1D8171442CFE92E6002543FE /* JL_OTALib.framework */,
+				1D8171452CFE92E6002543FE /* JLBmpConvertKit.framework */,
+				1D8171462CFE92E6002543FE /* JLDialUnit.framework */,
+				1D8171472CFE92E6002543FE /* JLLogHelper.framework */,
+				1D4F96AF2CC7443500D6F068 /* NSObjectSafe.framework */,
+				1D29AD492CB907A700726E0C /* Bugly.framework */,
 				C2B395C32A8221E8001EEB9D /* AIKIT.framework */,
 				C2B5E8DC2A81CA7D001DDB24 /* CoreGraphics.framework */,
 				C2B5E8DA2A81CA70001DDB24 /* QuartzCore.framework */,
@@ -3044,7 +3237,6 @@
 				1D5B0BFF282CFBE800C590FD /* WebKit.framework */,
 				BEECBA5426A67235008EBE94 /* AudioToolbox.framework */,
 				1D668736264A59960054880F /* libsqlite3.tbd */,
-				1D668734264A595D0054880F /* FMDB.framework */,
 				BE844648261EAFF000A5D474 /* SystemConfiguration.framework */,
 				BE844646261EAFE700A5D474 /* Security.framework */,
 				BE844644261EAFD100A5D474 /* libz.tbd */,
@@ -3128,7 +3320,7 @@
 			isa = PBXGroup;
 			children = (
 				1DC4D096277970410077EFD2 /* 多语言 */,
-				C279850F261EA2C10022D29A /* 账号与安全 */,
+				C279850F261EA2C10022D29A /* AccountSecurity */,
 				C283540F265CD69C004FB177 /* 单位设置 */,
 				C2835413265CE179004FB177 /* 消息通知 */,
 				4A2B127E25DE42A20089AFBA /* SettingVC.h */,
@@ -3200,6 +3392,7 @@
 			isa = PBXGroup;
 			children = (
 				BE886873269EC14F0027C47C /* JieliJianKang.entitlements */,
+				1D5B0BFA282CE15C00C590FD /* JieliJianKang-Bridging-Header.h */,
 				4A75076025DE041500990508 /* AppDelegate.h */,
 				4A75076125DE041500990508 /* AppDelegate.m */,
 				BE8E6C8A2786799200B532C3 /* JLTabBarController.h */,
@@ -3210,23 +3403,22 @@
 				4A2B128925DE522A0089AFBA /* JL_RunSDK.m */,
 				4A2B128625DE52290089AFBA /* JLPreparation.h */,
 				4A2B128725DE522A0089AFBA /* JLPreparation.m */,
+				1D3044632C9130990024A826 /* Bridge */,
+				22AA82A825F749910012F3A3 /* httpClient */,
+				1D30441F2C8FD2D20024A826 /* ViewControllers */,
 				1D0311412B85A86A00056215 /* Views */,
+				1D3044262C901BCC0024A826 /* ViewModels */,
 				C2C43BC82A70B9F3009B99FA /* AI云服务 */,
 				C2C43BCC2A70C733009B99FA /* 语音识别 */,
 				1DBBD70827507E0300E818FD /* 查找手机 */,
 				22E8E99425FEE90900FDC942 /* 开启页动画 */,
 				22AB9C3B25EE099E006C800F /* 声明 */,
-				22AA82A825F749910012F3A3 /* Http接口 */,
 				226234A826034CEA003BF684 /* 弹出框 */,
 				22645D4925F0844C00C8AB69 /* 拍照和读取相册 */,
 				22645D9025F1BE8500C8AB69 /* 弹框个人信息 */,
 				22645D6025F0C84F00C8AB69 /* 昵称 */,
 				22645D6825F0DAC200C8AB69 /* 性别 */,
 				22645D1525EE382C00C8AB69 /* 封装小眼睛 */,
-				22645D0D25EE296400C8AB69 /* 登录 */,
-				22645D3225EF8DD300C8AB69 /* 验证码登录 */,
-				22645D3325EF8E1400C8AB69 /* 忘记密码 */,
-				22645D2025EE5B5600C8AB69 /* 注册 */,
 				22645D2925EF76C600C8AB69 /* 完善个人信息 */,
 				4A2B126225DE40B70089AFBA /* 健康界面 */,
 				4A2B126425DE41760089AFBA /* 运动界面 */,
@@ -3246,7 +3438,7 @@
 				4A75077225DE041800990508 /* main.m */,
 				BE844625261E9EA700A5D474 /* JLPrefixHeader.pch */,
 				1D27965C283F6978005A65C5 /* UnitTester */,
-				1DB1E01C27327B0B00036448 /* 同步设备数据 */,
+				1DB1E01C27327B0B00036448 /* SyncDeviceData */,
 				1D668722264A59340054880F /* 数据库 */,
 			);
 			path = JieliJianKang;
@@ -3265,19 +3457,6 @@
 		4AA625CE25E39C9900D174A7 /* 本地表盘 */ = {
 			isa = PBXGroup;
 			children = (
-				486E09712861B19A0076FBC8 /* WatchMoreVC */,
-				486E09782861B19A0076FBC8 /* WatchHistory */,
-				486E09752861B19A0076FBC8 /* WatchOwn */,
-				486E097C2861B19A0076FBC8 /* WatchShop */,
-				1DD2FEAD29233D2600804803 /* WatchCell */,
-				1D2FF3142AE2815D00E53C87 /* WatchCustomDial */,
-				4AA625CF25E39D1600D174A7 /* WatchLocalView.h */,
-				4AA625D025E39D1600D174A7 /* WatchLocalView.m */,
-				4AA625D425E39D3500D174A7 /* WatchLocalView.xib */,
-				4AD8DF0225ECE294007D6D29 /* WatchLocalVC.h */,
-				4AD8DF0425ECE294007D6D29 /* WatchLocalVC.m */,
-				4AD8DF0325ECE294007D6D29 /* WatchLocalVC.xib */,
-				1D57C3982AE2611A0073E5B4 /* WatchDailTitleView */,
 			);
 			path = "本地表盘";
 			sourceTree = "<group>";
@@ -3818,6 +3997,7 @@
 				1D9A4AB7264B74BA00027B87 /* UserDataHealth.m */,
 				1D40DDC426A12F3000A70D1B /* DeviceHttpModel.h */,
 				1D40DDC526A12F3000A70D1B /* DeviceHttpModel.m */,
+				1D3044352C9032460024A826 /* ProductInfoModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3895,6 +4075,7 @@
 			children = (
 				BEECBA5126A67038008EBE94 /* JLAudioToolBox.h */,
 				BEECBA5226A67038008EBE94 /* JLAudioToolBox.m */,
+				1D0E99DB2C9A78FD009FA68A /* AudioManager.swift */,
 			);
 			path = JLAudioToolbox;
 			sourceTree = "<group>";
@@ -4112,47 +4293,38 @@
 			path = PGBarChart;
 			sourceTree = "<group>";
 		};
-		C279850F261EA2C10022D29A /* 账号与安全 */ = {
+		C279850F261EA2C10022D29A /* AccountSecurity */ = {
 			isa = PBXGroup;
 			children = (
-				C285D7C0274F6FED00342485 /* 注销账号 */,
-				C2798520261F055B0022D29A /* 绑定新手机号 */,
-				C279851A261EE56C0022D29A /* 修改手机号验证 */,
-				C2798515261EAB2D0022D29A /* 修改手机号弹窗 */,
-				C2894574261FDF1800AB2A9B /* 更改密码 */,
+				1D3043352C8AF9000024A826 /* Views */,
+				C2798520261F055B0022D29A /* BindMobileViewController */,
+				C2894574261FDF1800AB2A9B /* ModifyPasswordViewController */,
 				C2798510261EA2EA0022D29A /* MyAccountVC.h */,
 				C2798511261EA2EA0022D29A /* MyAccountVC.m */,
 				C2798512261EA2EA0022D29A /* MyAccountVC.xib */,
 			);
-			path = "账号与安全";
+			path = AccountSecurity;
 			sourceTree = "<group>";
 		};
-		C2798515261EAB2D0022D29A /* 修改手机号弹窗 */ = {
-			isa = PBXGroup;
-			children = (
-				C2798516261EAB4A0022D29A /* ChangeMobileView.h */,
-				C2798517261EAB4A0022D29A /* ChangeMobileView.m */,
-			);
-			path = "修改手机号弹窗";
-			sourceTree = "<group>";
-		};
-		C279851A261EE56C0022D29A /* 修改手机号验证 */ = {
+		C279851A261EE56C0022D29A /* ModifyMobileView */ = {
 			isa = PBXGroup;
 			children = (
 				C279851B261EE5910022D29A /* ValidationMobileView.h */,
 				C279851C261EE5910022D29A /* ValidationMobileView.m */,
+				C2798516261EAB4A0022D29A /* ChangeMobileView.h */,
+				C2798517261EAB4A0022D29A /* ChangeMobileView.m */,
 			);
-			path = "修改手机号验证";
+			path = ModifyMobileView;
 			sourceTree = "<group>";
 		};
-		C2798520261F055B0022D29A /* 绑定新手机号 */ = {
+		C2798520261F055B0022D29A /* BindMobileViewController */ = {
 			isa = PBXGroup;
 			children = (
 				C2798521261F05910022D29A /* BindingNewPhoneVC.h */,
 				C2798522261F05910022D29A /* BindingNewPhoneVC.m */,
 				C2798523261F05910022D29A /* BindingNewPhoneVC.xib */,
 			);
-			path = "绑定新手机号";
+			path = BindMobileViewController;
 			sourceTree = "<group>";
 		};
 		C27FF9E027268CDF00A5DAEF /* 抬腕亮屏 */ = {
@@ -4194,23 +4366,23 @@
 			path = "时分选择";
 			sourceTree = "<group>";
 		};
-		C285D7C0274F6FED00342485 /* 注销账号 */ = {
+		C285D7C0274F6FED00342485 /* UnsubscribeView */ = {
 			isa = PBXGroup;
 			children = (
 				C285D7C2274F704800342485 /* LogoutAccountView.h */,
 				C285D7C3274F704800342485 /* LogoutAccountView.m */,
 			);
-			path = "注销账号";
+			path = UnsubscribeView;
 			sourceTree = "<group>";
 		};
-		C2894574261FDF1800AB2A9B /* 更改密码 */ = {
+		C2894574261FDF1800AB2A9B /* ModifyPasswordViewController */ = {
 			isa = PBXGroup;
 			children = (
 				C2894575261FDF4000AB2A9B /* ChangePwdVC.h */,
 				C2894576261FDF4000AB2A9B /* ChangePwdVC.m */,
 				C2894577261FDF4000AB2A9B /* ChangePwdVC.xib */,
 			);
-			path = "更改密码";
+			path = ModifyPasswordViewController;
 			sourceTree = "<group>";
 		};
 		C29A1F9026A98CE2007E470D /* 连续测量心率 */ = {
@@ -4579,7 +4751,6 @@
 				4ADA1A2526145B9E000DAEF6 /* search_33.png in Resources */,
 				C26A944627143E1C003D5C44 /* SensorSettingsVC.xib in Resources */,
 				1D5B0BF9282CD6A400C590FD /* BtCallViewController.xib in Resources */,
-				486E098A2861B19A0076FBC8 /* DialDetailVC.xib in Resources */,
 				4A75076D25DE041800990508 /* Assets.xcassets in Resources */,
 				4ADA1A1426145B9E000DAEF6 /* search_49.png in Resources */,
 				4ADA1A1926145B9E000DAEF6 /* search_47.png in Resources */,
@@ -4591,7 +4762,6 @@
 				C22C48522A721AF800FF766F /* SpeechRecognitionVC.xib in Resources */,
 				4ABD75C42611D8260068D4F9 /* YaliCircleView.xib in Resources */,
 				BEECBA4A26A66EEC008EBE94 /* num_1.wav in Resources */,
-				486E09872861B19A0076FBC8 /* WatchHistoryVC.xib in Resources */,
 				4ADA1A0826145B9E000DAEF6 /* search_15.png in Resources */,
 				4ADA1A1D26145B9E000DAEF6 /* search_42.png in Resources */,
 				4A7279A8261323E7004F16E4 /* WeightShow.xib in Resources */,
@@ -4617,7 +4787,6 @@
 				1DC4087D2740ED5D00A8B059 /* ContrastNapCell.xib in Resources */,
 				C2E43A272616ACD200263126 /* RingTimeCell.xib in Resources */,
 				22131EAE25E0A42500590C4A /* MyHealthVC.xib in Resources */,
-				4AD8DF0525ECE294007D6D29 /* WatchLocalVC.xib in Resources */,
 				4ADA1A2B26145B9E000DAEF6 /* search_18.png in Resources */,
 				4A7279A226131B87004F16E4 /* WeightVC.xib in Resources */,
 				1DA4511B26148DD2002F3F1D /* SleepDetailCell.xib in Resources */,
@@ -4645,7 +4814,6 @@
 				22645D4525EF8E9400C8AB69 /* ForgetSetPwdVC.xib in Resources */,
 				4ABD75BA2611B7EB0068D4F9 /* YaLiShow1.xib in Resources */,
 				4ADA19FF26145B9E000DAEF6 /* search_05.png in Resources */,
-				486E09842861B19A0076FBC8 /* WatchMoreVC.xib in Resources */,
 				4ADA1A1626145B9E000DAEF6 /* search_44.png in Resources */,
 				1D6435BF2AD64F430032072D /* settingConfig.gif in Resources */,
 				BE85049927435FCE0030E026 /* JLSportMonlyReportsTableViewCell.xib in Resources */,
@@ -4653,7 +4821,6 @@
 				4ADA1A1226145B9E000DAEF6 /* search_60.png in Resources */,
 				4ADA1A0726145B9E000DAEF6 /* search_14.png in Resources */,
 				22131E6125DF8C1500590C4A /* BodyDataVC.xib in Resources */,
-				4AA625D525E39D3500D174A7 /* WatchLocalView.xib in Resources */,
 				22645D7A25F0E1EC00C8AB69 /* GenderCell.xib in Resources */,
 				C26E2C842727ED3C00494AFD /* EmergencyContactsVC.xib in Resources */,
 				4ADA1A0D26145B9E000DAEF6 /* search_02.png in Resources */,
@@ -4662,7 +4829,6 @@
 				BE7F3C1026259DE1001EE3AD /* JLSportHistoryViewController.xib in Resources */,
 				C2835418265CE28C004FB177 /* MessageNoticeVC.xib in Resources */,
 				C2CDB47F2AF21F21004A98F9 /* transferring.gif in Resources */,
-				1DD2FEB529233D2600804803 /* WatchCell.xib in Resources */,
 				BE93F7EC27688C240000CB6F /* JLMusicTableViewCell.xib in Resources */,
 				4ADA1A1026145B9E000DAEF6 /* search_58.png in Resources */,
 				4ADA1A1126145B9E000DAEF6 /* search_48.png in Resources */,
@@ -4740,7 +4906,6 @@
 				22131E6025DF8C1500590C4A /* BodyDataVC.m in Sources */,
 				22AA828525F609C80012F3A3 /* HeightView.m in Sources */,
 				1D159F3F2609D62400D5966C /* DateLabelView.m in Sources */,
-				486E098B2861B19A0076FBC8 /* DialModel.m in Sources */,
 				1DB7F11B264BC647003E6C91 /* UserDataSport.m in Sources */,
 				22AA82F825F9E9D50012F3A3 /* TabCollectionCell.m in Sources */,
 				C2E43A522616CA7300263126 /* HMScanerCardViewController.m in Sources */,
@@ -4752,35 +4917,45 @@
 				BE7D170C2623FB9600DD9189 /* NSString+Time.m in Sources */,
 				1DB1E02627327B0B00036448 /* EcTools.m in Sources */,
 				227BCD512600A1C600277779 /* MASViewAttribute.m in Sources */,
+				1D1A26742C93D8EF00001636 /* DialMarketViewController.swift in Sources */,
 				227BCD4D2600A1C600277779 /* View+MASAdditions.m in Sources */,
 				1DA4512826148DDD002F3F1D /* OxygenSaturationVC.m in Sources */,
 				22AA82D625F9E7920012F3A3 /* AlarmObject.m in Sources */,
 				1DC5860929B212B20045AB01 /* JLPhoneUISetting.m in Sources */,
 				1DBBD6E127472B0F00E818FD /* DataOverRallPlanHeartRate.m in Sources */,
 				1D66872F264A59340054880F /* JLSqliteManager.m in Sources */,
+				1DF1026D2CEECABD003CFE84 /* ICPViewController.swift in Sources */,
 				C2E43A3E2616CA4E00263126 /* QRScanVC.m in Sources */,
 				BE886868269D419B0027C47C /* JLStatementViewController.m in Sources */,
+				1DB1A7392CA00FF000216369 /* DialVcViewModel.swift in Sources */,
 				BE73CAFD274E081200CEE7D0 /* UICollectionViewLayout+MJRefresh.m in Sources */,
 				BE84464D261EB26D00A5D474 /* JLOutdoorSportThumbnailViewController.m in Sources */,
 				1DC0D9C82604429200C98019 /* DefaultPartView.m in Sources */,
+				1D1A26762C93DA0D00001636 /* BaseViewController.swift in Sources */,
 				BE98DC5B272A97D600E521E2 /* JLSqliteWeight.m in Sources */,
 				22645D4425EF8E9400C8AB69 /* ForgetSetPwdVC.m in Sources */,
+				1DB1A7432CA43AAB00216369 /* AlertConnectingTipsView.swift in Sources */,
+				1D6CC8312C58B90A00FAE447 /* JLWearSyncHealthBloodOxyganChart.m in Sources */,
 				BE7979FB273371C3004D1AC2 /* JLCoreMotionManager.m in Sources */,
 				1DBBD70D27507E0400E818FD /* FindPhoneView.m in Sources */,
+				1DB1A7462CA5873C00216369 /* DeviceSubViewModel.swift in Sources */,
 				BE73CB0C274E081200CEE7D0 /* MJRefreshNormalHeader.m in Sources */,
 				C28406EF2726B38700795BE9 /* HourMinutePickerView.m in Sources */,
 				1D40DDC626A12F3000A70D1B /* DeviceHttpModel.m in Sources */,
 				BE957BC627279868003F37EE /* JLSqliteStep.m in Sources */,
 				C2E43A212616A2C500263126 /* RingAgainIntervalView.m in Sources */,
 				22645DC225F1D64100C8AB69 /* NSDate+BRPickerView.m in Sources */,
+				1D3044622C9068570024A826 /* BridgeHelper.m in Sources */,
 				486E09C52861B2CF0076FBC8 /* UIButton+WebCache.m in Sources */,
 				1D27965E283F69A2005A65C5 /* DataTester.swift in Sources */,
 				22645D1125EE299000C8AB69 /* LoginVC.m in Sources */,
 				C278BA32261450D7003742D1 /* PGBarChartDataModel.m in Sources */,
 				4ABD75A726117B0A0068D4F9 /* PresssureVC.m in Sources */,
+				1D0E99E62C9B01F4009FA68A /* DialLocalView.swift in Sources */,
 				4ABC0BF125F5C85E003FE559 /* BushuPlate.m in Sources */,
 				C2894578261FDF4000AB2A9B /* ChangePwdVC.m in Sources */,
 				1DA4511926148DD2002F3F1D /* SleepDetailViewController.m in Sources */,
+				1DB1A7352C9FF3ED00216369 /* DialMallViewController.swift in Sources */,
 				C2798518261EAB4A0022D29A /* ChangeMobileView.m in Sources */,
 				BE886872269E6FA30027C47C /* JLPopMenuView.m in Sources */,
 				227BCD4A2600A1C600277779 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
@@ -4797,16 +4972,15 @@
 				4A2B127B25DE42880089AFBA /* DeviceSearchVC.m in Sources */,
 				C29A1FA726AA99CD007E470D /* XinLvView.m in Sources */,
 				BE93F7EB27688C240000CB6F /* JLMusicTableViewCell.m in Sources */,
+				1D6CC8362C58B90A00FAE447 /* JLWearSyncHealthWeightChart.m in Sources */,
 				4A2B128125DE42A20089AFBA /* SettingVC.m in Sources */,
 				4A7279A6261323D2004F16E4 /* WeightShow.m in Sources */,
 				22645D7325F0DB7900C8AB69 /* GenderView.m in Sources */,
-				486E09862861B19A0076FBC8 /* WatchOwn.m in Sources */,
 				22645D2425EE5B8300C8AB69 /* RegisterVC.m in Sources */,
 				1DBBD6FF274B2E3400E818FD /* BloodOxygenChartView.m in Sources */,
 				486E09BA2861B2CF0076FBC8 /* UIImageView+HighlightedWebCache.m in Sources */,
 				22AA82E225F9E7920012F3A3 /* RingSelectView.m in Sources */,
 				C278B9D9261326C2003742D1 /* UserProfileVC.m in Sources */,
-				4AA625D125E39D1600D174A7 /* WatchLocalView.m in Sources */,
 				1DD641902B2C35B6003F9F15 /* OCTest.m in Sources */,
 				4A2B128B25DE522A0089AFBA /* JL_RunSDK.m in Sources */,
 				22E8E96D25FAF61800FDC942 /* MindListView.m in Sources */,
@@ -4815,6 +4989,7 @@
 				BE73CB0D274E081200CEE7D0 /* MJRefreshStateHeader.m in Sources */,
 				22A0BBAE25E5E1F600E1EE0E /* IndexPlate.m in Sources */,
 				1DBF728C2B4CF2BF005956CD /* Ota4GView.swift in Sources */,
+				1D1A268C2C94188E00001636 /* DialBaseViewModel.swift in Sources */,
 				BE844632261E9F9300A5D474 /* JLPagerBaseView.m in Sources */,
 				BE8774DE2626DDA4004E2CED /* JLUser.m in Sources */,
 				486E09C22861B2CF0076FBC8 /* NSData+ImageContentType.m in Sources */,
@@ -4826,14 +5001,17 @@
 				C278BA3626145712003742D1 /* SportView.m in Sources */,
 				C2798524261F05910022D29A /* BindingNewPhoneVC.m in Sources */,
 				1D9887C625FB8DA500C41C4F /* IACircleSliderThumbLayer.m in Sources */,
+				1D6CC8352C58B90A00FAE447 /* JLWearSyncHealthChart.m in Sources */,
 				22AA82E425F9E7920012F3A3 /* AlarmRingCell.m in Sources */,
 				1D03113D2B85A4C500056215 /* HQImageEditViewController.m in Sources */,
 				BE8504772741E5B10030E026 /* JLSportWeeklyReportsViewController.m in Sources */,
 				1DAADEFC2AD922BC00CDD509 /* AIDialXFManager.m in Sources */,
 				1D159F3726098D3A00D5966C /* TransJump.m in Sources */,
 				BE8774D426269204004E2CED /* MATraceReplayOverlay.m in Sources */,
+				1D0E99E32C9AC9FE009FA68A /* DialPayViewModel.swift in Sources */,
 				1DAB41A92600363B00171C87 /* StepPartsView.m in Sources */,
 				22AA82D725F9E7920012F3A3 /* AlarmSetVC.m in Sources */,
+				1D3044282C901C990024A826 /* DialSubViewModel.swift in Sources */,
 				4ABC0C1025F744FC003FE559 /* OtaUpdateVC.m in Sources */,
 				1DB367AF25FF7CAE00A03491 /* SportRecordView.m in Sources */,
 				1DF277AF26B13C6900081F8B /* BasicHttp.m in Sources */,
@@ -4848,10 +5026,13 @@
 				1DCD061C292238960071B2F9 /* JLShareLogViewController.m in Sources */,
 				22AA82D925F9E7920012F3A3 /* AlarmSetCell.m in Sources */,
 				22E8E99825FEE92200FDC942 /* OpenShowView.m in Sources */,
+				1D6CC8332C58B90A00FAE447 /* JLWearSyncHealthStepChart.m in Sources */,
 				1D3E031126AAC1B200CDB02B /* DevicesViewCell.m in Sources */,
 				C2E43A512616CA7300263126 /* HMScannerController.m in Sources */,
 				22645DC825F1D64100C8AB69 /* BRAddressModel.m in Sources */,
 				1D159F3B260997F800D5966C /* SelectTitleBar.m in Sources */,
+				1D3042F02C89A79C0024A826 /* AlertVerifyCodeView.swift in Sources */,
+				1D3044252C8FE22D0024A826 /* DialSubCollectionViewCell.swift in Sources */,
 				22131E7625DF934200590C4A /* DeviceInfoTVCell.m in Sources */,
 				22645DC025F1D64100C8AB69 /* BRStringPickerView.m in Sources */,
 				4ABC0C0725F5F777003FE559 /* TizhongPick.m in Sources */,
@@ -4869,8 +5050,10 @@
 				C26E2C7D2727DA3700494AFD /* DieDaoVC.m in Sources */,
 				4ABC0BEE25F5C85E003FE559 /* MyTargetVC.m in Sources */,
 				22AA82F025F9E9530012F3A3 /* ReNameView.m in Sources */,
+				1DB1A7292C9D7A8400216369 /* DialHistoryViewController.swift in Sources */,
 				4A7279A126131B87004F16E4 /* WeightVC.m in Sources */,
 				1DA4511C26148DD2002F3F1D /* SleepDetailCell.m in Sources */,
+				1D6CC8342C58B90A00FAE447 /* JLWearSyncHealthSleepChart.m in Sources */,
 				1DC408782740ED3B00A8B059 /* ContrastNapView.m in Sources */,
 				486E09B62861B2CF0076FBC8 /* UIImage+WebP.m in Sources */,
 				22AA82DE25F9E7920012F3A3 /* RTCAlertView.m in Sources */,
@@ -4880,6 +5063,7 @@
 				BE84461A261E9DE100A5D474 /* UIView+CBFrameHelpers.m in Sources */,
 				1DA7552F26032D3000184A47 /* HeartBitPartView.m in Sources */,
 				486E09B52861B2CF0076FBC8 /* NSData+Base64.m in Sources */,
+				1D0E99F22C9D2297009FA68A /* DialPayBottomView.swift in Sources */,
 				1D3E030A26AAC19E00CDB02B /* JLDeviceSqliteManager.m in Sources */,
 				22A161D725FF438800585F98 /* TransferView.m in Sources */,
 				4ABD75AE261181EC0068D4F9 /* YaLiView.m in Sources */,
@@ -4889,8 +5073,7 @@
 				C2835412265CDA6C004FB177 /* UnitsView.m in Sources */,
 				1D8B6C5B26452DAF00BEF2F2 /* UserDataSync.m in Sources */,
 				1DB1E02427327B0B00036448 /* SyncThreadManager.m in Sources */,
-				486E09852861B19A0076FBC8 /* WatchMoreVC.m in Sources */,
-				486E09892861B19A0076FBC8 /* DialShopView.m in Sources */,
+				1D0E99DC2C9A78FD009FA68A /* AudioManager.swift in Sources */,
 				BE957BC327279868003F37EE /* JLSqliteSportLocation.m in Sources */,
 				BE7D1710262446F500DD9189 /* JLSportMapViewController.m in Sources */,
 				4A75076225DE041500990508 /* AppDelegate.m in Sources */,
@@ -4899,6 +5082,7 @@
 				4A2B129025DE5F040089AFBA /* AddDeviceVC.m in Sources */,
 				C2BC6F9E2A78968A00B65E46 /* SpeechCell.m in Sources */,
 				BE957BC127279868003F37EE /* JLSqliteAirPressure.m in Sources */,
+				1DF102292CECC1CF003CFE84 /* UILabel+YBAttributeTextTapAction.m in Sources */,
 				BE73CB02274E081200CEE7D0 /* NSBundle+MJRefresh.m in Sources */,
 				C2BF45BB2A7A556200D716D9 /* JLSqliteAICloundMessageRecord.m in Sources */,
 				BE73CB04274E081200CEE7D0 /* MJRefreshBackGifFooter.m in Sources */,
@@ -4917,6 +5101,7 @@
 				C2CDB4842AF22088004A98F9 /* TransferringView.m in Sources */,
 				22AA82DD25F9E7920012F3A3 /* ECPickerView.m in Sources */,
 				1D86A772260D693B005D5391 /* HeartBeatDetailVC.m in Sources */,
+				1D3044342C902BCC0024A826 /* DialMarketHttp.swift in Sources */,
 				22AA82F325F9E97F0012F3A3 /* DMusicHandler.m in Sources */,
 				1DAADEF82AD8F31300CDD509 /* AiDialStyleCell.m in Sources */,
 				BE7F3C0926258C2C001EE3AD /* JLSpeedFrequencyItemView.m in Sources */,
@@ -4941,6 +5126,7 @@
 				1DC40861273CF4F800A8B059 /* DataOverallPlanTools.m in Sources */,
 				1DBBD6FB27479AFA00E818FD /* DataOverrallPlanBloodOxygen.m in Sources */,
 				C29A1FA126A98DBE007E470D /* HealthYaLiVC.m in Sources */,
+				1D0E99DF2C9AC1B5009FA68A /* PayDialView.swift in Sources */,
 				22AA82E825F9E7920012F3A3 /* AlarmClockCell.m in Sources */,
 				226234AF26034D3E003BF684 /* DeleteRecordView.m in Sources */,
 				BED6B173262A936C00E6F6F3 /* JLLocationCoordinate2D.m in Sources */,
@@ -4948,17 +5134,16 @@
 				C2E43A502616CA7300263126 /* HMScannerViewController.m in Sources */,
 				BE7979FE2734DBE0004D1AC2 /* JLSqliteSportSpeedPerKm.m in Sources */,
 				C29A1F9C26A98DAD007E470D /* HealthYunDongVC.m in Sources */,
-				1DD2FEB429233D2600804803 /* WatchCell.m in Sources */,
 				1DD40E0B2911FC67004C1555 /* HealthFuncView.m in Sources */,
 				BE844631261E9F9300A5D474 /* JLPagerView.m in Sources */,
 				22645D1D25EE38A600C8AB69 /* SmallEye.m in Sources */,
 				C2BF45B82A7A518900D716D9 /* AICloundMessageModel.m in Sources */,
 				488018C326A6A8D100F2064D /* DialUICache.m in Sources */,
+				1DF1021D2CEC6DA5003CFE84 /* AgreementView.swift in Sources */,
 				1DCD05BD2918E4050071B2F9 /* DebugTools.m in Sources */,
 				22645DC125F1D64100C8AB69 /* BRDatePickerView+BR.m in Sources */,
 				BE85047D2741EE070030E026 /* JLSportWeeklyReportsSelectorTableViewCell.m in Sources */,
 				22AA82E525F9E7920012F3A3 /* AlarmRingVC.m in Sources */,
-				486E09882861B19A0076FBC8 /* WatchHistoryVC.m in Sources */,
 				22AA82E625F9E7920012F3A3 /* AlarmBottomView.m in Sources */,
 				1DC5858F29B1A27B0045AB01 /* AFSecurityPolicy.m in Sources */,
 				BE6AC895261FEE170090282F /* JLPingTransition.m in Sources */,
@@ -4974,32 +5159,37 @@
 				1DC4087C2740ED5D00A8B059 /* ContrastNapCell.m in Sources */,
 				22645D5325F0877100C8AB69 /* PhotoView.m in Sources */,
 				C2B5E8E12A81D15C001DDB24 /* IATConfig.m in Sources */,
+				1DB1A72B2C9D7C9100216369 /* DialHistoryViewModel.swift in Sources */,
 				C278BA2F261450D7003742D1 /* PGBox.m in Sources */,
 				C27FF9E527268CFD00A5DAEF /* TaiWanVC.m in Sources */,
 				C2B5E8E42A81D527001DDB24 /* ISRDataHelper.m in Sources */,
 				22645DC625F1D64100C8AB69 /* BRBaseView.m in Sources */,
 				1DCD061B292238960071B2F9 /* TipsDeleteView.m in Sources */,
+				1D3044362C9032460024A826 /* ProductInfoModel.swift in Sources */,
 				486E09BF2861B2CF0076FBC8 /* SDWebImagePrefetcher.m in Sources */,
 				C277E0CB272797A90028C30D /* SleepHourMinutePickerView.m in Sources */,
 				4ABD75B32611B6760068D4F9 /* YaLiShow0.m in Sources */,
 				BE73CAFC274E081200CEE7D0 /* UIScrollView+MJRefresh.m in Sources */,
 				BE73CB09274E081200CEE7D0 /* MJRefreshAutoNormalFooter.m in Sources */,
+				1D1A26842C93EC4500001636 /* DialMallView.swift in Sources */,
+				1D0E99E92C9C1C20009FA68A /* AlertDeleteingTipsView.swift in Sources */,
 				BE8E6C8C2786799200B532C3 /* JLTabBarController.m in Sources */,
 				4A2B127025DE42480089AFBA /* SportVC.m in Sources */,
 				486E09BE2861B2CF0076FBC8 /* SDWebImageCompat.m in Sources */,
 				1D6435E92AD8CFC70032072D /* AiDialStyleVC.m in Sources */,
-				1DD2FEB329233D2600804803 /* WatchLocalModel.m in Sources */,
 				BE98DC5E272BD79100E521E2 /* JLSqliteSportRunningRecord.m in Sources */,
 				BE856EBC2746327D00F795E2 /* JLSportStrengthView.m in Sources */,
 				C2B395C92A822A2E001EEB9D /* TTSConfig.m in Sources */,
 				BE85049D2743880B0030E026 /* JLSportWeeklyReportsTableViewCell.m in Sources */,
 				1DA7552B26032B9700184A47 /* SleepPartView.m in Sources */,
 				22645DC325F1D64100C8AB69 /* BRDatePickerView.m in Sources */,
+				1D1A268E2C94620700001636 /* AlertViewDialTransport.swift in Sources */,
 				BE88687926A0133C0027C47C /* JLFileTransferHelper.m in Sources */,
 				1D2FF31B2AE2845500E53C87 /* CustomDialCell.m in Sources */,
 				1DCD0620292238C40071B2F9 /* DebugBasicViewController.m in Sources */,
 				4A2B12AF25DF57E30089AFBA /* JLUI_Effect.m in Sources */,
 				227BCCCE26008D2A00277779 /* JHContactManager.m in Sources */,
+				1DB1A7372CA00EA600216369 /* DialViewController.swift in Sources */,
 				22AA829125F61D450012F3A3 /* WeightView.m in Sources */,
 				BE84465B261EF15B00A5D474 /* JLIndoorSportsThumbnailViewController.m in Sources */,
 				227BCD712601E7F200277779 /* MyContactsVC.m in Sources */,
@@ -5013,7 +5203,7 @@
 				486E09C02861B2CF0076FBC8 /* SDImageCache.m in Sources */,
 				BE73CB0A274E081200CEE7D0 /* MJRefreshStateTrailer.m in Sources */,
 				227BCCD626008E4F00277779 /* JHTableViewCell.m in Sources */,
-				1DFAA6F02B8ED7310087B9B4 /* WindowsTipsViews.swift in Sources */,
+				1DFAA6F02B8ED7310087B9B4 /* AlertViewOnWindows.swift in Sources */,
 				BE73CB03274E081200CEE7D0 /* UIView+MJExtension.m in Sources */,
 				1DC5858E29B1A27B0045AB01 /* AFNetworkReachabilityManager.m in Sources */,
 				C2835417265CE28C004FB177 /* MessageNoticeVC.m in Sources */,
@@ -5029,18 +5219,20 @@
 				1DCD06102921E0EC0071B2F9 /* AutoProductIcon.swift in Sources */,
 				1D2FF3172AE2828800E53C87 /* CustomDialView.m in Sources */,
 				227BCD4B2600A1C600277779 /* MASConstraintMaker.m in Sources */,
+				1D3044222C8FD8D70024A826 /* DialSubView.swift in Sources */,
 				1DC5858C29B1A27B0045AB01 /* AFURLSessionManager.m in Sources */,
 				1DB0C7FA262835800093A98F /* EcDateSelectView.m in Sources */,
 				BE8774D92626CE72004E2CED /* JLSportHistoryDetailViewController.m in Sources */,
 				4A2B126925DE41F40089AFBA /* HealthVC.m in Sources */,
 				BE8FEF10266F58F10088710E /* DeviceMusicVC.m in Sources */,
 				1D57C39B2AE261420073E5B4 /* WatchDialTitleView.m in Sources */,
-				22645D0A25EE1A4500C8AB69 /* UILabel+YBAttributeTextTapAction.m in Sources */,
+				1D1A26862C93EC8600001636 /* FreeDialView.swift in Sources */,
 				BE73CB08274E081200CEE7D0 /* MJRefreshAutoGifFooter.m in Sources */,
 				227BCD522600A1C600277779 /* MASCompositeConstraint.m in Sources */,
 				22645D3E25EF8E7400C8AB69 /* ForgetPwdVC.m in Sources */,
 				1DB1E02527327B0B00036448 /* SyncDataManager.m in Sources */,
 				4A75077325DE041800990508 /* main.m in Sources */,
+				1D0E99EB2C9D0507009FA68A /* DialPayViewController.swift in Sources */,
 				C2BC6FA72A78ED8E00B65E46 /* JYBubbleButtonModel.m in Sources */,
 				BE8FEF1F266F59E80088710E /* SongListCell.m in Sources */,
 				1DD40E1D291360F5004C1555 /* JLWeatherManager.m in Sources */,
@@ -5050,11 +5242,11 @@
 				1D9887C725FB8DA500C41C4F /* IACircularSlider.m in Sources */,
 				C2E43A1E2616A28E00263126 /* RingTime.m in Sources */,
 				1DD40E1229125008004C1555 /* MoreSettingCell.m in Sources */,
+				1D6CC8372C58B90A00FAE447 /* JLWearSyncHealthHeartRateChart.m in Sources */,
 				22645D5D25F0BCC500C8AB69 /* MyImageStore.m in Sources */,
 				486E09B72861B2CF0076FBC8 /* MKAnnotationView+WebCache.m in Sources */,
 				BE98DC61272FCE5300E521E2 /* JLSqliteSleep.m in Sources */,
 				22A9110A25EC7CED00585DE7 /* MyVC.m in Sources */,
-				4AD8DF0625ECE294007D6D29 /* WatchLocalVC.m in Sources */,
 				486E09BB2861B2CF0076FBC8 /* SDWebImageDownloader.m in Sources */,
 				BE7278D7274497A000A3F3D0 /* JLSportHistoryUserHeartRateTableViewCell.m in Sources */,
 				1DD40E152912501C004C1555 /* MoreSettingView.m in Sources */,
@@ -5070,15 +5262,16 @@
 				C2743F6D273B679B002D0978 /* SelectWeekView.m in Sources */,
 				C2E43A4E2616CA7300263126 /* HMScannerBorder.m in Sources */,
 				1DA4512526148DDD002F3F1D /* OxygenRefView.m in Sources */,
+				1D1A268A2C94100800001636 /* DialFreeViewModel.swift in Sources */,
 				C205604A26A813AE00D53787 /* DeviceMoreVC.m in Sources */,
 				C278B9CD26132631003742D1 /* PrivacyPolicyVC.m in Sources */,
 				BE85048F27423B0E0030E026 /* JLPointAnnotation.m in Sources */,
 				1D03113E2B85A4C500056215 /* HQEditImageActionView.m in Sources */,
-				486E098C2861B19A0076FBC8 /* DialDetailVC.m in Sources */,
 				C285D7C4274F704800342485 /* LogoutAccountView.m in Sources */,
 				C279851D261EE5910022D29A /* ValidationMobileView.m in Sources */,
 				1DCD0623292239400071B2F9 /* DebugFuncsViewController.m in Sources */,
 				4A2B129725DF4FDC0089AFBA /* DeviceCell.m in Sources */,
+				1D6CC83B2C58BBC400FAE447 /* JLSportRecordModel.m in Sources */,
 				22645DC525F1D64100C8AB69 /* BRPickerStyle.m in Sources */,
 				22131EBD25E3414700590C4A /* WeightSetVC.m in Sources */,
 				BE6AC8A22620343C0090282F /* JLGPSView.m in Sources */,
@@ -5099,6 +5292,7 @@
 				C2CDC9142A77489100097A76 /* DeleteView.m in Sources */,
 				1D40DDC326A1263700A70D1B /* DeviceHttp.m in Sources */,
 				BE73CB10274E081200CEE7D0 /* MJRefreshFooter.m in Sources */,
+				1D3042F32C89A8CD0024A826 /* BaseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5318,7 +5512,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = JieliJianKang/JieliJianKang.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = J8GU9SL7NG;
 				ENABLE_BITCODE = NO;
@@ -5343,12 +5537,16 @@
 					"$(PROJECT_DIR)/JLDialUnit/JLDialUnit/FATTool",
 					"$(PROJECT_DIR)/JieliJianKang/Utilities/FATTool",
 				);
-				MARKETING_VERSION = 1.8.0;
+				MARKETING_VERSION = 1.9.0;
 				OTHER_CODE_SIGN_FLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JLApp.JieliJianKang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "JieliJianKang/设备界面/手表蓝牙通话/JieliJianKang-Bridging-Header.h";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "JieliJianKang/JieliJianKang-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -5364,7 +5562,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = JieliJianKang/JieliJianKang.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = J8GU9SL7NG;
 				ENABLE_BITCODE = NO;
@@ -5390,12 +5588,16 @@
 					"$(PROJECT_DIR)/JLDialUnit/JLDialUnit/FATTool",
 					"$(PROJECT_DIR)/JieliJianKang/Utilities/FATTool",
 				);
-				MARKETING_VERSION = 1.8.0;
+				MARKETING_VERSION = 1.9.0;
 				OTHER_CODE_SIGN_FLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JLApp.JieliJianKang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "JieliJianKang/设备界面/手表蓝牙通话/JieliJianKang-Bridging-Header.h";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "JieliJianKang/JieliJianKang-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

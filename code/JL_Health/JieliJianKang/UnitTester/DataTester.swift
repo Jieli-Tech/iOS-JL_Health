@@ -20,20 +20,10 @@ import CoreImage
             if let image = UIImage(data: data) {
                 let img1 = image.ciImage?.cropped(to: CGRect(x: 0, y: 0, width: 240, height: 296))
                 let img2 = img1?.toUIImage(orientation: .up) ?? UIImage()
-                let tgPath = OCTest.makeDialwithName("MYTEST", with: CGSize(width: 240, height: 296), image: img2)
-                let binData = try?Data(contentsOf: URL(fileURLWithPath: tgPath))
-                if let binData = binData {
-                    print("binData:\(binData.count) bytes,basic data:\(data.count) bytes")
-                }
-                
+                OCTest.makeDialwithName("MYTEST", with: CGSize(width: 240, height: 296), image: img2)
             }
-            
         }
-
     }
-    
-
-    
 }
   
 

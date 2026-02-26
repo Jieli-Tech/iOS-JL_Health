@@ -13,6 +13,12 @@
     NSMutableArray  *mListArray;
     NSMutableArray  *mListCustomArray;
     JL_ManagerM     *mCmdManager;
+    NSMutableArray  *mListVersion;
+    NSMutableArray  *getVersionList;
+    DialCacheVersionBlock getVersionBlock;
+    NSMutableDictionary *mVersionDictionary;
+    NSMutableDictionary *mUUIDDictionary;
+    JL_Timer         *timerVersion;
 }
 @end
 
@@ -24,6 +30,10 @@
     if (self) {
         mListArray = [NSMutableArray new];
         mListCustomArray = [NSMutableArray new];
+        mListVersion = [NSMutableArray new];
+        timerVersion = [[JL_Timer alloc] init];
+        timerVersion.subTimeout = 5;
+        timerVersion.subScale = 1.0;
     }
     return self;
 }
@@ -33,13 +43,13 @@
 }
 
 #pragma mark - UI操作
-static NSString *currentWatch = nil;
+
 -(void)setCurrrentWatchName:(NSString*)name{
-    currentWatch = name;
+    self.currentWatch = name;
 }
 
 -(NSString*)currentWatchName{
-    return currentWatch;
+    return self.currentWatch;
 }
 
 -(NSMutableArray*)getWatchList{
@@ -47,21 +57,33 @@ static NSString *currentWatch = nil;
 }
 -(NSMutableArray*)newWatchList{
     mListArray = [NSMutableArray new];
+    [JL_Tools post:JL_WATCH_FACE_LIST Object:mListArray];
     return mListArray;
 }
 
 -(void)addWatchListObject:(NSString*)watch{
     if (![mListArray containsObject:watch]) {
         [mListArray addObject:watch];
+        [JL_Tools post:JL_WATCH_FACE_LIST Object:mListArray];
+        kJLLog(JLLOG_DEBUG, @"addWatchListObject:%@",watch);
+    }else{
+        kJLLog(JLLOG_DEBUG, @"addWatchListObject:repeat:%@",watch);
     }
 }
 
 -(void)removeWatchListObject:(NSString*)watch{
     [mListArray removeObject:watch];
+    [JL_Tools post:JL_WATCH_FACE_LIST Object:mListArray];
+    kJLLog(JLLOG_DEBUG, @"removeWatchListObject:%@",watch);
 }
 
 -(void)clearWatchList{
     [mListArray removeAllObjects];
+    [JL_Tools post:JL_WATCH_FACE_LIST Object:mListArray];
+}
+
+-(NSArray <NSString *>*) getVersionList {
+    return mListVersion;
 }
 
 -(NSMutableArray*)getWatchCustomList{
@@ -77,27 +99,21 @@ static NSString *currentWatch = nil;
     if (![mListCustomArray containsObject:watch]) {
         [mListCustomArray addObject:watch];
     }
+    kJLLog(JLLOG_DEBUG, @"set watch List");
+    for (NSString *txt in mListCustomArray) {
+        kJLLog(JLLOG_DEBUG, @"--->watch:%@",txt);
+    }
 }
 
 -(void)removeWatchCustomListObject:(NSString*)watch{
     [mListCustomArray removeObject:watch];
 }
 
-
-JL_Timer *timerVersion = nil;
-static NSMutableDictionary *mVersionDictionary = nil;
-static NSMutableDictionary *mUUIDDictionary = nil;
-
 -(NSMutableDictionary*)getWatchVersion:(NSArray*)array{
     [timerVersion cancelTimeout];
-    [timerVersion threadContinue];
-    
-    timerVersion = [[JL_Timer alloc] init];
-    timerVersion.subTimeout = 5;
-    timerVersion.subScale = 1.0;
-    
     mVersionDictionary = [NSMutableDictionary new];
     mUUIDDictionary = [NSMutableDictionary new];
+    __weak DialUICache *weakSelf = self;
     
     for (NSString *txt in array) {
         
@@ -106,10 +122,11 @@ static NSMutableDictionary *mUUIDDictionary = nil;
         
         /*--- 超时处理 ---*/
         [timerVersion waitForTimeoutResult:^{
-            NSLog(@"--->Get Watch Version timeout.");
-            [mVersionDictionary setObject:@"W001" forKey:bigTxt];
-            [mUUIDDictionary setObject:@"" forKey:bigTxt];
-            [timerVersion threadContinue];
+            __strong DialUICache *strongSelf = weakSelf;
+            kJLLog(JLLOG_DEBUG, @"--->Get Watch Version timeout.");
+            [strongSelf->mVersionDictionary setObject:@"W001" forKey:bigTxt];
+            [strongSelf->mUUIDDictionary setObject:@"" forKey:bigTxt];
+            [strongSelf->timerVersion threadContinue];
         }];
         
         /*--- 读取表盘的版本 ---*/
@@ -117,33 +134,36 @@ static NSMutableDictionary *mUUIDDictionary = nil;
         [mCmdManager.mFlashManager cmdWatchFlashPath:name Flag:JL_DialSettingVersion Result:^(uint8_t flag, uint32_t size,
                                                                NSString * _Nullable path,
                                                                NSString * _Nullable describe) {
-            [timerVersion cancelTimeout];
+            __strong DialUICache *strongSelf = weakSelf;
+            [strongSelf->timerVersion cancelTimeout];
             if (path.length > 0) {
                 //--->GET WATCH Version:W001,ECF2E7ED-6EC7-4B75-858B-87D2ECE6CA11
-                NSLog(@"--->GET %@ Version:%@ describe:%@",bigTxt,path,describe);
+                kJLLog(JLLOG_DEBUG, @"--->GET %@ Version:%@ describe:%@",bigTxt,path,describe);
                 NSArray *arr = [path componentsSeparatedByString:@","];
                 NSString *ver = arr[0];
-                
+                if (![self->mListVersion containsObject:ver]){
+                    [self->mListVersion addObject:ver];
+                }
                 if ([ver hasPrefix:@"W"]) {
-                    [mVersionDictionary setObject:ver forKey:bigTxt];
+                    [strongSelf->mVersionDictionary setObject:ver forKey:bigTxt];
                     
                     if(arr.count >= 2){
                         NSString *uuid = arr[1];
-                        [mUUIDDictionary setObject:uuid forKey:bigTxt];
+                        [strongSelf->mUUIDDictionary setObject:uuid forKey:bigTxt];
                     }else{
-                        [mUUIDDictionary setObject:@"" forKey:bigTxt];
+                        [strongSelf->mUUIDDictionary setObject:@"" forKey:bigTxt];
                     }
                     
                 }else{
-                    [mVersionDictionary setObject:@"W002" forKey:bigTxt];
-                    [mUUIDDictionary setObject:@"" forKey:bigTxt];
+                    [strongSelf->mVersionDictionary setObject:@"W002" forKey:bigTxt];
+                    [strongSelf->mUUIDDictionary setObject:@"" forKey:bigTxt];
                 }
             } else {
-                NSLog(@"--->#GET %@ Version:W001",bigTxt);
-                [mVersionDictionary setObject:@"W001" forKey:bigTxt];
-                [mUUIDDictionary setObject:@"" forKey:bigTxt];
+                kJLLog(JLLOG_DEBUG, @"--->#GET %@ Version:W001",bigTxt);
+                [strongSelf->mVersionDictionary setObject:@"W001" forKey:bigTxt];
+                [strongSelf->mUUIDDictionary setObject:@"" forKey:bigTxt];
             }
-            [timerVersion threadContinue];
+            [strongSelf->timerVersion threadContinue];
         }];
         [timerVersion threadWait];
     }
@@ -162,8 +182,12 @@ static NSMutableDictionary *mUUIDDictionary = nil;
     return uuid;
 }
 
+-(void)setUuidOfWatch:(NSString*)watch uuid:(NSString *)uuid{
+    [mUUIDDictionary setValue:uuid forKey:watch];
+}
+
 -(void)addVersion:(NSString*)version toWatch:(NSString*)watch{
-    //NSLog(@"--->2 mVersionDictionary :%@",version);
+    //kJLLog(JLLOG_DEBUG, @"--->2 mVersionDictionary :%@",version);
     [mVersionDictionary setObject:version forKey:watch];
 }
 

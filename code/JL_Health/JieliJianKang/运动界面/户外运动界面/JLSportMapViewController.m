@@ -62,7 +62,7 @@
 }
 
 - (void)dealloc {
-    NSLog(@"JLDoingSportMapViewController dealloc");
+    kJLLog(JLLOG_DEBUG, @"JLDoingSportMapViewController dealloc");
 }
 
 #pragma mark - Public Method

@@ -166,13 +166,13 @@
             NSString *sql = [NSString stringWithFormat:@"update %@ set timestamp = ?, time = ?, data = ?, interval = ?, maxValue = ?, minValue = ?, averageValue = ? where date = ?", tb_stress];
            BOOL res = [db executeUpdate:sql, [NSNumber numberWithDouble:timestamp], ds, data, num, maxValue, minValue, averageValue, dt];
             if (!res) {
-                NSLog(@"update failed");
+                kJLLog(JLLOG_DEBUG, @"update failed");
             }
         } else {
             NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ (timestamp, date, time, interval, data, maxValue, minValue, averageValue) VALUES (?, ?, ?, ?, ?, ?, ?)", tb_stress];
             BOOL res = [db executeUpdate:sql, [NSNumber numberWithDouble:timestamp], dt, ds, num, data, maxValue, minValue, averageValue];
             if (!res) {
-                NSLog(@"insert failed");
+                kJLLog(JLLOG_DEBUG, @"insert failed");
             }
         }
     }];

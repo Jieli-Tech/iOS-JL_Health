@@ -26,7 +26,7 @@
     
     AlarmObject *object = [[AlarmObject alloc] init];
     if (baseData.length<32) {
-        NSLog(@"ERROR CLOCK Data!!!");
+        kJLLog(JLLOG_DEBUG, @"ERROR CLOCK Data!!!");
         return object;
     }
     NSData *firstIndex = [baseData subdataWithRange:NSMakeRange(0, 1)];
