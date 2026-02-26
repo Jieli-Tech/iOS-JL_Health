@@ -28,7 +28,8 @@
 ```tex
  ├── code
       ├── JL_Health                   --- 宜动健康源码
-      ├── JL_SdkExample               --- 简单功能源码
+      ├── SDKTestHelper               --- 简单功能源码
+      ├── JLAudioUnitKitDemo           --- 音频编解码业务库示例
       ├── HealthAide_ALi_IOT_V0.1.2(iOS)  --- 阿里支付宝集成示例
       ├── 杰理iOS音频编解码V1.1.0            --- 手表录音数据编解码示例
  ├── docs
@@ -37,18 +38,22 @@
       ├── 杰理健康SDK开发说明.url             --- 在线文档：开发说明
       ├── 自定义蓝牙接入方式.url               --- 在线文档：接入方式介绍
  ├── libs
-      ├── JLDialUnit.framework            --- 表盘相关
       ├── JL_AdvParse.framework           --- 广播包解析
       ├── JL_BLEKit.framework             --- 主业务库（基础协议相关）
       ├── JL_HashPair.framework           --- 设备认证
       ├── JL_OTALib.framework             --- OTA升级业务库
-      ├── third_party                     --- 第三方库
+      ├── JLAudioUnitKit.framework        --- 音频编解码业务库
+      ├── JLBmpConvertKit.framework       --- 图片转码业务库
+      ├── JLDialUnit.framework            --- 表盘相关
+      ├── JLLogHelper.framework           --- 日志助手
+      ├── SpeexKit.framework              --- 音频编解码业务库
 ```
 
 ## 版本说明
 
 | 版本   | 日期       | 修改记录                                                     |
 | ------ | ---------- | ------------------------------------------------------------ |
+| V1.12.0 | 2024/11/22 | 1、新增功能<br/>(1）增加兼容 AC707N 的自定义表盘图像转换；<br/>(2）分离图像转换工具作为独立模块库。|
 | V1.11.0| 2024/03/15 | 1、新增功能<br/>(1)增加 4G 模块 OTA 功能<br/>(2)增加表盘拓展参数和补充 AI 表盘流程；|
 | V1.10.0| 2024/01/05 | 1、新增功能<br/>（1）增加 AI 表盘功能<br/>（2）Nand Flash 存储器信息拓展支持|
 | V1.9.0 | 2023/9/15  | 1、新增功能<br />(1)增加 AI 云服务功能                       |
@@ -72,6 +77,10 @@
    - 资源文件传输
 4. 表盘功能实现，可以参考 `JLDialUnit.framework`
    - 表盘切换与自定义
+5. 音频编解码功能实现，可以参考 `JLAudioUnitKit.framework` 中的 `JLAudioUnitManager` 类
+   - 音频数据编码与解码
+6. 图片转码功能实现，可以参考 `JLBmpConvertKit.framework` 中的 `JLBmpConvertManager` 类
+   - 自定义表盘图像转换
 
 **测试功能可以参考 `code/JieliJianKang` 中的示例代码**
 

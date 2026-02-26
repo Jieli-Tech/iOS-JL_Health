@@ -37,18 +37,22 @@ To help developers quickly integrate <strong style="color:red">Jieli Health SDK<
       ├── 杰理健康SDK开发说明.url             --- Online Doc: Development Guide
       ├── 自定义蓝牙接入方式.url               --- Online Doc: Bluetooth Integration Guide
  ├── libs
-      ├── JLDialUnit.framework            --- Watch Face Related
-      ├── JL_AdvParse.framework           --- Broadcast Packet Parsing
-      ├── JL_BLEKit.framework             --- Main Business Library (Basic Protocol)
+      ├── JL_AdvParse.framework           --- broadcast packet parsing
+      ├── JL_BLEKit.framework             --- Main Business Library (Basic Protocol Related)
       ├── JL_HashPair.framework           --- Device Authentication
-      ├── JL_OTALib.framework             --- OTA Upgrade Business Library
-      ├── third_party                     --- Third-party Libraries
+      ├── JL_OTALib.framework             --- OTA Update Business Library
+      ├── JLAudioUnitKit.framework        --- Audio Codec Business Library
+      ├── JLBmpConvertKit.framework       --- Image Transcoding Business Library
+      ├── JLDialUnit.framework            --- Watch Face Related
+      ├── JLLogHelper.framework           --- Log Helper
+      ├── SpeexKit.framework              --- Audio Codec Business Library
 ```
 
 ## Release Notes
 
 | Version | Date       | Changelog                                                    |
 | ------- | ---------- | ------------------------------------------------------------ |
+| V1.12.0 | 2024/11/22 | 1. New Features<br/>(1) Added compatibility with AC707N custom watch face image conversion<br/>(2) Separated image conversion tool as an independent module library |
 | V1.11.0| 2024/03/15 | 1. New Features<br/>(1) Added 4G module OTA function<br/>(2) Added watch face extension parameters and supplemented AI watch face process; |
 |V1.10.0 | 2024/01/05 | 1. New Features<br/>(1) Added AI watch face function<br/>(2) Added extended support for Nand Flash memory information |
 | V1.9.0 | 2023/9/15  | 1.New Features<br/>(1) Added AI cloud service function        |
@@ -71,6 +75,12 @@ To help developers quickly integrate <strong style="color:red">Jieli Health SDK<
    - Resource file transmission
 4. Watch Face Function Implementation: Refer to `JLDialUnit.framework`
    - Watch face switching and customization
+5. Audio Codec Function Implementation: Refer to `JLAudioUnitKit.framework`
+   - Audio data encoding and decoding
+6. Image Transcoding Function Implementation: Refer to `JLBmpConvertKit.framework`
+   - Custom watch face image conversion
+
+
 
 **For testing functions, please refer to the sample code in `code/JieliJianKang`**
 
