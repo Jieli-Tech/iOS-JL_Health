@@ -36,6 +36,11 @@ FOUNDATION_EXPORT const unsigned char JL_BLEKitVersionString[];
 #import <JL_BLEKit/JLModel_AlarmSetting.h>
 #import <JL_BLEKit/RTC_RingInfo.h>
 #import <JL_BLEKit/JLModel_SmallFile.h>
+#import <JL_BLEKit/JLCmdBasic.h>
+#import <JL_BLEKit/JLModelVocalBoost.h>
+#import <JL_BLEKit/JLModelNoiseDetection.h>
+#import <JL_BLEKit/JLModelSceneNoiseReduction.h>
+#import <JL_BLEKit/JLModelSmartPickFree.h>
 
 #import <JL_BLEKit/JL_BLEMultiple.h>
 #import <JL_BLEKit/JL_EntityM.h>
@@ -54,6 +59,7 @@ FOUNDATION_EXPORT const unsigned char JL_BLEKitVersionString[];
 #import <JL_BLEKit/JL_SoundCardManager.h>
 #import <JL_BLEKit/JL_LrcManager.h>
 #import <JL_BLEKit/JL_SpeexManager.h>
+#import <JL_BLEKit/JL_SpeechAIttsHandler.h>
 #import <JL_BLEKit/JL_FindDeviceManager.h>
 #import <JL_BLEKit/JL_MusicControlManager.h>
 #import <JL_BLEKit/JL_FmManager.h>
@@ -67,6 +73,7 @@ FOUNDATION_EXPORT const unsigned char JL_BLEKitVersionString[];
 #import <JL_BLEKit/JLAutoConfigAnc.h>
 #import <JL_BLEKit/JLDeviceConfig.h>
 #import <JL_BLEKit/JL_BigDataManager.h>
+#import <JL_BLEKit/JLAiManager.h>
 
 
 #import <JL_BLEKit/JLWearable.h>
@@ -89,6 +96,7 @@ FOUNDATION_EXPORT const unsigned char JL_BLEKitVersionString[];
 #import <JL_BLEKit/JL_NFC.h>
 #import <JL_BLEKit/JLWatchEnum.h>
 #import <JL_BLEKit/JL_WatchProtocol.h>
+
 
 #import <JL_BlEKit/bmp_convert.h>
 #import <JL_BLEKit/BitmapTool.h>

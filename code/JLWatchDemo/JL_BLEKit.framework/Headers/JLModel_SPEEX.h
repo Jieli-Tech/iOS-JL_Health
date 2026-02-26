@@ -40,12 +40,36 @@ typedef NS_ENUM(UInt8, JLRecordSampleRate) {
     JLRecordSampleRate16K = 0x10
 };
 
+
+
+
+
+
 @interface JLModel_SPEEX : NSObject
 @property(assign,nonatomic)JL_SpeakType     mSpeakType;
 @property(assign,nonatomic)JL_SpeakDataType mDataType;
 @property(assign,nonatomic)JLSpeakDownReason mDownReason;
 @property(assign,nonatomic)uint8_t          mSampleRate;            //0x08=8k，0x10=16k
 @property(assign,nonatomic)uint8_t          mVad;                   //断句方: 0:固件 1:APP
+@end
+
+
+///语音助手配置参数
+@interface JLSpeechRecognition:NSObject
+
+///是否下发识别文本，0：否 1：是
+@property(assign,nonatomic)BOOL sendText;
+
+/// 是否下发AI文本，0：否 1：是
+@property(assign,nonatomic)BOOL sendAIText;
+
+/// 是否播放AI TTS语音，0：否 1：是
+@property(assign,nonatomic)BOOL needPlayTTS;
+
++(JLSpeechRecognition *)beObjc:(NSData *)data;
+
+-(NSData *)beData;
+
 @end
 
 
@@ -61,6 +85,55 @@ typedef NS_ENUM(UInt8, JLRecordSampleRate) {
 /// 采样率
 @property(assign,nonatomic)JLRecordSampleRate mSampleRate;
 
+/// 语音助手配置参数
+@property(strong,nonatomic)JLSpeechRecognition *speechRecognit;
+
+@end
+
+
+/// speech 语音：AI云数据格式
+@interface JLSpeechAiCloud : NSObject
+
+/// 版本信息
+@property(nonatomic,assign)uint8_t version;
+
+/// 文本类型
+/// 0 ： 手表本地文本(语音识别)
+/// 1 ： AI应答文本
+@property(nonatomic,assign)uint8_t type;
+
+/// 供应商
+/// 0 ： 杰理
+/// 1 ： 科大讯飞
+@property(nonatomic,assign)uint8_t vendorID;
+
+/// 有效数据长度
+@property(nonatomic,assign)uint16_t lenght;
+
+/// 数据内容
+@property(nonatomic,strong)NSData *playload;
+
++(JLSpeechAiCloud *)beObject:(NSData *)data;
+
+-(NSData *)beData;
+
+@end
+
+/// TTS语音合成数据格式
+@interface JLSpeechTTSSynthesis : NSObject
+
+/// 版本信息
+@property(nonatomic,assign)uint8_t version;
+
+/// 有效数据长度
+@property(nonatomic,assign)uint16_t lenght;
+
+/// 数据内容
+@property(nonatomic,strong)NSData *playload;
+
+-(NSData *)beData;
+
++(JLSpeechTTSSynthesis *)beObject:(NSData *)data;
 @end
 
 NS_ASSUME_NONNULL_END

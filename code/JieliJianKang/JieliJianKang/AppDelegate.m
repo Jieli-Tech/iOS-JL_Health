@@ -23,6 +23,9 @@
 #import "PrivacyPolicyVC.h"
 #import "JLSportDetailViewController.h"
 #import "FindPhoneView.h"
+//#import "IFlyAIUI/IFlyAIUI.h"
+#import "IFlyMSC/IFlyMSC.h"
+#import "AIClound.h"
 
 @interface AppDelegate () <LoginDelegate, JLStatementViewControllerDelegate,LanguagePtl> {
     LoginVC             *loginVC;
@@ -129,6 +132,37 @@
     NSString *watchFacePath = [DFFile findPath:NSLibraryDirectory MiddlePath:@"JL_WATCH_FACE" File:nil];
     [DFFile removePath:watchFacePath];
     
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+//    NSString *cachePath = [paths objectAtIndex:0];
+//    cachePath = [cachePath stringByAppendingString:@"/"];
+//
+//    NSLog(@"cachePath=%@", cachePath);
+
+//    [IFlyAIUISetting setSaveDataLog:NO];
+//    [IFlyAIUISetting setLogLevel:LV_INFO];
+//    [IFlyAIUISetting setAIUIDir:cachePath];
+//    [IFlyAIUISetting setMscDir:cachePath];
+
+    //为每一个设备设置对应唯一的SN（最好使用设备硬件信息(mac地址，设备序列号等）生成），以便正确统计装机量，避免刷机或者应用卸载重装导致装机量重复计数
+    //[IFlyAIUISetting setSystemInfo:@"sn" withVal:@"ca948ceb69624f28801a12ad79a72534"];
+    
+    //Set log level
+    [IFlySetting setLogFile:LVL_ALL];
+    
+    //Set whether to output log messages in Xcode console
+    [IFlySetting showLogcat:NO];
+
+    //Set the local storage path of SDK
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *cachePath = [paths objectAtIndex:0];
+    [IFlySetting setLogFilePath:cachePath];
+    
+    //Set APPID
+    NSString *initString = [[NSString alloc] initWithFormat:@"appid=%@",APPID_VALUE];
+    
+    [IFlySpeechUtility createUtility:initString];
+    
+    [AIClound sharedMe];
     
     return YES;
 }
@@ -136,6 +170,13 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     NSLog(@"程序进入后台");
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ENTER_BACKGROUND" object:nil userInfo:nil];
+    AVAudioSession * session = [AVAudioSession sharedInstance];
+    if (!session) printf("ERROR INITIALIZING AUDIO SESSION! \n");
+    else{
+        NSError *nsError = nil;
+        [session setCategory:AVAudioSessionCategoryPlayback error:&nsError];
+        [session setActive:YES error:&nsError];
+    }
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -145,7 +186,7 @@
     }
     [self checkCurrentSport];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"BECOME_ACTIVE" object:nil userInfo:nil];
-    
+    [JL_Tools post:@"AI_BECOME_ACTIVE" Object:nil];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -347,8 +388,8 @@
     
     arr_vc  = @[nvc_1, nvc_2, nvc_3, nvc_4];
     NSArray *arr_txt = @[kJL_TXT("健康"), kJL_TXT("运动"), kJL_TXT("设备"), kJL_TXT("我的")];
-    NSArray *arr_img = @[@"tab_icon_health_nol", @"tab_icon_sports_nol", @"tab_icon_watch_nol", @"tab_icon_settle_nol"];
-    NSArray *arr_img_sel = @[@"tab_icon_health_sel", @"tab_icon_sports_sel", @"tab_icon_watch_sel", @"tab_icon_settle_sel"];
+    NSArray *arr_img = @[@"tab_icon_health_nol", @"tab_icon_sports_nol", @"tab_icon_watch_nol", @"tab_icon_personal_nol"];
+    NSArray *arr_img_sel = @[@"tab_icon_health_sel", @"tab_icon_sports_sel", @"tab_icon_watch_sel", @"tab_icon_personnal_sel"];
     
     for (int i = 0 ; i < arr_vc.count; i++) {
         UINavigationController *nvc = arr_vc[i];
@@ -472,8 +513,8 @@
 
 - (void)languageChange {
     NSArray *arr_txt = @[kJL_TXT("健康"), kJL_TXT("运动"), kJL_TXT("设备"), kJL_TXT("我的")];
-    NSArray *arr_img = @[@"tab_icon_health_nol", @"tab_icon_sports_nol", @"tab_icon_watch_nol", @"tab_icon_settle_nol"];
-    NSArray *arr_img_sel = @[@"tab_icon_health_sel", @"tab_icon_sports_sel", @"tab_icon_watch_sel", @"tab_icon_settle_sel"];
+    NSArray *arr_img = @[@"tab_icon_health_nol", @"tab_icon_sports_nol", @"tab_icon_watch_nol", @"tab_icon_personal_nol"];
+    NSArray *arr_img_sel = @[@"tab_icon_health_sel", @"tab_icon_sports_sel", @"tab_icon_watch_sel", @"tab_icon_personnal_sel"];
     
     for (int i = 0 ; i < arr_vc.count; i++) {
         UINavigationController *nvc = arr_vc[i];
@@ -540,7 +581,6 @@
     }
     return status;
 }
-
 
 @end
 

@@ -59,6 +59,13 @@ NS_ASSUME_NONNULL_BEGIN
 ///   - result: 命令操作结果回调
 -(void)cmdStopRecord:(JL_ManagerM *)manager Reason:(JLSpeakDownReason) reason Result:(JL_CMD_RESPOND __nullable)result;
 
+/// 停止录音2
+/// - Parameters:
+///   - manager: 操作设备
+///   - reason: vad类型
+///   - schr: 语音设置助手
+///   - result: 回调结果
+-(void)cmdStopRecord:(JL_ManagerM *)manager Reason:(JLSpeakDownReason)reason SpeechHelper:(JLSpeechRecognition *)schr Result:(JL_CMD_RESPOND __nullable)result;
 
 
 /// 发送命令给音箱，允许音箱端开始接收语音，音箱收到这个消息后会发一个提示音

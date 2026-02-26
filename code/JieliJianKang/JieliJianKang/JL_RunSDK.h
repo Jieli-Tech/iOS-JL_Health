@@ -29,6 +29,10 @@
 #define kJL_BLE_Uuid        [[JL_RunSDK sharedMe] mBleUUID]         //当前蓝牙设备的UUID
 #define kJL_DIAL_CACHE      [[JL_RunSDK sharedMe] mDialUICache]     //表盘的UI缓存
 
+#define APPID_VALUE  @"123456" //请去科大讯飞的官网注册
+#define APIKEY       @"123456789" //请去科大讯飞的官网注册
+#define APISERECT    @"abcd" //请去科大讯飞的官网注册
+
 NS_ASSUME_NONNULL_BEGIN
 
 

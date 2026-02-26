@@ -57,6 +57,8 @@
 	<string>App需要访问您的位置信息用于记录运动路径，是否允许？</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>APP需要获取您的定位权限用于记录运动路径，是否允许？</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>microphoneDesciption</string>
 	<key>NSMotionUsageDescription</key>
 	<string>需要您的同意, APP才能访问运动与健身</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -65,6 +67,7 @@
 	<true/>
 	<key>UIBackgroundModes</key>
 	<array>
+		<string>audio</string>
 		<string>bluetooth-central</string>
 		<string>bluetooth-peripheral</string>
 		<string>location</string>

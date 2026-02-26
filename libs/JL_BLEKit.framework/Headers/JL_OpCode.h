@@ -77,6 +77,7 @@
 
 #define kJL_DEVICE_LOG              0x0029
 #define kJL_BIG_DATA                0x0030
+#define kJL_TWS_NAME_LIST           0x0031   //一拖二/获取设备已连接手机名
 
 
 #define kJL_WEAR_REQ_OPCODE         0x00A0   //获取运动信息

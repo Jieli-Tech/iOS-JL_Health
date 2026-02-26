@@ -27,16 +27,18 @@ typedef NS_ENUM(UInt8, JL_DevicePlatform) {
     JL_DevicePlatformUnknown,
 };
 typedef NS_ENUM(UInt8, JL_SDKType) {
-    JL_SDKTypeAI                    = 0,    //AI SDK  AC692x
-    JL_SDKTypeST                    = 1,    //标准 SDK AC692x
-    JL_SDKType693xTWS               = 2,    //
-    JL_SDKType695xSDK               = 3,    //
-    JL_SDKType697xTWS               = 4,    //
-    JL_SDKType696xSB                = 5,    //696x_soundbox
-    JL_SDKType696xTWS               = 6,    //
-    JL_SDKType695xSC                = 7,    //695x_sound_card
-    JL_SDKType695xWATCH             = 8,    //BR23 Watch
-    JL_SDKType701xWATCH             = 9,    //BR28 Watch
+    JL_SDKTypeAI                    = 0x0,    //AI SDK  AC692x
+    JL_SDKTypeST                    = 0x1,    //标准 SDK AC692x
+    JL_SDKType693xTWS               = 0x2,    //
+    JL_SDKType695xSDK               = 0x3,    //
+    JL_SDKType697xTWS               = 0x4,    //
+    JL_SDKType696xSB                = 0x5,    //696x_soundbox
+    JL_SDKType696xTWS               = 0x6,    //
+    JL_SDKType695xSC                = 0x7,    //695x_sound_card
+    JL_SDKType695xWATCH             = 0x8,    //BR23 Watch
+    JL_SDKType701xWATCH             = 0x9,    //BR28 Watch
+    JL_SDKTypeManifestEarphone      = 0x0A,   //ManifestEarphone
+    JL_SDKTypeManifestSoundbox      = 0x0B,   //ManifestSoundbox
     JL_SDKTypeUnknown,
 };
 typedef NS_ENUM(UInt8, JL_FunctionCode) {

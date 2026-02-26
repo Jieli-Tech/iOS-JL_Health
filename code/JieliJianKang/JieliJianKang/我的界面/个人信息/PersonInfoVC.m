@@ -17,6 +17,7 @@
 #import "WeightView.h"
 #import "User_Http.h"
 #import "JLUser.h"
+#import "JLSqliteAICloundMessageRecord.h"
 
 @interface PersonInfoVC ()<UITableViewDelegate,UITableViewDataSource,PhotoDelegate
 ,UINavigationControllerDelegate, UIImagePickerControllerDelegate,ReNameViewDelegate,GenderDelegate,BirthDayInfoDelegate,HeightDelegate,WeightDelegate>{

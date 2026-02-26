@@ -70,6 +70,11 @@ extern NSString *kJL_BLE_M_ANCS_UPDATE;         //设备ANCS权限变更
  */
 -(JL_EntityM *_Nullable)makeEntityWithUUID:(NSString*)uuid;
 
+/// 通过UUID获得一个已连接过的entity
+/// @param uuid uuid
+/// @param status 获取后是否继续蓝牙搜索
+/// @param result 结果
+-(void)getEntityWithSearchUUID:(NSString *)uuid SearchStatus:(BOOL)status Result:(void(^)(JL_EntityM *_Nullable entity))result;
 /**
  连接设备
  @param entity 蓝牙设备类
@@ -104,7 +109,6 @@ extern NSString *kJL_BLE_M_ANCS_UPDATE;         //设备ANCS权限变更
 
 
 #pragma mark - ota升级
-
 /**
  *  ota升级功能
  *  @param mBleEntityM 当前ota升级的蓝牙设备（JL_EntityM）

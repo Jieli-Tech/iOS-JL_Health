@@ -25,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 #define tb_sport_running                    @"tb_sport_running"///跑步运动记录表
 #define tb_sport_location                   @"tb_sport_location"///运动定位记录表
 #define tb_sport_speed_per_km               @"tb_sport_speed_per_km"///每公里配速记录表
+#pragma mark - 聊天类数据表名
+#define tb_chat_record                      @"tb_chat_record"///聊天数据表
 
 typedef void(^checkDayAllBlock)(NSArray *array);
 
@@ -47,6 +49,19 @@ typedef void(^checkDayAllBlock)(NSArray *array);
  *  @param tableName 表名
 */
 - (void)deleteByDate:(NSDate *)date InTable:(NSString *)tableName;
+
+/**
+ *  删除选中的时间数据
+ *  @param selectArray 日期
+ *  @param tableName 表名
+*/
+- (void)deleteBySelectArray:(NSArray *)selectArray InTable:(NSString *)tableName;
+
+#pragma mark - 清空数据
+/**
+ *  删除全部的数据
+*/
+- (void)clean;
 
 #pragma mark - 数据表查询
 /**

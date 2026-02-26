@@ -1,0 +1,6 @@
+framework module AIKIT {
+  umbrella header "AIKIT.h"
+
+  export *
+  module * { export * }
+}

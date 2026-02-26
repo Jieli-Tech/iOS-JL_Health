@@ -71,6 +71,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,assign)BOOL spSyncWeather;
 /// 支持找手机/设备
 @property(nonatomic,assign)BOOL spFindPhoneOrDevice;
+/// Ai 云功能
+@property(nonatomic,assign)BOOL spAiCloud;
 
 -(instancetype)init:(NSData *)data;
 

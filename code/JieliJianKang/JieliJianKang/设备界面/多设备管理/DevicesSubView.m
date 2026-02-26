@@ -115,34 +115,36 @@
 -(void)checkoutBy:(NSString*)identify{
     [[JLDeviceSqliteManager share] checkoutBy:identify result:^(NSArray<UserDeviceModel *> * _Nonnull resultArray) {
         //[self->locateArray removeAllObjects];
-
-        if (resultArray.count==0 && self->locateArray.count == 0) {
-             self->noOneView.hidden = false;
-        }else{
-            self->noOneView.hidden = true;
-            for (UserDeviceModel *item in resultArray)
-            {
-                if ([item.uuidStr isEqualToString:kJL_BLE_EntityM.mPeripheral.identifier.UUIDString]) {
-                    [self updateLocateArray:item AtIndex:0];
-                }else{
-                    [self updateLocateArray:item AtIndex:-1];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (resultArray.count==0 && self->locateArray.count == 0) {
+                self->noOneView.hidden = false;
+            }else{
+                self->noOneView.hidden = true;
+                for (UserDeviceModel *item in resultArray)
+                {
+                    if ([item.uuidStr isEqualToString:kJL_BLE_EntityM.mPeripheral.identifier.UUIDString]) {
+                        [self updateLocateArray:item AtIndex:0];
+                    }else{
+                        [self updateLocateArray:item AtIndex:-1];
+                    }
+                    //NSLog(@"Devices service:%ld name:%@",(long)item.identifier,item.devName);
                 }
-                //NSLog(@"Devices service:%ld name:%@",(long)item.identifier,item.devName);
             }
-        }
-        [self.colView reloadData];
-        [self.colView setContentOffset:CGPointMake(0, 0) animated:YES];
+            [self.colView reloadData];
+            [self.colView setContentOffset:CGPointMake(0, 0) animated:YES];
+        });
     }];
 }
 
 
 
 -(void)refreshUIWithOTADevice:(UserDeviceModel*)model{
-    self->noOneView.hidden = true;
-    [self updateLocateArray:model AtIndex:0];
-    
-    [self.colView reloadData];
-    [self.colView setContentOffset:CGPointMake(0, 0) animated:YES];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self->noOneView.hidden = true;
+        [self updateLocateArray:model AtIndex:0];
+        [self.colView reloadData];
+        [self.colView setContentOffset:CGPointMake(0, 0) animated:YES];
+    });
     //NSLog(@"Devices service:OTA name:%@",model.devName);
 }
 

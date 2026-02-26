@@ -355,16 +355,10 @@
         
     }];
     // 同步天气
-    [DFAction delay:10 Task:^{ 
+    [DFAction delay:10 Task:^{
         [[JLWeatherManager share] syncWeather:kJL_BLE_EntityM];
     }];
 }
-
-
-
-
-
-
 
 - (void)btn_GetFace:(id)sender {
 

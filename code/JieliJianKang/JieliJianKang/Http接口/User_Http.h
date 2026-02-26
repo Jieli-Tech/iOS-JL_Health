@@ -183,5 +183,11 @@ typedef void(^JLHTTP_BK)(float progress, JLHTTP_Result result);
 /// 获取用户信息
 /// @param result userprofile
 -(void)getUserProfile:(void(^)(UserProfile *upInfo)) result;
+
+/**
+ * 功能：校验手机号码
+ */
+- (BOOL)validateMobile:(NSString *)mobileNumber;
+
 @end
 NS_ASSUME_NONNULL_END

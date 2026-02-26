@@ -152,7 +152,6 @@
 - (IBAction)syncDateBtnAction:(id)sender {
 
     [kJL_BLE_CmdManager.mSystemTime cmdSetSystemTime:[NSDate new]];
-    
 }
 
 

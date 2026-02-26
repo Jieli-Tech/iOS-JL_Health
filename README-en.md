@@ -30,7 +30,7 @@ To help developers quickly integrate <strong style="color:red">Jieli Health SDK<
       ├── JieliJianKang                   --- Yi Dong Health Source Code
       ├── JLWatchDemo                     --- Simple Function Demo Source Code
       ├── HealthAide_ALi_IOT_V0.1.2(iOS)  --- Alipay Integration Example
-      ├── 杰理iOS音频编解码V1.0.2            --- Watch Audio Data Encoding/Decoding Example
+      ├── 杰理iOS音频编解码V1.1.0            --- Watch Audio Data Encoding/Decoding Example
  ├── docs
       ├── Jieli_Health_SDK_iOS_Releases.pdf --- Version Release Notes
       ├── 杰理OTA升级(iOS)开发说明.url        --- Online Doc: OTA Development Guide
@@ -49,6 +49,7 @@ To help developers quickly integrate <strong style="color:red">Jieli Health SDK<
 
 | Version | Date       | Changelog                                                    |
 | ------- | ---------- | ------------------------------------------------------------ |
+| V1.9.0 | 2023/9/15  | 1.New Features<br/>(1) Added AI cloud service function        |
 | V1.8.0  | 2023/04/23 | 1. Bug Fixes<br/>(1) Fixed error in small file packet transmission<br/>(2) Fixed large file transmission timeout issue<br/>2. New Features<br/>(1) Improved device recording interface, added bidirectional control interface<br/>(2) Added time synchronization setting interface<br/>(3) Added interface to ignore header information in image transcoding<br/>3. Performance Optimization<br/>(1) Optimized RTC module shortage, extended RTC available length<br/>(2) Separated functional modules for SDK libraries:<br/>- JL_OTALib.framework: OTA Upgrade Business Library<br/>- JL_AdvParse.framework: Jieli Bluetooth Device Broadcast Packet Parsing Business Library<br/>- JL_HashPair.framework: Device Authentication Business Library<br/>- JL_BLEKit.framework: Main Business Library<br/>(3) Decoupled lighting control module, optimized watch face deletion thread callback, optimized custom command module |
 
 > Note: For detailed version iteration records, please refer to the release notes document in the docs directory.

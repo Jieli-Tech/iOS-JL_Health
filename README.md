@@ -4,7 +4,7 @@
 <br/>
 
 <div align="center">
-	
+
 ![iOS](https://img.shields.io/badge/iOS-10.0+-blue.svg)
 ![Xcode](https://img.shields.io/badge/Xcode-Latest-orange.svg)
 ![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)       
@@ -30,7 +30,7 @@
       ├── JieliJianKang                   --- 宜动健康源码
       ├── JLWatchDemo                     --- 简单功能源码
       ├── HealthAide_ALi_IOT_V0.1.2(iOS)  --- 阿里支付宝集成示例
-      ├── 杰理iOS音频编解码V1.0.2            --- 手表录音数据编解码示例
+      ├── 杰理iOS音频编解码V1.1.0            --- 手表录音数据编解码示例
  ├── docs
       ├── Jieli_Health_SDK_iOS_Releases.pdf --- 版本发布记录
       ├── 杰理OTA升级(iOS)开发说明.url        --- 在线文档：OTA开发说明
@@ -49,6 +49,7 @@
 
 | 版本   | 日期       | 修改记录                                                     |
 | ------ | ---------- | ------------------------------------------------------------ |
+| V1.9.0 | 2023/9/15  | 1、新增功能<br />(1)增加 AI 云服务功能                       |
 | V1.8.0 | 2023/04/23 | 1. 修复问题<br/>(1) 修复小文件分包传输出错问题<br/>(2) 修复大文件传输超时问题<br/>2. 新增功能<br/>(1) 设备录音接口完善，新增双向控制接口<br/>(2) 新增时间同步设置接口<br/>(3) 新增图片转码增加忽略头文件信息接口<br/>3. 性能优化<br/>(1) 优化 RTC 模块不足，扩展 RTC 可用长度<br/>(2) 对 SDK 库进行功能模块分离：<br/>- JL_OTALib.framework: OTA 升级业务库<br/>- JL_AdvParse.framework: 杰理蓝牙设备广播包解析业务库<br/>- JL_HashPair.framework: 设备认证业务库<br/>- JL_BLEKit.framework: 主业务库<br/>(3) 解耦灯光控制模块、优化删除表盘线程回调、优化自定义命令模块 |
 
 > 注：详细的版本迭代记录请参考 docs 目录下的发布记录文档。

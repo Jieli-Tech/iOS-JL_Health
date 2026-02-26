@@ -80,6 +80,19 @@ typedef void(^JL_BIGFILE_RT)(JL_BigFileResult result, float progress);
 /// 超时时间
 @property(nonatomic,assign)NSInteger maxTimeout;
 
+///大文件名是否使用其他编码
+///Default：false
+///短文件名：GBK  CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000)
+///长文件名：Unicode16L （NSUTF16LittleEndianStringEncoding）
+///Other: true
+///需要设置encodeType属性的值，默认为Unicode16L
+@property(nonatomic,assign)BOOL isOtherEncode;
+
+/// 大文件名使用的编码
+/// default :NSUTF16LittleEndianStringEncoding
+@property(nonatomic,assign)NSStringEncoding encodeType;
+
+
 - (void)closeTimer;
 
 #pragma mark ---> 监听目录数据

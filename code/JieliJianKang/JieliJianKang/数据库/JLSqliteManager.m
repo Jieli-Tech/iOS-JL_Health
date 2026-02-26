@@ -79,6 +79,8 @@
     [self creatTable:tb_sport_location withTableSql:[NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (ID INTEGER PRIMARY KEY AUTOINCREMENT, sport_id DOUBLE, type INT, longitude DOUBLE, latitude DOUBLE, speed DOUBLE, timestamp DOUBLE);", tb_sport_location]];
     // 每公里配速表
     [self creatTable:tb_sport_speed_per_km withTableSql:[NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (ID INTEGER PRIMARY KEY AUTOINCREMENT, sport_id DOUBLE, speed DOUBLE, distance DOUBLE, startTimestamp DOUBLE, endTimestamp DOUBLE);", tb_sport_speed_per_km]];
+    // 聊天数据表
+    [self creatTable:tb_chat_record withTableSql:[NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (ID INTEGER PRIMARY KEY AUTOINCREMENT, role TEXT, timestamp double, date TEXT, text TEXT, aiCloudState TEXT);", tb_chat_record]];
     
     NSLog(@"initializeDatabaseWithUserIdentify");
 }
@@ -96,12 +98,33 @@
 }
 
 #pragma mark - 数据表删除
-
 - (void)deleteByDate:(NSDate *)date InTable:(NSString *)tableName {
-
     NSString *dt = date.toYYYYMMdd;
     [_fmdbQueue inDatabase:^(FMDatabase * _Nonnull db) {
         BOOL ret = [db executeUpdate:@"delete from ? where date = ?", tableName, dt];
+        if (!ret) {
+            ECMethod(@"delete failed");
+        }
+    }];
+}
+
+- (void)deleteBySelectArray:(NSArray *)selectArray InTable:(NSString *)tableName{
+    [_fmdbQueue inDatabase:^(FMDatabase * _Nonnull db) {
+        NSString *deleteSql = [NSString stringWithFormat:@"DELETE FROM tb_chat_record WHERE (timestamp IN %@)",selectArray];
+        BOOL ret = [db executeUpdate:deleteSql];
+        if (!ret) {
+            ECMethod(@"deleteBySelectArray failed");
+        }else{
+            ECMethod(@"deleteBySelectArray success");
+        }
+    }];
+}
+
+#pragma mark - 清空数据
+-(void)clean{
+    [_fmdbQueue inDatabase:^(FMDatabase * _Nonnull db) {
+        NSString *deleteSql = @"DELETE FROM tb_chat_record";
+        BOOL ret = [db executeUpdate:deleteSql];
         if (!ret) {
             ECMethod(@"delete failed");
         }

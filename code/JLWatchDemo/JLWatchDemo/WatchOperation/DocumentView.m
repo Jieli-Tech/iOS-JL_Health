@@ -53,11 +53,11 @@
     NSArray *array = [JL_Tools subPaths:path];
 
     for (NSString *itemPath in array) {
-//        NSString *file = [itemPath uppercaseString];
-//        if ([file hasPrefix:@"WATCH"] ||
-//            [file hasPrefix:@"BGP_W"]) {
+        NSString *file = [itemPath uppercaseString];
+        if ([file hasPrefix:@"WATCH"] ||
+            [file hasPrefix:@"BGP_W"]) {
             [fileArray addObject:itemPath];
-//        }
+        }
     }
     dataArray = fileArray;
     documentResult = result;

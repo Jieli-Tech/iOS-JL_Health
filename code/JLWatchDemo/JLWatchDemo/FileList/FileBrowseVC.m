@@ -97,8 +97,8 @@
     
     JLModel_File *fileModel = [JLModel_File new];
     fileModel.fileType      = JL_BrowseTypeFolder;
-    fileModel.cardType      = JL_CardTypeFLASH;
-    fileModel.fileHandle    = deviceModel.handleFlash;
+    fileModel.cardType      = JL_CardTypeSD_1;
+    fileModel.fileHandle    = deviceModel.handleSD_1;
     fileModel.fileName      = @"SD Card";
     fileModel.folderName    = @"SD Card";
     fileModel.fileClus      = 0;
@@ -163,13 +163,6 @@
     if (model.fileType == JL_BrowseTypeFolder) {
         lastFileModel = nowFileModel;
     }else{
-        [mCmdManager.mFileManager setCurrentFileHandleType:JL_FileHandleTypeFLASH];
-        [mCmdManager.mFileManager cmdFileReadContentWithFileClus:model.fileClus Result:^(JL_FileContentResult result, uint32_t size, NSData * _Nullable data, float progress) {
-           NSLog(@"%.2f",progress);
-        }];
-//        [mCmdManager.mFileManager cmdFileReadContentWithName:model.fileName Result:^(JL_FileContentResult result, uint32_t size, NSData * _Nullable data, float progress) {
-//            NSLog(@"%.2f",progress);
-//        }];
         return;
     }
     

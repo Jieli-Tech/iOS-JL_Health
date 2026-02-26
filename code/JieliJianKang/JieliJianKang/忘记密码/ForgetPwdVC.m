@@ -255,7 +255,7 @@
         
         //NSString *pattern2 = @"^(?![0-9]+$)(?![a-zA-Z]+$)[a-zA-Z0-9]{6,12}";
         //NSPredicate *pred2 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pattern2];
-        BOOL isMatch = [self validateMobile:phoneTF.text];
+        BOOL isMatch = [[User_Http shareInstance] validateMobile:phoneTF.text];
 
         if (!isMatch) {
             [DFUITools showText:kJL_TXT("手机号不符合规则") onView:self.view delay:1.5];
@@ -349,52 +349,6 @@
     dispatch_resume(_timer);
 }
 
-/**
-* 功能：校验手机号码
-*/
-- (BOOL)validateMobile:(NSString *)mobileNumber
-{
-    /**
-     * 手机号码
-     * 移动：134[0-8],135,136,137,138,139,150,151,157,158,159,182,187,188,183,184,178
-     * 联通：130,131,132,152,155,156,185,186
-     * 电信：133,1349,153,180,189,181,177
-     */
-    NSString * MOBILE = @"^1(3[0-9]|5[0-35-9]|70|8[0-9])\\d{8}$";
-    /**
-     10         * 中国移动：China Mobile
-     11         * 134[0-8],135,136,137,138,139,150,151,157,158,159,182,187,188,183,184,178
-     12         */
-    NSString * CM = @"^1(34[0-8]|(3[5-9]|5[017-9]|78|8[2-478])\\d)\\d{7}$";
-    /**
-     15         * 中国联通：China Unicom
-     16         * 130,131,132,152,155,156,185,186,176
-     17         */
-    NSString * CU = @"^1(3[0-2]|5[256]|76|8[56])\\d{8}$";
-    /**
-     20         * 中国电信：China Telecom
-     21         * 133,1349,153,180,181,189,177
-     22         */
-    NSString * CT = @"^1((33|53|77|8[019])[0-9]|349)\\d{7}$";
-    
-    NSPredicate *regextestmobile = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", MOBILE];
-    NSPredicate *regextestcm = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CM];
-    NSPredicate *regextestcu = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CU];
-    NSPredicate *regextestct = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CT];
-    
-    if (([regextestmobile evaluateWithObject:mobileNumber] == YES)
-        || ([regextestcm evaluateWithObject:mobileNumber] == YES)
-        || ([regextestct evaluateWithObject:mobileNumber] == YES)
-        || ([regextestcu evaluateWithObject:mobileNumber] == YES))
-    {
-        return YES;
-    }
-    else
-    {
-        return NO;
-    }
-}
-
 -(BOOL)checkInputText{
     if(phoneTF.text.length == 0){
         [DFUITools showText:kJL_TXT("请输入手机号码/邮箱") onView:self.view delay:1.5];
@@ -410,7 +364,7 @@
         
         //NSString *pattern2 = @"^(?![0-9]+$)(?![a-zA-Z]+$)[a-zA-Z0-9]{6,12}";
         //NSPredicate *pred2 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pattern2];
-        BOOL isMatch = [self validateMobile:phoneTF.text];
+        BOOL isMatch = [[User_Http shareInstance] validateMobile:phoneTF.text];
 
         if (!isMatch) {
             [DFUITools showText:kJL_TXT("手机号不符合规则") onView:self.view delay:1.5];
@@ -434,7 +388,7 @@
 
 #pragma mark 验证按钮
 -(void)verClickBtn:(UIButton *)btn{
-//    BOOL isMatch = [self validateMobile:phoneTF.text];
+//    BOOL isMatch = [[User_Http shareInstance] validateMobile:phoneTF.text];
 //
 //    if(phoneTF.text.length ==0){
 //        [DFUITools showText:kJL_TXT("请输入手机号码") onView:self.view delay:1.5];

@@ -12,11 +12,6 @@
 		1D159F3726098D3A00D5966C /* TransJump.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D159F3626098D3A00D5966C /* TransJump.m */; };
 		1D159F3B260997F800D5966C /* SelectTitleBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D159F3A260997F800D5966C /* SelectTitleBar.m */; };
 		1D159F3F2609D62400D5966C /* DateLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D159F3E2609D62400D5966C /* DateLabelView.m */; };
-		1D20721929F4C28E008BAA9A /* JL_HashPair.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D20721429F4C28E008BAA9A /* JL_HashPair.framework */; };
-		1D20721A29F4C28E008BAA9A /* JL_AdvParse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D20721529F4C28E008BAA9A /* JL_AdvParse.framework */; };
-		1D20721B29F4C28E008BAA9A /* JL_BLEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D20721629F4C28E008BAA9A /* JL_BLEKit.framework */; };
-		1D20721C29F4C28E008BAA9A /* JL_OTALib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D20721729F4C28E008BAA9A /* JL_OTALib.framework */; };
-		1D20721D29F4C28E008BAA9A /* JLDialUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D20721829F4C28E008BAA9A /* JLDialUnit.framework */; };
 		1D27965E283F69A2005A65C5 /* DataTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D27965D283F69A2005A65C5 /* DataTester.swift */; };
 		1D279660283F6B56005A65C5 /* aaa.dat in Resources */ = {isa = PBXBuildFile; fileRef = 1D27965F283F6B56005A65C5 /* aaa.dat */; };
 		1D3E030926AAC19E00CDB02B /* UserDeviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3E030426AAC19E00CDB02B /* UserDeviceModel.m */; };
@@ -24,6 +19,11 @@
 		1D3E031126AAC1B200CDB02B /* DevicesViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3E030C26AAC1B200CDB02B /* DevicesViewCell.m */; };
 		1D3E031226AAC1B200CDB02B /* DevicesViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D3E030D26AAC1B200CDB02B /* DevicesViewCell.xib */; };
 		1D3E031326AAC1B200CDB02B /* DevicesSubView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3E031026AAC1B200CDB02B /* DevicesSubView.m */; };
+		1D3EAEB729F6501700C3405F /* JLDialUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3EAEB229F6501400C3405F /* JLDialUnit.framework */; };
+		1D3EAEB829F6501800C3405F /* JL_OTALib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3EAEB329F6501500C3405F /* JL_OTALib.framework */; };
+		1D3EAEB929F6501900C3405F /* JL_HashPair.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3EAEB429F6501500C3405F /* JL_HashPair.framework */; };
+		1D3EAEBA29F6501A00C3405F /* JL_BLEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3EAEB529F6501600C3405F /* JL_BLEKit.framework */; };
+		1D3EAEBB29F6501B00C3405F /* JL_AdvParse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3EAEB629F6501600C3405F /* JL_AdvParse.framework */; };
 		1D40DDC326A1263700A70D1B /* DeviceHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D40DDC226A1263700A70D1B /* DeviceHttp.m */; };
 		1D40DDC626A12F3000A70D1B /* DeviceHttpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D40DDC526A12F3000A70D1B /* DeviceHttpModel.m */; };
 		1D5B0BF8282CD6A400C590FD /* BtCallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5B0BF6282CD6A400C590FD /* BtCallViewController.m */; };
@@ -129,8 +129,8 @@
 		22131EBD25E3414700590C4A /* WeightSetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 22131EBB25E3414700590C4A /* WeightSetVC.m */; };
 		22131EBE25E3414700590C4A /* WeightSetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22131EBC25E3414700590C4A /* WeightSetVC.xib */; };
 		221F48CE2609AE0600F3237E /* ContactsTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F48CD2609AE0000F3237E /* ContactsTool.m */; };
-		226234AF26034D3E003BF684 /* DeleteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 226234AD26034D3D003BF684 /* DeleteView.m */; };
-		226234B026034D3E003BF684 /* DeleteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 226234AE26034D3D003BF684 /* DeleteView.xib */; };
+		226234AF26034D3E003BF684 /* DeleteRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 226234AD26034D3D003BF684 /* DeleteRecordView.m */; };
+		226234B026034D3E003BF684 /* DeleteRecordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 226234AE26034D3D003BF684 /* DeleteRecordView.xib */; };
 		22645D0A25EE1A4500C8AB69 /* UILabel+YBAttributeTextTapAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 22645D0925EE1A4500C8AB69 /* UILabel+YBAttributeTextTapAction.m */; };
 		22645D1125EE299000C8AB69 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 22645D0F25EE299000C8AB69 /* LoginVC.m */; };
 		22645D1225EE299000C8AB69 /* LoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22645D1025EE299000C8AB69 /* LoginVC.xib */; };
@@ -254,10 +254,14 @@
 		486E09C42861B2CF0076FBC8 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 486E09AE2861B2CF0076FBC8 /* UIView+WebCacheOperation.m */; };
 		486E09C52861B2CF0076FBC8 /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 486E09B22861B2CF0076FBC8 /* UIButton+WebCache.m */; };
 		488018C326A6A8D100F2064D /* DialUICache.m in Sources */ = {isa = PBXBuildFile; fileRef = 488018C226A6A8D100F2064D /* DialUICache.m */; };
+		48B9337E2A80922E009CB52C /* SpeexKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B9337C2A80922E009CB52C /* SpeexKit.framework */; };
+		48B9337F2A809252009CB52C /* SpeexKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48B9337C2A80922E009CB52C /* SpeexKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		48B933822A80929C009CB52C /* DFUnits.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B933802A80929C009CB52C /* DFUnits.framework */; };
+		48B933832A80929C009CB52C /* DFUnits.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 48B933812A80929C009CB52C /* DFUnits.framework.dSYM */; };
+		48B933842A8092B3009CB52C /* DFUnits.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48B933802A80929C009CB52C /* DFUnits.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		48ECE6FE28B485990097289D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48ECE6FD28B485990097289D /* StoreKit.framework */; };
 		4A06820325EDE685000BF0EB /* PersonInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A06820125EDE685000BF0EB /* PersonInfoCell.xib */; };
 		4A06820425EDE685000BF0EB /* PersonInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A06820225EDE685000BF0EB /* PersonInfoCell.m */; };
-		4A2B125825DE3EF30089AFBA /* DFUnits.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A2B125625DE3EF20089AFBA /* DFUnits.framework */; };
 		4A2B125D25DE3F110089AFBA /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A2B125C25DE3F110089AFBA /* libc++.tbd */; };
 		4A2B126925DE41F40089AFBA /* HealthVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B126725DE41F40089AFBA /* HealthVC.m */; };
 		4A2B126A25DE41F40089AFBA /* HealthVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A2B126825DE41F40089AFBA /* HealthVC.xib */; };
@@ -502,6 +506,9 @@
 		BEECBA5526A67235008EBE94 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEECBA5426A67235008EBE94 /* AudioToolbox.framework */; };
 		C205604A26A813AE00D53787 /* DeviceMoreVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C205604826A813AE00D53787 /* DeviceMoreVC.m */; };
 		C205604B26A813AE00D53787 /* DeviceMoreVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C205604926A813AE00D53787 /* DeviceMoreVC.xib */; };
+		C22C48512A721AF800FF766F /* SpeechRecognitionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C22C484F2A721AF800FF766F /* SpeechRecognitionVC.m */; };
+		C22C48522A721AF800FF766F /* SpeechRecognitionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C22C48502A721AF800FF766F /* SpeechRecognitionVC.xib */; };
+		C23953372A77ABD300358C29 /* aiui.cfg in Resources */ = {isa = PBXBuildFile; fileRef = C23953362A77ABD300358C29 /* aiui.cfg */; };
 		C26A943E27141C74003D5C44 /* DevicePersonInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C26A943C27141C74003D5C44 /* DevicePersonInfoVC.m */; };
 		C26A943F27141C74003D5C44 /* DevicePersonInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C26A943D27141C74003D5C44 /* DevicePersonInfoVC.xib */; };
 		C26A944527143E1C003D5C44 /* SensorSettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C26A944327143E1C003D5C44 /* SensorSettingsVC.m */; };
@@ -551,6 +558,30 @@
 		C29A1FA126A98DBE007E470D /* HealthYaLiVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C29A1F9F26A98DBE007E470D /* HealthYaLiVC.m */; };
 		C29A1FA226A98DBE007E470D /* HealthYaLiVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C29A1FA026A98DBE007E470D /* HealthYaLiVC.xib */; };
 		C29A1FA726AA99CD007E470D /* XinLvView.m in Sources */ = {isa = PBXBuildFile; fileRef = C29A1FA626AA99CD007E470D /* XinLvView.m */; };
+		C2B395C42A8221E9001EEB9D /* AIKIT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B395C32A8221E8001EEB9D /* AIKIT.framework */; };
+		C2B395C52A8221E9001EEB9D /* AIKIT.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C2B395C32A8221E8001EEB9D /* AIKIT.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C2B395C92A822A2E001EEB9D /* TTSConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B395C72A822A2D001EEB9D /* TTSConfig.m */; };
+		C2B5E8CD2A81C8AD001DDB24 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B5E8CC2A81C8AC001DDB24 /* iflyMSC.framework */; };
+		C2B5E8D02A81C9D8001DDB24 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B5E8CF2A81C9D8001DDB24 /* AVFoundation.framework */; };
+		C2B5E8D22A81CA0E001DDB24 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B5E8D12A81CA0E001DDB24 /* Foundation.framework */; };
+		C2B5E8D32A81CA1E001DDB24 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE844640261EAFAA00A5D474 /* CoreTelephony.framework */; };
+		C2B5E8D52A81CA3D001DDB24 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B5E8D42A81CA3D001DDB24 /* UIKit.framework */; };
+		C2B5E8D72A81CA5D001DDB24 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B5E8D62A81CA5D001DDB24 /* Contacts.framework */; };
+		C2B5E8D92A81CA69001DDB24 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B5E8D82A81CA68001DDB24 /* AddressBook.framework */; };
+		C2B5E8DB2A81CA70001DDB24 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B5E8DA2A81CA70001DDB24 /* QuartzCore.framework */; };
+		C2B5E8DD2A81CA7E001DDB24 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B5E8DC2A81CA7D001DDB24 /* CoreGraphics.framework */; };
+		C2B5E8E12A81D15C001DDB24 /* IATConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B5E8DF2A81D15C001DDB24 /* IATConfig.m */; };
+		C2B5E8E42A81D527001DDB24 /* ISRDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B5E8E32A81D527001DDB24 /* ISRDataHelper.m */; };
+		C2BC6F9E2A78968A00B65E46 /* SpeechCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BC6F9C2A78968A00B65E46 /* SpeechCell.m */; };
+		C2BC6F9F2A78968A00B65E46 /* SpeechCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2BC6F9D2A78968A00B65E46 /* SpeechCell.xib */; };
+		C2BC6FA62A78ED8E00B65E46 /* JYTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BC6FA02A78ED8E00B65E46 /* JYTextView.m */; };
+		C2BC6FA72A78ED8E00B65E46 /* JYBubbleButtonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BC6FA12A78ED8E00B65E46 /* JYBubbleButtonModel.m */; };
+		C2BC6FA82A78ED8E00B65E46 /* JYBubbleMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BC6FA52A78ED8E00B65E46 /* JYBubbleMenuView.m */; };
+		C2BF45B82A7A518900D716D9 /* AICloundMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BF45B72A7A518900D716D9 /* AICloundMessageModel.m */; };
+		C2BF45BB2A7A556200D716D9 /* JLSqliteAICloundMessageRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BF45BA2A7A556200D716D9 /* JLSqliteAICloundMessageRecord.m */; };
+		C2C43BCB2A70BA27009B99FA /* AIClound.m in Sources */ = {isa = PBXBuildFile; fileRef = C2C43BCA2A70BA27009B99FA /* AIClound.m */; };
+		C2CDC9142A77489100097A76 /* DeleteView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CDC9112A77489100097A76 /* DeleteView.m */; };
+		C2CDC9152A77489100097A76 /* DeleteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2CDC9122A77489100097A76 /* DeleteView.xib */; };
 		C2E43A1E2616A28E00263126 /* RingTime.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E43A1D2616A28E00263126 /* RingTime.m */; };
 		C2E43A212616A2C500263126 /* RingAgainIntervalView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E43A202616A2C500263126 /* RingAgainIntervalView.m */; };
 		C2E43A262616ACD200263126 /* RingTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E43A242616ACD200263126 /* RingTimeCell.m */; };
@@ -567,6 +598,7 @@
 		C2E43A582616CA8100263126 /* ScanConnectDeviceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2E43A552616CA8100263126 /* ScanConnectDeviceVC.xib */; };
 		C2E43A592616CA8100263126 /* ScanConnectDeviceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E43A572616CA8100263126 /* ScanConnectDeviceVC.m */; };
 		C2E795FC2721577100F78D42 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C2E795FE2721577100F78D42 /* InfoPlist.strings */; };
+		C2F672362A84D19300A8A7B6 /* JL_Talk.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F672342A84D19200A8A7B6 /* JL_Talk.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -576,6 +608,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				48B933842A8092B3009CB52C /* DFUnits.framework in Embed Frameworks */,
+				C2B395C52A8221E9001EEB9D /* AIKIT.framework in Embed Frameworks */,
+				48B9337F2A809252009CB52C /* SpeexKit.framework in Embed Frameworks */,
 				4ACB254825F85C6F00C66654 /* ZipZap.framework in Embed Frameworks */,
 				1DB3675325FF09F800A03491 /* TYCoreText.framework in Embed Frameworks */,
 				1D668739264A5E2B0054880F /* FMDB.framework in Embed Frameworks */,
@@ -595,11 +630,6 @@
 		1D159F3A260997F800D5966C /* SelectTitleBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectTitleBar.m; sourceTree = "<group>"; };
 		1D159F3D2609D62400D5966C /* DateLabelView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DateLabelView.h; sourceTree = "<group>"; };
 		1D159F3E2609D62400D5966C /* DateLabelView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DateLabelView.m; sourceTree = "<group>"; };
-		1D20721429F4C28E008BAA9A /* JL_HashPair.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_HashPair.framework; sourceTree = "<group>"; };
-		1D20721529F4C28E008BAA9A /* JL_AdvParse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_AdvParse.framework; sourceTree = "<group>"; };
-		1D20721629F4C28E008BAA9A /* JL_BLEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_BLEKit.framework; sourceTree = "<group>"; };
-		1D20721729F4C28E008BAA9A /* JL_OTALib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_OTALib.framework; sourceTree = "<group>"; };
-		1D20721829F4C28E008BAA9A /* JLDialUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JLDialUnit.framework; sourceTree = "<group>"; };
 		1D27965D283F69A2005A65C5 /* DataTester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTester.swift; sourceTree = "<group>"; };
 		1D27965F283F6B56005A65C5 /* aaa.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = aaa.dat; sourceTree = "<group>"; };
 		1D3E030326AAC19E00CDB02B /* UserDeviceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDeviceModel.h; sourceTree = "<group>"; };
@@ -611,6 +641,11 @@
 		1D3E030E26AAC1B200CDB02B /* DevicesSubView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevicesSubView.h; sourceTree = "<group>"; };
 		1D3E030F26AAC1B200CDB02B /* DevicesViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevicesViewCell.h; sourceTree = "<group>"; };
 		1D3E031026AAC1B200CDB02B /* DevicesSubView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevicesSubView.m; sourceTree = "<group>"; };
+		1D3EAEB229F6501400C3405F /* JLDialUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JLDialUnit.framework; sourceTree = "<group>"; };
+		1D3EAEB329F6501500C3405F /* JL_OTALib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_OTALib.framework; sourceTree = "<group>"; };
+		1D3EAEB429F6501500C3405F /* JL_HashPair.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_HashPair.framework; sourceTree = "<group>"; };
+		1D3EAEB529F6501600C3405F /* JL_BLEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_BLEKit.framework; sourceTree = "<group>"; };
+		1D3EAEB629F6501600C3405F /* JL_AdvParse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_AdvParse.framework; sourceTree = "<group>"; };
 		1D40DDC126A1263700A70D1B /* DeviceHttp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceHttp.h; sourceTree = "<group>"; };
 		1D40DDC226A1263700A70D1B /* DeviceHttp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceHttp.m; sourceTree = "<group>"; };
 		1D40DDC426A12F3000A70D1B /* DeviceHttpModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceHttpModel.h; sourceTree = "<group>"; };
@@ -792,9 +827,9 @@
 		22131EBC25E3414700590C4A /* WeightSetVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeightSetVC.xib; sourceTree = "<group>"; };
 		221F48CC2609AE0000F3237E /* ContactsTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsTool.h; sourceTree = "<group>"; };
 		221F48CD2609AE0000F3237E /* ContactsTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactsTool.m; sourceTree = "<group>"; };
-		226234AC26034D3D003BF684 /* DeleteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteView.h; sourceTree = "<group>"; };
-		226234AD26034D3D003BF684 /* DeleteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteView.m; sourceTree = "<group>"; };
-		226234AE26034D3D003BF684 /* DeleteView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeleteView.xib; sourceTree = "<group>"; };
+		226234AC26034D3D003BF684 /* DeleteRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteRecordView.h; sourceTree = "<group>"; };
+		226234AD26034D3D003BF684 /* DeleteRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteRecordView.m; sourceTree = "<group>"; };
+		226234AE26034D3D003BF684 /* DeleteRecordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeleteRecordView.xib; sourceTree = "<group>"; };
 		22645D0825EE1A4500C8AB69 /* UILabel+YBAttributeTextTapAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+YBAttributeTextTapAction.h"; sourceTree = "<group>"; };
 		22645D0925EE1A4500C8AB69 /* UILabel+YBAttributeTextTapAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+YBAttributeTextTapAction.m"; sourceTree = "<group>"; };
 		22645D0E25EE299000C8AB69 /* LoginVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
@@ -1022,11 +1057,13 @@
 		487661CC278D5B22005A9A65 /* JLPhoneUISetting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JLPhoneUISetting.h; sourceTree = "<group>"; };
 		488018C126A6A8D100F2064D /* DialUICache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DialUICache.h; sourceTree = "<group>"; };
 		488018C226A6A8D100F2064D /* DialUICache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DialUICache.m; sourceTree = "<group>"; };
+		48B9337C2A80922E009CB52C /* SpeexKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpeexKit.framework; sourceTree = "<group>"; };
+		48B933802A80929C009CB52C /* DFUnits.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DFUnits.framework; sourceTree = "<group>"; };
+		48B933812A80929C009CB52C /* DFUnits.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = DFUnits.framework.dSYM; sourceTree = "<group>"; };
 		48ECE6FD28B485990097289D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4A06820025EDE685000BF0EB /* PersonInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonInfoCell.h; sourceTree = "<group>"; };
 		4A06820125EDE685000BF0EB /* PersonInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonInfoCell.xib; sourceTree = "<group>"; };
 		4A06820225EDE685000BF0EB /* PersonInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonInfoCell.m; sourceTree = "<group>"; };
-		4A2B125625DE3EF20089AFBA /* DFUnits.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DFUnits.framework; sourceTree = "<group>"; };
 		4A2B125C25DE3F110089AFBA /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		4A2B126625DE41F40089AFBA /* HealthVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HealthVC.h; sourceTree = "<group>"; };
 		4A2B126725DE41F40089AFBA /* HealthVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HealthVC.m; sourceTree = "<group>"; };
@@ -1400,6 +1437,11 @@
 		C205604726A813AE00D53787 /* DeviceMoreVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceMoreVC.h; sourceTree = "<group>"; };
 		C205604826A813AE00D53787 /* DeviceMoreVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceMoreVC.m; sourceTree = "<group>"; };
 		C205604926A813AE00D53787 /* DeviceMoreVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceMoreVC.xib; sourceTree = "<group>"; };
+		C22C484E2A721AF800FF766F /* SpeechRecognitionVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpeechRecognitionVC.h; sourceTree = "<group>"; };
+		C22C484F2A721AF800FF766F /* SpeechRecognitionVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpeechRecognitionVC.m; sourceTree = "<group>"; };
+		C22C48502A721AF800FF766F /* SpeechRecognitionVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpeechRecognitionVC.xib; sourceTree = "<group>"; };
+		C23953302A77AB4700358C29 /* iflyAIUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyAIUI.framework; sourceTree = "<group>"; };
+		C23953362A77ABD300358C29 /* aiui.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = aiui.cfg; sourceTree = "<group>"; };
 		C26A943B27141C74003D5C44 /* DevicePersonInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DevicePersonInfoVC.h; sourceTree = "<group>"; };
 		C26A943C27141C74003D5C44 /* DevicePersonInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DevicePersonInfoVC.m; sourceTree = "<group>"; };
 		C26A943D27141C74003D5C44 /* DevicePersonInfoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DevicePersonInfoVC.xib; sourceTree = "<group>"; };
@@ -1509,6 +1551,21 @@
 		C2B0C2062942D26F00534B2D /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		C2B0C2072942D26F00534B2D /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C2B0C2082942D27200534B2D /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C2B395C32A8221E8001EEB9D /* AIKIT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AIKIT.framework; sourceTree = "<group>"; };
+		C2B395C72A822A2D001EEB9D /* TTSConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTSConfig.m; sourceTree = "<group>"; };
+		C2B395C82A822A2D001EEB9D /* TTSConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTSConfig.h; sourceTree = "<group>"; };
+		C2B5E8CC2A81C8AC001DDB24 /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
+		C2B5E8CF2A81C9D8001DDB24 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		C2B5E8D12A81CA0E001DDB24 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C2B5E8D42A81CA3D001DDB24 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C2B5E8D62A81CA5D001DDB24 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
+		C2B5E8D82A81CA68001DDB24 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		C2B5E8DA2A81CA70001DDB24 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C2B5E8DC2A81CA7D001DDB24 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C2B5E8DF2A81D15C001DDB24 /* IATConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IATConfig.m; sourceTree = "<group>"; };
+		C2B5E8E02A81D15C001DDB24 /* IATConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IATConfig.h; sourceTree = "<group>"; };
+		C2B5E8E22A81D527001DDB24 /* ISRDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISRDataHelper.h; sourceTree = "<group>"; };
+		C2B5E8E32A81D527001DDB24 /* ISRDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISRDataHelper.m; sourceTree = "<group>"; };
 		C2B81AA4293ED6C10084BE74 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		C2B81AA5293ED6C10084BE74 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C2B81AA6293ED6CA0084BE74 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1521,6 +1578,19 @@
 		C2B81AAD293F3EC00084BE74 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		C2B81AAE293F3EC00084BE74 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C2B81AAF293F3ECA0084BE74 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C2BC6F9B2A78968A00B65E46 /* SpeechCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpeechCell.h; sourceTree = "<group>"; };
+		C2BC6F9C2A78968A00B65E46 /* SpeechCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpeechCell.m; sourceTree = "<group>"; };
+		C2BC6F9D2A78968A00B65E46 /* SpeechCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpeechCell.xib; sourceTree = "<group>"; };
+		C2BC6FA02A78ED8E00B65E46 /* JYTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYTextView.m; sourceTree = "<group>"; };
+		C2BC6FA12A78ED8E00B65E46 /* JYBubbleButtonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBubbleButtonModel.m; sourceTree = "<group>"; };
+		C2BC6FA22A78ED8E00B65E46 /* JYBubbleButtonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBubbleButtonModel.h; sourceTree = "<group>"; };
+		C2BC6FA32A78ED8E00B65E46 /* JYTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYTextView.h; sourceTree = "<group>"; };
+		C2BC6FA42A78ED8E00B65E46 /* JYBubbleMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBubbleMenuView.h; sourceTree = "<group>"; };
+		C2BC6FA52A78ED8E00B65E46 /* JYBubbleMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBubbleMenuView.m; sourceTree = "<group>"; };
+		C2BF45B62A7A518900D716D9 /* AICloundMessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AICloundMessageModel.h; sourceTree = "<group>"; };
+		C2BF45B72A7A518900D716D9 /* AICloundMessageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AICloundMessageModel.m; sourceTree = "<group>"; };
+		C2BF45B92A7A556200D716D9 /* JLSqliteAICloundMessageRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JLSqliteAICloundMessageRecord.h; sourceTree = "<group>"; };
+		C2BF45BA2A7A556200D716D9 /* JLSqliteAICloundMessageRecord.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JLSqliteAICloundMessageRecord.m; sourceTree = "<group>"; };
 		C2C41BBB29401711004E2BDA /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		C2C41BBC29401711004E2BDA /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C2C41BBD29401716004E2BDA /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1530,6 +1600,11 @@
 		C2C41BC1294076FF004E2BDA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		C2C41BC2294076FF004E2BDA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C2C41BC329407703004E2BDA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C2C43BC92A70BA27009B99FA /* AIClound.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AIClound.h; sourceTree = "<group>"; };
+		C2C43BCA2A70BA27009B99FA /* AIClound.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AIClound.m; sourceTree = "<group>"; };
+		C2CDC9112A77489100097A76 /* DeleteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteView.m; sourceTree = "<group>"; };
+		C2CDC9122A77489100097A76 /* DeleteView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeleteView.xib; sourceTree = "<group>"; };
+		C2CDC9132A77489100097A76 /* DeleteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteView.h; sourceTree = "<group>"; };
 		C2E43A1C2616A28E00263126 /* RingTime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RingTime.h; sourceTree = "<group>"; };
 		C2E43A1D2616A28E00263126 /* RingTime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RingTime.m; sourceTree = "<group>"; };
 		C2E43A1F2616A2C500263126 /* RingAgainIntervalView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RingAgainIntervalView.h; sourceTree = "<group>"; };
@@ -1558,6 +1633,8 @@
 		C2E43A572616CA8100263126 /* ScanConnectDeviceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanConnectDeviceVC.m; sourceTree = "<group>"; };
 		C2E796002721578500F78D42 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		C2E796012721592700F78D42 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C2F672342A84D19200A8A7B6 /* JL_Talk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JL_Talk.m; sourceTree = "<group>"; };
+		C2F672352A84D19300A8A7B6 /* JL_Talk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JL_Talk.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1565,33 +1642,44 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D20721D29F4C28E008BAA9A /* JLDialUnit.framework in Frameworks */,
+				1D3EAEB829F6501800C3405F /* JL_OTALib.framework in Frameworks */,
 				BE844649261EAFF000A5D474 /* SystemConfiguration.framework in Frameworks */,
-				1D20721B29F4C28E008BAA9A /* JL_BLEKit.framework in Frameworks */,
 				BE844647261EAFE700A5D474 /* Security.framework in Frameworks */,
+				48B9337E2A80922E009CB52C /* SpeexKit.framework in Frameworks */,
 				1DC585F829B1D2FD0045AB01 /* JTCalendar.framework in Frameworks */,
 				BE844643261EAFB500A5D474 /* GLKit.framework in Frameworks */,
 				1DD40E2F29136C02004C1555 /* ExternalAccessory.framework in Frameworks */,
+				C2B5E8D22A81CA0E001DDB24 /* Foundation.framework in Frameworks */,
 				BE844645261EAFDB00A5D474 /* libz.tbd in Frameworks */,
-				1D20721929F4C28E008BAA9A /* JL_HashPair.framework in Frameworks */,
 				4A2B125D25DE3F110089AFBA /* libc++.tbd in Frameworks */,
 				BE844641261EAFAA00A5D474 /* CoreTelephony.framework in Frameworks */,
+				C2B5E8D52A81CA3D001DDB24 /* UIKit.framework in Frameworks */,
 				1D5B0C00282CFBE800C590FD /* WebKit.framework in Frameworks */,
 				1D668737264A59BB0054880F /* libsqlite3.tbd in Frameworks */,
+				C2B5E8CD2A81C8AD001DDB24 /* iflyMSC.framework in Frameworks */,
+				C2B5E8D02A81C9D8001DDB24 /* AVFoundation.framework in Frameworks */,
 				1DB367A325FF476800A03491 /* CoreDraw.framework in Frameworks */,
+				1D3EAEB929F6501900C3405F /* JL_HashPair.framework in Frameworks */,
+				C2B5E8D92A81CA69001DDB24 /* AddressBook.framework in Frameworks */,
+				C2B395C42A8221E9001EEB9D /* AIKIT.framework in Frameworks */,
 				BE84463F261EAFA200A5D474 /* CoreLocation.framework in Frameworks */,
-				1D20721A29F4C28E008BAA9A /* JL_AdvParse.framework in Frameworks */,
+				48B933822A80929C009CB52C /* DFUnits.framework in Frameworks */,
 				4ACB254725F859D000C66654 /* ZipZap.framework in Frameworks */,
+				C2B5E8D72A81CA5D001DDB24 /* Contacts.framework in Frameworks */,
+				C2B5E8DB2A81CA70001DDB24 /* QuartzCore.framework in Frameworks */,
+				1D3EAEBA29F6501A00C3405F /* JL_BLEKit.framework in Frameworks */,
 				48ECE6FE28B485990097289D /* StoreKit.framework in Frameworks */,
+				C2B5E8DD2A81CA7E001DDB24 /* CoreGraphics.framework in Frameworks */,
 				BEECBA5526A67235008EBE94 /* AudioToolbox.framework in Frameworks */,
 				1D11460229B0852600347E8D /* JLBugly.framework in Frameworks */,
+				1D3EAEB729F6501700C3405F /* JLDialUnit.framework in Frameworks */,
+				C2B5E8D32A81CA1E001DDB24 /* CoreTelephony.framework in Frameworks */,
+				1D3EAEBB29F6501B00C3405F /* JL_AdvParse.framework in Frameworks */,
 				1DB3675225FF09F800A03491 /* TYCoreText.framework in Frameworks */,
 				1DD40E2B2913683B004C1555 /* AMapFoundationKit.framework in Frameworks */,
 				1DD40E2829136837004C1555 /* MAMapKit.framework in Frameworks */,
-				1D20721C29F4C28E008BAA9A /* JL_OTALib.framework in Frameworks */,
 				1D668738264A5E2B0054880F /* FMDB.framework in Frameworks */,
 				1DD40E2929136838004C1555 /* AMapSearchKit.framework in Frameworks */,
-				4A2B125825DE3EF30089AFBA /* DFUnits.framework in Frameworks */,
 				1DD40E2D29136914004C1555 /* AMapLocationKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1696,6 +1784,7 @@
 		1D668722264A59340054880F /* 数据库 */ = {
 			isa = PBXGroup;
 			children = (
+				C2BF45B12A7A4BE900D716D9 /* 聊天记录 */,
 				1D3E030126AAC19E00CDB02B /* 用户设备数据 */,
 				BE957BAF27279868003F37EE /* 地理数据 */,
 				BE957BA627279868003F37EE /* 健康数据 */,
@@ -2111,9 +2200,9 @@
 		226234A826034CEA003BF684 /* 弹出框 */ = {
 			isa = PBXGroup;
 			children = (
-				226234AC26034D3D003BF684 /* DeleteView.h */,
-				226234AD26034D3D003BF684 /* DeleteView.m */,
-				226234AE26034D3D003BF684 /* DeleteView.xib */,
+				C2CDC9132A77489100097A76 /* DeleteView.h */,
+				C2CDC9112A77489100097A76 /* DeleteView.m */,
+				C2CDC9122A77489100097A76 /* DeleteView.xib */,
 			);
 			path = "弹出框";
 			sourceTree = "<group>";
@@ -2794,11 +2883,24 @@
 		4A2B125B25DE3F100089AFBA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1D20721529F4C28E008BAA9A /* JL_AdvParse.framework */,
-				1D20721629F4C28E008BAA9A /* JL_BLEKit.framework */,
-				1D20721429F4C28E008BAA9A /* JL_HashPair.framework */,
-				1D20721729F4C28E008BAA9A /* JL_OTALib.framework */,
-				1D20721829F4C28E008BAA9A /* JLDialUnit.framework */,
+				C2B395C32A8221E8001EEB9D /* AIKIT.framework */,
+				C2B5E8DC2A81CA7D001DDB24 /* CoreGraphics.framework */,
+				C2B5E8DA2A81CA70001DDB24 /* QuartzCore.framework */,
+				C2B5E8D82A81CA68001DDB24 /* AddressBook.framework */,
+				C2B5E8D62A81CA5D001DDB24 /* Contacts.framework */,
+				C2B5E8D42A81CA3D001DDB24 /* UIKit.framework */,
+				C2B5E8D12A81CA0E001DDB24 /* Foundation.framework */,
+				C2B5E8CF2A81C9D8001DDB24 /* AVFoundation.framework */,
+				C2B5E8CC2A81C8AC001DDB24 /* iflyMSC.framework */,
+				48B9337C2A80922E009CB52C /* SpeexKit.framework */,
+				48B933802A80929C009CB52C /* DFUnits.framework */,
+				48B933812A80929C009CB52C /* DFUnits.framework.dSYM */,
+				C23953302A77AB4700358C29 /* iflyAIUI.framework */,
+				1D3EAEB629F6501600C3405F /* JL_AdvParse.framework */,
+				1D3EAEB529F6501600C3405F /* JL_BLEKit.framework */,
+				1D3EAEB429F6501500C3405F /* JL_HashPair.framework */,
+				1D3EAEB329F6501500C3405F /* JL_OTALib.framework */,
+				1D3EAEB229F6501400C3405F /* JLDialUnit.framework */,
 				1DD40E2E29136C01004C1555 /* ExternalAccessory.framework */,
 				48ECE6FD28B485990097289D /* StoreKit.framework */,
 				1D70A7C92832716300164E93 /* JLBugly.framework */,
@@ -2817,7 +2919,6 @@
 				1DC585F629B1D2310045AB01 /* JTCalendar.framework */,
 				1DB3675025FF030800A03491 /* TYCoreText.framework */,
 				4ACB254625F859D000C66654 /* ZipZap.framework */,
-				4A2B125625DE3EF20089AFBA /* DFUnits.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2970,6 +3071,8 @@
 				4A2B128925DE522A0089AFBA /* JL_RunSDK.m */,
 				4A2B128625DE52290089AFBA /* JLPreparation.h */,
 				4A2B128725DE522A0089AFBA /* JLPreparation.m */,
+				C2C43BC82A70B9F3009B99FA /* AI云服务 */,
+				C2C43BCC2A70C733009B99FA /* 语音识别 */,
 				1DBBD70827507E0300E818FD /* 查找手机 */,
 				22E8E99425FEE90900FDC942 /* 开启页动画 */,
 				22AB9C3B25EE099E006C800F /* 声明 */,
@@ -3673,6 +3776,14 @@
 			path = "更多";
 			sourceTree = "<group>";
 		};
+		C23953352A77ABC600358C29 /* cfg */ = {
+			isa = PBXGroup;
+			children = (
+				C23953362A77ABD300358C29 /* aiui.cfg */,
+			);
+			path = cfg;
+			sourceTree = "<group>";
+		};
 		C26A943627141BAC003D5C44 /* 个人信息 */ = {
 			isa = PBXGroup;
 			children = (
@@ -3985,6 +4096,97 @@
 			path = "心率上限";
 			sourceTree = "<group>";
 		};
+		C2B395C62A822A26001EEB9D /* tts */ = {
+			isa = PBXGroup;
+			children = (
+				C2B395C82A822A2D001EEB9D /* TTSConfig.h */,
+				C2B395C72A822A2D001EEB9D /* TTSConfig.m */,
+			);
+			path = tts;
+			sourceTree = "<group>";
+		};
+		C2B5E8DE2A81D152001DDB24 /* isr */ = {
+			isa = PBXGroup;
+			children = (
+				C2B5E8E22A81D527001DDB24 /* ISRDataHelper.h */,
+				C2B5E8E32A81D527001DDB24 /* ISRDataHelper.m */,
+				C2B5E8E02A81D15C001DDB24 /* IATConfig.h */,
+				C2B5E8DF2A81D15C001DDB24 /* IATConfig.m */,
+			);
+			path = isr;
+			sourceTree = "<group>";
+		};
+		C2BC6F9A2A7895E000B65E46 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				C2BC6F9B2A78968A00B65E46 /* SpeechCell.h */,
+				C2BC6F9C2A78968A00B65E46 /* SpeechCell.m */,
+				C2BC6F9D2A78968A00B65E46 /* SpeechCell.xib */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		C2BF45B12A7A4BE900D716D9 /* 聊天记录 */ = {
+			isa = PBXGroup;
+			children = (
+				C2BF45B52A7A516800D716D9 /* Model */,
+				C2BF45B92A7A556200D716D9 /* JLSqliteAICloundMessageRecord.h */,
+				C2BF45BA2A7A556200D716D9 /* JLSqliteAICloundMessageRecord.m */,
+			);
+			path = "聊天记录";
+			sourceTree = "<group>";
+		};
+		C2BF45B52A7A516800D716D9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C2BF45B62A7A518900D716D9 /* AICloundMessageModel.h */,
+				C2BF45B72A7A518900D716D9 /* AICloundMessageModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C2C43BC82A70B9F3009B99FA /* AI云服务 */ = {
+			isa = PBXGroup;
+			children = (
+				C2B395C62A822A26001EEB9D /* tts */,
+				C2B5E8DE2A81D152001DDB24 /* isr */,
+				C23953352A77ABC600358C29 /* cfg */,
+				C2CDC9102A77480E00097A76 /* 删除弹出框 */,
+				C2C43BC92A70BA27009B99FA /* AIClound.h */,
+				C2C43BCA2A70BA27009B99FA /* AIClound.m */,
+			);
+			path = "AI云服务";
+			sourceTree = "<group>";
+		};
+		C2C43BCC2A70C733009B99FA /* 语音识别 */ = {
+			isa = PBXGroup;
+			children = (
+				C2F672352A84D19300A8A7B6 /* JL_Talk.h */,
+				C2F672342A84D19200A8A7B6 /* JL_Talk.m */,
+				C2BC6FA22A78ED8E00B65E46 /* JYBubbleButtonModel.h */,
+				C2BC6FA12A78ED8E00B65E46 /* JYBubbleButtonModel.m */,
+				C2BC6FA42A78ED8E00B65E46 /* JYBubbleMenuView.h */,
+				C2BC6FA52A78ED8E00B65E46 /* JYBubbleMenuView.m */,
+				C2BC6FA32A78ED8E00B65E46 /* JYTextView.h */,
+				C2BC6FA02A78ED8E00B65E46 /* JYTextView.m */,
+				C2BC6F9A2A7895E000B65E46 /* cell */,
+				C22C484E2A721AF800FF766F /* SpeechRecognitionVC.h */,
+				C22C484F2A721AF800FF766F /* SpeechRecognitionVC.m */,
+				C22C48502A721AF800FF766F /* SpeechRecognitionVC.xib */,
+			);
+			path = "语音识别";
+			sourceTree = "<group>";
+		};
+		C2CDC9102A77480E00097A76 /* 删除弹出框 */ = {
+			isa = PBXGroup;
+			children = (
+				226234AC26034D3D003BF684 /* DeleteRecordView.h */,
+				226234AD26034D3D003BF684 /* DeleteRecordView.m */,
+				226234AE26034D3D003BF684 /* DeleteRecordView.xib */,
+			);
+			path = "删除弹出框";
+			sourceTree = "<group>";
+		};
 		C2E43A222616ACB100263126 /* cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -4137,10 +4339,11 @@
 				BE8774DA2626CE72004E2CED /* JLSportHistoryDetailViewController.xib in Resources */,
 				4ADA1A1726145B9E000DAEF6 /* search_45.png in Resources */,
 				4ADA1A1826145B9E000DAEF6 /* search_51.png in Resources */,
+				C2BC6F9F2A78968A00B65E46 /* SpeechCell.xib in Resources */,
 				4ADA1A3026145B9E000DAEF6 /* search_21.png in Resources */,
 				BE8504782741E5B10030E026 /* JLSportWeeklyReportsViewController.xib in Resources */,
 				4ADA1A1526145B9E000DAEF6 /* search_50.png in Resources */,
-				226234B026034D3E003BF684 /* DeleteView.xib in Resources */,
+				226234B026034D3E003BF684 /* DeleteRecordView.xib in Resources */,
 				BE85049E2743880B0030E026 /* JLSportWeeklyReportsTableViewCell.xib in Resources */,
 				1D831C1526AEDAA300EA5C42 /* DeviceDetailViewController.xib in Resources */,
 				4ADA1A0226145B9E000DAEF6 /* search_38.png in Resources */,
@@ -4159,6 +4362,7 @@
 				BEECBA4826A66EEC008EBE94 /* num_2.wav in Resources */,
 				22645D2E25EF77EC00C8AB69 /* PersonDetailVC.xib in Resources */,
 				4ADA1A2126145B9E000DAEF6 /* search_55.png in Resources */,
+				C2CDC9152A77489100097A76 /* DeleteView.xib in Resources */,
 				BE8504832741EF160030E026 /* JLSportWeeklyReportsDataTableViewCell.xib in Resources */,
 				4A2B127C25DE42880089AFBA /* DeviceSearchVC.xib in Resources */,
 				22645D2525EE5B8300C8AB69 /* RegisterVC.xib in Resources */,
@@ -4212,6 +4416,7 @@
 				4ADA1A3726145B9F000DAEF6 /* search_23.png in Resources */,
 				22A9112F25ECE65300585DE7 /* PersonInfoVC.xib in Resources */,
 				22131EBE25E3414700590C4A /* WeightSetVC.xib in Resources */,
+				C22C48522A721AF800FF766F /* SpeechRecognitionVC.xib in Resources */,
 				4ABD75C42611D8260068D4F9 /* YaliCircleView.xib in Resources */,
 				BEECBA4A26A66EEC008EBE94 /* num_1.wav in Resources */,
 				486E09872861B19A0076FBC8 /* WatchHistoryVC.xib in Resources */,
@@ -4249,6 +4454,8 @@
 				BEECBA4C26A66EEC008EBE94 /* stop.wav in Resources */,
 				4ADA1A0C26145B9E000DAEF6 /* search_03.png in Resources */,
 				C277E0D32727B2250028C30D /* JiuZuoVC.xib in Resources */,
+				C23953372A77ABD300358C29 /* aiui.cfg in Resources */,
+				48B933832A80929C009CB52C /* DFUnits.framework.dSYM in Resources */,
 				4ABD75A826117B0A0068D4F9 /* PresssureVC.xib in Resources */,
 				1D3E031226AAC1B200CDB02B /* DevicesViewCell.xib in Resources */,
 				22A161FD2600621A00585F98 /* MyPhoneVC.xib in Resources */,
@@ -4312,6 +4519,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2BC6FA82A78ED8E00B65E46 /* JYBubbleMenuView.m in Sources */,
 				1D3E030926AAC19E00CDB02B /* UserDeviceModel.m in Sources */,
 				1DC4D09B277970930077EFD2 /* LanguageViewController.m in Sources */,
 				22AA82AB25F749B60012F3A3 /* User_Http.m in Sources */,
@@ -4348,6 +4556,7 @@
 				BE73CB0C274E081200CEE7D0 /* MJRefreshNormalHeader.m in Sources */,
 				C28406EF2726B38700795BE9 /* HourMinutePickerView.m in Sources */,
 				1D40DDC626A12F3000A70D1B /* DeviceHttpModel.m in Sources */,
+				C2F672362A84D19300A8A7B6 /* JL_Talk.m in Sources */,
 				BE957BC627279868003F37EE /* JLSqliteStep.m in Sources */,
 				C2E43A212616A2C500263126 /* RingAgainIntervalView.m in Sources */,
 				22645DC225F1D64100C8AB69 /* NSDate+BRPickerView.m in Sources */,
@@ -4366,6 +4575,7 @@
 				BE73CB0E274E081200CEE7D0 /* MJRefreshGifHeader.m in Sources */,
 				1D831C1426AEDAA300EA5C42 /* DeviceDetailViewController.m in Sources */,
 				C26E2C832727ED3C00494AFD /* EmergencyContactsVC.m in Sources */,
+				C22C48512A721AF800FF766F /* SpeechRecognitionVC.m in Sources */,
 				1D5B0BFC282CE15D00C590FD /* ActionPlayer.swift in Sources */,
 				C2E43A262616ACD200263126 /* RingTimeCell.m in Sources */,
 				1D9887C825FB8DA500C41C4F /* IACircularSliderTrackLayer.m in Sources */,
@@ -4471,8 +4681,10 @@
 				1DDA6D9D2775A151006A2518 /* LanguageCls.m in Sources */,
 				BE73CB14274E081200CEE7D0 /* MJRefreshComponent.m in Sources */,
 				4A2B129025DE5F040089AFBA /* AddDeviceVC.m in Sources */,
+				C2BC6F9E2A78968A00B65E46 /* SpeechCell.m in Sources */,
 				BE957BC127279868003F37EE /* JLSqliteAirPressure.m in Sources */,
 				BE73CB02274E081200CEE7D0 /* NSBundle+MJRefresh.m in Sources */,
+				C2BF45BB2A7A556200D716D9 /* JLSqliteAICloundMessageRecord.m in Sources */,
 				BE73CB04274E081200CEE7D0 /* MJRefreshBackGifFooter.m in Sources */,
 				4ABD75C82612C3240068D4F9 /* YaLiView2.m in Sources */,
 				BE73CAFE274E081200CEE7D0 /* MJRefreshConst.m in Sources */,
@@ -4511,7 +4723,7 @@
 				1DBBD6FB27479AFA00E818FD /* DataOverrallPlanBloodOxygen.m in Sources */,
 				C29A1FA126A98DBE007E470D /* HealthYaLiVC.m in Sources */,
 				22AA82E825F9E7920012F3A3 /* AlarmClockCell.m in Sources */,
-				226234AF26034D3E003BF684 /* DeleteView.m in Sources */,
+				226234AF26034D3E003BF684 /* DeleteRecordView.m in Sources */,
 				BED6B173262A936C00E6F6F3 /* JLLocationCoordinate2D.m in Sources */,
 				BE957BBE27279868003F37EE /* JLSqliteHeartRate.m in Sources */,
 				C2E43A502616CA7300263126 /* HMScannerViewController.m in Sources */,
@@ -4521,6 +4733,7 @@
 				1DD40E0B2911FC67004C1555 /* HealthFuncView.m in Sources */,
 				BE844631261E9F9300A5D474 /* JLPagerView.m in Sources */,
 				22645D1D25EE38A600C8AB69 /* SmallEye.m in Sources */,
+				C2BF45B82A7A518900D716D9 /* AICloundMessageModel.m in Sources */,
 				488018C326A6A8D100F2064D /* DialUICache.m in Sources */,
 				1DCD05BD2918E4050071B2F9 /* DebugTools.m in Sources */,
 				22645DC125F1D64100C8AB69 /* BRDatePickerView+BR.m in Sources */,
@@ -4535,13 +4748,16 @@
 				486E09BD2861B2CF0076FBC8 /* UIImage+MultiFormat.m in Sources */,
 				C29A1F9726A98D8B007E470D /* HealthXinLvVC.m in Sources */,
 				1DC4D0A027798DE10077EFD2 /* LanguageTbc.m in Sources */,
+				C2BC6FA62A78ED8E00B65E46 /* JYTextView.m in Sources */,
 				1D668731264A59340054880F /* NSDate+Tools.m in Sources */,
 				22131EAD25E0A42500590C4A /* MyHealthVC.m in Sources */,
 				BE73CB1D274F69A800CEE7D0 /* JLSportLocationPermissionView.m in Sources */,
 				1DC4087C2740ED5D00A8B059 /* ContrastNapCell.m in Sources */,
 				22645D5325F0877100C8AB69 /* PhotoView.m in Sources */,
+				C2B5E8E12A81D15C001DDB24 /* IATConfig.m in Sources */,
 				C278BA2F261450D7003742D1 /* PGBox.m in Sources */,
 				C27FF9E527268CFD00A5DAEF /* TaiWanVC.m in Sources */,
+				C2B5E8E42A81D527001DDB24 /* ISRDataHelper.m in Sources */,
 				22645DC625F1D64100C8AB69 /* BRBaseView.m in Sources */,
 				1DCD061B292238960071B2F9 /* TipsDeleteView.m in Sources */,
 				486E09BF2861B2CF0076FBC8 /* SDWebImagePrefetcher.m in Sources */,
@@ -4555,6 +4771,7 @@
 				1DD2FEB329233D2600804803 /* WatchLocalModel.m in Sources */,
 				BE98DC5E272BD79100E521E2 /* JLSqliteSportRunningRecord.m in Sources */,
 				BE856EBC2746327D00F795E2 /* JLSportStrengthView.m in Sources */,
+				C2B395C92A822A2E001EEB9D /* TTSConfig.m in Sources */,
 				BE85049D2743880B0030E026 /* JLSportWeeklyReportsTableViewCell.m in Sources */,
 				1DA7552B26032B9700184A47 /* SleepPartView.m in Sources */,
 				22645DC325F1D64100C8AB69 /* BRDatePickerView.m in Sources */,
@@ -4579,6 +4796,7 @@
 				1DC5858E29B1A27B0045AB01 /* AFNetworkReachabilityManager.m in Sources */,
 				C2835417265CE28C004FB177 /* MessageNoticeVC.m in Sources */,
 				BE844634261E9F9300A5D474 /* JLTopTabButton.m in Sources */,
+				C2C43BCB2A70BA27009B99FA /* AIClound.m in Sources */,
 				C278BA2126141CE4003742D1 /* MonthSelectView.m in Sources */,
 				22645DC925F1D64100C8AB69 /* BRAddressPickerView.m in Sources */,
 				1DA4512726148DDD002F3F1D /* OxygenDataView.m in Sources */,
@@ -4597,6 +4815,7 @@
 				22645D3E25EF8E7400C8AB69 /* ForgetPwdVC.m in Sources */,
 				1DB1E02527327B0B00036448 /* SyncDataManager.m in Sources */,
 				4A75077325DE041800990508 /* main.m in Sources */,
+				C2BC6FA72A78ED8E00B65E46 /* JYBubbleButtonModel.m in Sources */,
 				BE8FEF1F266F59E80088710E /* SongListCell.m in Sources */,
 				1DD40E1D291360F5004C1555 /* JLWeatherManager.m in Sources */,
 				BE957BC227279868003F37EE /* JLSqliteAltitude.m in Sources */,
@@ -4648,6 +4867,7 @@
 				486E09B42861B2CF0076FBC8 /* StoreIAPManager.m in Sources */,
 				1DA4511826148DD2002F3F1D /* SleepDataView.m in Sources */,
 				22645DC725F1D64100C8AB69 /* NSBundle+BRPickerView.m in Sources */,
+				C2CDC9142A77489100097A76 /* DeleteView.m in Sources */,
 				1D40DDC326A1263700A70D1B /* DeviceHttp.m in Sources */,
 				BE73CB10274E081200CEE7D0 /* MJRefreshFooter.m in Sources */,
 			);
@@ -4868,7 +5088,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = JieliJianKang/JieliJianKang.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = J8GU9SL7NG;
 				ENABLE_BITCODE = NO;
@@ -4893,7 +5113,7 @@
 					"$(PROJECT_DIR)/JLDialUnit/JLDialUnit/FATTool",
 					"$(PROJECT_DIR)/JieliJianKang/Utilities/FATTool",
 				);
-				MARKETING_VERSION = 1.6.1;
+				MARKETING_VERSION = 1.6.2;
 				OTHER_CODE_SIGN_FLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JLApp.JieliJianKang;
@@ -4913,7 +5133,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = JieliJianKang/JieliJianKang.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = J8GU9SL7NG;
 				ENABLE_BITCODE = NO;
@@ -4939,7 +5159,7 @@
 					"$(PROJECT_DIR)/JLDialUnit/JLDialUnit/FATTool",
 					"$(PROJECT_DIR)/JieliJianKang/Utilities/FATTool",
 				);
-				MARKETING_VERSION = 1.6.1;
+				MARKETING_VERSION = 1.6.2;
 				OTHER_CODE_SIGN_FLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JLApp.JieliJianKang;

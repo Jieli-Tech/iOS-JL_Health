@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <JL_BLEKit/NSObject+JLTools.h>
 
 NS_ASSUME_NONNULL_BEGIN
 typedef void(^JL_Action)(void);
@@ -350,6 +351,14 @@ typedef void(^JL_Timer_BK)(void);
  */
 +(NSData*)stringBigFileWithNeedRemoveUnnecessaryPunctuationCharactersWithString:(NSString*)name withFileNameIndex:(int)fileNameIndex;
 
+
+/// 大文件传输文件名设置
+/// Unicode编码
+/// - Parameters:
+///   - name: 文件名
+///   - fileNameIndex: index
+///   - encodeType: 编码格式
++(NSData *)stringBigFileUnicode:(NSString *)name withFileNameIndex:(int)fileNameIndex WithEncode:(NSStringEncoding) encodeType;
 /**
  * 移除不必要字符  \ / : " < > . space
  */

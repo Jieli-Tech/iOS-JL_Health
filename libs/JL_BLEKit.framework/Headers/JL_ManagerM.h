@@ -216,7 +216,10 @@ typedef void(^JL_IMAGE_RT)(NSMutableDictionary* __nullable dict);
 -(NSDictionary*)localDeviceImage:(NSString*)jsonFile;
 
 #pragma mark ---> 通知固件开始播放TTS内容
--(void)cmdStartTTSNote;
+
+/// 通知固件SDK播放tts
+/// @param status 0:开始播放，1:播放结束
+-(void)cmdStartTTSNote:(uint8_t)status;
 
 
 /// 获取MD5信息

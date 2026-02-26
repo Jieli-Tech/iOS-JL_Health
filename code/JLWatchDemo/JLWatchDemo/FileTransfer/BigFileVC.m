@@ -32,6 +32,7 @@
     bt_ble = bleSDK.bt_ble;
     
     mCmdManager = self->bt_ble.mAssist.mCmdManager;
+    
     mTimer = [[JL_Timer alloc] init];
     mTimer.subTimeout = 10;
     mTimer.subScale = 1;

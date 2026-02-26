@@ -13,6 +13,7 @@
 #import "BtCallViewController.h"
 #import "OtaUpdateVC.h"
 #import "DeviceMoreVC.h"
+#import "SpeechRecognitionVC.h"
 
 @interface FunctionView()<JLConfigPtl>{
     NSMutableArray *btnArray;
@@ -79,6 +80,12 @@
     if(model.exportFunc.spTopContacts){
         [btnArray addObject:@{@"ITEM_0":@"icon_contecter_nol",@"ITEM_1":kJL_TXT("常用联系人")}];
         MyContactsVC *vc = [[NSBundle mainBundle] loadNibNamed:@"MyContactsVC" owner:nil options:nil].lastObject;
+        [viewControllers addObject:vc];
+    }
+        
+    if(model.exportFunc.spAiCloud){
+        [btnArray addObject:@{@"ITEM_0":@"icon_ai_nol",@"ITEM_1":kJL_TXT("AI云服务")}];
+        SpeechRecognitionVC *vc =  [[SpeechRecognitionVC alloc] init];
         [viewControllers addObject:vc];
     }
     
