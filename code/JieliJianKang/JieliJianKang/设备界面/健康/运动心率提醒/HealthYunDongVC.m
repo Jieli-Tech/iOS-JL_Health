@@ -56,8 +56,8 @@
 -(void)initUI{
     self.view.backgroundColor = kDF_RGBA(248, 250, 252, 1.0);
     titleHeight.constant = kJL_HeightNavBar;
-    sW = [DFUITools screen_2_W];
-    sH = [DFUITools screen_2_H];
+    sW = [UIScreen mainScreen].bounds.size.width;
+    sH = [UIScreen mainScreen].bounds.size.height;
     
     headView.frame = CGRectMake(0, 0, sW, kJL_HeightStatusBar+44);
     backBtn.frame  = CGRectMake(4, kJL_HeightStatusBar, 44, 44);

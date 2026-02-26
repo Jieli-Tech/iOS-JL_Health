@@ -38,7 +38,7 @@
 -(void)initUI{
     self.view.backgroundColor = kDF_RGBA(248, 250, 252, 1.0);
     
-    float sw = [DFUITools screen_2_W];
+    float sw = [UIScreen mainScreen].bounds.size.width;
     
     label1 = [[UILabel alloc] init];
     label1.frame = CGRectMake(24,kJL_HeightNavBar+10,sw-24,33);
@@ -74,7 +74,7 @@
     phoneTF.placeholder = kJL_TXT("请输入手机号码/邮箱");
     phoneTF.textColor = kDF_RGBA(36, 36, 36, 1.0);
     phoneTF.tintColor = kDF_RGBA(180, 180, 180, 1.0);
-    phoneTF.font = [UIFont fontWithName:@"PingFangSC" size:14];
+    phoneTF.font = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
     phoneTF.keyboardAppearance=UIKeyboardAppearanceDefault;
     phoneTF.keyboardType=UIKeyboardTypeEmailAddress;
     phoneTF.delegate = self;
@@ -82,13 +82,18 @@
     [self.view addSubview:phoneTF];
     phoneTF.clearButtonMode=UITextFieldViewModeWhileEditing;
     
+    UIView *fenGeView1 = [[UIView alloc] initWithFrame:CGRectMake(0, 34, sw-48, 1)];
+    [phoneTF addSubview:fenGeView1];
+    fenGeView1.backgroundColor = [UIColor grayColor];
+    fenGeView1.alpha = 0.1;
+    
     verTF = [[UITextField alloc] initWithFrame:CGRectMake(24, view1.frame.origin.y+view1
                                                           .frame.size.height+32, sw, 35)];
     verTF.textAlignment = NSTextAlignmentLeft;
     verTF.placeholder = kJL_TXT("输入验证码");
     verTF.textColor = kDF_RGBA(36, 36, 36, 1.0);
     verTF.tintColor = kDF_RGBA(180, 180, 180, 1.0);
-    verTF.font = [UIFont fontWithName:@"PingFangSC" size:14];
+    verTF.font = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
     verTF.keyboardAppearance = UIKeyboardAppearanceDefault;
     verTF.keyboardType = UIKeyboardTypePhonePad;
     verTF.delegate = self;
@@ -102,7 +107,7 @@
     verLabel.text = kJL_TXT("发送验证码");
     verLabel.labelType = DFLeftRight;
     verLabel.textAlignment = NSTextAlignmentLeft;
-    verLabel.font =  [UIFont fontWithName:@"PingFangSC" size:14];
+    verLabel.font =  [UIFont fontWithName:@"PingFangSC-Regular" size:14];
     verLabel.textColor = kDF_RGBA(128, 91, 235, 1.0);
     verLabel.tag = 0;
     [self.view addSubview:verLabel];
@@ -117,14 +122,15 @@
     verLabel2.numberOfLines = 0;
     verLabel2.labelType = DFLeftRight;
     verLabel2.textAlignment = NSTextAlignmentLeft;
-    verLabel2.font =  [UIFont fontWithName:@"PingFangSC" size:14];
+    verLabel2.font =  [UIFont fontWithName:@"PingFangSC-Regular" size:14];
     verLabel2.textColor = kDF_RGBA(145, 145, 145, 1.0);
     [self.view addSubview:verLabel2];
     verLabel2.hidden = YES;
     
     UIView *view2 = [[UIView alloc] initWithFrame:CGRectMake(0, 34, sw-48, 1)];
     [verTF addSubview:view2];
-    view2.backgroundColor = kDF_RGBA(247, 247, 247, 1.0);
+    view2.backgroundColor = [UIColor grayColor];
+    view2.alpha = 0.1;
     
     fenGeView2 = [[UIView alloc] initWithFrame:CGRectMake(verLabel2.frame.origin.x-8, view1.frame.origin.y+view1.frame.size.height+42, 1, 12)];
     [self.view addSubview:fenGeView2];
@@ -135,7 +141,7 @@
     label3.frame = CGRectMake(24,verTF.frame.origin.y+verTF.frame.size.height+15,sw-24,20);
     label3.numberOfLines = 0;
     label3.text = kJL_TXT("使用账号密码登录");
-    label3.font =  [UIFont fontWithName:@"PingFangSC" size:12];
+    label3.font =  [UIFont fontWithName:@"PingFangSC-Regular" size:14];
     label3.textColor = kDF_RGBA(143, 143, 143, 1.0);
     [self.view addSubview:label3];
     
@@ -146,7 +152,7 @@
     loginBtn = [[UIButton alloc] initWithFrame:CGRectMake(24,verLabel.frame.origin.y+verLabel.frame.size.height+111,sw-48,48)];
     [loginBtn addTarget:self action:@selector(loginBtn:) forControlEvents:UIControlEventTouchUpInside];
     [loginBtn setTitle:kJL_TXT("登录") forState:UIControlStateNormal];
-    [loginBtn.titleLabel setFont:[UIFont fontWithName:@"PingFangSC" size:15]];
+    [loginBtn.titleLabel setFont:[UIFont fontWithName:@"PingFangSC-Regular" size:15]];
     [loginBtn setTitleColor:kDF_RGBA(179, 179, 179, 1.0) forState:UIControlStateNormal];
     [loginBtn setBackgroundColor:kDF_RGBA(240, 241, 241, 1.0)];
     loginBtn.layer.cornerRadius = 24;
@@ -356,10 +362,10 @@
                     return;
                 }
                 
-                [JL_Tools setUser:self->phoneTF.text forKey:@"ACCOUNT_NUM"];
+                [JL_Tools setUser:self->phoneTF.text forKey:kUI_ACCOUNT_NUM];
                 
                 [self.navigationController popViewControllerAnimated:YES];
-                [JL_Tools post:@"ENTER_MAIN_VC" Object:nil];
+                [JL_Tools post:kUI_ENTER_MAIN_VC Object:nil];
             }];
         }];
     }

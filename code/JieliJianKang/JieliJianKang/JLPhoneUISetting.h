@@ -60,6 +60,8 @@
 #define kJL_COLOR_ASSIST_GRAY_2 kDF_RGBA(246, 247, 248, 1)
 #define kColor_0000             [UIColor colorWithRed:137.0/255.0 green:94.0/255.0 blue:233.0/255.0 alpha:1.0]
 
+#define FontMedium(s) [UIFont fontWithName:@"PingFangSC-Medium" size:s]
+
 #define NSLogEx(fmt, ...) NSLog((@"[文件名:%s]" "[函数名:%s]" "[行号:%d]" fmt), __FILE_NAME__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
 
 @interface JLPhoneUISetting : NSObject

@@ -205,6 +205,26 @@
     }
     [self checkoutAndFull];
 }
+
+-(void)updateDateRightBtnStatus{
+    switch (dType) {
+        case DateType_Day:{
+            dateView.rightBtn.hidden = !nowDate.beforeNow_0;
+        }break;
+        case DateType_Week:{
+            dateView.rightBtn.hidden = !nowDate.beforeThisWeek_0;
+        }break;
+        case DateType_Month:{
+            dateView.rightBtn.hidden = !nowDate.beforeThisMonth_0;
+        }break;
+        case DateType_Year:{
+            dateView.rightBtn.hidden = !nowDate.beforeThisYear_0;
+        }break;
+        default:
+            break;
+    }
+}
+
 //MARK:contrast Delegate
 -(void)contrastViewDidSelect:(NSInteger)index{
     
@@ -214,13 +234,14 @@
 -(void)ecDiagramdidSelect:(ECSleepDuration *)duration number:(NSInteger)num{
     [self setUpTime:duration.duration];
     if (dType ==     DateType_Year){
-        [dateView setSecondLab:duration.date.toMM];
+        [dateView setSecondLab:duration.date.toYYYYMM];
     }else{
         [dateView setSecondLab:duration.date.toMMdd3];
     }
 }
 //MARK: -数据库查询数据
 -(void)checkoutAndFull{
+    [self updateDateRightBtnStatus];
     switch (dType) {
         case     DateType_Day:{
             [DataOverallPlanTools sleepDataByDate:nowDate result:^(SleepDataFormatModel * _Nonnull model) {
@@ -256,7 +277,7 @@
                 self->diagramView.bottomTextFont = [UIFont fontWithName:@"PingFangSC-Regular" size: 10];
                 self->diagramView.groupArray = self->nowDate.thisMonthDays;
                 [self->diagramView setNeedsDisplay];
-                [self->dateView setTitleLab:[NSString stringWithFormat:@"%@-%@",dates.start.toYYYYMMdd2,dates.end.toYYYYMMdd2] SecondLabel:@""];
+                [self->dateView setTitleLab:[NSString stringWithFormat:@"%@",dates.start.toYYYYMM] SecondLabel:@""];
                 [self DateLabel:model];
                 self->sDataView.type = SleepDataType_Other;
             }];
@@ -270,7 +291,7 @@
                 self->diagramView.bottomTextFont = [UIFont fontWithName:@"PingFangSC-Regular" size: 10];
                 self->diagramView.groupArray = dates.start.thisYearMonths;
                 [self->diagramView setNeedsDisplay];
-                [self->dateView setTitleLab:[NSString stringWithFormat:@"%@-%@",dates.start.toYYYYMMdd2,dates.end.toYYYYMMdd2] SecondLabel:@""];
+                [self->dateView setTitleLab:[NSString stringWithFormat:@"%@-%@",dates.start.toYYYYMM,dates.end.toYYYYMM] SecondLabel:@""];
                 [self DateLabel:model];
                 self->sDataView.type = SleepDataType_Other;
             }];
@@ -367,6 +388,11 @@
     [textContainer addTextStorage:textStorage3];
     
     [dateView setTextWithContainer:textContainer];
+    if (hour == 0 && minute == 0){
+        [sDataView setHidden:true];
+    }else{
+        [sDataView setHidden:false];
+    }
 }
 
 //MARK: - scrollviewDelegate

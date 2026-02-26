@@ -182,7 +182,7 @@
     imgv.image = [UIImage imageNamed:@"product_img_empty"];
     [noOneView addSubview:imgv];
     
-    if([DFUITools screen_2_W] == 320){
+    if([UIScreen mainScreen].bounds.size.width == 320){
         noDevicelab = [[UILabel alloc] initWithFrame:CGRectMake(145, 60, 160, 20)];
     }else{
         noDevicelab = [[UILabel alloc] initWithFrame:CGRectMake(182, 60, 160, 20)];
@@ -192,7 +192,7 @@
     noDevicelab.text = kJL_TXT("您还未添加任何设备");
     [noOneView addSubview:noDevicelab];
     
-    if([DFUITools screen_2_W] == 320){
+    if([UIScreen mainScreen].bounds.size.width == 320){
         addBtn = [[UIButton alloc] initWithFrame:CGRectMake(172, 85, 70, 26)];
     }else{
         addBtn = [[UIButton alloc] initWithFrame:CGRectMake(209, 85, 70, 26)];
@@ -263,7 +263,7 @@
     }else{
         cell.powerLab.text = [NSString stringWithFormat:@"%@:0%%",kJL_TXT("电量")];
     }
-    [JLUI_Effect addShadowOnView_2:cell.bgView];
+    [JLUI_Effect addShadowOnView:cell.bgView];
     return cell;
 }
 
@@ -284,7 +284,7 @@
 #pragma mark 监听通知
 -(void)addNote{
     [JL_Tools add:kUI_JL_DEVICE_CHANGE Action:@selector(noteDeviceChange:) Own:self];
-    [JL_Tools add:@"kUI_DELETE_DEVICE_MODEL" Action:@selector(noteDeleteModel:) Own:self];
+    [JL_Tools add:kUI_DELETE_DEVICE_MODEL Action:@selector(noteDeleteModel:) Own:self];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shouldUpdateBattery) name:@"JL_BATTERY" object:nil];
 }
 

@@ -46,7 +46,7 @@
     self.dateLabel.text = [NSString stringWithFormat:@"%@ %@", date.toYYYYMMdd, date.toHHmm];
     NSString *type = kJL_TXT("户外");
     switch (chart.modelType) {
-        case WatchSportType_OutDoor:
+        case 0x01:
             self.sportCateImageView.image = [UIImage imageNamed:@"record_icon_outdoor_nol"];
             type = kJL_TXT("户外");
             break;
@@ -70,8 +70,8 @@
     [self.mapContainerView setHidden:YES];
     [_mapView removeFromSuperview];
     _mapView = nil;
-    return;
-    if ((chart.modelType == WatchSportType_OutDoor) && (chart.locationCoordsCount > 2)) {
+    
+    if ((chart.modelType == 0x01) && (chart.locationCoordsCount > 2)) {
         //设置高德地图
         [self.mapContainerView setHidden:NO];
         MAMapView *mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, 0, self.mapContainerView.width, self.mapContainerView.height)];

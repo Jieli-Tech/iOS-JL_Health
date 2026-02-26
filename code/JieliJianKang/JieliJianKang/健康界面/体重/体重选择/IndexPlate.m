@@ -128,12 +128,28 @@
 -(void)drawLabel:(float)x Text:(NSString*)text Layer:(CALayer*)layer{
     CATextLayer *textLayer = [CATextLayer layer];
     textLayer.string = text;
-    textLayer.fontSize = 11.5;
-    textLayer.contentsScale = 3.5;
+    
+//    textLayer.fontSize = 11.5;
+//    textLayer.contentsScale = 3.5;
+//    textLayer.alignmentMode = @"center";
+//    textLayer.frame = CGRectMake(x-25.0, view_H-15, 50.0f, 18.0f);
+//    textLayer.backgroundColor = [UIColor clearColor].CGColor;
+//    textLayer.foregroundColor = kDF_RGBA(182, 182, 182, 1.0).CGColor;
+    
+    
+    UIFont *font = [UIFont fontWithName:@"PingFang SC" size:13];
+    CFStringRef fontName = (__bridge CFStringRef)font.fontName;
+    CGFontRef fontRef = CGFontCreateWithFontName(fontName);
+    textLayer.font = fontRef;
+    textLayer.fontSize = 15;
+    CGFontRelease(fontRef);
+        
+    textLayer.contentsScale = 5.0;
     textLayer.alignmentMode = @"center";
-    textLayer.frame = CGRectMake(x-25.0, view_H-15, 50.0f, 18.0f);
+    textLayer.frame = CGRectMake(x-25.0, view_H-25, 50.0f, 18.0f);
     textLayer.backgroundColor = [UIColor clearColor].CGColor;
-    textLayer.foregroundColor = kDF_RGBA(90.0, 90.0, 90.0, 1.0).CGColor;
+    textLayer.foregroundColor = kDF_RGBA(182, 182, 182, 1.0).CGColor;
+    
     [layer addSublayer:textLayer];
 }
 

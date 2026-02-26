@@ -42,7 +42,7 @@
 }
 
 -(void)initUI{
-    sw = [DFUITools screen_2_W];
+    sw = [UIScreen mainScreen].bounds.size.width;
     
     myLabel = [[UILabel alloc] init];
     myLabel.frame = CGRectMake(16,kJL_HeightStatusBar+10,sw-16,33);
@@ -77,8 +77,9 @@
     [headView addSubview:nextBtn];
     
     myNames = @[kJL_TXT("我的数据"),kJL_TXT("运动周报"),kJL_TXT("设置"),kJL_TXT("关于")];
+    myIcons = @[@"mine_icon_data_nol",@"mine_icon_weekly_nol",@"mine_icon_settle_nol",@"mine_icon_about_nol"];
 //    myNames = @[kJL_TXT("我的数据"),kJL_TXT("设置"),kJL_TXT("帮助"),kJL_TXT("关于")];
-    myIcons = @[@"mine_icon_data_nol",@"mine_icon_weekly_nol",@"mine_icon_settle_nol",@"mine_icon_help_nol",@"mine_icon_about_nol"];
+//    myIcons = @[@"mine_icon_data_nol",@"mine_icon_weekly_nol",@"mine_icon_settle_nol",@"mine_icon_help_nol",@"mine_icon_about_nol"];
     
     mTableView = [[UITableView alloc] initWithFrame:CGRectMake(-16, headView.frame.origin.y+headView.frame.size.height+35, sw, 250)];
     mTableView.rowHeight = 50.0;

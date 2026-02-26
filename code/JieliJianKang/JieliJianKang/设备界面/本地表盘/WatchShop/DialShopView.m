@@ -40,9 +40,9 @@
     if (self) {
         self.frame = frame;
         
-        wacthView_H = 370;
+        wacthView_H = 390;
         
-        width = [UIScreen mainScreen].bounds.size.width;
+        width = frame.size.width;
         height = [UIScreen mainScreen].bounds.size.height;
         
         if (scrollView == nil) {
@@ -68,16 +68,16 @@
     watchFreeView = [[WatchOwn alloc] initByFrame:CGRectMake(0, 0, width, wacthView_H)];
     watchFreeView.mWatchUiType = WatchUITypeFree;
     watchFreeView.mSubTitleText = kJL_TXT("免费表盘");
-    watchFreeView.mMoreBtnText  = kJL_TXT("更多>");
+    watchFreeView.mMoreBtnText  = kJL_TXT("更多");
     
-    watchPayView = [[WatchOwn alloc] initByFrame:CGRectMake(0, watchFreeView.frame.size.height, width, wacthView_H)];
+    watchPayView = [[WatchOwn alloc] initByFrame:CGRectMake(0, watchFreeView.frame.size.height+6.0, width, wacthView_H)];
     watchPayView.mWatchUiType = WatchUITypePay;
     watchPayView.mSubTitleText = kJL_TXT("付费表盘");
-    watchPayView.mMoreBtnText  = kJL_TXT("更多>");
+    watchPayView.mMoreBtnText  = kJL_TXT("更多");
 
     [scrollView addSubview:watchFreeView];
     [scrollView addSubview:watchPayView];
-    scrollView.contentSize = CGSizeMake(width, wacthView_H*2.0+20);
+    scrollView.contentSize = CGSizeMake(width, wacthView_H+20);
 }
 
 
@@ -119,6 +119,9 @@
         }
         [watchFreeView reloadMyWatchForFree:6];
         [watchPayView reloadMyWatchForPay:6];
+        
+        [watchFreeView updateHideMoreBtnWithCount];
+        [watchPayView updateHideMoreBtnWithCount];
     }else{
         [watchNoPaymentView reloadMyWatchForNoPayment];
     }

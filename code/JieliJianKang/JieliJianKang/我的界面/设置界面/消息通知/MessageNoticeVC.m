@@ -41,8 +41,8 @@
 -(void)initUI{
     self.view.backgroundColor = kDF_RGBA(248, 250, 252, 1.0);
     
-    float sw = [DFUITools screen_2_W];
-    //float sh = [DFUITools screen_2_H];
+    float sw = [UIScreen mainScreen].bounds.size.width;
+    //float sh = [UIScreen mainScreen].bounds.size.height;
     titleHeight.constant = kJL_HeightNavBar;
     subTitleView.frame = CGRectMake(0, 0, sw, kJL_HeightStatusBar+44);
     backBtn.frame  = CGRectMake(4, kJL_HeightStatusBar, 44, 44);

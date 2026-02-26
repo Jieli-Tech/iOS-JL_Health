@@ -182,15 +182,13 @@
         monthStepValue = (int)step;
     }
     if(dType ==     DateType_Week || dType ==     DateType_Month){
-        int index = (int)[stepArray indexOfObject:@(step)];
         NSDate *date = mulArray[index];
         [dateView setSecondLab:date.toMMdd3];
     }
     if (dType ==     DateType_Year){
         yearStepValue = (int)step;
-        int index = (int)[stepArray indexOfObject:@(step)];
         NSDate *date = mulArray[index];
-        [dateView setSecondLab:date.toMM];
+        [dateView setSecondLab:date.toYYYYMM];
     }
 }
 
@@ -201,21 +199,48 @@
             nowDate = nowDate.before;
             [self loadDayData];
             [self DateLabTestData:dayStepValue];
+            
+                
         }break;
         case     DateType_Week:{
             nowDate = nowDate.beforeWeek;
             [self loadWeekData];
             [self DateLabTestData:weekStepValue];
+            dateView.rightBtn.hidden = !nowDate.beforeThisWeek_0;
         }break;
         case     DateType_Month:{
             nowDate = nowDate.beforeMonth;
             [self loadMonthData];
             [self DateLabTestData:monthStepValue];
+            
         }break;
         case     DateType_Year:{
             nowDate = nowDate.beforeYear;
             [self loadYearData];
             [self DateLabTestData:yearStepValue];
+            
+        }break;
+        default:
+            break;
+    }
+    
+    [self updateDateRightBtnStatus];
+    
+}
+
+-(void)updateDateRightBtnStatus{
+    switch (dType) {
+        case DateType_Day:{
+            dateView.rightBtn.hidden = !nowDate.beforeNow_0;
+        }break;
+        case DateType_Week:{
+            dateView.rightBtn.hidden = !nowDate.beforeThisWeek_0;
+        }break;
+        case DateType_Month:{
+            dateView.rightBtn.hidden = !nowDate.beforeThisMonth_0;
+        }break;
+        case DateType_Year:{
+            dateView.rightBtn.hidden = !nowDate.beforeThisYear_0;
         }break;
         default:
             break;
@@ -228,25 +253,30 @@
             nowDate = nowDate.next;
             [self loadDayData];
             [self DateLabTestData:dayStepValue];
+            
         }break;
         case     DateType_Week:{
             nowDate = nowDate.nextWeek;
             [self loadWeekData];
             [self DateLabTestData:weekStepValue];
+            
         }break;
         case     DateType_Month:{
             nowDate = nowDate.nextMonth;
             [self loadMonthData];
             [self DateLabTestData:monthStepValue];
+            
         }break;
         case     DateType_Year:{
             nowDate = nowDate.nextYear;
             [self loadYearData];
             [self DateLabTestData:yearStepValue];
+            
         }break;
         default:
             break;
     }
+    [self updateDateRightBtnStatus];
 }
 
 ///MARK: 日期选择回调
@@ -278,6 +308,7 @@
         [self loadYearData];
         [self DateLabTestData:yearStepValue];
     }
+    [self updateDateRightBtnStatus];
 }
 
 
@@ -368,16 +399,20 @@
     }
     if(dType == 2){
         StartAndEndDate *dates = nowDate.thisMonth;
-        [self->dateView setTitleLab:[NSString stringWithFormat:@"%@-%@",dates.start.toYYYYMMdd2,dates.end.toYYYYMMdd2] SecondLabel:@""];
+        [self->dateView setTitleLab:dates.start.toYYYYMM SecondLabel:@""];
     }
     if(dType ==3){
         StartAndEndDate *dates = nowDate.thisYear;
-        [self->dateView setTitleLab:[NSString stringWithFormat:@"%@-%@",dates.start.toYYYYMMdd2,dates.end.toYYYYMMdd2] SecondLabel:@""];
+        [self->dateView setTitleLab:[NSString stringWithFormat:@"%@-%@",dates.start.toYYYYMM,dates.end.toYYYYMM] SecondLabel:@""];
     }
     
     // 属性文本生成器
     TYTextContainer *textContainer = [[TYTextContainer alloc]init];
+    
     NSString *stepStr = [NSString stringWithFormat:@"%d%@",step,kJL_TXT("步")];
+    if (step == 0){
+        stepStr = [NSString stringWithFormat:@"- -%@",kJL_TXT("步")];;
+    }
     textContainer.text = stepStr;
     
     // 整体设置属性
@@ -387,6 +422,9 @@
     // 文字样式
     TYTextStorage *textStorage = [[TYTextStorage alloc]init];
     textStorage.range = [stepStr rangeOfString:[NSString stringWithFormat:@"%d",step]];
+    if (step == 0){
+        textStorage.range = [stepStr rangeOfString:[NSString stringWithFormat:@"- -"]];
+    }
     textStorage.font = [UIFont fontWithName:@"PingFangSC-Medium" size:30];
     textStorage.textColor = kDF_RGBA(255, 255, 255, 1);
     [textContainer addTextStorage:textStorage];
@@ -430,8 +468,11 @@
         }
         int temMaxValue = [[totalStep valueForKeyPath:@"@max.floatValue"] intValue];
         self->hisView.maxValue = temMaxValue+3;
-        
-        self->hisView.dataArray = [dayStepMulArray copy];
+        if (dayStepMulArray.count>0){
+            self->hisView.dataArray = [dayStepMulArray copy];
+        }else{
+            self->hisView.dataArray = [self makeNoneDataBy:24];
+        }
         self->hisView.presetNum = 24;
         self->hisView.cellWidth = 9;
         self->hisView.timeLabArray = @[@"00:00",@"06:00",@"12:00",@"18:00",@"00:00"];
@@ -439,7 +480,9 @@
         
         
         NSString *myTotalConsumption = [NSString stringWithFormat:@"%.0f",self->currentTotalConsumption];
-        
+        if (self->currentTotalConsumption == 0){
+            myTotalConsumption = @"- -";
+        }
         NSString *myUnits;
         NSString *myTotalMileage;
         
@@ -450,6 +493,9 @@
         }else{
             myTotalMileage = [NSString stringWithFormat:@"%.2f",self->currentTotalMileage/100];
             myUnits = kJL_TXT("公里");
+        }
+        if ([myTotalMileage isEqualToString:@"0.00"]){
+            myTotalMileage = @"- -";
         }
         [self->dataView setTabLab:kJL_TXT("总里程") TabLab2:kJL_TXT("总消耗") Value1:myTotalMileage Unit1:myUnits Value2:myTotalConsumption Unit2:kJL_TXT("千卡")];
     }];
@@ -462,31 +508,38 @@
         NSMutableArray *weekStepMulArray = [NSMutableArray new];
         NSMutableArray *totalStep = [NSMutableArray new];
         
+        [self->mulArray removeAllObjects];
+        for (int i=0; i<7; i++) {
+            NSDate *d = [dates.start dateByAddingTimeInterval:i*60*60*24];
+            NSValue *value = [self checkWithValueDate:d Charts:charts isWeek:true];
+            [weekStepMulArray addObject:value];
+        }
+        
         for (int i=0; i<charts.count; i++) {
             JL_Chart_MoveSteps *moveStepModel = charts[i];
-            
             self->currentTotalMileage = [[NSString stringWithFormat:@"%.2f",moveStepModel.totalMileage] floatValue];
             self->currentTotalConsumption = [[NSString stringWithFormat:@"%.0f",moveStepModel.totalConsumption] intValue];
-
             NSArray <StepCountData *> *stepArray= moveStepModel.stepCountlist;
-
             for (StepCountData *stepCountData in stepArray) {
-                NSInteger weekDay = stepCountData.startDate.witchWeekDay;
-                CGPoint p1 = CGPointMake(weekDay-1, moveStepModel.allStep);
-                
-                NSValue *v1 = [NSValue valueWithCGPoint:p1];
-                
-                [weekStepMulArray addObject:v1];
-                
                 [totalStep addObject:@((int)moveStepModel.allStep)];
                 [self->stepArray addObject:@((int)moveStepModel.allStep)];
-                [self->mulArray addObject:stepCountData.startDate];
             }
         }
         
         int temMyMaxValue = [[totalStep valueForKeyPath:@"@max.floatValue"] intValue];
         self->hisView.maxValue = temMyMaxValue+3;
-        self->hisView.dataArray = [weekStepMulArray copy];
+        
+        if (weekStepMulArray.count>0){
+            self->hisView.dataArray = [weekStepMulArray copy];
+        }else{
+            self->hisView.dataArray = [self makeNoneDataBy:7];
+            [self->mulArray removeAllObjects];
+            for (int i = 0;i<7;i++){
+                [self->stepArray addObject:@(0)];
+                NSDate *d = [dates.start dateByAddingTimeInterval:i*60*60*24];
+                [self->mulArray addObject:d];
+            }
+        }
         self->hisView.presetNum = 7;
         self->hisView.timeLabArray = @[kJL_TXT("我的周一"),kJL_TXT("我的周二"),kJL_TXT("我的周三"),kJL_TXT("我的周四"),kJL_TXT("我的周五"),kJL_TXT("我的周六"),kJL_TXT("我的周日")];
         self->hisView.cellWidth = 12;
@@ -494,36 +547,69 @@
 
         int temSumValue = [[totalStep valueForKeyPath:@"@sum.floatValue"] intValue];
         int temavgValue = [[totalStep valueForKeyPath:@"@avg.floatValue"] intValue];
+        
         NSString *myStepValue = [NSString stringWithFormat:@"%d",temSumValue];
         NSString *avgStep = [NSString stringWithFormat:@"%d",temavgValue];
-
+        
+        if (temavgValue == 0){
+            avgStep = @"- -";
+        }
+        if (temavgValue == 0){
+            myStepValue = @"- -";
+        }
+        
         [self->dataView setTabLab:kJL_TXT("总步数") TabLab2:kJL_TXT("平均步数") Value1:myStepValue Unit1:kJL_TXT("步") Value2:avgStep Unit2:kJL_TXT("步")];
     }];
 }
 
 #pragma mark 查询数据库月的数据
+
+-(NSValue *)checkWithValueDate:(NSDate *) thisDate Charts:(NSArray<JL_Chart_MoveSteps *> *)charts isWeek:(BOOL)isWeek{
+    [mulArray addObject:thisDate];
+    if (charts.count == 0){
+        NSInteger day = thisDate.witchDay;
+        if (isWeek){
+            day = thisDate.witchWeekDay;
+        }
+        CGPoint p1 = CGPointMake(day-1, 0);
+        return [NSValue valueWithCGPoint:p1];
+    }
+    for (int i = 0;i<charts.count;i++){
+        JL_Chart_MoveSteps *moveStepModel = charts[i];
+        NSArray <StepCountData *> *stepArray= moveStepModel.stepCountlist;
+        for (StepCountData *stepCountData in stepArray) {
+            if ([[NSCalendar currentCalendar] isDate:stepCountData.startDate inSameDayAsDate:thisDate]){
+                NSInteger day = stepCountData.startDate.witchDay;
+                CGPoint p1 = CGPointMake(day-1, moveStepModel.allStep);
+                NSValue *v1 = [NSValue valueWithCGPoint:p1];
+                return v1;
+            }
+        }
+    }
+    NSInteger day = thisDate.witchDay;
+    CGPoint p1 = CGPointMake(day-1, 0);
+    return [NSValue valueWithCGPoint:p1];
+}
+
 -(void)queryMonthFromDB{
     StartAndEndDate *dates = nowDate.thisMonth;
+    NSInteger maxDay = nowDate.monthDayCount;
     [JLSqliteStep s_checkoutWtihStartDate:dates.start withEndDate:dates.end Result:^(NSArray<JL_Chart_MoveSteps *> * _Nonnull charts) {
         NSMutableArray *monthStepMulArray = [NSMutableArray new];
         NSMutableArray *totalStep = [NSMutableArray new];
         
-        for (int i=0; i<charts.count; i++) {
+        [self->mulArray removeAllObjects];
+        for (int i=0; i<maxDay; i++) {
+            NSDate *d = [dates.start dateByAddingTimeInterval:i*60*60*24];
+            NSValue *value = [self checkWithValueDate:d Charts:charts isWeek:false];
+            [monthStepMulArray addObject:value];
+        }
+        for (int i = 0;i<charts.count;i++){
             JL_Chart_MoveSteps *moveStepModel = charts[i];
-            
             self->currentTotalMileage = [[NSString stringWithFormat:@"%.2f",moveStepModel.totalMileage] floatValue];
             self->currentTotalConsumption = [[NSString stringWithFormat:@"%.0f",moveStepModel.totalConsumption] intValue];
-
             NSArray <StepCountData *> *stepArray= moveStepModel.stepCountlist;
-
             for (StepCountData *stepCountData in stepArray) {
-                NSInteger day = stepCountData.startDate.witchDay;
-                CGPoint p1 = CGPointMake(day-1, moveStepModel.allStep);
-                
-                NSValue *v1 = [NSValue valueWithCGPoint:p1];
-                
-                [monthStepMulArray addObject:v1];
-                
                 [totalStep addObject:@((int)moveStepModel.allStep)];
                 [self->stepArray addObject:@((int)moveStepModel.allStep)];
                 [self->mulArray addObject:stepCountData.startDate];
@@ -533,29 +619,57 @@
         int temMyMaxValue = [[totalStep valueForKeyPath:@"@max.floatValue"] intValue];
         self->hisView.maxValue = temMyMaxValue+3;
         self->hisView.dataArray = [monthStepMulArray copy];
-        self->hisView.presetNum = 30;
+        self->hisView.presetNum = maxDay;
         self->hisView.timeLabArray = self->nowDate.thisMonthDays;
-//        @[@"1日",@"3日",@"5日",@"7日",@"8日",@"10日",@"12日",@"14日",@"17日",@"19日",
-//                                        @"21日",@"24日",@"26日",@"28日",@"30日"];
+
         self->hisView.cellWidth = 10;
         [self->hisView setNeedsDisplay];
 
         int temSumValue = [[totalStep valueForKeyPath:@"@sum.floatValue"] intValue];
         int temavgValue = [[totalStep valueForKeyPath:@"@avg.floatValue"] intValue];
         NSString *myStepValue = [NSString stringWithFormat:@"%d",temSumValue];
+        
         NSString *avgStep = [NSString stringWithFormat:@"%d",temavgValue];
+        if (temavgValue == 0){
+            avgStep = @"- -";
+        }
+        if (temavgValue == 0){
+            myStepValue = @"- -";
+        }
 
         [self->dataView setTabLab:kJL_TXT("总步数") TabLab2:kJL_TXT("平均步数") Value1:myStepValue Unit1:kJL_TXT("步") Value2:avgStep Unit2:kJL_TXT("步")];
     }];
 }
 
 #pragma mark 查询数据库年的数据
+
+
 -(void)queryYearFromDB{
     StartAndEndDate *dates = nowDate.thisYear;
     [JLSqliteStep s_checkoutWtihStartDate:dates.start withEndDate:dates.end Result:^(NSArray<JL_Chart_MoveSteps *> * _Nonnull charts) {
         NSMutableArray *yearStepMulArray = [NSMutableArray new];
         NSMutableArray *totalStep = [NSMutableArray new];
-
+        NSDate *firstMonth = dates.start;
+        [self->mulArray removeAllObjects];
+        for (int j = 0; j<12 ;j++){
+            int countStep = 0;
+            for (int i = 0;i<charts.count;i++){
+                JL_Chart_MoveSteps *moveStepModel = charts[i];
+               
+                NSArray <StepCountData *> *stepArray= moveStepModel.stepCountlist;
+                for (StepCountData *stepCountData in stepArray) {
+                    if ([stepCountData.startDate witchMonth] == j){
+                        countStep+=moveStepModel.allStep;
+                    }
+                }
+            }
+            [self->mulArray addObject:firstMonth];
+            CGPoint p1 = CGPointMake(j, countStep);
+            NSValue *v1 = [NSValue valueWithCGPoint:p1];
+            firstMonth = firstMonth.nextMonth_0;
+            [yearStepMulArray addObject:v1];
+        }
+        
         for (int i=0; i<charts.count; i++) {
             JL_Chart_MoveSteps *moveStepModel = charts[i];
             
@@ -571,26 +685,34 @@
             }
         }
         
+        
+        
         self->yearStepValue = [[totalStep valueForKeyPath:@"@avg.floatValue"] intValue];
 
         int temAvgValue = [[totalStep valueForKeyPath:@"@avg.floatValue"] intValue];
         [self->stepArray addObject:@(temAvgValue)];
         
-        CGPoint p1 = CGPointMake(self->month-1, temAvgValue);
-        NSValue *v1 = [NSValue valueWithCGPoint:p1];
-        [yearStepMulArray addObject:v1];
         
         int temMyAvgValue = temAvgValue;
         self->hisView.maxValue = temMyAvgValue+3;
-        self->hisView.dataArray = [yearStepMulArray copy];
+        self->hisView.dataArray = yearStepMulArray;
         self->hisView.presetNum = 12;
         self->hisView.timeLabArray = self->nowDate.thisYearMonths;//@[@"1月",@"2月",@"3月",@"4月",@"5月",@"6月",@"7月",@"8月",@"9月",@"10月",@"11月",@"12月"];
         self->hisView.cellWidth = 12;
         [self->hisView setNeedsDisplay];
 
         int temavgValue = [[totalStep valueForKeyPath:@"@avg.floatValue"] intValue];
+        
         NSString *myStepValue = [NSString stringWithFormat:@"%d",[[totalStep valueForKeyPath:@"@sum.floatValue"] intValue]];
+        
         NSString *avgStep = [NSString stringWithFormat:@"%d",temavgValue];
+        
+        if ([[totalStep valueForKeyPath:@"@sum.floatValue"] intValue] == 0){
+            myStepValue = @"- -";
+        }
+        if (temavgValue == 0){
+            avgStep = @"- -";
+        }
 
         [self->dataView setTabLab:kJL_TXT("总步数") TabLab2:kJL_TXT("平均步数") Value1:myStepValue Unit1:kJL_TXT("步") Value2:avgStep Unit2:kJL_TXT("步")];
     }];
@@ -631,5 +753,17 @@
     
 //    NSLog(@"scrollViewDidScroll:%f",scrollView.contentOffset.y);
 }
+
+//MARK: - 默认数据
+-(NSArray *)makeNoneDataBy:(int)number{
+    NSMutableArray *ps = [NSMutableArray new];
+    for (int i = 0; i<number; i++) {
+        CGPoint p = CGPointMake(i, 0);
+        [ps addObject:[NSValue valueWithCGPoint:p]];
+    }
+    return ps;
+}
+
+
 
 @end

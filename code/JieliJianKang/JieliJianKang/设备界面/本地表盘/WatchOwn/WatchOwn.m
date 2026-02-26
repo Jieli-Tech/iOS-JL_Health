@@ -13,6 +13,7 @@
 #import "WatchLocalModel.h"
 #import "JLWatchHttp.h"
 #import "UIImageView+WebCache.h"
+#import "UIButton+WebCache.h"
 
 #import "DialModel.h"
 #import "DialDetailVC.h"
@@ -26,6 +27,7 @@ NSString *kUI_WATCH_OWN_MORE = @"UI_WATCH_OWN_MORE";
     BOOL                isManager;
     UIButton            *btnManager;
     UIButton            *btnMore;
+    UIImageView         *imageMore;
     BOOL                mIsEdit;
     
     UICollectionView    *subCollectView;
@@ -49,9 +51,8 @@ NSString *kUI_WATCH_OWN_MORE = @"UI_WATCH_OWN_MORE";
     
     if (self) {
         self.frame = frame;
-        
-        mIsEdit = NO;
 
+        mIsEdit = NO;
         win   = [DFUITools getWindow];
         width = frame.size.width;
         height= frame.size.height;
@@ -72,7 +73,7 @@ NSString *kUI_WATCH_OWN_MORE = @"UI_WATCH_OWN_MORE";
 
 -(void)setupUI{
     label = [[UILabel alloc] init];
-    label.frame = CGRectMake(20,10,self.frame.size.width,22);
+    label.frame = CGRectMake(20,5,self.frame.size.width,22);
     label.numberOfLines = 0;
     [self addSubview:label];
 
@@ -86,22 +87,28 @@ NSString *kUI_WATCH_OWN_MORE = @"UI_WATCH_OWN_MORE";
     
     
     btnManager = [[UIButton alloc] init];
-    btnManager.frame = CGRectMake(width-80.0, 10, 80.0, 22);
+    btnManager.frame = CGRectMake(width-80.0, 5, 80.0, 22);
     btnManager.titleLabel.font = [UIFont systemFontOfSize:14];
     [btnManager addTarget:self action:@selector(btn_isManager:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:btnManager];
     
     btnMore = [[UIButton alloc] init];
     btnMore.frame = CGRectMake(width-80.0, 10, 80.0, 22);
-    btnMore.titleLabel.font = [UIFont systemFontOfSize:14];
-    [btnMore setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+//    btnMore.titleLabel.font = [UIFont systemFontOfSize:14];
+//    btnMore.titleLabel.textAlignment = NSTextAlignmentRight;
+//    [btnMore setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     [btnMore addTarget:self action:@selector(btn_More:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:btnMore];
     
     
+    imageMore = [[UIImageView alloc] init];
+    imageMore.frame = CGRectMake(width-22.0, 10.0, 22, 22);
+    imageMore.contentMode = UIViewContentModeCenter;
+    imageMore.image = [UIImage imageNamed:@"icon_next_nol"];
+    [self addSubview:imageMore];
     
     CGFloat itemW = 110.0;
-    CGFloat itemH = itemW+40.0;
+    CGFloat itemH = itemW*1.48;
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.itemSize = CGSizeMake(itemW, itemH);
@@ -149,16 +156,24 @@ NSString *kUI_WATCH_OWN_MORE = @"UI_WATCH_OWN_MORE";
     
     cell.subLabel.text = md.mName;
     cell.subLabel_1.hidden = YES;
+    cell.subEditBtn.hidden  = YES;
+    cell.subEditBgBtn.hidden = YES;
     
     UIImage *phimage = [UIImage imageNamed:@"watch_img_05"];
     if (md.mInfoDict && md.mInfoDict[@"icon"]) {
-        [cell.subImageView sd_setImageWithURL:[NSURL URLWithString:md.mInfoDict[@"icon"]] placeholderImage:phimage];
+        //[cell.subImageView sd_setImageWithURL:[NSURL URLWithString:md.mInfoDict[@"icon"]] placeholderImage:phimage];
+        
+        [cell.watchFaceBtn sd_setImageWithURL:[NSURL URLWithString:md.mInfoDict[@"icon"]]
+                                     forState:UIControlStateNormal placeholderImage:phimage];
+        
     }else{
         NSData *imgData = [WatchMarket getDataOfWatchIcon:md.mName];
         if (imgData) {
-            cell.subImageView.image = [UIImage imageWithData:imgData];
+            //cell.subImageView.image = [UIImage imageWithData:imgData];
+            [cell.watchFaceBtn setImage:[UIImage imageWithData:imgData] forState:UIControlStateNormal];
         }else{
-            cell.subImageView.image = phimage;
+            //cell.subImageView.image = phimage;
+            [cell.watchFaceBtn setImage:phimage forState:UIControlStateNormal];
         }
     }
 
@@ -168,12 +183,15 @@ NSString *kUI_WATCH_OWN_MORE = @"UI_WATCH_OWN_MORE";
             cell.subType = WatchCellTypeUsed;   //正在使用
             if (mIsEdit == YES) {//是否可编辑
                 cell.subEditBtn.hidden = NO;
+                cell.subEditBgBtn.hidden = NO;
             }else{
                 cell.subEditBtn.hidden = YES;
+                cell.subEditBgBtn.hidden = YES;
             }
         }else{
             cell.subType = WatchCellTypeUnUsed;   //可以使用
             cell.subEditBtn.hidden = YES;
+            cell.subEditBgBtn.hidden = YES;
         }
     }
 
@@ -240,7 +258,7 @@ NSString *kUI_WATCH_OWN_MORE = @"UI_WATCH_OWN_MORE";
         model.bigIconUrl = md.mInfoDict[@"icon"];                               //表盘大图片
         model.watchName  = md.mInfoDict[@"name"];                               //表盘名字
         model.mPrice     = (float)([md.mInfoDict[@"price"] floatValue]/100.0);  //价格
-        model.dialIntroduce  = @"杰理智能手表表盘";                                //表盘简介
+        model.dialIntroduce  = @"【表盘简介】：杰理智能手表表盘";                                //表盘简介
         
         DialDetailVC *vc = [[DialDetailVC alloc] init];
         vc.dialModel = model;
@@ -255,8 +273,7 @@ NSString *kUI_WATCH_OWN_MORE = @"UI_WATCH_OWN_MORE";
 
     CustomWatchVC *vc = [[CustomWatchVC alloc] init];
     vc.watchName = md.mName;
-    vc.modalPresentationStyle = 0;
-    [self.superVC presentViewController:vc animated:YES completion:nil];
+    [self.superVC.navigationController pushViewController:vc animated:true];
 }
 
 
@@ -453,7 +470,7 @@ NSString *kUI_WATCH_OWN_MORE = @"UI_WATCH_OWN_MORE";
             [JLUI_Effect setLoadingText:kJL_TXT("添加失败") Delay:0.5];
         }
         if (type == DialOperateTypeDoing) {
-            NSString *txt = [NSString stringWithFormat:@"%@:%.1f%%",kJL_TXT("添加进度"),progress*100.0f];
+            NSString *txt = [NSString stringWithFormat:@"%@:%.0f%%",kJL_TXT("添加进度"),progress*100.0f];
             [JLUI_Effect setLoadingText:txt];
         }
         if (type == DialOperateTypeSuccess) {
@@ -924,6 +941,16 @@ NSString *kUI_WATCH_OWN_MORE = @"UI_WATCH_OWN_MORE";
     return self.dataArray.count;
 }
 
+-(void)updateHideMoreBtnWithCount{
+    if (self.dataArray.count <= 3){
+        btnMore.hidden = YES;
+        imageMore.hidden = YES;
+    }else{
+        btnMore.hidden = NO;
+        imageMore.hidden = NO;
+    }
+}
+
 
 #pragma mark - UI赋值
 -(void)setMSubTitleText:(NSString *)mSubTitleText{
@@ -931,10 +958,17 @@ NSString *kUI_WATCH_OWN_MORE = @"UI_WATCH_OWN_MORE";
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:mSubTitleText attributes:@{NSFontAttributeName:font,NSForegroundColorAttributeName:kDF_RGBA(36, 36, 36, 1.0)}];
     label.attributedText = string;
     _mSubTitleText = mSubTitleText;
+    
+    if(mSubTitleText.length == 0){
+        subCollectView.frame = CGRectMake(0, 0, width, height);
+    }else{
+        subCollectView.frame = CGRectMake(0, 40.0, width, height - 40.0);
+    }
 }
 
 -(void)setMMoreBtnText:(NSString *)mMoreBtnText{
-    [btnMore setTitle:mMoreBtnText forState:UIControlStateNormal];
+    NSAttributedString *atrr = [JLUI_Effect pingFangSC:mMoreBtnText Size:13 Color:kDF_RGBA(145, 145, 145, 1.0)];
+    [btnMore setAttributedTitle:atrr forState:UIControlStateNormal];
     _mMoreBtnText = mMoreBtnText;
 }
 
@@ -944,18 +978,21 @@ NSString *kUI_WATCH_OWN_MORE = @"UI_WATCH_OWN_MORE";
         label.hidden = NO;
         btnManager.hidden = YES;
         btnMore.hidden = NO;
+        imageMore.hidden = NO;
         mIsEdit = NO;
     }
     if (mWatchUiType == WatchUITypePay) {
         label.hidden = NO;
         btnManager.hidden = YES;
         btnMore.hidden = NO;
+        imageMore.hidden = NO;
         mIsEdit = NO;
     }
     if (mWatchUiType == WatchUITypeDevice) {
         label.hidden = NO;
         btnManager.hidden = NO;
         btnMore.hidden = YES;
+        imageMore.hidden = YES;
         mIsEdit = YES;
     }
     
@@ -963,18 +1000,24 @@ NSString *kUI_WATCH_OWN_MORE = @"UI_WATCH_OWN_MORE";
         label.hidden = YES;
         btnManager.hidden = YES;
         btnMore.hidden = YES;
+        imageMore.hidden = YES;
         mIsEdit = NO;
     }
     if (mWatchUiType == WatchUITypeNoPayment) {
         label.hidden = YES;
         btnManager.hidden = NO;
         btnMore.hidden = YES;
+        imageMore.hidden = YES;
         mIsEdit = YES;
     }
     [subCollectView reloadData];
+
     _mWatchUiType = mWatchUiType;
 }
 
+-(void)updateMoreImage:(BOOL)hide{
+    imageMore.hidden = hide;
+}
 
 - (void)btn_isManager:(id)sender {
     if (isManager == NO) {
@@ -989,17 +1032,19 @@ NSString *kUI_WATCH_OWN_MORE = @"UI_WATCH_OWN_MORE";
 -(void)setUIManager:(BOOL)is{
     if (is == YES) {
         //NSLog(@"btnManager yes.");
-        [btnManager setTitle:@"" forState:UIControlStateNormal];
-        [btnManager setImage:[UIImage imageNamed:@"product_icon_sure_nol"] forState:UIControlStateNormal];
+        NSAttributedString *attr = [JLUI_Effect pingFangSC:kJL_TXT("完成") Size:13 Color:kDF_RGBA(85, 140, 255, 1.0)];
+        [btnManager setAttributedTitle:attr forState:UIControlStateNormal];
+        
+        CGFloat width2 = [self getWidthWithText:kJL_TXT("完成") height:22 font:14]+15;
+        btnManager.frame = CGRectMake(width-width2, 5, width2, 22);
     }else{
         //NSLog(@"btnManager no.");
-        [btnManager setTitle:kJL_TXT("管理") forState:UIControlStateNormal];
+        NSAttributedString *attr = [JLUI_Effect pingFangSC:kJL_TXT("管理") Size:13 Color:kDF_RGBA(85, 140, 255, 1.0)];
+        [btnManager setAttributedTitle:attr forState:UIControlStateNormal];
+        
         CGFloat width2 = [self getWidthWithText:kJL_TXT("管理") height:22 font:14]+15;
-        btnManager.frame = CGRectMake(width-width2, 10, width2, 22);
-        [btnManager setTitleColor:kDF_RGBA(85, 140, 255, 1) forState:UIControlStateNormal];
-        [btnManager setImage:[UIImage imageNamed:@"nil"] forState:UIControlStateNormal];
+        btnManager.frame = CGRectMake(width-width2, 5, width2, 22);
     }
-
     [subCollectView reloadData];
 }
 

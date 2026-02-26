@@ -7,7 +7,9 @@
 
 #import "BtCallViewController.h"
 #import "Masonry.h"
+#import "UIImage+GIF.h"
 #import <WebKit/WebKit.h>
+
 
 @interface BtCallViewController ()<WKUIDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headTitleHeight;
@@ -16,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *contentLab;
 @property (weak, nonatomic) IBOutlet UIButton *toSettingBtn;
 @property (strong, nonatomic) UIView *tipsView;
-@property (nonatomic,strong)ActionPlayer *playerView;
+@property (nonatomic,strong)UIImageView *settingConfigView;
 @property (nonatomic,strong)WKWebView *webView;
 @end
 
@@ -25,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.headTitleHeight.constant = kJL_HeightNavBar+10;
-    self.titleLab.text = kJL_TXT("手机蓝牙通话");
+    self.titleLab.text = kJL_TXT("手表蓝牙通话");
     self.secondTitleLab.text = kJL_TXT("手表蓝牙通话设置");
     self.contentLab.text = kJL_TXT("手表蓝牙通话设置提示信息");
     [self.toSettingBtn setTitle:kJL_TXT("去设置") forState:UIControlStateNormal];
@@ -39,41 +41,26 @@
         make.right.equalTo(self.view.mas_right).offset(-50);
     }];
     
-    self.playerView = [[ActionPlayer alloc] initWithFrame:CGRectZero];
-    [self.tipsView addSubview:self.playerView];
-    
-    [self.playerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_tipsView.mas_top).offset(0);
-        make.bottom.equalTo(_tipsView.mas_bottom).offset(0);
-        make.left.equalTo(_tipsView.mas_left).offset(0);
-        make.right.equalTo(_tipsView.mas_right).offset(0);
+ 
+    self.settingConfigView = [UIImageView new];
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"settingConfig" ofType:@"gif"];
+    NSData *imageData = [NSData dataWithContentsOfFile:imagePath];
+    self.settingConfigView.image = [UIImage sd_animatedGIFWithData:imageData];
+    self.settingConfigView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.tipsView addSubview:self.settingConfigView];
+    [self.settingConfigView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.tipsView);
     }];
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"settingConnect" ofType:@"mp4"];
-    CGFloat height = [UIScreen mainScreen].bounds.size.height - (kJL_HeightNavBar+kJL_HeightTabBar+60+30+30+30+8+40+10);
-    
-    [self.playerView play:[NSURL fileURLWithPath:path] :CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width-100, height)];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playDidFinish) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(entryBackgroud) name:@"ENTER_BACKGROUND" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(beComeActive) name:@"BECOME_ACTIVE" object:nil];
-    
-    
-    
+    [self addNote];
 }
 
--(void)playDidFinish{
-    [self.playerView continuePlayWithStatus:false];
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+   
 }
 
 
--(void)beComeActive{
-    [self.playerView continuePlayWithStatus:true];
-}
-
--(void)entryBackgroud{
-    [self.playerView pause];
-}
 
 - (IBAction)backBtnAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
@@ -99,5 +86,20 @@
 //    [EcApplication gotoSystemSetting];
 }
 
+- (void)noteDeviceChange:(NSNotification*)note {
+    JLDeviceChangeType type = [[note object] integerValue];
+    if (type == JLDeviceChangeTypeInUseOffline || type == JLDeviceChangeTypeBleOFF) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+
+-(void)addNote{
+    [JL_Tools add:kUI_JL_DEVICE_CHANGE Action:@selector(noteDeviceChange:) Own:self];
+}
+
+- (void)dealloc {
+    [JL_Tools remove:kUI_JL_DEVICE_CHANGE Own:self];
+}
 
 @end

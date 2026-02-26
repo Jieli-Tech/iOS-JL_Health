@@ -34,7 +34,7 @@
     
     sizeLength = 20;
     titleHeight.constant = kJL_HeightNavBar;
-    float sw = [DFUITools screen_2_W];
+    float sw = [UIScreen mainScreen].bounds.size.width;
     subTitleView.frame = CGRectMake(0, 0, sw, kJL_HeightStatusBar+44);
     [cancelBtn setTitle:kJL_TXT("取消") forState:UIControlStateNormal];
     cancelBtn.frame  = CGRectMake(16, kJL_HeightStatusBar-5, 60, 44);

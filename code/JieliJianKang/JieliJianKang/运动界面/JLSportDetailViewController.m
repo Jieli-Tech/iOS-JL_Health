@@ -460,14 +460,14 @@
 /**
  * 设置当前运动类型
  */
-- (void)setSportType:(WatchSportType)sportType {
+- (void)setSportType:(uint8_t)sportType {
     _sportType = sportType;
     [self setSportTypeInterface];
 }
 
 - (void)setSportTypeInterface {
     [self.titleLabel setHidden:NO];
-    if (_sportType == WatchSportType_InDoor) {
+    if (_sportType == 0x02) {
         self.titleLabel.text = kJL_TXT("室内跑步");
         [self.goMapBtn setHidden:YES];
         [self.gpsIntensityContainerView setHidden:YES];
@@ -482,7 +482,7 @@
  *  初始化运动轨迹界面
  */
 - (void)initializeDoingSportMapViewController {
-    if ((self.sportType != WatchSportType_InDoor) && (self.doingSportMapViewController == nil) && self.sportID) {
+    if ((self.sportType != 0x02) && (self.doingSportMapViewController == nil) && self.sportID) {
         self.doingSportMapViewController = [[JLSportMapViewController alloc] init];
         NSLog(@"doingSportMapViewController.sportID : %f", self.sportID);
         self.doingSportMapViewController.sportID = self.sportID;
@@ -860,7 +860,7 @@
             [self pauseUI];
         }
         [self.lockBtn setHidden:NO];
-        if (self.sportType != WatchSportType_InDoor)
+        if (self.sportType != 0x02)
         [self.goMapBtn setHidden:NO];
         [self.unlockSliderContainerView setHidden:YES];
     }

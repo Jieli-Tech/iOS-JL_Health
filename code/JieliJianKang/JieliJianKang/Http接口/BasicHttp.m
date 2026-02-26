@@ -10,7 +10,7 @@
 @implementation BasicHttp
 
 +(NSMutableURLRequest *)Url:(NSString *)url Body:(NSData *_Nullable)data{
-    NSString *token = [JL_Tools getUserByKey:@"accessToken"];
+    NSString *token = [JL_Tools getUserByKey:kUI_ACCESS_TOKEN];
     NSDictionary *headers = @{@"content-type": @"application/json",
                               @"jwt-token":token?:@"",
                               @"cache-control": @"no-cache"};

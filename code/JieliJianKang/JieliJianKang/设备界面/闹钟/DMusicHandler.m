@@ -480,15 +480,23 @@ static DMusicHandler *_dmh;
 
 #pragma mark ///更新数据
 -(void)updateData:(NSArray *)array{
-    JLModel_File *model = [array firstObject];
-    if (![self shouldBeUpdate:model]) {
-        return;
-    }
-    if ([_delegate respondsToSelector:@selector(dmHandleWithItemModelArray:)]) {
-        NSArray *tempArray = [self filter:array];
-        [_delegate dmHandleWithItemModelArray:tempArray];
+    if(array.count==0){
+        if ([_delegate respondsToSelector:@selector(dmHandleWithItemModelArray:)]) {
+            NSArray *tempArray = [self filter:array];
+            [_delegate dmHandleWithItemModelArray:tempArray];
+        }
+    }else{
+        JLModel_File *model = [array firstObject];
+        if (![self shouldBeUpdate:model]) {
+            return;
+        }
+        if ([_delegate respondsToSelector:@selector(dmHandleWithItemModelArray:)]) {
+            NSArray *tempArray = [self filter:array];
+            [_delegate dmHandleWithItemModelArray:tempArray];
+        }
     }
 }
+
 -(void)updateTitleData:(NSArray *)array{
     if ([_delegate respondsToSelector:@selector(dmHandleWithTabTitleArray:)]) {
           [_delegate dmHandleWithTabTitleArray:array];

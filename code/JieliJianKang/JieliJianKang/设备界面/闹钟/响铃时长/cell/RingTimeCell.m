@@ -19,7 +19,7 @@
         self.cellLabel.font = [UIFont fontWithName:@"PingFangSC" size: 16];
         self.cellLabel.textColor = kDF_RGBA(36, 36, 36, 1.0);
         
-        self.cellBtn = [[UIButton alloc] initWithFrame:CGRectMake([DFUITools screen_2_W]-32-24-24,60/2-24/2,24,24)];
+        self.cellBtn = [[UIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width-32-24-24,60/2-24/2,24,24)];
         [self.cellBtn addTarget:self action:@selector(selectBtn:) forControlEvents:UIControlEventTouchUpInside];
         [self.cellBtn setContentMode:UIViewContentModeScaleAspectFit];
         [self.cellBtn setImage:[UIImage imageNamed:@"icon_choose2_nol"] forState:UIControlStateNormal];

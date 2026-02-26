@@ -6,6 +6,7 @@
 // GitHub Address: https://github.com/xiaozhuxiong121/PGBarChart
 
 #import "PGBarChart.h"
+#import "DottedLineView.h"
 
 #define VerticalLabelGapLine 5
 #define VerticalLineGap 5
@@ -274,7 +275,7 @@
     CGFloat gap = (self.frame.size.width - verticalLinePoX - totalCount * self.barWidth) / (totalCount + 1);
     CGFloat maxHeight = [self dataModelsMaxHeight];
     CGFloat bottomLineY = self.frame.size.height - maxHeight - VerticalLineGap;
-    UIView *bottomLine = [[UIView alloc] initWithFrame:CGRectMake(verticalLinePoX, bottomLineY, self.frame.size.width - verticalLinePoX * 2, self.bottomLineHeight)];
+    DottedLineView *bottomLine = [[DottedLineView alloc] initWithFrame:CGRectMake(verticalLinePoX, bottomLineY, self.frame.size.width - verticalLinePoX * 2, self.bottomLineHeight)];
     bottomLine.backgroundColor = self.bottomLineColor;
     [self addSubview:bottomLine];
     self.bottomLine = bottomLine;
@@ -323,12 +324,12 @@
     
     // 设置目标线
     if ((self.goalNum > 0) && (self.goalNumText != nil)) {
-        UIView *goalLine = [[UIView alloc] initWithFrame:CGRectMake(verticalLinePoX, 20, self.frame.size.width - verticalLinePoX * 2, 0.5f)];
+        DottedLineView *goalLine = [[DottedLineView alloc] initWithFrame:CGRectMake(verticalLinePoX, 20, self.frame.size.width - verticalLinePoX * 2, 1.0f)];
         goalLine.backgroundColor = self.bottomLineColor;
         if (self.goalNum < realMaxValue) {
             CGFloat y = bottomLineY - ((float)self.goalNum / realMaxValue) * (bottomLineY - 3) - self.barWidth/2;
 //            NSLog(@"y==========self.goalNum :%d, realMaxValue:%f, bottomLineY:%f, barHeight:%f, y:%f", self.goalNum, realMaxValue, bottomLineY, barHeight, y);
-            goalLine.frame = CGRectMake(verticalLinePoX, y, self.frame.size.width - verticalLinePoX * 2, 0.5f);
+            goalLine.frame = CGRectMake(verticalLinePoX, y, self.frame.size.width - verticalLinePoX * 2, 1.0f);
         }
         PGBarChartLabel *barChartLabel = [[PGBarChartLabel alloc]initWithFrame:CGRectMake(self.frame.size.width - verticalLinePoX * 2 - 50, goalLine.frame.origin.y - 16, 60, 14)];
         barChartLabel.fontSize = self.bottomLabelFontSize;

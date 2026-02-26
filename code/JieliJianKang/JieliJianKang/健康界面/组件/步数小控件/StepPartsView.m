@@ -40,11 +40,8 @@
         
         
         self.backgroundColor = [UIColor purpleColor];
-        if([kJL_GET hasPrefix:@"zh"]){
-            stepLab = [[UILabel alloc] initWithFrame:CGRectMake(28, 20, 60, 21)];
-        }else{
-            stepLab = [[UILabel alloc] initWithFrame:CGRectMake(28, 20, 100, 21)];
-        }
+        
+        stepLab = [[UILabel alloc] init];
         stepLab.text = kJL_TXT("今日步数");
         [stepLab sizeToFit];
         stepLab.textColor = [UIColor whiteColor];
@@ -52,14 +49,21 @@
         stepLab.adjustsFontSizeToFitWidth = true;
         stepLab.alpha = 0.7;
         [self addSubview:stepLab];
-        if([kJL_GET hasPrefix:@"zh"]){
-            stepImgv = [[UIImageView alloc] initWithFrame:CGRectMake(28+60+12, 20, 20, 20)];
-        }else{
-            stepImgv = [[UIImageView alloc] initWithFrame:CGRectMake(28+100+12, 20, 20, 20)];
-        }
+        
+        [stepLab mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self).offset(28);
+            make.top.equalTo(self).offset(20);
+            make.height.equalTo(@(20));
+        }];
+        
+        stepImgv = [UIImageView new];
         stepImgv.image = [UIImage imageNamed:@"health_icon_step_nol"];
         [self addSubview:stepImgv];
-    
+        [stepImgv mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(stepLab.mas_right).offset(6);
+            make.width.height.equalTo(@(20));
+            make.centerY.equalTo(stepLab.mas_centerY);
+        }];
         
         
         todayStepLab = [[TYAttributedLabel alloc] initWithFrame:CGRectMake(28, 61, 180, 56)];
@@ -186,7 +190,7 @@
     if (_targetStep == 0) {
         step = @"- -";
     }
-    NSString *stepStr = [NSString stringWithFormat:@"%@\n%@%@",kJL_TXT("目标"),step,kJL_TXT("步")];
+    NSString *stepStr = [NSString stringWithFormat:@"%@:\n%@%@",kJL_TXT("目标"),step,kJL_TXT("步")];
     ttContainer.text = stepStr;
     // 整体设置属性
     ttContainer.linesSpacing = 2;
@@ -194,7 +198,7 @@
     ttContainer.textAlignment = kCTTextAlignmentCenter;
     // 文字样式
     TYTextStorage *textStorage = [[TYTextStorage alloc]init];
-    textStorage.range = [stepStr rangeOfString:kJL_TXT("目标")];
+    textStorage.range = [stepStr rangeOfString:[NSString stringWithFormat:@"%@:",kJL_TXT("目标")]];
     textStorage.font = [UIFont systemFontOfSize:14];
     textStorage.textColor = RGB(255, 255, 255, 0.7);
     [ttContainer addTextStorage:textStorage];

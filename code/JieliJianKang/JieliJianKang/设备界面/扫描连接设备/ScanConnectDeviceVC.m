@@ -39,8 +39,8 @@
 }
 
 -(void)initUI{
-    sw = [DFUITools screen_2_W];
-    sh = [DFUITools screen_2_H];
+    sw = [UIScreen mainScreen].bounds.size.width;
+    sh = [UIScreen mainScreen].bounds.size.height;
     
     self.view.backgroundColor = kDF_RGBA(248, 250, 252, 1.0);
     titleView_H.constant = kJL_HeightNavBar;
@@ -104,7 +104,7 @@
         
         if (mEntity.mSpecialType == JLDevSpecialType_Reconnect) {
             if (mEntity.mProtocolType == 0) {
-                [JL_Tools post:@"kUI_SHOW_EDR_VIEW" Object:nil];
+                [JL_Tools post:kUI_SHOW_EDR_VIEW Object:nil];
             }
             if (mEntity.mProtocolType == 1) {
                 self.scanEntity = mEntity;
@@ -126,10 +126,10 @@
             }
         }else{
             /*--- 正常设备需要提示用户连接经典蓝牙 ---*/
-            //            [JL_Tools post:@"kUI_SHOW_EDR_VIEW" Object:nil];
+            //            [JL_Tools post:kUI_SHOW_EDR_VIEW Object:nil];
             
             //            if(mEntity.mProtocolType == 0x00){
-            //                [JL_Tools post:@"kUI_SHOW_EDR_VIEW" Object:nil];
+            //                [JL_Tools post:kUI_SHOW_EDR_VIEW Object:nil];
             //            }else {
             //if(mEntity.mProtocolType == 0x01)
             self.scanEntity = mEntity;

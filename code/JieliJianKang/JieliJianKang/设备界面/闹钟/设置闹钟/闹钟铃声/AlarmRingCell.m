@@ -14,7 +14,7 @@
 -(instancetype)init{
     self = [[NSBundle mainBundle] loadNibNamed:@"AlarmRingCell" owner:nil options:nil][0];
     if (self) {
-        float sw = [DFUITools screen_2_W];
+        float sw = [UIScreen mainScreen].bounds.size.width;
         CGRect rect_lb = CGRectMake(53, 10, sw-100, 30);
         self.animaLab = [[DFLabel alloc] initWithFrame:rect_lb];
         self.animaLab.textColor = [UIColor blackColor];

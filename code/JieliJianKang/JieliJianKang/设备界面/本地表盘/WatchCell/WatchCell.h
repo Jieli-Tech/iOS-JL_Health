@@ -29,13 +29,16 @@ typedef NS_ENUM(UInt8, WatchCellType) {
 
 @interface WatchCell : UICollectionViewCell
 @property (weak, nonatomic) id<WatchCellDelegate>delegate;
+@property (weak, nonatomic) IBOutlet UIButton *watchFaceBtn;
+
+@property (weak, nonatomic) IBOutlet UIButton   *subEditBgBtn;
 @property (weak, nonatomic) IBOutlet UIButton   *subEditBtn;
 @property (weak, nonatomic) IBOutlet UIButton   *subBtn;
+
 @property (assign,nonatomic)NSInteger           subIndex;
 @property (weak, nonatomic) IBOutlet UILabel    *subLabel;
 @property (weak, nonatomic) IBOutlet UILabel    *subLabel_1;
 @property (weak, nonatomic) IBOutlet UIButton   *subDeleteBtn;
-@property (weak, nonatomic) IBOutlet UIImageView *subImageView;
 @property (assign,nonatomic)WatchCellType       subType;
 @property (strong,nonatomic)NSDictionary        *infoDict;
 @property (assign,nonatomic)float               buyPrice;

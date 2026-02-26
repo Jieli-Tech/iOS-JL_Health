@@ -14,6 +14,9 @@
 #import "OtaUpdateVC.h"
 #import "DeviceMoreVC.h"
 #import "SpeechRecognitionVC.h"
+#import "JLUI_Effect.h"
+#import "AiDialStyleVC.h"
+#import "AIDialXFManager.h"
 
 @interface FunctionView()<JLConfigPtl>{
     NSMutableArray *btnArray;
@@ -48,7 +51,7 @@
 
 -(void)initByArray{
     float gap = 52.0;
-    float sW = [DFUITools screen_2_W];
+    float sW = [UIScreen mainScreen].bounds.size.width;
     JLDeviceConfigModel *model = [[JLDeviceConfig share] deviceGetConfigWithUUID:kJL_BLE_EntityM.mPeripheral.identifier.UUIDString];
     [btnArray removeAllObjects];
     [viewControllers removeAllObjects];
@@ -81,6 +84,13 @@
         [btnArray addObject:@{@"ITEM_0":@"icon_contecter_nol",@"ITEM_1":kJL_TXT("常用联系人")}];
         MyContactsVC *vc = [[NSBundle mainBundle] loadNibNamed:@"MyContactsVC" owner:nil options:nil].lastObject;
         [viewControllers addObject:vc];
+    }
+    
+    if(model.exportFunc.spAiDial){
+        [btnArray addObject:@{@"ITEM_0":@"icon_aiwatch",@"ITEM_1":kJL_TXT("AI表盘")}];
+        AiDialStyleVC *vcStyle = [[AiDialStyleVC alloc] init];
+        [viewControllers addObject:vcStyle];
+        [AIDialXFManager share];
     }
         
     if(model.exportFunc.spAiCloud){
@@ -117,9 +127,12 @@
         
         UIButton *btn_1 = [[UIButton alloc] init];
         btn_1.tag = i;
-        [btn_1 setTitle:model[@"ITEM_1"] forState:UIControlStateNormal];
-        [btn_1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//        [btn_1 setTitle:model[@"ITEM_1"] forState:UIControlStateNormal];
+//        [btn_1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         btn_1.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+
+        NSMutableAttributedString *attr = [JLUI_Effect pingFangSC:model[@"ITEM_1"] Size:15 Color:kDF_RGBA(36, 36, 36, 1.0)];
+        [btn_1 setAttributedTitle:attr forState:UIControlStateNormal];
         [self addSubview:btn_1];
         [btn_1 addTarget:self action:@selector(onBtnTap:) forControlEvents:UIControlEventTouchUpInside];
         

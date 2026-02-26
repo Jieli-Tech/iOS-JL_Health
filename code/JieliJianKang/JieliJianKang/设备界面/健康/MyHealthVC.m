@@ -33,11 +33,11 @@
 -(void)initUI{
     self.view.backgroundColor = kDF_RGBA(248, 250, 252, 1.0);
     titleHeight.constant = kJL_HeightNavBar;
-    subTitleView.frame = CGRectMake(0, 0, [DFUITools screen_2_W], kJL_HeightStatusBar+44);
+    subTitleView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, kJL_HeightStatusBar+44);
     backBtn.frame  = CGRectMake(4, kJL_HeightStatusBar, 44, 44);
     titleName.text = kJL_TXT("健康");
     titleName.bounds = CGRectMake(0, 0, self.view.frame.size.width, 20);
-    titleName.center = CGPointMake([DFUITools screen_2_W]/2.0, kJL_HeightStatusBar+20);
+    titleName.center = CGPointMake([UIScreen mainScreen].bounds.size.width/2.0, kJL_HeightStatusBar+20);
     
     funcView = [[HealthFuncView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:funcView];

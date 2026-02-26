@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -25,7 +25,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="运动心率提醒" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ADd-tG-4U7">
-                            <rect key="frame" x="152" y="81" width="110.5" height="35"/>
+                            <rect key="frame" x="152" y="89" width="110.5" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="dmt-W8-8C1"/>
                             </constraints>
@@ -34,7 +34,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dBi-9M-0h4">
-                            <rect key="frame" x="8" y="77" width="67" height="43"/>
+                            <rect key="frame" x="8" y="83" width="67" height="43"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="43" id="Sjp-Vq-YGq"/>
                                 <constraint firstAttribute="width" constant="67" id="VtR-RQ-E0j"/>
@@ -47,11 +47,11 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="dBi-9M-0h4" secondAttribute="bottom" constant="10" id="Hdv-TS-K9g"/>
+                        <constraint firstAttribute="bottom" secondItem="dBi-9M-0h4" secondAttribute="bottom" constant="4" id="Hdv-TS-K9g"/>
                         <constraint firstItem="ADd-tG-4U7" firstAttribute="centerX" secondItem="CjV-K8-dpN" secondAttribute="centerX" id="W5L-l8-Ura"/>
                         <constraint firstAttribute="height" constant="130" id="fEE-YB-87N"/>
                         <constraint firstItem="dBi-9M-0h4" firstAttribute="leading" secondItem="CjV-K8-dpN" secondAttribute="leading" constant="8" id="h0y-vK-oNI"/>
-                        <constraint firstAttribute="bottom" secondItem="ADd-tG-4U7" secondAttribute="bottom" constant="14" id="mFM-Wt-7OT"/>
+                        <constraint firstAttribute="bottom" secondItem="ADd-tG-4U7" secondAttribute="bottom" constant="6" id="mFM-Wt-7OT"/>
                     </constraints>
                 </view>
             </subviews>

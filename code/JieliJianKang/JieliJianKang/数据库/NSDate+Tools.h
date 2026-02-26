@@ -20,6 +20,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSDate (Tools)
 
+- (NSString *)toYYYY;
+
+- (NSString *)toYYYYMM;
+
 - (NSString *)toYYYYMMdd;
 
 - (NSString *)toYYYYMMdd2;
@@ -82,6 +86,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 下个月
 -(NSDate *)nextMonth;
 
+/// 下个月 （允许超过当前时间）
+-(NSDate *)nextMonth_0;
+
 /// 上个月
 -(NSDate *)beforeMonth;
 
@@ -93,6 +100,23 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 当前是否在某个区间之间
 - (BOOL)isBetweenStartDate:(NSDate *)startDate andEndDate:(NSDate *)endDate;
+
+/// 在今天之前
+-(BOOL)beforeNow;
+/// 在这周之前
+-(BOOL)beforeThisWeek;
+/// 在这个月之前
+-(BOOL)beforeThisMonth;
+/// 在今年之前
+-(BOOL)beforeThisYear;
+/// 在今天之前(不含当前）
+-(BOOL)beforeNow_0;
+/// 在这周之前(不含当前）
+-(BOOL)beforeThisWeek_0;
+/// 在这个月之前(不含当前）
+-(BOOL)beforeThisMonth_0;
+/// 在今年之前(不含当前）
+-(BOOL)beforeThisYear_0;
 
 /// 当前这一天的一周始末
 -(StartAndEndDate *)thisWeek;

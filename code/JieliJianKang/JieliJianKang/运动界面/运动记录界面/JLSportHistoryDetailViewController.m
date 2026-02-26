@@ -63,8 +63,8 @@
     
     _userDataView = [JLSportHistoryUserDataView userDataView];
     [_userDataView setChart:_chart withAvgHeartRate:avgHeartRateCount];
-    self.titleLabel.text = self.chart.modelType == WatchSportType_OutDoor ? kJL_TXT("户外跑步") : kJL_TXT("室内跑步");
-    if ((self.chart.modelType == WatchSportType_OutDoor) && (self.chart.locationCoordsCount > 2)) {
+    self.titleLabel.text = self.chart.modelType == 0x01 ? kJL_TXT("户外跑步") : kJL_TXT("室内跑步");
+    if ((self.chart.modelType == 0x01) && (self.chart.locationCoordsCount > 2)) {
         self.tableHeaderContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.width, 625)];
         //设置高德地图
         self.mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, 0, self.tableHeaderContainerView.width, 425)];

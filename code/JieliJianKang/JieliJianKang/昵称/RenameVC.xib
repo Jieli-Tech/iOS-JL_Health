@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -23,10 +23,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lp3-8M-r0F">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵称" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzf-PT-Dna">
-                            <rect key="frame" x="188.5" y="80" width="37" height="35"/>
+                            <rect key="frame" x="188.5" y="44" width="37" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="NqN-PS-5bJ"/>
                             </constraints>
@@ -35,7 +35,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9a5-mn-neM">
-                            <rect key="frame" x="8" y="80" width="37" height="35"/>
+                            <rect key="frame" x="16" y="42" width="37" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="v0M-7G-O3l"/>
                             </constraints>
@@ -47,7 +47,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tOy-GZ-oZa">
-                            <rect key="frame" x="369" y="80" width="37" height="35"/>
+                            <rect key="frame" x="361" y="42" width="37" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="kT6-K6-KED"/>
                             </constraints>
@@ -61,13 +61,13 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="9a5-mn-neM" firstAttribute="leading" secondItem="Lp3-8M-r0F" secondAttribute="leading" constant="8" id="NMe-fQ-YaX"/>
-                        <constraint firstAttribute="trailing" secondItem="tOy-GZ-oZa" secondAttribute="trailing" constant="8" id="QHF-9I-9DH"/>
-                        <constraint firstAttribute="bottom" secondItem="tOy-GZ-oZa" secondAttribute="bottom" constant="15" id="TAJ-Bu-TEJ"/>
-                        <constraint firstAttribute="bottom" secondItem="9a5-mn-neM" secondAttribute="bottom" constant="15" id="iPv-44-Ive"/>
+                        <constraint firstItem="9a5-mn-neM" firstAttribute="leading" secondItem="Lp3-8M-r0F" secondAttribute="leading" constant="16" id="NMe-fQ-YaX"/>
+                        <constraint firstAttribute="trailing" secondItem="tOy-GZ-oZa" secondAttribute="trailing" constant="16" id="QHF-9I-9DH"/>
+                        <constraint firstAttribute="bottom" secondItem="tOy-GZ-oZa" secondAttribute="bottom" constant="11" id="TAJ-Bu-TEJ"/>
+                        <constraint firstAttribute="bottom" secondItem="9a5-mn-neM" secondAttribute="bottom" constant="11" id="iPv-44-Ive"/>
                         <constraint firstItem="tzf-PT-Dna" firstAttribute="centerX" secondItem="Lp3-8M-r0F" secondAttribute="centerX" id="kea-td-S3b"/>
-                        <constraint firstAttribute="bottom" secondItem="tzf-PT-Dna" secondAttribute="bottom" constant="15" id="saT-nS-lea"/>
-                        <constraint firstAttribute="height" constant="130" id="ylO-Am-ROa"/>
+                        <constraint firstAttribute="bottom" secondItem="tzf-PT-Dna" secondAttribute="bottom" constant="9" id="saT-nS-lea"/>
+                        <constraint firstAttribute="height" constant="88" id="ylO-Am-ROa"/>
                     </constraints>
                 </view>
             </subviews>

@@ -382,7 +382,7 @@
                 
                 [JL_Tools delay:0.5 Task:^{
                     [self setupUISuccess];
-                    if (result == JL_OTAResultSuccess)  [JL_Tools post:@"kUI_OTA_IS_OK" Object:nil];
+                    if (result == JL_OTAResultSuccess)  [JL_Tools post:kUI_OTA_IS_OK Object:nil];
                 }];
             }break;
             case JL_OTAResultFail:{

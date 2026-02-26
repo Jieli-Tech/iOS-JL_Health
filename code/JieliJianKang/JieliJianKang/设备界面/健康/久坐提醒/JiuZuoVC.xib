@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -25,7 +25,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="久坐提醒" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bF-Wz-8Zb">
-                            <rect key="frame" x="170.5" y="80" width="73.5" height="35"/>
+                            <rect key="frame" x="170.5" y="89" width="73.5" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="41M-cW-10X"/>
                             </constraints>
@@ -34,7 +34,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KTl-vb-x1r">
-                            <rect key="frame" x="8" y="77" width="67" height="43"/>
+                            <rect key="frame" x="8" y="83" width="67" height="43"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="43" id="Hcd-T9-Ecu"/>
                                 <constraint firstAttribute="width" constant="67" id="nSb-nB-8PW"/>
@@ -49,8 +49,8 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="130" id="8GA-PY-Gmw"/>
                         <constraint firstItem="5bF-Wz-8Zb" firstAttribute="centerX" secondItem="4kt-5H-ULo" secondAttribute="centerX" id="8vE-jQ-evw"/>
-                        <constraint firstAttribute="bottom" secondItem="5bF-Wz-8Zb" secondAttribute="bottom" constant="15" id="JVt-tL-Lgc"/>
-                        <constraint firstAttribute="bottom" secondItem="KTl-vb-x1r" secondAttribute="bottom" constant="10" id="PMd-86-kC1"/>
+                        <constraint firstAttribute="bottom" secondItem="5bF-Wz-8Zb" secondAttribute="bottom" constant="6" id="JVt-tL-Lgc"/>
+                        <constraint firstAttribute="bottom" secondItem="KTl-vb-x1r" secondAttribute="bottom" constant="4" id="PMd-86-kC1"/>
                         <constraint firstItem="KTl-vb-x1r" firstAttribute="leading" secondItem="4kt-5H-ULo" secondAttribute="leading" constant="8" id="ihb-OF-MFM"/>
                     </constraints>
                 </view>

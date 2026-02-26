@@ -7,6 +7,7 @@
 
 #import "WatchLocalView.h"
 #import "WatchCell.h"
+#import "CustomWatchVC.h"
 
 @interface WatchLocalView()<UICollectionViewDelegate,UICollectionViewDataSource,WatchCellDelegate,LanguagePtl>{
     UICollectionView    *subCollectView;
@@ -24,16 +25,16 @@
         //self.backgroundColor = [UIColor blueColor];
         self.frame = frame;
         [[LanguageCls share] add:self];
-        CGFloat itemW = (frame.size.width-42-32)/3;
-        CGFloat itemH = itemW+45;
+        CGFloat itemW = 110;
+        CGFloat itemH = itemW+58;
 
         self.isEdit = YES;
         
 //        [allLabel setTitle:kJL_TXT("全部") forState:UIControlStateNormal];
 //        titleLabel.text = kJL_TXT("本地表盘");
         
-        [allLabel setTitle:kJL_TXT("更多>") forState:UIControlStateNormal];
-        titleLabel.text = kJL_TXT("系统表盘");
+        [allLabel setTitle:kJL_TXT("全部") forState:UIControlStateNormal];
+        titleLabel.text = kJL_TXT("表盘");
         
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.itemSize = CGSizeMake(itemW, itemH);
@@ -147,6 +148,7 @@
 
     cell.subBtn.hidden      = YES;
     cell.subEditBtn.hidden  = YES;
+    cell.subEditBgBtn.hidden = YES;
     cell.subLabel.hidden    = YES;
     cell.subLabel_1.hidden  = YES;
     
@@ -155,9 +157,10 @@
     
     NSData *iconData = [WatchMarket getDataOfWatchIcon:watchTxt];
     if (iconData.length == 0) {
-        cell.subImageView.image = [UIImage imageNamed:@"watch_img_05"];
+        [cell.watchFaceBtn setImage:[UIImage imageNamed:@"watch_img_05"] forState:UIControlStateNormal];
+
     } else {
-        cell.subImageView.image = [UIImage imageWithData:iconData];
+        [cell.watchFaceBtn setImage:[UIImage imageWithData:iconData] forState:UIControlStateNormal];
     }
     
     if (self.isEdit == YES) {
@@ -165,11 +168,13 @@
         if ([watchTxt isEqual:watchName]) {
             cell.subType = WatchCellTypeUsed;
             cell.subEditBtn.hidden = NO;
+            cell.subEditBgBtn.hidden = NO;
         } else {
             cell.subType = WatchCellTypeUnUsed;
         }
     }else{
         cell.subEditBtn.hidden = YES;
+        cell.subEditBgBtn.hidden = YES;
     }
     
     if (self.isOperate) cell.subBtn.hidden = NO;
@@ -195,7 +200,14 @@
     }
 }
 
+-(void)onWatchCell:(WatchCell *)cell didEditIndex:(NSInteger)index{
+    NSString *watchTxt = self.dataArray[index];
 
+    CustomWatchVC *vc = [[CustomWatchVC alloc] init];
+    vc.watchName = watchTxt;
+    vc.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self.superVC presentViewController:vc animated:YES completion:nil];
+}
 
 -(void)setWatchFace:(NSString*)face{
     
@@ -216,7 +228,7 @@
 
 
 - (void)languageChange {
-    [allLabel setTitle:kJL_TXT("更多>") forState:UIControlStateNormal];
+    [allLabel setTitle:kJL_TXT("全部") forState:UIControlStateNormal];
     titleLabel.text = kJL_TXT("本地表盘");
 }
 

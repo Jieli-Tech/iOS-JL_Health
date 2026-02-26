@@ -72,6 +72,7 @@
 }
 
 -(void)initWithUI{
+    self.view.backgroundColor = kDF_RGBA(246, 247, 248, 1.0);
     CGFloat w = [UIScreen mainScreen].bounds.size.width;
     CGFloat h = [UIScreen mainScreen].bounds.size.height;
     if (_cardBottomArray.count == 1) {
@@ -86,7 +87,7 @@
     _scrollView.contentSize = CGSizeMake(w*(_cardBottomArray.count), h-8-_bottomHeight.constant-kJL_HeightNavBar);
     [self.view addSubview:self.scrollView];
     
-    RingSelectView *view1 = [[RingSelectView alloc] initWithFrame:CGRectMake(0, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height)];
+    RingSelectView *view1 = [[RingSelectView alloc] initWithFrame:CGRectMake(0, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height-120-kJL_HeightNavBar-kJL_HeightTabBar)];
     view1.rtcModel = self.rtcModel;
     view1.delegate = self;
     view1.dfArray = _itemRing;
@@ -94,7 +95,7 @@
     [_scrollView addSubview:view1];
     [_pageArray addObject:view1];
     for (int i = 0;i<_cardArray.count;i++) {
-        RingSelectView *view = [[RingSelectView alloc] initWithFrame:CGRectMake((i+1)*w, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height)];
+        RingSelectView *view = [[RingSelectView alloc] initWithFrame:CGRectMake((i+1)*w, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height-120-kJL_HeightNavBar-kJL_HeightTabBar)];
         view.rtcModel = self.rtcModel;
         view.delegate = self;
         view.type = [_cardArray[i] intValue];

@@ -159,11 +159,11 @@
     
     if ([selectArray containsObject:[dataArray objectAtIndex:indexPath.row]]) {
         [selectArray removeObject:[dataArray objectAtIndex:indexPath.row]];
-        [JL_Tools post:@"CLEAN_MUSIC_LIST" Object:nil];
+        [JL_Tools post:kUI_CLEAN_MUSIC_LIST Object:nil];
     } else {
         [selectArray addObject:[dataArray objectAtIndex:indexPath.row]];
         if (selectArray.count == dataArray.count) {
-            [JL_Tools post:@"CLEAN_MUSIC_LIST2" Object:nil];
+            [JL_Tools post:kUI_CLEAN_MUSIC_LIST2 Object:nil];
         }
     }
     

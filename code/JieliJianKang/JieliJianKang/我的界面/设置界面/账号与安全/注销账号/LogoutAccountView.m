@@ -30,8 +30,8 @@
 }
 
 -(void)initUI{
-    sw = [DFUITools screen_2_W];
-    sh = [DFUITools screen_2_H];
+    sw = [UIScreen mainScreen].bounds.size.width;
+    sh = [UIScreen mainScreen].bounds.size.height;
     
     bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, sw, sh)];
     [self addSubview:bgView];

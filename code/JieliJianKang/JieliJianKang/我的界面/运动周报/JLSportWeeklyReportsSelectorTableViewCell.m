@@ -61,7 +61,7 @@
 }
 
 - (void)setCompareLastWeekAchieveUpDays:(NSInteger)compareLastWeekAchieveUpDays {
-    if (compareLastWeekAchieveUpDays > 0) {
+    if (compareLastWeekAchieveUpDays >= 0) {
         _compareLastWeekAchieveUpDaysLabel.text = [NSString stringWithFormat:@"%ld%@", compareLastWeekAchieveUpDays, kJL_TXT("天")];
         _upImageView.image = [UIImage imageNamed:@"icon_up_nol"];
         [_upImageView setHidden:NO];

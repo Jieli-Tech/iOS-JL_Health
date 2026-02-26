@@ -50,12 +50,12 @@
 }
 
 -(void)initUI{
-    sw = [DFUITools screen_2_W];
-    sh = [DFUITools screen_2_H];
+    sw = [UIScreen mainScreen].bounds.size.width;
+    sh = [UIScreen mainScreen].bounds.size.height;
     
     mTitleHight.constant = kJL_HeightNavBar;
     
-    float sw = [DFUITools screen_2_W];
+    float sw = [UIScreen mainScreen].bounds.size.width;
     headView.frame = CGRectMake(0, 0, sw, kJL_HeightStatusBar+44);
     backBtn.frame  = CGRectMake(4, kJL_HeightStatusBar, 44, 44);
     titleName.text = kJL_TXT("账号与安全");
@@ -81,7 +81,7 @@
     changeMobileLabel.font =  [UIFont fontWithName:@"PingFang SC" size: 15];
     changeMobileLabel.textColor = kDF_RGBA(36, 36, 36, 1.0);
     
-    userWay = [[JL_Tools getUserByKey:@"httpUserWay"] intValue];
+    userWay = [[JL_Tools getUserByKey:kUI_HTTP_USER_WAY] intValue];
     if(userWay == JLUSER_WAY_PHONE) changeMobileLabel.text = kJL_TXT("修改手机号码");
     if(userWay == JLUSER_WAY_EMAIL) changeMobileLabel.text = kJL_TXT("更改邮箱地址");
 
@@ -97,7 +97,7 @@
     changeMobileLabel2.font = [UIFont fontWithName:@"PingFang SC" size: 13];
     changeMobileLabel2.textColor = kDF_RGBA(145, 145, 145, 1.0);
     changeMobileLabel2.textAlignment = NSTextAlignmentRight;
-    changeMobileLabel2.text = [JL_Tools getUserByKey:@"ACCOUNT_NUM"];
+    changeMobileLabel2.text = [JL_Tools getUserByKey:kUI_ACCOUNT_NUM];
     
     
     view2 = [[UIView alloc] initWithFrame:CGRectMake(0, view1.frame.origin.y+view1.frame.size.height+8, sw, 60)];
@@ -122,33 +122,33 @@
     
     changeMobileView = [[ChangeMobileView alloc] initWithFrame:CGRectMake(0, 0, sw, sh)];
     [self.view addSubview:changeMobileView];
-    changeMobileView.mobile = [JL_Tools getUserByKey:@"ACCOUNT_NUM"];
+    changeMobileView.mobile = [JL_Tools getUserByKey:kUI_ACCOUNT_NUM];
     changeMobileView.delegate = self;
     changeMobileView.hidden = YES;
     
     validationMobileView = [[ValidationMobileView alloc] initWithFrame:CGRectMake(0, 0, sw, sh)];
     [self.view addSubview:validationMobileView];
-    validationMobileView.mobile = [JL_Tools getUserByKey:@"ACCOUNT_NUM"];
+    validationMobileView.mobile = [JL_Tools getUserByKey:kUI_ACCOUNT_NUM];
     validationMobileView.delegate = self;
     validationMobileView.hidden = YES;
     
     logoutAccountLabel = [[UILabel alloc] init];
-    if([kJL_GET hasPrefix:@"zh"]){
-        logoutAccountLabel.frame = CGRectMake(76,sh-20-42,150,20);
+    if([kJL_GET hasPrefix:@"zh"]|| [kJL_GET isEqual:@"auto"]) {
+        logoutAccountLabel.frame = CGRectMake(120,sh-20-42,112,20);
     }else{
         logoutAccountLabel.frame = CGRectMake(46,sh-20-42,250,20);
     }
     logoutAccountLabel.numberOfLines = 0;
     logoutAccountLabel.text = kJL_TXT("不想继续使用了");
-    logoutAccountLabel.font =  [UIFont fontWithName:@"PingFangSC" size:13];
+    logoutAccountLabel.font =  [UIFont fontWithName:@"PingFangSC-Regular" size:14];
     logoutAccountLabel.textColor = kDF_RGBA(36, 36, 36, 1.0);
     [self.view addSubview:logoutAccountLabel];
     
     logoutAccountLabel2 = [[DFLabel alloc] init];
-    logoutAccountLabel2.frame = CGRectMake(logoutAccountLabel.frame.origin.x+logoutAccountLabel.frame.size.width-8,sh-20-42,70,20);
+    logoutAccountLabel2.frame = CGRectMake(logoutAccountLabel.frame.origin.x+logoutAccountLabel.frame.size.width+4,sh-20-42,70,20);
     logoutAccountLabel2.numberOfLines = 0;
     logoutAccountLabel2.text = kJL_TXT("注销账号");
-    logoutAccountLabel2.font =  [UIFont fontWithName:@"PingFangSC" size:13];
+    logoutAccountLabel2.font =  [UIFont fontWithName:@"PingFangSC-Medium" size:14];
     logoutAccountLabel2.textColor = kDF_RGBA(85, 140, 255, 1.0);
     logoutAccountLabel2.labelType = DFLeftRight;
     logoutAccountLabel2.textAlignment = NSTextAlignmentLeft;
@@ -173,7 +173,8 @@
 -(void)changePwdAction{
     ChangePwdVC *vc = [[ChangePwdVC alloc] init];
     vc.modalPresentationStyle = UIModalPresentationFullScreen;
-    [JLApplicationDelegate.navigationController pushViewController:vc animated:YES];
+    [self presentViewController:vc animated:YES completion:nil];
+    //[JLApplicationDelegate.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark 修改手机号弹窗取消
@@ -235,10 +236,10 @@
             [self removeNote];
             [self.navigationController popViewControllerAnimated:YES];
         }];
-        [JL_Tools post:@"LOGOUT" Object:nil];
-        [JL_Tools removeUserByKey:@"ACCOUNT_NUM"];
-        [JL_Tools removeUserByKey:@"accessToken"];
-        [JL_Tools removeUserByKey:@"httpUserWay"];
+        [JL_Tools post:kUI_LOGOUT Object:nil];
+        [JL_Tools removeUserByKey:kUI_ACCOUNT_NUM];
+        [JL_Tools removeUserByKey:kUI_ACCESS_TOKEN];
+        [JL_Tools removeUserByKey:kUI_HTTP_USER_WAY];
         
         [self deleteDBFile];
         [UserProfile removeProfile];
@@ -267,13 +268,13 @@
 }
 
 -(void)addNote{
-    [JL_Tools add:@"CHANGE_PHONE_PWD" Action:@selector(modifySuccess:) Own:self];
-    [JL_Tools add:@"CHANGE_PHONE_NUM" Action:@selector(modifyPhoneNum:) Own:self];
+    [JL_Tools add:kUI_CHANGE_PHONE_PWD Action:@selector(modifySuccess:) Own:self];
+    [JL_Tools add:kUI_CHANGE_PHONE_NUM Action:@selector(modifyPhoneNum:) Own:self];
 }
 
 -(void)removeNote{
-    [JL_Tools remove:@"CHANGE_PHONE_PWD" Own:self];
-    [JL_Tools remove:@"CHANGE_PHONE_NUM" Own:self];
+    [JL_Tools remove:kUI_CHANGE_PHONE_PWD Own:self];
+    [JL_Tools remove:kUI_CHANGE_PHONE_NUM Own:self];
 }
 
 -(void)dealloc{

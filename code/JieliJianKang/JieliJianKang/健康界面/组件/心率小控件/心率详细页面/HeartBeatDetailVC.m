@@ -199,7 +199,7 @@ typedef NS_ENUM(NSUInteger, HeartRateType) {
 -(void)ecHistogramPlus:(ECBrokenLine *)echp selectPoint:(ECPoint *)point{
     switch (dType) {
         case     DateType_Week:{
-            [dateView setSecondLab:point.date.standardDate];
+            [dateView setSecondLab:point.date.toMMdd];
             NSString *hRate;
             if (point.maxY == 0 || point.minY == 0) {
                 hRate = @"- -";
@@ -225,7 +225,7 @@ typedef NS_ENUM(NSUInteger, HeartRateType) {
             [self->restingHeartRateView hbMsgLabel:[NSString stringWithFormat:@"%d",(int)point.resValue] Units:kJL_TXT("次/分钟")];
         }break;
         case     DateType_Year:{
-            [dateView setSecondLab:point.date.toMM];
+            [dateView setSecondLab:point.date.toYYYYMM];
             NSString *hRate;
             if (point.maxY == 0 || point.minY == 0) {
                 hRate = @"- -";
@@ -300,15 +300,34 @@ typedef NS_ENUM(NSUInteger, HeartRateType) {
     [self checkOut];
 }
 
+-(void)updateDateRightBtnStatus{
+    switch (dType) {
+        case DateType_Day:{
+            dateView.rightBtn.hidden = !nowDate.beforeNow_0;
+        }break;
+        case DateType_Week:{
+            dateView.rightBtn.hidden = !nowDate.beforeThisWeek_0;
+        }break;
+        case DateType_Month:{
+            dateView.rightBtn.hidden = !nowDate.beforeThisMonth_0;
+        }break;
+        case DateType_Year:{
+            dateView.rightBtn.hidden = !nowDate.beforeThisYear_0;
+        }break;
+        default:
+            break;
+    }
+}
 
 -(void)checkOut{
+    [self updateDateRightBtnStatus];
     switch (dType) {
         case     DateType_Day:{
             [DataOverRallPlanHeartRate heartRateDate:nowDate result:^(HeartRateModel * _Nonnull model) {
                 self->brokenlineView.timeLabArray = @[@"00:00",@"06:00",@"12:00",@"18:00",@"00:00"];
                 self->brokenlineView.dtNumber = 288;
                 self->brokenlineView.lineType = BrokenLineType_Normal;
-                self->brokenlineView.dataArray = model.pointArray;
+                self->brokenlineView.dataArray = model.pointArray == nil ? [self makeNonePoint]:model.pointArray;
                 self->brokenlineView.pointColor = [UIColor greenColor];
                 self->brokenlineView.bottomTextFont = [UIFont fontWithName:@"PingFangSC-Regular" size: 10];
                 [self->brokenlineView setNeedsDisplay];
@@ -317,6 +336,7 @@ typedef NS_ENUM(NSUInteger, HeartRateType) {
                 [self->restingHeartRateView hbMsgLabel:[NSString stringWithFormat:@"%d",(int)model.res] Units:kJL_TXT("次/分钟")];
                 CGPoint P = [model.pointArray[0] CGPointValue];
                 [self ecBrokenLine:self->brokenlineView dataValue:P.y Index:P.x];
+                [self->brokenlineView showLineAtFirstPoint];
             }];
             
         }break;
@@ -336,7 +356,7 @@ typedef NS_ENUM(NSUInteger, HeartRateType) {
                 self->brokenlineView.cellColor = [UIColor whiteColor];
                 [self->brokenlineView setPointTarget:0];
                 self->brokenlineView.cellsWidth = 8;
-                self->brokenlineView.pointColor = [UIColor whiteColor];
+                self->brokenlineView.pointColor = [UIColor greenColor];
                 [self->brokenlineView setNeedsDisplay];
                 [self->dateView setTitleLab:[NSString stringWithFormat:@"%@-%@",dates.start.toYYYYMMdd2,dates.end.toYYYYMMdd2] SecondLabel:@""];
                 [self ecHistogramPlus:self->brokenlineView selectPoint:models.firstObject];
@@ -358,9 +378,9 @@ typedef NS_ENUM(NSUInteger, HeartRateType) {
                 self->brokenlineView.cellColor = [UIColor whiteColor];
                 [self->brokenlineView setPointTarget:0];
                 self->brokenlineView.cellsWidth = 8;
-                self->brokenlineView.pointColor = [UIColor whiteColor];
+                self->brokenlineView.pointColor = [UIColor greenColor];
                 [self->brokenlineView setNeedsDisplay];
-                [self->dateView setTitleLab:[NSString stringWithFormat:@"%@-%@",dates.start.toYYYYMMdd2,dates.end.toYYYYMMdd2] SecondLabel:@""];
+                [self->dateView setTitleLab:[NSString stringWithFormat:@"%@",dates.start.toYYYYMM] SecondLabel:@""];
                 [self ecHistogramPlus:self->brokenlineView selectPoint:models.firstObject];
             }];
         }break;
@@ -379,10 +399,10 @@ typedef NS_ENUM(NSUInteger, HeartRateType) {
                 self->brokenlineView.cellColor = [UIColor whiteColor];
                 [self->brokenlineView setPointTarget:0];
                 self->brokenlineView.cellsWidth = 8;
-                self->brokenlineView.pointColor = [UIColor whiteColor];
+                self->brokenlineView.pointColor = [UIColor greenColor];
                 self->brokenlineView.bottomTextFont = [UIFont fontWithName:@"PingFangSC-Regular" size: 10];
                 [self->brokenlineView setNeedsDisplay];
-                [self->dateView setTitleLab:[NSString stringWithFormat:@"%@-%@",dates.start.toYYYYMMdd2,dates.end.toYYYYMMdd2] SecondLabel:@""];
+                [self->dateView setTitleLab:[NSString stringWithFormat:@"%@-%@",dates.start.toYYYYMM,dates.end.toYYYYMM] SecondLabel:@""];
                 [self ecHistogramPlus:self->brokenlineView selectPoint:models.firstObject];
             }];
         }break;
@@ -557,6 +577,13 @@ typedef NS_ENUM(NSUInteger, HeartRateType) {
 //}
 
 
-
+-(NSArray *)makeNonePoint{
+    NSMutableArray *array = [NSMutableArray new];
+    for (int i = 0; i<288; i++) {
+        NSValue *v = [NSValue valueWithCGPoint:CGPointMake(i, 0)];
+        [array addObject:v];
+    }
+    return array;
+}
 
 @end

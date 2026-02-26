@@ -77,12 +77,11 @@
     self.FileTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height-y)];
     self.FileTableView.delegate = self;
     self.FileTableView.dataSource = self;
-    self.FileTableView.rowHeight = 50;
+    self.FileTableView.rowHeight = 56;
     self.FileTableView.tableFooterView = [UIView new];
-    self.FileTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    self.FileTableView.separatorInset = UIEdgeInsetsMake(0, 10, 0, 0);
-    self.FileTableView.separatorColor = [UIColor colorWithRed:248.0/255.0 green:250.0/255.0 blue:252.0/255.0 alpha:1.0];
+    self.FileTableView.separatorColor = [JLColor colorWithString:@"#F7F7F7"];
+    self.FileTableView.separatorInset = UIEdgeInsetsMake(0, 16, 0, 0);
     if (self.type!=-1) {
         [[DMusicHandler sharedInstance] setNowEntity:kJL_BLE_EntityM];
         
@@ -172,9 +171,9 @@
         JLModel_Ring *ring = self.dfArray[indexPath.row];
         cell.animaLab.text = ring.name;
         if (ring.index == self.rtcModel.ringInfo.clust) {
-            cell.selectImgv.image = [UIImage imageNamed:@"icon_sel"];
+            cell.selectImgv.image = [UIImage imageNamed:@"Theme.bundle/icon_sel"];
         }else{
-            cell.selectImgv.image = [UIImage imageNamed:@"icon_nor"];
+            cell.selectImgv.image = [UIImage imageNamed:@"Theme.bundle/icon_nor"];
         }
     }else{
         JLModel_File *model = itemArray[indexPath.row];
@@ -191,9 +190,9 @@
             cell.songImgv.image = [UIImage imageNamed:@"list_icon_music"];//文件
         }
         if (model.fileClus == self.rtcModel.ringInfo.clust) {
-            cell.selectImgv.image = [UIImage imageNamed:@"icon_sel"];
+            cell.selectImgv.image = [UIImage imageNamed:@"Theme.bundle/icon_sel"];
         }else{
-            cell.selectImgv.image = [UIImage imageNamed:@"icon_nor"];
+            cell.selectImgv.image = [UIImage imageNamed:@"Theme.bundle/icon_nor"];
         }
     }
     return cell;

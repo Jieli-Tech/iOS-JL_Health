@@ -16,6 +16,21 @@
 
 
 //static NSDateFormatter *fm = [EcTools cachedFm];
+-(NSString *)toYYYY{
+    NSDateFormatter *fm = [EcTools cachedFm];
+    [fm setDateFormat:@"yyyy"];
+    return [fm stringFromDate:self];
+}
+
+- (NSString *)toYYYYMM {
+    NSDateFormatter *fm = [EcTools cachedFm];
+    if ([kJL_GET isEqualToString:@"zh-Hans"]) {
+        [fm setDateFormat:@"yyyy年MM月"];
+    }else{
+        [fm setDateFormat:@"yyyy/MM"];
+    }
+    return [fm stringFromDate:self];
+}
 
 - (NSString *)toYYYYMMdd {
     NSDateFormatter *fm = [EcTools cachedFm];
@@ -169,6 +184,15 @@
 
 
 -(NSDate *)next{
+    NSDate *dt = [NSDate dateWithTimeInterval:24*60*60 sinceDate:self];
+    if (dt.beforeNow){
+        return dt;
+    }
+    return self;
+}
+
+-(NSDate *)next_0{
+
     return [NSDate dateWithTimeInterval:24*60*60 sinceDate:self];
 }
 
@@ -177,7 +201,11 @@
 }
 
 -(NSDate *)nextWeek{
-    return [NSDate dateWithTimeInterval:24*60*60*7 sinceDate:self];
+    NSDate *dt = [NSDate dateWithTimeInterval:24*60*60*7 sinceDate:self];
+    if (dt.beforeThisWeek){
+        return dt;
+    }
+    return self;
 }
 -(NSDate *)beforeWeek{
     return [NSDate dateWithTimeInterval:-24*60*60*7 sinceDate:self];
@@ -189,7 +217,21 @@
     components2.month = 1;
     NSCalendar *calendar3 = [NSCalendar currentCalendar];
     NSDate *currentDate = self;
-    return [calendar3 dateByAddingComponents:components2 toDate:currentDate options:NSCalendarMatchStrictly];
+    NSDate *dt = [calendar3 dateByAddingComponents:components2 toDate:currentDate options:NSCalendarMatchStrictly];
+    if (dt.beforeThisMonth){
+        return dt;
+    }
+    return self;
+}
+
+-(NSDate *)nextMonth_0{
+    NSDateComponents * components2 = [[NSDateComponents alloc] init];
+    components2.year = 0;
+    components2.month = 1;
+    NSCalendar *calendar3 = [NSCalendar currentCalendar];
+    NSDate *currentDate = self;
+    NSDate *dt = [calendar3 dateByAddingComponents:components2 toDate:currentDate options:NSCalendarMatchStrictly];
+    return dt;
 }
 
 -(NSDate *)beforeMonth{
@@ -206,8 +248,11 @@
     components2.year = 1;
     NSCalendar *calendar3 = [NSCalendar currentCalendar];
     NSDate *currentDate = self;
-    NSDate *nextDate = [calendar3 dateByAddingComponents:components2 toDate:currentDate options:NSCalendarMatchStrictly];
-    return nextDate;
+    NSDate *dt = [calendar3 dateByAddingComponents:components2 toDate:currentDate options:NSCalendarMatchStrictly];
+    if (dt.beforeThisYear){
+        return dt;
+    }
+    return self;
 }
 
 -(NSDate *)beforeYear{
@@ -229,6 +274,114 @@
     return NO;
 }
 
+//MARK: - 日期比较
+
+/// 在今天之前
+-(BOOL)beforeNow{
+    NSString *str = self.toYYYYMMdd;
+    NSString *str1 = [NSDate new].toYYYYMMdd;
+    NSDateFormatter *fm = [EcTools cachedFm];
+    [fm setDateFormat:@"yyyy-MM-dd"];
+    NSTimeInterval t = [[fm dateFromString:str] timeIntervalSince1970];
+    NSTimeInterval t1 = [[fm dateFromString:str1] timeIntervalSince1970];
+    return  t1 >= t;
+}
+
+/// 在这周之前
+-(BOOL)beforeThisWeek{
+    StartAndEndDate *a0 = self.thisWeek;
+    StartAndEndDate *a1 = [NSDate new].thisWeek;
+    
+    NSString *str = a0.end.toYYYYMMdd;
+    NSString *str1 = a1.end.toYYYYMMdd;
+    NSDateFormatter *fm = [EcTools cachedFm];
+    [fm setDateFormat:@"yyyy-MM-dd"];
+    NSTimeInterval t = [[fm dateFromString:str] timeIntervalSince1970];
+    NSTimeInterval t1 = [[fm dateFromString:str1] timeIntervalSince1970];
+    return  t1 >= t;
+}
+
+/// 在这个月之前
+-(BOOL)beforeThisMonth{
+    StartAndEndDate *a0 = self.thisMonth;
+    StartAndEndDate *a1 = [NSDate new].thisMonth;
+    
+    NSString *str = a0.end.toYYYYMMdd;
+    NSString *str1 = a1.end.toYYYYMMdd;
+    NSDateFormatter *fm = [EcTools cachedFm];
+    [fm setDateFormat:@"yyyy-MM-dd"];
+    NSTimeInterval t = [[fm dateFromString:str] timeIntervalSince1970];
+    NSTimeInterval t1 = [[fm dateFromString:str1] timeIntervalSince1970];
+    return  t1 >= t;
+}
+
+/// 在今年之前
+-(BOOL)beforeThisYear{
+    StartAndEndDate *a0 = self.thisYear;
+    StartAndEndDate *a1 = [NSDate new].thisYear;
+    
+    NSString *str = a0.end.toYYYYMMdd;
+    NSString *str1 = a1.end.toYYYYMMdd;
+    NSDateFormatter *fm = [EcTools cachedFm];
+    [fm setDateFormat:@"yyyy-MM-dd"];
+    NSTimeInterval t = [[fm dateFromString:str] timeIntervalSince1970];
+    NSTimeInterval t1 = [[fm dateFromString:str1] timeIntervalSince1970];
+    return  t1 >= t;
+}
+
+/// 在今天之前(不含当前）
+-(BOOL)beforeNow_0{
+    NSString *str = self.toYYYYMMdd;
+    NSString *str1 = [NSDate new].toYYYYMMdd;
+    NSDateFormatter *fm = [EcTools cachedFm];
+    [fm setDateFormat:@"yyyy-MM-dd"];
+    NSTimeInterval t = [[fm dateFromString:str] timeIntervalSince1970];
+    NSTimeInterval t1 = [[fm dateFromString:str1] timeIntervalSince1970];
+    return  t1 > t;
+}
+
+/// 在这周之前(不含当前）
+-(BOOL)beforeThisWeek_0{
+    StartAndEndDate *a0 = self.thisWeek;
+    StartAndEndDate *a1 = [NSDate new].thisWeek;
+    
+    NSString *str = a0.end.toYYYYMMdd;
+    NSString *str1 = a1.end.toYYYYMMdd;
+    NSDateFormatter *fm = [EcTools cachedFm];
+    [fm setDateFormat:@"yyyy-MM-dd"];
+    NSTimeInterval t = [[fm dateFromString:str] timeIntervalSince1970];
+    NSTimeInterval t1 = [[fm dateFromString:str1] timeIntervalSince1970];
+    return  t1 > t;
+}
+
+/// 在这个月之前(不含当前）
+-(BOOL)beforeThisMonth_0{
+    StartAndEndDate *a0 = self.thisMonth;
+    StartAndEndDate *a1 = [NSDate new].thisMonth;
+    
+    NSString *str = a0.end.toYYYYMMdd;
+    NSString *str1 = a1.end.toYYYYMMdd;
+    NSDateFormatter *fm = [EcTools cachedFm];
+    [fm setDateFormat:@"yyyy-MM-dd"];
+    NSTimeInterval t = [[fm dateFromString:str] timeIntervalSince1970];
+    NSTimeInterval t1 = [[fm dateFromString:str1] timeIntervalSince1970];
+    return  t1 > t;
+}
+
+/// 在今年之前(不含当前）
+-(BOOL)beforeThisYear_0{
+    StartAndEndDate *a0 = self.thisYear;
+    StartAndEndDate *a1 = [NSDate new].thisYear;
+    
+    NSString *str = a0.end.toYYYYMMdd;
+    NSString *str1 = a1.end.toYYYYMMdd;
+    NSDateFormatter *fm = [EcTools cachedFm];
+    [fm setDateFormat:@"yyyy-MM-dd"];
+    NSTimeInterval t = [[fm dateFromString:str] timeIntervalSince1970];
+    NSTimeInterval t1 = [[fm dateFromString:str1] timeIntervalSince1970];
+    return  t1 > t;
+}
+
 -(StartAndEndDate *)thisWeek{
     NSDate *now = self;
     NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -241,7 +394,7 @@
     }
     StartAndEndDate *sae = [StartAndEndDate new];
     sae.end = [NSDate dateWithTimeInterval:24*60*60*(7-weekDay) sinceDate:self].toEndOfDate;
-    sae.start = sae.end.beforeWeek.toStartOfDate;
+    sae.start = sae.end.beforeWeek.toStartOfDate.next_0;
     return sae;
 }
 

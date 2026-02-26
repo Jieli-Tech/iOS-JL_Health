@@ -43,8 +43,8 @@
 }
 
 -(void)setupUI{
-    CGFloat width = [DFUITools screen_2_W];
-    CGFloat sH = [DFUITools screen_2_H];
+    CGFloat width = [UIScreen mainScreen].bounds.size.width;
+    CGFloat sH = [UIScreen mainScreen].bounds.size.height;
     float all_H = 850;
     
     UIScrollView *scView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, width, sH)];

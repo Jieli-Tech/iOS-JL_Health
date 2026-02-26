@@ -450,12 +450,27 @@
 #pragma mark - 添加选择器中间行上下两条分割线（iOS14之后系统默认去掉，需要手动添加）
 - (void)addSeparatorLineView:(UIView *)pickerView {
     if ([UIDevice currentDevice].systemVersion.doubleValue >= 14.0) {
-        UIView *topLineView = [[UIView alloc]initWithFrame:CGRectMake(0, pickerView.bounds.size.height / 2 - self.rowHeight / 2, pickerView.bounds.size.width, 0.5f)];
+        UIView *topLineView = [[UIView alloc]initWithFrame:CGRectMake(0, pickerView.bounds.size.height / 2 - self.rowHeight / 2, pickerView.bounds.size.width, 0.5)];
         topLineView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
         topLineView.backgroundColor = self.separatorColor;
         [pickerView addSubview:topLineView];
         
-        UIView *bottomLineView = [[UIView alloc]initWithFrame:CGRectMake(0, pickerView.bounds.size.height / 2 + self.rowHeight / 2, pickerView.bounds.size.width, 0.5f)];
+        UIView *bottomLineView = [[UIView alloc]initWithFrame:CGRectMake(0, pickerView.bounds.size.height / 2 + self.rowHeight / 2, pickerView.bounds.size.width, 0.5)];
+        bottomLineView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
+        bottomLineView.backgroundColor = self.separatorColor;
+        [pickerView addSubview:bottomLineView];
+    }
+}
+
+#pragma mark - 添加选择器中间行上下两条分割线（iOS14之后系统默认去掉，需要手动添加）
+- (void)addSeparatorMyLineView:(UIView *)pickerView {
+    if ([UIDevice currentDevice].systemVersion.doubleValue >= 14.0) {
+        UIView *topLineView = [[UIView alloc]initWithFrame:CGRectMake(20, pickerView.bounds.size.height / 2 - self.rowHeight / 2, pickerView.bounds.size.width, 0.5)];
+        topLineView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
+        topLineView.backgroundColor = self.separatorColor;
+        [pickerView addSubview:topLineView];
+        
+        UIView *bottomLineView = [[UIView alloc]initWithFrame:CGRectMake(20, pickerView.bounds.size.height / 2 + self.rowHeight / 2, pickerView.bounds.size.width, 0.5)];
         bottomLineView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
         bottomLineView.backgroundColor = self.separatorColor;
         [pickerView addSubview:bottomLineView];

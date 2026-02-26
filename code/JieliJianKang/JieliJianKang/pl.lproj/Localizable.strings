@@ -325,7 +325,7 @@
 "体重设定" = "Ustawienie wagi";
 "体重目标" = "Cel wagi";
 "起始" = "uruchomić:";
-"目标" = "cel:";
+"目标" = "cel";
 "消耗约" = "Konsumpcja jest o";
 "最新" = "Najnowsze:";
 "最低值" = "Minimalne";
@@ -378,7 +378,7 @@
 "添加表盘..." = "Dodaj tarczę...";
 "更新表盘..." = "Aktualizuj pokrętło...";
 "本地表盘" = "Wybieranie lokalne";
-"全部" = "Całość >";
+"全部" = "Całość";
 "管理" = "Podawanie";
 "闹钟" = "Budzik";
 "铃声" = "Dzwonki";
@@ -401,7 +401,7 @@
 "电量" = "Moc";
 "升级" = "Uaktualnienie";
 "当前版本"= "bieżąca wersja";
-"固件升级" = "Aktualizacja oprogramowania";
+"固件更新" = "Aktualizacja oprogramowania";
 "检查更新" = "Sprawdź aktualizacje";
 "OTA升级失败" = "Aktualizacja OTA nie powiodła się";
 "OTA升级数据为空!" = "Dane aktualizacji OTA są puste!";
@@ -584,7 +584,7 @@
 "选择周间隔" = "Wybierz odstęp tygodniowy";
 "服务器开小差" = "Serwer poza służbą";
 
-"手机蓝牙通话" = "Połączenie Bluetooth komórkowe";
+"手表蓝牙通话" = "Oglądaj połączenie Bluetooth";
 "表盘" = "tarcza zegarowa";
 "购买记录" = "Rejestr zakupu";
 "蓝牙" = "Bluetooth";
@@ -592,7 +592,7 @@
 "系统表盘" = "Wykręcenie systemowe";
 "免费表盘" = "Darmowe wybieranie";
 "付费表盘" = "Wybieranie płatne";
-"更多>" = "Więcej>";
+"更多>" = "Więcej >";
 "表盘商城"= "Dial Mall";
 "我的表盘" = "Moja tarcza";
 "免费" = "Darmowe";
@@ -674,3 +674,7 @@
 "是否删除" = "Usuń lub nie";
 "复制" = "kopia";
 "多选" = "Wielokrotny wybór";
+"珠海市杰理科技股份有限公司" = "www.zh-jieli.com";
+"是否要清除用户缓存" = "Czy chcesz wyczyścić pamięć podręczną użytkownika?";
+"AI表盘" = "Tarcza AI";
+"正在传输中" = "Przenoszenie...";

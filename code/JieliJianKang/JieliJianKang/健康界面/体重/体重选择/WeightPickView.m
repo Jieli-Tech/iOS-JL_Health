@@ -58,9 +58,9 @@
         [sView addSubview:iPlate];
         [self addSubview:sView];
         
-        UIImageView *redImage = [[UIImageView alloc] initWithFrame:CGRectMake(view_W/2.0-4.0, -10.0, 8.0, 39)];
-        redImage.image = [UIImage imageNamed:@"weight_img_nol"];
-        redImage.contentMode = UIViewContentModeScaleAspectFit;
+        UIImageView *redImage = [[UIImageView alloc] initWithFrame:CGRectMake(view_W/2.0-7.0, -26.0, 14.0, 75)];
+        redImage.image = [UIImage imageNamed:@"icon_triangle_nol"];
+        redImage.contentMode = UIViewContentModeScaleToFill;
         [self addSubview:redImage];
     }
     return self;

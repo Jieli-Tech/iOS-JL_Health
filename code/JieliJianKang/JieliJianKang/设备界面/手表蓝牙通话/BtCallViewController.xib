@@ -27,9 +27,8 @@
                     <rect key="frame" x="0.0" y="0.0" width="390" height="100"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手表蓝牙通话" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mn9-KN-UDc">
-                            <rect key="frame" x="80" y="64" width="302" height="21"/>
+                            <rect key="frame" x="140" y="64" width="110.33333333333331" height="21"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="302" id="Fk5-hf-j1w"/>
                                 <constraint firstAttribute="height" constant="21" id="k0q-9J-fpJ"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
@@ -37,10 +36,10 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="080-HP-So4">
-                            <rect key="frame" x="8" y="51" width="60" height="46"/>
+                            <rect key="frame" x="8" y="51" width="50" height="46"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="46" id="Ous-b7-5Zh"/>
-                                <constraint firstAttribute="width" constant="60" id="jR9-YE-CKE"/>
+                                <constraint firstAttribute="width" constant="50" id="jR9-YE-CKE"/>
                             </constraints>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" image="icon_return_nol" title=""/>
@@ -52,7 +51,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="mn9-KN-UDc" secondAttribute="bottom" constant="15" id="EKU-e1-h0r"/>
-                        <constraint firstItem="mn9-KN-UDc" firstAttribute="centerX" secondItem="G4X-fa-OHd" secondAttribute="centerX" constant="36" id="KMo-lI-TEs"/>
+                        <constraint firstItem="mn9-KN-UDc" firstAttribute="centerX" secondItem="G4X-fa-OHd" secondAttribute="centerX" id="KMo-lI-TEs"/>
                         <constraint firstAttribute="height" constant="100" id="R3h-Nl-fmD"/>
                         <constraint firstItem="080-HP-So4" firstAttribute="leading" secondItem="G4X-fa-OHd" secondAttribute="leading" constant="8" id="Yzx-jz-EvU"/>
                         <constraint firstAttribute="bottom" secondItem="080-HP-So4" secondAttribute="bottom" constant="3" id="bMA-gi-LSI"/>

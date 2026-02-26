@@ -14,9 +14,29 @@ NSString *kUI_JL_DEVICE_CHANGE          = @"UI_JL_DEVICE_CHANGE";
 NSString *kUI_JL_DEVICE_PREPARING       = @"UI_JL_DEVICE_PREPARING";
 NSString *kUI_JL_DEVICE_OTA             = @"UI_JL_DEVICE_OTA";
 
-
 NSString *kUI_JL_BLE_SCAN_OPEN          = @"UI_JL_BLE_SCAN_OPEN";
 NSString *kUI_JL_BLE_SCAN_CLOSE         = @"UI_JL_BLE_SCAN_CLOSE";
+
+NSString *kUI_JL_STOP_TTS               = @"UI_JL_STOP_TTS";
+NSString *kUI_JL_NO_RECORED             = @"UI_JL_NO_RECORED";
+NSString *kUI_AI_BECOME_ACTIVE          = @"UI_AI_BECOME_ACTIVE";
+NSString *kUI_RECONNECT_TO_DEVICE       = @"UI_RECONNECT_TO_DEVICE";
+NSString *kUI_OTA_IS_OK                 = @"UI_OTA_IS_OK";
+NSString *kUI_FOR_IOS_REVIEW            = @"UI_FOR_IOS_REVIEW";
+NSString *kUI_TOKEN_IS_NULL             = @"UI_TOKEN_IS_NULL";
+NSString *kUI_LOGOUT                    = @"UI_LOGOUT";
+NSString *kUI_ENTER_MAIN_VC             = @"UI_ENTER_MAIN_VC";
+NSString *kUI_ACCOUNT_NUM               = @"UI_ACCOUNT_NUM";
+NSString *kUI_ACCESS_TOKEN              = @"UI_ACCESS_TOKEN";
+NSString *kUI_HTTP_USER_WAY             = @"UI_HTTP_USER_WAY";
+NSString *kUI_CHANGE_PHONE_PWD          = @"UI_CHANGE_PHONE_PWD";
+NSString *kUI_CHANGE_PHONE_NUM          = @"UI_CHANGE_PHONE_NUM";
+NSString *kUI_CLEAN_MUSIC_LIST          = @"UI_CLEAN_MUSIC_LIST";
+NSString *kUI_CLEAN_MUSIC_LIST2         = @"UI_CLEAN_MUSIC_LIST2";
+NSString *kUI_DELETE_DEVICE_MODEL       = @"UI_DELETE_DEVICE_MODEL";
+NSString *kUI_SHOW_EDR_VIEW             = @"UI_SHOW_EDR_VIEW";
+NSString *kUI_INSTALL_DIAL_SUCCESS      = @"UI_INSTALL_DIAL_SUCCESS";
+
 
 @interface JL_RunSDK(){
     NSTimer         *scanTimer;

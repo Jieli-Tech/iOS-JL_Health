@@ -40,8 +40,8 @@
 -(void)initUI{
     self.view.backgroundColor = kDF_RGBA(248, 250, 252, 1.0);
     
-    sW = [DFUITools screen_2_W];
-    sH = [DFUITools screen_2_H];
+    sW = [UIScreen mainScreen].bounds.size.width;
+    sH = [UIScreen mainScreen].bounds.size.height;
     
     titleHeight.constant = kJL_HeightNavBar;
     

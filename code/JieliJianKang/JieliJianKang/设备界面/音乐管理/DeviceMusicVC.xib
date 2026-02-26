@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -45,7 +45,7 @@
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ruE-4X-wy2">
-                    <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                    <rect key="frame" x="0.0" y="96" width="414" height="800"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Theme.bundle/device_nil.png" translatesAutoresizingMaskIntoConstraints="NO" id="yls-20-Bsx">
                             <rect key="frame" x="113" y="90" width="188" height="164"/>
@@ -83,21 +83,15 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SLm-PH-ltq">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="音乐管理" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRc-go-Q0m">
-                            <rect key="frame" x="170.5" y="58.5" width="73.5" height="21.5"/>
-                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
-                            <color key="textColor" red="0.14116021989999999" green="0.14118680359999999" blue="0.14115440849999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bif-g2-U7T">
-                            <rect key="frame" x="16" y="52" width="28" height="28"/>
+                            <rect key="frame" x="15" y="52" width="28" height="28"/>
                             <state key="normal" image="icon_return_nol"/>
                             <connections>
                                 <action selector="backBtnFunc:" destination="-1" eventType="touchUpInside" id="BfY-VW-y0N"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="moR-3l-HCb">
-                            <rect key="frame" x="355" y="50" width="43" height="30"/>
+                            <rect key="frame" x="351" y="52" width="43" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="moR-3l-HCb" secondAttribute="height" multiplier="43:30" id="d1S-dP-6UI"/>
                             </constraints>
@@ -108,15 +102,21 @@
                                 <action selector="addMusicBtnFunc:" destination="-1" eventType="touchUpInside" id="WnC-TS-558"/>
                             </connections>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="音乐管理" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRc-go-Q0m">
+                            <rect key="frame" x="170.5" y="56" width="73.5" height="21.5"/>
+                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
+                            <color key="textColor" red="0.14116021989999999" green="0.14118680359999999" blue="0.14115440849999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="Bif-g2-U7T" secondAttribute="bottom" constant="8" id="4iw-w9-vqg"/>
                         <constraint firstAttribute="height" constant="88" id="5ha-ck-5bw"/>
-                        <constraint firstItem="Bif-g2-U7T" firstAttribute="leading" secondItem="SLm-PH-ltq" secondAttribute="leading" constant="16" id="ID4-8G-Fh0"/>
-                        <constraint firstAttribute="bottom" secondItem="moR-3l-HCb" secondAttribute="bottom" constant="8" id="NdY-EI-zBn"/>
-                        <constraint firstAttribute="trailing" secondItem="moR-3l-HCb" secondAttribute="trailing" constant="16" id="jI1-O6-bl3"/>
-                        <constraint firstAttribute="bottom" secondItem="HRc-go-Q0m" secondAttribute="bottom" constant="8" id="ro9-Yq-dXM"/>
+                        <constraint firstItem="Bif-g2-U7T" firstAttribute="leading" secondItem="SLm-PH-ltq" secondAttribute="leading" constant="15" id="ID4-8G-Fh0"/>
+                        <constraint firstAttribute="bottom" secondItem="moR-3l-HCb" secondAttribute="bottom" constant="6" id="NdY-EI-zBn"/>
+                        <constraint firstAttribute="trailing" secondItem="moR-3l-HCb" secondAttribute="trailing" constant="20" id="jI1-O6-bl3"/>
+                        <constraint firstAttribute="bottom" secondItem="HRc-go-Q0m" secondAttribute="bottom" constant="10.5" id="ro9-Yq-dXM"/>
                         <constraint firstItem="HRc-go-Q0m" firstAttribute="centerX" secondItem="SLm-PH-ltq" secondAttribute="centerX" id="tAb-Yk-Go5"/>
                     </constraints>
                 </view>
@@ -129,7 +129,7 @@
                 <constraint firstItem="8yz-ld-h1S" firstAttribute="top" secondItem="hcq-YP-WUk" secondAttribute="bottom" constant="-38" id="8qZ-8e-dDp"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="8yz-ld-h1S" secondAttribute="bottom" id="Gwr-x0-NLQ"/>
                 <constraint firstItem="SLm-PH-ltq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="HQF-lf-Wgq"/>
-                <constraint firstItem="ruE-4X-wy2" firstAttribute="top" secondItem="SLm-PH-ltq" secondAttribute="bottom" id="Hn7-on-91L"/>
+                <constraint firstItem="ruE-4X-wy2" firstAttribute="top" secondItem="SLm-PH-ltq" secondAttribute="bottom" constant="8" id="Hn7-on-91L"/>
                 <constraint firstItem="8yz-ld-h1S" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="P4d-TD-sN4"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="IJF-AV-GGo" secondAttribute="trailing" constant="24" id="UKX-Gb-V5L"/>
                 <constraint firstItem="hcq-YP-WUk" firstAttribute="top" secondItem="SLm-PH-ltq" secondAttribute="bottom" id="VKk-Al-dnv"/>

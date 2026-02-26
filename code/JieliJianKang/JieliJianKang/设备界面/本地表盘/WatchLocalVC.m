@@ -14,28 +14,30 @@
 #import "WatchLocalModel.h"
 
 #import "WatchOwn.h"
-
 #import "DialShopView.h"
 #import "DialModel.h"
 #import "WatchHistoryVC.h"
+#import "WatchDialTitleView.h"
+#import "WatchCustomDial/CustomDialView.h"
+#import "CutImageViewController.h"
+#import "AIDialXFManager.h"
 
-@interface WatchLocalVC ()<UIScrollViewDelegate>{
+@interface WatchLocalVC ()<UIScrollViewDelegate,PhotoDelegate,UIImagePickerControllerDelegate,
+UINavigationControllerDelegate,CropImageDelegate>{
 
     __weak IBOutlet UIButton            *btnManager;
     __weak IBOutlet NSLayoutConstraint  *titleView_H;
     __weak IBOutlet UILabel             *titleLabel;
 
     
-    __weak IBOutlet UIButton    *btnShop;
-    __weak IBOutlet UIButton    *btnMyFace;
-    __weak IBOutlet UIView      *lb_0;
-    __weak IBOutlet UIView      *lb_1;
-    BOOL                        isMyFace;
-    
+    WatchDialTitleView          *titleBarView;
     
     UIScrollView                *mScrollView;
     DialShopView                *dialShopView;
     WatchOwn                    *watchOwn;
+    CustomDialView              *customView;
+    UIImagePickerController     *imagePickerController;
+    
     NSArray                     *mWatchsOfDevice;
     BOOL                        isNeedPayment;
 }
@@ -49,7 +51,6 @@
     
     titleLabel.text = kJL_TXT("表盘");
     
-    [self selectMyWatch:NO];
     [self setupUI];
     [self addNote];
 }
@@ -61,82 +62,47 @@
     [self presentViewController:vc animated:YES completion:nil];
 }
 
-//选择【表盘商城】
-- (IBAction)btnWatchShop:(id)sender {
-    [self selectMyWatch:NO];
-}
 
-//选择【我的表盘】
-- (IBAction)btnMyWatch:(id)sender {
-    [self selectMyWatch:YES];
-}
 
--(void)selectMyWatch:(BOOL)is{
-    float sW = [DFUITools screen_2_W];
-    float sH = [DFUITools screen_2_H];
-    
-    if (is == NO && isMyFace == YES) {
-        [self enableShopUI];
-        isMyFace = NO;
-        [mScrollView scrollRectToVisible:CGRectMake(0, 0, sW, sH-kJL_HeightNavBar-50) animated:YES];
-    }
-    if (is == YES && isMyFace == NO) {
-        [self enableWatchUI];
-        isMyFace = YES;
-        [mScrollView scrollRectToVisible:CGRectMake(sW, 0, sW, sH-kJL_HeightNavBar-50) animated:YES];
-    }
-}
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    float sW = [DFUITools screen_2_W];
-
+    float sW = [UIScreen mainScreen].bounds.size.width;
     int currentPostion = scrollView.contentOffset.x;
     if (currentPostion < sW) {
-        [self enableShopUI];
+        [titleBarView handleBtnClick:0];
+    }else if(currentPostion >= sW*2){
+        [titleBarView handleBtnClick:2];
     }else{
-        [self enableWatchUI];
+        [titleBarView handleBtnClick:1];
     }
 }
 
 
--(void)enableShopUI{
-    [btnShop setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [btnMyFace setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-    lb_0.hidden = NO;
-    lb_1.hidden = YES;
-    isMyFace = NO;
-    btnManager.hidden = NO;
-}
-
--(void)enableWatchUI{
-    [btnShop setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-    [btnMyFace setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    lb_0.hidden = YES;
-    lb_1.hidden = NO;
-    isMyFace = YES;
-    btnManager.hidden = NO;
-}
 
 -(void)enableFreeOnlyWatchUI{
-    btnShop.hidden = YES;
-    btnMyFace.hidden = YES;
-    lb_0.hidden = YES;
-    lb_1.hidden = YES;
-    isMyFace = NO;
     
+    [titleBarView setHidden:true];
     btnManager.hidden = YES;
 }
 
 
 -(void)setupUI{
-    float sW = [DFUITools screen_2_W];
-    float sH = [DFUITools screen_2_H];
+    float sW = [UIScreen mainScreen].bounds.size.width;
+    float sH = [UIScreen mainScreen].bounds.size.height;
     titleView_H.constant = kJL_HeightNavBar;
     
-    [btnShop setTitle:kJL_TXT("表盘商城") forState:UIControlStateNormal];
-    [btnMyFace setTitle:kJL_TXT("我的表盘") forState:UIControlStateNormal];
-
+   
+    titleBarView = [[WatchDialTitleView alloc] initWithFrame:CGRectMake(57, kJL_HeightNavBar+4, sW-57*2, 35)];
+    __block typeof(self) weakSelf = self;
+    titleBarView.callback = ^(int index) {
+        float sW = [UIScreen mainScreen].bounds.size.width;
+        float sH = [UIScreen mainScreen].bounds.size.height;
+        [weakSelf->mScrollView scrollRectToVisible:CGRectMake(sW*index, 0, sW, sH-kJL_HeightNavBar-50) animated:YES];
+        [weakSelf->btnManager setHidden:false];
+    };
+    [self.view addSubview:titleBarView];
     
+
     mScrollView = [[UIScrollView alloc] init];
     mScrollView.frame = CGRectMake(0, kJL_HeightNavBar+50, sW, sH-kJL_HeightNavBar-50);
     mScrollView.showsHorizontalScrollIndicator = NO;
@@ -144,21 +110,27 @@
     mScrollView.pagingEnabled = YES;
     mScrollView.delegate = self;
     [self.view addSubview:mScrollView];
+    
+    _mPhotoView = [[PhotoView alloc] initWithFrame:CGRectMake(0, 0, sW, sH)];
+    _mPhotoView.delegate = self;
+    _mPhotoView.hidden = YES;
+    [self.view addSubview:_mPhotoView];
+    
 }
 
 
 -(void)loadWatchForPayment:(BOOL)isPayment{
-    float sW = [DFUITools screen_2_W];
-    float sH = [DFUITools screen_2_H];
+    float sW = [UIScreen mainScreen].bounds.size.width;
+    float sH = [UIScreen mainScreen].bounds.size.height;
 
     isNeedPayment = isPayment;
     
     if(isNeedPayment == YES){
         mScrollView.frame = CGRectMake(0, kJL_HeightNavBar+50, sW, sH-kJL_HeightNavBar-50);
-        mScrollView.contentSize = CGSizeMake(sW*2, mScrollView.frame.size.height);
+        mScrollView.contentSize = CGSizeMake(sW*3, mScrollView.frame.size.height);
         
         /*--- 表盘商城 ---*/
-        CGRect rt = CGRectMake(0, 0, sW, mScrollView.frame.size.height);
+        CGRect rt = CGRectMake(10.0, 0, sW-20.0, mScrollView.frame.size.height);
         dialShopView = [[DialShopView alloc] initByFrame:rt IsPayment:YES];
         [mScrollView addSubview:dialShopView];
         
@@ -167,13 +139,19 @@
         watchOwn.mWatchUiType = WatchUITypeDevice;
         watchOwn.superVC = self;
         [mScrollView addSubview:watchOwn];
+        
+        //自定义
+        customView = [[CustomDialView alloc] initWithFrame:CGRectMake(sW*2, 0, sW, mScrollView.frame.size.height)];
+        customView.superVC = self;
+        [mScrollView addSubview:customView];
+        
 
     }else{
         mScrollView.frame = CGRectMake(0, kJL_HeightNavBar, sW, sH-kJL_HeightNavBar);
         mScrollView.contentSize = CGSizeMake(sW, mScrollView.frame.size.height);
 
         /*--- 旧版本表盘API获取，无付费信息的表盘 ---*/
-        CGRect rt = CGRectMake(0, 0, sW, mScrollView.frame.size.height);
+        CGRect rt = CGRectMake(10.0, 0, sW-20.0, mScrollView.frame.size.height);
         dialShopView = [[DialShopView alloc] initByFrame:rt IsPayment:NO];
         [mScrollView addSubview:dialShopView];
         
@@ -232,6 +210,86 @@
     //[JL_Tools remove:kUI_WATCH_OWN_MORE Own:self];
 //    [JL_Tools remove:@"kUI_PAY_OK" Own:self];
     [JL_Tools remove:kUI_JL_DEVICE_CHANGE Own:self];
+}
+
+//MARK: - photoView delegate
+
+/// 拍照
+- (void)takePhoto {
+    _mPhotoView.hidden = YES;
+    
+    //创建UIImagePickerController实例
+    imagePickerController = [[UIImagePickerController alloc]init];
+    imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+    imagePickerController.cameraDevice = UIImagePickerControllerCameraDeviceRear;
+    imagePickerController.delegate = self;
+    imagePickerController.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self presentViewController:imagePickerController animated:YES completion:nil];
+}
+
+/// 从相册选取
+-(void)takePicture{
+    _mPhotoView.hidden = YES;
+    
+    //创建UIImagePickerController实例
+    imagePickerController = [[UIImagePickerController alloc]init];
+    imagePickerController.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+    imagePickerController.delegate = self;
+    imagePickerController.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self presentViewController:imagePickerController animated:YES completion:^{
+        
+    }];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    
+    [picker dismissViewControllerAnimated:YES completion:^{
+        UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+        CGFloat width = [UIScreen mainScreen].bounds.size.width;
+        CGFloat height = image.size.height * (width/image.size.width);
+        UIImage * orImage = [image resizeImageWithSize:CGSizeMake(width, height)];
+        CutImageViewController * con = [[CutImageViewController alloc] initWithImage:orImage delegate:self];
+        [self.navigationController pushViewController:con animated:YES];
+    }];
+    
+
+}
+
+
+
+
+//MARK: - handle crop Image
+-(void)cropImageDidFinishedWithImage:(UIImage *)image{
+    [imagePickerController dismissViewControllerAnimated:YES completion:nil];
+    
+    [JLUI_Effect startLoadingView:kJL_TXT("添加照片...") Delay:60*8];
+    [self installDial:image];
+    
+    
+}
+
+
+-(void)installDial:(UIImage *)image{
+    [JLUI_Effect startLoadingView:kJL_TXT("添加照片...") Delay:60*8];
+    [[AIDialXFManager share] installDialToDevice:image WithType:0 completion:^(float progress, DialOperateType success) {
+        if (success == DialOperateTypeNoSpace) {
+            [JLUI_Effect setLoadingText:kJL_TXT("空间不足") Delay:0.5];
+        }
+        if (success == DialOperateTypeFail) {
+            [JLUI_Effect setLoadingText:kJL_TXT("添加失败") Delay:0.5];
+        }
+        if (success == DialOperateTypeDoing) {
+            [JLUI_Effect setLoadingText:[NSString stringWithFormat:@"%@:%.0f%%",kJL_TXT("添加进度"),progress]];
+        }
+        if (success == DialOperateTypeSuccess) {
+            [JLUI_Effect setLoadingText:kJL_TXT("添加完成") Delay:0.5];
+            [JL_Tools post:kUI_INSTALL_DIAL_SUCCESS Object:nil];
+        }
+    }];
 }
 
 @end

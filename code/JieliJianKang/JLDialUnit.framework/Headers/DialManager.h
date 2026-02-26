@@ -10,6 +10,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
+typedef NS_ENUM(NSInteger, DAIL_LEVEL) {
+    DAIL_DEBUG = 0,
+    DAIL_INFO  = 1,
+    DAIL_WARN  = 2,
+    DAIL_ERROR = 3,
+};
+
 typedef NS_ENUM(NSInteger, DialOperateType) {
     DialOperateTypeNoSpace     = 0,     //空间不足
     DialOperateTypeDoing       = 1,     //正在操作
@@ -39,16 +47,18 @@ typedef void(^DialUpdateBK)(DialUpdateResult updateResult,
 
 @interface DialManager : NSObject
 
-//打开表盘文件系统
 #pragma mark - 连接成功后，必须调用一次！
 +(void)openDialFileSystemWithCmdManager:(JL_ManagerM *)manager withResult:(DialOperateBK)result;
 
-//重置表盘系统
+#pragma mark - 重置表盘系统
 +(void)resetDialFileSystemWithCmdManager:(JL_ManagerM *)manager withResult:(DialOperateBK)result;
 
+#pragma mark - 查询文件
 /// 查询文件
+/// @param result 操作回调
 +(void)listFile:(DialListBK __nullable)result;
 
+#pragma mark - 添加文件
 /// 添加文件
 /// @param file 文件名需要加斜杠，类似@“/WACTH1”。
 /// @param content 文件数据
@@ -57,12 +67,19 @@ typedef void(^DialUpdateBK)(DialUpdateResult updateResult,
        Content:(NSData*)content
         Result:(DialOperateBK)result;
 
-/// 删除文件
+#pragma mark - 删除文件
+/// 删除文件（第一种）
 /// @param file  文件名需要加斜杠，类似@“/WACTH1”。
 /// @param result 操作回调
 +(void)deleteFile:(NSString*)file
            Result:(DialOperateBK)result;
 
+/// 删除文件（第二种）
+/// @param fileModel JLModel_File类型
+/// @param result 操作回调
++(void)deleteDialResourceWithFileModel:(JLModel_File*)fileModel Result:(DialOperateBK)result;
+
+#pragma mark - 替换文件
 /// 替换文件
 /// @param file  文件名需要加斜杠，类似@“/WACTH1”。
 /// @param content 文件数据
@@ -71,11 +88,13 @@ typedef void(^DialUpdateBK)(DialUpdateResult updateResult,
           Content:(NSData*)content
            Result:(DialOperateBK)result;
 
+#pragma mark - 格式化外部Flash
 /// 格式化外部Flash操作
 /// @param handle   设备句柄
 /// @param result   操作回调
 +(void)formatFlash:(NSString*)handle Result:(DialOperateBK)result;
 
+#pragma mark - 更新设备的表盘资源（异步调用）
 /// 更新设备的表盘资源（异步调用）
 /// @param path     资源文件
 /// @param array   表盘列表(当前)
@@ -84,13 +103,37 @@ typedef void(^DialUpdateBK)(DialUpdateResult updateResult,
                      List:(NSArray*)array
                    Result:(DialUpdateBK)result;
 
-#pragma mark -
-/// 删除文件
-/// @param fileModel JLModel_File类型
-/// @param result 操作回调
-+(void)deleteDialResourceWithFileModel:(JLModel_File*)fileModel Result:(DialOperateBK)result;
-+(void)setFileSize:(uint32_t)size FileName:(NSString*)fileName;
+/// 获取 fatfs 系统的剩余空间(仅仅fatfs 系统可用）
++(uint32_t)getFatfsFree;
+
+/// 获取某文件的文件大小
+/// @param fileName 文件名
 +(uint32_t)getSizeOfFileName:(NSString*)fileName;
+
+
+/// 记录文件大小(私有接口）
+/// @param size 文件大小
+/// @param fileName 文件名
++(void)setFileSize:(uint32_t)size FileName:(NSString*)fileName;
+
+
+///LOG使能与等级，默认开启且debug等级。
+/// @param enable LOG使能
+/// @param isMore 是否打印【函数名&行号】
+/// @param level   LOG等级
++(void)setLog:(BOOL)enable IsMore:(BOOL)isMore Level:(DAIL_LEVEL)level;
+
+/// 打印宏
+#define kDAILLog(level,fmt...) [DialManager Log:level Func:__FUNCTION__ Line:__LINE__ format:fmt]
+/// 打印函数
+/// @param level     LOG等级
+/// @param func       函数名
+/// @param line       行号
+/// @param format   内容
++(void)Log:(DAIL_LEVEL)level
+          Func:(const char* _Nullable)func
+          Line:(const int)line
+        format:(NSString * _Nonnull)format,...;
 
 @end
 

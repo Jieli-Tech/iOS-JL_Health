@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <Foundation/Foundation.h>
 //! Project version number for JL_BLEKit.
 FOUNDATION_EXPORT double JL_BLEKitVersionNumber;
 
@@ -62,6 +62,7 @@ FOUNDATION_EXPORT const unsigned char JL_BLEKitVersionString[];
 #import <JL_BLEKit/JL_SpeechAIttsHandler.h>
 #import <JL_BLEKit/JL_FindDeviceManager.h>
 #import <JL_BLEKit/JL_MusicControlManager.h>
+#import <JL_BLEKit/JLDevPlayerCtrl.h>
 #import <JL_BLEKit/JL_FmManager.h>
 #import <JL_BLEKit/JL_SystemEQ.h>
 #import <JL_BLEKit/JL_SystemTime.h>
@@ -74,6 +75,7 @@ FOUNDATION_EXPORT const unsigned char JL_BLEKitVersionString[];
 #import <JL_BLEKit/JLDeviceConfig.h>
 #import <JL_BLEKit/JL_BigDataManager.h>
 #import <JL_BLEKit/JLAiManager.h>
+#import <JL_BLEKit/JLAIDialManager.h>
 
 
 #import <JL_BLEKit/JLWearable.h>
@@ -97,8 +99,13 @@ FOUNDATION_EXPORT const unsigned char JL_BLEKitVersionString[];
 #import <JL_BLEKit/JLWatchEnum.h>
 #import <JL_BLEKit/JL_WatchProtocol.h>
 
-
 #import <JL_BlEKit/bmp_convert.h>
 #import <JL_BLEKit/BitmapTool.h>
 
-
+#import <JL_BLEKit/ECThreadHelper.h>
+#import <JL_BLEKit/ECBDTObjc.h>
+#import <JL_BLEKit/ECBDTManager.h>
+#import <JL_BLEKit/JLModelDevFunc.h>
+#import <JL_BLEKit/JLModelCardInfo.h>
+#import <JL_BLEKit/JLPublicSetting.h>
+#import <JL_BLEKit/JL4GUpgradeManager.h>

@@ -90,11 +90,11 @@ static NSInteger TimeOut = 10;
 //        }else{
 //            uint8_t *version = (uint8_t *)[[cutEntity.mAdvData subdataWithRange:NSMakeRange(6, 1)] bytes];
 //            if (version == NULL) {
-//                [JL_Tools post:@"kUI_SHOW_EDR_VIEW" Object:nil];
+//                [JL_Tools post:kUI_SHOW_EDR_VIEW Object:nil];
 //                return;
 //            }
 //            if((version[0]&0x0F) == 0x00){
-//                [JL_Tools post:@"kUI_SHOW_EDR_VIEW" Object:nil];
+//                [JL_Tools post:kUI_SHOW_EDR_VIEW Object:nil];
 //            }else{
 //                [self connectWithEntity:cutEntity];
 //            }
@@ -137,7 +137,7 @@ static NSInteger TimeOut = 10;
         
     }];
     UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:kJL_TXT("确定") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [JL_Tools post:@"kUI_DELETE_DEVICE_MODEL" Object:self.mainModel.mac];
+        [JL_Tools post:kUI_DELETE_DEVICE_MODEL Object:self.mainModel.mac];
 
         if ([kJL_BLE_EntityM.mEdr isEqualToString:self.mainModel.mac]) {
             //NSLog(@"unbindId：%@",self.mainModel.deviceID);

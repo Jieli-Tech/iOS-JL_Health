@@ -42,11 +42,13 @@ typedef void(^JL_BIGDATA_RT)(JL_BigData *bigData);
 @interface JL_BigData : NSObject
 @property(nonatomic,assign)JL_BigDataStatus mResult;
 @property(nonatomic,assign)NSInteger        mIndex;
+
 ///0:原始数据
 ///1:阿里云数据
 ///2：RTC数据
 ///3: AI云
 ///4：TTS语音合成
+///5: 平台接口认证信息
 @property(nonatomic,assign)uint8_t          mType;
 @property(nonatomic,assign)uint8_t          mVersion;
 @property(nonatomic,strong)NSData           *mData;

@@ -202,6 +202,7 @@
                         [JL_Tools delay:1.0 Task:^{
                             [self setSelectArray:self->tempArray];
                         }];
+                        [self->mBtn setTitle:kJL_TXT("取消") forState:UIControlStateNormal];
                     }else{
                         self->label1.hidden = YES;
                         self->label2.hidden = YES;
@@ -211,11 +212,11 @@
 
                         self->imv.hidden = NO;
                         self->label5.hidden = NO;
+                        [self->mBtn setTitle:kJL_TXT("确定") forState:UIControlStateNormal];
                     }
                     self->label2.text = @"100%";
                     self->pv.progress = 1.0;
 
-                    [self->mBtn setTitle:kJL_TXT("确定") forState:UIControlStateNormal];
                     [self->mBtn setTitleColor:kDF_RGBA(85, 140, 255, 1.0) forState:UIControlStateNormal];
                 }
                 if(result == JL_BigFileTransferOutOfRange){
@@ -243,10 +244,11 @@
 
 #pragma mark 取消按钮
 -(void)cancelBtn:(UIButton *)btn{
+    [self->mBtn setTitle:kJL_TXT("取消") forState:UIControlStateNormal];
     self.hidden = YES;
+    [tempArray removeAllObjects];
     if (transgerFlag) {
         self->transgerFlag = NO;
-        
         [kJL_BLE_CmdManager.mFileManager cmdStopBigFileData];
     }
     // 所有文件传输完成

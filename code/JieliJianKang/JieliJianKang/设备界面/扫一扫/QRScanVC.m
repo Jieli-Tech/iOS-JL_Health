@@ -47,8 +47,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self initUI];
+    [self addNote];
 }
 
 - (instancetype)initWithCardName:(NSString *)cardName avatar:(UIImage *)avatar completion:(void (^)(NSString *))completion {
@@ -63,8 +63,9 @@
 -(void)initUI{
     self.view.backgroundColor = kDF_RGBA(161, 162, 163, 1.0);
     titleHeight.constant = kJL_HeightNavBar;
-    sw = [DFUITools screen_2_W];
-    sh = [DFUITools screen_2_H];
+    sw = [UIScreen mainScreen].bounds.size.width;
+    sh = [UIScreen mainScreen].bounds.size.height;
+    self.view.bounds = CGRectMake(0, 0, sw, sh);
     
     subTitleView.frame = CGRectMake(0, 0, sw, kJL_HeightStatusBar+44);
     subTitleView.backgroundColor = kDF_RGBA(161, 162, 163, 1.0);
@@ -157,7 +158,7 @@
     tipLabel.textAlignment = NSTextAlignmentCenter;
     
     [tipLabel sizeToFit];
-    if ([kJL_GET isEqualToString:@"en-GB"] || [kJL_GET isEqualToString:@"zh-Hans"]) {
+    if ([kJL_GET isEqualToString:@"en-GB"] || [kJL_GET isEqualToString:@"zh-Hans"] ||  [kJL_GET isEqual:@"auto"]) {
         tipLabel.center = CGPointMake(scannerBorder.center.x, CGRectGetMaxY(scannerBorder.frame) + kControlMargin);
     }else{
         tipLabel.center = CGPointMake(scannerBorder.center.x+20, CGRectGetMaxY(scannerBorder.frame) + kControlMargin);
@@ -177,7 +178,7 @@
     [self.view addSubview:flashBtn];
     
     UIButton * shoudongPeiBtn=[UIButton buttonWithType:UIButtonTypeCustom];
-    if ([kJL_GET isEqualToString:@"en-GB"] || [kJL_GET isEqualToString:@"zh-Hans"]) {
+    if ([kJL_GET isEqualToString:@"en-GB"] || [kJL_GET isEqualToString:@"zh-Hans"] || [kJL_GET isEqual:@"auto"]) {
         shoudongPeiBtn.frame = CGRectMake(sw/2-150/2, flashBtn.frame.origin.y+flashBtn.frame.size.height+27, 150, 20);
     }else{
         shoudongPeiBtn.frame = CGRectMake(10, flashBtn.frame.origin.y+flashBtn.frame.size.height+27, sw-10, 20);
@@ -194,8 +195,8 @@
 // 准备扫描框和从图库中选择
 - (void)prepareScanerBorder {
     
-    CGFloat width = [DFUITools screen_2_W] - 68*2;
-    scannerBorder = [[HMScannerBorder alloc] initWithFrame:CGRectMake([DFUITools screen_2_W]/2-width/2, kJL_HeightNavBar+120, width, width)];
+    CGFloat width = [UIScreen mainScreen].bounds.size.width - 68*2;
+    scannerBorder = [[HMScannerBorder alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width/2-width/2, kJL_HeightNavBar+120, width, width)];
     
     //scannerBorder.center = self.view.center;
     scannerBorder.tintColor = self.navigationController.navigationBar.tintColor;
@@ -311,5 +312,20 @@
     }
 }
 
+- (void)noteDeviceChange:(NSNotification*)note {
+    JLDeviceChangeType type = [[note object] integerValue];
+    if (type == JLDeviceChangeTypeInUseOffline || type == JLDeviceChangeTypeBleOFF) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+
+-(void)addNote{
+    [JL_Tools add:kUI_JL_DEVICE_CHANGE Action:@selector(noteDeviceChange:) Own:self];
+}
+
+- (void)dealloc {
+    [JL_Tools remove:kUI_JL_DEVICE_CHANGE Own:self];
+}
 
 @end

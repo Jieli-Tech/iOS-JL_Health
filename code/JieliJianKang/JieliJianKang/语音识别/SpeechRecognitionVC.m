@@ -13,7 +13,6 @@
 #import "MJRefresh.h"
 #import "AICloundMessageModel.h"
 #import "JLSqliteAICloundMessageRecord.h"
-#import "JL_Talk.h"
 #import "JYBubbleMenuView.h"
 
 @interface SpeechRecognitionVC () <DeleteRecordViewDelegate,UITableViewDelegate,UITableViewDataSource,SpeechCellDelegate,
@@ -85,7 +84,7 @@ AICloundDelegate>{
 
 -(void)initUI{
     self.view.backgroundColor = kDF_RGBA(255, 255, 255, 1.0);
-    sw = [DFUITools screen_2_W];
+    sw = [UIScreen mainScreen].bounds.size.width;
     
     mulChooseRecords = NO;
     
@@ -348,7 +347,7 @@ AICloundDelegate>{
     noRecoredImageView.hidden = NO;
     noRecordLabel.hidden = NO;
     deleteBtn.hidden = YES;
-    [JL_Tools post:@"STOP_TTS" Object:nil];
+    [JL_Tools post:kUI_JL_STOP_TTS Object:nil];
 }
 
 -(void)didCancelAction:(UIButton *)btn{
@@ -379,7 +378,7 @@ AICloundDelegate>{
 
     [selectArray removeAllObjects];
     [selectTimeArray removeAllObjects];
-    [JL_Tools post:@"STOP_TTS" Object:nil];
+    [JL_Tools post:kUI_JL_STOP_TTS Object:nil];
 }
 
 -(void)didSelectTitle:(NSString *) selectTitle{
@@ -430,7 +429,7 @@ AICloundDelegate>{
         return;
     }
     
-    selectDelectRecordView = [[DeleteRecordView alloc] initWithFrame:CGRectMake(0, 0, [DFUITools screen_2_W], [DFUITools screen_2_H])];
+    selectDelectRecordView = [[DeleteRecordView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     selectDelectRecordView.titleLab.numberOfLines = 1;
     selectDelectRecordView.delegate = self;
     selectDelectRecordView.titleLab.text = kJL_TXT("是否删除");
@@ -450,7 +449,7 @@ AICloundDelegate>{
 //        [DFUITools showText:@"还没有收到AI回复,暂时不支持该操作" onView:[DFUITools getWindow] delay:1.5];
 //        return;
 //    }
-    deleteAllRecordView = [[DeleteRecordView alloc] initWithFrame:CGRectMake(0, 0, [DFUITools screen_2_W], [DFUITools screen_2_H])];
+    deleteAllRecordView = [[DeleteRecordView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     deleteAllRecordView.delegate = self;
     deleteAllRecordView.titleLab.text = kJL_TXT("该对话所有内容将被删除，且无法撤\n销，是否删除");
     deleteAllRecordView.titleLab.textAlignment = NSTextAlignmentCenter;
@@ -656,7 +655,7 @@ AICloundDelegate>{
     JLDeviceChangeType type = [[note object] integerValue];
     if (type == JLDeviceChangeTypeInUseOffline || type == JLDeviceChangeTypeBleOFF) {
         [self.navigationController popViewControllerAnimated:YES];
-        [JL_Tools post:@"STOP_TTS" Object:nil];
+        [JL_Tools post:kUI_JL_STOP_TTS Object:nil];
     }
 }
 
@@ -705,12 +704,12 @@ AICloundDelegate>{
 
 -(void)addNote{
     [JL_Tools add:kUI_JL_DEVICE_CHANGE Action:@selector(noteDeviceChange:) Own:self];
-    [JL_Tools add:@"NO_RECORED" Action:@selector(noteRecord:) Own:self];
+    [JL_Tools add:kUI_JL_NO_RECORED Action:@selector(noteRecord:) Own:self];
 }
 
 - (void)dealloc {
     [JL_Tools remove:kUI_JL_DEVICE_CHANGE Own:self];
-    [JL_Tools remove:@"NO_RECORED" Own:self];
+    [JL_Tools remove:kUI_JL_NO_RECORED Own:self];
 }
 
 @end

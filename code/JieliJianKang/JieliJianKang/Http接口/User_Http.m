@@ -15,6 +15,35 @@
 #import "JLSqliteSportRunningRecord.h"
 #import "UserDataSync.h"
 
+#define requestSendMobile @"/health/v1/api/auth/sms/send?mobile="
+#define requestSendEmail  @"/health/v1/api/auth/email/send?email="
+#define checkMobile       @"/health/v1/api/auth/sms/check?"
+#define checkEmail        @"/health/v1/api/auth/email/check?"
+#define smsRegister       @"/health/v1/api/auth/sms/register?"
+#define emailRegister     @"/health/v1/api/auth/email/register?"
+#define smsResetPwd       @"/health/v1/api/auth/sms/resetpassword?"
+#define smsResetEmail     @"/health/v1/api/auth/email/resetpassword?"
+#define smsLogin          @"/health/v1/api/auth/sms/login?"
+#define emailLogin        @"/health/v1/api/auth/email/login?"
+#define userLogin         @"/health/v1/api/auth/user/login?"
+#define emailUserLogin    @"/health/v1/api/auth/email/user/login?"
+#define updateMobile      @"/health/v1/api/basic/user/updateMobile?"
+#define updateEmail       @"/health/v1/api/basic/user/updateEmail?"
+#define updateUserPwd     @"/health/v1/api/basic/user/updatepassword?"
+#define setPassword       @"/health/v1/api/basic/user/setpassword?"
+#define oneByPidVid       @"/health/v1/api/watch/dial/onebypidvid?"
+#define oneByUuid         @"/health/v1/api/watch/dial/version/onebyuuid?"
+#define newByPidVid       @"/health/v1/api/watch/ota/version/newbypidvid?"
+#define userRemove        @"/health/v1/api/basic/user/remove"
+#define pageByVersion     @"/health/v1/api/watch/dial/version/pagebyversion"
+#define checkpassword     @"/health/v1/api/basic/user/checkpassword"
+#define userRefreshToken  @"/health/v1/api/auth/user/refresh?"
+#define emailRefreshToken @"/health/v1/api/auth/email/user/refresh?"
+#define configSelect      @"/health/v1/api/basic/user/config/select"
+#define configUpdate      @"/health/v1/api/basic/user/config/update"
+
+
+
 @implementation User_Http {
     NSString *accessToken; //访问令牌
     JLUSER_WAY myUserWay;
@@ -37,8 +66,8 @@
         [self refreshAccessTokenResult:^(NSDictionary * _Nonnull info) {
             int code = [info[@"code"] intValue];
             if (code != 0 || info == nil) {
-                [JL_Tools setUser:@"" forKey:@"accessToken"];
-                [JL_Tools post:@"TOKEN_IS_NULL" Object:@"N"];
+                [JL_Tools setUser:@"" forKey:kUI_ACCESS_TOKEN];
+                [JL_Tools post:kUI_TOKEN_IS_NULL Object:@"N"];
             } else {
                 self.userPfInfo = [UserProfile locateProfile];
                 if (!self.userPfInfo) {
@@ -84,8 +113,8 @@
     NSDictionary *headers = @{ @"cache-control": @"no-cache"};
     
     NSString *rqUrl = nil;
-    if (mobile.length > 0) rqUrl = [NSString stringWithFormat:@"%@/health/v1/api/auth/sms/send?mobile=%@",BaseURL,mobile];
-    if (email.length > 0)  rqUrl = [NSString stringWithFormat:@"%@/health/v1/api/auth/email/send?email=%@",BaseURL,email];
+    if (mobile.length > 0) rqUrl = [NSString stringWithFormat:@"%@%@%@",BaseURL,requestSendMobile,mobile];
+    if (email.length > 0)  rqUrl = [NSString stringWithFormat:@"%@%@%@",BaseURL,requestSendEmail,email];
 
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:rqUrl]
@@ -122,8 +151,8 @@
     NSDictionary *headers = @{ @"cache-control": @"no-cache"};
     
     NSString *rqUrl = nil;
-    if(mobile.length > 0) rqUrl = [NSString stringWithFormat:@"%@/health/v1/api/auth/sms/check?mobile=%@&code=%@",BaseURL,mobile,code];
-    if(email.length > 0)  rqUrl = [NSString stringWithFormat:@"%@/health/v1/api/auth/email/check?email=%@&code=%@",BaseURL,email,code];
+    if(mobile.length > 0) rqUrl = [NSString stringWithFormat:@"%@%@mobile=%@&code=%@",BaseURL,checkMobile,mobile,code];
+    if(email.length > 0)  rqUrl = [NSString stringWithFormat:@"%@%@email=%@&code=%@",BaseURL,checkEmail,email,code];
 
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:rqUrl]
@@ -163,11 +192,11 @@
     
     NSString *rqUrl = nil;
     if(mobile.length > 0) {
-        rqUrl = [NSString stringWithFormat:@"%@/health/v1/api/auth/sms/register?mobile=%@&password=%@&code=%@",BaseURL,mobile,password,code];
+        rqUrl = [NSString stringWithFormat:@"%@%@mobile=%@&password=%@&code=%@",BaseURL,smsRegister,mobile,password,code];
         self->myUserWay = JLUSER_WAY_PHONE;
     }
     if(email.length > 0) {
-        rqUrl = [NSString stringWithFormat:@"%@/health/v1/api/auth/email/register?email=%@&password=%@&code=%@",BaseURL,email,password,code];
+        rqUrl = [NSString stringWithFormat:@"%@%@email=%@&password=%@&code=%@",BaseURL,emailRegister,email,password,code];
         self->myUserWay = JLUSER_WAY_EMAIL;
     }
 
@@ -193,8 +222,8 @@
             if (![dict[@"data"] isEqual:nul] && code == 0) {
                 self->accessToken = dict[@"data"][@"access_token"];
                 
-                [JL_Tools setUser:@(self->myUserWay) forKey:@"httpUserWay"];
-                [JL_Tools setUser:self->accessToken forKey:@"accessToken"];
+                [JL_Tools setUser:@(self->myUserWay) forKey:kUI_HTTP_USER_WAY];
+                [JL_Tools setUser:self->accessToken forKey:kUI_ACCESS_TOKEN];
             }
             if (result) result(dict);
         }
@@ -217,8 +246,8 @@
     NSDictionary *headers = @{ @"cache-control": @"no-cache"};
     
     NSString *rqUrl = nil;
-    if(mobile.length > 0) rqUrl = [NSString stringWithFormat:@"%@/health/v1/api/auth/sms/resetpassword?mobile=%@&password=%@&code=%@",BaseURL,mobile,password,code];
-    if(email.length > 0)  rqUrl = [NSString stringWithFormat:@"%@/health/v1/api/auth/email/resetpassword?email=%@&password=%@&code=%@",BaseURL,email,password,code];
+    if(mobile.length > 0) rqUrl = [NSString stringWithFormat:@"%@%@mobile=%@&password=%@&code=%@",BaseURL,smsResetPwd,mobile,password,code];
+    if(email.length > 0)  rqUrl = [NSString stringWithFormat:@"%@%@email=%@&password=%@&code=%@",BaseURL,smsResetEmail,email,password,code];
     
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:rqUrl]
@@ -256,11 +285,11 @@
     
     NSString *rqUrl = nil;
     if(mobile.length > 0) {
-        rqUrl = [NSString stringWithFormat:@"%@/health/v1/api/auth/sms/login?mobile=%@&code=%@",BaseURL,mobile,code];
+        rqUrl = [NSString stringWithFormat:@"%@%@mobile=%@&code=%@",BaseURL,smsLogin,mobile,code];
         self->myUserWay = JLUSER_WAY_PHONE;
     }
     if(email.length > 0) {
-        rqUrl = [NSString stringWithFormat:@"%@/health/v1/api/auth/email/login?email=%@&code=%@",BaseURL,email,code];
+        rqUrl = [NSString stringWithFormat:@"%@%@email=%@&code=%@",BaseURL,emailLogin,email,code];
         self->myUserWay = JLUSER_WAY_EMAIL;
     }
 
@@ -284,8 +313,8 @@
             if (![dict[@"data"] isEqual:nul] && code == 0) {
                 self->accessToken = dict[@"data"][@"access_token"];
                 
-                [JL_Tools setUser:@(self->myUserWay) forKey:@"httpUserWay"];
-                [JL_Tools setUser:self->accessToken forKey:@"accessToken"];
+                [JL_Tools setUser:@(self->myUserWay) forKey:kUI_HTTP_USER_WAY];
+                [JL_Tools setUser:self->accessToken forKey:kUI_ACCESS_TOKEN];
                 [self getUserProfile:^(UserProfile * _Nonnull upInfo) {
                     
                 }];
@@ -310,11 +339,11 @@
     NSString *rqUrl = nil;
     
     if(mobile.length > 0) {
-        rqUrl = [NSString stringWithFormat:@"%@/health/v1/api/auth/user/login?mobile=%@&password=%@",BaseURL,mobile,password];
+        rqUrl = [NSString stringWithFormat:@"%@%@mobile=%@&password=%@",BaseURL,userLogin,mobile,password];
         self->myUserWay = JLUSER_WAY_PHONE;
     }
     if(email.length > 0) {
-        rqUrl = [NSString stringWithFormat:@"%@/health/v1/api/auth/email/user/login?email=%@&password=%@",BaseURL,email,password];
+        rqUrl = [NSString stringWithFormat:@"%@%@email=%@&password=%@",BaseURL,emailUserLogin,email,password];
         self->myUserWay = JLUSER_WAY_EMAIL;
     }
     
@@ -337,8 +366,8 @@
             if (![dict[@"data"] isEqual:nul] && code == 0) {
                 self->accessToken = dict[@"data"][@"access_token"];
                 
-                [JL_Tools setUser:@(self->myUserWay) forKey:@"httpUserWay"];
-                [JL_Tools setUser:self->accessToken forKey:@"accessToken"];
+                [JL_Tools setUser:@(self->myUserWay) forKey:kUI_HTTP_USER_WAY];
+                [JL_Tools setUser:self->accessToken forKey:kUI_ACCESS_TOKEN];
                 [self getUserProfile:^(UserProfile * _Nonnull upInfo) {
                     
                 }];
@@ -365,7 +394,7 @@
                  WeightTarget:(NSString *)weightTarget
                        Result:(void(^ __nullable)(NSDictionary *info))result
 {
-    accessToken = [JL_Tools getUserByKey:@"accessToken"];
+    accessToken = [JL_Tools getUserByKey:kUI_ACCESS_TOKEN];
     
     if (accessToken.length == 0) {
         if (result) result(nil);
@@ -389,7 +418,7 @@
                                @"weightTarget": @([weightTarget floatValue])
     };
     NSData *postData = [NSJSONSerialization dataWithJSONObject:userDic options:0 error:nil];
-    NSString *rqUrl = [NSString stringWithFormat:@"%@/health/v1/api/basic/user/config/update",BaseURL];
+    NSString *rqUrl = [NSString stringWithFormat:@"%@%@",BaseURL,configUpdate];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:rqUrl]
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
@@ -416,7 +445,7 @@
  获取用户配置信息
  */
 - (void)requestGetUserConfigInfo:(void(^ __nullable)(JLUser *userInfo))result {
-    accessToken = [JL_Tools getUserByKey:@"accessToken"];
+    accessToken = [JL_Tools getUserByKey:kUI_ACCESS_TOKEN];
     
     if (accessToken.length == 0) {
         self.userInfo = [[JLUser alloc] init];
@@ -427,7 +456,7 @@
     NSDictionary *headers = @{@"jwt-token":accessToken?:@"",
                               @"cache-control": @"no-cache"};
     
-    NSString *rqUrl = [NSString stringWithFormat:@"%@/health/v1/api/basic/user/config/select",BaseURL];
+    NSString *rqUrl = [NSString stringWithFormat:@"%@%@",BaseURL,configSelect];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:rqUrl]
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
@@ -465,7 +494,7 @@
                      WithCode:(NSString *)code
                        Result:(void(^)(NSDictionary *info))result
 {
-    accessToken = [JL_Tools getUserByKey:@"accessToken"];
+    accessToken = [JL_Tools getUserByKey:kUI_ACCESS_TOKEN];
     
     if (accessToken.length == 0) {
         if (result) result(nil);
@@ -476,8 +505,8 @@
                               @"cache-control": @"no-cache"};
     
     NSString *rqUrl = nil;
-    if(mobile.length > 0) rqUrl = [NSString stringWithFormat:@"%@/health/v1/api/basic/user/updateMobile?mobile=%@&code=%@",BaseURL,mobile,code];
-    if(email.length > 0)  rqUrl = [NSString stringWithFormat:@"%@/health/v1/api/basic/user/updateEmail?email=%@&code=%@",BaseURL,email,code];
+    if(mobile.length > 0) rqUrl = [NSString stringWithFormat:@"%@%@mobile=%@&code=%@",BaseURL,updateMobile,mobile,code];
+    if(email.length > 0)  rqUrl = [NSString stringWithFormat:@"%@%@email=%@&code=%@",BaseURL,updateEmail,email,code];
     
     
     
@@ -505,7 +534,7 @@
  刷新jwt-token
  */
 -(void)refreshAccessTokenResult:(void(^)(NSDictionary *info))result{
-    accessToken = [JL_Tools getUserByKey:@"accessToken"];
+    accessToken = [JL_Tools getUserByKey:kUI_ACCESS_TOKEN];
     
     if (accessToken.length == 0) {
         if (result) result(nil);
@@ -514,11 +543,11 @@
     NSDictionary *headers = @{ @"cache-control": @"no-cache"};
     NSString *rqUrl = nil;
     
-    JLUSER_WAY userWay = [[JL_Tools getUserByKey:@"httpUserWay"] intValue];
+    JLUSER_WAY userWay = [[JL_Tools getUserByKey:kUI_HTTP_USER_WAY] intValue];
     if (userWay == JLUSER_WAY_PHONE) {
-        rqUrl = [NSString stringWithFormat:@"%@/health/v1/api/auth/user/refresh?token=%@",BaseURL,accessToken];
+        rqUrl = [NSString stringWithFormat:@"%@%@token=%@",BaseURL,userRefreshToken,accessToken];
     } else {
-        rqUrl = [NSString stringWithFormat:@"%@/health/v1/api/auth/email/user/refresh?token=%@",BaseURL,accessToken];
+        rqUrl = [NSString stringWithFormat:@"%@%@token=%@",BaseURL,emailRefreshToken,accessToken];
     }
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:rqUrl]
@@ -535,7 +564,9 @@
             if (result) result(nil);
         } else {
             NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
-            if (result) result(dict);
+            dispatch_async(dispatch_get_main_queue(), ^{            
+                if (result) result(dict);
+            });
         }
     }];
     [dataTask resume];
@@ -545,7 +576,7 @@
   通过旧密码修改密码
  */
 -(void)requestOldPwdModifyNewPwd:(NSString *)oldPwd WithNewPwd:(NSString *)newPwd Result:(void(^)(NSDictionary *info))result{
-    accessToken = [JL_Tools getUserByKey:@"accessToken"];
+    accessToken = [JL_Tools getUserByKey:kUI_ACCESS_TOKEN];
     
     if (accessToken.length == 0) {
         if (result) result(nil);
@@ -555,7 +586,7 @@
     NSDictionary *headers = @{@"jwt-token":accessToken?:@"",
                               @"cache-control": @"no-cache"};
     
-    NSString *rqUrl = [NSString stringWithFormat:@"%@/health/v1/api/basic/user/updatepassword?oldpassword=%@&newpassword=%@",BaseURL,oldPwd,newPwd];
+    NSString *rqUrl = [NSString stringWithFormat:@"%@%@oldpassword=%@&newpassword=%@",BaseURL,updateUserPwd,oldPwd,newPwd];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:rqUrl]
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
@@ -581,7 +612,7 @@
   判断密码是否为空(首次自动注册)
  */
 -(void)requestPwdIsNull:(void(^)(NSDictionary *info))result{
-    accessToken = [JL_Tools getUserByKey:@"accessToken"];
+    accessToken = [JL_Tools getUserByKey:kUI_ACCESS_TOKEN];
     
     if (accessToken.length == 0) {
         if (result) result(nil);
@@ -591,7 +622,7 @@
     NSDictionary *headers = @{@"jwt-token":accessToken?:@"",
                               @"cache-control": @"no-cache"};
     
-    NSString *rqUrl = [NSString stringWithFormat:@"%@/health/v1/api/basic/user/checkpassword",BaseURL];
+    NSString *rqUrl = [NSString stringWithFormat:@"%@%@",BaseURL,checkpassword];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:rqUrl]
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
@@ -617,7 +648,7 @@
   首次自动注册，设置密码
  */
 -(void)requestSetPwd:(NSString *)pwd Result:(void(^)(NSDictionary *info))result{
-    accessToken = [JL_Tools getUserByKey:@"accessToken"];
+    accessToken = [JL_Tools getUserByKey:kUI_ACCESS_TOKEN];
     
     if (accessToken.length == 0) {
         if (result) result(nil);
@@ -627,7 +658,7 @@
     NSDictionary *headers = @{@"jwt-token":accessToken?:@"",
                               @"cache-control": @"no-cache"};
     
-    NSString *rqUrl = [NSString stringWithFormat:@"%@/health/v1/api/basic/user/setpassword?password=%@",BaseURL,pwd];
+    NSString *rqUrl = [NSString stringWithFormat:@"%@%@password=%@",BaseURL,setPassword,pwd];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:rqUrl]
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
@@ -653,7 +684,7 @@
   根据pid、vid查询表盘产品信息
  */
 -(void)requestWatchInfo:(NSString *)pid WithVid:(NSString *)vid Result:(void(^)(NSDictionary *info))result{
-    accessToken = [JL_Tools getUserByKey:@"accessToken"];
+    accessToken = [JL_Tools getUserByKey:kUI_ACCESS_TOKEN];
     
     if (accessToken.length == 0) {
         if (result) result(nil);
@@ -666,7 +697,7 @@
     int mPid = [pid intValue];
     int mVid = [vid intValue];
     
-    NSString *rqUrl = [NSString stringWithFormat:@"%@/health/v1/api/watch/dial/onebypidvid?pid=%d&vid=%d",BaseURL,mPid,mVid];
+    NSString *rqUrl = [NSString stringWithFormat:@"%@%@pid=%d&vid=%d",BaseURL,oneByPidVid,mPid,mVid];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:rqUrl]
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
@@ -699,7 +730,7 @@
                  Result:(void(^)(NSArray *info))result
 {
     NSLog(@"Server Watch Pid:%@ Vid:%@ Page:%@ Size:%@ Versions:%@",pid,vid,page,size,watchArray);
-    accessToken = [JL_Tools getUserByKey:@"accessToken"];
+    accessToken = [JL_Tools getUserByKey:kUI_ACCESS_TOKEN];
     
     if (accessToken.length == 0 || !watchArray) {
         if (result) result(nil);
@@ -710,7 +741,7 @@
                               @"jwt-token":accessToken?:@"",
                               @"cache-control": @"no-cache"};
     
-    NSString *rqUrl = [NSString stringWithFormat:@"%@/health/v1/api/watch/dial/version/pagebyversion",BaseURL];
+    NSString *rqUrl = [NSString stringWithFormat:@"%@%@",BaseURL,pageByVersion];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:rqUrl]
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
@@ -751,7 +782,7 @@
   根据表盘唯一UUID获取表盘信息
  */
 -(void)getWatchInfo:(NSString *)uuid Result:(void(^)(NSDictionary *info))result{
-    accessToken = [JL_Tools getUserByKey:@"accessToken"];
+    accessToken = [JL_Tools getUserByKey:kUI_ACCESS_TOKEN];
     
     if (accessToken.length == 0) {
         if (result) result(nil);
@@ -761,7 +792,7 @@
     NSDictionary *headers = @{@"jwt-token":accessToken?:@"",
                               @"cache-control": @"no-cache"};
     
-    NSString *rqUrl = [NSString stringWithFormat:@"%@/health/v1/api/watch/dial/version/onebyuuid?uuid=%@",BaseURL,uuid];
+    NSString *rqUrl = [NSString stringWithFormat:@"%@%@uuid=%@",BaseURL,oneByUuid,uuid];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:rqUrl]
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
@@ -787,7 +818,7 @@
    根据pidvid获取最新ota文件
  */
 -(void)getNewOTAFile:(NSString *)pid WithVid:(NSString *)vid  Result:(void(^)(NSDictionary *info))result{
-    accessToken = [JL_Tools getUserByKey:@"accessToken"];
+    accessToken = [JL_Tools getUserByKey:kUI_ACCESS_TOKEN];
     
     if (accessToken.length == 0) {
         if (result) result(nil);
@@ -800,7 +831,7 @@
     int mPid = [pid intValue];
     int mVid = [vid intValue];
     
-    NSString *rqUrl = [NSString stringWithFormat:@"%@/health/v1/api/watch/ota/version/newbypidvid?pid=%d&vid=%d",BaseURL,mPid,mVid];
+    NSString *rqUrl = [NSString stringWithFormat:@"%@%@pid=%d&vid=%d",BaseURL,newByPidVid,mPid,mVid];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:rqUrl]
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
@@ -826,7 +857,7 @@
    删除用户信息
  */
 -(void)deleteUserInfo:(void(^)(NSDictionary *info))result{
-    accessToken = [JL_Tools getUserByKey:@"accessToken"];
+    accessToken = [JL_Tools getUserByKey:kUI_ACCESS_TOKEN];
     
     if (accessToken.length == 0) {
         if (result) result(nil);
@@ -836,7 +867,7 @@
     NSDictionary *headers = @{@"jwt-token":accessToken?:@"",
                               @"cache-control": @"no-cache"};
     
-    NSString *rqUrl = [NSString stringWithFormat:@"%@/health/v1/api/basic/user/remove",BaseURL];
+    NSString *rqUrl = [NSString stringWithFormat:@"%@%@",BaseURL,userRemove];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:rqUrl]
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy

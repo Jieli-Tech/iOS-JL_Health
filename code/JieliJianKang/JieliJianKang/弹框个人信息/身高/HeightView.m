@@ -62,7 +62,12 @@
     view.layer.cornerRadius = 16;
     
     label1 = [[UILabel alloc] init];
-    label1.frame = CGRectMake((sw-30)/2-70/2,20,sw,25);
+    
+    if ([kJL_GET isEqualToString:@"zh-Hans"] || [kJL_GET isEqual:@"auto"]) {
+        label1.frame = CGRectMake(view.frame.size.width/2-15,20,50,25);
+    }else{
+        label1.frame = CGRectMake((sw-30)/2-70/2,20,sw,25);
+    }
     label1.numberOfLines = 0;
     label1.text = kJL_TXT("身高");
     label1.font =  [UIFont fontWithName:@"PingFangSC" size:18];

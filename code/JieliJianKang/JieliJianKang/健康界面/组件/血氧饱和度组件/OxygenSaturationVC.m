@@ -127,7 +127,9 @@
 - (void)BloodOxygenChartEcpoint:(ECPoint *)point{
     switch (dtype) {
         case DateType_Day:{
-            [dateView setTitleLab:point.date.standardDate SecondLabel:[NSString stringWithFormat:@"%@-%@",point.date.toHHmm,[NSDate dateWithTimeInterval:60*5 sinceDate:point.date].toHHmm]];
+            NSString *labelTxt = [NSString stringWithFormat:@"%@-%@",point.date.toHHmm,[NSDate dateWithTimeInterval:60*5 sinceDate:point.date].toHHmm];
+            
+            [dateView setTitleLab:point.date.standardDate SecondLabel:labelTxt];
             [self dateLabDataP:point.maxY];
         }break;
         case DateType_Week:{
@@ -184,6 +186,7 @@
         [dayBtn setHidden:NO];
     }
     [histograms setByType:dtype date:nowDate];
+    [self updateDateRightBtnStatus];
     
 }
 //MARK: Date Label delegate
@@ -191,19 +194,24 @@
     switch (dtype) {
         case DateType_Day:{
             nowDate = nowDate.next;
+            
         }break;
         case DateType_Week:{
             nowDate = nowDate.nextWeek;
+            
         }break;
         case DateType_Month:{
             nowDate = nowDate.nextMonth;
+            
         }break;
         case DateType_Year:{
             nowDate = nowDate.nextYear;
+            
         }break;
         default:
             break;
     }
+    [self updateDateRightBtnStatus];
     [histograms setByType:dtype date:nowDate];
 }
 
@@ -211,27 +219,60 @@
     switch (dtype) {
         case DateType_Day:{
             nowDate = nowDate.before;
+            
         }break;
         case     DateType_Week:{
             nowDate = nowDate.beforeWeek;
+            
         }break;
         case     DateType_Month:{
             nowDate = nowDate.beforeMonth;
+            
         }break;
         case     DateType_Year:{
             nowDate = nowDate.beforeYear;
+            
         }break;
         default:
             break;
     }
+    [self updateDateRightBtnStatus];
     [histograms setByType:dtype date:nowDate];
+}
+
+-(void)updateDateRightBtnStatus{
+    switch (dtype) {
+        case DateType_Day:{
+            dateView.rightBtn.hidden = !nowDate.beforeNow_0;
+        }break;
+        case DateType_Week:{
+            dateView.rightBtn.hidden = !nowDate.beforeThisWeek_0;
+        }break;
+        case DateType_Month:{
+            dateView.rightBtn.hidden = !nowDate.beforeThisMonth_0;
+        }break;
+        case DateType_Year:{
+            dateView.rightBtn.hidden = !nowDate.beforeThisYear_0;
+        }break;
+        default:
+            break;
+    }
 }
 
 
 -(void)dateLabDataP:(int)percent{
     // 属性文本生成器
     TYTextContainer *textContainer = [[TYTextContainer alloc]init];
-    NSString *stepStr = [NSString stringWithFormat:@"%d%@%@",percent,@"%",kJL_TXT("平均")];
+    NSString *targetStatus;
+    NSString *stepStr;
+    if (percent == 0){
+        targetStatus = @"- -";
+        stepStr = [NSString stringWithFormat:@"%@",targetStatus];
+    }else{
+        targetStatus = [NSString stringWithFormat:@"%d%@",percent,@"%"];
+        stepStr = [NSString stringWithFormat:@"%@%@",targetStatus,kJL_TXT("平均")];
+    }
+     
     textContainer.text = stepStr;
     
     // 整体设置属性
@@ -240,7 +281,8 @@
     textContainer.textAlignment = kCTTextAlignmentCenter;
     // 文字样式
     TYTextStorage *textStorage = [[TYTextStorage alloc]init];
-    textStorage.range = [stepStr rangeOfString:[NSString stringWithFormat:@"%d%@",percent,@"%"]];
+    textStorage.range = [stepStr rangeOfString:[NSString stringWithFormat:@"%@",targetStatus]];
+    
     textStorage.font = [UIFont fontWithName:@"PingFangSC-Medium" size:30];
     textStorage.textColor = kDF_RGBA(255, 255, 255, 1);
     [textContainer addTextStorage:textStorage];
@@ -256,9 +298,14 @@
 }
 
 -(void)dateLabDataS:(NSString *)persents{
+    NSString *stepStr = [NSString stringWithFormat:@"%@",persents];
+    NSString *range = persents;
+    if ([persents isEqualToString:@"0%-0%"]){
+        stepStr = [NSString stringWithFormat:@"- -"];
+        range = stepStr;
+    }
     // 属性文本生成器
     TYTextContainer *textContainer = [[TYTextContainer alloc]init];
-    NSString *stepStr = [NSString stringWithFormat:@"%@",persents];
     textContainer.text = stepStr;
     
     // 整体设置属性
@@ -267,7 +314,7 @@
     textContainer.textAlignment = kCTTextAlignmentCenter;
     // 文字样式
     TYTextStorage *textStorage = [[TYTextStorage alloc]init];
-    textStorage.range = [stepStr rangeOfString:[NSString stringWithFormat:@"%@",persents]];
+    textStorage.range = [stepStr rangeOfString:[NSString stringWithFormat:@"%@",range]];
     textStorage.font = [UIFont fontWithName:@"PingFangSC-Medium" size:30];
     textStorage.textColor = kDF_RGBA(255, 255, 255, 1);
     [textContainer addTextStorage:textStorage];

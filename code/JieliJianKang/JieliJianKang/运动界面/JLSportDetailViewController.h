@@ -15,7 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface JLSportDetailViewController : UIViewController
 
 @property (strong, nonatomic) JLWearSyncInfoModel *wearSyncInfoModel;
-@property (assign, nonatomic) WatchSportType sportType;
+
+/// 0x00 无运动
+/// 0x01 户外跑步
+/// 0x02 室内跑步
+@property (assign, nonatomic) uint8_t sportType;
 @property (assign, nonatomic) BOOL needStartAnimation;
 
 @property (nonatomic, weak) JLOutdoorSportThumbnailViewController *outdoorSportThumbnailViewController;

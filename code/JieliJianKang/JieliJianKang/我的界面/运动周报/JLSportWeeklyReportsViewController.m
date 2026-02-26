@@ -272,7 +272,7 @@
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     cell.delegate = self;
     _sportWeeklyReportsSelectorTableViewCell = cell;
-    _sportWeeklyReportsSelectorTableViewCell.title = [NSString stringWithFormat:@"%@-%@", self.currentWeekStartDate.toMMdd3, self.currentWeekEndDate.toMMdd3];
+    _sportWeeklyReportsSelectorTableViewCell.title = [NSString stringWithFormat:@"%@-%@", self.currentWeekStartDate.toYYYYMMdd2, self.currentWeekEndDate.toYYYYMMdd2];
     _sportWeeklyReportsSelectorTableViewCell.achieveGoalDays = self.achieveGoalStepDaysNum;
     _sportWeeklyReportsSelectorTableViewCell.compareLastWeekAchieveUpDays = self.achieveGoalStepDaysNum - self.lastWeekAchieveGoalStepDaysNum;
     [self setNextButtonStatus];
@@ -291,7 +291,7 @@
     } else if (indexPath.row == 2) {
         return 160;
     } else if (indexPath.row == 3) {
-        return 170;
+        return 200;
     }
     return 235;
 }

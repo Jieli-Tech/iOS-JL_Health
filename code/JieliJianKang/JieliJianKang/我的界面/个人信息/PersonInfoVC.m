@@ -65,8 +65,8 @@
 -(void)initUI{
     self.view.backgroundColor = kDF_RGBA(248, 250, 252, 1.0);
     
-    float sw = [DFUITools screen_2_W];
-    float sh = [DFUITools screen_2_H];
+    float sw = [UIScreen mainScreen].bounds.size.width;
+    float sh = [UIScreen mainScreen].bounds.size.height;
     
     unitStr = [[NSUserDefaults standardUserDefaults] valueForKey:@"UNITS_ALERT"];
     
@@ -81,7 +81,7 @@
     
     self->mName = kJL_TXT("请填写");
     self->mGender = kJL_TXT("男");
-    self->mBirthday = kJL_TXT("请填写");
+    self->mBirthday = kJL_TXT("请选择");
     self->mHeight = kJL_TXT("请填写");
     self->mWeight = kJL_TXT("请填写");
     self->funArray = @[self->mName,self->mGender,self->mBirthday,self->mHeight,self->mWeight];
@@ -91,7 +91,7 @@
             if(userInfo == nil){
                 self->mName = kJL_TXT("请填写");
                 self->mGender = kJL_TXT("男");
-                self->mBirthday = kJL_TXT("请填写");
+                self->mBirthday = kJL_TXT("请选择");
                 self->mHeight = kJL_TXT("请填写");
                 self->mWeight = kJL_TXT("请填写");
             } else {
@@ -130,9 +130,9 @@
                    || [self->mHeight isEqualToString:@"0"]
                    || [self->mWeight isEqualToString:@"0"]){
                     self->mGender = kJL_TXT("请选择");
-                    self->mBirthday = kJL_TXT("请填写");
-                    self->mHeight = kJL_TXT("请填写");
-                    self->mWeight = kJL_TXT("请填写");
+                    self->mBirthday = kJL_TXT("请选择");
+                    self->mHeight = kJL_TXT("请选择");
+                    self->mWeight = kJL_TXT("请选择");
                 }
             }
             
@@ -254,7 +254,12 @@
                 if([unitStr isEqualToString:@"英制"]){
                     units = kJL_TXT("英寸");
                 }
-                NSString *heightStr = [NSString stringWithFormat:@"%@%@",funArray[indexPath.row],units];
+                NSString *heightStr;
+                if([funArray[indexPath.row] isEqual:kJL_TXT("请选择")]){
+                    heightStr = [NSString stringWithFormat:@"%@",funArray[indexPath.row]];
+                }else{
+                    heightStr = [NSString stringWithFormat:@"%@%@",funArray[indexPath.row],units];
+                }
                 cell.label2.text = heightStr;
             }else{
                 cell.label2.text = funArray[indexPath.row];
@@ -318,7 +323,7 @@
         case 2:
         {
             birthDayInfoView.hidden = NO;
-            if(mBirthday.length>0 && (!([mBirthday isEqual:kJL_TXT("请填写")]))){
+            if(mBirthday.length>0 && (!([mBirthday isEqual:kJL_TXT("请选择")]))){
                 birthDayInfoView.selectValue = mBirthday;
             }
         }
@@ -357,13 +362,13 @@
     [self.navigationController popViewControllerAnimated:YES];
     
     
-    [JL_Tools removeUserByKey:@"accessToken"];
-    [JL_Tools removeUserByKey:@"httpUserWay"];
+    [JL_Tools removeUserByKey:kUI_ACCESS_TOKEN];
+    [JL_Tools removeUserByKey:kUI_HTTP_USER_WAY];
     
     [UserProfile removeProfile];
     [self deleteDBFile];
 
-    [JL_Tools post:@"LOGOUT" Object:nil];
+    [JL_Tools post:kUI_LOGOUT Object:nil];
 }
 
 -(void)deleteDBFile{
@@ -449,7 +454,7 @@
     mBirDay = day;
     
     if(mBirthday.length == 0){
-        mBirthday = kJL_TXT("请输入");
+        mBirthday = kJL_TXT("请选择");
     }
     
     if(mBirthday.length>0){

@@ -15,6 +15,7 @@
 @interface AboutVC ()<UITableViewDelegate,UITableViewDataSource>{
     UIImageView *topImv;
     UITableView *aboutTableView;
+    UILabel *bottomLab;
     NSArray     *tmpArray;
     float       sw;
     __weak IBOutlet UIView   *subTitleView;
@@ -35,7 +36,7 @@
 -(void)initUI{
     self.view.backgroundColor = kDF_RGBA(248, 250, 252, 1.0);
     titleHeight.constant = kJL_HeightNavBar;
-    sw = [DFUITools screen_2_W];
+    sw = [UIScreen mainScreen].bounds.size.width;
     subTitleView.frame = CGRectMake(0, 0, sw, kJL_HeightStatusBar+44);
     backBtn.frame  = CGRectMake(4, kJL_HeightStatusBar, 44, 44);
     titleName.text = kJL_TXT("关于");
@@ -83,7 +84,7 @@
     [self.view addSubview:lab2];
     
     aboutTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,lab2.frame.origin
-                                                                   .y+lab2.frame.size.height+39,[DFUITools screen_2_W],60*2)];
+                                                                   .y+lab2.frame.size.height+39,[UIScreen mainScreen].bounds.size.width,60*2)];
     aboutTableView.delegate      = self;
     aboutTableView.dataSource    = self;
     aboutTableView.scrollEnabled = NO;
@@ -95,6 +96,17 @@
     tmpArray = @[kJL_TXT("用户协议"),kJL_TXT("隐私政策")];
     [aboutTableView reloadData];
     
+    bottomLab = [[UILabel alloc] init];
+    bottomLab.font = [UIFont systemFontOfSize:13];
+    bottomLab.text = [NSString stringWithFormat:@"Copyright©2010-%@\n%@",[NSDate new].toYYYY,kJL_TXT("珠海市杰理科技股份有限公司")];
+    bottomLab.textColor = kDF_RGBA(145, 145, 145, 1);
+    bottomLab.textAlignment = NSTextAlignmentCenter;
+    bottomLab.numberOfLines = 0;
+    [self.view addSubview:bottomLab];
+    [bottomLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.view);
+        make.bottom.equalTo(self.view.mas_bottom).offset(-30);
+    }];
     
 }
 

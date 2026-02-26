@@ -271,10 +271,10 @@
             NSDate *chartDate = [NSDate dateWithTimeIntervalSince1970:chart.sport_id];
             NSString *type = kJL_TXT("户外跑步");
             switch (chart.modelType) {
-                case WatchSportType_InDoor:
+                case 0x02:
                     type = kJL_TXT("室内跑步");
                     break;
-                case WatchSportType_OutDoor:
+                case 0x01:
                     type = kJL_TXT("户外跑步");
                     break;
                 default:

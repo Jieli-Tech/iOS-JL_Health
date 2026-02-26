@@ -211,7 +211,7 @@
 #pragma mark 睡眠监测
 -(void)jlWatchSetSleepMonitor:(JLSleepMonitorModel *)model{
     if(model.status == WatchSwitchType_Close){
-        [statusDict setValue:kJL_TXT("关闭") forKey:kJL_TXT("睡眠检测")];
+        [statusDict setValue:kJL_TXT("已关闭") forKey:kJL_TXT("睡眠检测")];
     }
     if(model.status == WatchSwitchType_AllDay){
         [statusDict setValue:kJL_TXT("全天开启") forKey:kJL_TXT("睡眠检测")];
@@ -234,6 +234,12 @@
 
 #pragma mark 运动心率测试功能
 -(void)jlWatchSetExerciseHeartRateRemind:(JLExerciseHeartRateRemindModel *)model{
+    
+    if(model.status){
+        [statusDict setValue:kJL_TXT("已开启") forKey:kJL_TXT("运动心率提醒")];
+    }else{
+        [statusDict setValue:kJL_TXT("已关闭") forKey:kJL_TXT("运动心率提醒")];
+    }
     
     if(model.maxRate !=0){
        mMaxRate = model.maxRate;

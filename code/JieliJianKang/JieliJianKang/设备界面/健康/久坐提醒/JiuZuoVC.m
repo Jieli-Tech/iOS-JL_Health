@@ -63,8 +63,8 @@
 -(void)initUI{
     self.view.backgroundColor = kDF_RGBA(248, 250, 252, 1.0);
     titleHeight.constant = kJL_HeightNavBar;
-    sw = [DFUITools screen_2_W];
-    sh = [DFUITools screen_2_H];
+    sw = [UIScreen mainScreen].bounds.size.width;
+    sh = [UIScreen mainScreen].bounds.size.height;
 
     headView.frame = CGRectMake(0, 0, sw, kJL_HeightStatusBar+44);
     exitBtn.frame  = CGRectMake(4, kJL_HeightStatusBar, 44, 44);
@@ -117,7 +117,7 @@
     contentView1.userInteractionEnabled=YES;
     
     UILabel *startTimeLabel = [[UILabel alloc] init];
-    startTimeLabel.frame = CGRectMake(16,19,sw,21);
+    startTimeLabel.frame = CGRectMake(16,19,sw-16,21);
     startTimeLabel.numberOfLines = 0;
     [contentView1 addSubview:startTimeLabel];
     startTimeLabel.text = kJL_TXT("开启时间");
@@ -152,7 +152,7 @@
     contentView2.userInteractionEnabled=YES;
     
     UILabel *endTimeLabel = [[UILabel alloc] init];
-    endTimeLabel.frame = CGRectMake(16,19,sw,21);
+    endTimeLabel.frame = CGRectMake(16,19,sw-16,21);
     endTimeLabel.numberOfLines = 0;
     [contentView2 addSubview:endTimeLabel];
     endTimeLabel.text = kJL_TXT("结束时间");

@@ -8,6 +8,8 @@
 #import "EcTools.h"
 #import <objc/runtime.h>
 
+
+
 @implementation EcTools
 
 +(void)quickArray:(NSMutableArray *)array withLeftIndex:(NSInteger)leftIndex AndRightIndex:(NSInteger)rightIndex
@@ -75,6 +77,11 @@ static NSDateFormatter *cachedDateFormatter = nil;
     }
     return cachedDateFormatter;
 }
+
+
+
+
+
 
 
 @end

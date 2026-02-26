@@ -42,8 +42,8 @@
 -(void)initUI{
     self.view.backgroundColor = kDF_RGBA(248, 250, 252, 1.0);
     titleHeight.constant = kJL_HeightNavBar;
-    sW = [DFUITools screen_2_W];
-    sH = [DFUITools screen_2_H];
+    sW = [UIScreen mainScreen].bounds.size.width;
+    sH = [UIScreen mainScreen].bounds.size.height;
     
     currentType = -1;
     
@@ -65,7 +65,7 @@
     [self.view addSubview:label];
     label.text = kJL_TXT("心率测量方式");
     label.font = [UIFont fontWithName:@"PingFangSC" size: 14];
-    label.textColor = kDF_RGBA(36, 36, 36, 1.0);
+    label.textColor = kDF_RGBA(145, 145, 145, 1.0);
     label.textAlignment = NSTextAlignmentJustified;
     label.alpha = 1.0;
     
@@ -98,7 +98,7 @@
     label3.numberOfLines = 2;
     [contentView1 addSubview:label3];
     label3.text = kJL_TXT("根据运动状态动态调整测量频率，24小时智能监测您的心率，有助于省电");
-    label3.font = [UIFont fontWithName:@"PingFangSC" size: 12];
+    label3.font = [UIFont fontWithName:@"PingFangSC-Regular" size: 12];
     label3.textColor = kDF_RGBA(145, 145, 145, 1.0);
     label3.textAlignment = NSTextAlignmentLeft;
     label3.alpha = 1.0;
@@ -135,7 +135,7 @@
     label5.numberOfLines = 2;
     [contentView2 addSubview:label5];
     label5.text = kJL_TXT("24小时实时监测您的心率，心率数据更详细，刷新更及时，对功耗影响大");
-    label5.font = [UIFont fontWithName:@"PingFangSC" size: 12];
+    label5.font = [UIFont fontWithName:@"PingFangSC-Regular" size: 12];
     label5.textColor = kDF_RGBA(145, 145, 145, 1.0);
     label5.textAlignment = NSTextAlignmentLeft;
     label5.alpha = 1.0;

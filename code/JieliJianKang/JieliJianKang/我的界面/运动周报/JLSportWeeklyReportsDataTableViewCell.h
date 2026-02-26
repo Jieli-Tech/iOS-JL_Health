@@ -6,6 +6,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <TYCoreText/TYAttributedLabel.h>
+
 
 NS_ASSUME_NONNULL_BEGIN
 

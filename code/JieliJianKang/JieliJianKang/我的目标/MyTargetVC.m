@@ -60,7 +60,7 @@
     view_0.layer.cornerRadius = 8.0;
     view_1.layer.cornerRadius = 8.0;
     
-    float sW = [DFUITools screen_2_W];
+    float sW = [UIScreen mainScreen].bounds.size.width;
     
     muBiaoLabel.text = kJL_TXT("目标步数");
     stepUnits.text = kJL_TXT("步");
@@ -74,7 +74,7 @@
 
     CGRect rect_1 = CGRectMake(10.0, 80.0, sW-30.0*2, 80);
 
-    mTitleName.text = kJL_TXT("我的目标");
+    mTitleName.text = kJL_TXT("目标");
     [btnSaveBtn setTitle:kJL_TXT("保存") forState:UIControlStateNormal];
     
     int startPoint = 0;
@@ -180,8 +180,10 @@
     }];
 }
 
+
+static long bushuPoint_last = 0;
 -(void)onBushuPick:(BushuPick *)view didChange:(NSInteger)point{
-    //NSLog(@"Bushu ---> %ld",(long)point);
+    NSLog(@"Bushu ---> %ld",(long)point);
     int stepRate = 90;//步/min
     int duration = (int)point/stepRate; //min
     int consume = (int)(0.43*[self->mHeight intValue]+0.57*[self->mWeight intValue]+0.26*stepRate+0.92*duration-108.44);
@@ -190,6 +192,10 @@
     }
     self->mCalLabels.text = [NSString stringWithFormat:@"%@%d%@",kJL_TXT("消耗约"),consume,kJL_TXT("千卡")];
     
+    if (bushuPoint_last != point) {
+        AudioServicesPlaySystemSound(1519);
+        bushuPoint_last = point;
+    }
     lb_0.text = [NSString stringWithFormat:@"%ld",(long)point];
     mStep = lb_0.text;
 }
@@ -215,8 +221,8 @@ static long weightPoint_last = 0;
 
 -(void)onWeightPickView:(WeightPickView*)view didSelect:(NSInteger)pickPoint{
     float vl = (float)pickPoint;
-    NSString *txt = [NSString stringWithFormat:@"%.1f",vl/10.0f];
     self->myUserInfo.weightTarget = vl/10.0f;
+    NSString *txt = [NSString stringWithFormat:@"%.1f",vl/10.0f];
     mTargetWeight = txt;
 }
 

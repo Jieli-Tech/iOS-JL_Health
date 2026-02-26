@@ -43,15 +43,15 @@
 }
 
 -(void)initUI{
-    sw = [DFUITools screen_2_W];
-    sh = [DFUITools screen_2_H];
+    sw = [UIScreen mainScreen].bounds.size.width;
+    sh = [UIScreen mainScreen].bounds.size.height;
     
-    userWay = [[JL_Tools getUserByKey:@"httpUserWay"] intValue];
+    userWay = [[JL_Tools getUserByKey:kUI_HTTP_USER_WAY] intValue];
     titleHeight.constant = kJL_HeightNavBar;
     
     self.view.backgroundColor = kDF_RGBA(248, 250, 252, 1.0);
     
-    float sw = [DFUITools screen_2_W];
+    float sw = [UIScreen mainScreen].bounds.size.width;
     headView.frame = CGRectMake(0, 0, sw, kJL_HeightStatusBar+44);
     backBtn.frame  = CGRectMake(4, kJL_HeightStatusBar, 44, 44);
     currentTitle.text = kJL_TXT("绑定手机号");
@@ -385,11 +385,11 @@
                     return;
                 }
                
-                [JL_Tools post:@"CHANGE_PHONE_PWD" Object:@(1)];
-                [JL_Tools post:@"CHANGE_PHONE_NUM" Object:self->phoneTF.text];
+                [JL_Tools post:kUI_CHANGE_PHONE_PWD Object:@(1)];
+                [JL_Tools post:kUI_CHANGE_PHONE_NUM Object:self->phoneTF.text];
                 
                 
-                [JL_Tools setUser:self->phoneTF.text forKey:@"ACCOUNT_NUM"];
+                [JL_Tools setUser:self->phoneTF.text forKey:kUI_ACCOUNT_NUM];
                 
                 [self.navigationController popViewControllerAnimated:YES];
             }];

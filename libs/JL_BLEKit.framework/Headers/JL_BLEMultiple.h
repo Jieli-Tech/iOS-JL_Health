@@ -107,6 +107,12 @@ extern NSString *kJL_BLE_M_ANCS_UPDATE;         //设备ANCS权限变更
  */
 +(NSDictionary*)outputEdrInfo;
 
+/**
+ 返回经典蓝牙edr列表
+ @return 蓝牙edr列表
+ */
++(NSArray<NSString *>*)outputEdrList;
+
 
 #pragma mark - ota升级
 /**

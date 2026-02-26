@@ -24,8 +24,9 @@
     _subBtn.layer.cornerRadius = 12;
     [_subBtn setBackgroundColor:kDF_RGBA(240, 241, 245, 1.0)];
     [_subBtn setTitleColor:kDF_RGBA(85, 140, 255, 1.0) forState:UIControlStateNormal];
-
-    [self.subEditBtn setTitle:kJL_TXT("编辑") forState:UIControlStateNormal];
+    
+    
+    [_subEditBtn setTitle:kJL_TXT("编辑") forState:UIControlStateNormal];
     
     //闲置，可使用
     if (subType == WatchCellTypeUnUsed) {
@@ -57,6 +58,12 @@
         if (buyPrice < 1.0f) {
             [_subBtn setTitle:[NSString stringWithFormat:@"%@ 1",kJL_TXT("杰币")] forState:UIControlStateNormal];
         }
+    }
+}
+- (IBAction)tapWatch:(id)sender {
+    if ([_delegate respondsToSelector:@selector(onWatchCell:didSelectIndex:)]) {
+        NSLog(@"Watch face Select ---> %ld",(long)index);
+        [_delegate onWatchCell:self didSelectIndex:self.subIndex];
     }
 }
 

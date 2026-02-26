@@ -52,7 +52,7 @@
             }
             
             [[JLWearSync share] w_requireSportInfoWith:kJL_BLE_EntityM Block:^(JLWearSyncInfoModel *infoModel) {
-                if ((infoModel.sportID > 0) && (infoModel.sportType != WatchSportType_NonExercise) && ![JLApplicationDelegate.navigationController.viewControllers containsObject:JLApplicationDelegate.sportDetailVC]) {
+                if ((infoModel.sportID > 0) && (infoModel.sportType != 0x00) && ![JLApplicationDelegate.navigationController.viewControllers containsObject:JLApplicationDelegate.sportDetailVC]) {
                     [self startSportWithWearSyncInfoModel:infoModel withNeedStartAnimation:NO];
                 } else {
                     [self startSportWithWearSyncInfoModel:nil withNeedStartAnimation:YES];
@@ -77,14 +77,14 @@
     }
     if (model) {
         vc.wearSyncInfoModel = model;
-        if (model.sportType == WatchSportType_OutDoor) {
-            vc.sportType = WatchSportType_OutDoor;
+        if (model.sportType == 0x01) {
+            vc.sportType = 0x01;
             vc.outdoorSportThumbnailViewController = JLApplicationDelegate.outdoorSportThumbnailVC;
         } else {
-            vc.sportType = WatchSportType_InDoor;
+            vc.sportType = 0x02;
         }
     } else {
-        vc.sportType = WatchSportType_InDoor;
+        vc.sportType = 0x02;
     }
     [JLApplicationDelegate.navigationController pushViewController:vc animated:YES];
 }

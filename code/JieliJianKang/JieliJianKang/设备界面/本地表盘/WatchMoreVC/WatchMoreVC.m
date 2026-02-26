@@ -35,13 +35,13 @@
 
 -(void)setupUI{
     
-    float sW = [DFUITools screen_2_W];
-    float sH = [DFUITools screen_2_H];
+    float sW = [UIScreen mainScreen].bounds.size.width;
+    float sH = [UIScreen mainScreen].bounds.size.height;
     
     titlelabel_H.constant = kJL_HeightNavBar;
     
     /*--- 表盘 ---*/
-    watchOwn = [[WatchOwn alloc] initByFrame:CGRectMake(0, kJL_HeightNavBar, sW, sH-kJL_HeightNavBar-10.0)];
+    watchOwn = [[WatchOwn alloc] initByFrame:CGRectMake(10.0, kJL_HeightNavBar, sW-20.0, sH-kJL_HeightNavBar-10.0)];
     watchOwn.superVC = self;
     watchOwn.mSubTitleText = @"";
     watchOwn.mMoreBtnText  = @"";
@@ -51,6 +51,7 @@
 
 -(void)setWatchUiType:(WatchUIType)type{
     watchOwn.mWatchUiType = mWatchUiType;
+    
     if (type == WatchUITypeFree) {
         titlelabel.text = kJL_TXT("免费表盘");
         [watchOwn reloadMyWatchForFree:-1];
@@ -60,6 +61,7 @@
         [watchOwn reloadMyWatchForPay:-1];
     }
     mWatchUiType = type;
+    [watchOwn updateMoreImage:YES];
 }
 
 

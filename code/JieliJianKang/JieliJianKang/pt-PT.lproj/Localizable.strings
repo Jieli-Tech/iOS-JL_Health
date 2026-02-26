@@ -325,7 +325,7 @@
 "体重设定" = "Definição de peso";
 "体重目标" = "Meta de peso";
 "起始" = "Início:";
-"目标" = "Objetivo:";
+"目标" = "Objetivo";
 "消耗约" = "Consumir cerca de";
 "最新" = "Mais recente:";
 "最低值" = "Mais baixo";
@@ -378,7 +378,7 @@
 "添加表盘..." = "Adicionar mostrador...";
 "更新表盘..." = "Atualizar o mostrador...";
 "本地表盘" = "Local Dial";
-"全部" = "All >";
+"全部" = "All";
 "管理" = "Gestão";
 "闹钟" = "Despertador";
 "铃声" = "Toque";
@@ -401,7 +401,7 @@
 "电量" = "Electricidade";
 "升级" = "Upgrade";
 "当前版本"= "Versão atual";
-"固件升级" = "Firmware Upgrade";
+"固件更新" = "Firmware Upgrade";
 "检查更新" = "Verificar atualizações";
 "OTA升级失败" = "Falha de atualização OTA";
 "OTA升级数据为空!" = "Os dados de atualização OTA estão vazios!";
@@ -585,7 +585,7 @@
 "选择周间隔" = "Escolher intervalo semanal";
 "服务器开小差" = "Desvio do servidor";
 
-"手机蓝牙通话" = "Chamada Bluetooth para celular";
+"手表蓝牙通话" = "Assistir chamada bluetooth";
 "表盘" = "Dial";
 "购买记录" = "Registro de compra";
 "蓝牙" = "Bluetooth";
@@ -593,7 +593,7 @@
 "系统表盘" = "Dial do sistema";
 "免费表盘" = "Mostrador livre";
 "付费表盘" = "Mostrador pago";
-"更多>" = "Mais>";
+"更多>" = "Mais >";
 "表盘商城"= "Dial Mall";
 "我的表盘" = "Meu mostrador";
 "免费" = "Livre";
@@ -674,3 +674,7 @@
 "是否删除" = "Apagar ou não";
 "复制" = "cópia";
 "多选" = "Escolha Múltipla";
+"珠海市杰理科技股份有限公司" = "www.zh-jieli.com";
+"是否要清除用户缓存" = "Törölni szeretné a felhasználói gyorsítótárat?";
+"AI表盘" = "Discagem IA";
+"正在传输中" = "Transferência...";

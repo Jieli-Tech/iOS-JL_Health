@@ -13,30 +13,34 @@
 		1D159F3B260997F800D5966C /* SelectTitleBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D159F3A260997F800D5966C /* SelectTitleBar.m */; };
 		1D159F3F2609D62400D5966C /* DateLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D159F3E2609D62400D5966C /* DateLabelView.m */; };
 		1D27965E283F69A2005A65C5 /* DataTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D27965D283F69A2005A65C5 /* DataTester.swift */; };
-		1D279660283F6B56005A65C5 /* aaa.dat in Resources */ = {isa = PBXBuildFile; fileRef = 1D27965F283F6B56005A65C5 /* aaa.dat */; };
+		1D2FF3172AE2828800E53C87 /* CustomDialView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FF3162AE2828800E53C87 /* CustomDialView.m */; };
+		1D2FF31B2AE2845500E53C87 /* CustomDialCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FF3192AE2845500E53C87 /* CustomDialCell.m */; };
 		1D3E030926AAC19E00CDB02B /* UserDeviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3E030426AAC19E00CDB02B /* UserDeviceModel.m */; };
 		1D3E030A26AAC19E00CDB02B /* JLDeviceSqliteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3E030726AAC19E00CDB02B /* JLDeviceSqliteManager.m */; };
 		1D3E031126AAC1B200CDB02B /* DevicesViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3E030C26AAC1B200CDB02B /* DevicesViewCell.m */; };
 		1D3E031226AAC1B200CDB02B /* DevicesViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D3E030D26AAC1B200CDB02B /* DevicesViewCell.xib */; };
 		1D3E031326AAC1B200CDB02B /* DevicesSubView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3E031026AAC1B200CDB02B /* DevicesSubView.m */; };
-		1D3EAEB729F6501700C3405F /* JLDialUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3EAEB229F6501400C3405F /* JLDialUnit.framework */; };
-		1D3EAEB829F6501800C3405F /* JL_OTALib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3EAEB329F6501500C3405F /* JL_OTALib.framework */; };
-		1D3EAEB929F6501900C3405F /* JL_HashPair.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3EAEB429F6501500C3405F /* JL_HashPair.framework */; };
-		1D3EAEBA29F6501A00C3405F /* JL_BLEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3EAEB529F6501600C3405F /* JL_BLEKit.framework */; };
-		1D3EAEBB29F6501B00C3405F /* JL_AdvParse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3EAEB629F6501600C3405F /* JL_AdvParse.framework */; };
 		1D40DDC326A1263700A70D1B /* DeviceHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D40DDC226A1263700A70D1B /* DeviceHttp.m */; };
 		1D40DDC626A12F3000A70D1B /* DeviceHttpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D40DDC526A12F3000A70D1B /* DeviceHttpModel.m */; };
+		1D4BF6702AFB840700BFBE43 /* JL_HashPair.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4BF66B2AFB840600BFBE43 /* JL_HashPair.framework */; };
+		1D4BF6712AFB840700BFBE43 /* JL_OTALib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4BF66C2AFB840600BFBE43 /* JL_OTALib.framework */; };
+		1D4BF6722AFB840700BFBE43 /* JL_BLEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4BF66D2AFB840600BFBE43 /* JL_BLEKit.framework */; };
+		1D4BF6732AFB840700BFBE43 /* JLDialUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4BF66E2AFB840600BFBE43 /* JLDialUnit.framework */; };
+		1D4BF6742AFB840700BFBE43 /* JL_AdvParse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4BF66F2AFB840700BFBE43 /* JL_AdvParse.framework */; };
+		1D57C39B2AE261420073E5B4 /* WatchDialTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D57C39A2AE261420073E5B4 /* WatchDialTitleView.m */; };
 		1D5B0BF8282CD6A400C590FD /* BtCallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5B0BF6282CD6A400C590FD /* BtCallViewController.m */; };
 		1D5B0BF9282CD6A400C590FD /* BtCallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D5B0BF7282CD6A400C590FD /* BtCallViewController.xib */; };
-		1D5B0BFC282CE15D00C590FD /* ActionPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5B0BFB282CE15D00C590FD /* ActionPlayer.swift */; };
-		1D5B0BFE282CE50E00C590FD /* settingConnect.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1D5B0BFD282CE50E00C590FD /* settingConnect.mp4 */; };
 		1D5B0C00282CFBE800C590FD /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D5B0BFF282CFBE800C590FD /* WebKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		1D6435BF2AD64F430032072D /* settingConfig.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1D6435BE2AD64F430032072D /* settingConfig.gif */; };
+		1D6435E92AD8CFC70032072D /* AiDialStyleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6435E82AD8CFC70032072D /* AiDialStyleVC.m */; };
+		1D6435ED2AD8E7D10032072D /* BasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6435EC2AD8E7D10032072D /* BasicViewController.m */; };
 		1D66872F264A59340054880F /* JLSqliteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D668725264A59340054880F /* JLSqliteManager.m */; };
 		1D668731264A59340054880F /* NSDate+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D668729264A59340054880F /* NSDate+Tools.m */; };
 		1D668733264A59340054880F /* NSString+Path.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D66872E264A59340054880F /* NSString+Path.m */; };
 		1D668737264A59BB0054880F /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D668736264A59960054880F /* libsqlite3.tbd */; };
 		1D668738264A5E2B0054880F /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D668734264A595D0054880F /* FMDB.framework */; };
 		1D668739264A5E2B0054880F /* FMDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D668734264A595D0054880F /* FMDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1D8046312ABD347C00FBA6AC /* DottedLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8046302ABD347C00FBA6AC /* DottedLineView.m */; };
 		1D831C1426AEDAA300EA5C42 /* DeviceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D831C1226AEDAA200EA5C42 /* DeviceDetailViewController.m */; };
 		1D831C1526AEDAA300EA5C42 /* DeviceDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D831C1326AEDAA200EA5C42 /* DeviceDetailViewController.xib */; };
 		1D86A772260D693B005D5391 /* HeartBeatDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D86A771260D693B005D5391 /* HeartBeatDetailVC.m */; };
@@ -57,6 +61,10 @@
 		1DA4512826148DDD002F3F1D /* OxygenSaturationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4512426148DDD002F3F1D /* OxygenSaturationVC.m */; };
 		1DA7552B26032B9700184A47 /* SleepPartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DA7552A26032B9700184A47 /* SleepPartView.m */; };
 		1DA7552F26032D3000184A47 /* HeartBitPartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DA7552D26032D3000184A47 /* HeartBitPartView.m */; };
+		1DAADEF82AD8F31300CDD509 /* AiDialStyleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DAADEF62AD8F31300CDD509 /* AiDialStyleCell.m */; };
+		1DAADEF92AD8F31300CDD509 /* AiDialStyleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DAADEF72AD8F31300CDD509 /* AiDialStyleCell.xib */; };
+		1DAADEFC2AD922BC00CDD509 /* AIDialXFManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DAADEFB2AD922BC00CDD509 /* AIDialXFManager.m */; };
+		1DAADEFD2AD92D3900CDD509 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE844646261EAFE700A5D474 /* Security.framework */; };
 		1DAB41A92600363B00171C87 /* StepPartsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DAB41A72600363A00171C87 /* StepPartsView.m */; };
 		1DB0C7FA262835800093A98F /* EcDateSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB0C7F8262835800093A98F /* EcDateSelectView.m */; };
 		1DB1101E260ADAD500E36D65 /* StepDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB1101D260ADAD500E36D65 /* StepDetailViewController.m */; };
@@ -69,6 +77,9 @@
 		1DB367A325FF476800A03491 /* CoreDraw.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DB367A125FF470200A03491 /* CoreDraw.framework */; };
 		1DB367A425FF476800A03491 /* CoreDraw.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DB367A125FF470200A03491 /* CoreDraw.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1DB367AF25FF7CAE00A03491 /* SportRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB367AE25FF7CAE00A03491 /* SportRecordView.m */; };
+		1DB6E52A2AE64700003DF63C /* CutImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB6E5292AE64700003DF63C /* CutImageViewController.m */; };
+		1DB6E5392AE65E60003DF63C /* UIImage+Rotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB6E5382AE65E60003DF63C /* UIImage+Rotate.m */; };
+		1DB6E53C2AE76BA1003DF63C /* CustomDialEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB6E53B2AE76BA1003DF63C /* CustomDialEditVC.m */; };
 		1DB7F11B264BC647003E6C91 /* UserDataSport.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB7F11A264BC647003E6C91 /* UserDataSport.m */; };
 		1DBBD6E127472B0F00E818FD /* DataOverRallPlanHeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBBD6E027472B0F00E818FD /* DataOverRallPlanHeartRate.m */; };
 		1DBBD6FB27479AFA00E818FD /* DataOverrallPlanBloodOxygen.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBBD6FA27479AFA00E818FD /* DataOverrallPlanBloodOxygen.m */; };
@@ -114,6 +125,8 @@
 		1DD40E2B2913683B004C1555 /* AMapFoundationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD40E2729136836004C1555 /* AMapFoundationKit.framework */; };
 		1DD40E2D29136914004C1555 /* AMapLocationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD40E2C29136914004C1555 /* AMapLocationKit.framework */; };
 		1DD40E2F29136C02004C1555 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD40E2E29136C01004C1555 /* ExternalAccessory.framework */; };
+		1DD6418D2B2C347D003F9F15 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1DD6418C2B2C347D003F9F15 /* test.jpg */; };
+		1DD641902B2C35B6003F9F15 /* OCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD6418F2B2C35B6003F9F15 /* OCTest.m */; };
 		1DDA6D9D2775A151006A2518 /* LanguageCls.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDA6D9C2775A151006A2518 /* LanguageCls.m */; };
 		1DF277AF26B13C6900081F8B /* BasicHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF277AE26B13C6900081F8B /* BasicHttp.m */; };
 		22131E6025DF8C1500590C4A /* BodyDataVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 22131E5E25DF8C1500590C4A /* BodyDataVC.m */; };
@@ -257,7 +270,6 @@
 		48B9337E2A80922E009CB52C /* SpeexKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B9337C2A80922E009CB52C /* SpeexKit.framework */; };
 		48B9337F2A809252009CB52C /* SpeexKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48B9337C2A80922E009CB52C /* SpeexKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		48B933822A80929C009CB52C /* DFUnits.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B933802A80929C009CB52C /* DFUnits.framework */; };
-		48B933832A80929C009CB52C /* DFUnits.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 48B933812A80929C009CB52C /* DFUnits.framework.dSYM */; };
 		48B933842A8092B3009CB52C /* DFUnits.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48B933802A80929C009CB52C /* DFUnits.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		48ECE6FE28B485990097289D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48ECE6FD28B485990097289D /* StoreKit.framework */; };
 		4A06820325EDE685000BF0EB /* PersonInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A06820125EDE685000BF0EB /* PersonInfoCell.xib */; };
@@ -580,6 +592,9 @@
 		C2BF45B82A7A518900D716D9 /* AICloundMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BF45B72A7A518900D716D9 /* AICloundMessageModel.m */; };
 		C2BF45BB2A7A556200D716D9 /* JLSqliteAICloundMessageRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BF45BA2A7A556200D716D9 /* JLSqliteAICloundMessageRecord.m */; };
 		C2C43BCB2A70BA27009B99FA /* AIClound.m in Sources */ = {isa = PBXBuildFile; fileRef = C2C43BCA2A70BA27009B99FA /* AIClound.m */; };
+		C2CDB47F2AF21F21004A98F9 /* transferring.gif in Resources */ = {isa = PBXBuildFile; fileRef = C2CDB47E2AF21F21004A98F9 /* transferring.gif */; };
+		C2CDB4832AF22088004A98F9 /* TransferringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2CDB4802AF22088004A98F9 /* TransferringView.xib */; };
+		C2CDB4842AF22088004A98F9 /* TransferringView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CDB4822AF22088004A98F9 /* TransferringView.m */; };
 		C2CDC9142A77489100097A76 /* DeleteView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CDC9112A77489100097A76 /* DeleteView.m */; };
 		C2CDC9152A77489100097A76 /* DeleteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2CDC9122A77489100097A76 /* DeleteView.xib */; };
 		C2E43A1E2616A28E00263126 /* RingTime.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E43A1D2616A28E00263126 /* RingTime.m */; };
@@ -598,7 +613,6 @@
 		C2E43A582616CA8100263126 /* ScanConnectDeviceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2E43A552616CA8100263126 /* ScanConnectDeviceVC.xib */; };
 		C2E43A592616CA8100263126 /* ScanConnectDeviceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E43A572616CA8100263126 /* ScanConnectDeviceVC.m */; };
 		C2E795FC2721577100F78D42 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C2E795FE2721577100F78D42 /* InfoPlist.strings */; };
-		C2F672362A84D19300A8A7B6 /* JL_Talk.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F672342A84D19200A8A7B6 /* JL_Talk.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -631,7 +645,10 @@
 		1D159F3D2609D62400D5966C /* DateLabelView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DateLabelView.h; sourceTree = "<group>"; };
 		1D159F3E2609D62400D5966C /* DateLabelView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DateLabelView.m; sourceTree = "<group>"; };
 		1D27965D283F69A2005A65C5 /* DataTester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTester.swift; sourceTree = "<group>"; };
-		1D27965F283F6B56005A65C5 /* aaa.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = aaa.dat; sourceTree = "<group>"; };
+		1D2FF3152AE2828800E53C87 /* CustomDialView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomDialView.h; sourceTree = "<group>"; };
+		1D2FF3162AE2828800E53C87 /* CustomDialView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomDialView.m; sourceTree = "<group>"; };
+		1D2FF3182AE2845500E53C87 /* CustomDialCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomDialCell.h; sourceTree = "<group>"; };
+		1D2FF3192AE2845500E53C87 /* CustomDialCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomDialCell.m; sourceTree = "<group>"; };
 		1D3E030326AAC19E00CDB02B /* UserDeviceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDeviceModel.h; sourceTree = "<group>"; };
 		1D3E030426AAC19E00CDB02B /* UserDeviceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDeviceModel.m; sourceTree = "<group>"; };
 		1D3E030626AAC19E00CDB02B /* JLDeviceSqliteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLDeviceSqliteManager.h; sourceTree = "<group>"; };
@@ -641,22 +658,27 @@
 		1D3E030E26AAC1B200CDB02B /* DevicesSubView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevicesSubView.h; sourceTree = "<group>"; };
 		1D3E030F26AAC1B200CDB02B /* DevicesViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevicesViewCell.h; sourceTree = "<group>"; };
 		1D3E031026AAC1B200CDB02B /* DevicesSubView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevicesSubView.m; sourceTree = "<group>"; };
-		1D3EAEB229F6501400C3405F /* JLDialUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JLDialUnit.framework; sourceTree = "<group>"; };
-		1D3EAEB329F6501500C3405F /* JL_OTALib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_OTALib.framework; sourceTree = "<group>"; };
-		1D3EAEB429F6501500C3405F /* JL_HashPair.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_HashPair.framework; sourceTree = "<group>"; };
-		1D3EAEB529F6501600C3405F /* JL_BLEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_BLEKit.framework; sourceTree = "<group>"; };
-		1D3EAEB629F6501600C3405F /* JL_AdvParse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_AdvParse.framework; sourceTree = "<group>"; };
 		1D40DDC126A1263700A70D1B /* DeviceHttp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceHttp.h; sourceTree = "<group>"; };
 		1D40DDC226A1263700A70D1B /* DeviceHttp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceHttp.m; sourceTree = "<group>"; };
 		1D40DDC426A12F3000A70D1B /* DeviceHttpModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceHttpModel.h; sourceTree = "<group>"; };
 		1D40DDC526A12F3000A70D1B /* DeviceHttpModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceHttpModel.m; sourceTree = "<group>"; };
+		1D4BF66B2AFB840600BFBE43 /* JL_HashPair.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_HashPair.framework; sourceTree = "<group>"; };
+		1D4BF66C2AFB840600BFBE43 /* JL_OTALib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_OTALib.framework; sourceTree = "<group>"; };
+		1D4BF66D2AFB840600BFBE43 /* JL_BLEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_BLEKit.framework; sourceTree = "<group>"; };
+		1D4BF66E2AFB840600BFBE43 /* JLDialUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JLDialUnit.framework; sourceTree = "<group>"; };
+		1D4BF66F2AFB840700BFBE43 /* JL_AdvParse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_AdvParse.framework; sourceTree = "<group>"; };
+		1D57C3992AE261420073E5B4 /* WatchDialTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WatchDialTitleView.h; sourceTree = "<group>"; };
+		1D57C39A2AE261420073E5B4 /* WatchDialTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WatchDialTitleView.m; sourceTree = "<group>"; };
 		1D5B0BF5282CD6A400C590FD /* BtCallViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BtCallViewController.h; sourceTree = "<group>"; };
 		1D5B0BF6282CD6A400C590FD /* BtCallViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BtCallViewController.m; sourceTree = "<group>"; };
 		1D5B0BF7282CD6A400C590FD /* BtCallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BtCallViewController.xib; sourceTree = "<group>"; };
 		1D5B0BFA282CE15C00C590FD /* JieliJianKang-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JieliJianKang-Bridging-Header.h"; sourceTree = "<group>"; };
-		1D5B0BFB282CE15D00C590FD /* ActionPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPlayer.swift; sourceTree = "<group>"; };
-		1D5B0BFD282CE50E00C590FD /* settingConnect.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = settingConnect.mp4; sourceTree = "<group>"; };
 		1D5B0BFF282CFBE800C590FD /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		1D6435BE2AD64F430032072D /* settingConfig.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = settingConfig.gif; sourceTree = "<group>"; };
+		1D6435E72AD8CFC70032072D /* AiDialStyleVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AiDialStyleVC.h; sourceTree = "<group>"; };
+		1D6435E82AD8CFC70032072D /* AiDialStyleVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AiDialStyleVC.m; sourceTree = "<group>"; };
+		1D6435EB2AD8E7D10032072D /* BasicViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicViewController.h; sourceTree = "<group>"; };
+		1D6435EC2AD8E7D10032072D /* BasicViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicViewController.m; sourceTree = "<group>"; };
 		1D668723264A59340054880F /* NSDate+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Tools.h"; sourceTree = "<group>"; };
 		1D668724264A59340054880F /* NSString+Path.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Path.h"; sourceTree = "<group>"; };
 		1D668725264A59340054880F /* JLSqliteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLSqliteManager.m; sourceTree = "<group>"; };
@@ -666,6 +688,8 @@
 		1D668734264A595D0054880F /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FMDB.framework; sourceTree = "<group>"; };
 		1D668736264A59960054880F /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		1D70A7C92832716300164E93 /* JLBugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JLBugly.framework; sourceTree = "<group>"; };
+		1D80462F2ABD347C00FBA6AC /* DottedLineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DottedLineView.h; sourceTree = "<group>"; };
+		1D8046302ABD347C00FBA6AC /* DottedLineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DottedLineView.m; sourceTree = "<group>"; };
 		1D831C1126AEDAA200EA5C42 /* DeviceDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceDetailViewController.h; sourceTree = "<group>"; };
 		1D831C1226AEDAA200EA5C42 /* DeviceDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceDetailViewController.m; sourceTree = "<group>"; };
 		1D831C1326AEDAA200EA5C42 /* DeviceDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceDetailViewController.xib; sourceTree = "<group>"; };
@@ -703,6 +727,11 @@
 		1DA7552A26032B9700184A47 /* SleepPartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SleepPartView.m; sourceTree = "<group>"; };
 		1DA7552D26032D3000184A47 /* HeartBitPartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeartBitPartView.m; sourceTree = "<group>"; };
 		1DA7552E26032D3000184A47 /* HeartBitPartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeartBitPartView.h; sourceTree = "<group>"; };
+		1DAADEF52AD8F31300CDD509 /* AiDialStyleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AiDialStyleCell.h; sourceTree = "<group>"; };
+		1DAADEF62AD8F31300CDD509 /* AiDialStyleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AiDialStyleCell.m; sourceTree = "<group>"; };
+		1DAADEF72AD8F31300CDD509 /* AiDialStyleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AiDialStyleCell.xib; sourceTree = "<group>"; };
+		1DAADEFA2AD922BC00CDD509 /* AIDialXFManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AIDialXFManager.h; sourceTree = "<group>"; };
+		1DAADEFB2AD922BC00CDD509 /* AIDialXFManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AIDialXFManager.m; sourceTree = "<group>"; };
 		1DAB41A72600363A00171C87 /* StepPartsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepPartsView.m; sourceTree = "<group>"; };
 		1DAB41A82600363A00171C87 /* StepPartsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepPartsView.h; sourceTree = "<group>"; };
 		1DB0C7F8262835800093A98F /* EcDateSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EcDateSelectView.m; sourceTree = "<group>"; };
@@ -721,6 +750,12 @@
 		1DB367A125FF470200A03491 /* CoreDraw.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CoreDraw.framework; sourceTree = "<group>"; };
 		1DB367AD25FF7CAE00A03491 /* SportRecordView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SportRecordView.h; sourceTree = "<group>"; };
 		1DB367AE25FF7CAE00A03491 /* SportRecordView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SportRecordView.m; sourceTree = "<group>"; };
+		1DB6E5282AE64700003DF63C /* CutImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CutImageViewController.h; sourceTree = "<group>"; };
+		1DB6E5292AE64700003DF63C /* CutImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CutImageViewController.m; sourceTree = "<group>"; };
+		1DB6E5372AE65E60003DF63C /* UIImage+Rotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Rotate.h"; sourceTree = "<group>"; };
+		1DB6E5382AE65E60003DF63C /* UIImage+Rotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Rotate.m"; sourceTree = "<group>"; };
+		1DB6E53A2AE76BA1003DF63C /* CustomDialEditVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomDialEditVC.h; sourceTree = "<group>"; };
+		1DB6E53B2AE76BA1003DF63C /* CustomDialEditVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomDialEditVC.m; sourceTree = "<group>"; };
 		1DB7F119264BC647003E6C91 /* UserDataSport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserDataSport.h; sourceTree = "<group>"; };
 		1DB7F11A264BC647003E6C91 /* UserDataSport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserDataSport.m; sourceTree = "<group>"; };
 		1DBBD6DE27472B0F00E818FD /* DataOverRallPlanHeartRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataOverRallPlanHeartRate.h; sourceTree = "<group>"; };
@@ -798,6 +833,9 @@
 		1DD40E2729136836004C1555 /* AMapFoundationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapFoundationKit.framework; sourceTree = "<group>"; };
 		1DD40E2C29136914004C1555 /* AMapLocationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapLocationKit.framework; sourceTree = "<group>"; };
 		1DD40E2E29136C01004C1555 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
+		1DD6418C2B2C347D003F9F15 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
+		1DD6418E2B2C35B6003F9F15 /* OCTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCTest.h; sourceTree = "<group>"; };
+		1DD6418F2B2C35B6003F9F15 /* OCTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCTest.m; sourceTree = "<group>"; };
 		1DDA6D9A2775A103006A2518 /* LanguagePtl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LanguagePtl.h; sourceTree = "<group>"; };
 		1DDA6D9B2775A151006A2518 /* LanguageCls.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LanguageCls.h; sourceTree = "<group>"; };
 		1DDA6D9C2775A151006A2518 /* LanguageCls.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LanguageCls.m; sourceTree = "<group>"; };
@@ -1059,7 +1097,6 @@
 		488018C226A6A8D100F2064D /* DialUICache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DialUICache.m; sourceTree = "<group>"; };
 		48B9337C2A80922E009CB52C /* SpeexKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpeexKit.framework; sourceTree = "<group>"; };
 		48B933802A80929C009CB52C /* DFUnits.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DFUnits.framework; sourceTree = "<group>"; };
-		48B933812A80929C009CB52C /* DFUnits.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = DFUnits.framework.dSYM; sourceTree = "<group>"; };
 		48ECE6FD28B485990097289D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4A06820025EDE685000BF0EB /* PersonInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonInfoCell.h; sourceTree = "<group>"; };
 		4A06820125EDE685000BF0EB /* PersonInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonInfoCell.xib; sourceTree = "<group>"; };
@@ -1602,6 +1639,10 @@
 		C2C41BC329407703004E2BDA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C2C43BC92A70BA27009B99FA /* AIClound.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AIClound.h; sourceTree = "<group>"; };
 		C2C43BCA2A70BA27009B99FA /* AIClound.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AIClound.m; sourceTree = "<group>"; };
+		C2CDB47E2AF21F21004A98F9 /* transferring.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = transferring.gif; sourceTree = "<group>"; };
+		C2CDB4802AF22088004A98F9 /* TransferringView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TransferringView.xib; sourceTree = "<group>"; };
+		C2CDB4812AF22088004A98F9 /* TransferringView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferringView.h; sourceTree = "<group>"; };
+		C2CDB4822AF22088004A98F9 /* TransferringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferringView.m; sourceTree = "<group>"; };
 		C2CDC9112A77489100097A76 /* DeleteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteView.m; sourceTree = "<group>"; };
 		C2CDC9122A77489100097A76 /* DeleteView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeleteView.xib; sourceTree = "<group>"; };
 		C2CDC9132A77489100097A76 /* DeleteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteView.h; sourceTree = "<group>"; };
@@ -1633,8 +1674,6 @@
 		C2E43A572616CA8100263126 /* ScanConnectDeviceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanConnectDeviceVC.m; sourceTree = "<group>"; };
 		C2E796002721578500F78D42 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		C2E796012721592700F78D42 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C2F672342A84D19200A8A7B6 /* JL_Talk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JL_Talk.m; sourceTree = "<group>"; };
-		C2F672352A84D19300A8A7B6 /* JL_Talk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JL_Talk.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1642,45 +1681,46 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D3EAEB829F6501800C3405F /* JL_OTALib.framework in Frameworks */,
-				BE844649261EAFF000A5D474 /* SystemConfiguration.framework in Frameworks */,
 				BE844647261EAFE700A5D474 /* Security.framework in Frameworks */,
+				BE844649261EAFF000A5D474 /* SystemConfiguration.framework in Frameworks */,
 				48B9337E2A80922E009CB52C /* SpeexKit.framework in Frameworks */,
 				1DC585F829B1D2FD0045AB01 /* JTCalendar.framework in Frameworks */,
 				BE844643261EAFB500A5D474 /* GLKit.framework in Frameworks */,
+				1DAADEFD2AD92D3900CDD509 /* Security.framework in Frameworks */,
 				1DD40E2F29136C02004C1555 /* ExternalAccessory.framework in Frameworks */,
 				C2B5E8D22A81CA0E001DDB24 /* Foundation.framework in Frameworks */,
 				BE844645261EAFDB00A5D474 /* libz.tbd in Frameworks */,
 				4A2B125D25DE3F110089AFBA /* libc++.tbd in Frameworks */,
 				BE844641261EAFAA00A5D474 /* CoreTelephony.framework in Frameworks */,
 				C2B5E8D52A81CA3D001DDB24 /* UIKit.framework in Frameworks */,
+				1D4BF6712AFB840700BFBE43 /* JL_OTALib.framework in Frameworks */,
 				1D5B0C00282CFBE800C590FD /* WebKit.framework in Frameworks */,
 				1D668737264A59BB0054880F /* libsqlite3.tbd in Frameworks */,
 				C2B5E8CD2A81C8AD001DDB24 /* iflyMSC.framework in Frameworks */,
 				C2B5E8D02A81C9D8001DDB24 /* AVFoundation.framework in Frameworks */,
 				1DB367A325FF476800A03491 /* CoreDraw.framework in Frameworks */,
-				1D3EAEB929F6501900C3405F /* JL_HashPair.framework in Frameworks */,
 				C2B5E8D92A81CA69001DDB24 /* AddressBook.framework in Frameworks */,
+				1D4BF6732AFB840700BFBE43 /* JLDialUnit.framework in Frameworks */,
 				C2B395C42A8221E9001EEB9D /* AIKIT.framework in Frameworks */,
 				BE84463F261EAFA200A5D474 /* CoreLocation.framework in Frameworks */,
 				48B933822A80929C009CB52C /* DFUnits.framework in Frameworks */,
 				4ACB254725F859D000C66654 /* ZipZap.framework in Frameworks */,
 				C2B5E8D72A81CA5D001DDB24 /* Contacts.framework in Frameworks */,
 				C2B5E8DB2A81CA70001DDB24 /* QuartzCore.framework in Frameworks */,
-				1D3EAEBA29F6501A00C3405F /* JL_BLEKit.framework in Frameworks */,
 				48ECE6FE28B485990097289D /* StoreKit.framework in Frameworks */,
 				C2B5E8DD2A81CA7E001DDB24 /* CoreGraphics.framework in Frameworks */,
+				1D4BF6742AFB840700BFBE43 /* JL_AdvParse.framework in Frameworks */,
 				BEECBA5526A67235008EBE94 /* AudioToolbox.framework in Frameworks */,
 				1D11460229B0852600347E8D /* JLBugly.framework in Frameworks */,
-				1D3EAEB729F6501700C3405F /* JLDialUnit.framework in Frameworks */,
 				C2B5E8D32A81CA1E001DDB24 /* CoreTelephony.framework in Frameworks */,
-				1D3EAEBB29F6501B00C3405F /* JL_AdvParse.framework in Frameworks */,
 				1DB3675225FF09F800A03491 /* TYCoreText.framework in Frameworks */,
+				1D4BF6702AFB840700BFBE43 /* JL_HashPair.framework in Frameworks */,
 				1DD40E2B2913683B004C1555 /* AMapFoundationKit.framework in Frameworks */,
 				1DD40E2829136837004C1555 /* MAMapKit.framework in Frameworks */,
 				1D668738264A5E2B0054880F /* FMDB.framework in Frameworks */,
 				1DD40E2929136838004C1555 /* AMapSearchKit.framework in Frameworks */,
 				1DD40E2D29136914004C1555 /* AMapLocationKit.framework in Frameworks */,
+				1D4BF6722AFB840700BFBE43 /* JL_BLEKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1712,9 +1752,25 @@
 			isa = PBXGroup;
 			children = (
 				1D27965D283F69A2005A65C5 /* DataTester.swift */,
-				1D27965F283F6B56005A65C5 /* aaa.dat */,
+				1DD6418C2B2C347D003F9F15 /* test.jpg */,
+				1DD6418E2B2C35B6003F9F15 /* OCTest.h */,
+				1DD6418F2B2C35B6003F9F15 /* OCTest.m */,
 			);
 			path = UnitTester;
+			sourceTree = "<group>";
+		};
+		1D2FF3142AE2815D00E53C87 /* WatchCustomDial */ = {
+			isa = PBXGroup;
+			children = (
+				1DB6E5272AE646D8003DF63C /* CutImageView */,
+				1D2FF3152AE2828800E53C87 /* CustomDialView.h */,
+				1D2FF3162AE2828800E53C87 /* CustomDialView.m */,
+				1D2FF3182AE2845500E53C87 /* CustomDialCell.h */,
+				1D2FF3192AE2845500E53C87 /* CustomDialCell.m */,
+				1DB6E53A2AE76BA1003DF63C /* CustomDialEditVC.h */,
+				1DB6E53B2AE76BA1003DF63C /* CustomDialEditVC.m */,
+			);
+			path = WatchCustomDial;
 			sourceTree = "<group>";
 		};
 		1D3E030126AAC19E00CDB02B /* 用户设备数据 */ = {
@@ -1768,17 +1824,48 @@
 			path = DeviceHTTP;
 			sourceTree = "<group>";
 		};
+		1D57C3982AE2611A0073E5B4 /* WatchDailTitleView */ = {
+			isa = PBXGroup;
+			children = (
+				1D57C3992AE261420073E5B4 /* WatchDialTitleView.h */,
+				1D57C39A2AE261420073E5B4 /* WatchDialTitleView.m */,
+			);
+			path = WatchDailTitleView;
+			sourceTree = "<group>";
+		};
 		1D5B0BF4282CD63300C590FD /* 手表蓝牙通话 */ = {
 			isa = PBXGroup;
 			children = (
 				1D5B0BF5282CD6A400C590FD /* BtCallViewController.h */,
 				1D5B0BF6282CD6A400C590FD /* BtCallViewController.m */,
 				1D5B0BF7282CD6A400C590FD /* BtCallViewController.xib */,
-				1D5B0BFD282CE50E00C590FD /* settingConnect.mp4 */,
-				1D5B0BFB282CE15D00C590FD /* ActionPlayer.swift */,
+				1D6435BE2AD64F430032072D /* settingConfig.gif */,
 				1D5B0BFA282CE15C00C590FD /* JieliJianKang-Bridging-Header.h */,
 			);
 			path = "手表蓝牙通话";
+			sourceTree = "<group>";
+		};
+		1D6435E32AD8CF3E0032072D /* AIDialView */ = {
+			isa = PBXGroup;
+			children = (
+				1D6435E72AD8CFC70032072D /* AiDialStyleVC.h */,
+				1D6435E82AD8CFC70032072D /* AiDialStyleVC.m */,
+				1DAADEF52AD8F31300CDD509 /* AiDialStyleCell.h */,
+				1DAADEF62AD8F31300CDD509 /* AiDialStyleCell.m */,
+				1DAADEF72AD8F31300CDD509 /* AiDialStyleCell.xib */,
+				1DAADEFA2AD922BC00CDD509 /* AIDialXFManager.h */,
+				1DAADEFB2AD922BC00CDD509 /* AIDialXFManager.m */,
+			);
+			path = AIDialView;
+			sourceTree = "<group>";
+		};
+		1D6435EA2AD8E7BA0032072D /* BasicViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1D6435EB2AD8E7D10032072D /* BasicViewController.h */,
+				1D6435EC2AD8E7D10032072D /* BasicViewController.m */,
+			);
+			path = BasicViewController;
 			sourceTree = "<group>";
 		};
 		1D668722264A59340054880F /* 数据库 */ = {
@@ -1941,6 +2028,17 @@
 				1DB367AE25FF7CAE00A03491 /* SportRecordView.m */,
 			);
 			path = "运动记录控件";
+			sourceTree = "<group>";
+		};
+		1DB6E5272AE646D8003DF63C /* CutImageView */ = {
+			isa = PBXGroup;
+			children = (
+				1DB6E5372AE65E60003DF63C /* UIImage+Rotate.h */,
+				1DB6E5382AE65E60003DF63C /* UIImage+Rotate.m */,
+				1DB6E5282AE64700003DF63C /* CutImageViewController.h */,
+				1DB6E5292AE64700003DF63C /* CutImageViewController.m */,
+			);
+			path = CutImageView;
 			sourceTree = "<group>";
 		};
 		1DBBD70827507E0300E818FD /* 查找手机 */ = {
@@ -2883,6 +2981,11 @@
 		4A2B125B25DE3F100089AFBA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1D4BF66F2AFB840700BFBE43 /* JL_AdvParse.framework */,
+				1D4BF66D2AFB840600BFBE43 /* JL_BLEKit.framework */,
+				1D4BF66B2AFB840600BFBE43 /* JL_HashPair.framework */,
+				1D4BF66C2AFB840600BFBE43 /* JL_OTALib.framework */,
+				1D4BF66E2AFB840600BFBE43 /* JLDialUnit.framework */,
 				C2B395C32A8221E8001EEB9D /* AIKIT.framework */,
 				C2B5E8DC2A81CA7D001DDB24 /* CoreGraphics.framework */,
 				C2B5E8DA2A81CA70001DDB24 /* QuartzCore.framework */,
@@ -2894,13 +2997,7 @@
 				C2B5E8CC2A81C8AC001DDB24 /* iflyMSC.framework */,
 				48B9337C2A80922E009CB52C /* SpeexKit.framework */,
 				48B933802A80929C009CB52C /* DFUnits.framework */,
-				48B933812A80929C009CB52C /* DFUnits.framework.dSYM */,
 				C23953302A77AB4700358C29 /* iflyAIUI.framework */,
-				1D3EAEB629F6501600C3405F /* JL_AdvParse.framework */,
-				1D3EAEB529F6501600C3405F /* JL_BLEKit.framework */,
-				1D3EAEB429F6501500C3405F /* JL_HashPair.framework */,
-				1D3EAEB329F6501500C3405F /* JL_OTALib.framework */,
-				1D3EAEB229F6501400C3405F /* JLDialUnit.framework */,
 				1DD40E2E29136C01004C1555 /* ExternalAccessory.framework */,
 				48ECE6FD28B485990097289D /* StoreKit.framework */,
 				1D70A7C92832716300164E93 /* JLBugly.framework */,
@@ -2938,6 +3035,7 @@
 		4A2B126325DE40C20089AFBA /* 设备界面 */ = {
 			isa = PBXGroup;
 			children = (
+				1D6435E32AD8CF3E0032072D /* AIDialView */,
 				22131EA125E09D7F00590C4A /* 健康 */,
 				22AA830625FA07300012F3A3 /* 音乐管理 */,
 				22AA82AC25F9E7900012F3A3 /* 闹钟 */,
@@ -3129,12 +3227,14 @@
 				486E09752861B19A0076FBC8 /* WatchOwn */,
 				486E097C2861B19A0076FBC8 /* WatchShop */,
 				1DD2FEAD29233D2600804803 /* WatchCell */,
+				1D2FF3142AE2815D00E53C87 /* WatchCustomDial */,
 				4AA625CF25E39D1600D174A7 /* WatchLocalView.h */,
 				4AA625D025E39D1600D174A7 /* WatchLocalView.m */,
 				4AA625D425E39D3500D174A7 /* WatchLocalView.xib */,
 				4AD8DF0225ECE294007D6D29 /* WatchLocalVC.h */,
 				4AD8DF0425ECE294007D6D29 /* WatchLocalVC.m */,
 				4AD8DF0325ECE294007D6D29 /* WatchLocalVC.xib */,
+				1D57C3982AE2611A0073E5B4 /* WatchDailTitleView */,
 			);
 			path = "本地表盘";
 			sourceTree = "<group>";
@@ -3539,6 +3639,7 @@
 		BE844612261E9DE100A5D474 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				1D6435EA2AD8E7BA0032072D /* BasicViewController */,
 				1DDA6D982775A082006A2518 /* LanguageProtocol */,
 				BEECBA5026A66FD5008EBE94 /* JLAudioToolbox */,
 				4ACB254125F8590200C66654 /* DialApi */,
@@ -3580,6 +3681,7 @@
 		BE844626261E9F9300A5D474 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				C2CDB47D2AF21E7E004A98F9 /* 正在传输的动图 */,
 				4A2B129E25DF57E30089AFBA /* UI数据和效果 */,
 				4ADA19BC26145B9D000DAEF6 /* 搜索动图 */,
 				C278B9B42612F6E8003742D1 /* 无网络 */,
@@ -3951,6 +4053,8 @@
 				C278BA29261450D6003742D1 /* PGBarChartLabel.m */,
 				C278BA26261450D6003742D1 /* PGBox.h */,
 				C278BA28261450D6003742D1 /* PGBox.m */,
+				1D80462F2ABD347C00FBA6AC /* DottedLineView.h */,
+				1D8046302ABD347C00FBA6AC /* DottedLineView.m */,
 			);
 			path = PGBarChart;
 			sourceTree = "<group>";
@@ -4161,8 +4265,6 @@
 		C2C43BCC2A70C733009B99FA /* 语音识别 */ = {
 			isa = PBXGroup;
 			children = (
-				C2F672352A84D19300A8A7B6 /* JL_Talk.h */,
-				C2F672342A84D19200A8A7B6 /* JL_Talk.m */,
 				C2BC6FA22A78ED8E00B65E46 /* JYBubbleButtonModel.h */,
 				C2BC6FA12A78ED8E00B65E46 /* JYBubbleButtonModel.m */,
 				C2BC6FA42A78ED8E00B65E46 /* JYBubbleMenuView.h */,
@@ -4175,6 +4277,17 @@
 				C22C48502A721AF800FF766F /* SpeechRecognitionVC.xib */,
 			);
 			path = "语音识别";
+			sourceTree = "<group>";
+		};
+		C2CDB47D2AF21E7E004A98F9 /* 正在传输的动图 */ = {
+			isa = PBXGroup;
+			children = (
+				C2CDB4812AF22088004A98F9 /* TransferringView.h */,
+				C2CDB4822AF22088004A98F9 /* TransferringView.m */,
+				C2CDB4802AF22088004A98F9 /* TransferringView.xib */,
+				C2CDB47E2AF21F21004A98F9 /* transferring.gif */,
+			);
+			path = "正在传输的动图";
 			sourceTree = "<group>";
 		};
 		C2CDC9102A77480E00097A76 /* 删除弹出框 */ = {
@@ -4336,8 +4449,10 @@
 				BE844633261E9F9300A5D474 /* JLTopTabButton.xib in Resources */,
 				BE6AC8A42620344D0090282F /* JLGPSView.xib in Resources */,
 				BE886869269D419B0027C47C /* JLStatementViewController.xib in Resources */,
+				C2CDB4832AF22088004A98F9 /* TransferringView.xib in Resources */,
 				BE8774DA2626CE72004E2CED /* JLSportHistoryDetailViewController.xib in Resources */,
 				4ADA1A1726145B9E000DAEF6 /* search_45.png in Resources */,
+				1DAADEF92AD8F31300CDD509 /* AiDialStyleCell.xib in Resources */,
 				4ADA1A1826145B9E000DAEF6 /* search_51.png in Resources */,
 				C2BC6F9F2A78968A00B65E46 /* SpeechCell.xib in Resources */,
 				4ADA1A3026145B9E000DAEF6 /* search_21.png in Resources */,
@@ -4365,6 +4480,7 @@
 				C2CDC9152A77489100097A76 /* DeleteView.xib in Resources */,
 				BE8504832741EF160030E026 /* JLSportWeeklyReportsDataTableViewCell.xib in Resources */,
 				4A2B127C25DE42880089AFBA /* DeviceSearchVC.xib in Resources */,
+				1DD6418D2B2C347D003F9F15 /* test.jpg in Resources */,
 				22645D2525EE5B8300C8AB69 /* RegisterVC.xib in Resources */,
 				4ADA1A1A26145B9E000DAEF6 /* search_53.png in Resources */,
 				BE73CB1F274F69B400CEE7D0 /* JLSportLocationPermissionView.xib in Resources */,
@@ -4455,14 +4571,12 @@
 				4ADA1A0C26145B9E000DAEF6 /* search_03.png in Resources */,
 				C277E0D32727B2250028C30D /* JiuZuoVC.xib in Resources */,
 				C23953372A77ABD300358C29 /* aiui.cfg in Resources */,
-				48B933832A80929C009CB52C /* DFUnits.framework.dSYM in Resources */,
 				4ABD75A826117B0A0068D4F9 /* PresssureVC.xib in Resources */,
 				1D3E031226AAC1B200CDB02B /* DevicesViewCell.xib in Resources */,
 				22A161FD2600621A00585F98 /* MyPhoneVC.xib in Resources */,
 				4ADA1A2D26145B9E000DAEF6 /* search_31.png in Resources */,
 				BE7F3BE026252DF5001EE3AD /* JLSportHistoryListTableViewCell.xib in Resources */,
 				BEECBA4B26A66EEC008EBE94 /* resume.wav in Resources */,
-				1D5B0BFE282CE50E00C590FD /* settingConnect.mp4 in Resources */,
 				C2894579261FDF4000AB2A9B /* ChangePwdVC.xib in Resources */,
 				22AA830B25FA07680012F3A3 /* LocalMusicVC.xib in Resources */,
 				C205604B26A813AE00D53787 /* DeviceMoreVC.xib in Resources */,
@@ -4477,6 +4591,7 @@
 				4ADA19FF26145B9E000DAEF6 /* search_05.png in Resources */,
 				486E09842861B19A0076FBC8 /* WatchMoreVC.xib in Resources */,
 				4ADA1A1626145B9E000DAEF6 /* search_44.png in Resources */,
+				1D6435BF2AD64F430032072D /* settingConfig.gif in Resources */,
 				BE85049927435FCE0030E026 /* JLSportMonlyReportsTableViewCell.xib in Resources */,
 				4ADA1A0426145B9E000DAEF6 /* search_04.png in Resources */,
 				4ADA1A1226145B9E000DAEF6 /* search_60.png in Resources */,
@@ -4490,6 +4605,7 @@
 				4ADA1A2026145B9E000DAEF6 /* search_43.png in Resources */,
 				BE7F3C1026259DE1001EE3AD /* JLSportHistoryViewController.xib in Resources */,
 				C2835418265CE28C004FB177 /* MessageNoticeVC.xib in Resources */,
+				C2CDB47F2AF21F21004A98F9 /* transferring.gif in Resources */,
 				1DD2FEB529233D2600804803 /* WatchCell.xib in Resources */,
 				BE93F7EC27688C240000CB6F /* JLMusicTableViewCell.xib in Resources */,
 				4ADA1A1026145B9E000DAEF6 /* search_58.png in Resources */,
@@ -4506,7 +4622,6 @@
 				BE7F3C042625864E001EE3AD /* JLSportHistoryUserFootstepFrequencyTableViewCell.xib in Resources */,
 				4ADA1A3526145B9F000DAEF6 /* search_36.png in Resources */,
 				1DBBD70E27507E0400E818FD /* FindPhoneView.xib in Resources */,
-				1D279660283F6B56005A65C5 /* aaa.dat in Resources */,
 				BE8FEF14266F58F10088710E /* DeviceMusicVC.xib in Resources */,
 				4A2B129C25DF50A80089AFBA /* DeviceCell.xib in Resources */,
 			);
@@ -4539,6 +4654,7 @@
 				1DB1E02627327B0B00036448 /* EcTools.m in Sources */,
 				227BCD512600A1C600277779 /* MASViewAttribute.m in Sources */,
 				227BCD4D2600A1C600277779 /* View+MASAdditions.m in Sources */,
+				1DB6E52A2AE64700003DF63C /* CutImageViewController.m in Sources */,
 				1DA4512826148DDD002F3F1D /* OxygenSaturationVC.m in Sources */,
 				22AA82D625F9E7920012F3A3 /* AlarmObject.m in Sources */,
 				1DC5860929B212B20045AB01 /* JLPhoneUISetting.m in Sources */,
@@ -4556,7 +4672,6 @@
 				BE73CB0C274E081200CEE7D0 /* MJRefreshNormalHeader.m in Sources */,
 				C28406EF2726B38700795BE9 /* HourMinutePickerView.m in Sources */,
 				1D40DDC626A12F3000A70D1B /* DeviceHttpModel.m in Sources */,
-				C2F672362A84D19300A8A7B6 /* JL_Talk.m in Sources */,
 				BE957BC627279868003F37EE /* JLSqliteStep.m in Sources */,
 				C2E43A212616A2C500263126 /* RingAgainIntervalView.m in Sources */,
 				22645DC225F1D64100C8AB69 /* NSDate+BRPickerView.m in Sources */,
@@ -4576,7 +4691,6 @@
 				1D831C1426AEDAA300EA5C42 /* DeviceDetailViewController.m in Sources */,
 				C26E2C832727ED3C00494AFD /* EmergencyContactsVC.m in Sources */,
 				C22C48512A721AF800FF766F /* SpeechRecognitionVC.m in Sources */,
-				1D5B0BFC282CE15D00C590FD /* ActionPlayer.swift in Sources */,
 				C2E43A262616ACD200263126 /* RingTimeCell.m in Sources */,
 				1D9887C825FB8DA500C41C4F /* IACircularSliderTrackLayer.m in Sources */,
 				22645D6425F0C88D00C8AB69 /* RenameVC.m in Sources */,
@@ -4595,6 +4709,7 @@
 				22AA82E225F9E7920012F3A3 /* RingSelectView.m in Sources */,
 				C278B9D9261326C2003742D1 /* UserProfileVC.m in Sources */,
 				4AA625D125E39D1600D174A7 /* WatchLocalView.m in Sources */,
+				1DD641902B2C35B6003F9F15 /* OCTest.m in Sources */,
 				4A2B128B25DE522A0089AFBA /* JL_RunSDK.m in Sources */,
 				22E8E96D25FAF61800FDC942 /* MindListView.m in Sources */,
 				4ABC0BF025F5C85E003FE559 /* BushuPick.m in Sources */,
@@ -4614,6 +4729,7 @@
 				1D9887C625FB8DA500C41C4F /* IACircleSliderThumbLayer.m in Sources */,
 				22AA82E425F9E7920012F3A3 /* AlarmRingCell.m in Sources */,
 				BE8504772741E5B10030E026 /* JLSportWeeklyReportsViewController.m in Sources */,
+				1DAADEFC2AD922BC00CDD509 /* AIDialXFManager.m in Sources */,
 				1D159F3726098D3A00D5966C /* TransJump.m in Sources */,
 				BE8774D426269204004E2CED /* MATraceReplayOverlay.m in Sources */,
 				1DAB41A92600363B00171C87 /* StepPartsView.m in Sources */,
@@ -4689,6 +4805,7 @@
 				4ABD75C82612C3240068D4F9 /* YaLiView2.m in Sources */,
 				BE73CAFE274E081200CEE7D0 /* MJRefreshConst.m in Sources */,
 				BE7F3C0F26259DE1001EE3AD /* JLSportHistoryViewController.m in Sources */,
+				1D6435ED2AD8E7D10032072D /* BasicViewController.m in Sources */,
 				BE73CB06274E081200CEE7D0 /* MJRefreshBackNormalFooter.m in Sources */,
 				22131EB425E0E2FA00590C4A /* AboutVC.m in Sources */,
 				1DB11021260ADB3200E36D65 /* StepDataView.m in Sources */,
@@ -4697,9 +4814,11 @@
 				BE73CB15274E081200CEE7D0 /* MJRefreshTrailer.m in Sources */,
 				BE73CB07274E081200CEE7D0 /* MJRefreshAutoStateFooter.m in Sources */,
 				BE7F3BFE262585FF001EE3AD /* JLSportHistoryUserSpeedTableViewCell.m in Sources */,
+				C2CDB4842AF22088004A98F9 /* TransferringView.m in Sources */,
 				22AA82DD25F9E7920012F3A3 /* ECPickerView.m in Sources */,
 				1D86A772260D693B005D5391 /* HeartBeatDetailVC.m in Sources */,
 				22AA82F325F9E97F0012F3A3 /* DMusicHandler.m in Sources */,
+				1DAADEF82AD8F31300CDD509 /* AiDialStyleCell.m in Sources */,
 				BE7F3C0926258C2C001EE3AD /* JLSpeedFrequencyItemView.m in Sources */,
 				1DB1101E260ADAD500E36D65 /* StepDetailViewController.m in Sources */,
 				C278BA33261450D7003742D1 /* PGBarChart.m in Sources */,
@@ -4768,6 +4887,7 @@
 				BE8E6C8C2786799200B532C3 /* JLTabBarController.m in Sources */,
 				4A2B127025DE42480089AFBA /* SportVC.m in Sources */,
 				486E09BE2861B2CF0076FBC8 /* SDWebImageCompat.m in Sources */,
+				1D6435E92AD8CFC70032072D /* AiDialStyleVC.m in Sources */,
 				1DD2FEB329233D2600804803 /* WatchLocalModel.m in Sources */,
 				BE98DC5E272BD79100E521E2 /* JLSqliteSportRunningRecord.m in Sources */,
 				BE856EBC2746327D00F795E2 /* JLSportStrengthView.m in Sources */,
@@ -4776,6 +4896,7 @@
 				1DA7552B26032B9700184A47 /* SleepPartView.m in Sources */,
 				22645DC325F1D64100C8AB69 /* BRDatePickerView.m in Sources */,
 				BE88687926A0133C0027C47C /* JLFileTransferHelper.m in Sources */,
+				1D2FF31B2AE2845500E53C87 /* CustomDialCell.m in Sources */,
 				1DCD0620292238C40071B2F9 /* DebugBasicViewController.m in Sources */,
 				4A2B12AF25DF57E30089AFBA /* JLUI_Effect.m in Sources */,
 				227BCCCE26008D2A00277779 /* JHContactManager.m in Sources */,
@@ -4792,23 +4913,27 @@
 				486E09C02861B2CF0076FBC8 /* SDImageCache.m in Sources */,
 				BE73CB0A274E081200CEE7D0 /* MJRefreshStateTrailer.m in Sources */,
 				227BCCD626008E4F00277779 /* JHTableViewCell.m in Sources */,
+				1DB6E5392AE65E60003DF63C /* UIImage+Rotate.m in Sources */,
 				BE73CB03274E081200CEE7D0 /* UIView+MJExtension.m in Sources */,
 				1DC5858E29B1A27B0045AB01 /* AFNetworkReachabilityManager.m in Sources */,
 				C2835417265CE28C004FB177 /* MessageNoticeVC.m in Sources */,
 				BE844634261E9F9300A5D474 /* JLTopTabButton.m in Sources */,
 				C2C43BCB2A70BA27009B99FA /* AIClound.m in Sources */,
+				1DB6E53C2AE76BA1003DF63C /* CustomDialEditVC.m in Sources */,
 				C278BA2126141CE4003742D1 /* MonthSelectView.m in Sources */,
 				22645DC925F1D64100C8AB69 /* BRAddressPickerView.m in Sources */,
 				1DA4512726148DDD002F3F1D /* OxygenDataView.m in Sources */,
 				22AA82DA25F9E7920012F3A3 /* AlarmCVCell.m in Sources */,
 				22A9112325EC8CBA00585DE7 /* MyCell.m in Sources */,
 				1DCD06102921E0EC0071B2F9 /* AutoProductIcon.swift in Sources */,
+				1D2FF3172AE2828800E53C87 /* CustomDialView.m in Sources */,
 				227BCD4B2600A1C600277779 /* MASConstraintMaker.m in Sources */,
 				1DC5858C29B1A27B0045AB01 /* AFURLSessionManager.m in Sources */,
 				1DB0C7FA262835800093A98F /* EcDateSelectView.m in Sources */,
 				BE8774D92626CE72004E2CED /* JLSportHistoryDetailViewController.m in Sources */,
 				4A2B126925DE41F40089AFBA /* HealthVC.m in Sources */,
 				BE8FEF10266F58F10088710E /* DeviceMusicVC.m in Sources */,
+				1D57C39B2AE261420073E5B4 /* WatchDialTitleView.m in Sources */,
 				22645D0A25EE1A4500C8AB69 /* UILabel+YBAttributeTextTapAction.m in Sources */,
 				BE73CB08274E081200CEE7D0 /* MJRefreshAutoGifFooter.m in Sources */,
 				227BCD522600A1C600277779 /* MASCompositeConstraint.m in Sources */,
@@ -4857,6 +4982,7 @@
 				BE6AC8A22620343C0090282F /* JLGPSView.m in Sources */,
 				486E09B82861B2CF0076FBC8 /* SDWebImageManager.m in Sources */,
 				1DC5858D29B1A27B0045AB01 /* AFURLRequestSerialization.m in Sources */,
+				1D8046312ABD347C00FBA6AC /* DottedLineView.m in Sources */,
 				4ABD75B62611B68F0068D4F9 /* YaLiShow1.m in Sources */,
 				22645DBF25F1D64100C8AB69 /* BRResultModel.m in Sources */,
 				486E09C32861B2CF0076FBC8 /* UIImageView+WebCache.m in Sources */,
@@ -5088,7 +5214,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = JieliJianKang/JieliJianKang.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 10;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = J8GU9SL7NG;
 				ENABLE_BITCODE = NO;
@@ -5113,7 +5239,7 @@
 					"$(PROJECT_DIR)/JLDialUnit/JLDialUnit/FATTool",
 					"$(PROJECT_DIR)/JieliJianKang/Utilities/FATTool",
 				);
-				MARKETING_VERSION = 1.6.2;
+				MARKETING_VERSION = 1.7.0;
 				OTHER_CODE_SIGN_FLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JLApp.JieliJianKang;
@@ -5133,7 +5259,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = JieliJianKang/JieliJianKang.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 10;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = J8GU9SL7NG;
 				ENABLE_BITCODE = NO;
@@ -5159,7 +5285,7 @@
 					"$(PROJECT_DIR)/JLDialUnit/JLDialUnit/FATTool",
 					"$(PROJECT_DIR)/JieliJianKang/Utilities/FATTool",
 				);
-				MARKETING_VERSION = 1.6.2;
+				MARKETING_VERSION = 1.7.0;
 				OTHER_CODE_SIGN_FLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JLApp.JieliJianKang;

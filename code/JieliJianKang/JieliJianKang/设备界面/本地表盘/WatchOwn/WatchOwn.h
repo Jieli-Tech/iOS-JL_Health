@@ -58,7 +58,8 @@ typedef NS_ENUM(UInt8, WatchUIType) {
  */
 - (NSInteger)reloadMyWatchForNoPayment;
 
-
+-(void)updateMoreImage:(BOOL)hide;
+-(void)updateHideMoreBtnWithCount;
 @end
 
 NS_ASSUME_NONNULL_END

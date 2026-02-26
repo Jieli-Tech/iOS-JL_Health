@@ -335,8 +335,8 @@
 
 -(void)initWithUI{
     
-    CGFloat sw = [DFUITools screen_2_W];
-    CGFloat sh = [DFUITools screen_2_H];
+    CGFloat sw = [UIScreen mainScreen].bounds.size.width;
+    CGFloat sh = [UIScreen mainScreen].bounds.size.height;
     
     titleHight.constant = kJL_HeightNavBar+10;
     
@@ -417,7 +417,7 @@
     [deleteBtn setTitle:kJL_TXT("删除闹钟") forState:UIControlStateNormal];
     [deleteBtn.titleLabel setFont:[UIFont fontWithName:@"PingFangSC" size:18]];
     [deleteBtn setTitleColor:kDF_RGBA(234, 79, 79, 1.0) forState:UIControlStateNormal];
-    [deleteBtn setBackgroundColor:kDF_RGBA(234, 236, 237, 1.0)];
+    [deleteBtn setBackgroundColor:kDF_RGBA(255, 255, 255, 1.0)];
     [scrollView addSubview:deleteBtn];
     deleteBtn.layer.cornerRadius = 30;
     deleteBtn.layer.masksToBounds = YES;

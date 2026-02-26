@@ -20,8 +20,8 @@
 {
     self = [DFUITools loadNib:@"OpenShowView"];
     if (self) {
-        float sW = [DFUITools screen_1_W];
-        float sH = [DFUITools screen_2_H];
+        float sW = [UIScreen mainScreen].bounds.size.width;
+        float sH = [UIScreen mainScreen].bounds.size.height;
         self.frame = CGRectMake(0, 0, sW, sH);
 
         self.mLabel.text = kJL_TXT("宜动健康");

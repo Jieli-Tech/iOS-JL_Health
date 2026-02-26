@@ -96,6 +96,7 @@ typedef NS_ENUM(NSInteger, LYFTableViewType) {
     [DFUITools showText:kJL_TXT("读取联系人") onView:self.view delay:1.0];
     [JL_Tools delay:0.8 Task:^{
         [self getContactsList];
+        self.tableView.frame = CGRectMake(0, kJL_HeightNavBar+8, [UIScreen mainScreen].bounds.size.width , self->persons.count*70);
     }];
     
     modelDevice = [kJL_BLE_CmdManager outputDeviceModel];
@@ -109,33 +110,51 @@ typedef NS_ENUM(NSInteger, LYFTableViewType) {
  *  初始化联系人界面
  */
 - (void)configureContactsView {
+    self.view.backgroundColor = kDF_RGBA(246, 247, 248, 1.0);
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.rowHeight = 70.0;
-    self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    self.tableView.separatorColor = kDF_RGBA(247, 247, 247, 1.0);
     self.tableView.scrollEnabled = YES;
-    self.tableView.sectionIndexColor = kDF_RGBA(133, 133, 133, 1.0);
-    DFLabel *tableFooterLabel = [[DFLabel alloc] init];
-    tableFooterLabel.labelType = DFLeftRight;
-    tableFooterLabel.textAlignment = NSTextAlignmentLeft;
-    tableFooterLabel.numberOfLines = 2;
-    tableFooterLabel.text = kJL_TXT("最多可为您的手表添加10位常用联系人。您设置的常用联系人将自动同步至设备。");
-    tableFooterLabel.textColor = kDF_RGBA(114, 114, 114, 1.0);
-    tableFooterLabel.font = [UIFont fontWithName:@"PingFang SC" size: 14];
-    tableFooterLabel.contentMode = UIViewContentModeLeft;
-    tableFooterLabel.frame = CGRectMake(16, 16, [DFUITools screen_2_W]-32, 40);
-    UIView *tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.width, 60)];
-    tableFooterView.backgroundColor = [UIColor whiteColor];
-    self.tableView.tableFooterView = tableFooterView;
-    [self.tableView.tableFooterView addSubview:tableFooterLabel];
+    self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.sectionIndexColor = kDF_RGBA(247, 247, 247, 1.0);
+    
+    if ([kJL_GET isEqualToString:@"zh-Hans"] || [kJL_GET isEqual:@"auto"]) {
+        UILabel *tableFooterLabel = [[UILabel alloc] init];
+        tableFooterLabel.textAlignment = NSTextAlignmentLeft;
+        tableFooterLabel.numberOfLines = 2;
+        tableFooterLabel.text = kJL_TXT("最多可为您的手表添加10位常用联系人。您设置的常用联系人将自动同步至设备。");
+        tableFooterLabel.textColor = kDF_RGBA(114, 114, 114, 1.0);
+        tableFooterLabel.font = [UIFont fontWithName:@"PingFang SC" size: 14];
+        tableFooterLabel.frame = CGRectMake(16, 16, [UIScreen mainScreen].bounds.size.width-32, 40);
+        UIView *tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.width, 60)];
+        tableFooterView.backgroundColor = kDF_RGBA(246, 247, 248, 1.0);
+        self.tableView.tableFooterView = tableFooterView;
+        [self.tableView.tableFooterView addSubview:tableFooterLabel];
+    }else{
+        DFLabel *tableFooterLabel = [[DFLabel alloc] init];
+        tableFooterLabel.labelType = DFLeftRight;
+        tableFooterLabel.contentMode = UIViewContentModeLeft;
+        tableFooterLabel.textAlignment = NSTextAlignmentLeft;
+        tableFooterLabel.numberOfLines = 2;
+        tableFooterLabel.text = kJL_TXT("最多可为您的手表添加10位常用联系人。您设置的常用联系人将自动同步至设备。");
+        tableFooterLabel.textColor = kDF_RGBA(114, 114, 114, 1.0);
+        tableFooterLabel.font = [UIFont fontWithName:@"PingFang SC" size: 14];
+        tableFooterLabel.frame = CGRectMake(16, 16, [UIScreen mainScreen].bounds.size.width-32, 40);
+        UIView *tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.width, 60)];
+        tableFooterView.backgroundColor = kDF_RGBA(246, 247, 248, 1.0);
+        self.tableView.tableFooterView = tableFooterView;
+        [self.tableView.tableFooterView addSubview:tableFooterLabel];
+    }
+   
     
     // 设置删除联系人界面
-    self.deleteView = [[DeleteView alloc] initWithFrame:CGRectMake(0, 0, [DFUITools screen_2_W], [DFUITools screen_2_H])];
+    self.deleteView = [[DeleteView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     self.deleteView.titleLab.numberOfLines = 1;
     self.deleteView.type = 0;
     self.deleteView.delegate = self;
-    self.deleteView.titleLab.text = kJL_TXT("提示");
+    self.deleteView.titleLab.text = kJL_TXT("是否删除所选联系人");
     [self.view addSubview:self.deleteView];
     self.deleteView.hidden = YES;
 }
@@ -431,7 +450,7 @@ typedef NS_ENUM(NSInteger, LYFTableViewType) {
             [self.tableView reloadData];
         }],
     ];
-    JLPopMenuView *popMenuView = [[JLPopMenuView alloc] initWithStartPoint:CGPointMake(sender.x + sender.width - 145, sender.y + sender.height + 40) withItemObjectArray:arr];
+    JLPopMenuView *popMenuView = [[JLPopMenuView alloc] initWithStartPoint:CGPointMake(sender.x + sender.width - 155, sender.y + sender.height-10) withItemObjectArray:arr];
     [self.view addSubview:popMenuView];
     popMenuView.hidden = NO;
 }
@@ -507,6 +526,7 @@ typedef NS_ENUM(NSInteger, LYFTableViewType) {
 
     JHPersonModel *personModel = persons[indexPath.row];
     cell.personModel = personModel;
+    cell.backgroundColor = [UIColor whiteColor];
     cell.personModel.fullName = personModel.fullName;
     cell.personModel.phoneNum = personModel.phoneNum;
     cell.funType = self.funType;

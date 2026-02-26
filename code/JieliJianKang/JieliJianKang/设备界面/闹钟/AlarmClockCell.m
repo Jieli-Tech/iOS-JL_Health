@@ -13,7 +13,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.select.transform = CGAffineTransformMakeScale(0.75, 0.7);
+    //self.select.transform = CGAffineTransformMakeScale(0.75, 0.7);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

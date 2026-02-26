@@ -169,7 +169,7 @@
             point.date = tmpDate;
             point.resValue = 0;
             [tgArray addObject:point];
-            tmpDate = tmpDate.nextMonth;
+            tmpDate = tmpDate.nextMonth_0;
             [colors addObject:[JLColor colorWithString:@"#F0AE91"]];
         }
 

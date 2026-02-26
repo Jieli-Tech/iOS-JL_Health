@@ -73,6 +73,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,assign)BOOL spFindPhoneOrDevice;
 /// Ai 云功能
 @property(nonatomic,assign)BOOL spAiCloud;
+/// Ai 表盘
+@property(nonatomic,assign)BOOL spAiDial;
+/// 平台接口信息获取
+@property(nonatomic,assign)BOOL spOpenInfo;
+/// 支持4G模块
+@property(nonatomic,assign)BOOL sp4GModel;
 
 -(instancetype)init:(NSData *)data;
 

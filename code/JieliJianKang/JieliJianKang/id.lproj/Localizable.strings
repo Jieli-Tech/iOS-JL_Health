@@ -325,7 +325,7 @@
 "体重设定" = "Pengaturan berat";
 "体重目标" = "Target Berat";
 "起始" = "Mulai:";
-"目标" = "Target:";
+"目标" = "Target";
 "消耗约" = "Consumption";
 "最新" = "Terbaru:";
 "最低值" = "Terendah";
@@ -378,7 +378,7 @@
 "添加表盘..." = "Add dial...";
 "更新表盘..." = "Perbarui Dial...";
 "本地表盘" = "Dial lokal";
-"全部" = "Semua >";
+"全部" = "Semua";
 "管理" = "Manajemen";
 "闹钟" = "Jam Alarm";
 "铃声" = "Ringtone";
@@ -401,7 +401,7 @@
 "电量" = "Listrik";
 "升级" = "Upgrade";
 "当前版本"= "Versi saat ini";
-"固件升级" = "Upgrade firmware";
+"固件更新" = "Upgrade firmware";
 "检查更新" = "Periksa pembaruan";
 "OTA升级失败" = "Upgrade OTA gagal";
 "OTA升级数据为空!" = "Data Upgrade OTA kosong!";
@@ -584,7 +584,7 @@
 "选择周间隔" = "Pilih interval minggu";
 "服务器开小差" = "Server terbuk";
 
-"手机蓝牙通话" = "Telepon Bluetooth";
+"手表蓝牙通话" = "Tonton panggilan bluetooth";
 "表盘" = "Dial";
 "购买记录" = "Catatan pembelian";
 "蓝牙" = "Bluetooth";
@@ -592,7 +592,7 @@
 "系统表盘" = "System dial";
 "免费表盘" = "Dial gratis";
 "付费表盘" = "Paydial";
-"更多>" = "More>";
+"更多>" = "More >";
 "表盘商城"= "Dial Mall";
 "我的表盘" = "My dial";
 "免费" = "Gratis";
@@ -674,3 +674,7 @@
 "是否删除" = "Hapus atau tidak";
 "复制" = "Salin";
 "多选" = "Pilihan Berbilang";
+"珠海市杰理科技股份有限公司" = "www.zh-jieli.com";
+"是否要清除用户缓存" = "Apakah Anda ingin menghapus cache pengguna?";
+"AI表盘" = "panggilan AI";
+"正在传输中" = "Memindahkan...";

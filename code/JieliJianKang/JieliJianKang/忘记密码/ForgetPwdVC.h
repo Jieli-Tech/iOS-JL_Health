@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ForgetPwdVC : UIViewController
 
+@property (assign,nonatomic) int type; // 0: 登录界面 1：账号安全界面
+
 @end
 
 NS_ASSUME_NONNULL_END

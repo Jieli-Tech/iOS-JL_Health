@@ -34,8 +34,8 @@
 }
 
 -(void)initUI{
-    sw = [DFUITools screen_2_W];
-    sh = [DFUITools screen_2_H];
+    sw = [UIScreen mainScreen].bounds.size.width;
+    sh = [UIScreen mainScreen].bounds.size.height;
     
     bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, sw, sh)];
     [self addSubview:bgView];
@@ -48,34 +48,35 @@
     contentView.layer.cornerRadius = 16;
     
     UILabel *label1 = [[UILabel alloc] init]; //更换绑定的手机号
-    if([kJL_GET hasPrefix:@"zh"] || [kJL_GET hasPrefix:@"en-GB"]){
-        label1.frame = CGRectMake(contentView.frame.size.width/2-200/2,36,200,25);
+    label1.contentMode= UIViewContentModeCenter;
+    if([kJL_GET hasPrefix:@"zh"] || [kJL_GET hasPrefix:@"en-GB"] || [kJL_GET isEqual:@"auto"]){
+        label1.frame = CGRectMake(contentView.frame.size.width/2-81,36,200,25);
     }else{
         label1.frame = CGRectMake(0,36,contentView.frame.size.width,25);
     }
     label1.numberOfLines = 0;
     [contentView addSubview:label1];
-    label1.font =  [UIFont fontWithName:@"Helvetica-Bold" size: 18];
+    label1.font =  [UIFont fontWithName:@"PingFangSC-Medium" size: 18];
     label1.textColor = kDF_RGBA(36, 36, 36, 1.0);
     label1.adjustsFontSizeToFitWidth = YES;
     label1.minimumScaleFactor =0.7;
     
-    userWay = [[JL_Tools getUserByKey:@"httpUserWay"] intValue];
+    userWay = [[JL_Tools getUserByKey:kUI_HTTP_USER_WAY] intValue];
     if(userWay == JLUSER_WAY_PHONE) label1.text = kJL_TXT("更换绑定的手机号?");
     if(userWay == JLUSER_WAY_EMAIL) label1.text = kJL_TXT("更换绑定的邮箱地址?");
     
     
     
     UILabel *label2 = [[UILabel alloc] init]; //当前绑定的手机号码
-    if([kJL_GET hasPrefix:@"zh"]|| [kJL_GET hasPrefix:@"en-GB"]){
-        label2.frame = CGRectMake(contentView.frame.size.width/2-175/2,label1.frame.origin.y+label1.frame.size.height+8,175,20);
+    if([kJL_GET hasPrefix:@"zh"]|| [kJL_GET hasPrefix:@"en-GB"] || [kJL_GET isEqual:@"auto"]){
+        label2.frame = CGRectMake(contentView.frame.size.width/2-75,label1.frame.origin.y+label1.frame.size.height+8,175,20);
     }else{
         label2.frame = CGRectMake(0,label1.frame.origin.y+label1.frame.size.height+8,contentView.frame.size.width,20);
     }
     label2.numberOfLines = 1;
     [contentView addSubview:label2];
     label2.contentMode =  UIViewContentModeCenter;
-    label2.font =  [UIFont fontWithName:@"PingFangSC" size: 14];
+    label2.font =  [UIFont fontWithName:@"PingFangSC-Regular" size: 14];
     label2.textColor = kDF_RGBA(75, 75, 75, 1.0);
     label2.adjustsFontSizeToFitWidth = YES;
     label2.minimumScaleFactor =0.7;
@@ -89,7 +90,7 @@
     label3.numberOfLines = 1;
     [contentView addSubview:label3];
     label3.contentMode =  UIViewContentModeCenter;
-    label3.font =  [UIFont fontWithName:@"PingFangSC" size: 14];
+    label3.font =  [UIFont fontWithName:@"PingFangSC-Regular" size: 14];
     label3.adjustsFontSizeToFitWidth = YES;
     label3.minimumScaleFactor =0.7;
     label3.textColor = kDF_RGBA(75, 75, 75, 1.0);

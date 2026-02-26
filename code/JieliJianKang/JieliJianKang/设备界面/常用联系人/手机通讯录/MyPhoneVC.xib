@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -27,7 +27,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未选择" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yqg-Mp-fRF">
-                            <rect key="frame" x="119" y="85" width="170" height="32"/>
+                            <rect key="frame" x="127" y="85" width="170" height="32"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="170" id="3rM-bB-zHU"/>
                             </constraints>
@@ -35,8 +35,8 @@
                             <color key="textColor" red="0.14116021989999999" green="0.14118680359999999" blue="0.14115440849999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2XB-H4-vPJ">
-                            <rect key="frame" x="8" y="85" width="67" height="35"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2XB-H4-vPJ">
+                            <rect key="frame" x="16" y="85" width="67" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="67" id="GNj-Vu-hdv"/>
                                 <constraint firstAttribute="height" constant="35" id="JAc-oB-Jde"/>
@@ -48,8 +48,8 @@
                                 <action selector="actionExit:" destination="-1" eventType="touchUpInside" id="s2D-zI-Vy8"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYc-sm-tqM">
-                            <rect key="frame" x="276" y="85" width="130" height="35"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYc-sm-tqM">
+                            <rect key="frame" x="268" y="85" width="130" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="cl8-I8-fpY"/>
                                 <constraint firstAttribute="width" constant="130" id="h2A-gf-GZf"/>
@@ -61,8 +61,8 @@
                                 <action selector="addMyContacts:" destination="-1" eventType="touchUpInside" id="6bi-qK-9Df"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WX3-2f-PdP">
-                            <rect key="frame" x="21" y="92" width="41" height="28"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WX3-2f-PdP">
+                            <rect key="frame" x="16" y="92" width="41" height="28"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="28" id="Y3F-7f-nYi"/>
                                 <constraint firstAttribute="width" constant="41" id="oJn-8e-dsq"/>
@@ -78,13 +78,13 @@
                         <constraint firstAttribute="bottom" secondItem="2XB-H4-vPJ" secondAttribute="bottom" constant="10" id="G6T-X8-fiK"/>
                         <constraint firstItem="yqg-Mp-fRF" firstAttribute="leading" secondItem="2XB-H4-vPJ" secondAttribute="trailing" constant="44" id="Tya-Hv-FEk"/>
                         <constraint firstAttribute="bottom" secondItem="yqg-Mp-fRF" secondAttribute="bottom" constant="13" id="Ufv-A7-Vdc"/>
-                        <constraint firstItem="WX3-2f-PdP" firstAttribute="leading" secondItem="ACh-Ov-ngg" secondAttribute="leading" constant="21" id="eiI-bl-k1U"/>
+                        <constraint firstItem="WX3-2f-PdP" firstAttribute="leading" secondItem="ACh-Ov-ngg" secondAttribute="leading" constant="16" id="eiI-bl-k1U"/>
                         <constraint firstItem="yqg-Mp-fRF" firstAttribute="top" secondItem="2XB-H4-vPJ" secondAttribute="top" id="hFI-kH-Wee"/>
-                        <constraint firstItem="2XB-H4-vPJ" firstAttribute="leading" secondItem="ACh-Ov-ngg" secondAttribute="leading" constant="8" id="mhE-uo-hdk"/>
+                        <constraint firstItem="2XB-H4-vPJ" firstAttribute="leading" secondItem="ACh-Ov-ngg" secondAttribute="leading" constant="16" id="mhE-uo-hdk"/>
                         <constraint firstAttribute="bottom" secondItem="eYc-sm-tqM" secondAttribute="bottom" constant="10" id="nsZ-xj-yPd"/>
                         <constraint firstAttribute="height" constant="130" id="onx-Fm-vnd"/>
                         <constraint firstAttribute="bottom" secondItem="WX3-2f-PdP" secondAttribute="bottom" constant="10" id="tDA-xz-ftb"/>
-                        <constraint firstAttribute="trailing" secondItem="eYc-sm-tqM" secondAttribute="trailing" constant="8" id="v3e-bm-7x5"/>
+                        <constraint firstAttribute="trailing" secondItem="eYc-sm-tqM" secondAttribute="trailing" constant="16" id="v3e-bm-7x5"/>
                     </constraints>
                 </view>
             </subviews>

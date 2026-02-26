@@ -28,6 +28,13 @@ NS_ASSUME_NONNULL_BEGIN
 +(void)setLoadingText:(NSString*)text Delay:(NSTimeInterval)delay;
 +(void)setLoadingText:(NSString *)text;
 +(void)removeLoadingView;
+
++(NSMutableAttributedString*)pingFangSC:(NSString*)text
+                                   Size:(float)size
+                                  Color:(UIColor*)color;
++(NSMutableAttributedString*)pingFangSCUnderline:(NSString*)text
+                                            Size:(float)size
+                                           Color:(UIColor*)color;
 @end
 
 NS_ASSUME_NONNULL_END

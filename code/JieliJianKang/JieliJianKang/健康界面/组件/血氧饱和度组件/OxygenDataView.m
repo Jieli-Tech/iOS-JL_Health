@@ -53,23 +53,35 @@
     fm.dateFormat = @"HH:mm";
     NSString *s1 = [NSString stringWithFormat:@"%@%@",kJL_TXT("最新"),[fm stringFromDate:date]];
     NSString *s2 = [NSString stringWithFormat:@"%d%@",value,@"%"];
+    if (value == 0){
+        s2 = @"-";
+    }
     [self setText:s1 And:s2 Lab:0];
 }
 -(void)oxyMaxValue:(int)max minValue:(int)min{
     NSString *s1 = [NSString stringWithFormat:@"%@-%@",kJL_TXT("最低值"),kJL_TXT("最高值")];
     NSString *s2 = [NSString stringWithFormat:@"%d%@-%d%@",min,@"%",max,@"%"];
+    if (max == 0 && min == 0){
+        s2 = @"- -";
+    }
     [self setText:s1 And:s2 Lab:1];
 }
 
 -(void)oxyMyMinValue:(int)min{
     NSString *s1 = [NSString stringWithFormat:@"%@",kJL_TXT("最低值")];
     NSString *s2 = [NSString stringWithFormat:@"%d%@",min,@"%"];
+    if (min == 0){
+        s2 = @"-";
+    }
     [self setText:s1 And:s2 Lab:0];
 }
 
 -(void)oxyMyMaxValue:(int)max{
     NSString *s1 = [NSString stringWithFormat:@"%@",kJL_TXT("最高值")];
     NSString *s2 = [NSString stringWithFormat:@"%d%@",max,@"%"];
+    if (max == 0){
+        s2 = @"-";
+    }
     [self setText:s1 And:s2 Lab:1];
 }
 

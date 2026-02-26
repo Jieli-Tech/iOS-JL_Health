@@ -31,7 +31,6 @@
     SmallEye    *eyeBtn2; //新密码显示或者隐藏密码按钮
     
     UILabel     *errorPwdLabel;   //密码不一致，请重新输入
-    DFLabel     *forgetPwdLabel;  //忘记密码
     UIButton    *sureBtn;         //确定按钮
 }
 
@@ -47,8 +46,8 @@
 -(void)initUI{
     self.view.backgroundColor = kDF_RGBA(246, 247, 248, 1.0);
     titleHeight.constant = kJL_HeightNavBar;
-    sw = [DFUITools screen_2_W];
-    sh = [DFUITools screen_2_H];
+    sw = [UIScreen mainScreen].bounds.size.width;
+    sh = [UIScreen mainScreen].bounds.size.height;
     
     headView.frame = CGRectMake(0, 0, sw, kJL_HeightStatusBar+44);
     backBtn.frame  = CGRectMake(4, kJL_HeightStatusBar, 44, 44);
@@ -73,7 +72,7 @@
     passwordTF.placeholder = kJL_TXT("输入旧密码");
     passwordTF.textColor = kDF_RGBA(36, 36, 36, 1.0);
     passwordTF.tintColor = kDF_RGBA(180, 180, 180, 1.0);
-    passwordTF.font = [UIFont fontWithName:@"PingFangSC" size:15];
+    passwordTF.font = [UIFont fontWithName:@"PingFangSC-Regular" size:15];
     passwordTF.delegate = self;
     passwordTF.tag = 0;
     passwordTF.secureTextEntry = YES;
@@ -102,7 +101,7 @@
     label1.frame = CGRectMake(newPwd.frame.origin.x+newPwd.frame.size.width+12,view1.frame.size.height+view1.frame.origin.y+17,sw-16-45-12-70,21);
     label1.numberOfLines = 0;
     [self.view addSubview:label1];
-    label1.font =  [UIFont fontWithName:@"PingFang SC" size: 12];
+    label1.font =  [UIFont fontWithName:@"PingFangSC-Regular" size: 12];
     label1.labelType = DFLeftRight;
     label1.textAlignment = NSTextAlignmentLeft;
     label1.text =  kJL_TXT("请设置6-12位字母和数字组合的新密码");
@@ -119,7 +118,7 @@
     newPwdTF.placeholder = kJL_TXT("输入新的密码");
     newPwdTF.textColor = kDF_RGBA(36, 36, 36, 1.0);
     newPwdTF.tintColor = kDF_RGBA(180, 180, 180, 1.0);
-    newPwdTF.font = [UIFont fontWithName:@"PingFangSC" size:15];
+    newPwdTF.font = [UIFont fontWithName:@"PingFangSC-Regular" size:15];
     newPwdTF.delegate = self;
     newPwdTF.tag = 1;
     newPwdTF.secureTextEntry= YES;
@@ -143,7 +142,7 @@
     sureNewPwdTF.placeholder = kJL_TXT("再次输入新的密码");
     sureNewPwdTF.textColor = kDF_RGBA(36, 36, 36, 1.0);
     sureNewPwdTF.tintColor = kDF_RGBA(180, 180, 180, 1.0);
-    sureNewPwdTF.font = [UIFont fontWithName:@"PingFangSC" size:15];
+    sureNewPwdTF.font = [UIFont fontWithName:@"PingFangSC-Regular" size:15];
     sureNewPwdTF.delegate = self;
     sureNewPwdTF.tag = 2;
     sureNewPwdTF.secureTextEntry= YES;
@@ -158,21 +157,38 @@
     errorPwdLabel.textColor = kDF_RGBA(255, 105, 105, 1.0);
     errorPwdLabel.hidden = YES;
     
-    forgetPwdLabel = [[DFLabel alloc] init];
-    forgetPwdLabel.numberOfLines = 0;
-    forgetPwdLabel.text = kJL_TXT("忘记密码");
-    forgetPwdLabel.font =  [UIFont fontWithName:@"PingFangSC" size:14];
-    forgetPwdLabel.textColor = kDF_RGBA(85, 140, 255, 1.0);
-    forgetPwdLabel.labelType = DFLeftRight;
-    forgetPwdLabel.textAlignment = NSTextAlignmentLeft;
-    CGFloat forgetPwdLabelWidth = [self getWidthWithText:kJL_TXT("忘记密码") height:20 font:14];
-    forgetPwdLabel.frame = CGRectMake(sw-16-forgetPwdLabelWidth,view2.frame.origin.y+view2.frame.size.height+12
-                                      ,forgetPwdLabelWidth,20);
-    [self.view addSubview:forgetPwdLabel];
-    
-    UITapGestureRecognizer *forgetGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(forgetLogin)];
-    [forgetPwdLabel addGestureRecognizer:forgetGestureRecognizer];
-    forgetPwdLabel.userInteractionEnabled=YES;
+    if ([kJL_GET isEqualToString:@"zh-Hans"] || [kJL_GET isEqual:@"auto"]) {
+        UILabel *forgetPwdLabel = [[UILabel alloc] init];
+        forgetPwdLabel.numberOfLines = 0;
+        forgetPwdLabel.text = kJL_TXT("忘记密码");
+        forgetPwdLabel.font =  [UIFont fontWithName:@"PingFangSC-Medium" size:14];
+        forgetPwdLabel.textColor = kDF_RGBA(85, 140, 255, 1.0);
+        forgetPwdLabel.frame = CGRectMake(sw-16-70,view2.frame.origin.y+view2.frame.size.height+12
+                                          ,70,20);
+        [self.view addSubview:forgetPwdLabel];
+        UITapGestureRecognizer *forgetGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(forgetLogin)];
+        [forgetPwdLabel addGestureRecognizer:forgetGestureRecognizer];
+        forgetPwdLabel.userInteractionEnabled=YES;
+        
+        UITapGestureRecognizer *forgetGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(forgetLogin)];
+        [forgetPwdLabel addGestureRecognizer:forgetGestureRecognizer1];
+        forgetPwdLabel.userInteractionEnabled=YES;
+    }else{
+        DFLabel *forgetPwdLabel = [[DFLabel alloc] init];
+        forgetPwdLabel.numberOfLines = 0;
+        forgetPwdLabel.text = kJL_TXT("忘记密码");
+        forgetPwdLabel.font =  [UIFont fontWithName:@"PingFangSC-Medium" size:14];
+        forgetPwdLabel.textColor = kDF_RGBA(85, 140, 255, 1.0);
+        forgetPwdLabel.labelType = DFLeftRight;
+        forgetPwdLabel.textAlignment = NSTextAlignmentLeft;
+        CGFloat forgetPwdLabelWidth = [self getWidthWithText:kJL_TXT("忘记密码") height:20 font:14];
+        forgetPwdLabel.frame = CGRectMake(sw-16-forgetPwdLabelWidth,view2.frame.origin.y+view2.frame.size.height+12
+                                          ,forgetPwdLabelWidth,20);
+        [self.view addSubview:forgetPwdLabel];
+        UITapGestureRecognizer *forgetGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(forgetLogin)];
+        [forgetPwdLabel addGestureRecognizer:forgetGestureRecognizer2];
+        forgetPwdLabel.userInteractionEnabled=YES;
+    }
     
     sureBtn = [[UIButton alloc] initWithFrame:CGRectMake(24,sh-54-48,sw-48,48)];
     [sureBtn addTarget:self action:@selector(sureBtnAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -260,6 +276,7 @@
 -(void)forgetLogin{
     ForgetPwdVC *vc = [[ForgetPwdVC alloc] init];
     vc.modalPresentationStyle = UIModalPresentationFullScreen;
+    vc.type = 1;
     [self presentViewController:vc animated:YES completion:nil];
 }
 
@@ -286,9 +303,10 @@
                     return;
                 }
                 
-                [JL_Tools post:@"CHANGE_PHONE_PWD" Object:@(2)];
+                [JL_Tools post:kUI_CHANGE_PHONE_PWD Object:@(2)];
                 
-                [self.navigationController popViewControllerAnimated:YES];
+                //[self.navigationController popViewControllerAnimated:YES];
+                [self dismissViewControllerAnimated:YES completion:nil];
             }];
         }];
     }else{
@@ -298,7 +316,8 @@
 }
 
 - (IBAction)backAction:(UIButton *)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    //[self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 /// 计算宽度

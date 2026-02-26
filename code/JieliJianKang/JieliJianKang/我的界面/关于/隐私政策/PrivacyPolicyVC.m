@@ -8,7 +8,7 @@
 
 #import "PrivacyPolicyVC.h"
 
-#define PRIVACY_POLICY_URL  @"http://cam.jieliapp.com:28111/app/health_app_privacy_policy.html"
+#define PRIVACY_POLICY_URL  @"https://cam.jieliapp.com/app/healthaide_app_privacy_policy.html"//@"http://cam.jieliapp.com:28111/app/health_app_privacy_policy.html"
 
 
 @interface PrivacyPolicyVC ()<WKNavigationDelegate>{
@@ -44,7 +44,7 @@
     titleHeight.constant = kJL_HeightNavBar;
     self.view.backgroundColor = kDF_RGBA(248, 250, 252, 1.0);
     
-    float sw = [DFUITools screen_2_W];
+    float sw = [UIScreen mainScreen].bounds.size.width;
     subTitleView.frame = CGRectMake(0, 0, sw, kJL_HeightStatusBar+44);
     backBtn.frame  = CGRectMake(4, kJL_HeightStatusBar, 44, 44);
     titleName.text = kJL_TXT("隐私政策");
@@ -58,7 +58,7 @@
     
     
     
-    if([DFUITools screen_2_H] >= 812.0){
+    if([UIScreen mainScreen].bounds.size.height >= 812.0){
         //请求网络地址
         webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, kJL_HeightStatusBar+44, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-50)];
     }else{
@@ -66,7 +66,7 @@
         webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, kJL_HeightStatusBar+44, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-64)];
     }
     
-    noneImv = [[UIImageView alloc] initWithFrame:CGRectMake([DFUITools screen_2_W]/2-230.0/2, [DFUITools screen_2_H]/2-186.5/2, 230.0, 186.5)];
+    noneImv = [[UIImageView alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width/2-230.0/2, [UIScreen mainScreen].bounds.size.height/2-186.5/2, 230.0, 186.5)];
     noneImv.contentMode = UIViewContentModeCenter;
     noneImv.image = [UIImage imageNamed:@"product_img_no_network"];
     [self.view addSubview:noneImv];
@@ -74,14 +74,14 @@
     
     //CGFloat w = self.view.frame.size.width;
     
-    noneLab_1 = [[UILabel alloc] initWithFrame:CGRectMake([DFUITools screen_2_W]/2-60.0, noneImv.frame.origin.y+noneImv.frame.size.height-30, 120.0, 25.0)];
+    noneLab_1 = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width/2-60.0, noneImv.frame.origin.y+noneImv.frame.size.height-30, 120.0, 25.0)];
     noneLab_1.textColor = [UIColor colorWithRed:41/255.0 green:41/255.0 blue:41/255.0 alpha:1.0];
     noneLab_1.textAlignment = NSTextAlignmentCenter;
     noneLab_1.font = [UIFont systemFontOfSize:15];
     noneLab_1.text = kJL_TXT("网络异常");
     [self.view addSubview:noneLab_1];
     
-    noneLab_2 = [[UILabel alloc] initWithFrame:CGRectMake([DFUITools screen_2_W]/2-400/2, noneLab_1.frame.origin.y+noneLab_1.frame.size.height+10, 400, 25.0)];
+    noneLab_2 = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width/2-400/2, noneLab_1.frame.origin.y+noneLab_1.frame.size.height+10, 400, 25.0)];
     noneLab_2.textColor = [UIColor colorWithRed:112/255.0 green:112/255.0 blue:112/255.0 alpha:1.0];
     noneLab_2.textAlignment = NSTextAlignmentCenter;
     noneLab_2.font = [UIFont systemFontOfSize:15];

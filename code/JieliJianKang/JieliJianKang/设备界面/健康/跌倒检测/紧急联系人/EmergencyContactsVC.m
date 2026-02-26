@@ -35,8 +35,8 @@
 -(void)initUI{
     self.view.backgroundColor = kDF_RGBA(248, 250, 252, 1.0);
     titleHeight.constant = kJL_HeightNavBar;
-    float sw = [DFUITools screen_2_W];
-    float sh = [DFUITools screen_2_H];
+    float sw = [UIScreen mainScreen].bounds.size.width;
+    float sh = [UIScreen mainScreen].bounds.size.height;
     
     headView.frame = CGRectMake(0, 0, sw, kJL_HeightStatusBar+44);
     backBtn.frame  = CGRectMake(4, kJL_HeightStatusBar, 44, 44);
@@ -59,25 +59,30 @@
     label1.text =  kJL_TXT("手机号");
     label1.textColor = kDF_RGBA(36, 36, 36, 1.0);
     
-    phoneField = [[UITextField alloc] initWithFrame:CGRectMake(view1.frame.size.width/2-35, view1.frame.size.height/2-18/2, sw-44, 18)];
-    phoneField.textAlignment = NSTextAlignmentLeft;
+    enterContactsBtn = [[UIButton alloc] initWithFrame:CGRectMake(sw-16-22,view1.frame.size.height/2-16/2,16,16)];
+    [enterContactsBtn setImage:[UIImage imageNamed:@"icon_address_book"] forState:UIControlStateNormal];
+    [enterContactsBtn addTarget:self action:@selector(enterContactsAction:) forControlEvents:UIControlEventTouchUpInside];
+    [view1 addSubview:enterContactsBtn];
+    enterContactsBtn.hidden = NO;
+    
+    phoneField = [[UITextField alloc] initWithFrame:CGRectMake(enterContactsBtn.frame.origin.x-13-100, view1.frame.size.height/2-18/2, 100, 18)];
+    phoneField.textAlignment = NSTextAlignmentRight;
     phoneField.placeholder = kJL_TXT("请填写紧急联系人手机号");
     phoneField.textColor = kDF_RGBA(36, 36, 36, 1.0);
     phoneField.tintColor = kDF_RGBA(180, 180, 180, 1.0);
-    phoneField.font = [UIFont fontWithName:@"PingFangSC" size:13];
+    phoneField.font = [UIFont fontWithName:@"PingFangSC-Regular" size:13];
     phoneField.keyboardAppearance=UIKeyboardTypeDefault;
     phoneField.keyboardType= UIKeyboardTypePhonePad;
     phoneField.delegate = self;
     phoneField.tag =0;
     [view1 addSubview:phoneField];
     phoneField.hidden = NO;
-    phoneField.text = [JL_Tools getUserByKey:@"ACCOUNT_NUM"];
-    
-    enterContactsBtn = [[UIButton alloc] initWithFrame:CGRectMake(sw-16-22,view1.frame.size.height/2-16/2,16,16)];
-    [enterContactsBtn setImage:[UIImage imageNamed:@"icon_address_book"] forState:UIControlStateNormal];
-    [enterContactsBtn addTarget:self action:@selector(enterContactsAction:) forControlEvents:UIControlEventTouchUpInside];
-    [view1 addSubview:enterContactsBtn];
-    enterContactsBtn.hidden = NO;
+    phoneField.text = [JL_Tools getUserByKey:kUI_ACCOUNT_NUM];
+    if(phoneField.text.length==0){
+        phoneField.frame = CGRectMake(enterContactsBtn.frame.origin.x-13-150, view1.frame.size.height/2-18/2, 150, 18);
+    }else{
+        phoneField.frame = CGRectMake(enterContactsBtn.frame.origin.x-13-100, view1.frame.size.height/2-18/2, 100, 18);
+    }
     
     modifyLabel = [[DFLabel alloc] init];
     if([kJL_GET hasPrefix:@"zh"]){
@@ -110,7 +115,6 @@
     saveContactsBtn.hidden = YES;
     
     if(phoneField.text){
-        saveContactsBtn.hidden = YES;
         phoneField.hidden = YES;
         enterContactsBtn.hidden = YES;
         modifyLabel.hidden = NO;
@@ -118,7 +122,6 @@
         titleName.text = kJL_TXT("紧急联系人");
     }
     if(phoneField.text.length == 0){
-        saveContactsBtn.hidden = YES;
         phoneField.hidden = NO;
         enterContactsBtn.hidden = NO;
         modifyLabel.hidden = YES;
@@ -134,12 +137,19 @@
 
 #pragma mark 修改手机号码
 -(void)modifyPhoneNum{
-    saveContactsBtn.hidden = YES;
     phoneField.hidden = NO;
     enterContactsBtn.hidden = NO;
     modifyLabel.hidden = YES;
     label1.text =  kJL_TXT("手机号");
     titleName.text = kJL_TXT("紧急联系人设置");
+    
+    if(phoneField.text){
+        saveContactsBtn.hidden = NO;
+        [saveContactsBtn setTitleColor:kDF_RGBA(179, 179, 179, 1.0) forState:UIControlStateNormal];
+        [saveContactsBtn setBackgroundColor:kDF_RGBA(240, 241, 241, 1.0)];
+    }else{
+        saveContactsBtn.hidden = YES;
+    }
 }
 
 #pragma mark 保存联系人号码
@@ -188,6 +198,15 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     saveContactsBtn.hidden = NO;
+    if(phoneField.text.length==0){
+        phoneField.frame = CGRectMake(enterContactsBtn.frame.origin.x-13-150, view1.frame.size.height/2-18/2, 150, 18);
+        [saveContactsBtn setTitleColor:kDF_RGBA(179, 179, 179, 1.0) forState:UIControlStateNormal];
+        [saveContactsBtn setBackgroundColor:kDF_RGBA(240, 241, 241, 1.0)];
+    }else{
+        phoneField.frame = CGRectMake(enterContactsBtn.frame.origin.x-13-100, view1.frame.size.height/2-18/2, 100, 18);
+        [saveContactsBtn setTitleColor:kDF_RGBA(255, 255, 255, 1.0) forState:UIControlStateNormal];
+        [saveContactsBtn setBackgroundColor:kDF_RGBA(128, 91, 235, 1.0)];
+    }
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;{
@@ -219,7 +238,7 @@
 -(void)sendDataToDevice{
     NSMutableArray <JLwSettingModel *>* models = [NSMutableArray new];
 
-    [JL_Tools setUser:phoneField.text forKey:@"ACCOUNT_NUM"];
+    [JL_Tools setUser:phoneField.text forKey:kUI_ACCOUNT_NUM];
     JLFallDetectionModel *model1 = [[JLFallDetectionModel alloc] initWithModel:self.type Status:self.state phoneNumber:phoneField.text];
     [models addObject:model1];
     

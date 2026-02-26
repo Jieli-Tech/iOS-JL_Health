@@ -35,7 +35,7 @@ static NSString *_sportDownloadFileDocPath = @"sport_download";
 @implementation UserDataSync
 
 +(AFHTTPSessionManager *)reqMgr{
-    NSString *token = [JL_Tools getUserByKey:@"accessToken"];
+    NSString *token = [JL_Tools getUserByKey:kUI_ACCESS_TOKEN];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [AFJSONRequestSerializer serializer].cachePolicy = NSURLRequestReturnCacheDataElseLoad;
     [manager setRequestSerializer:[AFJSONRequestSerializer serializer]];
@@ -429,7 +429,7 @@ static NSString *_sportDownloadFileDocPath = @"sport_download";
     NSString *url = [NSString stringWithFormat:@"%@/health/v1/api/data/sport/save",BaseURL];
     AFHTTPSessionManager *manager = [self reqMgr];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/plain", @"text/html",@"application/json", @"text/json" ,@"text/javascript", nil];
-    NSString *token = [JL_Tools getUserByKey:@"accessToken"];
+    NSString *token = [JL_Tools getUserByKey:kUI_ACCESS_TOKEN];
     
     NSDictionary *headers = @{
 //        @"content-type": @"application/json",
@@ -815,7 +815,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
 #pragma mark - Private Methods
 
 + (BOOL)notLoggedIn {
-    NSString *accessToken = [JL_Tools getUserByKey:@"accessToken"];
+    NSString *accessToken = [JL_Tools getUserByKey:kUI_ACCESS_TOKEN];
     if ((accessToken.length < 1) || ([User_Http shareInstance].userPfInfo.identify.length < 1)) {
         return YES;
     }

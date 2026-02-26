@@ -372,22 +372,28 @@ extern NSString *kJL_MANAGER_HEADSET_TIPS;
 
 //MARK: - 一拖二相关命令
 
-typedef void(^JL_MulitLinksInfo_BK)(JL_CMDStatus status,NSArray <NSString *>* __nullable phoneNames);
+typedef void(^JL_MulitLinksInfo_BK)(JL_CMDStatus status,NSArray <JLTWSAddrNameInfo *>* __nullable phoneInfos);
 
 /// 设备上传一拖二设备信息列表
 extern NSString* kJL_MULIT_NAME_LIST;
 
 /// 获取设备已连接手机名
 /// 通知设备上传一拖二设备信息列表
-/// @param phoneName 手机的名字
 /// @param result 设备所连接的手机名字列表
--(void)cmdGetDeviceInfoList:(NSString *)phoneName result:(JL_MulitLinksInfo_BK)result;
+-(void)cmdGetDeviceInfoListResult:(JL_MulitLinksInfo_BK)result;
 
+/// 通知设备一连上手机地址和绑定信息
+/// - Parameters:
+///   - addr: 手机EDR地址
+///   - name: 手机蓝牙名称
+///   - result: 结果
+-(void)cmdBindDeviceInfo:(NSData *)addr phone:(NSString *)name result:(JL_MulitLinksInfo_BK)result;
 
 /// 一拖二开关
 /// @param dragWithMore 开关状态
+/// @param addr 手机的经典蓝牙地址（通过cmdGetDeviceInfoList 获取）
 /// @param result   结果回调
--(void)setDragWithMore:(BOOL)dragWithMore result:(JL_CMD_RESPOND)result;
+-(void)setDragWithMore:(BOOL)dragWithMore phoneBleAddr:(NSData *) addr result:(JL_CMD_RESPOND)result;
 
 @end
 

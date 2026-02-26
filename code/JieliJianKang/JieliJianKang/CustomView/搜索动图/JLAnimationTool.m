@@ -63,8 +63,8 @@ static int      showTimeout= 0;
         searchImage = nil;
     }
     showTimeout = time;
-    float sW = [DFUITools screen_2_W];
-    float sH = [DFUITools screen_2_H];
+    float sW = [UIScreen mainScreen].bounds.size.width;
+    float sH = [UIScreen mainScreen].bounds.size.height;
     UIWindow *win = [DFUITools getWindow];
     animationView = [[UIView alloc] initWithFrame:CGRectMake(0, kJL_HeightNavBar, sW, sH-kJL_HeightTabBar-100.0)];
     animationView.backgroundColor = [UIColor clearColor];
@@ -85,7 +85,7 @@ static int      showTimeout= 0;
     [animationView addSubview:noDevLabel];
     
     searchImage = [UIImageView new];
-    searchImage.center = CGPointMake(animationView.frame.size.width/2.0, animationView.frame.size.height/2.0);
+    searchImage.center = CGPointMake(animationView.frame.size.width/2.0, animationView.frame.size.height/2.0-100.0);
     searchImage.contentMode = UIViewContentModeCenter;
     [animationView addSubview:searchImage];
     

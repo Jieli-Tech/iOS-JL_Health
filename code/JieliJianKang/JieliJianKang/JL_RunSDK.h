@@ -29,9 +29,9 @@
 #define kJL_BLE_Uuid        [[JL_RunSDK sharedMe] mBleUUID]         //当前蓝牙设备的UUID
 #define kJL_DIAL_CACHE      [[JL_RunSDK sharedMe] mDialUICache]     //表盘的UI缓存
 
-#define APPID_VALUE  @"123456" //请去科大讯飞的官网注册
-#define APIKEY       @"123456789" //请去科大讯飞的官网注册
-#define APISERECT    @"abcd" //请去科大讯飞的官网注册
+#define APPID_VALUE  @"123456"    //请去科大讯飞的官网注册 （跟AIDialXFManager.m中的appId保持一致）
+#define APIKEY       @"123456789" //请去科大讯飞的官网注册 （跟AIDialXFManager.m中的ApiKey保持一致）
+#define APISERECT    @"abcd"      //请去科大讯飞的官网注册 （跟AIDialXFManager.m中的ApiSecret保持一致）
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -50,13 +50,33 @@ typedef NS_ENUM(UInt8, JLDeviceChangeType) {
     JLDeviceChangeTypeManualChange      = 3,    //手动切换设备
     JLDeviceChangeTypeBleOFF            = 4,    //蓝牙已关闭
 };
+
 extern NSString *kUI_JL_DEVICE_CHANGE;
 extern NSString *kUI_JL_DEVICE_PREPARING;
 extern NSString *kUI_JL_DEVICE_OTA;
 
-
 extern NSString *kUI_JL_BLE_SCAN_OPEN;
 extern NSString *kUI_JL_BLE_SCAN_CLOSE;
+
+extern NSString *kUI_JL_STOP_TTS;
+extern NSString *kUI_JL_NO_RECORED;
+extern NSString *kUI_AI_BECOME_ACTIVE;
+extern NSString *kUI_RECONNECT_TO_DEVICE;
+extern NSString *kUI_OTA_IS_OK;
+extern NSString *kUI_FOR_IOS_REVIEW;
+extern NSString *kUI_TOKEN_IS_NULL;
+extern NSString *kUI_LOGOUT;
+extern NSString *kUI_ENTER_MAIN_VC;
+extern NSString *kUI_ACCOUNT_NUM;
+extern NSString *kUI_ACCESS_TOKEN;
+extern NSString *kUI_HTTP_USER_WAY;
+extern NSString *kUI_CHANGE_PHONE_PWD;
+extern NSString *kUI_CHANGE_PHONE_NUM;
+extern NSString *kUI_CLEAN_MUSIC_LIST;
+extern NSString *kUI_CLEAN_MUSIC_LIST2;
+extern NSString *kUI_DELETE_DEVICE_MODEL;
+extern NSString *kUI_SHOW_EDR_VIEW;
+extern NSString *kUI_INSTALL_DIAL_SUCCESS;
 
 @interface JL_RunSDK : NSObject
 @property(strong,nonatomic)JL_BLEMultiple *mBleMultiple;

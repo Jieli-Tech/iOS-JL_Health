@@ -56,8 +56,8 @@
         [self addSubview:sView];
         
         
-        UIImageView *redImage = [[UIImageView alloc] initWithFrame:CGRectMake(view_W/2.0-1.0, -15.0, 4.0, view_H-20.0)];
-        redImage.contentMode = UIViewContentModeScaleAspectFill;
+        UIImageView *redImage = [[UIImageView alloc] initWithFrame:CGRectMake(view_W/2.0-7.0, -15.0, 14.0, 45)];
+        redImage.contentMode = UIViewContentModeScaleToFill;
         redImage.image = [UIImage imageNamed:@"icon_triangle_nol"];
         //redImage.backgroundColor = [UIColor blueColor];
         [self addSubview:redImage];

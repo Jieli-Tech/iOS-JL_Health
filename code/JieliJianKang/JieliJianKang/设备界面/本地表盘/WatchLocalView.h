@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (assign,nonatomic) BOOL isShowLbSmall;
 @property (assign,nonatomic) BOOL isShowLbBig;
 @property (weak,nonatomic)id<WatchLocalViewDelegate>delegate;
+@property (weak,nonatomic)UIViewController *superVC;
 
 - (void)setTitleText:(NSString*)text;
 

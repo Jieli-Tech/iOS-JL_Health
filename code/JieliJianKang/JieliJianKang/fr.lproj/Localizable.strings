@@ -325,7 +325,7 @@
 "体重设定" = "Réglage du poids";
 "体重目标" = "Objectif de poids";
 "起始" = "Début:";
-"目标" = "Objectif:";
+"目标" = "Objectif";
 "消耗约" = "consomme environ";
 "最新" = "Dernier:";
 "最低值" = "Faible";
@@ -378,7 +378,7 @@
 "添加表盘..." = "Ajouter un cadran...";
 "更新表盘..." = "Renouveler le cadran...";
 "本地表盘" = "Cadran local";
-"全部" = "Tout >";
+"全部" = "Tout";
 "管理" = "Gestion";
 "闹钟" = "Réveil";
 "铃声" = "Sonnerie";
@@ -401,7 +401,7 @@
 "电量" = "Electricité";
 "升级" = "Upgrade";
 "当前版本"= "Version actuelle";
-"固件升级" = "Firmware Upgrade";
+"固件更新" = "Firmware Upgrade";
 "检查更新" = "Vérifier les mises à jour";
 "OTA升级失败" = "échec de la mise à niveau OTA";
 "OTA升级数据为空!" = "Les données de mise à niveau OTA sont vides!";
@@ -585,7 +585,7 @@
 "选择周间隔" = "Choisir un intervalle hebdomadaire";
 "服务器开小差" = "Désertion du serveur";
 
-"手机蓝牙通话" = "Appel Bluetooth sur téléphone portable";
+"手表蓝牙通话" = "Regarder un appel Bluetooth";
 "表盘" = "Cadran";
 "购买记录" = "Dossier d'achat";
 "蓝牙" = "Bluetooth";
@@ -593,7 +593,7 @@
 "系统表盘" = "Cadran système";
 "免费表盘" = "Cadran gratuit";
 "付费表盘" = "Cadran payant";
-"更多>" = "plus>";
+"更多>" = "plus >";
 "表盘商城"= "Dial Mall";
 "我的表盘" = "Mon cadran";
 "免费" = "gratuit";
@@ -675,3 +675,7 @@
 "是否删除" = "Supprimer ou non";
 "复制" = "Copier";
 "多选" = "Sélection multiple";
+"珠海市杰理科技股份有限公司" = "www.zh-jieli.com";
+"是否要清除用户缓存" = "Voulez-vous vider le cache utilisateur ?";
+"AI表盘" = "Cadran IA";
+"正在传输中" = "En transit...";

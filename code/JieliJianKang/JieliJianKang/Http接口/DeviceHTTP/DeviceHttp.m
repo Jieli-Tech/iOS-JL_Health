@@ -73,7 +73,7 @@
 +(void)checkList:(void(^)(NSArray<DeviceHttpResp*>  * _Nullable array)) result{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager setRequestSerializer:[AFJSONRequestSerializer serializer]];
-    NSString *token = [JL_Tools getUserByKey:@"accessToken"];
+    NSString *token = [JL_Tools getUserByKey:kUI_ACCESS_TOKEN];
     NSDictionary *headers = @{@"content-type": @"application/json",
                               @"jwt-token":token?:@"",
                               @"cache-control": @"no-cache"};

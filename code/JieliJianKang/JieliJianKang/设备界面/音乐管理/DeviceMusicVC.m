@@ -46,7 +46,7 @@
     if (deleteView) {
         [deleteView removeFromSuperview];
     }
-    deleteView = [[DeleteView alloc] initWithFrame:CGRectMake(0, 0, [DFUITools screen_2_W], [DFUITools screen_2_H])];
+    deleteView = [[DeleteView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     deleteView.titleLab.numberOfLines = 1;
     deleteView.type = 0;
     deleteView.delegate = self;
@@ -91,7 +91,7 @@
 
 
 -(void)initUI{
-
+    self.view.backgroundColor = kDF_RGBA(246, 247, 248, 1.0);
     titleHeight.constant = kJL_HeightNavBar;
     self.tipsLab.text = kJL_TXT("空文件夹");
     
@@ -272,8 +272,10 @@
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    JLModel_File *model = titleArray[indexPath.row];
-    [[DMusicHandler sharedInstance] tabArraySelect:model];
+    if(titleArray!=nil && titleArray.count>indexPath.row){
+        JLModel_File *model = titleArray[indexPath.row];
+        [[DMusicHandler sharedInstance] tabArraySelect:model];
+    }
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     JLModel_File *model = titleArray[indexPath.row];
@@ -293,7 +295,7 @@
     SongListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"songListCell"];
     if (cell == nil) {
         cell = [[SongListCell alloc] init];
-        cell.songName.frame = CGRectMake(53,cell.frame.size.height/2-15, [DFUITools screen_2_W]-80, 20);
+        cell.songName.frame = CGRectMake(53,cell.frame.size.height/2-15, [UIScreen mainScreen].bounds.size.width-80, 20);
         cell.artistLab.hidden = YES;
         cell.numberLab.hidden = YES;
     }
@@ -334,10 +336,10 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    JLModel_File *model = itemArray[indexPath.row];
-    [[DMusicHandler sharedInstance] requestWith:model Number:20];
-    
+    if(itemArray!=nil && itemArray.count>indexPath.row){
+        JLModel_File *model = itemArray[indexPath.row];
+        [[DMusicHandler sharedInstance] requestWith:model Number:20];
+    }
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -445,7 +447,7 @@
 
 #pragma mark 删除指定的歌曲
 -(void)deleteMySongs:(NSInteger) row{
-    if(itemArray.count>0){
+    if(itemArray!=nil && itemArray.count>row){
         JLModel_File *model = itemArray[row];
         [itemArray removeObjectAtIndex:row];
 

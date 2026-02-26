@@ -7,11 +7,18 @@
 
 #import <UIKit/UIKit.h>
 #import "JL_RunSDK.h"
+#import "PhotoView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WatchLocalVC : UIViewController
+
+@property(nonatomic,strong)PhotoView                   *mPhotoView;
+
 -(void)loadWatchForPayment:(BOOL)isFree;
+
+-(void)installDial:(UIImage *)image;
+
 @end
 
 

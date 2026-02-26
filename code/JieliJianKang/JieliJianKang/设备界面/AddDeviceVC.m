@@ -24,6 +24,7 @@
     __weak IBOutlet NSLayoutConstraint *subTitle_H;
     __weak IBOutlet UITableView *subTableView;
     __weak IBOutlet UILabel *titleName;
+    __weak IBOutlet UIView *midView;
     
     NSMutableArray *deviceArray;
     
@@ -80,7 +81,7 @@
     subTableView.rowHeight = 100.0;
     subTableView.allowsSelection = NO;
     
-    deleteView = [[DeleteView alloc] initWithFrame:CGRectMake(0, 0, [DFUITools screen_2_W], [DFUITools screen_2_H])];
+    deleteView = [[DeleteView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     deleteView.titleLab.numberOfLines = 2;
     deleteView.type = 1;
     deleteView.delegate = self;
@@ -103,7 +104,7 @@
     NSMutableAttributedString* txt_1 = [self lineString:kJL_TXT("重新搜索")];
     [btnNoDev_1 setAttributedTitle:txt_1 forState:UIControlStateNormal];
     
-    [self showSaoYiSao:0.0 Reflash:0.0];
+    [self showSaoYiSao:1.0 Reflash:0.0];
 }
 
 -(NSMutableAttributedString*)lineString:(NSString*)string{
@@ -395,6 +396,11 @@
 -(void)noteDeviceChange:(NSNotification*)note{
     NSLog(@"---> Device change.");
     [subTableView reloadData];
+    
+    JLDeviceChangeType type = [[note object] integerValue];
+    if (type == JLDeviceChangeTypeInUseOffline || type == JLDeviceChangeTypeBleOFF) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 -(void)noteCloseAddVC:(NSNotification*)note{

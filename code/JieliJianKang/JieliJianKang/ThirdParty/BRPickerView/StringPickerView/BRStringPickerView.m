@@ -475,7 +475,11 @@
         self.frame = view.bounds;
         CGFloat pickerHeaderViewHeight = self.pickerHeaderView ? self.pickerHeaderView.bounds.size.height : 0;
         CGFloat pickerFooterViewHeight = self.pickerFooterView ? self.pickerFooterView.bounds.size.height : 0;
-        self.pickerView.frame = CGRectMake(0, pickerHeaderViewHeight, view.bounds.size.width, view.bounds.size.height - pickerHeaderViewHeight - pickerFooterViewHeight);
+        if(self.type == 2){
+            self.pickerView.frame = CGRectMake(-20, pickerHeaderViewHeight, view.bounds.size.width, view.bounds.size.height - pickerHeaderViewHeight - pickerFooterViewHeight);
+        }else{
+            self.pickerView.frame = CGRectMake(0, pickerHeaderViewHeight, view.bounds.size.width, view.bounds.size.height - pickerHeaderViewHeight - pickerFooterViewHeight);
+        }
         [self addSubview:self.pickerView];
     } else {
         [self.alertView addSubview:self.pickerView];
@@ -483,7 +487,11 @@
     
     // ③添加中间选择行的两条分割线
     if (self.pickerStyle.clearPickerNewStyle) {
-        [self.pickerStyle addSeparatorLineView:self.pickerView];
+        if(self.type == 2){
+            [self.pickerStyle addSeparatorMyLineView:self.pickerView];
+        }else{
+            [self.pickerStyle addSeparatorLineView:self.pickerView];
+        }
     }
     
     // 2.绑定数据

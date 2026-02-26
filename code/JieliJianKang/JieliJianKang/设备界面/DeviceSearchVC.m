@@ -102,7 +102,7 @@
     
     titleName.text = kJL_TXT("设备");
     
-    CGFloat subHeight = 188;
+    CGFloat subHeight = 220;
     devcSubView = [[DevicesSubView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, subHeight)];
     
     devcSubView.delegate = self;
@@ -110,26 +110,27 @@
 
     
     float gap = 52.0;
-    float wacthView_H = 220.0;
-    float sW = [DFUITools screen_2_W];
+    float wacthView_H = 230.0;
+    float sW = [UIScreen mainScreen].bounds.size.width;
     float sH = wacthView_H+20.0+gap*7+20+subHeight;
     subScrollView.contentSize = CGSizeMake(sW, sH);
 
     CGRect rect = CGRectMake(0, 0, sW, wacthView_H);
     watchLocalView = [[WatchLocalView alloc] initByFrame:rect];
+    watchLocalView.superVC = self;
     watchLocalView.delegate = self;
-    [watchLocalView setIsEdit:NO];
-    [watchLocalView setIsOperate:NO];
-    [watchLocalView setIsShowLbSmall:NO];
-    [watchLocalView setIsShowLbBig:YES];
+    [watchLocalView setIsEdit:YES];
+    [watchLocalView setIsOperate:YES];
+    [watchLocalView setIsShowLbSmall:YES];
+    [watchLocalView setIsShowLbBig:NO];
     
     [subScrollView addSubview:watchLocalView];
     
     [JL_Tools delay:0.01 Task:^{
-        self->watchLocalView.frame = CGRectMake(0, subHeight+10, sW, wacthView_H);
+        self->watchLocalView.frame = CGRectMake(0, subHeight, sW, wacthView_H);
     }];
     
-    functionView = [[FunctionView alloc] initWithFrame:CGRectMake(0, wacthView_H+10.0+10+subHeight, sW, 7*52)];
+    functionView = [[FunctionView alloc] initWithFrame:CGRectMake(0, wacthView_H+10+subHeight, sW, 7*52)];
     functionView.subView = devcSubView;
     [functionView addObserver:self forKeyPath:@"viewHeight" options:NSKeyValueObservingOptionNew context:nil];
     
@@ -367,7 +368,6 @@
                                      NSString * _Nullable path,
                                      NSString * _Nullable describe) {
         [JL_Tools mainTask:^{
-
             if (flag == 0) {
                 NSString *mCurrentWacth = [path stringByReplacingOccurrencesOfString:@"/" withString:@""];
                 [kJL_DIAL_CACHE setCurrrentWatchName:mCurrentWacth];
@@ -410,8 +410,8 @@
 }
 
 -(void)addNote{
-    [JL_Tools add:@"FOR_IOS_REVIEW" Action:@selector(noteForIosReview:) Own:self];
-    [JL_Tools add:@"kUI_RECONNECT_TO_DEVICE" Action:@selector(noteReconnectToDevice:) Own:self];
+    [JL_Tools add:kUI_FOR_IOS_REVIEW Action:@selector(noteForIosReview:) Own:self];
+    [JL_Tools add:kUI_RECONNECT_TO_DEVICE Action:@selector(noteReconnectToDevice:) Own:self];
     //[JL_Tools add:@"kUI_WATCH_LOCAL" Action:@selector(notePresentWatchVC:) Own:self];
 //    [JL_Tools add:@"kUI_WATCH_LOCAL_EDIT" Action:@selector(notePresentCustomWatchVC:) Own:self];
     [JL_Tools add:kUI_JL_DEVICE_CHANGE Action:@selector(noteDeviceChange:) Own:self];
@@ -438,7 +438,7 @@
         CGFloat num = [change[NSKeyValueChangeNewKey] floatValue];
         CGFloat subHeight = 188;
         float wacthView_H = 220.0;
-        float sW = [DFUITools screen_2_W];
+        float sW = [UIScreen mainScreen].bounds.size.width;
         float sH = wacthView_H+20.0+num+20+subHeight;
         subScrollView.contentSize = CGSizeMake(sW, sH);
     }

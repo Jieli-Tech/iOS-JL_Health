@@ -43,7 +43,7 @@
         //[self hbMsgLabel:@"48-128" Units:kJL_TXT("次/分钟")];
         
         self.backgroundColor = [UIColor whiteColor];
-        self.layer.shadowColor = [UIColor colorWithRed:100/255.0 green:102/255.0 blue:103/255.0 alpha:0.34].CGColor;
+        self.layer.shadowColor = [UIColor colorWithRed:100/255.0 green:102/255.0 blue:103/255.0 alpha:0.14].CGColor;
         self.layer.shadowOffset = CGSizeMake(0,0);
         self.layer.shadowOpacity = 1;
         self.layer.shadowRadius = 10;
@@ -66,7 +66,7 @@
 
 -(void)shadows:(BOOL)status{
     if (status) {
-        self.layer.shadowColor = [UIColor blackColor].CGColor;
+        self.layer.shadowColor = [UIColor colorWithRed:0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:0.3].CGColor;
         self.layer.masksToBounds = NO;
         self.layer.shadowRadius = 3;
         self.layer.shadowOffset = CGSizeMake(1.0f,1.0f);
@@ -85,6 +85,12 @@
 -(void)hbMsgLabel:(NSString *)main Units:(NSString *)u{
     TYTextContainer *container = [[TYTextContainer alloc] init];
     NSString *mainText = [NSString stringWithFormat:@"%@%@",main,u];
+    if ([main isEqualToString:@"0-0"]){
+        mainText = [NSString stringWithFormat:@"- -"];
+    }
+    if ([main isEqualToString:@"0"]){
+        mainText = [NSString stringWithFormat:@"- -"];
+    }
     container.text = mainText;
     TYTextStorage *strong = [[TYTextStorage alloc] init];
     strong.range = [mainText rangeOfString:main];

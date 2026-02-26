@@ -150,10 +150,14 @@
         dayView.textLabel.textColor = [UIColor lightGrayColor];
     }
     // Another day of the current month
-    else{
+    else {
         dayView.circleView.hidden = YES;
         dayView.dotView.backgroundColor = [UIColor redColor];
-        dayView.textLabel.textColor = [UIColor blackColor];
+        if(![calendarManager.dateHelper date:[NSDate new] isEqualOrBefore:dayView.date]){
+            dayView.textLabel.textColor = [UIColor blackColor];
+        }else{
+            dayView.textLabel.textColor = [UIColor lightGrayColor];
+        }
     }
     
     // Selected date
@@ -202,6 +206,9 @@
 
 
 -(void)calendar:(JTCalendarManager *)calendar didTouchDayView:(JTCalendarDayView *)dayView{
+    if(![calendarManager.dateHelper date:[NSDate new] isEqualOrAfter:dayView.date]){
+        return;
+    }
     dateSelected = dayView.date;
     
     // Animation for the circleView

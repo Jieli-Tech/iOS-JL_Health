@@ -43,9 +43,9 @@
 }
 
 -(void)initUI{
-    self.view.backgroundColor = kDF_RGBA(248, 250, 252, 1.0);
+    self.view.backgroundColor = [UIColor whiteColor];
     titleHeight.constant = kJL_HeightNavBar;
-    sw = [DFUITools screen_2_W];
+    sw = [UIScreen mainScreen].bounds.size.width;
     subTitleView.frame = CGRectMake(0, 0, sw, kJL_HeightStatusBar+44);
     backBtn.frame  = CGRectMake(4, kJL_HeightStatusBar, 44, 44);
     titleName.text = kJL_TXT("找回密码");
@@ -56,7 +56,7 @@
     label1.frame = CGRectMake(24, kJL_HeightNavBar+36, 35, 20);
     label1.numberOfLines = 0;
     label1.text = kJL_TXT("+86");
-    label1.font =  [UIFont fontWithName:@"PingFangSC" size:14];
+    label1.font =  [UIFont fontWithName:@"PingFangSC-Regular" size:14];
     label1.textColor = kDF_RGBA(36, 36, 36, 1.0);
     [self.view addSubview:label1];
 
@@ -74,7 +74,7 @@
     phoneTF.placeholder = kJL_TXT("请输入绑定的手机号码");
     phoneTF.textColor = kDF_RGBA(36, 36, 36, 1.0);
     phoneTF.tintColor = kDF_RGBA(180, 180, 180, 1.0);
-    phoneTF.font = [UIFont fontWithName:@"PingFangSC" size:14];
+    phoneTF.font = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
     phoneTF.keyboardAppearance=UIKeyboardAppearanceDefault;
     phoneTF.keyboardType=UIKeyboardTypePhonePad;
     phoneTF.delegate = self;
@@ -88,7 +88,7 @@
     verTF.placeholder = kJL_TXT("输入验证码");
     verTF.textColor = kDF_RGBA(36, 36, 36, 1.0);
     verTF.tintColor = kDF_RGBA(180, 180, 180, 1.0);
-    verTF.font = [UIFont fontWithName:@"PingFangSC" size:14];
+    verTF.font = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
     verTF.keyboardAppearance = UIKeyboardAppearanceDefault;
     verTF.keyboardType = UIKeyboardTypePhonePad;
     verTF.delegate = self;
@@ -100,7 +100,7 @@
     btnWay = [[UIButton alloc] initWithFrame:CGRectMake(24, CGRectGetMaxY(verTF.frame)+20.0, sw, 40)];
     [btnWay setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     [btnWay setTitle:kJL_TXT("使用邮箱找回密码") forState:UIControlStateNormal];
-    [btnWay.titleLabel setFont:[UIFont fontWithName:@"PingFangSC" size:13]];
+    [btnWay.titleLabel setFont:[UIFont fontWithName:@"PingFangSC-Regular" size:13]];
     [btnWay setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
     
     [btnWay addTarget:self action:@selector(actionChangeWay) forControlEvents:UIControlEventTouchUpInside];
@@ -112,7 +112,7 @@
     verLabel.text = kJL_TXT("发送验证码");
     verLabel.labelType = DFLeftRight;
     verLabel.textAlignment = NSTextAlignmentLeft;
-    verLabel.font =  [UIFont fontWithName:@"PingFangSC" size:14];
+    verLabel.font =  [UIFont fontWithName:@"PingFangSC-Regular" size:14];
     verLabel.textColor = kDF_RGBA(128, 91, 235, 1.0);
     verLabel.tag = 0;
     [self.view addSubview:verLabel];
@@ -127,7 +127,7 @@
     verLabel2.numberOfLines = 0;
     verLabel2.labelType = DFLeftRight;
     verLabel2.textAlignment = NSTextAlignmentLeft;
-    verLabel2.font =  [UIFont fontWithName:@"PingFangSC" size:14];
+    verLabel2.font =  [UIFont fontWithName:@"PingFangSC-Regular" size:14];
     verLabel2.textColor = kDF_RGBA(145, 145, 145, 1.0);
     verLabel2.tag = 1;
     [self.view addSubview:verLabel2];
@@ -144,7 +144,7 @@
     loginBtn = [[UIButton alloc] initWithFrame:CGRectMake(24,verLabel.frame.origin.y+verLabel.frame.size.height+111,sw-48,48)];
     [loginBtn addTarget:self action:@selector(verClickBtn:) forControlEvents:UIControlEventTouchUpInside];
     [loginBtn setTitle:kJL_TXT("验证") forState:UIControlStateNormal];
-    [loginBtn.titleLabel setFont:[UIFont fontWithName:@"PingFangSC" size:15]];
+    [loginBtn.titleLabel setFont:[UIFont fontWithName:@"PingFangSC-Regular" size:15]];
     [loginBtn setTitleColor:kDF_RGBA(179, 179, 179, 1.0) forState:UIControlStateNormal];
     [loginBtn setBackgroundColor:kDF_RGBA(240, 241, 241, 1.0)];
     loginBtn.layer.cornerRadius = 24;
@@ -437,12 +437,13 @@
                     return;
                 }
                 
-                [JL_Tools setUser:self->phoneTF.text forKey:@"ACCOUNT_NUM"];
+                [JL_Tools setUser:self->phoneTF.text forKey:kUI_ACCOUNT_NUM];
                 
                 ForgetSetPwdVC *vc = [[ForgetSetPwdVC alloc] init];
                 vc.modalPresentationStyle = UIModalPresentationFullScreen;
                 vc.mobile = self->phoneTF.text;
                 vc.code   = self->verTF.text;
+                vc.type   = self->_type;
                 vc.userWay= self->userWay;
                 [self presentViewController:vc animated:YES completion:nil];
             }];

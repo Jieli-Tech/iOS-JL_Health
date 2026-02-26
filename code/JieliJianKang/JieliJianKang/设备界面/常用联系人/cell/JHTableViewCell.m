@@ -66,7 +66,7 @@
 // 顺带刷新数据
 // 不能在这里新建，否则重用的时候会产生问题
 - (void)setModel {
-    float screenWidth = [DFUITools screen_2_W];
+    float screenWidth = [UIScreen mainScreen].bounds.size.width;
     if (self.personModel != nil) {
         // 先看图片是否为空
         if (self.personModel.smallImage) {

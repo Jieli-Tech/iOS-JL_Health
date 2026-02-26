@@ -316,7 +316,7 @@
                 CGFloat width = [self getWidthWithText:self->label3.text height:21 font:15];
                 self->label3.frame = CGRectMake(self->view2.frame.size.width-12-22-width,20,width,21);
                 
-                self->muBiaoLabel.text = [NSString stringWithFormat:@"%@ %@",kJL_TXT("目标"),self->label3.text];
+                self->muBiaoLabel.text = [NSString stringWithFormat:@"%@: %@",kJL_TXT("目标"),self->label3.text];
                 self->startLabel.text =  [NSString stringWithFormat:@"%@ %.1f%@",kJL_TXT("起始"),beginWeight,units];
                 
 //                startLabel.frame = CGRectMake(20,pro.frame.size.height+pro.frame.origin.y+20,120,20);
@@ -325,7 +325,7 @@
                 CGFloat muBiaoLabelWidth = [self getWidthWithText:self->muBiaoLabel.text height:20 font:14];
 
                 self->startLabel.frame = CGRectMake(20,self->pro.frame.size.height+self->pro.frame.origin.y+20,startLabelWidth,20);
-                self->muBiaoLabel.frame = CGRectMake(self->sw-muBiaoLabelWidth,self->pro.frame.size.height+
+                self->muBiaoLabel.frame = CGRectMake(self->sw-muBiaoLabelWidth-20,self->pro.frame.size.height+
                                                      self->pro.frame.origin.y+20,muBiaoLabelWidth,20);
                 
                 //[self DateLabTestData:userInfo.weightStart];
@@ -637,6 +637,25 @@
     [self DateLabTestData:currentWeight];
 }
 
+-(void)updateDateRightBtnStatus{
+    switch (dType) {
+        case DateType_Day:{
+            datelabView.rightBtn.hidden = !nowDate.beforeNow_0;
+        }break;
+        case DateType_Week:{
+            datelabView.rightBtn.hidden = !nowDate.beforeThisWeek_0;
+        }break;
+        case DateType_Month:{
+            datelabView.rightBtn.hidden = !nowDate.beforeThisMonth_0;
+        }break;
+        case DateType_Year:{
+            datelabView.rightBtn.hidden = !nowDate.beforeThisYear_0;
+        }break;
+        default:
+            break;
+    }
+}
+
 //MARK: 日期选择回调
 -(void)barDidSelectIndex:(NSInteger)index{
     dType = index;
@@ -658,7 +677,7 @@
         view1.hidden = NO;
         view2.hidden = NO;
         
-        subView_1.frame = CGRectMake(0, 230+150, sw, 505);
+        subView_1.frame = CGRectMake(0,self->startLabel.frame.origin.y+self->startLabel.frame.size.height+35, sw, sh-(self->startLabel.frame.origin.y+self->startLabel.frame.size.height+35));
         
         weightShow_0.hidden = YES;
         weightShow_1.hidden = YES;
@@ -733,6 +752,7 @@
 }
 
 -(void)DateLabTestData:(float)weight{
+    [self updateDateRightBtnStatus];
     if(dType == 0){
         if(weight == 0.f){
             [datelabView setTitleLab:nowDate.standardDate SecondLabel:@"- -"];

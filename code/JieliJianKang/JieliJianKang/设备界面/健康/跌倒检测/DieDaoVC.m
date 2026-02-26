@@ -56,8 +56,8 @@
     titleHeight.constant = kJL_HeightNavBar;
     currentType = -1;
     
-    sW = [DFUITools screen_2_W];
-    sH = [DFUITools screen_2_H];
+    sW = [UIScreen mainScreen].bounds.size.width;
+    sH = [UIScreen mainScreen].bounds.size.height;
     
     headView.frame = CGRectMake(0, 0, sW, kJL_HeightStatusBar+44);
     exitBtn.frame  = CGRectMake(4, kJL_HeightStatusBar, 44, 44);
@@ -169,7 +169,7 @@
     view2.userInteractionEnabled=YES;
     
     DFLabel *contactsLabel = [[DFLabel alloc] init];
-    contactsLabel.frame = CGRectMake(16,13,230,21);
+    contactsLabel.frame = CGRectMake(16,24,230,21);
     contactsLabel.numberOfLines = 0;
     [view2 addSubview:contactsLabel];
     contactsLabel.labelType = DFLeftRight;
@@ -178,7 +178,7 @@
     contactsLabel.text =  kJL_TXT("紧急联系人");
     contactsLabel.textColor = kDF_RGBA(36, 36, 36, 1.0);
     
-    DFLabel *contactsLabel2 = [[DFLabel alloc] initWithFrame:CGRectMake(16, 36, sW-60, 17)];
+    DFLabel *contactsLabel2 = [[DFLabel alloc] initWithFrame:CGRectMake(16, 47, sW-60, 17)];
     contactsLabel2.font =  [UIFont fontWithName:@"PingFang SC" size: 12];
     contactsLabel2.text =  kJL_TXT("当跌倒时自动电话呼叫紧急联系人");
     contactsLabel2.labelType = DFLeftRight;
@@ -186,13 +186,13 @@
     contactsLabel2.textColor = kDF_RGBA(145, 145, 145, 1.0);
     [view2 addSubview:contactsLabel2];
     
-    UIButton *contactsBtn = [[UIButton alloc] initWithFrame:CGRectMake(sW-16-22,19,22,22)];
+    UIButton *contactsBtn = [[UIButton alloc] initWithFrame:CGRectMake(sW-16-22,33,22,22)];
     [contactsBtn setImage:[UIImage imageNamed:@"icon_next_nol"] forState:UIControlStateNormal];
     [view2 addSubview:contactsBtn];
     view2.backgroundColor = [UIColor whiteColor];
     
     contactsPhoneLabel = [[UILabel alloc] init];
-    contactsPhoneLabel.frame = CGRectMake(sW-16-22-75,21,100,18);
+    contactsPhoneLabel.frame = CGRectMake(sW-16-22-75-4,35,100,18);
     contactsPhoneLabel.numberOfLines = 0;
     [view2 addSubview:contactsPhoneLabel];
     contactsPhoneLabel.font =  [UIFont fontWithName:@"PingFang SC" size: 13];
@@ -254,6 +254,11 @@
     sel2Btn.hidden = YES;
     sel3Btn.hidden = NO;
     
+    if([contactsPhoneLabel.text isEqualToString:kJL_TXT("未设置")]){
+        [self emergencyContactsAction];
+        return;
+    }
+    
     [self sendDataToDevice];
 }
 
@@ -302,7 +307,7 @@
         sel3Btn.hidden = NO;
     }
     if(model.phoneNumber.length == 0){
-        NSString *phoneStr = [JL_Tools getUserByKey:@"ACCOUNT_NUM"];
+        NSString *phoneStr = [JL_Tools getUserByKey:kUI_ACCOUNT_NUM];
         contactsPhoneLabel.text = phoneStr;
     }else{
         contactsPhoneLabel.text = model.phoneNumber;
@@ -314,6 +319,7 @@
     NSMutableArray <JLwSettingModel *>* models = [NSMutableArray new];
 
     NSString *phoneStr;
+    
     if([contactsPhoneLabel.text isEqualToString:kJL_TXT("未设置")]){
         phoneStr = @"";
     }else{

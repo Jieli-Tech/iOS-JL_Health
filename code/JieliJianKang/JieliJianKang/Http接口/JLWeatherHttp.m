@@ -21,7 +21,7 @@
     [JLGPSIntensityManager sharedInstance];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [JLGPSIntensityManager reverseGeocodeLocation:[JLGPSIntensityManager sharedInstance].currentLocation withCallback:^(CLPlacemark * _Nonnull placemark) {
-            NSString *accessToken = [JL_Tools getUserByKey:@"accessToken"];
+            NSString *accessToken = [JL_Tools getUserByKey:kUI_ACCESS_TOKEN];
             AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
             [manager setRequestSerializer:[AFJSONRequestSerializer serializer]];
             NSDictionary *headers = @{@"content-type": @"application/json",

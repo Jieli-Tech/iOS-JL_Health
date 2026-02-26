@@ -118,7 +118,7 @@
 }
 
 + (void)s_checkoutSportLocationsInDatabase:(FMDatabase * _Nonnull )db withChart:(JL_SportRecord_Chart *)chart {
-    if (chart.modelType != WatchSportType_OutDoor) {
+    if (chart.modelType != 0x01) {
         return;
     }
     NSMutableArray<JL_SportLocation *> *locationsArray = [NSMutableArray new];

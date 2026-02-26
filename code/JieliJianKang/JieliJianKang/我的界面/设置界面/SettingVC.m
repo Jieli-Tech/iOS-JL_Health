@@ -66,8 +66,8 @@
 -(void)initUI{
     self.view.backgroundColor = kDF_RGBA(248, 250, 252, 1.0);
     titleHeight.constant = kJL_HeightNavBar;
-    float sw = [DFUITools screen_2_W];
-    float sh = [DFUITools screen_2_H];
+    float sw = [UIScreen mainScreen].bounds.size.width;
+    float sh = [UIScreen mainScreen].bounds.size.height;
 
     subTitleView.frame = CGRectMake(0, 0, sw, kJL_HeightStatusBar+44);
     backBtn.frame  = CGRectMake(4, kJL_HeightStatusBar, 44, 44);
@@ -215,7 +215,7 @@
 }
 
 -(void)changeUnitsFrame{
-    float sw = [DFUITools screen_2_W];
+    float sw = [UIScreen mainScreen].bounds.size.width;
     
     CGFloat length = [self getWidthWithString:danweiLabel2.text font:[UIFont fontWithName:@"PingFang SC" size: 13]];
     danweiLabel2.frame = CGRectMake(sw-22-length-12,20,length,18);
@@ -253,7 +253,15 @@
 }
 
 -(void)cleanClick{
-    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:kJL_TXT("是否要清除用户缓存") preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:kJL_TXT("取消") style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:kJL_TXT("确认") style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
+    [self presentViewController:alert animated:true completion:nil];
+
 }
 
 

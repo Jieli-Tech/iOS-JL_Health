@@ -124,7 +124,7 @@
     [self createDir];
     [[LanguageCls share] add:self];
     
-    [JL_Tools add:@"kUI_SHOW_EDR_VIEW" Action:@selector(showConnectEdrView) Own:self];
+    [JL_Tools add:kUI_SHOW_EDR_VIEW Action:@selector(showConnectEdrView) Own:self];
     [JL_Tools add:kJL_BLE_M_EDR_CHANGE Action:@selector(noteEdrChange:) Own:self];
     
     [[SDImageCache sharedImageCache]clearMemory];
@@ -169,7 +169,6 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     NSLog(@"程序进入后台");
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ENTER_BACKGROUND" object:nil userInfo:nil];
     AVAudioSession * session = [AVAudioSession sharedInstance];
     if (!session) printf("ERROR INITIALIZING AUDIO SESSION! \n");
     else{
@@ -185,8 +184,7 @@
         [self reconnectToDevice];
     }
     [self checkCurrentSport];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"BECOME_ACTIVE" object:nil userInfo:nil];
-    [JL_Tools post:@"AI_BECOME_ACTIVE" Object:nil];
+    [JL_Tools post:kUI_AI_BECOME_ACTIVE Object:nil];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -232,16 +230,16 @@
 
 
 - (void)pushSportDetailViewControllerWithWearSyncInfoModel:(JLWearSyncInfoModel *)infoModel {
-    if ((infoModel.sportID > 0) && (infoModel.sportType != WatchSportType_NonExercise) && ![JLApplicationDelegate.navigationController.viewControllers containsObject:JLApplicationDelegate.sportDetailVC]) {
+    if ((infoModel.sportID > 0) && (infoModel.sportType != 0x00) && ![JLApplicationDelegate.navigationController.viewControllers containsObject:JLApplicationDelegate.sportDetailVC]) {
         JLSportDetailViewController *vc = [[JLSportDetailViewController alloc] init];
         vc.wearSyncInfoModel = infoModel;
         JLApplicationDelegate.sportDetailVC = vc;
         vc.needStartAnimation = NO;
-        if (infoModel.sportType == WatchSportType_OutDoor) {
-            vc.sportType = WatchSportType_OutDoor;
+        if (infoModel.sportType == 0x01) {
+            vc.sportType = 0x01;
             vc.outdoorSportThumbnailViewController = self.outdoorSportThumbnailVC;
         } else {
-            vc.sportType = WatchSportType_InDoor;
+            vc.sportType = 0x02;
         }
         if (![JLApplicationDelegate.navigationController.viewControllers containsObject:JLApplicationDelegate.sportDetailVC]) {
             [JLApplicationDelegate.navigationController pushViewController:vc animated:YES];
@@ -298,7 +296,7 @@
 
 - (void)setupUI {
     self.window =[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    NSString *accessToken = [JL_Tools getUserByKey:@"accessToken"];
+    NSString *accessToken = [JL_Tools getUserByKey:kUI_ACCESS_TOKEN];
     NSString *statement = [JL_Tools getUserByKey:@"statement"];
     if (accessToken.length > 0) {
         [self initData];
@@ -338,18 +336,18 @@
     [self reconnectToDevice];
     /*--- 审核测试 ---*/
     [JL_Tools delay:1.0 Task:^{
-        [JL_Tools post:@"FOR_IOS_REVIEW" Object:mobile];
+        [JL_Tools post:kUI_FOR_IOS_REVIEW Object:mobile];
     }];
 }
 
 -(void)reconnectToDevice{
     
-    NSString *accessToken = [JL_Tools getUserByKey:@"accessToken"];
+    NSString *accessToken = [JL_Tools getUserByKey:kUI_ACCESS_TOKEN];
     if (accessToken.length > 0) {
         NSLog(@"已登录回连设备...");
         [JL_Tools delay:0.2 Task:^{
             if (kJL_BLE_Multiple.bleManagerState == CBManagerStatePoweredOn){
-                [JL_Tools post:@"kUI_RECONNECT_TO_DEVICE" Object:nil];
+                [JL_Tools post:kUI_RECONNECT_TO_DEVICE Object:nil];
             }
         }];
     }
@@ -359,7 +357,7 @@
 - (void)initData {
     mainVC = [self prepareViewControllers];
     
-    noNetView = [[NoNetView alloc] initWithFrame:CGRectMake(0, 0, [DFUITools screen_2_W], [DFUITools screen_2_H])];
+    noNetView = [[NoNetView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     [mainVC.view addSubview:noNetView];
     noNetView.hidden = YES;
     
@@ -455,13 +453,13 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    [JL_Tools removeUserByKey:@"accessToken"];
+    [JL_Tools removeUserByKey:kUI_ACCESS_TOKEN];
 }
 
 - (void)addNote {
-    [JL_Tools add:@"TOKEN_IS_NULL" Action:@selector(handleTokenISNull) Own:self];
-    [JL_Tools add:@"LOGOUT" Action:@selector(initLoginUI) Own:self];
-    [JL_Tools add:@"ENTER_MAIN_VC" Action:@selector(initData) Own:self];
+    [JL_Tools add:kUI_TOKEN_IS_NULL Action:@selector(handleTokenISNull) Own:self];
+    [JL_Tools add:kUI_LOGOUT Action:@selector(initLoginUI) Own:self];
+    [JL_Tools add:kUI_ENTER_MAIN_VC Action:@selector(initData) Own:self];
     [JL_Tools add:AFNetworkingReachabilityDidChangeNotification Action:@selector(noteNetworkStatus:) Own:self];
     //监听查找手机的通知
     [JL_Tools add:kJL_MANAGER_FIND_PHONE Action:@selector(recivedVoiceNote:) Own:self];

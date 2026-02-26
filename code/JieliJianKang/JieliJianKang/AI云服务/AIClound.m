@@ -15,7 +15,7 @@
 #import "ISRDataHelper.h"
 #import <AIKIT/AIKIT.h>
 #import "TTSConfig.h"
-#import "JL_Talk.h"
+#import "AIDialXFManager.h"
 
 @interface AIClound()<IFlySpeechRecognizerDelegate,JL_SpeexManagerDelegate,
 IFlySpeechSynthesizerDelegate,AIKITSparkDelegate,JLAIManagerDelegate>{
@@ -56,6 +56,12 @@ IFlySpeechSynthesizerDelegate,AIKITSparkDelegate,JLAIManagerDelegate>{
     NSMutableArray *tempArray;
     AFNetworkReachabilityStatus st;
     AIKITCtxContent *myAIKITCtxContent;
+    
+    NSTimer *speexHandleTimer;
+    BOOL speexisHandle;
+    int nowSpeexTime;
+    int isCharting;
+    
 }
 
 @property (nonatomic, strong) NSMutableString * content; // 语义解析返回的内容
@@ -118,16 +124,16 @@ IFlySpeechSynthesizerDelegate,AIKITSparkDelegate,JLAIManagerDelegate>{
     [JL_Tools add:kUI_JL_DEVICE_CHANGE Action:@selector(noteDeviceChange:) Own:self];
     [JL_Tools add:kOPUS_DECODE_DATA Action:@selector(notePCMData:) Own:self];
     [JL_Tools add:AFNetworkingReachabilityDidChangeNotification Action:@selector(noteNetworkStatus:) Own:self];
-    [JL_Tools add:@"STOP_TTS" Action:@selector(stopTTS:) Own:self];
-    [JL_Tools add:@"AI_BECOME_ACTIVE" Action:@selector(beComeActive) Own:self];
+    [JL_Tools add:kUI_JL_STOP_TTS Action:@selector(stopTTS:) Own:self];
+    [JL_Tools add:kUI_AI_BECOME_ACTIVE Action:@selector(beComeActive) Own:self];
 }
 
 - (void)dealloc {
     [JL_Tools remove:kUI_JL_DEVICE_CHANGE Own:self];
     [JL_Tools remove:kOPUS_DECODE_DATA Own:self];
     [JL_Tools remove:AFNetworkingReachabilityDidChangeNotification Own:self];
-    [JL_Tools remove:@"STOP_TTS" Own:self];
-    [JL_Tools remove:@"AI_BECOME_ACTIVE" Own:self];
+    [JL_Tools remove:kUI_JL_STOP_TTS Own:self];
+    [JL_Tools remove:kUI_AI_BECOME_ACTIVE Own:self];
 }
 
 -(void)beComeActive{
@@ -298,6 +304,8 @@ IFlySpeechSynthesizerDelegate,AIKITSparkDelegate,JLAIManagerDelegate>{
     //    [contentView addGestureRecognizer:contentViewGestureRecognizer];
 }
 
+
+//MARK: - 设备录音回调
 /// 录音状态回调
 /// - Parameters:
 ///   - status: 录音状态
@@ -326,27 +334,21 @@ IFlySpeechSynthesizerDelegate,AIKITSparkDelegate,JLAIManagerDelegate>{
                 }
             }
             
-            [JL_Tools mainTask:^{
-                AICloundMessageModel *mCloundMessageModel = [[AICloundMessageModel alloc] init];
-                mCloundMessageModel.role = 1; //用户
-                mCloundMessageModel.aiCloudState = 1;
-                mCloundMessageModel.text = @"开始识别...";
-                mCloundMessageModel.date = [NSDate date];
-                [self initMyData:mCloundMessageModel];
-            }];
+            if(isCharting){ //响应聊天
+                [JL_Tools mainTask:^{
+                    AICloundMessageModel *mCloundMessageModel = [[AICloundMessageModel alloc] init];
+                    mCloundMessageModel.role = 1; //用户
+                    mCloundMessageModel.aiCloudState = 1;
+                    mCloundMessageModel.text = @"开始识别...";
+                    mCloundMessageModel.date = [NSDate date];
+                    [self initMyData:mCloundMessageModel];
+                }];
+            }
             
             [self->iFlySpeechSynthesizer stopSpeaking];
             //[self->iFlySpeechRecognizer cancel];
             [self->iFlySpeechRecognizer startListening];
-            
-            //        [JL_Tools mainTask:^{
-            //            [self->iFlySpeechSynthesizer stopSpeaking];
-            //            [self->iFlySpeechRecognizer cancel];
-            //            [self->iFlySpeechRecognizer startListening];
-            //        }];
-            //        dispatch_async(dispatch_get_main_queue(), ^{
-            //           [self->contentView sendActionsForControlEvents:UIControlEventTouchUpInside];
-            //        });
+
         }
     }else if(status == JL_SpeakTypeDone){
         self->mAIState = 3;
@@ -371,110 +373,40 @@ IFlySpeechSynthesizerDelegate,AIKITSparkDelegate,JLAIManagerDelegate>{
                 return;
             }];
         }
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            if([self->result containsString:@"。"]){
-                NSString *newStr =  [self->result stringByReplacingOccurrencesOfString:@"。" withString:@""];
-                self->result = [newStr mutableCopy];
-            }
-            
-            if([self->result containsString:@"？"]){
-                NSString *newStr =  [self->result stringByReplacingOccurrencesOfString:@"？" withString:@""];
-                self->result = [newStr mutableCopy];
-            }
-            
-            if(((self->st == AFNetworkReachabilityStatusReachableViaWWAN) || (self->st == AFNetworkReachabilityStatusReachableViaWiFi)) && (self->result.length == 0)){
-                JLSpeechAiCloud *speechAiClound = [[JLSpeechAiCloud alloc] init];
-                speechAiClound.version = 0;
-                speechAiClound.type = 2;
-                speechAiClound.vendorID = 1;
-                speechAiClound.lenght = kJL_TXT("您好像并没有开始说话").length;
-                speechAiClound.playload = [kJL_TXT("您好像并没有开始说话") dataUsingEncoding:NSUTF8StringEncoding];
-                
-                [self->speechAIHandler speechSendAiCloud:speechAiClound manager:self->manager result:^(JL_BigData * _Nonnull bigData) {
-                }];
-                [DFUITools showText:kJL_TXT("您好像并没有开始说话") onView:[DFUITools getWindow] delay:1.5];
-                [JL_Tools post:@"NO_RECORED" Object:nil];
-                
-                if ([self->_aiCloundDelegate respondsToSelector:@selector(deleteLastItem)]) {
-                    [self->_aiCloundDelegate deleteLastItem];
-                }
-                return;
-            }
-            
-            [JL_Tools mainTask:^{
-                AICloundMessageModel *mCloundMessageModel = [[AICloundMessageModel alloc] init];
-                mCloundMessageModel.role = 1; //用户
-                mCloundMessageModel.aiCloudState = 1;
-                mCloundMessageModel.text = @"识别中...";
-                mCloundMessageModel.date = [NSDate date];
-                [self update:mCloundMessageModel];
-            }];
-            
-            self->index++;
-            
-            [JL_Tools delay:0.5 Task:^{
-                if(self->sendText && self->result.length>0 && self->exitAiState!=2 && self->index==1){
-                    self->index=-10;
+        NSLog(@"\n\nspeex 语音对话结束\n\n");
+        [speexHandleTimer invalidate];
+        speexHandleTimer = nil;
+        speexisHandle = false;
+        nowSpeexTime = 0;
+        speexHandleTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(handleSpeexHandleRunner) userInfo:nil repeats:true];
+        [speexHandleTimer fire];
 
-                    [JL_Tools mainTask:^{
-                        AICloundMessageModel *mCloundMessageModel = [[AICloundMessageModel alloc] init];
-                        mCloundMessageModel.role = 1; //用户
-                        mCloundMessageModel.aiCloudState = 2; // 成功
-                        mCloundMessageModel.date = [NSDate date];
-                        self->myDate = mCloundMessageModel.date;
-                        NSTimeInterval timestamp = [self->myDate timeIntervalSince1970];
-                        if(self->result.length>256){
-                            NSMutableString *aiMyStr = [NSMutableString stringWithString:@""];
-                            NSString *str1 = [[self->result substringWithRange:NSMakeRange(0, 256)] mutableCopy];
-                            NSString *str2 = @"...";
-                            [aiMyStr appendString:str1];
-                            [aiMyStr appendString:str2];
-                            mCloundMessageModel.text = aiMyStr;
-                        }else{
-                            mCloundMessageModel.text = self->result;
-                        }
-                        [JL_Tools delay:0.7 Task:^{
-                            [self initMyData:mCloundMessageModel];
-                        }];
-                    }];
-                    
-                    [JL_Tools subTask:^{
-                        JLSpeechAiCloud *speechAiClound = [[JLSpeechAiCloud alloc] init];
-                        speechAiClound.version = 0;
-                        speechAiClound.type = 0;
-                        speechAiClound.vendorID = 1;
-                        speechAiClound.lenght = [self->result length];
-                        if(self->result.length>256){
-                            NSMutableString *aiMulStr = [NSMutableString stringWithString:@""];
-                            NSString *str1 = [[self->result substringWithRange:NSMakeRange(0, 256)] mutableCopy];
-                            NSString *str2 = @"...";
-                            [aiMulStr appendString:str1];
-                            [aiMulStr appendString:str2];
-                            NSString *aiString =[aiMulStr stringByReplacingOccurrencesOfString:@"\n"withString:@""];//去除换行符
-                            speechAiClound.playload = [aiString dataUsingEncoding:NSUTF8StringEncoding];
-                        }else{
-                            NSString *aiString =[self->result stringByReplacingOccurrencesOfString:@"\n"withString:@""];//去除换行符
-                            speechAiClound.playload = [aiString dataUsingEncoding:NSUTF8StringEncoding];
-                        }
-                        
-                        [self->speechAIHandler speechSendAiCloud:speechAiClound manager:self->manager result:^(JL_BigData * _Nonnull bigData) {
-                        }];
-                        
-                        AIKITUsrContext *aiKIUSerContext = [[AIKITUsrContext alloc] init];
-                        aiKIUSerContext.ctxName = self->mCurrentAIContext;
-                        [AiHelper asyncChat:[self getChatParam] inputText:self->result usrContext:aiKIUSerContext];
-                        self.content = @"".mutableCopy;
-                    }];
-                }
-            }];
-        });
     }else if(status == JL_SpeakTypeDoing){
         
     }
 }
 
-/*--- PCM回调 ---*/
+
+/// 录音数据回调
+/// - Parameter data: 数据
+-(void)speexManagerAudio:(NSData *)data{
+    NSLog(@"speexManagerAudio:%@",data);
+    [OpusUnit opusWriteData:data];
+}
+
+-(void)handleSpeexHandleRunner{
+    nowSpeexTime+=1;
+    if (nowSpeexTime>3){
+        if (isCharting){
+            [self handleSpeexCallBack];
+        }
+        nowSpeexTime = 0;
+        [speexHandleTimer invalidate];
+    }
+}
+
+//MARK: -  PCM回调
+
 - (void)notePCMData:(NSNotification*)note {
     NSData *data = [note object];
     NSLog(@"notePCMData:%@",data);
@@ -486,19 +418,7 @@ IFlySpeechSynthesizerDelegate,AIKITSparkDelegate,JLAIManagerDelegate>{
     });
 }
 
-/// 录音数据回调
-/// - Parameter data: 数据
--(void)speexManagerAudio:(NSData *)data{
-    NSLog(@"speexManagerAudio:%@",data);
-    
-    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0);
-      dispatch_queue_t mainQ = dispatch_get_main_queue();
-      dispatch_async(globalQ, ^{
-          dispatch_async(mainQ, ^{
-              [OpusUnit opusWriteData:data];
-          });
-      });
-}
+
 
 -(void)enterSpeechRecognitionVC{
 //    SpeechRecognitionVC *vc = [[SpeechRecognitionVC alloc] init];
@@ -625,6 +545,51 @@ IFlySpeechSynthesizerDelegate,AIKITSparkDelegate,JLAIManagerDelegate>{
     if(audioState == JL_SpeakTypeDoing){
         [iFlySpeechRecognizer startListening];
     }
+    if (isLast){
+        NSLog(@"\n\nspeex科大讯飞语音识别的内容是：%@\n\n",result);
+        speexisHandle = true;
+        nowSpeexTime = 0;
+        [speexHandleTimer invalidate];
+        
+        if([self->result containsString:@"。"]){
+            NSString *newStr =  [self->result stringByReplacingOccurrencesOfString:@"。" withString:@""];
+            self->result = [newStr mutableCopy];
+        }
+        
+        if([self->result containsString:@"？"]){
+            NSString *newStr =  [self->result stringByReplacingOccurrencesOfString:@"？" withString:@""];
+            self->result = [newStr mutableCopy];
+        }
+        
+        if(((self->st == AFNetworkReachabilityStatusReachableViaWWAN) || (self->st == AFNetworkReachabilityStatusReachableViaWiFi)) && (self->result.length == 0) && (audioState == JL_SpeakTypeDone)){
+            JLSpeechAiCloud *speechAiClound = [[JLSpeechAiCloud alloc] init];
+            speechAiClound.version = 0;
+            speechAiClound.type = 2;
+            speechAiClound.vendorID = 1;
+            speechAiClound.lenght = kJL_TXT("您好像并没有开始说话").length;
+            speechAiClound.playload = [kJL_TXT("您好像并没有开始说话") dataUsingEncoding:NSUTF8StringEncoding];
+            
+            [self->speechAIHandler speechSendAiCloud:speechAiClound manager:self->manager result:^(JL_BigData * _Nonnull bigData) {
+            }];
+            [DFUITools showText:kJL_TXT("您好像并没有开始说话") onView:[DFUITools getWindow] delay:1.5];
+            [JL_Tools post:kUI_JL_NO_RECORED Object:nil];
+            
+            if ([self->_aiCloundDelegate respondsToSelector:@selector(deleteLastItem)]) {
+                [self->_aiCloundDelegate deleteLastItem];
+            }
+            
+            return;
+        }
+        
+        if (isCharting){
+            //响应聊天
+            [self handleSpeexCallBack];
+        }
+        if ([[AIDialXFManager share] dialManager].isCreateing){
+            //响应创建AI表盘
+            [self sendSpeexContentToDev];
+        }
+    }
 }
 
 
@@ -633,6 +598,87 @@ IFlySpeechSynthesizerDelegate,AIKITSparkDelegate,JLAIManagerDelegate>{
         _content = [NSMutableString stringWithString:@""];
     }
     return _content;
+}
+
+
+//MARK: - 处理识别后的数据
+-(void)handleSpeexCallBack{
+
+    [JL_Tools mainTask:^{
+        AICloundMessageModel *mCloundMessageModel = [[AICloundMessageModel alloc] init];
+        mCloundMessageModel.role = 1; //用户
+        mCloundMessageModel.aiCloudState = 1;
+        mCloundMessageModel.text = @"识别中...";
+        mCloundMessageModel.date = [NSDate date];
+        [self update:mCloundMessageModel];
+    }];
+    
+    self->index++;
+    
+    [JL_Tools delay:0.5 Task:^{
+        if(self->sendText && self->result.length>0 && self->exitAiState!=2 && self->index==1){
+            self->index=-10;
+            
+            [JL_Tools mainTask:^{
+                AICloundMessageModel *mCloundMessageModel = [[AICloundMessageModel alloc] init];
+                mCloundMessageModel.role = 1; //用户
+                mCloundMessageModel.aiCloudState = 2; // 成功
+                mCloundMessageModel.date = [NSDate date];
+                self->myDate = mCloundMessageModel.date;
+                if(self->result.length>256){
+                    NSMutableString *aiMyStr = [NSMutableString stringWithString:@""];
+                    NSString *str1 = [[self->result substringWithRange:NSMakeRange(0, 256)] mutableCopy];
+                    NSString *str2 = @"...";
+                    [aiMyStr appendString:str1];
+                    [aiMyStr appendString:str2];
+                    mCloundMessageModel.text = aiMyStr;
+                }else{
+                    mCloundMessageModel.text = self->result;
+                }
+                [JL_Tools delay:0.7 Task:^{
+                    [self initMyData:mCloundMessageModel];
+                }];
+            }];
+            
+            [self sendSpeexContentToDev];
+            
+            [JL_Tools subTask:^{
+                AIKITUsrContext *aiKIUSerContext = [[AIKITUsrContext alloc] init];
+                aiKIUSerContext.ctxName = self->mCurrentAIContext;
+                [AiHelper asyncChat:[self getChatParam] inputText:self->result usrContext:aiKIUSerContext];
+                self.content = @"".mutableCopy;
+            }];
+        }
+    }];
+    
+}
+
+
+-(void)sendSpeexContentToDev{
+    JLSpeechAiCloud *speechAiClound = [[JLSpeechAiCloud alloc] init];
+    speechAiClound.version = 0;
+    speechAiClound.type = 0;
+    speechAiClound.vendorID = 1;
+    speechAiClound.lenght = [self->result length];
+    if(self->result.length>256){
+        NSMutableString *aiMulStr = [NSMutableString stringWithString:@""];
+        NSString *str1 = [[self->result substringWithRange:NSMakeRange(0, 256)] mutableCopy];
+        NSString *str2 = @"...";
+        [aiMulStr appendString:str1];
+        [aiMulStr appendString:str2];
+        NSString *aiString =[aiMulStr stringByReplacingOccurrencesOfString:@"\n"withString:@""];//去除换行符
+        speechAiClound.playload = [aiString dataUsingEncoding:NSUTF8StringEncoding];
+    }else{
+        NSString *aiString =[self->result stringByReplacingOccurrencesOfString:@"\n"withString:@""];//去除换行符
+        speechAiClound.playload = [aiString dataUsingEncoding:NSUTF8StringEncoding];
+    }
+    
+    if(result.length > 0){
+        [[AIDialXFManager share] setRequestContent:result];
+    }
+    [self->speechAIHandler speechSendAiCloud:speechAiClound manager:self->manager result:^(JL_BigData * _Nonnull bigData) {
+    }];
+    
 }
 
 #pragma mark - Spark chat Delegate
@@ -894,11 +940,39 @@ IFlySpeechSynthesizerDelegate,AIKITSparkDelegate,JLAIManagerDelegate>{
                     .url(@"ws://aichat.xf-yun.com/v1/chat");
 }
 
+//IFlySpeechRecognizerDelegate协议实现
 //IFlySpeechSynthesizerDelegate协议实现
-
-//合成结束
 - (void) onCompleted:(IFlySpeechError *) error {
-
+    [error logProperties];
+    if((([error errorCode] == 20001) || ([error errorCode] == 10212)) &&  (audioState == JL_SpeakTypeDone)){
+        JLSpeechAiCloud *speechAiClound = [[JLSpeechAiCloud alloc] init];
+        speechAiClound.version = 0;
+        speechAiClound.type = 2;
+        speechAiClound.vendorID = 1;
+        speechAiClound.lenght = kJL_TXT("网络有点问题").length;
+        speechAiClound.playload = [kJL_TXT("网络有点问题") dataUsingEncoding:NSUTF8StringEncoding];
+        
+        [self->speechAIHandler speechSendAiCloud:speechAiClound manager:manager result:^(JL_BigData * _Nonnull bigData) {
+        }];
+    }else if([error errorCode]==0){
+        if(((self->st == AFNetworkReachabilityStatusReachableViaWWAN) || (self->st == AFNetworkReachabilityStatusReachableViaWiFi)) && (self->result.length == 0) && (audioState == JL_SpeakTypeDone)){
+            JLSpeechAiCloud *speechAiClound = [[JLSpeechAiCloud alloc] init];
+            speechAiClound.version = 0;
+            speechAiClound.type = 2;
+            speechAiClound.vendorID = 1;
+            speechAiClound.lenght = kJL_TXT("您好像并没有开始说话").length;
+            speechAiClound.playload = [kJL_TXT("您好像并没有开始说话") dataUsingEncoding:NSUTF8StringEncoding];
+            
+            [self->speechAIHandler speechSendAiCloud:speechAiClound manager:self->manager result:^(JL_BigData * _Nonnull bigData) {
+            }];
+            [DFUITools showText:kJL_TXT("您好像并没有开始说话") onView:[DFUITools getWindow] delay:1.5];
+            [JL_Tools post:kUI_JL_NO_RECORED Object:nil];
+            
+            if ([self->_aiCloundDelegate respondsToSelector:@selector(deleteLastItem)]) {
+                [self->_aiCloundDelegate deleteLastItem];
+            }
+        }
+    }
 }
 
 //合成开始
@@ -942,8 +1016,9 @@ IFlySpeechSynthesizerDelegate,AIKITSparkDelegate,JLAIManagerDelegate>{
     }
 }
 
+//MARK: - AI 设备推送进入/退出AI表盘
 /// 设备回调/推送结果
-/// - Parameter mgr: <#mgr description#>
+/// - Parameter mgr: 设备对象
 -(void)jlaiUpdateStatus:(JLAiManager *)mgr{
     exitAiState = mgr.status;
     if(mgr.status==2){
@@ -963,6 +1038,13 @@ IFlySpeechSynthesizerDelegate,AIKITSparkDelegate,JLAIManagerDelegate>{
             [selectTimeArray addObject:[NSNumber numberWithInteger:(NSInteger)timestamp]];
             [JLSqliteAICloundMessageRecord s_delete:selectTimeArray];
         }
+    }
+    if (mgr.status == 1) {
+        NSLog(@"进入AI 对讲");
+        isCharting = true;
+    }else if (mgr.status == 2){
+        NSLog(@"退出AI 对讲");
+        isCharting = false;
     }
 }
 

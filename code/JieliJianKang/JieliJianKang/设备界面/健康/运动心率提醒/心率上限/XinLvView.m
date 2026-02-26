@@ -59,7 +59,7 @@
     view.layer.cornerRadius = 16;
     
     label1 = [[DFLabel alloc] init];
-    if([kJL_GET hasPrefix:@"zh"] || [kJL_GET hasPrefix:@"en-GB"]){
+    if([kJL_GET hasPrefix:@"zh"] || [kJL_GET hasPrefix:@"en-GB"] || [kJL_GET isEqual:@"auto"]){
         label1.frame = CGRectMake((sw-30)/2-72/2,20,72,25);
     }else{
         label1.frame = CGRectMake((sw-30)/2-180/2,20,180,25);

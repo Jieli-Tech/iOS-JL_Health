@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5a-dM-blY">
-                        <rect key="frame" x="10" y="10" width="129" height="32"/>
+                        <rect key="frame" x="13" y="10" width="129" height="32"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="32" id="3Te-ZV-Kma"/>
                             <constraint firstAttribute="width" constant="129" id="em6-si-g2y"/>
@@ -28,7 +28,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mvb-03-EoT">
-                        <rect key="frame" x="10" y="53" width="305" height="21"/>
+                        <rect key="frame" x="16" y="53" width="299" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="5Wt-4o-9DU"/>
                         </constraints>
@@ -37,10 +37,11 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <switch opaque="NO" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i4B-gF-Bc4">
-                        <rect key="frame" x="268" y="10" width="43" height="21"/>
+                        <rect key="frame" x="252" y="27" width="54" height="26"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="41" id="9Oh-o9-Bwf"/>
-                            <constraint firstAttribute="height" constant="21" id="n7S-2b-Nr3"/>
+                            <constraint firstAttribute="width" constant="52" id="9Oh-o9-Bwf"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="52" id="frF-ms-ZaO"/>
+                            <constraint firstAttribute="height" constant="26" id="n7S-2b-Nr3"/>
                         </constraints>
                         <color key="onTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <connections>
@@ -51,12 +52,12 @@
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="D5a-dM-blY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="3tB-EI-ZPE"/>
-                    <constraint firstItem="i4B-gF-Bc4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="7x3-Te-m6k"/>
+                    <constraint firstItem="i4B-gF-Bc4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="27" id="7x3-Te-m6k"/>
                     <constraint firstAttribute="bottom" secondItem="Mvb-03-EoT" secondAttribute="bottom" constant="6" id="Ksh-ge-qZd"/>
-                    <constraint firstAttribute="trailing" secondItem="i4B-gF-Bc4" secondAttribute="trailing" constant="11" id="QTE-ah-K4P"/>
+                    <constraint firstAttribute="trailing" secondItem="i4B-gF-Bc4" secondAttribute="trailing" constant="16" id="QTE-ah-K4P"/>
                     <constraint firstAttribute="trailing" secondItem="Mvb-03-EoT" secondAttribute="trailing" constant="5" id="XJp-9e-KcQ"/>
-                    <constraint firstItem="Mvb-03-EoT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="tIW-oE-mnj"/>
-                    <constraint firstItem="D5a-dM-blY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="zLM-8a-Sg9"/>
+                    <constraint firstItem="Mvb-03-EoT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="tIW-oE-mnj"/>
+                    <constraint firstItem="D5a-dM-blY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="13" id="zLM-8a-Sg9"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>

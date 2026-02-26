@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -25,7 +25,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账号与安全" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J73-qM-3uI">
-                            <rect key="frame" x="161" y="80" width="92" height="35"/>
+                            <rect key="frame" x="161" y="97" width="92" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="bU5-Wk-FdX"/>
                             </constraints>
@@ -34,7 +34,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VWd-jx-RyG">
-                            <rect key="frame" x="8" y="80" width="67" height="40"/>
+                            <rect key="frame" x="8" y="93" width="67" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="67" id="Pg6-6x-At0"/>
                                 <constraint firstAttribute="height" constant="40" id="qVk-81-EWb"/>
@@ -47,10 +47,10 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="VWd-jx-RyG" secondAttribute="bottom" constant="10" id="9gT-Wn-4aB"/>
+                        <constraint firstAttribute="bottom" secondItem="VWd-jx-RyG" secondAttribute="bottom" constant="-3" id="9gT-Wn-4aB"/>
                         <constraint firstItem="VWd-jx-RyG" firstAttribute="leading" secondItem="Iet-t2-um6" secondAttribute="leading" constant="8" id="Ddt-G0-bQc"/>
                         <constraint firstItem="J73-qM-3uI" firstAttribute="centerX" secondItem="Iet-t2-um6" secondAttribute="centerX" id="U8I-vL-L2G"/>
-                        <constraint firstAttribute="bottom" secondItem="J73-qM-3uI" secondAttribute="bottom" constant="15" id="bK2-rK-jPg"/>
+                        <constraint firstAttribute="bottom" secondItem="J73-qM-3uI" secondAttribute="bottom" constant="-2" id="bK2-rK-jPg"/>
                         <constraint firstAttribute="height" constant="130" id="sUo-WB-Rkl"/>
                     </constraints>
                 </view>

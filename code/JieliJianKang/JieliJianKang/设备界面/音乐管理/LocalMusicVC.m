@@ -31,6 +31,17 @@
     [super viewDidLoad];
     [self initUI];
     [self addNote];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -50,16 +61,16 @@
 }
 
 -(void)addNote{
-    [JL_Tools add:@"CLEAN_MUSIC_LIST" Action:@selector(showSelectAllBtn) Own:self];
-    [JL_Tools add:@"CLEAN_MUSIC_LIST2" Action:@selector(showCancelBtn) Own:self];
+    [JL_Tools add:kUI_CLEAN_MUSIC_LIST Action:@selector(showSelectAllBtn) Own:self];
+    [JL_Tools add:kUI_CLEAN_MUSIC_LIST2 Action:@selector(showCancelBtn) Own:self];
     [JL_Tools add:kUI_JL_DEVICE_CHANGE Action:@selector(noteDeviceChange:) Own:self];
 }
 
 -(void)initUI{
     self.view.backgroundColor = kDF_RGBA(248, 250, 252, 1.0);
     titleHeight.constant = kJL_HeightNavBar;
-    sw = [DFUITools screen_2_W];
-    sh = [DFUITools screen_2_H];
+    sw = [UIScreen mainScreen].bounds.size.width;
+    sh = [UIScreen mainScreen].bounds.size.height;
     
     selectAllBtn.frame  = CGRectMake(sw-16-44, kJL_HeightStatusBar, 44, 44);
     selectAllBtn.hidden = NO;
@@ -73,7 +84,7 @@
     subTitle.bounds = CGRectMake(0, 0, self.view.frame.size.width, 20);
     subTitle.center = CGPointMake(sw/2.0, kJL_HeightStatusBar+20);
     
-    mindListView = [[MindListView alloc] initWithFrame:CGRectMake(0, kJL_HeightNavBar+15, [DFUITools screen_2_W],  [DFUITools screen_2_H]-kJL_HeightNavBar-15)];
+    mindListView = [[MindListView alloc] initWithFrame:CGRectMake(0, kJL_HeightNavBar+15, [UIScreen mainScreen].bounds.size.width,  [UIScreen mainScreen].bounds.size.height-kJL_HeightNavBar-15)];
     mindListView.delegate = self;
     [self.view addSubview:mindListView];
     

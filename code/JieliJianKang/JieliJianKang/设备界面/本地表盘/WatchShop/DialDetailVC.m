@@ -60,15 +60,22 @@
     
     scrollView.backgroundColor = kDF_RGBA(255, 255, 255, 1.0);
     
-    topImv = [[UIImageView alloc] initWithFrame:CGRectMake(60, 0, [UIScreen mainScreen].bounds.size.width-120,254)];
+    UIImageView *watchBg = [UIImageView new];
+    watchBg.bounds = CGRectMake(0, 0, 254.0, 254.0);
+    watchBg.center = CGPointMake(width/2.0, 254.0/2.0);
+    watchBg.image = [UIImage imageNamed:@"img_watch_254"];
+    watchBg.contentMode = UIViewContentModeScaleAspectFit;
+    [scrollView addSubview:watchBg];
     
-    UIImage *phimage = [UIImage imageNamed:@"watch_img_05"];
-    [topImv sd_setImageWithURL:[NSURL URLWithString:_dialModel.iconUrl] placeholderImage:phimage];
+    topImv = [UIImageView new];
+    topImv.bounds = CGRectMake(0, 0, 148, 148);
+    topImv.center = CGPointMake(watchBg.frame.size.width/2.0, watchBg.frame.size.height/2.0);
+    [topImv sd_setImageWithURL:[NSURL URLWithString:_dialModel.iconUrl] placeholderImage:[UIImage imageNamed:@"watch_img_05"]];
     topImv.contentMode = UIViewContentModeScaleAspectFit;
-    [scrollView addSubview:topImv];
+    [watchBg addSubview:topImv];
     
     mNameLabel = [[UILabel alloc] init];
-    mNameLabel.frame = CGRectMake(width/2-150/2,topImv.frame.origin.y+topImv.frame.size.height+20,150,28);
+    mNameLabel.frame = CGRectMake(width/2-150/2,watchBg.frame.origin.y+watchBg.frame.size.height+20,150,28);
     mNameLabel.numberOfLines = 1;
     mNameLabel.textAlignment = NSTextAlignmentCenter;
     mNameLabel.font =  [UIFont fontWithName:@"PingFangSC-Medium" size:20];
@@ -441,7 +448,7 @@
 
 -(void)setTaskProgress:(float)progress Text:(NSString*)text{
     gradientLayer.locations = @[@(progress),@(progress)];//渐变点
-    NSString *txt = [NSString stringWithFormat:@"%@... %.1f%%",text,progress*100.0f];
+    NSString *txt = [NSString stringWithFormat:@"%@... %.0f%%",text,progress*100.0f];
     [self->purchasesBtn setTitle:txt forState:UIControlStateNormal];
 }
 

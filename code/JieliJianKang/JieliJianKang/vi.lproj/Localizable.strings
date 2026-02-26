@@ -325,7 +325,7 @@
 "体重设定" = "Thiết lập cân nặng";
 "体重目标" = "Mục tiêu trọng lượng";
 "起始" = "Bắt đầu:";
-"目标" = "Mục tiêu:";
+"目标" = "Mục tiêu";
 "消耗约" = "Tiêu hao ước";
 "最新" = "Mới nhất:";
 "最低值" = "Thấp nhất";
@@ -378,7 +378,7 @@
 "添加表盘..." = "Thêm mặt số...";
 "更新表盘..." = "Cập nhật Quay số...";
 "本地表盘" = "Quay số cục bộ";
-"全部" = "Tất cả >";
+"全部" = "Tất cả";
 "管理" = "Quản lý";
 "闹钟" = "Đồng hồ báo thức";
 "铃声" = "Nhạc chuông";
@@ -401,7 +401,7 @@
 "电量" = "Mức điện";
 "升级" = "Nâng cấp";
 "当前版本"= "Phiên bản hiện t";
-"固件升级" = "Nâng cấp firmware";
+"固件更新" = "Nâng cấp firmware";
 "检查更新" = "Kiểm tra cập nhật";
 "OTA升级失败" = "Nâng cấp OTA thất bại";
 "OTA升级数据为空!" = "Dữ liệu nâng cấp OTA trống!";
@@ -584,7 +584,7 @@
 "选择周间隔" = "Chọn khoảng thời gian tuần";
 "服务器开小差" = "Máy chủ mở chênh lệch nhỏ";
 
-"手机蓝牙通话" = "Điện thoại di động Bluetooth";
+"手表蓝牙通话" = "Xem cuộc gọi bluetooth";
 "表盘" = "Quay số";
 "购买记录" = "Hồ sơ mua hàng";
 "蓝牙" = "Bluetooth";
@@ -592,7 +592,7 @@
 "系统表盘" = "Quay số hệ thống";
 "免费表盘" = "Quay số miễn phí";
 "付费表盘" = "Quay số trả tiền";
-"更多>" = "Thêm>";
+"更多>" = "Thêm >";
 "表盘商城"= "Quay số";
 "我的表盘" = "Mặt số của tôi";
 "免费" = "Miễn phí";
@@ -674,3 +674,7 @@
 "是否删除" = "Xoá";
 "复制" = "Sao chép";
 "多选" = "Nhiều lựa chọn";
+"珠海市杰理科技股份有限公司" = "www.zh-jieli.com";
+"是否要清除用户缓存" = "Bạn có muốn xóa bộ nhớ đệm của người dùng không?";
+"AI表盘" = "Quay số AI";
+"正在传输中" = "Đang truyền...";

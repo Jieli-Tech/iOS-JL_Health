@@ -136,7 +136,7 @@
     CATextLayer *textLayer = [CATextLayer layer];
     textLayer.string = text;
     
-    UIFont *font = [UIFont fontWithName:@"Arial-BoldMT" size:15];
+    UIFont *font = [UIFont fontWithName:@"PingFang SC" size:13];
     CFStringRef fontName = (__bridge CFStringRef)font.fontName;
     CGFontRef fontRef = CGFontCreateWithFontName(fontName);
     textLayer.font = fontRef;
@@ -147,7 +147,7 @@
     textLayer.alignmentMode = @"center";
     textLayer.frame = CGRectMake(x-25.0, view_H-25, 50.0f, 18.0f);
     textLayer.backgroundColor = [UIColor clearColor].CGColor;
-    textLayer.foregroundColor = kDF_RGBA(215, 215, 215, 1.0).CGColor;
+    textLayer.foregroundColor = kDF_RGBA(182, 182, 182, 1.0).CGColor;
     [layer addSublayer:textLayer];
 }
 

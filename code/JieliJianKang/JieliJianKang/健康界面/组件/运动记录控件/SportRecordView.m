@@ -28,14 +28,16 @@
         spImgv.image = [UIImage imageNamed:@"health_icon_record_nol"];
         [self addSubview:spImgv];
         
-        titleLab = [[UILabel alloc] initWithFrame:CGRectMake(44, 16, 100, 20)];
+        titleLab = [UILabel new];
         titleLab.textColor = kDF_RGBA(36, 36, 36, 1);
         titleLab.text = kJL_TXT("运动记录");
-        CGFloat width = [self getWidthWithText:kJL_TXT("运动记录") height:20 font:14];
-        titleLab.frame = CGRectMake(44, 16, width, 20);
-
         titleLab.font = [UIFont systemFontOfSize:14];
         [self addSubview:titleLab];
+        [titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(spImgv.mas_right).offset(5);
+            make.height.equalTo(@(20));
+            make.centerY.equalTo(spImgv);
+        }];
         
         dayLab = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width-120-16, 16, 120, 20)];
         dayLab.textAlignment = NSTextAlignmentRight;
@@ -47,7 +49,7 @@
         recordLab = [[TYAttributedLabel alloc] initWithFrame:CGRectMake(41, 46, 200, 35)];
         recordLab.backgroundColor = [UIColor clearColor];
         [self addSubview:recordLab];
-        [self setTheRecord:@"单位" Record:nil type:nil withDay:nil];
+        [self setTheRecord:kJL_TXT("单位") Record:nil type:nil withDay:nil];
         
         self.backgroundColor = [UIColor whiteColor];
         self.layer.cornerRadius = 8;

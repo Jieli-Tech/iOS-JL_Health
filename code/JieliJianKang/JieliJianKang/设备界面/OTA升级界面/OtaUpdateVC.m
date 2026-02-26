@@ -44,15 +44,15 @@
 
 
 -(void)setupUI{
-    float sW = [DFUITools screen_2_W];
-    float sH = [DFUITools screen_2_H];
+    float sW = [UIScreen mainScreen].bounds.size.width;
+    float sH = [UIScreen mainScreen].bounds.size.height;
     
     subTitleView_H.constant = kJL_HeightNavBar;
     btnUpdate.layer.cornerRadius = 16.0;
     
-    titleLabel.text = kJL_TXT("升级");
+    titleLabel.text = kJL_TXT("设备版本更新");
     currentVersionLabel.text = kJL_TXT("当前版本");
-    fireworkUpdateLabel.text = kJL_TXT("固件升级");
+    fireworkUpdateLabel.text = kJL_TXT("固件更新");
     [checkUpdateBtn setTitle:kJL_TXT("检查更新") forState:UIControlStateNormal];
     
     
@@ -94,7 +94,7 @@
 - (IBAction)btn_back:(id)sender {
     [otaView remoteNote];
     [JL_Tools remove:kUI_JL_DEVICE_CHANGE Own:self];
-    [JL_Tools remove:@"kUI_OTA_IS_OK" Own:self];
+    [JL_Tools remove:kUI_OTA_IS_OK Own:self];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -244,13 +244,13 @@
     [JL_Tools delay:2.0 Task:^{
         [self btn_back:nil];
         NSLog(@"OTA升级回连设备1");
-        [JL_Tools post:@"kUI_RECONNECT_TO_DEVICE" Object:nil];
+        [JL_Tools post:kUI_RECONNECT_TO_DEVICE Object:nil];
     }];
 }
 
 -(void)addNote{
     [JL_Tools add:kUI_JL_DEVICE_CHANGE Action:@selector(noteDeviceChange:) Own:self];
-    [JL_Tools add:@"kUI_OTA_IS_OK" Action:@selector(noteOtaIsOk:) Own:self];
+    [JL_Tools add:kUI_OTA_IS_OK Action:@selector(noteOtaIsOk:) Own:self];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -260,6 +260,6 @@
 -(void)dealloc{
     self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     [JL_Tools remove:kUI_JL_DEVICE_CHANGE Own:self];
-    [JL_Tools remove:@"kUI_OTA_IS_OK" Own:self];
+    [JL_Tools remove:kUI_OTA_IS_OK Own:self];
 }
 @end

@@ -66,8 +66,8 @@
 -(void)initUI{
     self.view.backgroundColor = [UIColor whiteColor];
     
-    float sW = [DFUITools screen_2_W];
-    float sH = [DFUITools screen_2_H];
+    float sW = [UIScreen mainScreen].bounds.size.width;
+    float sH = [UIScreen mainScreen].bounds.size.height;
     titleHeight.constant = kJL_HeightNavBar;
     unitStr = [[NSUserDefaults standardUserDefaults] valueForKey:@"UNITS_ALERT"];
     
@@ -97,7 +97,7 @@
             if(userInfo == nil){
                 self->mName = kJL_TXT("请填写");
                 self->mGender = kJL_TXT("男");
-                self->mBirthday = kJL_TXT("请填写");
+                self->mBirthday = kJL_TXT("请选择");
                 self->mHeight = kJL_TXT("请填写");
                 self->mWeight = kJL_TXT("请填写");
                 self->mStep = kJL_TXT("请填写");
@@ -133,7 +133,7 @@
                    self->mHeight.length == 0||self->mWeight.length == 0||self->mStep.length == 0){
                     self->mName = kJL_TXT("请填写");
                     self->mGender = kJL_TXT("请选择");
-                    self->mBirthday = kJL_TXT("请填写");
+                    self->mBirthday = kJL_TXT("请选择");
                     self->mHeight = kJL_TXT("请填写");
                     self->mWeight = kJL_TXT("请填写");
                     self->mStep = kJL_TXT("请填写");
@@ -207,7 +207,7 @@
 - (IBAction)tiaoguoAction:(UIButton *)sender {
         [JL_Tools mainTask:^{
             [self dismissViewControllerAnimated:YES completion:nil];
-            [JL_Tools post:@"ENTER_MAIN_VC" Object:nil];
+            [JL_Tools post:kUI_ENTER_MAIN_VC Object:nil];
         }];
 }
 
@@ -296,7 +296,7 @@
         case 2:
         {
             birthDayInfoView.hidden = NO;
-            if(mBirthday.length>0 && (!([mBirthday isEqual:kJL_TXT("请填写")]))){
+            if(mBirthday.length>0 && (!([mBirthday isEqual:kJL_TXT("请选择")]))){
                 birthDayInfoView.selectValue = mBirthday;
             }
         }
@@ -333,7 +333,7 @@
     [[User_Http shareInstance] requestUserConfigInfo:mName Gender:[NSString stringWithFormat:@"%d",gender] BirthdayYear:mBirYear BirthdayMonth:mBirMonth BirthdayDay:mBirDay Height:mHeight Weigtht:mWeight Step:mStep AvatarUrl:@"" WeightStart:self->mStartWeight WeightTarget:self->mTargetWeight  Result:^(NSDictionary * _Nonnull info) {
         [JL_Tools mainTask:^{
             [self dismissViewControllerAnimated:YES completion:nil];
-            [JL_Tools post:@"ENTER_MAIN_VC" Object:nil];
+            [JL_Tools post:kUI_ENTER_MAIN_VC Object:nil];
         }];
     }];
 }
@@ -364,10 +364,11 @@
     mBirMonth = birthMonth;
     mBirDay = day;
     
+    if(mBirthday.length == 0){
+        mBirthday = kJL_TXT("请选择");
+    }
+    
     if(mBirthday.length>0){
-        if(mBirthday.length == 0){
-            mBirthday = kJL_TXT("请输入");
-        }
         funArray = @[mName,mGender,mBirthday,mHeight,mWeight,mStep];
         [mTableView reloadData];
     }

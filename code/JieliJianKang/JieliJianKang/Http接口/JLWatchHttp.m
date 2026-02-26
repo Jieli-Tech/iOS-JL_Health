@@ -14,7 +14,7 @@
   根据pid、vid查询表盘产品信息
  */
 +(void)requestWatchInfoPid:(int )pid Vid:(int )vid Result:(void(^)(NSDictionary *info))result{
-    NSString *accessToken = [JL_Tools getUserByKey:@"accessToken"];
+    NSString *accessToken = [JL_Tools getUserByKey:kUI_ACCESS_TOKEN];
     
     if (accessToken.length == 0) {
         if (result) result(nil);
@@ -37,7 +37,7 @@
                  Page:(int )page Size:(int)size
                Result:(void(^)(NSArray *info))result
 {
-    NSString * accessToken = [JL_Tools getUserByKey:@"accessToken"];
+    NSString * accessToken = [JL_Tools getUserByKey:kUI_ACCESS_TOKEN];
     if (accessToken.length == 0) {
         if (result) result(nil);
         return;
@@ -73,7 +73,7 @@
 +(void)requestPurchasedDialsPage:(int )page Size:(int)size
                           Result:(void(^)(NSArray *info))result{
 
-    NSString * accessToken = [JL_Tools getUserByKey:@"accessToken"];
+    NSString * accessToken = [JL_Tools getUserByKey:kUI_ACCESS_TOKEN];
     if (accessToken.length == 0) {
         if (result) result(nil);
         return;
@@ -106,7 +106,7 @@
  */
 +(void)getDialInfoWithUUID:(NSString*)uuid Pid:(int)pid Vid:(int)vid
                      IsPay:(BOOL)isPay Result:(void(^)(NSDictionary *info))result{
-    NSString * accessToken = [JL_Tools getUserByKey:@"accessToken"];
+    NSString * accessToken = [JL_Tools getUserByKey:kUI_ACCESS_TOKEN];
     if (accessToken.length == 0) {
         if (result) result(nil);
         return;
@@ -131,7 +131,7 @@
    获取表盘的下载url
  */
 +(void)getDialDownloadUrlWithID:(NSString *)idstr Result:(void(^)(NSDictionary *info))result{
-    NSString * accessToken = [JL_Tools getUserByKey:@"accessToken"];
+    NSString * accessToken = [JL_Tools getUserByKey:kUI_ACCESS_TOKEN];
     if (accessToken.length == 0) {
         if (result) result(nil);
         return;
@@ -152,7 +152,7 @@
               ShopID:(NSString*)shopId
               Result:(void(^)(NSDictionary *info))result
 {
-    NSString * accessToken = [JL_Tools getUserByKey:@"accessToken"];
+    NSString * accessToken = [JL_Tools getUserByKey:kUI_ACCESS_TOKEN];
     if (accessToken.length == 0) {
         if (result) result(nil);
         return;
@@ -175,7 +175,7 @@
 +(void)requestPayRecordPage:(int )page Size:(int)size
                      Result:(void(^)(NSArray *info))result{
 
-    NSString * accessToken = [JL_Tools getUserByKey:@"accessToken"];
+    NSString * accessToken = [JL_Tools getUserByKey:kUI_ACCESS_TOKEN];
     if (accessToken.length == 0) {
         if (result) result(nil);
         return;
@@ -207,7 +207,7 @@
 +(void)payForFreeDialShopID:(NSString*)shopId
                      Result:(void(^)(NSDictionary *info))result
 {
-    NSString * accessToken = [JL_Tools getUserByKey:@"accessToken"];
+    NSString * accessToken = [JL_Tools getUserByKey:kUI_ACCESS_TOKEN];
     if (accessToken.length == 0) {
         if (result) result(nil);
         return;
@@ -222,7 +222,7 @@
 
 +(void)deleteHistoryDialRecordID:(NSString*)shopId
                         Result:(void(^)(NSDictionary *info))result{
-    NSString * accessToken = [JL_Tools getUserByKey:@"accessToken"];
+    NSString * accessToken = [JL_Tools getUserByKey:kUI_ACCESS_TOKEN];
     if (accessToken.length == 0) {
         if (result) result(nil);
         return;

@@ -61,8 +61,8 @@ UINavigationControllerDelegate,GenderDelegate,BirthDayInfoDelegate,HeightDelegat
 -(void)initUI{
     self.view.backgroundColor = kDF_RGBA(248, 250, 252, 1.0);
     titleHeight.constant = kJL_HeightNavBar;
-    float sw = [DFUITools screen_2_W];
-    float sh = [DFUITools screen_2_H];
+    float sw = [UIScreen mainScreen].bounds.size.width;
+    float sh = [UIScreen mainScreen].bounds.size.height;
     
     unitStr = [[NSUserDefaults standardUserDefaults] valueForKey:@"UNITS_ALERT"];
     
@@ -75,7 +75,7 @@ UINavigationControllerDelegate,GenderDelegate,BirthDayInfoDelegate,HeightDelegat
     nameArray = @[kJL_TXT("性别"),kJL_TXT("出生年月日"),kJL_TXT("身高"),kJL_TXT("体重")];
     
     self->mGender   = kJL_TXT("请填写");
-    self->mBirthday = kJL_TXT("请填写");
+    self->mBirthday = kJL_TXT("请选择");
     self->mHeight   = kJL_TXT("请填写");
     self->mWeight   = kJL_TXT("请填写");
     self->funArray  = @[self->mGender,self->mBirthday,self->mHeight,self->mWeight];
@@ -143,7 +143,7 @@ UINavigationControllerDelegate,GenderDelegate,BirthDayInfoDelegate,HeightDelegat
         }
     }
     if(indexPath.row ==1){
-        if(mBirthday.length>0 && (![mBirthday isEqual:kJL_TXT("请填写")])){
+        if(mBirthday.length>0 && (![mBirthday isEqual:kJL_TXT("请选择")])){
             cell.label2.text = funArray[indexPath.row];
         }else{
             cell.label2.text = funArray[indexPath.row];
@@ -195,7 +195,7 @@ UINavigationControllerDelegate,GenderDelegate,BirthDayInfoDelegate,HeightDelegat
         case 1:
         {
             birthDayInfoView.hidden = NO;
-            if(mBirthday.length>0 && (!([mBirthday isEqual:kJL_TXT("请填写")]))){
+            if(mBirthday.length>0 && (!([mBirthday isEqual:kJL_TXT("请选择")]))){
                 birthDayInfoView.selectValue = mBirthday;
             }
         }
@@ -248,7 +248,7 @@ UINavigationControllerDelegate,GenderDelegate,BirthDayInfoDelegate,HeightDelegat
     mBirDay = day;
     
     if(mBirthday.length == 0){
-        mBirthday = kJL_TXT("请填写");
+        mBirthday = kJL_TXT("请选择");
     }
                    
     NSString *str = [NSString stringWithFormat:@"%@-%@-%@",mBirYear,mBirMonth,mBirDay];
@@ -335,7 +335,7 @@ UINavigationControllerDelegate,GenderDelegate,BirthDayInfoDelegate,HeightDelegat
     dateFmt.dateFormat = @"yyyy-MM-dd HH:mm:ss";
     NSString *dateStr1 = [dateFmt stringFromDate:model.birthDay];
     if(dateStr1.length == 0){
-        mBirthday = kJL_TXT("请填写");
+        mBirthday = kJL_TXT("请选择");
     }else{
         NSString *year = [dateStr1 substringWithRange:NSMakeRange(0, 4)];
         NSString *month = [dateStr1 substringWithRange:NSMakeRange(5, 2)];

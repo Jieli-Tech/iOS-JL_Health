@@ -329,7 +329,7 @@
             if (month == nil) {
                 month = startDate;
             }else{
-                month = month.nextMonth;
+                month = month.nextMonth_0;
             }
             if (dateArray == nil || dateArray.count == 0) {
                 esd = [ECSleepDuration make:0 shallow:0 awake:0 rem:0 Duration:0 Date:month];

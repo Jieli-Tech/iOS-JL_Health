@@ -86,6 +86,8 @@
                 }
             }
         }
+        
+        [self addNote];
     }
     return self;
 }
@@ -113,8 +115,21 @@
     }
 }
 
+- (void)noteDeviceChange:(NSNotification*)note {
+    JLDeviceChangeType type = [[note object] integerValue];
+    if (type == JLDeviceChangeTypeInUseOffline || type == JLDeviceChangeTypeBleOFF) {
+        self.hidden = YES;
+    }
+}
+
+
+-(void)addNote{
+    [JL_Tools add:kUI_JL_DEVICE_CHANGE Action:@selector(noteDeviceChange:) Own:self];
+}
+
 - (void)dealloc {
     NSLog(@"JLPopMenuView - dealloc");
+    [JL_Tools remove:kUI_JL_DEVICE_CHANGE Own:self];
 }
 
 #pragma mark - Init Methods

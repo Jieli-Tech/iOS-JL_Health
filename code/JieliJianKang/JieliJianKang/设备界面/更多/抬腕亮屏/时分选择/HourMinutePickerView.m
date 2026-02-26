@@ -72,7 +72,11 @@
     view.layer.cornerRadius = 16;
     
     label1 = [[UILabel alloc] init];
-    label1.frame = CGRectMake((sw-30)/2-36/2,20,sw,25);
+    if ([kJL_GET isEqualToString:@"zh-Hans"] || [kJL_GET isEqual:@"auto"]) {
+        label1.frame = CGRectMake(view.frame.size.width/2-35,20,100,25);
+    }else{
+        label1.frame = CGRectMake((sw-30)/2-36/2,20,sw,25);
+    }
     label1.numberOfLines = 0;
     label1.font =  [UIFont fontWithName:@"PingFangSC" size:18];
     label1.textColor = kDF_RGBA(36, 36, 36, 1.0);
@@ -84,7 +88,7 @@
     
     startTimeStringPickerView = [[BRStringPickerView alloc]init];
     startTimeStringPickerView.pickerMode = BRStringPickerComponentMulti;
-    startTimeStringPickerView.type = 0;
+    startTimeStringPickerView.type = 2;
     
     startTimeStringPickerView.isAutoSelect = YES;
     startTimeStringPickerView.resultModelArrayBlock = ^(NSArray <BRResultModel *> * _Nullable resultModelArr){
@@ -97,7 +101,7 @@
     
     endTimeStringPickerView = [[BRStringPickerView alloc]init];
     endTimeStringPickerView.pickerMode = BRStringPickerComponentMulti;
-    endTimeStringPickerView.type = 0;
+    endTimeStringPickerView.type = 2;
     
     endTimeStringPickerView.isAutoSelect = YES;
     endTimeStringPickerView.resultModelArrayBlock = ^(NSArray <BRResultModel *> * _Nullable resultModelArr){
@@ -189,7 +193,7 @@
     // 添加选择器到容器视图
     [startTimeStringPickerView addPickerToView:containerView];
     unitStartTimeLabel = [[UILabel alloc] init];
-    unitStartTimeLabel.frame = CGRectMake(containerView.frame.size.width/2+15,startTimeStringPickerView.frame.size.height/2-21/2,100,21);
+    unitStartTimeLabel.frame = CGRectMake(containerView.frame.size.width/2+15-20,startTimeStringPickerView.frame.size.height/2-21/2,100,21);
     unitStartTimeLabel.numberOfLines = 0;
     unitStartTimeLabel.text = kJL_TXT(":");
     unitStartTimeLabel.font =  [UIFont fontWithName:@"PingFangSC" size:24];
@@ -209,7 +213,7 @@
     // 添加选择器到容器视图
     [startTimeStringPickerView addPickerToView:containerView];
     unitStartTimeLabel = [[UILabel alloc] init];
-    unitStartTimeLabel.frame = CGRectMake(containerView.frame.size.width/2+15,startTimeStringPickerView.frame.size.height/2-21/2,100,21);
+    unitStartTimeLabel.frame = CGRectMake(containerView.frame.size.width/2+15-20,startTimeStringPickerView.frame.size.height/2-21/2,100,21);
     unitStartTimeLabel.numberOfLines = 0;
     unitStartTimeLabel.text = kJL_TXT(":");
     unitStartTimeLabel.font =  [UIFont fontWithName:@"PingFangSC" size:24];
@@ -229,7 +233,7 @@
     // 添加选择器到容器视图
     [endTimeStringPickerView addPickerToView:containerView];
     unitEndTimeLabel = [[UILabel alloc] init];
-    unitEndTimeLabel.frame = CGRectMake(containerView.frame.size.width/2+15,endTimeStringPickerView.frame.size.height/2-21/2,100,21);
+    unitEndTimeLabel.frame = CGRectMake(containerView.frame.size.width/2+15-20,endTimeStringPickerView.frame.size.height/2-21/2,100,21);
     unitEndTimeLabel.numberOfLines = 0;
     unitEndTimeLabel.text = kJL_TXT(":");
     unitEndTimeLabel.font =  [UIFont fontWithName:@"PingFangSC" size:24];

@@ -159,7 +159,7 @@
 -(void)initUI{
     self.view.backgroundColor = kDF_RGBA(248, 250, 252, 1.0);
     
-    float sw = [DFUITools screen_2_W];
+    float sw = [UIScreen mainScreen].bounds.size.width;
     subTitleView.frame = CGRectMake(0, 0, sw, kJL_HeightStatusBar+44);
     backBtn.frame  = CGRectMake(4, kJL_HeightStatusBar, 44, 44);
     titleName.text = kJL_TXT("我的数据");
@@ -302,9 +302,9 @@
     
     NSString *shuimianStr;
     if(shuimianHourInt<1){
-        shuimianStr = [NSString stringWithFormat:@"%@%@",mShuimianMin,kJL_TXT("分钟")];
+        shuimianStr = [NSString stringWithFormat:@"%@ %@",mShuimianMin,kJL_TXT("分钟")];
     }else{
-        shuimianStr = [NSString stringWithFormat:@"%@%@%@%@",mShuimianHour,kJL_TXT("小时"),mShuimianMin,kJL_TXT("分钟")];
+        shuimianStr = [NSString stringWithFormat:@"%@ %@%@ %@",mShuimianHour,kJL_TXT("小时"),mShuimianMin,kJL_TXT("分钟")];
     }
     
     NSMutableAttributedString *shuimianTotalStr=[[NSMutableAttributedString alloc] initWithString:shuimianStr attributes:nil];
@@ -330,7 +330,7 @@
 
 -(void)updateStepValue{
     int bushuInt = (int)self->currentStepValue;
-    NSString *mBushu = [NSString stringWithFormat:@"%d",bushuInt];
+    NSString *mBushu = [NSString stringWithFormat:@"%d ",bushuInt];
     NSString *bushuStr = [NSString stringWithFormat:@"%@%@",mBushu,kJL_TXT("步")];
     NSMutableAttributedString *bushuTotalStr=[[NSMutableAttributedString alloc] initWithString:bushuStr attributes:nil];
     
@@ -353,7 +353,7 @@
         myUnits = kJL_TXT("公里");
     }
     CGFloat zonglichengFloat = self->currentTotalMileage;
-    NSString *mZonglicheng = [NSString stringWithFormat:@"%.2f",zonglichengFloat];
+    NSString *mZonglicheng = [NSString stringWithFormat:@"%.2f ",zonglichengFloat];
     NSString *zonglichengStr = [NSString stringWithFormat:@"%@%@",mZonglicheng,myUnits];
     NSMutableAttributedString *zonglichengTotalStr=[[NSMutableAttributedString alloc] initWithString:zonglichengStr attributes:nil];
     
@@ -370,7 +370,7 @@
 
 -(void)updateTotalConsumption{
     int reliangInt = (int)currentTotalConsumption;
-    NSString *mReliang = [NSString stringWithFormat:@"%d",reliangInt];
+    NSString *mReliang = [NSString stringWithFormat:@"%d ",reliangInt];
     NSString *reliangStr = [NSString stringWithFormat:@"%@%@",mReliang,kJL_TXT("千卡")];
     NSMutableAttributedString *reliangTotalStr=[[NSMutableAttributedString alloc] initWithString:reliangStr attributes:nil];
     
@@ -387,7 +387,7 @@
 
 -(void)updateTotalXinLv{
     int xinlvInt = currentHeartValue;
-    NSString *mXinlv = [NSString stringWithFormat:@"%d",xinlvInt];
+    NSString *mXinlv = [NSString stringWithFormat:@"%d ",xinlvInt];
     NSString *xinlvStr = [NSString stringWithFormat:@"%@%@",mXinlv,kJL_TXT("次/分钟")];
     NSMutableAttributedString *xinlvTotalStr=[[NSMutableAttributedString alloc] initWithString:xinlvStr attributes:nil];
     
@@ -404,7 +404,7 @@
 
 -(void)updateTiZhong{
     CGFloat tizhongFloat = mWeight;
-    NSString *mTizhong = [NSString stringWithFormat:@"%.1f",tizhongFloat];
+    NSString *mTizhong = [NSString stringWithFormat:@"%.1f ",tizhongFloat];
     
     NSString *units = kJL_TXT("公斤");
     if([unitStr isEqualToString:@("英制")]){
@@ -426,7 +426,7 @@
 
 -(void)updateXueYang{
     CGFloat xueyangFloat = oxygenValue;
-    NSString *mXueyang = [NSString stringWithFormat:@"%.0f",xueyangFloat];
+    NSString *mXueyang = [NSString stringWithFormat:@"%.0f ",xueyangFloat];
     NSString *xueyangStr = [NSString stringWithFormat:@"%@%@",mXueyang,@"%"];
     NSMutableAttributedString *xueyangTotalStr=[[NSMutableAttributedString alloc] initWithString:xueyangStr attributes:nil];
     

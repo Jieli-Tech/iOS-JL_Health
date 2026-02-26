@@ -38,9 +38,9 @@
 }
 
 -(void)initUI{
-    self.view.backgroundColor = kDF_RGBA(248, 250, 252, 1.0);
+    self.view.backgroundColor = [UIColor whiteColor];
     titleHeight.constant = kJL_HeightNavBar;
-    float sw = [DFUITools screen_2_W];
+    float sw = [UIScreen mainScreen].bounds.size.width;
     subTitleView.frame = CGRectMake(0, 0, sw, kJL_HeightStatusBar+44);
     backBtn.frame  = CGRectMake(4, kJL_HeightStatusBar, 44, 44);
     titleName.text = kJL_TXT("设置密码");
@@ -60,7 +60,7 @@
     pwdTF.placeholder = kJL_TXT("请设置6-12位字母和数字组合的新密码");
     pwdTF.textColor = kDF_RGBA(36, 36, 36, 1.0);
     pwdTF.tintColor = kDF_RGBA(180, 180, 180, 1.0);
-    pwdTF.font = [UIFont fontWithName:@"PingFangSC" size:14];
+    pwdTF.font = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
     pwdTF.delegate = self;
     pwdTF.tag = 0;
     pwdTF.secureTextEntry = YES;
@@ -92,7 +92,7 @@
     surePwdTF.placeholder = kJL_TXT("请再次确认密码");
     surePwdTF.textColor = kDF_RGBA(36, 36, 36, 1.0);
     surePwdTF.tintColor = kDF_RGBA(180, 180, 180, 1.0);
-    surePwdTF.font = [UIFont fontWithName:@"PingFangSC" size:14];
+    surePwdTF.font = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
     surePwdTF.delegate = self;
     surePwdTF.tag = 1;
     surePwdTF.secureTextEntry = YES;
@@ -196,16 +196,16 @@
     NSString *pattern1 = @"^(?![0-9]+$)(?![a-zA-Z]+$)[a-zA-Z0-9]{6,12}";
     NSPredicate *pred1 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pattern1];
     BOOL isMatch_1 = [pred1 evaluateWithObject:pwdTF.text];
-    
+
     NSString *pattern2 = @"^(?![0-9]+$)(?![a-zA-Z]+$)[a-zA-Z0-9]{6,12}";
     NSPredicate *pred2 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pattern2];
     BOOL isMatch_2 = [pred2 evaluateWithObject:surePwdTF.text];
-    
+
     if(isMatch_1 == YES && isMatch_2 == YES && pwdTF.text && surePwdTF.text){
-        
+
         NSString *stringPhone = nil;
         NSString *stringEmail = nil;
-        
+
         if (self.userWay == JLUSER_WAY_PHONE) {
             stringPhone = self.mobile;
             stringEmail = nil;
@@ -213,8 +213,8 @@
             stringPhone = nil;
             stringEmail = self.mobile;
         }
-        
-        
+
+
         [[User_Http shareInstance] resetPassword:stringPhone
                                          OrEmail:stringEmail
                                              Pwd:surePwdTF.text
@@ -228,14 +228,18 @@
                     [DFUITools showText:errorStr onView:self.view delay:1.5];
                     return;
                 }
-                
-                //[JL_Tools setUser:@"OK" forKey:@"LOGIN_SUCCESS"];
-                NSString *acccessToken = [JL_Tools getUserByKey:@"accessToken"];
-                if(acccessToken.length>0){ //设置界面->忘记密码->修改密码
-                    [self.navigationController popViewControllerAnimated:YES];
-                    [JL_Tools post:@"ENTER_MAIN_VC" Object:nil];
-                }else{ //登录界面->忘记密码->修改密码
-                    [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+
+                if(self->_type == 0){
+                    //[JL_Tools setUser:@"OK" forKey:@"LOGIN_SUCCESS"];
+                    NSString *acccessToken = [JL_Tools getUserByKey:kUI_ACCESS_TOKEN];
+                    if(acccessToken.length>0){ //设置界面->忘记密码->修改密码
+                        [self.navigationController popViewControllerAnimated:YES];
+                        [JL_Tools post:kUI_ENTER_MAIN_VC Object:nil];
+                    }else{ //登录界面->忘记密码->修改密码
+                        [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                    }
+                }else{
+                    [self.presentingViewController.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
                 }
             }];
         }];

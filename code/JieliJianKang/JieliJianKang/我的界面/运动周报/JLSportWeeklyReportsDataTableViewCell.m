@@ -50,6 +50,13 @@
     if ([unitStr isEqualToString:@("英制")]) {
         self.distanceUnitLabel.text = kJL_TXT("英里");
     }
+    [_stepChangeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(_stepLabel.mas_centerX).offset(8);
+    }];
+    [_caloriesChangeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(_caloriesLabel.mas_centerX).offset(8);
+    }];
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -60,20 +67,20 @@
 
 #pragma mark - 步数
 - (void)setStep:(NSInteger)step {
-    _stepLabel.text = [NSString stringWithFormat:@"%ld", (long)step];
+    _stepLabel.attributedText = [self makeAttr:[NSString stringWithFormat:@"%ld", (long)step] Normal:kJL_TXT("步")];
 }
 
 - (void)setStepChange:(NSInteger)stepChange {
     _stepChangeLabel.text = [NSString stringWithFormat:@"%ld%@", labs((long)stepChange), kJL_TXT("步")];
-    _stepChangeImageView.image = [self changeImageWithIsUp:stepChange > 0 ? YES : NO];
+    _stepChangeImageView.image = [self changeImageWithIsUp:stepChange >= 0 ? YES : NO];
 }
 
 #pragma mark - 距离
 - (void)setDistance:(double)distance {
     NSString *unitStr = [[NSUserDefaults standardUserDefaults] valueForKey:@"UNITS_ALERT"];
-    _distanceLabel.text = [NSString stringWithFormat:@"%.2f", distance];
+    _distanceLabel.attributedText = [self makeAttr:[NSString stringWithFormat:@"%.2f", distance] Normal:kJL_TXT("公里")];
     if ([unitStr isEqualToString:@("英制")]) {
-        _distanceLabel.text = [NSString stringWithFormat:@"%.2f", fabs(distance * 0.621)];
+        _distanceLabel.attributedText = [self makeAttr: [NSString stringWithFormat:@"%.2f", fabs(distance * 0.621)] Normal:kJL_TXT("英里")];
     }
 }
 
@@ -85,18 +92,18 @@
         distanceChange = fabs(distanceChange * 0.621);
     }
     _distanceChangeLabel.text = [NSString stringWithFormat:@"%.2f%@", distanceChange, units];
-    _distanceChangeImageView.image = [self changeImageWithIsUp:distanceChange > 0 ? YES : NO];
+    _distanceChangeImageView.image = [self changeImageWithIsUp:distanceChange >= 0 ? YES : NO];
 }
 
 #pragma mark - 消耗
 
 - (void)setCalories:(NSInteger)calories {
-    _caloriesLabel.text = [NSString stringWithFormat:@"%ld", (long)calories];
+    _caloriesLabel.attributedText = [self makeAttr:[NSString stringWithFormat:@"%ld", (long)calories] Normal:kJL_TXT("千卡")];
 }
 
 - (void)setCaloriesChange:(NSInteger)caloriesChange {
     _caloriesChangeLabel.text = [NSString stringWithFormat:@"%ld%@", labs((long)caloriesChange), kJL_TXT("千卡")];
-    _caloriesChangeImageView.image = [self changeImageWithIsUp:caloriesChange > 0 ? YES : NO];
+    _caloriesChangeImageView.image = [self changeImageWithIsUp:caloriesChange >= 0 ? YES : NO];
 }
 
 #pragma mark - Private Methods
@@ -107,4 +114,21 @@
     return [UIImage imageNamed:@"icon_down_nol"];
 }
 
+-(NSAttributedString *)makeAttr:(NSString *)currentValue Normal:(NSString *)normal{
+    
+    NSString *text = [NSString stringWithFormat:@"%@%@",currentValue,normal];
+    // 1.创建NSMutableAttributedString实例
+    NSMutableAttributedString *fontAttributeNameStr = [[NSMutableAttributedString alloc]initWithString:text];
+    
+    // 2.添加属性
+    [fontAttributeNameStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:20] range:[text rangeOfString:currentValue]];
+    [fontAttributeNameStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:[text rangeOfString:normal]];
+    [fontAttributeNameStr addAttributeTextColor:kDF_RGBA(36, 36, 36, 1)];
+    
+    // 3.给label赋值
+    return fontAttributeNameStr;
+    
+}
+
 @end
+

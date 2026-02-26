@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -25,7 +25,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="睡眠检测" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zg4-07-Vca">
-                            <rect key="frame" x="170.5" y="81" width="73.5" height="35"/>
+                            <rect key="frame" x="170.5" y="89" width="73.5" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="6Sv-qj-LAg"/>
                             </constraints>
@@ -34,7 +34,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wy8-8N-ofh">
-                            <rect key="frame" x="8" y="77" width="67" height="43"/>
+                            <rect key="frame" x="8" y="83" width="67" height="43"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="67" id="VpV-zT-ak1"/>
                                 <constraint firstAttribute="height" constant="43" id="xos-K9-cfj"/>
@@ -49,9 +49,9 @@
                     <constraints>
                         <constraint firstItem="zg4-07-Vca" firstAttribute="centerX" secondItem="g6E-2S-V3c" secondAttribute="centerX" id="FYz-Mf-M2D"/>
                         <constraint firstItem="Wy8-8N-ofh" firstAttribute="leading" secondItem="g6E-2S-V3c" secondAttribute="leading" constant="8" id="WZN-kw-6Tp"/>
-                        <constraint firstAttribute="bottom" secondItem="Wy8-8N-ofh" secondAttribute="bottom" constant="10" id="pXh-0k-MPH"/>
+                        <constraint firstAttribute="bottom" secondItem="Wy8-8N-ofh" secondAttribute="bottom" constant="4" id="pXh-0k-MPH"/>
                         <constraint firstAttribute="height" constant="130" id="ttA-O6-8iu"/>
-                        <constraint firstAttribute="bottom" secondItem="zg4-07-Vca" secondAttribute="bottom" constant="14" id="w3d-rR-86v"/>
+                        <constraint firstAttribute="bottom" secondItem="zg4-07-Vca" secondAttribute="bottom" constant="6" id="w3d-rR-86v"/>
                     </constraints>
                 </view>
             </subviews>

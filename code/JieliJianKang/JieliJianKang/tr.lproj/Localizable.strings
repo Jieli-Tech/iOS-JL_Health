@@ -323,7 +323,7 @@
 "体重设定" = "Kilo ayarları";
 "体重目标" = "Kilo hedefi";
 "起始" = "Başlangıç:";
-"目标" = "Hedef:";
+"目标" = "Hedef";
 "消耗约" = "Yaklaşık Tüketim";
 "最新" = "Son:";
 "最低值" = "En düşük";
@@ -376,7 +376,7 @@
 "添加表盘..." = "Kadran ekle...";
 "更新表盘..." = "Kadranı Güncelle...";
 "本地表盘" = "Yerel kadran";
-"全部" = "Hepsi >";
+"全部" = "Hepsi";
 "管理" = "Yönetim";
 "闹钟" = "Alarm";
 "铃声" = "Zil sesi";
@@ -399,7 +399,7 @@
 "电量" = "Güç";
 "升级" = "Upgrade";
 "当前版本"= "Geçerli Sürüm";
-"固件升级" = "Firmware Upgrade";
+"固件更新" = "Firmware Upgrade";
 "检查更新" = "Güncellemeleri kontrol et";
 "OTA升级失败" = "OTA yükseltme başarısız oldu";
 "OTA升级数据为空!" = "OTA yükseltme verileri boş!";
@@ -582,7 +582,7 @@
 "选择周间隔" = "Hafta aralığını seç";
 "服务器开小差" = "Sunucu açma farkı";
 
-"手机蓝牙通话" = "Mobil Bluetooth Çağrısı";
+"手表蓝牙通话" = "Bluetooth çağrısını izle";
 "表盘" = "Kadran";
 "购买记录" = "Satın alma kaydı";
 "蓝牙" = "Bluetooth";
@@ -590,7 +590,7 @@
 "系统表盘" = "Sistem kadranı";
 "免费表盘" = "Bedava kadra";
 "付费表盘" = "Ödemeli kadran";
-"更多>" = "Devamı>";
+"更多>" = "Devamı >";
 "表盘商城"= "Ara Merkezi";
 "我的表盘" = "Kadranım";
 "免费" = "Bedava";
@@ -671,3 +671,7 @@
 "是否删除" = "Sil ya da yok";
 "复制" = "kopyalama";
 "多选" = "Çoklu Seçim";
+"珠海市杰理科技股份有限公司" = "www.zh-jieli.com";
+"是否要清除用户缓存" = "Kullanıcı önbelleğini temizlemek istiyor musunuz?";
+"AI表盘" = "AI kadranı";
+"正在传输中" = "Taşınıyor...";

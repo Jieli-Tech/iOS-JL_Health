@@ -325,7 +325,7 @@
 "体重设定" = "Viktinställning";
 "体重目标" = "Viktmål";
 "起始" = "Start:";
-"目标" = "Mål:";
+"目标" = "Mål";
 "消耗约" = "förbrukning ca";
 "最新" = "Senaste:";
 "最低值" = "Lägsta";
@@ -378,7 +378,7 @@
 "添加表盘..." = "Lägg till urtavla...";
 "更新表盘..." = "ppdatera urtavlan...";
 "本地表盘" = "lokal urtavla";
-"全部" = "Alla >";
+"全部" = "Alla";
 "管理" = "förvaltning";
 "闹钟" = "väckarklocka";
 "铃声" = "ringsignal";
@@ -401,7 +401,7 @@
 "电量" = "Power";
 "升级" = "Uppgradering";
 "当前版本"= "Aktuell versio";
-"固件升级" = "Firmware Upgrade";
+"固件更新" = "Firmware Upgrade";
 "检查更新" = "Kontrollera för uppdateringar";
 "OTA升级失败" = "OTA-uppgradering misslyckades";
 "OTA升级数据为空!" = "OTA uppgraderingsdata tom!";
@@ -584,7 +584,7 @@
 "选择周间隔" = "Välj veckointervall";
 "服务器开小差" = "Serveröppning";
 
-"手机蓝牙通话" = "Mobil Bluetooth-samtal";
+"手表蓝牙通话" = "Titta på bluetooth-samtal";
 "表盘" = "Dial";
 "购买记录" = "Köppost";
 "蓝牙" = "Bluetooth";
@@ -592,7 +592,7 @@
 "系统表盘" = "System Dia";
 "免费表盘" = "fri urtavla";
 "付费表盘" = "Betalskiva";
-"更多>" = "Mer>";
+"更多>" = "Mer >";
 "表盘商城"= "Dial Mall";
 "我的表盘" = "min urtavla";
 "免费" = "Gratis";
@@ -675,3 +675,7 @@
 "是否删除" = "Ta bort eller inte";
 "复制" = "kopiera";
 "多选" = "Multiple Choice";
+"珠海市杰理科技股份有限公司" = "www.zh-jieli.com";
+"是否要清除用户缓存" = "Vill du rensa användarcache?";
+"AI表盘" = "AI-ratt";
+"正在传输中" = "Överföring...";

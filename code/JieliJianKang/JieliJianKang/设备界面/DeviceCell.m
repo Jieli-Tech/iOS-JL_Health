@@ -31,7 +31,8 @@
     self = [DFUITools loadNib:@"DeviceCell"];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
-        [JLUI_Effect addShadowOnView_2:subBgView];
+        //[JLUI_Effect addShadowOnView_2:subBgView];
+        subBgView.layer.cornerRadius = 12.0;
         [self setIsConnect:NO];
     }
     return self;
@@ -44,14 +45,14 @@
         [btnConnect setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
         btnConnect.layer.borderColor = kJL_COLOR_ASSIST_GREEN.CGColor;
         btnConnect.layer.borderWidth = 1.0;
-        btnConnect.layer.cornerRadius= 15.0;
+        btnConnect.layer.cornerRadius= 13.5;
     }else{
         [btnConnect setTitle:kJL_TXT("连接") forState:UIControlStateNormal];
         [btnConnect setTitleColor:kDF_RGBA(128, 91, 235, 1) forState:UIControlStateNormal];
         [btnConnect setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
         btnConnect.layer.borderColor = kDF_RGBA(128, 91, 235, 1).CGColor;
         btnConnect.layer.borderWidth = 1.0;
-        btnConnect.layer.cornerRadius= 15.0;
+        btnConnect.layer.cornerRadius= 13.5;
     }
 }
 

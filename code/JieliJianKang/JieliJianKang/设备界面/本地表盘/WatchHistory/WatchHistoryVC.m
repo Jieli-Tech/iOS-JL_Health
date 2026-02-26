@@ -34,14 +34,15 @@
 
 -(void)setupUI{
     
-    float sW = [DFUITools screen_2_W];
-    float sH = [DFUITools screen_2_H];
+    float sW = [UIScreen mainScreen].bounds.size.width;
+    float sH = [UIScreen mainScreen].bounds.size.height;
     
     titlelabel_H.constant = kJL_HeightNavBar;
     
     /*--- 我的表盘 ---*/
     watchOwn = [[WatchOwn alloc] initByFrame:CGRectMake(0, kJL_HeightNavBar, sW, sH-kJL_HeightNavBar-10.0)];
     watchOwn.mWatchUiType = WatchUITypeHistory;
+    watchOwn.mSubTitleText = @"";
     [self.view addSubview:watchOwn];
     
     [self reflashUIData];

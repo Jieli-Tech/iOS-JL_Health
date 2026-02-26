@@ -180,10 +180,23 @@ typedef void(^JL_BIGFILE_RT)(JL_BigFileResult result, float progress);
 - (void)setCurrentFileHandleType:(JL_FileHandleType)currentFileHandleType;
 - (JL_FileHandleType)getCurrentFileHandleType;
 
+/// 文件传输的句柄
+- (NSData *)currentDeviceHandleData;
+
 #pragma mark ---> 读取外置卡的文件内容
+
+/// 读取外置卡的文件内容
+/// - Parameters:
+///   - name: 文件名
+///   - result: 回调结果
 -(void)cmdFileReadContentWithName:(NSString*)name Result:(JL_FILE_CONTENT_BK __nullable)result;
 
 #pragma mark ---> 簇号方式读取外置卡的文件内容
+
+/// 簇号方式读取外置卡的文件内容
+/// - Parameters:
+///   - fileClus: 文件簇号
+///   - result: 回调
 - (void)cmdFileReadContentWithFileClus:(uint32_t)fileClus Result:(JL_FILE_CONTENT_BK __nullable)result;
 
 #pragma mark ---> 取消读取外置卡的文件内容

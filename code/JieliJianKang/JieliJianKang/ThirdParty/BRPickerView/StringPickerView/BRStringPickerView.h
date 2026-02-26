@@ -58,7 +58,7 @@ typedef void(^BRStringResultModelArrayBlock)(NSArray <BRResultModel *> * _Nullab
  *  推荐使用 selectIndex，更加严谨，可以避免使用 selectValue 时，有名称相同的情况
  */
 @property (nonatomic, assign) NSInteger selectIndex;
-@property (nonatomic, assign) NSInteger type; //0:心率 1:其他
+@property (nonatomic, assign) NSInteger type; //0:心率 1:其他 2:睡眠检测、久坐提醒
 @property (nullable, nonatomic, copy) NSString *selectValue;
 
 /**

@@ -39,7 +39,7 @@
     alarmManager = kJL_BLE_CmdManager.mAlarmClockManager;
     
     if(self->alarmTable == nil){
-        self->alarmTable = [[UITableView alloc] initWithFrame:CGRectMake(0, kJL_HeightNavBar+20, [DFUITools screen_2_W], self->itemArray.count*80)];
+        self->alarmTable = [[UITableView alloc] initWithFrame:CGRectMake(0, kJL_HeightNavBar+20, [UIScreen mainScreen].bounds.size.width, self->itemArray.count*80)];
     }
     self->alarmTable.delegate = self;
     self->alarmTable.dataSource = self;
@@ -67,18 +67,18 @@
     itemArray = [NSMutableArray new];
     [itemArray setArray:alarms];
     
-    alarmTable.frame = CGRectMake(0, kJL_HeightNavBar+20, [DFUITools screen_2_W],itemArray.count*80);
+    alarmTable.frame = CGRectMake(0, kJL_HeightNavBar+20, [UIScreen mainScreen].bounds.size.width,itemArray.count*80);
     [alarmTable reloadData];
     
     if(watchLabel == nil){
         watchLabel = [[UILabel alloc] init];
     }
-    watchLabel.textAlignment = NSTextAlignmentCenter;
-    watchLabel.frame = CGRectMake(15, self->alarmTable.frame.origin.y+self->alarmTable.frame.size.height+30, [DFUITools screen_2_W] - 32, 110);
+    watchLabel.textAlignment = NSTextAlignmentLeft;
+    watchLabel.frame = CGRectMake(16, self->alarmTable.frame.origin.y+self->alarmTable.frame.size.height+16, [UIScreen mainScreen].bounds.size.width - 32, 40);
     watchLabel.numberOfLines = 0;
     watchLabel.adjustsFontSizeToFitWidth = true;
     
-    self->watchLabel.font = [UIFont fontWithName:@"PingFangSC" size:14];
+    self->watchLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
     self->watchLabel.textColor = kDF_RGBA(114.0, 114.0, 114.0, 1.0);
     self->watchLabel.text = kJL_TXT("设置好闹钟，同步到手表后，手表将会震动提醒您。您最多可以设置5个闹钟。");
     [self.view addSubview:self->watchLabel];
@@ -176,6 +176,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     AlarmClockCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AlarmClockCell" forIndexPath:indexPath];
     JLModel_RTC *model = itemArray[indexPath.section];
+    cell.ClockLab.font = [UIFont fontWithName:@"PingFangSC-Regular" size: 30];
     if(model.rtcMin<10){
         cell.ClockLab.text = [NSString stringWithFormat:@"%d:0%d",model.rtcHour,model.rtcMin];
     }else{

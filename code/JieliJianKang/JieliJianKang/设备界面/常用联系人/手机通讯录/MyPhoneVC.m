@@ -73,12 +73,12 @@
 }
 
 -(void)initUI{
-    self.view.backgroundColor = kDF_RGBA(244, 246, 247, 1.0);
+    self.view.backgroundColor = kDF_RGBA(246, 247, 248, 1.0);
     titleHeight.constant = kJL_HeightNavBar;
     isSearchFlag = NO;
     selectArray = [NSMutableArray array];
-    sw = [DFUITools screen_2_W];
-    sh = [DFUITools screen_2_H];
+    sw = [UIScreen mainScreen].bounds.size.width;
+    sh = [UIScreen mainScreen].bounds.size.height;
     
     subTitleView.frame = CGRectMake(0, 0, sw, kJL_HeightStatusBar+44);
     cancelBtn.frame  = CGRectMake(16, kJL_HeightStatusBar-5, 55, 44);
@@ -98,8 +98,8 @@
     tableView.dataSource = self;
     tableView.rowHeight = 70.0;
     tableView.tableFooterView = [UIView new];
-    tableView.backgroundColor = [UIColor whiteColor];
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    tableView.backgroundColor = [UIColor clearColor];
     tableView.bounces = NO;
     tableView.scrollEnabled = NO;
     [self.view addSubview:tableView];
@@ -109,20 +109,18 @@
     searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 64, sw, 40)];
     searchBar.backgroundImage = [self imageWithColor:[UIColor clearColor] size:searchBar.bounds.size];
     searchBar.placeholder = @"搜索联系人";
+    [searchBar setImage:[UIImage imageNamed:@"icon_search_nol"] forSearchBarIcon:UISearchBarIconSearch state:UIControlStateNormal];
+    if (@available(iOS 13.0, *)) {
+        searchBar.searchTextField.font = [UIFont fontWithName:@"PingFangSC-Regular" size: 13];
+    } else {
+        // Fallback on earlier versions
+    }
     searchBar.delegate = self;
     tableView.tableHeaderView = searchBar;
     tableView.tableHeaderView.backgroundColor = kDF_RGBA(244, 246, 247, 1.0);
     [tableView reloadData];
     
-    UITextField *searchField = [searchBar valueForKey:@"searchField"];
-    if (searchField) {
-        [searchField setBackgroundColor:[UIColor whiteColor]];
-        searchField.layer.borderWidth = 1;
-        searchField.layer.borderColor = [UIColor colorWithRed:212/255.0 green:212/255.0 blue:212/255.0 alpha:1.0].CGColor;
-        searchField.layer.backgroundColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1.0].CGColor;
-        searchField.layer.cornerRadius = 17;
-        searchField.layer.masksToBounds = YES;
-    }
+    [self initSearchBar];
     
     noContactsImv = [[UIImageView alloc] initWithFrame:CGRectMake(sw/2-210/2, kJL_HeightNavBar+101, 210, 170)];
     noContactsImv.image = [UIImage imageNamed:@"img_empty_01"];
@@ -143,6 +141,20 @@
 //    dispatch_async(dispatch_get_main_queue(), ^{
 //            [self refresh];
 //        });
+}
+
+-(void)initSearchBar{
+    UITextField *searchField = [searchBar valueForKey:@"searchField"];
+    if (searchField) {
+        searchField.backgroundColor = [UIColor clearColor];
+        searchField.layer.borderColor  = [UIColor clearColor].CGColor;
+        [searchBar setBackgroundColor:[UIColor whiteColor]];
+        searchBar.layer.borderWidth = 1;
+        searchBar.layer.borderColor = [UIColor colorWithRed:212/255.0 green:212/255.0 blue:212/255.0 alpha:1.0].CGColor;
+        searchBar.layer.backgroundColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1.0].CGColor;
+        searchBar.layer.cornerRadius = 19;
+        //searchBar.layer.masksToBounds = YES;
+    }
 }
 
 /** 取消searchBar背景色 */
@@ -177,6 +189,9 @@
 #pragma mark 搜索开始编辑
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
+    searchBar.backgroundColor = [UIColor clearColor];
+    searchBar.layer.borderColor = [UIColor clearColor].CGColor;
+    
     UITextField *searchField = [searchBar valueForKey:@"searchField"];
     if (searchField) {
         [searchField setBackgroundColor:[UIColor whiteColor]];
@@ -213,15 +228,8 @@
 #pragma mark 取消按钮点击
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
-    UITextField *searchField = [searchBar valueForKey:@"searchField"];
-    if (searchField) {
-        [searchField setBackgroundColor:[UIColor whiteColor]];
-        searchField.layer.borderWidth = 1;
-        searchField.layer.borderColor = [UIColor colorWithRed:212/255.0 green:212/255.0 blue:212/255.0 alpha:1.0].CGColor;
-        searchField.layer.backgroundColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1.0].CGColor;
-        searchField.layer.cornerRadius = 17;
-        searchField.layer.masksToBounds = YES;
-    }
+    [self initSearchBar];
+    
     searchBar.text = @"";
     //收起键盘
     [searchBar resignFirstResponder];
@@ -276,6 +284,7 @@
                 
                 // 把表格恢复为可以滑动
                 self->tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+                self->tableView.separatorColor = [JLColor colorWithString:@"#F6F6F6"];
                 self->tableView.scrollEnabled = YES;
             }];
         }
@@ -426,7 +435,7 @@
         cell.backgroundColor = kDF_RGBA(241, 236, 255, 1.0);
         cell.selectImv.image =  [UIImage imageNamed:@"icon_music_sel"];
     } else {
-        cell.backgroundColor = kDF_RGBA(255, 255, 255, 1.0);
+        cell.backgroundColor = [UIColor whiteColor];
         cell.selectImv.image =  [UIImage imageNamed:@"icon_music_unsel"];
     }
     

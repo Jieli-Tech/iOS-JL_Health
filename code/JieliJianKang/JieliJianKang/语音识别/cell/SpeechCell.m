@@ -38,7 +38,7 @@
 +(CGFloat)cellHeight:(AICloundMessageModel *)aiCloundMessageModel Index:(NSInteger)index{
     NSString *text = [NSString stringWithFormat:@"%@", aiCloundMessageModel.text];
     
-    CGFloat w =  [DFUITools screen_2_W] - 56.0 - 70.0;
+    CGFloat w =  [UIScreen mainScreen].bounds.size.width - 56.0 - 70.0;
     CGFloat height = [DFUITools labelHeightByWidth:w Text:text Font:[UIFont fontWithName:@"PingFangSC-Medium" size:16]];
     
 //    if(aiCloundMessageModel.role ==1){
@@ -71,14 +71,14 @@
     
     int state = aiCloundMessageModel.aiCloudState;
     
-    CGFloat w = [DFUITools screen_2_W] - 40.0 - 70.0;
+    CGFloat w = [UIScreen mainScreen].bounds.size.width - 40.0 - 70.0;
     CGFloat lb_h = [DFUITools labelHeightByWidth:w Text:text Font:[UIFont fontWithName:@"PingFangSC-Medium" size:16]];
     CGFloat lb_w = [DFUITools labelWidthByWidth:w Text:text Font:[UIFont fontWithName:@"PingFangSC-Medium" size:16]];
     
     /*--- 我 ---*/
     if (type == 1) {
         UILabel *timeLabel = [[UILabel alloc] init];
-        timeLabel.frame = CGRectMake([DFUITools screen_2_W]/2-68/2,
+        timeLabel.frame = CGRectMake([UIScreen mainScreen].bounds.size.width/2-68/2,
                                          0,160,20);
         timeLabel.numberOfLines = 0;
         timeLabel.text = dateString;
@@ -91,14 +91,14 @@
         UIView *view_1 = [[UIView alloc] init];
         //if(aiCloundMessageModel.isFirstPage || index ==0){
             timeLabel.hidden = NO;
-            timeLabel.frame = CGRectMake([DFUITools screen_2_W]/2-68/2,
+            timeLabel.frame = CGRectMake([UIScreen mainScreen].bounds.size.width/2-68/2,
                                              0,160,20);
-            view_1.frame = CGRectMake([DFUITools screen_2_W]-(lb_w+56), 25, lb_w+35.0, lb_h+20.0);
+            view_1.frame = CGRectMake([UIScreen mainScreen].bounds.size.width-(lb_w+56), 25, lb_w+35.0, lb_h+20.0);
 //        }else{
 //            timeLabel.hidden = YES;
-//            timeLabel.frame = CGRectMake([DFUITools screen_2_W]/2-68/2,
+//            timeLabel.frame = CGRectMake([UIScreen mainScreen].bounds.size.width/2-68/2,
 //                                             0,160,0);
-//            view_1.frame = CGRectMake([DFUITools screen_2_W]-(lb_w+56), 0, lb_w+35.0, lb_h+20.0);
+//            view_1.frame = CGRectMake([UIScreen mainScreen].bounds.size.width-(lb_w+56), 0, lb_w+35.0, lb_h+20.0);
 //        }
         [self.contentView addSubview:view_1];
         view_1.backgroundColor =  kDF_RGBA(242.0, 242.0, 242.0, 1.0);
@@ -254,7 +254,7 @@
 
         
         UIView *view_bottom = [[UIView alloc] init];
-        view_bottom.frame = CGRectMake(0, 0, [DFUITools screen_2_W], 16);
+        view_bottom.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 16);
         [self.contentView addSubview:view_bottom];
     }
 }

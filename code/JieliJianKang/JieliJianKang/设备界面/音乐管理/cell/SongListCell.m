@@ -13,7 +13,7 @@
 -(instancetype)init{
     self = [[NSBundle mainBundle] loadNibNamed:@"SongListCell" owner:nil options:nil][0];
     if (self) {
-        float sw = [DFUITools screen_2_W];
+        float sw = [UIScreen mainScreen].bounds.size.width;
         CGRect rect_lb = CGRectMake(53, 10, sw-80, 20);
         self.songName = [[DFLabel alloc] initWithFrame:rect_lb];
         self.songName.textColor = [UIColor blackColor];

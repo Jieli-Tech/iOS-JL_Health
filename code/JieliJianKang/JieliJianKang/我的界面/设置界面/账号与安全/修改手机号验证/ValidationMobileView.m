@@ -41,8 +41,8 @@
 }
 
 -(void)initUI{
-    sw = [DFUITools screen_2_W];
-    sh = [DFUITools screen_2_H];
+    sw = [UIScreen mainScreen].bounds.size.width;
+    sh = [UIScreen mainScreen].bounds.size.height;
     
     UIToolbar *toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, sw, sh)];
     //样式
@@ -72,12 +72,12 @@
         label2.frame = CGRectMake(36,label1.frame.origin.y+label1.frame.size.height+20,contentView.frame.size.width-72,42);
         label2.numberOfLines = 2;
     }else{
-        label2.frame = CGRectMake(36,label1.frame.origin.y+label1.frame.size.height+20,310,21);
+        label2.frame = CGRectMake(contentView.frame.size.width/2-270/2,label1.frame.origin.y+label1.frame.size.height+20,270,21);
         label2.numberOfLines = 1;
     }
     [contentView addSubview:label2];
     label2.contentMode =  UIViewContentModeCenter;
-    label2.font =  [UIFont fontWithName:@"PingFangSC" size: 14];
+    label2.font =  [UIFont fontWithName:@"PingFangSC-Regular" size: 15];
     label2.text =  kJL_TXT("为确认是您本人操作，请进行身份验证");
     label2.textColor = kDF_RGBA(75, 75, 75, 1.0);
     label2.adjustsFontSizeToFitWidth = YES;
@@ -88,7 +88,7 @@
     label3.numberOfLines = 1;
     [contentView addSubview:label3];
     label3.contentMode =  UIViewContentModeCenter;
-    label3.font =  [UIFont fontWithName:@"PingFangSC" size: 14];
+    label3.font =  [UIFont fontWithName:@"PingFangSC-Regular" size: 15];
     label3.textColor = kDF_RGBA(75, 75, 75, 1.0);
 
     verTF = [[UITextField alloc] initWithFrame:CGRectMake(24, label3.frame.origin.y+label3.frame.size.height+25, contentView.frame.size.width-130-48, 21)];
@@ -96,7 +96,7 @@
     verTF.placeholder = kJL_TXT("短信验证码");
     verTF.textColor = kDF_RGBA(36, 36, 36, 1.0);
     verTF.tintColor = kDF_RGBA(145, 145, 145, 1.0);
-    verTF.font = [UIFont fontWithName:@"PingFangSC" size:14];
+    verTF.font = [UIFont fontWithName:@"PingFangSC-Regular" size: 15];
     verTF.keyboardAppearance = UIKeyboardAppearanceDefault;
     verTF.keyboardType = UIKeyboardTypePhonePad;
     verTF.delegate = self;
@@ -110,11 +110,15 @@
     verLabel.text = kJL_TXT("发送验证码");
     verLabel.labelType = DFLeftRight;
     verLabel.textAlignment = NSTextAlignmentLeft;
-    verLabel.font =  [UIFont fontWithName:@"PingFangSC" size:15];
+    verLabel.font =  [UIFont fontWithName:@"PingFangSC-Medium" size:15];
     verLabel.textColor = kDF_RGBA(128, 91, 235, 1.0);
     verLabel.tag = 0;
     [contentView addSubview:verLabel];
     verLabel.hidden = NO;
+    
+    UIView *mFengeView = [[UIView alloc] initWithFrame:CGRectMake(26, verLabel.frame.origin.y+20+4, contentView.frame.size.width-52, 1)];
+    [contentView addSubview:mFengeView];
+    mFengeView.backgroundColor = kDF_RGBA(247.0, 247.0, 247.0, 1.0);
 
     UITapGestureRecognizer *verGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sendVerClick)];
     [verLabel addGestureRecognizer:verGestureRecognizer];
@@ -157,7 +161,7 @@
 
 -(void)setMobile:(NSString *)mobile{
     
-    userWay = [[JL_Tools getUserByKey:@"httpUserWay"] intValue];
+    userWay = [[JL_Tools getUserByKey:kUI_HTTP_USER_WAY] intValue];
     
     if(userWay == JLUSER_WAY_PHONE){
         mMobile = mobile;

@@ -61,10 +61,10 @@
     
     subTitle_H.constant = kJL_HeightStatusBar+44;
     
-    sW = [DFUITools screen_2_W];
+    sW = [UIScreen mainScreen].bounds.size.width;
     //subTitleView.frame = CGRectMake(0, 0, sW, kJL_HeightStatusBar+44);
     backBtn.frame  = CGRectMake(4, kJL_HeightStatusBar, 44, 44);
-    titleName.text = kJL_TXT("注册");
+    titleName.text = kJL_TXT("手机注册");
     //titleName.bounds = CGRectMake(0, 0, 200, 20);
     //titleName.center = CGPointMake(sW/2.0, kJL_HeightStatusBar+20);
     
@@ -206,6 +206,7 @@
         phoneTF.keyboardType=UIKeyboardTypePhonePad;
 
         [btnWay setTitle:kJL_TXT("邮箱注册") forState:UIControlStateNormal];
+        titleName.text = kJL_TXT("手机注册");
     } else {
         label1.hidden = YES;
         fenGeView.hidden = YES;
@@ -214,6 +215,7 @@
         phoneTF.keyboardType=UIKeyboardTypeEmailAddress;
 
         [btnWay setTitle:kJL_TXT("手机注册") forState:UIControlStateNormal];
+        titleName.text = kJL_TXT("邮箱注册");
     }
 }
 
@@ -439,7 +441,7 @@
                     return;
                 }
 
-                [JL_Tools setUser:self->phoneTF.text forKey:@"ACCOUNT_NUM"];
+                [JL_Tools setUser:self->phoneTF.text forKey:kUI_ACCOUNT_NUM];
 
                 PersonDetailVC *vc = [[PersonDetailVC alloc] init];
                 vc.modalPresentationStyle = UIModalPresentationFullScreen;

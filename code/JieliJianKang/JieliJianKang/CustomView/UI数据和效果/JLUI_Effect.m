@@ -109,6 +109,29 @@ static DFTips *loadingTp = nil;
     loadingTp = nil;
 }
 
++(NSMutableAttributedString*)pingFangSC:(NSString*)text
+                                   Size:(float)size
+                                  Color:(UIColor*)color{
+    NSDictionary *dict = @{NSFontAttributeName:[UIFont fontWithName:@"PingFang SC" size:size],
+                           NSForegroundColorAttributeName:color};
+    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:text attributes:dict];
+    return attr;
+}
++(NSMutableAttributedString*)pingFangSCUnderline:(NSString*)text
+                                   Size:(float)size
+                                  Color:(UIColor*)color{
+    NSDictionary *dict = @{NSFontAttributeName:[UIFont fontWithName:@"PingFang SC" size:size],
+                           NSForegroundColorAttributeName:color,
+                           NSUnderlineStyleAttributeName:@(NSUnderlineStyleSingle),
+                           NSUnderlineColorAttributeName:color
+    };
+    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:text attributes:dict];
+    return attr;
+}
+
+
+
+
 
 
 

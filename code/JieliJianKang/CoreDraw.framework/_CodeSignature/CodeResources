@@ -14,7 +14,7 @@
 		</data>
 		<key>Headers/ECBrokenLine.h</key>
 		<data>
-		5cs86h1R1YEmlZR4hRBiKUWk6H0=
+		Apj9kfyKR1j0EsQd3mK5eDoVkWA=
 		</data>
 		<key>Headers/ECDrawAttribute.h</key>
 		<data>
@@ -34,7 +34,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		aar38oA29Ni4Wtnl21QU4ApBZN4=
+		v/NZn+ujgHM0BHEC/jt1I5aIaoo=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -45,6 +45,10 @@
 	<dict>
 		<key>Headers/CoreDraw.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			/qNLabYBk3w1mvkUKYIr1k1MnkU=
+			</data>
 			<key>hash2</key>
 			<data>
 			tW+u1Z/uu0LwukAq0LIuCIeWNZwms3lZSxAHsWexLgQ=
@@ -52,6 +56,10 @@
 		</dict>
 		<key>Headers/ECBlockDiagram.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			6rMYBwE3j6WOQc4YnP4elu8CCCY=
+			</data>
 			<key>hash2</key>
 			<data>
 			XYCAO/1jwxflvdukJiw/ahUYKjrut4DxdUesa/YJe6k=
@@ -59,13 +67,21 @@
 		</dict>
 		<key>Headers/ECBrokenLine.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			Apj9kfyKR1j0EsQd3mK5eDoVkWA=
+			</data>
 			<key>hash2</key>
 			<data>
-			EUXpH22cKcsQwhnuFrJPwCoD1GxKW2cxd7Z0ibB6O74=
+			BdpyYrtHPMU9lKUGs+IqQwvgZWVptc8wfP898eJPlp4=
 			</data>
 		</dict>
 		<key>Headers/ECDrawAttribute.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			m+FyJVZahxjnrdKhRRgvU+hyllY=
+			</data>
 			<key>hash2</key>
 			<data>
 			G6f9lx77RpvXjGI5i7tSHLCY5fnRd/E3Fl6w5mH8kHI=
@@ -73,6 +89,10 @@
 		</dict>
 		<key>Headers/ECDrawTools.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			jr7WKc9VZO2XMQ5D+AN0ZYTVGbY=
+			</data>
 			<key>hash2</key>
 			<data>
 			QEYivGacJ7GwMdTOBAknBHyB6LHwtYxzCUwmCebgIvk=
@@ -80,6 +100,10 @@
 		</dict>
 		<key>Headers/ECHistogram.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			BsavKfBMGFHBJXVtjTo2eAcI4EY=
+			</data>
 			<key>hash2</key>
 			<data>
 			qLacifUtwiHUERj65aIm6y3jylCiL13xqwHEstZK0Cs=
@@ -87,6 +111,10 @@
 		</dict>
 		<key>Headers/ECHistogramPlus.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			dqe3yDzQLvEgfp/buZxCqgETxSo=
+			</data>
 			<key>hash2</key>
 			<data>
 			wfdTkVK25/bNFq8GdHNuJeUSCtjmwsIp4Tvb1x4mUak=
@@ -94,6 +122,10 @@
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			veg9WNXFDQsajLPEs/xpi24gB/M=
+			</data>
 			<key>hash2</key>
 			<data>
 			cHFY3Hy/V2svSXfmL32N7LORrpvmdWl5OJdHSDRXzFA=

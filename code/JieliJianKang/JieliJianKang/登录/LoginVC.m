@@ -46,7 +46,7 @@
     AFNetworkReachabilityManager *net = [AFNetworkReachabilityManager sharedManager];
     [net startMonitoring];
     
-    float sW = [DFUITools screen_2_W];
+    float sW = [UIScreen mainScreen].bounds.size.width;
     
     label1 = [[UILabel alloc] init];
     label1.frame = CGRectMake(24,kJL_HeightNavBar+10,sW,33);
@@ -61,25 +61,26 @@
     phoneTF.placeholder = kJL_TXT("请输入手机号码/邮箱");
     phoneTF.textColor = kDF_RGBA(36, 36, 36, 1.0);
     phoneTF.tintColor = kDF_RGBA(180, 180, 180, 1.0);
-    phoneTF.font = [UIFont fontWithName:@"PingFangSC" size:16];
+    phoneTF.font = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
     phoneTF.keyboardAppearance=UIKeyboardAppearanceDefault;
     phoneTF.keyboardType= UIKeyboardTypeEmailAddress;
     phoneTF.delegate = self;
     phoneTF.tag =0;
     [self.view addSubview:phoneTF];
-    phoneTF.text = [JL_Tools getUserByKey:@"ACCOUNT_NUM"];
+    phoneTF.text = [JL_Tools getUserByKey:kUI_ACCOUNT_NUM];
     phoneTF.clearButtonMode=UITextFieldViewModeWhileEditing;
     
     UIView *view1 = [[UIView alloc] initWithFrame:CGRectMake(0, 34, sW-48, 1)];
     [phoneTF addSubview:view1];
-    view1.backgroundColor = kDF_RGBA(247, 247, 247, 1.0);
+    view1.backgroundColor = [UIColor grayColor];
+    view1.alpha = 0.1;
     
     passwordTF = [[UITextField alloc] initWithFrame:CGRectMake(24, phoneTF.frame.origin.y+phoneTF.frame.size.height+33, sW-48, 35)];
     passwordTF.textAlignment = NSTextAlignmentLeft;
     passwordTF.placeholder = kJL_TXT("请输入密码");
     passwordTF.textColor = kDF_RGBA(36, 36, 36, 1.0);
     passwordTF.tintColor = kDF_RGBA(180, 180, 180, 1.0);
-    passwordTF.font = [UIFont fontWithName:@"PingFangSC" size:14];
+    passwordTF.font = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
     passwordTF.delegate = self;
     passwordTF.tag = 1;
     passwordTF.secureTextEntry = YES;
@@ -87,7 +88,8 @@
     
     UIView *view2 = [[UIView alloc] initWithFrame:CGRectMake(0, 34, sW-48, 1)];
     [passwordTF addSubview:view2];
-    view2.backgroundColor = kDF_RGBA(247, 247, 247, 1.0);
+    view2.backgroundColor = [UIColor grayColor];
+    view2.alpha = 0.1;
     
     //    cleanBtn = [[UIButton alloc] initWithFrame:CGRectMake(sW-48-20,35/2-20/2,20,20)];
     //    [cleanBtn addTarget:self action:@selector(phoneCleanBtn:) forControlEvents:UIControlEventTouchUpInside];
@@ -110,7 +112,7 @@
     verLabel.labelType = DFLeftRight;
     verLabel.textAlignment = NSTextAlignmentLeft;
     verLabel.text = kJL_TXT("使用验证码登录");
-    verLabel.font =  [UIFont fontWithName:@"PingFangSC" size:12];
+    verLabel.font =  [UIFont fontWithName:@"PingFangSC-Regular" size:14];
     verLabel.textColor = kDF_RGBA(143, 143, 143, 1.0);
     [self.view addSubview:verLabel];
     
@@ -124,7 +126,7 @@
     forgetLabel.text = kJL_TXT("忘记密码");
     forgetLabel.labelType = DFLeftRight;
     forgetLabel.textAlignment = NSTextAlignmentLeft;
-    forgetLabel.font =  [UIFont fontWithName:@"PingFangSC" size:14];
+    forgetLabel.font =  [UIFont fontWithName:@"PingFangSC-Regular" size:14];
     forgetLabel.textColor = kDF_RGBA(143, 143, 143, 1.0);
     [self.view addSubview:forgetLabel];
     
@@ -135,7 +137,7 @@
     loginBtn = [[UIButton alloc] initWithFrame:CGRectMake(24,verLabel.frame.origin.y+verLabel.frame.size.height+70,sW-48,48)];
     [loginBtn addTarget:self action:@selector(loginBtn:) forControlEvents:UIControlEventTouchUpInside];
     [loginBtn setTitle:kJL_TXT("登录") forState:UIControlStateNormal];
-    [loginBtn.titleLabel setFont:[UIFont fontWithName:@"PingFangSC" size:15]];
+    [loginBtn.titleLabel setFont:[UIFont fontWithName:@"PingFangSC-Regular" size:15]];
     [loginBtn setTitleColor:kDF_RGBA(179, 179, 179, 1.0) forState:UIControlStateNormal];
     [loginBtn setBackgroundColor:kDF_RGBA(240, 241, 241, 1.0)];
     loginBtn.layer.cornerRadius = 24;
@@ -144,9 +146,11 @@
     registerBtn = [[UIButton alloc] initWithFrame:CGRectMake(24,loginBtn.frame.origin.y+loginBtn.frame.size.height+16,sW-48,48)];
     [registerBtn addTarget:self action:@selector(registerBtn:) forControlEvents:UIControlEventTouchUpInside];
     [registerBtn setTitle:kJL_TXT("没有账号?立即注册") forState:UIControlStateNormal];
-    [registerBtn.titleLabel setFont:[UIFont fontWithName:@"PingFangSC" size:15]];
+    [registerBtn.titleLabel setFont:[UIFont fontWithName:@"PingFangSC-Regular" size:15]];
     [registerBtn setTitleColor:kDF_RGBA(174, 174, 174, 1.0) forState:UIControlStateNormal];
-    [registerBtn setBackgroundColor:kDF_RGBA(230, 230, 230, 1.0)];
+    [registerBtn setBackgroundColor:[UIColor whiteColor]];
+    registerBtn.layer.borderWidth = 1.0;
+    registerBtn.layer.borderColor = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1.0].CGColor;
     registerBtn.layer.cornerRadius = 24;
     [self.view addSubview:registerBtn];
 }
@@ -167,9 +171,6 @@
         default:
             break;
     }
-    [loginBtn setBackgroundColor:kDF_RGBA(128, 91, 235, 1.0)];
-    [loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    
     return YES;
 }
 
@@ -182,7 +183,13 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
-    
+    if(passwordTF.text.length>0 && phoneTF.text.length>0){
+        [loginBtn setBackgroundColor:kDF_RGBA(128, 91, 235, 1.0)];
+        [loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    }else{
+        [loginBtn setTitleColor:kDF_RGBA(179, 179, 179, 1.0) forState:UIControlStateNormal];
+        [loginBtn setBackgroundColor:kDF_RGBA(240, 241, 241, 1.0)];
+    }
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;{
@@ -304,7 +311,7 @@
                     return;
                 }
 
-                [JL_Tools setUser:self->phoneTF.text forKey:@"ACCOUNT_NUM"];
+                [JL_Tools setUser:self->phoneTF.text forKey:kUI_ACCOUNT_NUM];
                 
                 [self dismissViewControllerAnimated:YES completion:nil];
                 if ([self->_delegate respondsToSelector:@selector(loginAction:)]) {
@@ -339,6 +346,7 @@
 -(void)forgetLogin{
     ForgetPwdVC *vc = [[ForgetPwdVC alloc] init];
     vc.modalPresentationStyle = UIModalPresentationFullScreen;
+    vc.type = 0;
     [self presentViewController:vc animated:YES completion:nil];
 }
 

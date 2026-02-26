@@ -137,6 +137,10 @@ typedef NS_ENUM(NSUInteger, BrokenLineType) {
 
 -(void)removeLine;
 
+-(void)showLineAtLastPoint;
+
+-(void)showLineAtFirstPoint;
+
 -(void)setCapTarget:(NSInteger)tag;
 
 -(void)setPointTarget:(NSInteger)tag;
