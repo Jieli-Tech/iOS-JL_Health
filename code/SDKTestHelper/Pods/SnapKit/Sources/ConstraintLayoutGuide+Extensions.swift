@@ -21,16 +21,13 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#if os(iOS) || os(tvOS)
+#if canImport(UIKit)
     import UIKit
 #endif
-    
-    
+
 @available(iOS 9.0, OSX 10.11, *)
 public extension ConstraintLayoutGuide {
-    
     var snp: ConstraintLayoutGuideDSL {
         return ConstraintLayoutGuideDSL(guide: self)
     }
-    
 }

@@ -105,3 +105,7 @@ CGFloat maxY = 0.0;
 }
 
 @end
+
+@implementation DFAudioFormat
+
+@end

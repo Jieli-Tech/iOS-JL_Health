@@ -1,6 +1,6 @@
 //
 //  Unifiable.swift
-//  R.swift
+//  Unifiable.swift
 //
 //  Created by Tom Lokhorst on 2016-04-30.
 //
@@ -11,20 +11,18 @@ public protocol Unifiable {
     func unify(_ other: Self) -> Self?
 }
 
-extension Array where Element : Unifiable {
-    public func unify(_ other: [Element]) -> [Element]? {
+public extension Array where Element: Unifiable {
+    func unify(_ other: [Element]) -> [Element]? {
         var result = self
 
         for (ix, right) in other.enumerated() {
             if let left = result[safe: ix] {
                 if let unified = left.unify(right) {
                     result[ix] = unified
-                }
-                else {
+                } else {
                     return nil
                 }
-            }
-            else {
+            } else {
                 result.append(right)
             }
         }
@@ -34,7 +32,7 @@ extension Array where Element : Unifiable {
 }
 
 private extension Array {
-    subscript (safe index: Int) -> Element? {
+    subscript(safe index: Int) -> Element? {
         indices ~= index ? self[index] : nil
     }
 }

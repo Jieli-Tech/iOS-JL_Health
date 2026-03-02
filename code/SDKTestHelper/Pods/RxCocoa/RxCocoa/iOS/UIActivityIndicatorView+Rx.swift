@@ -6,22 +6,22 @@
 //  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
-#if os(iOS) || os(tvOS)
+#if os(iOS) || os(tvOS) || os(visionOS)
 
-import UIKit
-import RxSwift
+    import RxSwift
+    import UIKit
 
-extension Reactive where Base: UIActivityIndicatorView {
-    /// Bindable sink for `startAnimating()`, `stopAnimating()` methods.
-    public var isAnimating: Binder<Bool> {
-        Binder(self.base) { activityIndicator, active in
-            if active {
-                activityIndicator.startAnimating()
-            } else {
-                activityIndicator.stopAnimating()
+    public extension Reactive where Base: UIActivityIndicatorView {
+        /// Bindable sink for `startAnimating()`, `stopAnimating()` methods.
+        var isAnimating: Binder<Bool> {
+            Binder(base) { activityIndicator, active in
+                if active {
+                    activityIndicator.startAnimating()
+                } else {
+                    activityIndicator.stopAnimating()
+                }
             }
         }
     }
-}
 
 #endif

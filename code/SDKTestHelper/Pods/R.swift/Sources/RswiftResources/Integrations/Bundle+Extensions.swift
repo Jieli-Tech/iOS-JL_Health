@@ -1,6 +1,6 @@
 //
 //  Bundle+Extensions.swift
-//  R.swift
+//  Bundle+Extensions.swift
 //
 //  Created by Tom Lokhorst on 2022-07-30.
 //
@@ -8,7 +8,6 @@
 import Foundation
 
 extension Bundle {
-
     /// Returns the string associated with the specified path + key in the receiver's information property list.
     public func infoDictionaryString(path: [String], key: String) -> String? {
         var dict = infoDictionary
@@ -20,7 +19,7 @@ extension Bundle {
     }
 
     /// Find first bundle and locale for which the table exists
-    internal func firstBundleAndLocale(tableName: String, preferredLanguages: [String]) -> (bundle: Foundation.Bundle, locale: Foundation.Locale)? {
+    func firstBundleAndLocale(tableName: String, preferredLanguages: [String]) -> (bundle: Foundation.Bundle, locale: Foundation.Locale)? {
         let hostingBundle = self
 
         // Filter preferredLanguages to localizations, use first locale
@@ -32,10 +31,10 @@ extension Bundle {
                 if #available(macOS 13, iOS 16, tvOS 16, watchOS 9, *) {
                     // Xcode 14 doesn't recognize `Locale.language`, Xcode 14.1 does know `Locale.language`
                     // Xcode 14.1 is first to ship with swift 5.7.1
-                    #if swift(>=5.7.1)
-                    language = locale.language.languageCode?.identifier
+                    #if swift(>=5.7.1) && !os(Linux)
+                        language = locale.language.languageCode?.identifier
                     #else
-                    language = locale.languageCode
+                        language = locale.languageCode
                     #endif
                 } else {
                     language = locale.languageCode

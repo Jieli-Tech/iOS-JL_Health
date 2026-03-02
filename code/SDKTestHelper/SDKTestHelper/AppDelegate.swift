@@ -5,41 +5,44 @@
 //  Created by EzioChan on 2024/2/2.
 //
 
-import UIKit
-@_exported import RxSwift
+@_exported import JLUsefulTools
 @_exported import RxCocoa
+@_exported import RxSwift
 @_exported import SnapKit
 @_exported import Toast_Swift
-@_exported import JLUsefulTools
+import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
+    static func getCurrentWindows() -> UIWindow? {
+        let windows = UIApplication.shared.windows
+        return windows.last
+    }
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-        let mainVc = MainViewController()
-        let navc = NavViewController(rootViewController: mainVc)
-        mainVc.navigationController?.setNavigationBarHidden(true, animated: true)
+
+        let tabBar = MainTabBarViewController()
         if #available(iOS 15.0, *) {
             UITableView.appearance().sectionHeaderTopPadding = 0
         }
-        self.window = UIWindow.init(frame: UIScreen.main.bounds)
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = navc
-        self.window?.makeKeyAndVisible()
-        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = tabBar
+        window?.makeKeyAndVisible()
+
         _R.initFold()
         
-        OCHelper.resizeImageSize()
         
         return true
     }
-
-
-
-
+    
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        SoundInfoManager.share.addListen()
+    }
+    
+    func applicationWillResignActive(_ application: UIApplication) {
+        
+    }
+    
 }
-

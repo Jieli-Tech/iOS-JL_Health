@@ -21,29 +21,26 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#if os(iOS) || os(tvOS)
+#if canImport(UIKit)
     import UIKit
 #else
     import AppKit
 #endif
 
-
 public class ConstraintMakerFinalizable {
-    
-    internal let description: ConstraintDescription
-    
-    internal init(_ description: ConstraintDescription) {
+    let description: ConstraintDescription
+
+    init(_ description: ConstraintDescription) {
         self.description = description
     }
-    
+
     @discardableResult
     public func labeled(_ label: String) -> ConstraintMakerFinalizable {
-        self.description.label = label
+        description.label = label
         return self
     }
-    
+
     public var constraint: Constraint {
-        return self.description.constraint!
+        return description.constraint!
     }
-    
 }

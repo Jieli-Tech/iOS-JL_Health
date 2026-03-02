@@ -6,8 +6,7 @@
 //  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
-#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
-
+#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS) || os(visionOS)
     import Darwin
     import Foundation
 
@@ -18,8 +17,7 @@
 
             if let newValue = value {
                 threadDictionary[key] = newValue
-            }
-            else {
+            } else {
                 threadDictionary[key] = nil
             }
         }
@@ -27,7 +25,7 @@
         static func getThreadLocalStorageValueForKey<T>(_ key: NSCopying) -> T? {
             let currentThread = Thread.current
             let threadDictionary = currentThread.threadDictionary
-            
+
             return threadDictionary[key] as? T
         }
     }

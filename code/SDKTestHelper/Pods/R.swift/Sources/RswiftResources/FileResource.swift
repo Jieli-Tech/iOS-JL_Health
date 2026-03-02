@@ -1,14 +1,13 @@
 //
 //  FileResource.swift
-//  R.swift
+//  FileResource.swift
 //
 //  Created by Mathijs Kadijk on 09-12-15.
 //
 
 import Foundation
 
-public struct FileResource {
-
+public struct FileResource: Sendable {
     public let name: String
     public let pathExtension: String
     public let bundle: Bundle

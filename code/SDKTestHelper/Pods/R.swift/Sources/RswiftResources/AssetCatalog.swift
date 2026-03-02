@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct AssetCatalog {
+public struct AssetCatalog: Sendable {
     public let filename: String
     public let root: Namespace
 
@@ -17,15 +17,14 @@ public struct AssetCatalog {
     }
 }
 
-extension AssetCatalog {
-    public struct Namespace {
+public extension AssetCatalog {
+    struct Namespace: Sendable {
         public var subnamespaces: [String: Namespace] = [:]
         public var colors: [ColorResource] = []
         public var images: [ImageResource] = []
         public var dataAssets: [DataResource] = []
 
-        public init() {
-        }
+        public init() {}
 
         public init(
             subnamespaces: [String: Namespace],
@@ -40,10 +39,10 @@ extension AssetCatalog {
         }
 
         public mutating func merge(_ other: Namespace) {
-            self.subnamespaces = self.subnamespaces.merging(other.subnamespaces) { $0.merging($1) }
-            self.colors += other.colors
-            self.images += other.images
-            self.dataAssets += other.dataAssets
+            subnamespaces = subnamespaces.merging(other.subnamespaces) { $0.merging($1) }
+            colors += other.colors
+            images += other.images
+            dataAssets += other.dataAssets
         }
 
         public func merging(_ other: Namespace) -> Namespace {

@@ -68,28 +68,56 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "545CDE14-FFB1-4F8D-9E9B-7DE5B55E78F4 - 140c168346296957"
+                  uuid = "545CDE14-FFB1-4F8D-9E9B-7DE5B55E78F4 - 59c69f07ae1cc0f6"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "__49-[JLSportDetailViewController startEndPressTimer]_block_invoke_2"
                   moduleName = "JieliJianKang.debug.dylib"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jieli/Desktop/JieLi_Health_SDK_iOS_V1.12.0_Release/code/JL_Health/JieliJianKang/%E8%BF%90%E5%8A%A8%E7%95%8C%E9%9D%A2/JLSportDetailViewController.m"
+                  urlString = "file:///Users/jieli/Desktop/Health_Demo/JieliJianKang/%E8%BF%90%E5%8A%A8%E7%95%8C%E9%9D%A2/JLSportDetailViewController.m"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "598"
                   endingLineNumber = "598">
                </Location>
                <Location
-                  uuid = "545CDE14-FFB1-4F8D-9E9B-7DE5B55E78F4 - 140c168346296ac5"
+                  uuid = "545CDE14-FFB1-4F8D-9E9B-7DE5B55E78F4 - 59c69f07ae1cc0a2"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "__49-[JLSportDetailViewController startEndPressTimer]_block_invoke_3"
                   moduleName = "JieliJianKang.debug.dylib"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jieli/Desktop/JieLi_Health_SDK_iOS_V1.12.0_Release/code/JL_Health/JieliJianKang/%E8%BF%90%E5%8A%A8%E7%95%8C%E9%9D%A2/JLSportDetailViewController.m"
+                  urlString = "file:///Users/jieli/Desktop/Health_Demo/JieliJianKang/%E8%BF%90%E5%8A%A8%E7%95%8C%E9%9D%A2/JLSportDetailViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "599"
+                  endingLineNumber = "599">
+               </Location>
+               <Location
+                  uuid = "545CDE14-FFB1-4F8D-9E9B-7DE5B55E78F4 - 3dd827f074971e46"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__49-[JLSportDetailViewController startEndPressTimer]_block_invoke_2"
+                  moduleName = "JieliJianKang.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/O/GitHub/iOS-JL_Health/code/JL_Health/JieliJianKang/%E8%BF%90%E5%8A%A8%E7%95%8C%E9%9D%A2/JLSportDetailViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "598"
+                  endingLineNumber = "598">
+               </Location>
+               <Location
+                  uuid = "545CDE14-FFB1-4F8D-9E9B-7DE5B55E78F4 - 3dd827f074971fd2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__49-[JLSportDetailViewController startEndPressTimer]_block_invoke_3"
+                  moduleName = "JieliJianKang.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/O/GitHub/iOS-JL_Health/code/JL_Health/JieliJianKang/%E8%BF%90%E5%8A%A8%E7%95%8C%E9%9D%A2/JLSportDetailViewController.m"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "599"

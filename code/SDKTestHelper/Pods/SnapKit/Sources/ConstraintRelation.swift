@@ -21,28 +21,25 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#if os(iOS) || os(tvOS)
+#if canImport(UIKit)
     import UIKit
 #else
     import AppKit
 #endif
 
-
-internal enum ConstraintRelation : Int {
+enum ConstraintRelation: Int {
     case equal = 1
     case lessThanOrEqual
     case greaterThanOrEqual
-    
-    internal var layoutRelation: LayoutRelation {
-        get {
-            switch(self) {
-            case .equal:
-                return .equal
-            case .lessThanOrEqual:
-                return .lessThanOrEqual
-            case .greaterThanOrEqual:
-                return .greaterThanOrEqual
-            }
+
+    var layoutRelation: LayoutRelation {
+        switch self {
+        case .equal:
+            return .equal
+        case .lessThanOrEqual:
+            return .lessThanOrEqual
+        case .greaterThanOrEqual:
+            return .greaterThanOrEqual
         }
     }
 }

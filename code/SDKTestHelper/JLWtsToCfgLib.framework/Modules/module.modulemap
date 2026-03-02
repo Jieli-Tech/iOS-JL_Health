@@ -1,6 +1,0 @@
-framework module JLWtsToCfgLib {
-  umbrella header "JLWtsToCfgLib.h"
-  export *
-
-  module * { export * }
-}

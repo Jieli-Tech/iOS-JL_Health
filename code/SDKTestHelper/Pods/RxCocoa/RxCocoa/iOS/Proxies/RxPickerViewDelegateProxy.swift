@@ -6,7 +6,7 @@
 //  Copyright © 2016 Krunoslav Zaher. All rights reserved.
 //
 
-#if os(iOS)
+#if os(iOS) || os(visionOS)
 
     import RxSwift
     import UIKit
@@ -15,12 +15,12 @@
         public typealias Delegate = UIPickerViewDelegate
     }
 
-    open class RxPickerViewDelegateProxy
-        : DelegateProxy<UIPickerView, UIPickerViewDelegate>
-        , DelegateProxyType {
-
+    open class RxPickerViewDelegateProxy:
+        DelegateProxy<UIPickerView, UIPickerViewDelegate>,
+        DelegateProxyType
+    {
         /// Typed parent object.
-        public weak private(set) var pickerView: UIPickerView?
+        public private(set) weak var pickerView: UIPickerView?
 
         /// - parameter pickerView: Parent object for delegate proxy.
         public init(pickerView: ParentObject) {
@@ -30,7 +30,7 @@
 
         // Register known implementations
         public static func registerKnownImplementations() {
-            self.register { RxPickerViewDelegateProxy(pickerView: $0) }
+            register { RxPickerViewDelegateProxy(pickerView: $0) }
         }
     }
 

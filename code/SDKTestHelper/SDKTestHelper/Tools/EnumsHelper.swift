@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension JL_CardType{
-    func beString()->String{
+extension JL_CardType {
+    func beString() -> String {
         switch self {
         case .FLASH:
             return "FLASH"
@@ -25,13 +25,16 @@ extension JL_CardType{
             return "FLASH2"
         case .FLASH3:
             return "FLASH3"
+        case .reservedArea:
+            return "reservedArea"
         @unknown default:
             return "未知"
         }
     }
 }
-extension JL_FileHandleType{
-    func beCardType()->JL_CardType{
+
+extension JL_FileHandleType {
+    func beCardType() -> JL_CardType {
         switch self {
         case .SD_0:
             return .SD_0
@@ -47,6 +50,8 @@ extension JL_FileHandleType{
             return .FLASH2
         case .FLASH3:
             return .FLASH3
+        case .reservedArea:
+            return .reservedArea
         @unknown default:
             return .FLASH
         }

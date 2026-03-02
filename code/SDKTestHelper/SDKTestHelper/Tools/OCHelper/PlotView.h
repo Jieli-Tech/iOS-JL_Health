@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <DFUnits/DFUnits.h>
+#import <AudioUnit/AudioUnit.h>
+#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
+
+@interface DFAudioFormat : NSObject
+@property(nonatomic,assign)Float64 mSampleRate;
+@property(nonatomic,assign)UInt32  mBitsPerChannel;
+@property(nonatomic,assign)UInt32  mChannelsPerFrame;
+@property(nonatomic,assign)AudioFormatID mFormatID;
+
+@end
 
 @interface PlotView : UIView
 

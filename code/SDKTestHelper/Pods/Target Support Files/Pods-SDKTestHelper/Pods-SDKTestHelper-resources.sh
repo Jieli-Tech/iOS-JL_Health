@@ -97,11 +97,25 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/FMDB/FMDB_Privacy.bundle"
   install_resource "${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/MJRefresh/MJRefresh.Privacy.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/RxCocoa/RxCocoa_Privacy.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/RxRelay/RxRelay_Privacy.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/RxSwift/RxSwift_Privacy.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/SnapKit/SnapKit_Privacy.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/Starscream/Starscream_Privacy.bundle"
   install_resource "${PODS_ROOT}/WMZDialog/WMZDialog/WMZDialog/WMZDialog.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/FMDB/FMDB_Privacy.bundle"
   install_resource "${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/MJRefresh/MJRefresh.Privacy.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/RxCocoa/RxCocoa_Privacy.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/RxRelay/RxRelay_Privacy.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/RxSwift/RxSwift_Privacy.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/SnapKit/SnapKit_Privacy.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/Starscream/Starscream_Privacy.bundle"
   install_resource "${PODS_ROOT}/WMZDialog/WMZDialog/WMZDialog/WMZDialog.bundle"
 fi
 

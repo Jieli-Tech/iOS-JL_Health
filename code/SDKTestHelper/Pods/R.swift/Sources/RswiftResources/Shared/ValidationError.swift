@@ -1,6 +1,6 @@
 //
-//  Validatable.swift
-//  R.swift
+//  ValidationError.swift
+//  ValidationError.swift
 //
 //  Created by Mathijs Kadijk on 17-12-15.
 //  From: https://github.com/mac-cain13/R.swift
@@ -9,7 +9,7 @@
 import Foundation
 
 /// Error thrown during validation
-public struct ValidationError: Error, CustomStringConvertible {
+public struct ValidationError: Error, CustomStringConvertible, Sendable {
     /// Human readable description
     public let description: String
 

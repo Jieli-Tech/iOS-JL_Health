@@ -6,24 +6,22 @@
 //  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
-#if os(iOS)
+#if os(iOS) || os(visionOS)
 
-import RxSwift
-import UIKit
+    import RxSwift
+    import UIKit
 
-extension Reactive where Base: UISlider {
-    
-    /// Reactive wrapper for `value` property.
-    public var value: ControlProperty<Float> {
-        return base.rx.controlPropertyWithDefaultEvents(
-            getter: { slider in
-                slider.value
-            }, setter: { slider, value in
-                slider.value = value
-            }
-        )
+    public extension Reactive where Base: UISlider {
+        /// Reactive wrapper for `value` property.
+        var value: ControlProperty<Float> {
+            return base.rx.controlPropertyWithDefaultEvents(
+                getter: { slider in
+                    slider.value
+                }, setter: { slider, value in
+                    slider.value = value
+                }
+            )
+        }
     }
-    
-}
 
 #endif

@@ -1,5 +1,5 @@
 //
-//  ECObserver.swift
+//  JLEcObserver.swift
 //  JLUsefulTools
 //
 //  Created by EzioChan on 2021/8/31.
@@ -22,7 +22,8 @@ public struct ObserverOptions: OptionSet {
     }
 }
 
-//MARK: Observer
+// MARK: Observer
+
 public class Observer<Value> {
     public typealias ActionType = (_ oldValue: Value, _ newValue: Value) -> Void
     let action: ActionType
@@ -33,8 +34,9 @@ public class Observer<Value> {
     fileprivate weak var observable: Observable<Value>?
 
     public init(queue: OperationQueue = OperationQueue.main,
-        options: ObserverOptions = [.Coalescing],
-        action: @escaping ActionType) {
+                options: ObserverOptions = [.Coalescing],
+                action: @escaping ActionType)
+    {
         self.action = action
         self.queue = queue
 
@@ -48,11 +50,11 @@ public class Observer<Value> {
     public func fire(_ oldValue: Value, newValue: Value) {
         fireCount += 1
         let count = fireCount
-        if options.contains(.Coalescing) && coalescedOldValue == nil {
+        if options.contains(.Coalescing), coalescedOldValue == nil {
             coalescedOldValue = oldValue
         }
 
-        let operation = BlockOperation(block: { () -> Void in
+        let operation = BlockOperation(block: { () in
             if self.options.contains(.Coalescing) {
                 guard count == self.fireCount else { return }
                 self.action(self.coalescedOldValue ?? oldValue, newValue)
@@ -61,10 +63,8 @@ public class Observer<Value> {
                 self.action(oldValue, newValue)
             }
         })
-        queue.addOperations([operation], waitUntilFinished: self.options.contains(.FireSynchronously))
+        queue.addOperations([operation], waitUntilFinished: options.contains(.FireSynchronously))
     }
-
-
 }
 
 extension Observer: AnyObserver {
@@ -80,9 +80,10 @@ public protocol ObservableType {
     func removeObserver(_ observer: Observer<ValueType>)
 }
 
-extension ObservableType {
-    @discardableResult public func onSet(_ options: ObserverOptions = [.Coalescing],
-        action: @escaping (ValueType, ValueType) -> Void) -> Observer<ValueType> {
+public extension ObservableType {
+    @discardableResult func onSet(_ options: ObserverOptions = [.Coalescing],
+                                  action: @escaping (ValueType, ValueType) -> Void) -> Observer<ValueType>
+    {
         let observer = Observer<ValueType>(options: options, action: action)
         addObserver(observer)
         return observer
@@ -99,6 +100,7 @@ public class Observable<Value> {
             }
         }
     }
+
     fileprivate let privateQueue = DispatchQueue(label: "Observable Global Queue", attributes: [])
     fileprivate var observers: [Observer<Value>] = []
     public init(_ value: Value) {

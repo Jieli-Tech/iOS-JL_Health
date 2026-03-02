@@ -16,8 +16,8 @@ public enum InfallibleEvent<Element> {
     case completed
 }
 
-extension Infallible {
-    public typealias InfallibleObserver = (InfallibleEvent<Element>) -> Void
+public extension Infallible {
+    typealias InfallibleObserver = (InfallibleEvent<Element>) -> Void
 
     /**
      Creates an observable sequence from a specified subscribe method implementation.
@@ -27,11 +27,11 @@ extension Infallible {
      - parameter subscribe: Implementation of the resulting observable sequence's `subscribe` method.
      - returns: The observable sequence with the specified implementation for the `subscribe` method.
      */
-    public static func create(subscribe: @escaping (@escaping InfallibleObserver) -> Disposable) -> Infallible<Element> {
+    static func create(subscribe: @escaping (@escaping InfallibleObserver) -> Disposable) -> Infallible<Element> {
         let source = Observable<Element>.create { observer in
             subscribe { event in
                 switch event {
-                case .next(let element):
+                case let .next(element):
                     observer.onNext(element)
                 case .completed:
                     observer.onCompleted()

@@ -6,67 +6,67 @@
 //  Copyright © 2017 Krunoslav Zaher. All rights reserved.
 //
 
-#if os(iOS)
+#if os(iOS) || os(visionOS)
 
-import UIKit
-import RxSwift
+    import RxSwift
+    import UIKit
 
-extension UIPickerView: HasDataSource {
-    public typealias DataSource = UIPickerViewDataSource
-}
-
-private let pickerViewDataSourceNotSet = PickerViewDataSourceNotSet()
-
-final private class PickerViewDataSourceNotSet: NSObject, UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        0
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        0
-    }
-}
-
-/// For more information take a look at `DelegateProxyType`.
-public class RxPickerViewDataSourceProxy
-    : DelegateProxy<UIPickerView, UIPickerViewDataSource>
-    , DelegateProxyType {
-
-    /// Typed parent object.
-    public weak private(set) var pickerView: UIPickerView?
-
-    /// - parameter pickerView: Parent object for delegate proxy.
-    public init(pickerView: ParentObject) {
-        self.pickerView = pickerView
-        super.init(parentObject: pickerView, delegateProxy: RxPickerViewDataSourceProxy.self)
+    extension UIPickerView: HasDataSource {
+        public typealias DataSource = UIPickerViewDataSource
     }
 
-    // Register known implementations
-    public static func registerKnownImplementations() {
-        self.register { RxPickerViewDataSourceProxy(pickerView: $0) }
-    }
+    private let pickerViewDataSourceNotSet = PickerViewDataSourceNotSet()
 
-    private weak var _requiredMethodsDataSource: UIPickerViewDataSource? = pickerViewDataSourceNotSet
+    private final class PickerViewDataSourceNotSet: NSObject, UIPickerViewDataSource {
+        func numberOfComponents(in _: UIPickerView) -> Int {
+            0
+        }
+
+        func pickerView(_: UIPickerView, numberOfRowsInComponent _: Int) -> Int {
+            0
+        }
+    }
 
     /// For more information take a look at `DelegateProxyType`.
-    public override func setForwardToDelegate(_ forwardToDelegate: UIPickerViewDataSource?, retainDelegate: Bool) {
-        _requiredMethodsDataSource = forwardToDelegate ?? pickerViewDataSourceNotSet
-        super.setForwardToDelegate(forwardToDelegate, retainDelegate: retainDelegate)
-    }
-}
+    public class RxPickerViewDataSourceProxy:
+        DelegateProxy<UIPickerView, UIPickerViewDataSource>,
+        DelegateProxyType
+    {
+        /// Typed parent object.
+        public private(set) weak var pickerView: UIPickerView?
 
-// MARK: UIPickerViewDataSource
+        /// - parameter pickerView: Parent object for delegate proxy.
+        public init(pickerView: ParentObject) {
+            self.pickerView = pickerView
+            super.init(parentObject: pickerView, delegateProxy: RxPickerViewDataSourceProxy.self)
+        }
 
-extension RxPickerViewDataSourceProxy: UIPickerViewDataSource {
-    /// Required delegate method implementation.
-    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        (_requiredMethodsDataSource ?? pickerViewDataSourceNotSet).numberOfComponents(in: pickerView)
+        // Register known implementations
+        public static func registerKnownImplementations() {
+            register { RxPickerViewDataSourceProxy(pickerView: $0) }
+        }
+
+        private weak var _requiredMethodsDataSource: UIPickerViewDataSource? = pickerViewDataSourceNotSet
+
+        /// For more information take a look at `DelegateProxyType`.
+        override public func setForwardToDelegate(_ forwardToDelegate: UIPickerViewDataSource?, retainDelegate: Bool) {
+            _requiredMethodsDataSource = forwardToDelegate ?? pickerViewDataSourceNotSet
+            super.setForwardToDelegate(forwardToDelegate, retainDelegate: retainDelegate)
+        }
     }
 
-    /// Required delegate method implementation.
-    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        (_requiredMethodsDataSource ?? pickerViewDataSourceNotSet).pickerView(pickerView, numberOfRowsInComponent: component)
+    // MARK: UIPickerViewDataSource
+
+    extension RxPickerViewDataSourceProxy: UIPickerViewDataSource {
+        /// Required delegate method implementation.
+        public func numberOfComponents(in pickerView: UIPickerView) -> Int {
+            (_requiredMethodsDataSource ?? pickerViewDataSourceNotSet).numberOfComponents(in: pickerView)
+        }
+
+        /// Required delegate method implementation.
+        public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+            (_requiredMethodsDataSource ?? pickerViewDataSourceNotSet).pickerView(pickerView, numberOfRowsInComponent: component)
+        }
     }
-}
 
 #endif

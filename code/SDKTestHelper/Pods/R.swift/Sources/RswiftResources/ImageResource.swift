@@ -1,13 +1,13 @@
 //
 //  ImageResource.swift
-//  R.swift
+//  ImageResource.swift
 //
 //  Created by Mathijs Kadijk on 09-12-15.
 //
 
 import Foundation
 
-public struct ImageResource {
+public struct ImageResource: Sendable {
     public let name: String
     public let path: [String]
     public let bundle: Bundle

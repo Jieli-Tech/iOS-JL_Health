@@ -21,54 +21,47 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#if os(iOS) || os(tvOS)
+#if canImport(UIKit)
     import UIKit
 #else
     import AppKit
 #endif
 
+public protocol ConstraintConstantTarget {}
 
-public protocol ConstraintConstantTarget {
-}
+extension CGPoint: ConstraintConstantTarget {}
 
-extension CGPoint: ConstraintConstantTarget {
-}
+extension CGSize: ConstraintConstantTarget {}
 
-extension CGSize: ConstraintConstantTarget {    
-}
+extension ConstraintInsets: ConstraintConstantTarget {}
 
-extension ConstraintInsets: ConstraintConstantTarget {
-}
-
-#if os(iOS) || os(tvOS)
-@available(iOS 11.0, tvOS 11.0, *)
-extension ConstraintDirectionalInsets: ConstraintConstantTarget {
-}
+#if canImport(UIKit)
+    @available(iOS 11.0, tvOS 11.0, *)
+    extension ConstraintDirectionalInsets: ConstraintConstantTarget {}
 #endif
 
 extension ConstraintConstantTarget {
-    
-    internal func constraintConstantTargetValueFor(layoutAttribute: LayoutAttribute) -> CGFloat {
+    func constraintConstantTargetValueFor(layoutAttribute: LayoutAttribute) -> CGFloat {
         if let value = self as? CGFloat {
             return value
         }
-        
+
         if let value = self as? Float {
             return CGFloat(value)
         }
-        
+
         if let value = self as? Double {
             return CGFloat(value)
         }
-        
+
         if let value = self as? Int {
             return CGFloat(value)
         }
-        
+
         if let value = self as? UInt {
             return CGFloat(value)
         }
-        
+
         if let value = self as? CGSize {
             if layoutAttribute == .width {
                 return value.width
@@ -78,9 +71,9 @@ extension ConstraintConstantTarget {
                 return 0.0
             }
         }
-        
+
         if let value = self as? CGPoint {
-            #if os(iOS) || os(tvOS)
+            #if canImport(UIKit)
                 switch layoutAttribute {
                 case .left, .right, .leading, .trailing, .centerX, .leftMargin, .rightMargin, .leadingMargin, .trailingMargin, .centerXWithinMargins:
                     return value.x
@@ -89,10 +82,10 @@ extension ConstraintConstantTarget {
                 case .width, .height, .notAnAttribute:
                     return 0.0
                 #if swift(>=5.0)
-                @unknown default:
-                    return 0.0
+                    @unknown default:
+                        return 0.0
                 #endif
-            }
+                }
             #else
                 switch layoutAttribute {
                 case .left, .right, .leading, .trailing, .centerX:
@@ -102,15 +95,15 @@ extension ConstraintConstantTarget {
                 case .width, .height, .notAnAttribute:
                     return 0.0
                 #if swift(>=5.0)
-                @unknown default:
-                    return 0.0
+                    @unknown default:
+                        return 0.0
                 #endif
-            }
+                }
             #endif
         }
-        
+
         if let value = self as? ConstraintInsets {
-            #if os(iOS) || os(tvOS)
+            #if canImport(UIKit)
                 switch layoutAttribute {
                 case .left, .leftMargin:
                     return value.left
@@ -135,10 +128,10 @@ extension ConstraintConstantTarget {
                 case .notAnAttribute:
                     return 0.0
                 #if swift(>=5.0)
-                @unknown default:
-                    return 0.0
+                    @unknown default:
+                        return 0.0
                 #endif
-            }
+                }
             #else
                 switch layoutAttribute {
                 case .left:
@@ -164,22 +157,22 @@ extension ConstraintConstantTarget {
                 case .notAnAttribute:
                     return 0.0
                 #if swift(>=5.0)
-                @unknown default:
-                    return 0.0
+                    @unknown default:
+                        return 0.0
                 #endif
-            }
+                }
             #endif
         }
-        
-        #if os(iOS) || os(tvOS)
+
+        #if canImport(UIKit)
             if #available(iOS 11.0, tvOS 11.0, *), let value = self as? ConstraintDirectionalInsets {
                 switch layoutAttribute {
                 case .left, .leftMargin:
-                  return (ConstraintConfig.interfaceLayoutDirection == .leftToRight) ? value.leading : value.trailing
+                    return (ConstraintConfig.interfaceLayoutDirection == .leftToRight) ? value.leading : value.trailing
                 case .top, .topMargin, .firstBaseline:
                     return value.top
                 case .right, .rightMargin:
-                  return (ConstraintConfig.interfaceLayoutDirection == .leftToRight) ? -value.trailing : -value.leading
+                    return (ConstraintConfig.interfaceLayoutDirection == .leftToRight) ? -value.trailing : -value.leading
                 case .bottom, .bottomMargin, .lastBaseline:
                     return -value.bottom
                 case .leading, .leadingMargin:
@@ -197,11 +190,11 @@ extension ConstraintConstantTarget {
                 case .notAnAttribute:
                     return 0.0
                 #if swift(>=5.0)
-                @unknown default:
-                    return 0.0
+                    @unknown default:
+                        return 0.0
                 #else
-                default:
-                    return 0.0
+                    default:
+                        return 0.0
                 #endif
                 }
             }
@@ -209,5 +202,4 @@ extension ConstraintConstantTarget {
 
         return 0.0
     }
-    
 }

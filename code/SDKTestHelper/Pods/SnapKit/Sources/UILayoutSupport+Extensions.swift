@@ -21,16 +21,13 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#if os(iOS) || os(tvOS)
+#if canImport(UIKit)
     import UIKit
 #endif
 
-    
 @available(iOS 8.0, *)
 public extension ConstraintLayoutSupport {
-    
     var snp: ConstraintLayoutSupportDSL {
         return ConstraintLayoutSupportDSL(support: self)
     }
-    
 }

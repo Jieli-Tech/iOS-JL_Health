@@ -21,34 +21,26 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#if os(iOS) || os(tvOS)
+#if canImport(UIKit)
     import UIKit
 #else
     import AppKit
 #endif
 
+public protocol ConstraintOffsetTarget: ConstraintConstantTarget {}
 
-public protocol ConstraintOffsetTarget: ConstraintConstantTarget {
-}
+extension Int: ConstraintOffsetTarget {}
 
-extension Int: ConstraintOffsetTarget {
-}
+extension UInt: ConstraintOffsetTarget {}
 
-extension UInt: ConstraintOffsetTarget {
-}
+extension Float: ConstraintOffsetTarget {}
 
-extension Float: ConstraintOffsetTarget {
-}
+extension Double: ConstraintOffsetTarget {}
 
-extension Double: ConstraintOffsetTarget {
-}
-
-extension CGFloat: ConstraintOffsetTarget {
-}
+extension CGFloat: ConstraintOffsetTarget {}
 
 extension ConstraintOffsetTarget {
-    
-    internal var constraintOffsetTargetValue: CGFloat {
+    var constraintOffsetTargetValue: CGFloat {
         let offset: CGFloat
         if let amount = self as? Float {
             offset = CGFloat(amount)
@@ -65,5 +57,4 @@ extension ConstraintOffsetTarget {
         }
         return offset
     }
-    
 }

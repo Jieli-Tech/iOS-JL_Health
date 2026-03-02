@@ -1,13 +1,13 @@
 //
-//  Locale.swift
-//  R.swift
+//  LocaleReference.swift
+//  LocaleReference.swift
 //
 //  Created by Tom Lokhorst on 2016-04-24.
 //
 
 import Foundation
 
-public enum LocaleReference: Hashable {
+public enum LocaleReference: Hashable, Sendable {
     case none
     case base // Older projects use a "Base" locale
     case language(String)
@@ -29,9 +29,9 @@ public enum LocaleReference: Hashable {
     }
 }
 
-extension LocaleReference {
-    public init(url: URL) {
-        if let localeComponent = url.pathComponents.dropLast().last , localeComponent.hasSuffix(".lproj") {
+public extension LocaleReference {
+    init(url: URL) {
+        if let localeComponent = url.pathComponents.dropLast().last, localeComponent.hasSuffix(".lproj") {
             let lang = localeComponent.replacingOccurrences(of: ".lproj", with: "")
 
             if lang == "Base" {
@@ -39,13 +39,12 @@ extension LocaleReference {
             } else {
                 self = .language(lang)
             }
-        }
-        else {
+        } else {
             self = .none
         }
     }
 
-    public var localeDescription: String? {
+    var localeDescription: String? {
         switch self {
         case .none:
             return nil
@@ -53,18 +52,18 @@ extension LocaleReference {
         case .base:
             return "Base"
 
-        case .language(let language):
+        case let .language(language):
             return language
         }
     }
 
-    public func debugDescription(filename: String) -> String {
+    func debugDescription(filename: String) -> String {
         switch self {
         case .none:
             return "'\(filename)'"
         case .base:
             return "'\(filename)' (Base)"
-        case .language(let language):
+        case let .language(language):
             return "'\(filename)' (\(language))"
         }
     }

@@ -1,6 +1,6 @@
 //
-//  StoryboardSegueIdentifierProtocol.swift
-//  R.swift
+//  StoryboardReference.swift
+//  StoryboardReference.swift
 //
 //  Created by Mathijs Kadijk on 06-12-15.
 //  From: https://github.com/mac-cain13/R.swift
@@ -17,16 +17,13 @@ public protocol StoryboardReference {
     var bundle: Bundle { get }
 }
 
-
 public protocol InitialControllerContainer {
     /// Type of the inital controller
     associatedtype InitialController
 }
 
-
 /// Storyboard view controller identifier
-public struct StoryboardViewControllerIdentifier<ViewController> {
-
+public struct StoryboardViewControllerIdentifier<ViewController>: Sendable {
     /// Storyboard identifier of this view controller
     public let identifier: String
 
@@ -37,11 +34,11 @@ public struct StoryboardViewControllerIdentifier<ViewController> {
     public let bundle: Bundle
 
     /**
-     Create a new StoryboardViewControllerIdentifier based on the identifier string
-     - parameter identifier: The string identifier for this view controller
-     - parameter storyboard: The name of the storyboard file
-     - parameter bundle: The bundle the storyboard is in
-    */
+      Create a new StoryboardViewControllerIdentifier based on the identifier string
+      - parameter identifier: The string identifier for this view controller
+      - parameter storyboard: The name of the storyboard file
+      - parameter bundle: The bundle the storyboard is in
+     */
     public init(identifier: String, storyboard: String, bundle: Bundle) {
         self.identifier = identifier
         self.storyboard = storyboard
@@ -61,8 +58,7 @@ public protocol ReuseIdentifierContainer<Reusable> {
 }
 
 /// Nib reference
-public struct NibReference<FirstView>: NibReferenceContainer {
-
+public struct NibReference<FirstView>: NibReferenceContainer, Sendable {
     /// String name of this nib
     public let name: String
 
@@ -70,10 +66,10 @@ public struct NibReference<FirstView>: NibReferenceContainer {
     public let bundle: Bundle
 
     /**
-     Create a new NibRefence based on the name string
-     - parameter name: The string name for this nib
-     - parameter bundle: The bundle the nib is in
-    */
+      Create a new NibRefence based on the name string
+      - parameter name: The string name for this nib
+      - parameter bundle: The bundle the nib is in
+     */
     public init(name: String, bundle: Bundle) {
         self.name = name
         self.bundle = bundle
@@ -81,24 +77,22 @@ public struct NibReference<FirstView>: NibReferenceContainer {
 }
 
 /// Reuse identifier
-public struct ReuseIdentifier<Reusable>: ReuseIdentifierContainer {
-
+public struct ReuseIdentifier<Reusable>: ReuseIdentifierContainer, Sendable {
     /// String identifier of this reusable
     public let identifier: String
 
     /**
-     Create a new ReuseIdentifier based on the string identifier
-     - parameter identifier: The string identifier for this reusable
-     - returns: A new ReuseIdentifier
-    */
+      Create a new ReuseIdentifier based on the string identifier
+      - parameter identifier: The string identifier for this reusable
+      - returns: A new ReuseIdentifier
+     */
     public init(identifier: String) {
         self.identifier = identifier
     }
 }
 
 /// Nib reference, reuse identifier
-public struct NibReferenceReuseIdentifier<FirstView, Reusable>: NibReferenceContainer, ReuseIdentifierContainer {
-
+public struct NibReferenceReuseIdentifier<FirstView, Reusable>: NibReferenceContainer, ReuseIdentifierContainer, Sendable {
     /// String name of this nib
     public let name: String
 
@@ -109,11 +103,11 @@ public struct NibReferenceReuseIdentifier<FirstView, Reusable>: NibReferenceCont
     public let identifier: String
 
     /**
-     Create a new NibRefence based on the name string
-     - parameter name: The string name for this nib
-     - parameter bundle: The bundle the nib is in
-     - parameter identifier: The string identifier for this reusable
-    */
+      Create a new NibRefence based on the name string
+      - parameter name: The string name for this nib
+      - parameter bundle: The bundle the nib is in
+      - parameter identifier: The string identifier for this reusable
+     */
     public init(name: String, bundle: Bundle, identifier: String) {
         self.name = name
         self.bundle = bundle
@@ -122,16 +116,15 @@ public struct NibReferenceReuseIdentifier<FirstView, Reusable>: NibReferenceCont
 }
 
 /// Segue identifier
-public struct SegueIdentifier<Segue, Source, Destination> {
-
+public struct SegueIdentifier<Segue, Source, Destination>: Sendable {
     /// Identifier string of this segue
     public let identifier: String
 
     /**
-     Create a new SegueIdentifier based on the identifier string
-     - parameter identifier: The string identifier for this segue
-     - returns: A new SegueIdentifier
-    */
+      Create a new SegueIdentifier based on the identifier string
+      - parameter identifier: The string identifier for this segue
+      - returns: A new SegueIdentifier
+     */
     public init(identifier: String) {
         self.identifier = identifier
     }
@@ -139,7 +132,6 @@ public struct SegueIdentifier<Segue, Source, Destination> {
 
 /// Typed segue information
 public struct TypedSegue<Segue, Source, Destination> {
-
     /// The original segue
     public let segue: Segue
 
@@ -153,13 +145,13 @@ public struct TypedSegue<Segue, Source, Destination> {
     public let identifier: String
 
     /**
-     Create a new TypedSegue based on the original segue
-     - parameter segue: The original segue
-     - parameter source: Segue source view controller
-     - parameter destination: Segue destination view controller
-     - parameter identifier: The string identifier for this segue
-     - returns: A new TypedSegue
-    */
+      Create a new TypedSegue based on the original segue
+      - parameter segue: The original segue
+      - parameter source: Segue source view controller
+      - parameter destination: Segue destination view controller
+      - parameter identifier: The string identifier for this segue
+      - returns: A new TypedSegue
+     */
     public init(segue: Segue, source: Source, destination: Destination, identifier: String) {
         self.segue = segue
         self.source = source
@@ -168,6 +160,7 @@ public struct TypedSegue<Segue, Source, Destination> {
     }
 }
 
+extension TypedSegue: Sendable where Segue: Sendable, Source: Sendable, Destination: Sendable {}
 
 @available(*, renamed: "ReuseIdentifierContainer")
 public protocol ReuseIdentifierType {}

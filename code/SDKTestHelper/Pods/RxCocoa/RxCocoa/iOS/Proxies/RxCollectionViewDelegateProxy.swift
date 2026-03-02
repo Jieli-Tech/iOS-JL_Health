@@ -6,27 +6,27 @@
 //  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
-#if os(iOS) || os(tvOS)
+#if os(iOS) || os(tvOS) || os(visionOS)
 
-import UIKit
-import RxSwift
+    import RxSwift
+    import UIKit
 
-/// For more information take a look at `DelegateProxyType`.
-open class RxCollectionViewDelegateProxy
-    : RxScrollViewDelegateProxy {
+    /// For more information take a look at `DelegateProxyType`.
+    open class RxCollectionViewDelegateProxy:
+        RxScrollViewDelegateProxy
+    {
+        /// Typed parent object.
+        public private(set) weak var collectionView: UICollectionView?
 
-    /// Typed parent object.
-    public weak private(set) var collectionView: UICollectionView?
-
-    /// Initializes `RxCollectionViewDelegateProxy`
-    ///
-    /// - parameter collectionView: Parent object for delegate proxy.
-    public init(collectionView: UICollectionView) {
-        self.collectionView = collectionView
-        super.init(scrollView: collectionView)
+        /// Initializes `RxCollectionViewDelegateProxy`
+        ///
+        /// - parameter collectionView: Parent object for delegate proxy.
+        public init(collectionView: UICollectionView) {
+            self.collectionView = collectionView
+            super.init(scrollView: collectionView)
+        }
     }
-}
 
-extension RxCollectionViewDelegateProxy: UICollectionViewDelegateFlowLayout {}
+    extension RxCollectionViewDelegateProxy: UICollectionViewDelegateFlowLayout {}
 
 #endif

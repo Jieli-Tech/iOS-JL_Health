@@ -10,7 +10,7 @@
     private let resourceCount = AtomicInt(0)
 
     /// Resource utilization information
-    public struct Resources {
+    public enum Resources {
         /// Counts internal Rx resource allocations (Observables, Observers, Disposables, etc.). This provides a simple way to detect leaks during development.
         public static var total: Int32 {
             load(resourceCount)
@@ -37,7 +37,7 @@ func rxAbstractMethod(file: StaticString = #file, line: UInt = #line) -> Swift.N
     rxFatalError("Abstract method", file: file, line: line)
 }
 
-func rxFatalError(_ lastMessage: @autoclosure () -> String, file: StaticString = #file, line: UInt = #line) -> Swift.Never  {
+func rxFatalError(_ lastMessage: @autoclosure () -> String, file: StaticString = #file, line: UInt = #line) -> Swift.Never {
     fatalError(lastMessage(), file: file, line: line)
 }
 
@@ -67,6 +67,7 @@ func decrementChecked(_ i: inout Int) throws -> Int {
 
 #if DEBUG
     import Foundation
+
     final class SynchronizationTracker {
         private let lock = RecursiveLock()
 
@@ -84,44 +85,44 @@ func decrementChecked(_ i: inout Int) throws -> Int {
                 print(message)
             #endif
         }
-        
+
         func register(synchronizationErrorMessage: SynchronizationErrorMessages) {
-            self.lock.lock(); defer { self.lock.unlock() }
+            lock.lock(); defer { self.lock.unlock() }
             let pointer = Unmanaged.passUnretained(Thread.current).toOpaque()
-            let count = (self.threads[pointer] ?? 0) + 1
+            let count = (threads[pointer] ?? 0) + 1
 
             if count > 1 {
-                self.synchronizationError(
+                synchronizationError(
                     "⚠️ Reentrancy anomaly was detected.\n" +
-                    "  > Debugging: To debug this issue you can set a breakpoint in \(#file):\(#line) and observe the call stack.\n" +
-                    "  > Problem: This behavior is breaking the observable sequence grammar. `next (error | completed)?`\n" +
-                    "    This behavior breaks the grammar because there is overlapping between sequence events.\n" +
-                    "    Observable sequence is trying to send an event before sending of previous event has finished.\n" +
-                    "  > Interpretation: This could mean that there is some kind of unexpected cyclic dependency in your code,\n" +
-                    "    or that the system is not behaving in the expected way.\n" +
-                    "  > Remedy: If this is the expected behavior this message can be suppressed by adding `.observe(on:MainScheduler.asyncInstance)`\n" +
-                    "    or by enqueuing sequence events in some other way.\n"
+                        "  > Debugging: To debug this issue you can set a breakpoint in \(#file):\(#line) and observe the call stack.\n" +
+                        "  > Problem: This behavior is breaking the observable sequence grammar. `next (error | completed)?`\n" +
+                        "    This behavior breaks the grammar because there is overlapping between sequence events.\n" +
+                        "    Observable sequence is trying to send an event before sending of previous event has finished.\n" +
+                        "  > Interpretation: This could mean that there is some kind of unexpected cyclic dependency in your code,\n" +
+                        "    or that the system is not behaving in the expected way.\n" +
+                        "  > Remedy: If this is the expected behavior this message can be suppressed by adding `.observe(on:MainScheduler.asyncInstance)`\n" +
+                        "    or by enqueuing sequence events in some other way.\n"
                 )
             }
-            
-            self.threads[pointer] = count
 
-            if self.threads.count > 1 {
-                self.synchronizationError(
+            threads[pointer] = count
+
+            if threads.count > 1 {
+                synchronizationError(
                     "⚠️ Synchronization anomaly was detected.\n" +
-                    "  > Debugging: To debug this issue you can set a breakpoint in \(#file):\(#line) and observe the call stack.\n" +
-                    "  > Problem: This behavior is breaking the observable sequence grammar. `next (error | completed)?`\n" +
-                    "    This behavior breaks the grammar because there is overlapping between sequence events.\n" +
-                    "    Observable sequence is trying to send an event before sending of previous event has finished.\n" +
-                    "  > Interpretation: " + synchronizationErrorMessage.rawValue +
-                    "  > Remedy: If this is the expected behavior this message can be suppressed by adding `.observe(on:MainScheduler.asyncInstance)`\n" +
-                    "    or by synchronizing sequence events in some other way.\n"
+                        "  > Debugging: To debug this issue you can set a breakpoint in \(#file):\(#line) and observe the call stack.\n" +
+                        "  > Problem: This behavior is breaking the observable sequence grammar. `next (error | completed)?`\n" +
+                        "    This behavior breaks the grammar because there is overlapping between sequence events.\n" +
+                        "    Observable sequence is trying to send an event before sending of previous event has finished.\n" +
+                        "  > Interpretation: " + synchronizationErrorMessage.rawValue +
+                        "  > Remedy: If this is the expected behavior this message can be suppressed by adding `.observe(on:MainScheduler.asyncInstance)`\n" +
+                        "    or by synchronizing sequence events in some other way.\n"
                 )
             }
         }
 
         func unregister() {
-            self.lock.performLocked { 
+            lock.performLocked {
                 let pointer = Unmanaged.passUnretained(Thread.current).toOpaque()
                 self.threads[pointer] = (self.threads[pointer] ?? 1) - 1
                 if self.threads[pointer] == 0 {
@@ -135,8 +136,6 @@ func decrementChecked(_ i: inout Int) throws -> Int {
 
 /// RxSwift global hooks
 public enum Hooks {
-    
     // Should capture call stack
     public static var recordCallStackOnError: Bool = false
-
 }

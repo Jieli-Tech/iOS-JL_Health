@@ -1,6 +1,6 @@
 //
-//  StringParam.swift
-//  R.swift
+//  StringParam+Extensions.swift
+//  StringParam+Extensions.swift
 //
 //  Created by Tom Lokhorst on 2016-04-18.
 //
@@ -16,7 +16,7 @@ import Foundation
 
 extension StringParam: Unifiable {
     public func unify(_ other: StringParam) -> StringParam? {
-        if let name = name, let otherName = other.name , name != otherName {
+        if let name = name, let otherName = other.name, name != otherName {
             return nil
         }
 
@@ -34,8 +34,7 @@ extension FormatPart: Unifiable {
         case let (.spec(l), .spec(r)):
             if let spec = l.unify(r) {
                 return .spec(spec)
-            }
-            else {
+            } else {
                 return nil
             }
 
@@ -66,8 +65,8 @@ extension FormatSpecifier: Unifiable {
     }
 }
 
-extension FormatSpecifier {
-    public var typeReference: TypeReference {
+public extension FormatSpecifier {
+    var typeReference: TypeReference {
         switch self {
         case .object:
             return TypeReference(module: .stdLib, rawName: "String")

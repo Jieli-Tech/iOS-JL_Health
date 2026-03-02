@@ -21,32 +21,31 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#if os(iOS) || os(tvOS)
+#if canImport(UIKit)
     import UIKit
 #else
     import AppKit
 #endif
 
-
 public class ConstraintDescription {
-    
-    internal let item: LayoutConstraintItem
-    internal var attributes: ConstraintAttributes
-    internal var relation: ConstraintRelation? = nil
-    internal var sourceLocation: (String, UInt)? = nil
-    internal var label: String? = nil
-    internal var related: ConstraintItem? = nil
-    internal var multiplier: ConstraintMultiplierTarget = 1.0
-    internal var constant: ConstraintConstantTarget = 0.0
-    internal var priority: ConstraintPriorityTarget = 1000.0
-    internal lazy var constraint: Constraint? = {
+    let item: LayoutConstraintItem
+    var attributes: ConstraintAttributes
+    var relation: ConstraintRelation?
+    var sourceLocation: (String, UInt)?
+    var label: String?
+    var related: ConstraintItem?
+    var multiplier: ConstraintMultiplierTarget = 1.0
+    var constant: ConstraintConstantTarget = 0.0
+    var priority: ConstraintPriorityTarget = 1000.0
+    lazy var constraint: Constraint? = {
         guard let relation = self.relation,
               let related = self.related,
-              let sourceLocation = self.sourceLocation else {
+              let sourceLocation = self.sourceLocation
+        else {
             return nil
         }
         let from = ConstraintItem(target: self.item, attributes: self.attributes)
-        
+
         return Constraint(
             from: from,
             to: related,
@@ -58,12 +57,11 @@ public class ConstraintDescription {
             priority: self.priority
         )
     }()
-    
+
     // MARK: Initialization
-    
-    internal init(item: LayoutConstraintItem, attributes: ConstraintAttributes) {
+
+    init(item: LayoutConstraintItem, attributes: ConstraintAttributes) {
         self.item = item
         self.attributes = attributes
     }
-    
 }

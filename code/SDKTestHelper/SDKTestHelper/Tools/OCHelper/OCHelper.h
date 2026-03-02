@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <JL_BLEKit/JL_BLEKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,7 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(void)handleBr23mp:(NSString *)bmpPath size:(CGSize) size binPath:(NSString *)binPath;
 
-+(void)resizeImageSize;
++(void)testApi:(JL_ManagerM *)manager;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -8,43 +8,43 @@
 
 #if os(iOS) || os(tvOS)
 
-import UIKit
-import RxSwift
+    import RxSwift
+    import UIKit
 
-extension UITabBar: HasDelegate {
-    public typealias Delegate = UITabBarDelegate
-}
-
-/// For more information take a look at `DelegateProxyType`.
-open class RxTabBarDelegateProxy
-    : DelegateProxy<UITabBar, UITabBarDelegate>
-    , DelegateProxyType {
-
-    /// Typed parent object.
-    public weak private(set) var tabBar: UITabBar?
-
-    /// - parameter tabBar: Parent object for delegate proxy.
-    public init(tabBar: ParentObject) {
-        self.tabBar = tabBar
-        super.init(parentObject: tabBar, delegateProxy: RxTabBarDelegateProxy.self)
-    }
-
-    // Register known implementations
-    public static func registerKnownImplementations() {
-        self.register { RxTabBarDelegateProxy(tabBar: $0) }
+    extension UITabBar: HasDelegate {
+        public typealias Delegate = UITabBarDelegate
     }
 
     /// For more information take a look at `DelegateProxyType`.
-    open class func currentDelegate(for object: ParentObject) -> UITabBarDelegate? {
-        object.delegate
+    open class RxTabBarDelegateProxy:
+        DelegateProxy<UITabBar, UITabBarDelegate>,
+        DelegateProxyType
+    {
+        /// Typed parent object.
+        public private(set) weak var tabBar: UITabBar?
+
+        /// - parameter tabBar: Parent object for delegate proxy.
+        public init(tabBar: ParentObject) {
+            self.tabBar = tabBar
+            super.init(parentObject: tabBar, delegateProxy: RxTabBarDelegateProxy.self)
+        }
+
+        // Register known implementations
+        public static func registerKnownImplementations() {
+            register { RxTabBarDelegateProxy(tabBar: $0) }
+        }
+
+        /// For more information take a look at `DelegateProxyType`.
+        open class func currentDelegate(for object: ParentObject) -> UITabBarDelegate? {
+            object.delegate
+        }
+
+        /// For more information take a look at `DelegateProxyType`.
+        open class func setCurrentDelegate(_ delegate: UITabBarDelegate?, to object: ParentObject) {
+            object.delegate = delegate
+        }
     }
 
-    /// For more information take a look at `DelegateProxyType`.
-    open class func setCurrentDelegate(_ delegate: UITabBarDelegate?, to object: ParentObject) {
-        object.delegate = delegate
-    }
-}
-
-extension RxTabBarDelegateProxy: UITabBarDelegate {}
+    extension RxTabBarDelegateProxy: UITabBarDelegate {}
 
 #endif

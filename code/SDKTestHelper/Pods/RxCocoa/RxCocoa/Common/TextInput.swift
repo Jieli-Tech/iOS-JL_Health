@@ -8,7 +8,7 @@
 
 import RxSwift
 
-#if os(iOS) || os(tvOS)
+#if os(iOS) || os(tvOS) || os(visionOS)
     import UIKit
 
     /// Represents text input with reactive extensions.
@@ -29,17 +29,17 @@ import RxSwift
         }
     }
 
-    extension Reactive where Base: UITextField {
+    public extension Reactive where Base: UITextField {
         /// Reactive text input.
-        public var textInput: TextInput<Base> {
-            return TextInput(base: base, text: self.text)
+        var textInput: TextInput<Base> {
+            return TextInput(base: base, text: text)
         }
     }
 
-    extension Reactive where Base: UITextView {
+    public extension Reactive where Base: UITextView {
         /// Reactive text input.
-        public var textInput: TextInput<Base> {
-            return TextInput(base: base, text: self.text)
+        var textInput: TextInput<Base> {
+            return TextInput(base: base, text: text)
         }
     }
 
@@ -66,13 +66,11 @@ import RxSwift
         }
     }
 
-    extension Reactive where Base: NSTextField, Base: NSTextInputClient {
+    public extension Reactive where Base: NSTextField, Base: NSTextInputClient {
         /// Reactive text input.
-        public var textInput: TextInput<Base> {
-            return TextInput(base: self.base, text: self.text)
+        var textInput: TextInput<Base> {
+            return TextInput(base: base, text: text)
         }
     }
 
 #endif
-
-

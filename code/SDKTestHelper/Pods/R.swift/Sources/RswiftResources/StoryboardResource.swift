@@ -1,13 +1,13 @@
 //
 //  StoryboardResource.swift
-//  R.swift
+//  StoryboardResource.swift
 //
 //  Created by Mathijs Kadijk on 09-12-15.
 //
 
 import Foundation
 
-public struct StoryboardResource: Equatable {
+public struct StoryboardResource: Equatable, Sendable {
     public let name: String
     public var locale: LocaleReference
     public let deploymentTarget: DeploymentTarget?
@@ -49,7 +49,7 @@ public struct StoryboardResource: Equatable {
         self.isAppKit = isAppKit
     }
 
-    public struct ViewController: Equatable {
+    public struct ViewController: Equatable, Sendable {
         public let id: String
         public let storyboardIdentifier: String?
         public let type: TypeReference
@@ -63,7 +63,7 @@ public struct StoryboardResource: Equatable {
         }
     }
 
-    public struct ViewControllerPlaceholder: Equatable {
+    public struct ViewControllerPlaceholder: Equatable, Sendable {
         public let id: String
         public let storyboardName: String?
         public let referencedIdentifier: String?
@@ -77,7 +77,7 @@ public struct StoryboardResource: Equatable {
         }
     }
 
-    public struct Segue: Equatable {
+    public struct Segue: Equatable, Sendable {
         public let identifier: String
         public let type: TypeReference
         public let destination: String
@@ -102,8 +102,8 @@ public struct StoryboardResource: Equatable {
     }
 }
 
-extension StoryboardResource {
-    public struct UnifyResult {
+public extension StoryboardResource {
+    struct UnifyResult {
         public let storyboard: StoryboardResource
         public let viewControllerResults: [String: StoryboardResource.ViewController.UnifyResult]
         public let differentInitialViewController: Bool
@@ -125,7 +125,7 @@ extension StoryboardResource {
         }
     }
 
-    public func unify(localizations: [StoryboardResource]) -> UnifyResult {
+    func unify(localizations: [StoryboardResource]) -> UnifyResult {
         var result = UnifyResult(
             storyboard: self,
             viewControllerResults: [:],
@@ -142,11 +142,11 @@ extension StoryboardResource {
         return result
     }
 
-    public func unify(_ other: StoryboardResource) -> UnifyResult {
-        let lhsVcs = self.viewControllersById
+    func unify(_ other: StoryboardResource) -> UnifyResult {
+        let lhsVcs = viewControllersById
         let rhsVcs = other.viewControllersById
 
-        let unifiedViewControllers = lhsVcs.compactMap { (id, lhs) -> StoryboardResource.ViewController.UnifyResult? in
+        let unifiedViewControllers = lhsVcs.compactMap { id, lhs -> StoryboardResource.ViewController.UnifyResult? in
             guard let rhs = rhsVcs[id] else { return nil }
             return lhs.unify(rhs)
         }
@@ -160,18 +160,18 @@ extension StoryboardResource {
         result.viewControllers = vcs
 
         // Merged used images/colors from both localizations, they all need to be validated
-        result.usedImageIdentifiers = Array(Set(self.usedImageIdentifiers).union(other.usedImageIdentifiers))
-        result.usedColorResources = Array(Set(self.usedColorResources).union(other.usedColorResources))
+        result.usedImageIdentifiers = Array(Set(usedImageIdentifiers).union(other.usedImageIdentifiers))
+        result.usedColorResources = Array(Set(usedColorResources).union(other.usedColorResources))
 
         // Only keep reusables that exist in both localizations
-        result.reusables = self.reusables.filter { other.reusables.contains($0) }
+        result.reusables = reusables.filter { other.reusables.contains($0) }
 
         // Keep other fields from self only, if they are different, that is recorded in UnifyResult
 
         // Remove locale, this is a merger of both
         result.locale = .none
 
-        let allVcs = self.viewControllers + other.viewControllers
+        let allVcs = viewControllers + other.viewControllers
         let usedIds = Set(vcs.map(\.id))
         let skipped = allVcs.compactMap { vc -> String? in
             usedIds.contains(vc.id) ? nil : vc.storyboardIdentifier
@@ -188,8 +188,8 @@ extension StoryboardResource {
     }
 }
 
-extension StoryboardResource.ViewController {
-    public struct UnifyResult {
+public extension StoryboardResource.ViewController {
+    struct UnifyResult {
         public let viewcontroller: StoryboardResource.ViewController
         public let differentStoryboardIdentifiers: Bool
         public let differentTypes: Bool
@@ -205,7 +205,7 @@ extension StoryboardResource.ViewController {
         }
     }
 
-    public func unify(_ other: Self) -> UnifyResult {
+    func unify(_ other: Self) -> UnifyResult {
         let rhsSegues = Dictionary(grouping: other.segues, by: \.identifier)
 
         var result = self
@@ -215,7 +215,7 @@ extension StoryboardResource.ViewController {
         }
 
         let usedIDs = Set(result.segues.map(\.identifier))
-        let different = (self.segues + other.segues).filter { s in
+        let different = (segues + other.segues).filter { s in
             !usedIDs.contains(s.identifier)
         }
 

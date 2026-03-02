@@ -2,33 +2,42 @@ PODS:
   - Colours (5.13.0):
     - Colours/ObjC (= 5.13.0)
   - Colours/ObjC (5.13.0)
+  - FMDB (2.7.12):
+    - FMDB/standard (= 2.7.12)
+  - FMDB/Core (2.7.12)
+  - FMDB/standard (2.7.12):
+    - FMDB/Core
   - JLUsefulTools (0.0.2)
-  - MJRefresh (3.7.6)
-  - R.swift (7.3.2)
-  - RxCocoa (6.6.0):
-    - RxRelay (= 6.6.0)
-    - RxSwift (= 6.6.0)
-  - RxRelay (6.6.0):
-    - RxSwift (= 6.6.0)
-  - RxSwift (6.6.0)
-  - SnapKit (5.6.0)
+  - MJRefresh (3.7.9)
+  - R.swift (7.8.0)
+  - RxCocoa (6.9.0):
+    - RxRelay (= 6.9.0)
+    - RxSwift (= 6.9.0)
+  - RxRelay (6.9.0):
+    - RxSwift (= 6.9.0)
+  - RxSwift (6.9.0)
+  - SnapKit (5.7.1)
+  - Starscream (4.0.8)
   - Toast-Swift (5.0.1)
   - WMZDialog (1.5.0)
 
 DEPENDENCIES:
   - Colours
+  - FMDB
   - JLUsefulTools (= 0.0.2)
   - MJRefresh
   - R.swift
   - RxCocoa
   - RxSwift
   - SnapKit
+  - Starscream
   - Toast-Swift (= 5.0.1)
   - WMZDialog
 
 SPEC REPOS:
   trunk:
     - Colours
+    - FMDB
     - JLUsefulTools
     - MJRefresh
     - R.swift
@@ -36,21 +45,24 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SnapKit
+    - Starscream
     - Toast-Swift
     - WMZDialog
 
 SPEC CHECKSUMS:
   Colours: f24220c38f13deac88612667e9b4a7fb96b871d4
+  FMDB: 728731dd336af3936ce00f91d9d8495f5718a0e6
   JLUsefulTools: 96799191205f390bd83176c76ad132aa6ad35fe3
-  MJRefresh: 2fe7fb43a5167ceda20bb7e63f130c04fd1814a5
-  R.swift: 0af0d882f49f03711415cb4e5215daa977d8a480
-  RxCocoa: 44a80de90e25b739b5aeaae3c8c371a32e3343cc
-  RxRelay: 45eaa5db8ee4fb50e5ebd57deec0159e97fa51e6
-  RxSwift: a4b44f7d24599f674deebd1818eab82e58410632
-  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  MJRefresh: ff9e531227924c84ce459338414550a05d2aea78
+  R.swift: f573269ca45b2ab066c082e363dd4c2b297b0d71
+  RxCocoa: ac16414696ae706516be3e1ab00fcce5bdc9be8a
+  RxRelay: 6b0c930e5cef57d5fe2032571e5e65b78e3cbdb1
+  RxSwift: 31649ace6aceeb422e16ff71c60804f9c3281ed9
+  SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
+  Starscream: 19b5533ddb925208db698f0ac508a100b884a1b9
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
   WMZDialog: 724777637ca12b1d8078644b9f10aa264dec3a96
 
-PODFILE CHECKSUM: e1cda808a1665028c6e8f1a726a4fdce25454740
+PODFILE CHECKSUM: 4b36973f012f9710c4d4b70035074321cecf94d6
 
-COCOAPODS: 1.13.0
+COCOAPODS: 1.16.2

@@ -21,17 +21,16 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#if os(iOS) || os(tvOS)
+#if canImport(UIKit)
     import UIKit
+
     public typealias ConstraintInterfaceLayoutDirection = UIUserInterfaceLayoutDirection
 #else
     import AppKit
+
     public typealias ConstraintInterfaceLayoutDirection = NSUserInterfaceLayoutDirection
 #endif
 
-
-public struct ConstraintConfig {
-    
+public enum ConstraintConfig {
     public static var interfaceLayoutDirection: ConstraintInterfaceLayoutDirection = .leftToRight
-    
 }

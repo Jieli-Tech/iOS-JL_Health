@@ -6,22 +6,22 @@
 //  Copyright © 2017 Krunoslav Zaher. All rights reserved.
 //
 
-#if os(iOS) || os(tvOS)
+#if os(iOS) || os(tvOS) || os(visionOS)
 
-    import UIKit
     import RxSwift
+    import UIKit
 
     extension UINavigationController: HasDelegate {
         public typealias Delegate = UINavigationControllerDelegate
     }
 
     /// For more information take a look at `DelegateProxyType`.
-    open class RxNavigationControllerDelegateProxy
-        : DelegateProxy<UINavigationController, UINavigationControllerDelegate>
-        , DelegateProxyType {
-
+    open class RxNavigationControllerDelegateProxy:
+        DelegateProxy<UINavigationController, UINavigationControllerDelegate>,
+        DelegateProxyType
+    {
         /// Typed parent object.
-        public weak private(set) var navigationController: UINavigationController?
+        public private(set) weak var navigationController: UINavigationController?
 
         /// - parameter navigationController: Parent object for delegate proxy.
         public init(navigationController: ParentObject) {
@@ -31,7 +31,7 @@
 
         // Register known implementations
         public static func registerKnownImplementations() {
-            self.register { RxNavigationControllerDelegateProxy(navigationController: $0) }
+            register { RxNavigationControllerDelegateProxy(navigationController: $0) }
         }
     }
 

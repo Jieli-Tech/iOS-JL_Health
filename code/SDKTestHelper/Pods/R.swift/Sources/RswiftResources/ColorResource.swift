@@ -1,13 +1,13 @@
 //
 //  ColorResource.swift
-//  
+//
 //
 //  Created by Tom Lokhorst on 2022-07-23.
 //
 
 import Foundation
 
-public struct ColorResource {
+public struct ColorResource: Sendable {
     public let name: String
     public let path: [String]
     public let bundle: Bundle

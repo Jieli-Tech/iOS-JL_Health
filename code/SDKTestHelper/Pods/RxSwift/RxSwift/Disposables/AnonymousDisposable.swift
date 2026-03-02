@@ -9,7 +9,7 @@
 /// Represents an Action-based disposable.
 ///
 /// When dispose method is called, disposal action will be dereferenced.
-private final class AnonymousDisposable : DisposeBase, Cancelable {
+private final class AnonymousDisposable: DisposeBase, Cancelable {
     public typealias DisposeAction = () -> Void
 
     private let disposed = AtomicInt(0)
@@ -17,7 +17,7 @@ private final class AnonymousDisposable : DisposeBase, Cancelable {
 
     /// - returns: Was resource disposed.
     public var isDisposed: Bool {
-        isFlagSet(self.disposed, 1)
+        isFlagSet(disposed, 1)
     }
 
     /// Constructs a new disposable with the given action used for disposal.
@@ -38,22 +38,20 @@ private final class AnonymousDisposable : DisposeBase, Cancelable {
     ///
     /// After invoking disposal action, disposal action will be dereferenced.
     fileprivate func dispose() {
-        if fetchOr(self.disposed, 1) == 0 {
-            if let action = self.disposeAction {
-                self.disposeAction = nil
+        if fetchOr(disposed, 1) == 0 {
+            if let action = disposeAction {
+                disposeAction = nil
                 action()
             }
         }
     }
 }
 
-extension Disposables {
-
+public extension Disposables {
     /// Constructs a new disposable with the given action used for disposal.
     ///
     /// - parameter dispose: Disposal action which will be run upon calling `dispose`.
-    public static func create(with dispose: @escaping () -> Void) -> Cancelable {
+    static func create(with dispose: @escaping () -> Void) -> Cancelable {
         AnonymousDisposable(disposeAction: dispose)
     }
-
 }

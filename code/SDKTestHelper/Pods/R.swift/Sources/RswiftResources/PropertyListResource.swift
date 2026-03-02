@@ -1,6 +1,6 @@
 //
 //  PropertyListResource.swift
-//  R.swift
+//  PropertyListResource.swift
 //
 //  Created by Tom Lokhorst on 2018-07-08.
 //

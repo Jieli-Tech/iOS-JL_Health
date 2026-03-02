@@ -21,52 +21,38 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#if os(iOS) || os(tvOS)
+#if canImport(UIKit)
     import UIKit
 #else
     import AppKit
 #endif
 
+public protocol ConstraintRelatableTarget {}
 
-public protocol ConstraintRelatableTarget {
-}
+extension Int: ConstraintRelatableTarget {}
 
-extension Int: ConstraintRelatableTarget {
-}
+extension UInt: ConstraintRelatableTarget {}
 
-extension UInt: ConstraintRelatableTarget {
-}
+extension Float: ConstraintRelatableTarget {}
 
-extension Float: ConstraintRelatableTarget {
-}
+extension Double: ConstraintRelatableTarget {}
 
-extension Double: ConstraintRelatableTarget {
-}
+extension CGFloat: ConstraintRelatableTarget {}
 
-extension CGFloat: ConstraintRelatableTarget {
-}
+extension CGSize: ConstraintRelatableTarget {}
 
-extension CGSize: ConstraintRelatableTarget {
-}
+extension CGPoint: ConstraintRelatableTarget {}
 
-extension CGPoint: ConstraintRelatableTarget {
-}
+extension ConstraintInsets: ConstraintRelatableTarget {}
 
-extension ConstraintInsets: ConstraintRelatableTarget {
-}
-
-#if os(iOS) || os(tvOS)
-@available(iOS 11.0, tvOS 11.0, *)
-extension ConstraintDirectionalInsets: ConstraintRelatableTarget {
-}
+#if canImport(UIKit)
+    @available(iOS 11.0, tvOS 11.0, *)
+    extension ConstraintDirectionalInsets: ConstraintRelatableTarget {}
 #endif
 
-extension ConstraintItem: ConstraintRelatableTarget {
-}
+extension ConstraintItem: ConstraintRelatableTarget {}
 
-extension ConstraintView: ConstraintRelatableTarget {
-}
+extension ConstraintView: ConstraintRelatableTarget {}
 
 @available(iOS 9.0, OSX 10.11, *)
-extension ConstraintLayoutGuide: ConstraintRelatableTarget {
-}
+extension ConstraintLayoutGuide: ConstraintRelatableTarget {}

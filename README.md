@@ -38,21 +38,21 @@
       ├── 杰理健康SDK开发说明.url             --- 在线文档：开发说明
       ├── 自定义蓝牙接入方式.url               --- 在线文档：接入方式介绍
  ├── libs
-      ├── JL_AdvParse.framework           --- 广播包解析
-      ├── JL_BLEKit.framework             --- 主业务库（基础协议相关）
-      ├── JL_HashPair.framework           --- 设备认证
-      ├── JL_OTALib.framework             --- OTA升级业务库
-      ├── JLAudioUnitKit.framework        --- 音频编解码业务库
-      ├── JLBmpConvertKit.framework       --- 图片转码业务库
-      ├── JLDialUnit.framework            --- 表盘相关
-      ├── JLLogHelper.framework           --- 日志助手
-      ├── SpeexKit.framework              --- 音频编解码业务库
+      ├── JL_AdvParse.xcframework           --- 广播包解析
+      ├── JL_BLEKit.xcframework             --- 主业务库（基础协议相关）
+      ├── JL_HashPair.xcframework           --- 设备认证
+      ├── JL_OTALib.xcframework             --- OTA升级业务库
+      ├── JLAudioUnitKit.xcframework        --- 音频编解码业务库
+      ├── JLBmpConvertKit.xcframework       --- 图片转码业务库
+      ├── JLDialUnit.xcframework            --- 表盘相关
+      ├── JLLogHelper.xcframework           --- 日志助手
 ```
 
 ## 版本说明
 
 | 版本   | 日期       | 修改记录                                                     |
 | ------ | ---------- | ------------------------------------------------------------ |
+| V1.13.0(Beta) | 2026/03/02 | 1、新增功能<br/>(1) 更替 SDK 版本为 V1.13.0（Beta） |
 | V1.12.0 | 2024/11/22 | 1、新增功能<br/>(1）增加兼容 AC707N 的自定义表盘图像转换；<br/>(2）分离图像转换工具作为独立模块库。|
 | V1.11.0| 2024/03/15 | 1、新增功能<br/>(1)增加 4G 模块 OTA 功能<br/>(2)增加表盘拓展参数和补充 AI 表盘流程；|
 | V1.10.0| 2024/01/05 | 1、新增功能<br/>（1）增加 AI 表盘功能<br/>（2）Nand Flash 存储器信息拓展支持|

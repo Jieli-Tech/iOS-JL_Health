@@ -6,35 +6,35 @@
 //  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
-#if os(iOS) || os(tvOS)
+#if os(iOS) || os(tvOS) || os(visionOS)
 
-import UIKit
-import RxSwift
+    import RxSwift
+    import UIKit
 
-extension UISearchBar: HasDelegate {
-    public typealias Delegate = UISearchBarDelegate
-}
-
-/// For more information take a look at `DelegateProxyType`.
-open class RxSearchBarDelegateProxy
-    : DelegateProxy<UISearchBar, UISearchBarDelegate>
-    , DelegateProxyType {
-
-    /// Typed parent object.
-    public weak private(set) var searchBar: UISearchBar?
-
-    /// - parameter searchBar: Parent object for delegate proxy.
-    public init(searchBar: ParentObject) {
-        self.searchBar = searchBar
-        super.init(parentObject: searchBar, delegateProxy: RxSearchBarDelegateProxy.self)
+    extension UISearchBar: HasDelegate {
+        public typealias Delegate = UISearchBarDelegate
     }
 
-    // Register known implementations
-    public static func registerKnownImplementations() {
-        self.register { RxSearchBarDelegateProxy(searchBar: $0) }
-    }
-}
+    /// For more information take a look at `DelegateProxyType`.
+    open class RxSearchBarDelegateProxy:
+        DelegateProxy<UISearchBar, UISearchBarDelegate>,
+        DelegateProxyType
+    {
+        /// Typed parent object.
+        public private(set) weak var searchBar: UISearchBar?
 
-extension RxSearchBarDelegateProxy: UISearchBarDelegate {}
+        /// - parameter searchBar: Parent object for delegate proxy.
+        public init(searchBar: ParentObject) {
+            self.searchBar = searchBar
+            super.init(parentObject: searchBar, delegateProxy: RxSearchBarDelegateProxy.self)
+        }
+
+        // Register known implementations
+        public static func registerKnownImplementations() {
+            register { RxSearchBarDelegateProxy(searchBar: $0) }
+        }
+    }
+
+    extension RxSearchBarDelegateProxy: UISearchBarDelegate {}
 
 #endif

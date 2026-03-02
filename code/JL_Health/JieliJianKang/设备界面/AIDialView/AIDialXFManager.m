@@ -278,8 +278,6 @@
     JLModel_Device *model = [mgr outputDeviceModel];
     UIImage *radiusImage = [AIDialXFManager machRadius:basicImage withBg:true];
     NSData *imageData = [JLBmpConvert resizeImage:radiusImage andResizeTo:CGSizeMake(size.width, size.height)];
-    UIImage *image = [UIImage imageWithData:imageData];
-    
     JLBmpConvertType type = JLBmpConvertType701N_ARBG;
     if (model.sdkType == JL_SDKType701xWATCH) {
         type = JLBmpConvertType701N_ARBG;
@@ -288,15 +286,10 @@
     }else if (model.sdkType == JL_SDKType707nWATCH){
         type = JLBmpConvertType707N_ARGB;
     }
-    [JLBmpConvert covert:type Image:image completion:^(NSData * _Nullable outFileData, NSError * _Nullable error) {
-        if (error) {
-            kJLLog(JLLOG_DEBUG, @"图片转换失败");
-            return ;
-        }
-        if (outFileData) {
-            result(outFileData);
-        }
-    }];
+    JLBmpConvertOption *option = [[JLBmpConvertOption alloc] init];
+    option.convertType = type;
+    JLImageConvertResult *convertResult = [JLBmpConvert convert:option ImageData:imageData];
+    result(convertResult.outFileData);
 }
 
 
@@ -321,14 +314,16 @@
         }
         
         if (flag == 0) {
-            CGSize scaleZoomSize = self->_dialManager.scaleZoomSize;
+            CGSize scaleZoomSize = CGSizeMake(self->_dialManager.scaleZoomSize.width,
+                                              self->_dialManager.scaleZoomSize.height);
+            
             [self makeDialwithSize:scaleZoomSize Result:^(NSData * _Nullable data) {
                 if (data) {
-                    [JL_Tools mainTask:^{
-                        self->aiStyleTransferringView.hidden = NO;
-                    }];
                     kJLLog(JLLOG_DEBUG, @"-->添加AI 表盘缩略图的大小:%lld",(long long)data.length);
                     [DialManager addFile:@"/AITHUMB" Content:data Result:^(DialOperateType type, float progress) {
+                        [JL_Tools mainTask:^{
+                            self->aiStyleTransferringView.hidden = NO;
+                        }];
                         if (type == DialOperateTypeSuccess){
                             [self.dialManager aiDialSendThumbAiImageTo:mgr withPath:@"/AITHUMB" Result:^(JL_CMDStatus status, uint8_t sn, NSData * _Nullable data) {
                             }];

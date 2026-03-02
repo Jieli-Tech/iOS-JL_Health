@@ -1,5 +1,5 @@
 //
-//  Tools.swift
+//  JLEcTools.swift
 //  JLBluetoothBasic
 //
 //  Created by EzioChan on 2021/8/26.
@@ -8,15 +8,14 @@
 
 import Foundation
 
-
-@objc public class JLTimeOut:NSObject {
-    public typealias timeoutBlock = (_ to:JLTimeOut)->()
-    private var timer:Timer?
+@objc public class JLTimeOut: NSObject {
+    public typealias timeoutBlock = (_ to: JLTimeOut) -> Void
+    private var timer: Timer?
     private var number = 0
     private var maxNumber = 0
-    private var timeBlock:timeoutBlock?
-    
-    public func start(_ time:Int,_ clouse:@escaping ()->(),_ timeOut:@escaping timeoutBlock) {
+    private var timeBlock: timeoutBlock?
+
+    public func start(_ time: Int, _ clouse: @escaping () -> Void, _ timeOut: @escaping timeoutBlock) {
         maxNumber = time
         number = 0
         timeBlock = timeOut
@@ -24,11 +23,13 @@ import Foundation
         timer?.fire()
         clouse()
     }
-    @objc public func resetTime(){
+
+    @objc public func resetTime() {
         number = 0
     }
-    @objc public func timerAction(){
-        number+=1
+
+    @objc public func timerAction() {
+        number += 1
         if number >= maxNumber {
             if let p = timeBlock {
                 p(self)
@@ -36,13 +37,9 @@ import Foundation
             timer?.invalidate()
         }
     }
-    
-    @objc public func cancel(){
+
+    @objc public func cancel() {
         timer?.invalidate()
         number = 0
     }
-    
 }
-
-
-

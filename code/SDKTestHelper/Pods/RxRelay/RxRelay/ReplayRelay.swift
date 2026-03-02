@@ -14,9 +14,9 @@ import RxSwift
 public final class ReplayRelay<Element>: ObservableType {
     private let subject: ReplaySubject<Element>
 
-    // Accepts `event` and emits it to subscribers
+    /// Accepts `event` and emits it to subscribers
     public func accept(_ event: Element) {
-        self.subject.onNext(event)
+        subject.onNext(event)
     }
 
     private init(subject: ReplaySubject<Element>) {
@@ -40,14 +40,14 @@ public final class ReplayRelay<Element>: ObservableType {
 
     /// Subscribes observer
     public func subscribe<Observer: ObserverType>(_ observer: Observer) -> Disposable where Observer.Element == Element {
-        self.subject.subscribe(observer)
+        subject.subscribe(observer)
     }
 
     /// - returns: Canonical interface for push style sequence
     public func asObservable() -> Observable<Element> {
-        self.subject.asObserver()
+        subject.asObserver()
     }
-    
+
     /// Convert to an `Infallible`
     ///
     /// - returns: `Infallible<Element>`

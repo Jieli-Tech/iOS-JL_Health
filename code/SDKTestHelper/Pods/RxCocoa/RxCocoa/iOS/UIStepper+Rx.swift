@@ -6,24 +6,22 @@
 //  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
-#if os(iOS)
+#if os(iOS) || os(visionOS)
 
-import UIKit
-import RxSwift
+    import RxSwift
+    import UIKit
 
-extension Reactive where Base: UIStepper {
-    
-    /// Reactive wrapper for `value` property.
-    public var value: ControlProperty<Double> {
-        return base.rx.controlPropertyWithDefaultEvents(
-            getter: { stepper in
-                stepper.value
-            }, setter: { stepper, value in
-                stepper.value = value
-            }
-        )
+    public extension Reactive where Base: UIStepper {
+        /// Reactive wrapper for `value` property.
+        var value: ControlProperty<Double> {
+            return base.rx.controlPropertyWithDefaultEvents(
+                getter: { stepper in
+                    stepper.value
+                }, setter: { stepper, value in
+                    stepper.value = value
+                }
+            )
+        }
     }
-}
 
 #endif
-

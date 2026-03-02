@@ -21,55 +21,42 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#if os(iOS) || os(tvOS)
+#if canImport(UIKit)
     import UIKit
 #else
     import AppKit
 #endif
 
-
 public protocol ConstraintMultiplierTarget {
-    
     var constraintMultiplierTargetValue: CGFloat { get }
-    
 }
 
 extension Int: ConstraintMultiplierTarget {
-    
     public var constraintMultiplierTargetValue: CGFloat {
         return CGFloat(self)
     }
-    
 }
 
 extension UInt: ConstraintMultiplierTarget {
-    
     public var constraintMultiplierTargetValue: CGFloat {
         return CGFloat(self)
     }
-    
 }
 
 extension Float: ConstraintMultiplierTarget {
-    
     public var constraintMultiplierTargetValue: CGFloat {
         return CGFloat(self)
     }
-    
 }
 
 extension Double: ConstraintMultiplierTarget {
-    
     public var constraintMultiplierTargetValue: CGFloat {
         return CGFloat(self)
     }
-    
 }
 
 extension CGFloat: ConstraintMultiplierTarget {
-    
     public var constraintMultiplierTargetValue: CGFloat {
         return self
     }
-    
 }

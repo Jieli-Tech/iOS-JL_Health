@@ -61,6 +61,20 @@
 		1D668731264A59340054880F /* NSDate+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D668729264A59340054880F /* NSDate+Tools.m */; };
 		1D668733264A59340054880F /* NSString+Path.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D66872E264A59340054880F /* NSString+Path.m */; };
 		1D668737264A59BB0054880F /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D668736264A59960054880F /* libsqlite3.tbd */; };
+		1D67AE642F55648800700569 /* JL_AdvParse.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D67AE562F55647C00700569 /* JL_AdvParse.xcframework */; };
+		1D67AE652F55648800700569 /* JL_AdvParse.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D67AE562F55647C00700569 /* JL_AdvParse.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1D67AE662F55648800700569 /* JL_BLEKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D67AE572F55647C00700569 /* JL_BLEKit.xcframework */; };
+		1D67AE672F55648800700569 /* JL_BLEKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D67AE572F55647C00700569 /* JL_BLEKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1D67AE682F55648800700569 /* JL_HashPair.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D67AE582F55647C00700569 /* JL_HashPair.xcframework */; };
+		1D67AE692F55648800700569 /* JL_HashPair.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D67AE582F55647C00700569 /* JL_HashPair.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1D67AE6A2F55648800700569 /* JL_OTALib.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D67AE592F55647C00700569 /* JL_OTALib.xcframework */; };
+		1D67AE6B2F55648800700569 /* JL_OTALib.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D67AE592F55647C00700569 /* JL_OTALib.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1D67AE6C2F55648800700569 /* JLBmpConvertKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D67AE5A2F55647C00700569 /* JLBmpConvertKit.xcframework */; };
+		1D67AE6D2F55648800700569 /* JLBmpConvertKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D67AE5A2F55647C00700569 /* JLBmpConvertKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1D67AE6E2F55648800700569 /* JLDialUnit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D67AE5B2F55647C00700569 /* JLDialUnit.xcframework */; };
+		1D67AE6F2F55648800700569 /* JLDialUnit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D67AE5B2F55647C00700569 /* JLDialUnit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1D67AE702F55648800700569 /* JLLogHelper.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D67AE5C2F55647C00700569 /* JLLogHelper.xcframework */; };
+		1D67AE712F55648800700569 /* JLLogHelper.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D67AE5C2F55647C00700569 /* JLLogHelper.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1D6CC8312C58B90A00FAE447 /* JLWearSyncHealthBloodOxyganChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CC8232C58B90700FAE447 /* JLWearSyncHealthBloodOxyganChart.m */; };
 		1D6CC8332C58B90A00FAE447 /* JLWearSyncHealthStepChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CC8252C58B90700FAE447 /* JLWearSyncHealthStepChart.m */; };
 		1D6CC8342C58B90A00FAE447 /* JLWearSyncHealthSleepChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CC8262C58B90800FAE447 /* JLWearSyncHealthSleepChart.m */; };
@@ -69,14 +83,6 @@
 		1D6CC8372C58B90A00FAE447 /* JLWearSyncHealthHeartRateChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CC82C2C58B90900FAE447 /* JLWearSyncHealthHeartRateChart.m */; };
 		1D6CC83B2C58BBC400FAE447 /* JLSportRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CC83A2C58BBC300FAE447 /* JLSportRecordModel.m */; };
 		1D8046312ABD347C00FBA6AC /* DottedLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8046302ABD347C00FBA6AC /* DottedLineView.m */; };
-		1D8171482CFE92E6002543FE /* JLLogHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8171472CFE92E6002543FE /* JLLogHelper.framework */; };
-		1D81714A2CFE92E6002543FE /* JL_BLEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8171422CFE92E6002543FE /* JL_BLEKit.framework */; };
-		1D81714B2CFE92E6002543FE /* JL_AdvParse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8171412CFE92E6002543FE /* JL_AdvParse.framework */; };
-		1D81714C2CFE92E6002543FE /* JL_HashPair.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8171432CFE92E6002543FE /* JL_HashPair.framework */; };
-		1D81714D2CFE92E6002543FE /* JL_OTALib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8171442CFE92E6002543FE /* JL_OTALib.framework */; };
-		1D81714E2CFE92E6002543FE /* JLDialUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8171462CFE92E6002543FE /* JLDialUnit.framework */; };
-		1D81714F2CFE9309002543FE /* JLBmpConvertKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8171452CFE92E6002543FE /* JLBmpConvertKit.framework */; };
-		1D8171502CFE9309002543FE /* JLBmpConvertKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8171452CFE92E6002543FE /* JLBmpConvertKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1D831C1426AEDAA300EA5C42 /* DeviceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D831C1226AEDAA200EA5C42 /* DeviceDetailViewController.m */; };
 		1D831C1526AEDAA300EA5C42 /* DeviceDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D831C1326AEDAA200EA5C42 /* DeviceDetailViewController.xib */; };
 		1D86A772260D693B005D5391 /* HeartBeatDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D86A771260D693B005D5391 /* HeartBeatDetailVC.m */; };
@@ -656,15 +662,21 @@
 			dstSubfolderSpec = 10;
 			files = (
 				1D4F96B22CC744A000D6F068 /* NSObjectSafe.framework in Embed Frameworks */,
+				1D67AE6B2F55648800700569 /* JL_OTALib.xcframework in Embed Frameworks */,
+				1D67AE672F55648800700569 /* JL_BLEKit.xcframework in Embed Frameworks */,
 				48B933842A8092B3009CB52C /* DFUnits.framework in Embed Frameworks */,
 				C2B395C52A8221E9001EEB9D /* AIKIT.framework in Embed Frameworks */,
 				48B9337F2A809252009CB52C /* SpeexKit.framework in Embed Frameworks */,
+				1D67AE712F55648800700569 /* JLLogHelper.xcframework in Embed Frameworks */,
 				4ACB254825F85C6F00C66654 /* ZipZap.framework in Embed Frameworks */,
 				1DB3675325FF09F800A03491 /* TYCoreText.framework in Embed Frameworks */,
+				1D67AE6F2F55648800700569 /* JLDialUnit.xcframework in Embed Frameworks */,
 				1DC585F929B1D2FD0045AB01 /* JTCalendar.framework in Embed Frameworks */,
-				1D8171502CFE9309002543FE /* JLBmpConvertKit.framework in Embed Frameworks */,
+				1D67AE652F55648800700569 /* JL_AdvParse.xcframework in Embed Frameworks */,
 				1DB367A425FF476800A03491 /* CoreDraw.framework in Embed Frameworks */,
 				1DDDA27D2B59488C00104609 /* JLBugly.framework in Embed Frameworks */,
+				1D67AE6D2F55648800700569 /* JLBmpConvertKit.xcframework in Embed Frameworks */,
+				1D67AE692F55648800700569 /* JL_HashPair.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -748,6 +760,13 @@
 		1D66872D264A59340054880F /* JLSqliteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLSqliteManager.h; sourceTree = "<group>"; };
 		1D66872E264A59340054880F /* NSString+Path.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Path.m"; sourceTree = "<group>"; };
 		1D668736264A59960054880F /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		1D67AE562F55647C00700569 /* JL_AdvParse.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = JL_AdvParse.xcframework; path = Frameworks/JL_AdvParse.xcframework; sourceTree = "<group>"; };
+		1D67AE572F55647C00700569 /* JL_BLEKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = JL_BLEKit.xcframework; path = Frameworks/JL_BLEKit.xcframework; sourceTree = "<group>"; };
+		1D67AE582F55647C00700569 /* JL_HashPair.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = JL_HashPair.xcframework; path = Frameworks/JL_HashPair.xcframework; sourceTree = "<group>"; };
+		1D67AE592F55647C00700569 /* JL_OTALib.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = JL_OTALib.xcframework; path = Frameworks/JL_OTALib.xcframework; sourceTree = "<group>"; };
+		1D67AE5A2F55647C00700569 /* JLBmpConvertKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = JLBmpConvertKit.xcframework; path = Frameworks/JLBmpConvertKit.xcframework; sourceTree = "<group>"; };
+		1D67AE5B2F55647C00700569 /* JLDialUnit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = JLDialUnit.xcframework; path = Frameworks/JLDialUnit.xcframework; sourceTree = "<group>"; };
+		1D67AE5C2F55647C00700569 /* JLLogHelper.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = JLLogHelper.xcframework; path = Frameworks/JLLogHelper.xcframework; sourceTree = "<group>"; };
 		1D6CC8232C58B90700FAE447 /* JLWearSyncHealthBloodOxyganChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLWearSyncHealthBloodOxyganChart.m; sourceTree = "<group>"; };
 		1D6CC8252C58B90700FAE447 /* JLWearSyncHealthStepChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLWearSyncHealthStepChart.m; sourceTree = "<group>"; };
 		1D6CC8262C58B90800FAE447 /* JLWearSyncHealthSleepChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLWearSyncHealthSleepChart.m; sourceTree = "<group>"; };
@@ -765,13 +784,6 @@
 		1D70A7C92832716300164E93 /* JLBugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JLBugly.framework; sourceTree = "<group>"; };
 		1D80462F2ABD347C00FBA6AC /* DottedLineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DottedLineView.h; sourceTree = "<group>"; };
 		1D8046302ABD347C00FBA6AC /* DottedLineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DottedLineView.m; sourceTree = "<group>"; };
-		1D8171412CFE92E6002543FE /* JL_AdvParse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_AdvParse.framework; sourceTree = "<group>"; };
-		1D8171422CFE92E6002543FE /* JL_BLEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_BLEKit.framework; sourceTree = "<group>"; };
-		1D8171432CFE92E6002543FE /* JL_HashPair.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_HashPair.framework; sourceTree = "<group>"; };
-		1D8171442CFE92E6002543FE /* JL_OTALib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_OTALib.framework; sourceTree = "<group>"; };
-		1D8171452CFE92E6002543FE /* JLBmpConvertKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JLBmpConvertKit.framework; sourceTree = "<group>"; };
-		1D8171462CFE92E6002543FE /* JLDialUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JLDialUnit.framework; sourceTree = "<group>"; };
-		1D8171472CFE92E6002543FE /* JLLogHelper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JLLogHelper.framework; sourceTree = "<group>"; };
 		1D831C1126AEDAA200EA5C42 /* DeviceDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceDetailViewController.h; sourceTree = "<group>"; };
 		1D831C1226AEDAA200EA5C42 /* DeviceDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceDetailViewController.m; sourceTree = "<group>"; };
 		1D831C1326AEDAA200EA5C42 /* DeviceDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceDetailViewController.xib; sourceTree = "<group>"; };
@@ -1752,15 +1764,16 @@
 				4A2B125D25DE3F110089AFBA /* libc++.tbd in Frameworks */,
 				BE844645261EAFDB00A5D474 /* libz.tbd in Frameworks */,
 				BE844647261EAFE700A5D474 /* Security.framework in Frameworks */,
-				1D81714F2CFE9309002543FE /* JLBmpConvertKit.framework in Frameworks */,
 				BE844649261EAFF000A5D474 /* SystemConfiguration.framework in Frameworks */,
 				48B9337E2A80922E009CB52C /* SpeexKit.framework in Frameworks */,
+				1D67AE642F55648800700569 /* JL_AdvParse.xcframework in Frameworks */,
 				1DC585F829B1D2FD0045AB01 /* JTCalendar.framework in Frameworks */,
 				BE844643261EAFB500A5D474 /* GLKit.framework in Frameworks */,
 				1DAADEFD2AD92D3900CDD509 /* Security.framework in Frameworks */,
 				1DD40E2F29136C02004C1555 /* ExternalAccessory.framework in Frameworks */,
 				C2B5E8D22A81CA0E001DDB24 /* Foundation.framework in Frameworks */,
 				BE844641261EAFAA00A5D474 /* CoreTelephony.framework in Frameworks */,
+				1D67AE662F55648800700569 /* JL_BLEKit.xcframework in Frameworks */,
 				1DDDA27C2B59488B00104609 /* JLBugly.framework in Frameworks */,
 				C2B5E8D52A81CA3D001DDB24 /* UIKit.framework in Frameworks */,
 				1D5B0C00282CFBE800C590FD /* WebKit.framework in Frameworks */,
@@ -1768,6 +1781,7 @@
 				C2B5E8CD2A81C8AD001DDB24 /* iflyMSC.framework in Frameworks */,
 				C2B5E8D02A81C9D8001DDB24 /* AVFoundation.framework in Frameworks */,
 				1DB367A325FF476800A03491 /* CoreDraw.framework in Frameworks */,
+				1D67AE6C2F55648800700569 /* JLBmpConvertKit.xcframework in Frameworks */,
 				C2B5E8D92A81CA69001DDB24 /* AddressBook.framework in Frameworks */,
 				C2B395C42A8221E9001EEB9D /* AIKIT.framework in Frameworks */,
 				BE84463F261EAFA200A5D474 /* CoreLocation.framework in Frameworks */,
@@ -1777,17 +1791,15 @@
 				C2B5E8DB2A81CA70001DDB24 /* QuartzCore.framework in Frameworks */,
 				48ECE6FE28B485990097289D /* StoreKit.framework in Frameworks */,
 				C2B5E8DD2A81CA7E001DDB24 /* CoreGraphics.framework in Frameworks */,
+				1D67AE702F55648800700569 /* JLLogHelper.xcframework in Frameworks */,
 				1D4F96B12CC744A000D6F068 /* NSObjectSafe.framework in Frameworks */,
 				BEECBA5526A67235008EBE94 /* AudioToolbox.framework in Frameworks */,
+				1D67AE682F55648800700569 /* JL_HashPair.xcframework in Frameworks */,
+				1D67AE6E2F55648800700569 /* JLDialUnit.xcframework in Frameworks */,
+				1D67AE6A2F55648800700569 /* JL_OTALib.xcframework in Frameworks */,
 				C2B5E8D32A81CA1E001DDB24 /* CoreTelephony.framework in Frameworks */,
 				1DB3675225FF09F800A03491 /* TYCoreText.framework in Frameworks */,
 				1DD40E2B2913683B004C1555 /* AMapFoundationKit.framework in Frameworks */,
-				1D8171482CFE92E6002543FE /* JLLogHelper.framework in Frameworks */,
-				1D81714A2CFE92E6002543FE /* JL_BLEKit.framework in Frameworks */,
-				1D81714B2CFE92E6002543FE /* JL_AdvParse.framework in Frameworks */,
-				1D81714C2CFE92E6002543FE /* JL_HashPair.framework in Frameworks */,
-				1D81714D2CFE92E6002543FE /* JL_OTALib.framework in Frameworks */,
-				1D81714E2CFE92E6002543FE /* JLDialUnit.framework in Frameworks */,
 				1DD40E2829136837004C1555 /* MAMapKit.framework in Frameworks */,
 				1D29AD4A2CB907A700726E0C /* Bugly.framework in Frameworks */,
 				1DD40E2929136838004C1555 /* AMapSearchKit.framework in Frameworks */,
@@ -3210,13 +3222,13 @@
 		4A2B125B25DE3F100089AFBA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1D8171412CFE92E6002543FE /* JL_AdvParse.framework */,
-				1D8171422CFE92E6002543FE /* JL_BLEKit.framework */,
-				1D8171432CFE92E6002543FE /* JL_HashPair.framework */,
-				1D8171442CFE92E6002543FE /* JL_OTALib.framework */,
-				1D8171452CFE92E6002543FE /* JLBmpConvertKit.framework */,
-				1D8171462CFE92E6002543FE /* JLDialUnit.framework */,
-				1D8171472CFE92E6002543FE /* JLLogHelper.framework */,
+				1D67AE562F55647C00700569 /* JL_AdvParse.xcframework */,
+				1D67AE572F55647C00700569 /* JL_BLEKit.xcframework */,
+				1D67AE582F55647C00700569 /* JL_HashPair.xcframework */,
+				1D67AE592F55647C00700569 /* JL_OTALib.xcframework */,
+				1D67AE5A2F55647C00700569 /* JLBmpConvertKit.xcframework */,
+				1D67AE5B2F55647C00700569 /* JLDialUnit.xcframework */,
+				1D67AE5C2F55647C00700569 /* JLLogHelper.xcframework */,
 				1D4F96AF2CC7443500D6F068 /* NSObjectSafe.framework */,
 				1D29AD492CB907A700726E0C /* Bugly.framework */,
 				C2B395C32A8221E8001EEB9D /* AIKIT.framework */,
@@ -4882,9 +4894,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-JieliJianKang/Pods-JieliJianKang-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-JieliJianKang/Pods-JieliJianKang-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

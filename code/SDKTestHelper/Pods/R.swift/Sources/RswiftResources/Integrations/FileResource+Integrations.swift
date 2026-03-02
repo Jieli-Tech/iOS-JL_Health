@@ -1,19 +1,19 @@
 //
-//  Bundle+FileResource.swift
-//  R.swift
+//  FileResource+Integrations.swift
+//  FileResource+Integrations.swift
 //
 //  Created by Mathijs Kadijk on 10-01-16.
 //
 
 import Foundation
 
-extension FileResource {
+public extension FileResource {
     /**
      Returns the file URL for the given resource (`R.file.*`).
 
      - returns: The file URL for the resource file (`R.file.*`) or nil if the file could not be located.
      */
-    public func url() -> URL? {
+    func url() -> URL? {
         bundle.url(forResource: name, withExtension: pathExtension)
     }
 
@@ -23,12 +23,12 @@ extension FileResource {
      - returns: The file URL for the resource file (`R.file.*`) or nil if the file could not be located.
      */
     @available(*, renamed: "url()")
-    public func callAsFunction() -> URL? {
+    func callAsFunction() -> URL? {
         url()
     }
 }
 
-extension Bundle {
+public extension Bundle {
     /**
      Returns the file URL for the given resource (`R.file.*`).
 
@@ -36,7 +36,7 @@ extension Bundle {
 
      - returns: The file URL for the resource file (`R.file.*`) or nil if the file could not be located.
      */
-    public func url(forResource resource: FileResource) -> URL? {
+    func url(forResource resource: FileResource) -> URL? {
         url(forResource: resource.name, withExtension: resource.pathExtension)
     }
 
@@ -47,7 +47,7 @@ extension Bundle {
 
      - returns: The full pathname for the resource file (`R.file.*`) or nil if the file could not be located.
      */
-    public func path(forResource resource: FileResource) -> String? {
+    func path(forResource resource: FileResource) -> String? {
         path(forResource: resource.name, ofType: resource.pathExtension)
     }
 }

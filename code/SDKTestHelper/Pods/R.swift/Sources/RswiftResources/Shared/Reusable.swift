@@ -1,13 +1,13 @@
 //
-//  ReusableContainer.swift
-//  R.swift
+//  Reusable.swift
+//  Reusable.swift
 //
 //  Created by Mathijs Kadijk on 10-12-15.
 //
 
 import Foundation
 
-public struct Reusable: Hashable {
+public struct Reusable: Hashable, Sendable {
     public let identifier: String
     public let type: TypeReference
 

@@ -1,13 +1,13 @@
 //
 //  DataResource.swift
-//  
+//
 //
 //  Created by Tom Lokhorst on 2022-07-23.
 //
 
 import Foundation
 
-public struct DataResource {
+public struct DataResource: Sendable {
     public let name: String
     public let path: [String]
     public let bundle: Bundle

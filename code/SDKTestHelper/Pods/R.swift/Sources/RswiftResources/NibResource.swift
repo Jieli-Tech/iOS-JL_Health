@@ -1,13 +1,13 @@
 //
 //  NibResource.swift
-//  R.swift
+//  NibResource.swift
 //
 //  Created by Mathijs Kadijk on 09-12-15.
 //
 
 import Foundation
 
-public struct NibResource {
+public struct NibResource: Sendable {
     public let name: String
     public var locale: LocaleReference
     public let deploymentTarget: DeploymentTarget?
@@ -44,8 +44,8 @@ public struct NibResource {
     }
 }
 
-extension NibResource {
-    public struct UnifyResult {
+public extension NibResource {
+    struct UnifyResult {
         public let resource: NibResource
         public let differentNames: Bool
         public let differentRootViews: Bool
@@ -58,16 +58,16 @@ extension NibResource {
 
             return UnifyResult(
                 resource: r.resource,
-                differentNames: r.differentNames || self.differentNames,
-                differentRootViews: r.differentRootViews || self.differentRootViews,
-                differentReusables: r.differentReusables.union(self.differentReusables),
-                differentInitialReusables: r.differentInitialReusables || self.differentInitialReusables,
-                differentDeploymentTargets: r.differentDeploymentTargets || self.differentDeploymentTargets
+                differentNames: r.differentNames || differentNames,
+                differentRootViews: r.differentRootViews || differentRootViews,
+                differentReusables: r.differentReusables.union(differentReusables),
+                differentInitialReusables: r.differentInitialReusables || differentInitialReusables,
+                differentDeploymentTargets: r.differentDeploymentTargets || differentDeploymentTargets
             )
         }
     }
 
-    public func unify(localizations: [NibResource]) -> UnifyResult {
+    func unify(localizations: [NibResource]) -> UnifyResult {
         var result = UnifyResult(
             resource: self,
             differentNames: false,
@@ -84,15 +84,14 @@ extension NibResource {
         return result
     }
 
-    public func unify(_ other: NibResource) -> UnifyResult {
-
+    func unify(_ other: NibResource) -> UnifyResult {
         // Merged used images/colors from both localizations, they all need to be validated
         var result = self
-        result.usedImageIdentifiers = Array(Set(self.usedImageIdentifiers).union(other.usedImageIdentifiers))
-        result.usedColorResources = Array(Set(self.usedColorResources).union(other.usedColorResources))
+        result.usedImageIdentifiers = Array(Set(usedImageIdentifiers).union(other.usedImageIdentifiers))
+        result.usedColorResources = Array(Set(usedColorResources).union(other.usedColorResources))
 
         // Only keep reusables that exist in both localizations
-        result.reusables = self.reusables.filter { other.reusables.contains($0) }
+        result.reusables = reusables.filter { other.reusables.contains($0) }
 
         // Keep other fields from self only, if they are different, that is recorded in UnifyResult
 

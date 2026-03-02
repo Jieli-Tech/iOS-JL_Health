@@ -1,13 +1,13 @@
 //
 //  StringParam.swift
-//  R.swift
+//  StringParam.swift
 //
 //  Created by Tom Lokhorst on 2016-04-18.
 //
 
 import Foundation
 
-public struct StringParam: Equatable {
+public struct StringParam: Equatable, Sendable {
     public let name: String?
     public let spec: FormatSpecifier
 
@@ -17,13 +17,13 @@ public struct StringParam: Equatable {
     }
 }
 
-public enum FormatPart {
+public enum FormatPart: Sendable {
     case spec(FormatSpecifier)
     case reference(String)
 
     public var formatSpecifier: FormatSpecifier? {
         switch self {
-        case .spec(let formatSpecifier):
+        case let .spec(formatSpecifier):
             return formatSpecifier
 
         case .reference:
@@ -33,7 +33,7 @@ public enum FormatPart {
 }
 
 // https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Strings/Articles/formatSpecifiers.html#//apple_ref/doc/uid/TP40004265-SW1
-public enum FormatSpecifier {
+public enum FormatSpecifier: Sendable {
     case object
     case double
     case int

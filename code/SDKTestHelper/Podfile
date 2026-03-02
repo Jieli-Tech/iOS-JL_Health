@@ -16,6 +16,9 @@ target 'SDKTestHelper' do
   pod 'WMZDialog'
   pod 'Toast-Swift','5.0.1'
   pod 'R.swift'
+  pod 'FMDB'
+  pod 'Starscream'
+
 
 
 end
