@@ -15,6 +15,7 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
+    let jlav2 = JLAV2Codec()
     static func getCurrentWindows() -> UIWindow? {
         let windows = UIApplication.shared.windows
         return windows.last
@@ -23,12 +24,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-        let tabBar = MainTabBarViewController()
+        let mainVc = MainViewController()
+        let navc = NavViewController(rootViewController: mainVc)
+        mainVc.navigationController?.setNavigationBarHidden(true, animated: true)
         if #available(iOS 15.0, *) {
             UITableView.appearance().sectionHeaderTopPadding = 0
         }
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = tabBar
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = navc
         window?.makeKeyAndVisible()
 
         _R.initFold()

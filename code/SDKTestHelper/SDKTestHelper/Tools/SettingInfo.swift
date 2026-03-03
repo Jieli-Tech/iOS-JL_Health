@@ -9,23 +9,6 @@
 import UIKit
 
 class SettingInfo {
-    
-    class func saveSSID(_ ssid: String) {
-        UserDefaults.standard.set(ssid, forKey: "ssid")
-        UserDefaults.standard.synchronize()
-    }
-    class func getSSID() -> String? {
-        return UserDefaults.standard.string(forKey: "ssid")
-    }
-    
-    class func savePassword(_ password: String) {
-        UserDefaults.standard.set(password, forKey: "password")
-        UserDefaults.standard.synchronize()
-    }
-    class func getPassword() -> String? {
-        return UserDefaults.standard.string(forKey: "password")
-    }
-        
     class func saveCustomerBleConnect(_ status: Bool) {
         UserDefaults.standard.set(status, forKey: "customerBleConnect")
         UserDefaults.standard.synchronize()
@@ -34,15 +17,13 @@ class SettingInfo {
     class func getCustomerBleConnect() -> Bool {
         return UserDefaults.standard.bool(forKey: "customerBleConnect")
     }
-    class func saveAuthEnable(_ status: Bool) {
+    class func savePairEnable(_ status: Bool) {
         UserDefaults.standard.set(status, forKey: "pairEnable")
         UserDefaults.standard.synchronize()
-        JLLogManager.logLevel(.INFO, content: "saveAuthEnable:\(status)")
     }
 
-    class func getAuthEnable() -> Bool {
-        let state = UserDefaults.standard.bool(forKey: "pairEnable")
-        return state
+    class func getPairEnable() -> Bool {
+        return UserDefaults.standard.bool(forKey: "pairEnable")
     }
 
     class func setToHistory(_ uuid: String) {
@@ -55,14 +36,11 @@ class SettingInfo {
     }
 
     class func getCustomTransportSupport() -> Bool {
-        let status = UserDefaults.standard.bool(forKey: "customTransportSupport")
-        JLLogManager.logLevel(.INFO, content: "getCustomTransportSupport:\(status)")
-        return status
+        return UserDefaults.standard.bool(forKey: "customTransportSupport")
     }
 
     class func saveCustomTransportSupport(_ status: Bool) {
         UserDefaults.standard.set(status, forKey: "customTransportSupport")
-        JLLogManager.logLevel(.INFO, content: "saveCustomTransportSupport:\(status)")
         UserDefaults.standard.synchronize()
     }
 
