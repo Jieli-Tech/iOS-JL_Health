@@ -22,7 +22,7 @@
 		</data>
 		<key>Headers/JL_OTAManager.h</key>
 		<data>
-		oPzD4z0eftvXY+wfQM+SlmQxLDk=
+		PMESdvB6Bcu7gn1YJqH1tOi0eEw=
 		</data>
 		<key>Headers/jl_ufw.h</key>
 		<data>
@@ -30,7 +30,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		OrXMWoY4yBz45jr/Xk7/yi4TCnQ=
+		L1sSyhac1P15lar1/muRvYYRCUI=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -41,6 +41,10 @@
 	<dict>
 		<key>Headers/JLOTAFile.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			OCi8PoI3GQr4HUxHQQytlXYCxe8=
+			</data>
 			<key>hash2</key>
 			<data>
 			lz4Ha2Z62XzIHqsHW1574zMjx1W+IhrqaCJK8HGIs/o=
@@ -48,6 +52,10 @@
 		</dict>
 		<key>Headers/JLOtaCustom.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			ohGYE+IOCliAaeZaO5VdRBwHvWo=
+			</data>
 			<key>hash2</key>
 			<data>
 			KntKbJMahP2WujBsJDiGFbjDQvJdw3yo3CqTohYnPcE=
@@ -55,6 +63,10 @@
 		</dict>
 		<key>Headers/JLOtaReConnectOption.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			xqKc873u51zqagJXS172BK6h9Tg=
+			</data>
 			<key>hash2</key>
 			<data>
 			obE+hckXBKKcYUtitl4rad/7W1Bi5ciNOH3ZPml7hY4=
@@ -62,6 +74,10 @@
 		</dict>
 		<key>Headers/JL_OTALib.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			tH9kHWi/DKzq8j2NoSg0wXoBAro=
+			</data>
 			<key>hash2</key>
 			<data>
 			/E9fkD4b67lRdPY5BqxqffRv3H48y1qpNWHYw+a65Cg=
@@ -69,13 +85,21 @@
 		</dict>
 		<key>Headers/JL_OTAManager.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			PMESdvB6Bcu7gn1YJqH1tOi0eEw=
+			</data>
 			<key>hash2</key>
 			<data>
-			jJfOgyo6xlrF59y1o6E1Zd8zj9NNd/sFCZxMwQNdJNw=
+			uHRHY8s9UMaaynCPFZOCTid9vmTW5l5PVNI5pAyQK/I=
 			</data>
 		</dict>
 		<key>Headers/jl_ufw.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			KBTDPNzyz3mtGLkvJLZ7GIRKNeM=
+			</data>
 			<key>hash2</key>
 			<data>
 			l3c9CmVcHyBHIxKSG6GlCBpaZjnp6+fd4iKu2jGMyuE=
@@ -83,6 +107,10 @@
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			Djaqrf2BV/5uLRNN6e4M1DPfyG4=
+			</data>
 			<key>hash2</key>
 			<data>
 			CQv4Q+xyzKhKSJpAY8gU98Qv9Wv1W16ILQ5MGAKukrA=

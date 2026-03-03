@@ -22,7 +22,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		pLA2PfPyxsguwM09KFXPq/Cy2ko=
+		vaP94eof9P4dJHy/VxAhSfezsXw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -33,6 +33,10 @@
 	<dict>
 		<key>Headers/BtHash.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			EdZDmmVVm0KY3D72UHE3hQF42e4=
+			</data>
 			<key>hash2</key>
 			<data>
 			EfOAmi/ycUONPu8OgPUuPkc9caXqUhvVXE27JNmmnPk=
@@ -40,6 +44,10 @@
 		</dict>
 		<key>Headers/JLHashHandler.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			ArAEdyp9k5H5o4gFjW9zdx+0ISY=
+			</data>
 			<key>hash2</key>
 			<data>
 			7iuW7k7IBL4tf/bE1O3SudVyeFxG8YHoo7DqZGFdSBI=
@@ -47,6 +55,10 @@
 		</dict>
 		<key>Headers/JL_HashPair.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			Y9dInJ7eyVXJ8WOASyZGNDDIj9s=
+			</data>
 			<key>hash2</key>
 			<data>
 			5Ow8T39Md9cD7Jb7iMaoihnIJhv8GHHIjGAsgZG//Og=
@@ -54,6 +66,10 @@
 		</dict>
 		<key>Headers/JL_ble_pair.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			YP6GQrFs1nWR8BkMoj1fQdKHKKM=
+			</data>
 			<key>hash2</key>
 			<data>
 			ggTJvYOE/W4Tmghs665eiywakMiTsvgl7PeEayUkKqQ=
@@ -61,6 +77,10 @@
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			6wQFoRjNQqLop5Z3m/K5slHiG2k=
+			</data>
 			<key>hash2</key>
 			<data>
 			N+WiNcfG40LwaFvJZeLG5iNA48ZbrW0Oph/B9U+7i9U=

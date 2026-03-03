@@ -34,7 +34,7 @@
         JLPagerView *pagerView = [[JLPagerView alloc] initWithTitles:titleArray WithVCs:vcsArray WithColorArrays:colorArray];
         self.pagerView = pagerView;
         [[LanguageCls share] add:self];
-        [[JLDeviceConfig share] addDelegate:self];
+        [[JLDeviceConfig share] setDelegate:self];
     }
     return self;
 }

@@ -10,11 +10,11 @@
 		</data>
 		<key>Headers/JLLogManager.h</key>
 		<data>
-		1xlvDqBo+nbSfX7gF4NrD1JzcuY=
+		Be4QtnAF0IDSmlMZquwyK7LLd8w=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		PJl+BYy7qbdneBUnydYicJKb/SM=
+		mJ09lIigUxIgwpwz1tMqaHs8roI=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -25,6 +25,10 @@
 	<dict>
 		<key>Headers/JLLogHelper.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			TahP/o16a5TgPGLNFs/QhND95FU=
+			</data>
 			<key>hash2</key>
 			<data>
 			nD5WuwBhpaoCwOGeWB5OusXVP21nYy+/Hcn6nPideIk=
@@ -32,13 +36,21 @@
 		</dict>
 		<key>Headers/JLLogManager.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			Be4QtnAF0IDSmlMZquwyK7LLd8w=
+			</data>
 			<key>hash2</key>
 			<data>
-			2mB5ViivIAiLh5det1NObpRVJPzYrgcyyyM4ByOUtxU=
+			vOgQgQVptNwQdUKpCW2EBNruc0PL6BnkSjxVpptJsf0=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			YwPsApnJXdp+uskVahraY2UK/Jk=
+			</data>
 			<key>hash2</key>
 			<data>
 			ViwpXSuoKoiEUwMpetyre+mlEz0+JE8UURyNSgBuylM=
