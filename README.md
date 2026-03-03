@@ -46,12 +46,14 @@
       ├── JLBmpConvertKit.xcframework       --- 图片转码业务库
       ├── JLDialUnit.xcframework            --- 表盘相关
       ├── JLLogHelper.xcframework           --- 日志助手
+      ├── JLPackageResKit.xcframework       --- 健康功能业务库
 ```
 
 ## 版本说明
 
 | 版本   | 日期       | 修改记录                                                     |
 | ------ | ---------- | ------------------------------------------------------------ |
+| V1.14.0(Beta) | 2026/03/03 | 1、新增功能<br/>(1) 更替 SDK 版本为 V1.14.0（Beta） |
 | V1.13.0(Beta) | 2026/03/02 | 1、新增功能<br/>(1) 更替 SDK 版本为 V1.13.0（Beta） |
 | V1.12.0 | 2024/11/22 | 1、新增功能<br/>(1）增加兼容 AC707N 的自定义表盘图像转换；<br/>(2）分离图像转换工具作为独立模块库。|
 | V1.11.0| 2024/03/15 | 1、新增功能<br/>(1)增加 4G 模块 OTA 功能<br/>(2)增加表盘拓展参数和补充 AI 表盘流程；|
@@ -80,6 +82,9 @@
    - 音频数据编码与解码
 6. 图片转码功能实现，可以参考 `JLBmpConvertKit.framework` 中的 `JLBmpConvertManager` 类
    - 自定义表盘图像转换
+7. 资源打包功能业务库实现，可以参考 `JLPackageResKit.framework` 中的 `JLPackageResManager` 类
+   - 打包音频数据
+   - 打包表盘 res 资源数据
 
 **测试功能可以参考 `code/JieliJianKang` 中的示例代码**
 
