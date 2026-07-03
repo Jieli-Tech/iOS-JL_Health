@@ -5,7 +5,7 @@
 
 <div align="center">
 
-**杰理健康 SDK（iOS）- 专为杰理蓝牙穿戴类产品提供功能集成开发平台 **
+**杰理健康 SDK（iOS）- 专为杰理蓝牙穿戴类产品提供功能集成开发平台**
 
 ![iOS](https://img.shields.io/badge/iOS-10.0+-blue.svg)
 ![Xcode](https://img.shields.io/badge/Xcode-14.0+-orange.svg)
